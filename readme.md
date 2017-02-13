@@ -3,6 +3,8 @@
 ## About
 **wickr-crypto-c** is an implementation of the Wickr Secure Messaging Protocol in C, which provides a platform for secure communications on **Wickr Professional**. 
 
+A white paper describing details of the protocol and it's security model can be found [here](https://www.wickr.com/security). A markdown version of the white paper can also be found in the wiki. 
+
 **Please Note**
 
 This crypto lib is released for public review for educational, academic, and code audit purposes only (*this is not an open source license, more on license [here](LICENSE)). We strongly believe in the value of the open source movement and are looking forward to contributing to it with this and other future projects including under the GNU license. 
@@ -259,7 +261,9 @@ make -f makefile.android install
 
 ## License
 
-Copyright © 2012-2017 Wickr Inc.  All rights reserved.This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details, please see the LICENSE.
+Copyright © 2012-2017 Wickr Inc.  All rights reserved.
+
+This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details, please see the LICENSE.
 
 THE CODE IS MADE AVAILABLE "AS-IS" AND WITHOUT ANY EXPRESS OR IMPLIED GUARANTEES AS TO FITNESS, MERCHANTABILITY, NON-INFRINGEMENT OR OTHERWISE. IT IS NOT BEING PROVIDED IN TRADE BUT ON A VOLUNTARY BASIS ON BEHALF OF THE AUTHOR’S PART FOR THE BENEFIT OF THE LICENSEE AND IS NOT MADE AVAILABLE FOR CONSUMER USE OR ANY OTHER USE OUTSIDE THE TERMS OF THIS LICENSE. ANYONE ACCESSING THE CODE SHOULD HAVE THE REQUISITE EXPERTISE TO SECURE THEIR SYSTEM AND DEVICES AND TO ACCESS AND USE THE CODE FOR REVIEW PURPOSES ONLY. LICENSEE BEARS THE RISK OF ACCESSING AND USING THE CODE. IN PARTICULAR, AUTHOR BEARS NO LIABILITY FOR ANY INTERFERENCE WITH OR ADVERSE EFFECT THAT MAY OCCUR AS A RESULT OF THE LICENSEE ACCESSING AND/OR USING THE CODE ON LICENSEE’S SYSTEM. 
 
