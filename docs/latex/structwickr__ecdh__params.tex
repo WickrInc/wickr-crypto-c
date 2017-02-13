@@ -1,0 +1,67 @@
+\hypertarget{structwickr__ecdh__params}{}\section{wickr\+\_\+ecdh\+\_\+params Struct Reference}
+\label{structwickr__ecdh__params}\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+
+
+Holds parameters used to generate Elliptical Curve Diffie-\/\+Hellman based secrets.  
+
+
+
+
+{\ttfamily \#include $<$ecdh.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__ecdh__params_aab5a55e6a516ab8268ef6739ae1422cd}{local\+\_\+key}
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__ecdh__params_ab17d6191b23fa7fd1befd03b2eee4ba9}{peer\+\_\+key}
+\item 
+\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{structwickr__ecdh__params_a8cffc5933efafe74e4b723516f2cd542}{kdf\+\_\+digest\+\_\+mode}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__ecdh__params_ad7e1b337665c957189e21a2d6dfe7cd8}{kdf\+\_\+salt}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__ecdh__params_a0259f327ae0bdcc9e44b1d43a1216cac}{kdf\+\_\+info}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds parameters used to generate Elliptical Curve Diffie-\/\+Hellman based secrets. 
+
+All E\+C\+DH secrets are created in two phases. In the first phase, a local key pair and peer public key are used to generate a standard E\+C\+DH shared secret, the length of which varies by curve. In the second phase, the E\+C\+DH shared secret is expanded by a K\+DF to get specific length output. The specific K\+DF and the length of it\textquotesingle{}s output are controlled by the implementation provided by the crypto engine that is used to perform the key exchange operation. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__ecdh__params_a8cffc5933efafe74e4b723516f2cd542}\label{structwickr__ecdh__params_a8cffc5933efafe74e4b723516f2cd542}} 
+\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}!kdf\+\_\+digest\+\_\+mode@{kdf\+\_\+digest\+\_\+mode}}
+\index{kdf\+\_\+digest\+\_\+mode@{kdf\+\_\+digest\+\_\+mode}!wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+\subsubsection{\texorpdfstring{kdf\+\_\+digest\+\_\+mode}{kdf\_digest\_mode}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+params\+::kdf\+\_\+digest\+\_\+mode}
+
+digest mode to be used as part a K\+DF function for E\+C\+DH shared secret expansion \mbox{\Hypertarget{structwickr__ecdh__params_a0259f327ae0bdcc9e44b1d43a1216cac}\label{structwickr__ecdh__params_a0259f327ae0bdcc9e44b1d43a1216cac}} 
+\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}!kdf\+\_\+info@{kdf\+\_\+info}}
+\index{kdf\+\_\+info@{kdf\+\_\+info}!wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+\subsubsection{\texorpdfstring{kdf\+\_\+info}{kdf\_info}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+params\+::kdf\+\_\+info}
+
+context information that can be used as part of the K\+DF function for E\+C\+DH shared secret expansion. I\+N\+FO varies from S\+A\+LT as it is not intended to be random, and instead holds contextual information about the involved parties. May be N\+U\+LL if no context information is provided \mbox{\Hypertarget{structwickr__ecdh__params_ad7e1b337665c957189e21a2d6dfe7cd8}\label{structwickr__ecdh__params_ad7e1b337665c957189e21a2d6dfe7cd8}} 
+\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}!kdf\+\_\+salt@{kdf\+\_\+salt}}
+\index{kdf\+\_\+salt@{kdf\+\_\+salt}!wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+\subsubsection{\texorpdfstring{kdf\+\_\+salt}{kdf\_salt}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+params\+::kdf\+\_\+salt}
+
+a random salt value used as part of a K\+DF function for E\+C\+DH shared secret expansion. May be N\+U\+LL if no salt is used, if a salt is provided it should be a secure random value \mbox{\Hypertarget{structwickr__ecdh__params_aab5a55e6a516ab8268ef6739ae1422cd}\label{structwickr__ecdh__params_aab5a55e6a516ab8268ef6739ae1422cd}} 
+\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}!local\+\_\+key@{local\+\_\+key}}
+\index{local\+\_\+key@{local\+\_\+key}!wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+\subsubsection{\texorpdfstring{local\+\_\+key}{local\_key}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+params\+::local\+\_\+key}
+
+Elliptical Curve key with both public and private components set used to compute the E\+C\+DH shared secret \mbox{\Hypertarget{structwickr__ecdh__params_ab17d6191b23fa7fd1befd03b2eee4ba9}\label{structwickr__ecdh__params_ab17d6191b23fa7fd1befd03b2eee4ba9}} 
+\index{wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}!peer\+\_\+key@{peer\+\_\+key}}
+\index{peer\+\_\+key@{peer\+\_\+key}!wickr\+\_\+ecdh\+\_\+params@{wickr\+\_\+ecdh\+\_\+params}}
+\subsubsection{\texorpdfstring{peer\+\_\+key}{peer\_key}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+params\+::peer\+\_\+key}
+
+Elliptical Curve key with the public component of the other party\textquotesingle{}s key pair used to compute the E\+C\+DH shared secret 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/ecdh.\+h\end{DoxyCompactItemize}

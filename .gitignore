@@ -1,0 +1,11 @@
+CryptoConfig.h
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+.DS_Store
+build*/
+wickr-crypto-c.podspec

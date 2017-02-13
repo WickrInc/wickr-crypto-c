@@ -1,0 +1,7 @@
+#include "cspec.h"
+
+DEFINE_DESCRIPTION(wickr_packet_meta)
+DEFINE_DESCRIPTION(wickr_key_exchange)
+DEFINE_DESCRIPTION(wickr_exchange_array)
+DEFINE_DESCRIPTION(wickr_packet_header)
+DEFINE_DESCRIPTION(wickr_packet_create_from_components)

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__kdf__meta" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_kdf_meta</compoundname>
+    <includes refid="kdf_8h" local="no">kdf.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__kdf__meta_1a263e1f7c77447a5a2a57c0d5d2f4ee34" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
+        <definition>wickr_kdf_meta::algo</definition>
+        <argsstring></argsstring>
+        <name>algo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>serialized algorithm identifier to help define the set of parameters for the KDF as an integer </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="128" column="1" bodyfile="src/crypto/kdf.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__kdf__meta_1a315c54ee4578a01266a4e7352a52d459" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_kdf_meta::salt</definition>
+        <argsstring></argsstring>
+        <name>salt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>value that should be / was used as an input to the KDF function </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="129" column="1" bodyfile="src/crypto/kdf.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the information the KDF function will need along with it&apos;s input to derive a particular output. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="142">
+        <label>wickr_kdf_algo</label>
+        <link refid="structwickr__kdf__algo"/>
+      </node>
+      <node id="140">
+        <label>wickr_kdf_meta</label>
+        <link refid="structwickr__kdf__meta"/>
+        <childnode refid="141" relation="usage">
+          <edgelabel>salt</edgelabel>
+        </childnode>
+        <childnode refid="142" relation="usage">
+          <edgelabel>algo</edgelabel>
+        </childnode>
+      </node>
+      <node id="141">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/kdf.h" line="127" column="1" bodyfile="src/crypto/kdf.h" bodystart="127" bodyend="130"/>
+    <listofallmembers>
+      <member refid="structwickr__kdf__meta_1a263e1f7c77447a5a2a57c0d5d2f4ee34" prot="public" virt="non-virtual"><scope>wickr_kdf_meta</scope><name>algo</name></member>
+      <member refid="structwickr__kdf__meta_1a315c54ee4578a01266a4e7352a52d459" prot="public" virt="non-virtual"><scope>wickr_kdf_meta</scope><name>salt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

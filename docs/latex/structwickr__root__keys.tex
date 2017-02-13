@@ -1,0 +1,49 @@
+\hypertarget{structwickr__root__keys}{}\section{wickr\+\_\+root\+\_\+keys Struct Reference}
+\label{structwickr__root__keys}\index{wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}}
+
+
+Root level crypto keys for signatures, local encryption, and remote encryption.  
+
+
+
+
+{\ttfamily \#include $<$root\+\_\+keys.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__root__keys_af3a0ca7b48b356e118dea24c26cdd9f5}{node\+\_\+signature\+\_\+root}
+\item 
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__root__keys_ada908a5fa4aaf7c8b9a4b496c99e595a}{node\+\_\+storage\+\_\+root}
+\item 
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__root__keys_a9bf1ff10b669493393e2bf918f5d4090}{remote\+\_\+storage\+\_\+root}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Root level crypto keys for signatures, local encryption, and remote encryption. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__root__keys_af3a0ca7b48b356e118dea24c26cdd9f5}\label{structwickr__root__keys_af3a0ca7b48b356e118dea24c26cdd9f5}} 
+\index{wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}!node\+\_\+signature\+\_\+root@{node\+\_\+signature\+\_\+root}}
+\index{node\+\_\+signature\+\_\+root@{node\+\_\+signature\+\_\+root}!wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}}
+\subsubsection{\texorpdfstring{node\+\_\+signature\+\_\+root}{node\_signature\_root}}
+{\footnotesize\ttfamily wickr\+\_\+root\+\_\+keys\+::node\+\_\+signature\+\_\+root}
+
+signature key used to sign nodes \mbox{\Hypertarget{structwickr__root__keys_ada908a5fa4aaf7c8b9a4b496c99e595a}\label{structwickr__root__keys_ada908a5fa4aaf7c8b9a4b496c99e595a}} 
+\index{wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}!node\+\_\+storage\+\_\+root@{node\+\_\+storage\+\_\+root}}
+\index{node\+\_\+storage\+\_\+root@{node\+\_\+storage\+\_\+root}!wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}}
+\subsubsection{\texorpdfstring{node\+\_\+storage\+\_\+root}{node\_storage\_root}}
+{\footnotesize\ttfamily wickr\+\_\+root\+\_\+keys\+::node\+\_\+storage\+\_\+root}
+
+the root storage key used to derive local storage key for nodes \mbox{\Hypertarget{structwickr__root__keys_a9bf1ff10b669493393e2bf918f5d4090}\label{structwickr__root__keys_a9bf1ff10b669493393e2bf918f5d4090}} 
+\index{wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}!remote\+\_\+storage\+\_\+root@{remote\+\_\+storage\+\_\+root}}
+\index{remote\+\_\+storage\+\_\+root@{remote\+\_\+storage\+\_\+root}!wickr\+\_\+root\+\_\+keys@{wickr\+\_\+root\+\_\+keys}}
+\subsubsection{\texorpdfstring{remote\+\_\+storage\+\_\+root}{remote\_storage\_root}}
+{\footnotesize\ttfamily wickr\+\_\+root\+\_\+keys\+::remote\+\_\+storage\+\_\+root}
+
+the root storage key used to encrypt remote content for all nodes 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/root\+\_\+keys.\+h\end{DoxyCompactItemize}

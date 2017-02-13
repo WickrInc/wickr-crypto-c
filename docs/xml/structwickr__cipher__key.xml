@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__cipher__key" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_cipher_key</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+        <definition>wickr_cipher_key::cipher</definition>
+        <argsstring></argsstring>
+        <name>cipher</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A key to be provided to a cipher operation</para><para>the cipher this key is to be used by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="188" column="1" bodyfile="src/crypto/cipher.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__cipher__key_1a0bf9fa22f1db80010410ae609aac8a2a" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_cipher_key::key_data</definition>
+        <argsstring></argsstring>
+        <name>key_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a buffer representing the raw bytes of the key </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="189" column="1" bodyfile="src/crypto/cipher.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>wickr_cipher_key</label>
+        <link refid="structwickr__cipher__key"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>key_data</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>cipher</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>wickr_cipher</label>
+        <link refid="structwickr__cipher"/>
+      </node>
+      <node id="6">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/cipher.h" line="187" column="1" bodyfile="src/crypto/cipher.h" bodystart="187" bodyend="190"/>
+    <listofallmembers>
+      <member refid="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" prot="public" virt="non-virtual"><scope>wickr_cipher_key</scope><name>cipher</name></member>
+      <member refid="structwickr__cipher__key_1a0bf9fa22f1db80010410ae609aac8a2a" prot="public" virt="non-virtual"><scope>wickr_cipher_key</scope><name>key_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

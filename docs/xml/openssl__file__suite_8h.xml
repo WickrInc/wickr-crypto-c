@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="openssl__file__suite_8h" kind="file" language="C++">
+    <compoundname>openssl_file_suite.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <incdepgraph>
+      <node id="309">
+        <label>stdbool.h</label>
+      </node>
+      <node id="310">
+        <label>stdint.h</label>
+      </node>
+      <node id="306">
+        <label>stdlib.h</label>
+      </node>
+      <node id="305">
+        <label>src/crypto/openssl_file_suite.h</label>
+        <link refid="openssl__file__suite_8h"/>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="307" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="311">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="308" relation="include">
+        </childnode>
+      </node>
+      <node id="312">
+        <label>limits.h</label>
+      </node>
+      <node id="308">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="306" relation="include">
+        </childnode>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+        <childnode refid="311" relation="include">
+        </childnode>
+        <childnode refid="312" relation="include">
+        </childnode>
+      </node>
+      <node id="307">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__openssl__file__encryption_1ga5bd14a3efda3bceb0f77a40fe88075b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_aes256_file_encrypt</definition>
+        <argsstring>(const wickr_cipher_key_t *key, const char *sourceFilePath, const char *destinationFilePath)</argsstring>
+        <name>openssl_aes256_file_encrypt</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>sourceFilePath</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>destinationFilePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encrypt a file to another file</para><para>Utilizes a small amount of stack memory to encrypt a large file. This function is byte-format compatible with standard memory-based AES functions from this library.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher key to use for the encryption operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sourceFilePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to the source file to encrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationFilePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to save the encrypted file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the encryption succeeds, false if the sourceFilePath, or destinationFilePath is inaccessible, or the encryption operation fails. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_file_suite.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__file__encryption_1ga434cf0c2d289c409b3d92d6b0be001c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_aes256_file_decrypt</definition>
+        <argsstring>(const wickr_cipher_key_t *key, const char *sourceFilePath, const char *destinationFilePath, bool only_auth_ciphers)</argsstring>
+        <name>openssl_aes256_file_decrypt</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>sourceFilePath</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>destinationFilePath</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>only_auth_ciphers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decrypt a file to another file</para><para>Utilizes a small amount of stack memory to decrypt a large file. This function is byte-format compatible with standard memory-based AES functions from this library.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher key to use for the decryption operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sourceFilePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to the source file to decrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destinationFilePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the location to save the decrypted file </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>only_auth_ciphers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, only authenticated ciphers may be used for decryption </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the decryption succeeds, false if the sourceFilePath, or destinationFilePath is inaccessible, or the incorrect key is presented </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_file_suite.h" line="64" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>openssl_file_suite_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>openssl_file_suite_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__file__encryption_1ga5bd14a3efda3bceb0f77a40fe88075b7" kindref="member">openssl_aes256_file_encrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__file__encryption_1ga434cf0c2d289c409b3d92d6b0be001c7" kindref="member">openssl_aes256_file_decrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>openssl_file_suite_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/openssl_file_suite.h"/>
+  </compounddef>
+</doxygen>

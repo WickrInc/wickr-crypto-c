@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="group__wickr__kdf" kind="group">
+    <compoundname>wickr_kdf</compoundname>
+    <title>wickr_kdf</title>
+    <innerclass refid="structwickr__kdf__algo" prot="public">wickr_kdf_algo</innerclass>
+    <innerclass refid="structwickr__kdf__meta" prot="public">wickr_kdf_meta</innerclass>
+    <innerclass refid="structwickr__kdf__result" prot="public">wickr_kdf_result</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__wickr__kdf_1ga106149e3507106abb6b5be843a4e7c16" prot="public" static="no">
+        <name>wickr_kdf_algo_id</name>
+        <enumvalue id="group__wickr__kdf_1gga106149e3507106abb6b5be843a4e7c16a3dc9d48b37cd34f27f18eb673f0a88fe" prot="public">
+          <name>KDF_BCRYPT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__wickr__kdf_1gga106149e3507106abb6b5be843a4e7c16a600add4b192ee6f9bad59e5195881a49" prot="public">
+          <name>KDF_SCRYPT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>KDF Algorithm ID</para><para>Define the base algorithm a particular kdf function uses. Scrypt and Bcrypt are currently supported. The preferred default is to use scrypt, with a minimum of n = 2^17 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="46" column="1" bodyfile="src/crypto/kdf.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__kdf_1gaf8d52b4e277d4e0eff6b60a510831b8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+        <definition>wickr_kdf_meta_t* wickr_kdf_meta_create</definition>
+        <argsstring>(wickr_kdf_algo_t algo, wickr_buffer_t *salt)</argsstring>
+        <name>wickr_kdf_meta_create</name>
+        <param>
+          <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
+          <declname>algo</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>salt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a KDF Metadata set from components</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>algo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated KDF Metadata set, owning the properties that were passed in </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="163" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga92020ae3e8ffb469c927d17f95a7dff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t wickr_kdf_meta_size_with_buffer</definition>
+        <argsstring>(const wickr_buffer_t *buffer)</argsstring>
+        <name>wickr_kdf_meta_size_with_buffer</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine the size of serialized metadata given a serialized KDF Metadata buffer</para><para>This function is useful for determining the number of bytes within a larger buffer are part of the KDF metadata</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer beginning with bytes generated from &apos;wickr_kdf_meta_serialize&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of bytes consumed by a piece of serialized metadata at the beginning of buffer &apos;buffer&apos;. 0 if the buffer does not start with a valid piece of serialized metadata </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="176" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga1bc501706b4a8a727dfd34f8a00e56da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_kdf_meta_serialize</definition>
+        <argsstring>(const wickr_kdf_meta_t *meta)</argsstring>
+        <name>wickr_kdf_meta_serialize</name>
+        <param>
+          <type>const <ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Serialize a KDF Metadata set</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>metadata set to serialize to a buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing serialized bytes from &apos;meta&apos; in the following format: | ALGO_ID | SALT | </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="188" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1gaebd1caf94717c403c4afb5cca8f511b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+        <definition>wickr_kdf_meta_t* wickr_kdf_meta_create_with_buffer</definition>
+        <argsstring>(const wickr_buffer_t *buffer)</argsstring>
+        <name>wickr_kdf_meta_create_with_buffer</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a KDF Metadata set from a buffer created by &apos;wickr_kdf_meta_serialize&apos;</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer containing a bytes created by &apos;wickr_kdf_meta_serialize&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated KDF Metadata set. NULL if parsing fails because buffer does not contain valid bytes </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="199" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga6ed878108fd58ee420239689de505190" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+        <definition>wickr_kdf_meta_t* wickr_kdf_meta_copy</definition>
+        <argsstring>(const wickr_kdf_meta_t *source)</argsstring>
+        <name>wickr_kdf_meta_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a KDF Metadata set</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the metadata set to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated metadata set holding a deep copy of the properties of &apos;source&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="210" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga2bd458ae83d4d5bb03b9d0835baeefd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_kdf_meta_destroy</definition>
+        <argsstring>(wickr_kdf_meta_t **meta)</argsstring>
+        <name>wickr_kdf_meta_destroy</name>
+        <param>
+          <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> **</type>
+          <declname>meta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a KDF Metadata set</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the metadata set to destroy. All properties of &apos;*meta&apos; will also be destroyed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="220" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga514c095b3b2f1ead49bd7fbf0b427407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
+        <definition>wickr_kdf_result_t* wickr_kdf_result_create</definition>
+        <argsstring>(wickr_kdf_meta_t *meta, wickr_buffer_t *hash)</argsstring>
+        <name>wickr_kdf_result_create</name>
+        <param>
+          <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a KDF Result from components</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hash</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated KDF result, owning the properties that were passed in </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="232" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga69c03c94bf446471ba74f76ee883f8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
+        <definition>wickr_kdf_result_t* wickr_kdf_result_copy</definition>
+        <argsstring>(const wickr_kdf_result_t *source)</argsstring>
+        <name>wickr_kdf_result_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a KDF result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the metadata set to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated kdf result holding a deep copy of the properties of &apos;source&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="243" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga61ff0036a7257321ff0bbdc184d856a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_kdf_result_destroy</definition>
+        <argsstring>(wickr_kdf_result_t **result)</argsstring>
+        <name>wickr_kdf_result_destroy</name>
+        <param>
+          <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a KDF result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the result to destroy. All properties of &apos;*result&apos; will also be destroyed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="253" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1gabc745cc1349f64c0f25d6d12de5f64cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
+        <definition>wickr_kdf_result_t* wickr_perform_kdf</definition>
+        <argsstring>(wickr_kdf_algo_t algo, const wickr_buffer_t *passphrase)</argsstring>
+        <name>wickr_perform_kdf</name>
+        <param>
+          <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
+          <declname>algo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>passphrase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute a KDF function given an input buffer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>algo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the algorithm info to use for execution of the KDF </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bytes to use as input to the KDF function. There are no restrictions for the content of the buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the output of the KDF function, including the generated random salt that was used for the computation </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="265" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga69674856e11652a18663fc7f833ad974" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
+        <definition>wickr_kdf_result_t* wickr_perform_kdf_meta</definition>
+        <argsstring>(const wickr_kdf_meta_t *existing_meta, const wickr_buffer_t *passphrase)</argsstring>
+        <name>wickr_perform_kdf_meta</name>
+        <param>
+          <type>const <ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+          <declname>existing_meta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>passphrase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Execute a KDF function given an input buffer and specified parameters</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>existing_meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the parameters to use for execution, including a specific salt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passphrase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bytes to use as input to the KDF function. There are no restrictions for the content of the buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the output of the KDF function, including the generated random salt that was used for the computation </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="277" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__wickr__kdf_1ga5e8df13eb2cd5cc1e09f377675ddc50f" prot="public" static="no">
+        <name>SCRYPT_2_17_COST</name>
+        <initializer>1116161</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scrypt Cost</para><para>In order to conform to MCF format, scrypt provides a method of compressing its parameters into a single uint32 value. This calculation is leveraged here for the simplicity of having a single value represent N, r, and p values </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="91" column="9" bodyfile="src/crypto/kdf.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,61 @@
+\hypertarget{structwickr__identity}{}\section{wickr\+\_\+identity Struct Reference}
+\label{structwickr__identity}\index{wickr\+\_\+identity@{wickr\+\_\+identity}}
+
+
+A signing identity on the Wickr system.  
+
+
+
+
+{\ttfamily \#include $<$identity.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+wickr\+\_\+identity\+\_\+type \hyperlink{structwickr__identity_a685dae977849c05c84ee4a0b10c9396d}{type}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__identity_aed3657b22d83bb810b51ea1d1520b23e}{identifier}
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__identity_a788a08ac03576cb76d9b2eaf81a7af3e}{sig\+\_\+key}
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{structwickr__identity_afb6bd9f5f9707be10fb273ce8d0b5928}{signature}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A signing identity on the Wickr system. 
+
+R\+O\+OT -\/ Account level, serves as the root of trust for all nodes associated with it. The root sig\+\_\+key signs each node to provide authenticity of its ownership N\+O\+DE -\/ Application level identifier, serves as the root of trust for all ephemeral keypairs associated with it, the node is owned / signed by a R\+O\+OT node. Nodes are messaging endpoints, owned by a particular root for the purpose of multi-\/client messaging
+
+Identities are meant to be cached, pinned, and optimally \char`\"{}verified\char`\"{} either out of band, or in band using a feature such as Wickr\textquotesingle{}s \char`\"{}video verification\char`\"{}. When verifying a new node identity, the root that was previously cached should be loaded and used to perform the signature validation of the new node. Node identities should also be cached, for the purpose of being able to consistently verify ephemeral keypairs signed by that node as part of generating message key exchanges 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__identity_aed3657b22d83bb810b51ea1d1520b23e}\label{structwickr__identity_aed3657b22d83bb810b51ea1d1520b23e}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!identifier@{identifier}}
+\index{identifier@{identifier}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{identifier}{identifier}}
+{\footnotesize\ttfamily wickr\+\_\+identity\+::identifier}
+
+a system wide unique value for this identity \mbox{\Hypertarget{structwickr__identity_a788a08ac03576cb76d9b2eaf81a7af3e}\label{structwickr__identity_a788a08ac03576cb76d9b2eaf81a7af3e}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!sig\+\_\+key@{sig\+\_\+key}}
+\index{sig\+\_\+key@{sig\+\_\+key}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{sig\+\_\+key}{sig\_key}}
+{\footnotesize\ttfamily wickr\+\_\+identity\+::sig\+\_\+key}
+
+the signing key of the identity, will contain private information for your local identity to support signing, and only public information of other identities \mbox{\Hypertarget{structwickr__identity_afb6bd9f5f9707be10fb273ce8d0b5928}\label{structwickr__identity_afb6bd9f5f9707be10fb273ce8d0b5928}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!signature@{signature}}
+\index{signature@{signature}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{signature}{signature}}
+{\footnotesize\ttfamily wickr\+\_\+identity\+::signature}
+
+the signature of the public \textquotesingle{}sig\+\_\+key\textquotesingle{}, signed by the root private \textquotesingle{}sig\+\_\+key\textquotesingle{}. N\+U\+LL if root identity \mbox{\Hypertarget{structwickr__identity_a685dae977849c05c84ee4a0b10c9396d}\label{structwickr__identity_a685dae977849c05c84ee4a0b10c9396d}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!type@{type}}
+\index{type@{type}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily wickr\+\_\+identity\+::type}
+
+the type of identity (N\+O\+DE OR R\+O\+OT) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/identity.\+h\end{DoxyCompactItemize}

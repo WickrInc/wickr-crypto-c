@@ -1,0 +1,79 @@
+\hypertarget{group__memory__functions}{}\section{memory management functions}
+\label{group__memory__functions}\index{memory management functions@{memory management functions}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{group__memory__functions_ga227aa24a951a89daf9058c30ef525836}{wickr\+\_\+alloc} (size\+\_\+t len)
+\item 
+void $\ast$ \hyperlink{group__memory__functions_ga8163f2ae01a21e319806fbba9b9da00a}{wickr\+\_\+alloc\+\_\+zero} (size\+\_\+t len)
+\item 
+void \hyperlink{group__memory__functions_ga0ec3692f8dc5c2df128743c515d300c1}{wickr\+\_\+free} (void $\ast$buf)
+\item 
+void \hyperlink{group__memory__functions_gadad0d18d3a00f50082b6585971a62ae1}{wickr\+\_\+free\+\_\+zero} (void $\ast$buf, size\+\_\+t len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__memory__functions_ga227aa24a951a89daf9058c30ef525836}\label{group__memory__functions_ga227aa24a951a89daf9058c30ef525836}} 
+\index{memory management functions@{memory management functions}!wickr\+\_\+alloc@{wickr\+\_\+alloc}}
+\index{wickr\+\_\+alloc@{wickr\+\_\+alloc}!memory management functions@{memory management functions}}
+\subsubsection{\texorpdfstring{wickr\+\_\+alloc()}{wickr\_alloc()}}
+{\footnotesize\ttfamily void$\ast$ wickr\+\_\+alloc (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Allocate memory from the system
+
+
+\begin{DoxyParams}{Parameters}
+{\em len} & the number of bytes to allocate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to \textquotesingle{}len\textquotesingle{} bytes of newly allocated memory, or N\+U\+LL if the underlying system allocation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__memory__functions_ga8163f2ae01a21e319806fbba9b9da00a}\label{group__memory__functions_ga8163f2ae01a21e319806fbba9b9da00a}} 
+\index{memory management functions@{memory management functions}!wickr\+\_\+alloc\+\_\+zero@{wickr\+\_\+alloc\+\_\+zero}}
+\index{wickr\+\_\+alloc\+\_\+zero@{wickr\+\_\+alloc\+\_\+zero}!memory management functions@{memory management functions}}
+\subsubsection{\texorpdfstring{wickr\+\_\+alloc\+\_\+zero()}{wickr\_alloc\_zero()}}
+{\footnotesize\ttfamily void$\ast$ wickr\+\_\+alloc\+\_\+zero (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Allocate zeroed memory from the system
+
+
+\begin{DoxyParams}{Parameters}
+{\em len} & the number of bytes of zeroed memory to allocate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to \textquotesingle{}len\textquotesingle{} bytes of newly allocated memory filled with 0s, or N\+U\+LL if the underlying system allocation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__memory__functions_ga0ec3692f8dc5c2df128743c515d300c1}\label{group__memory__functions_ga0ec3692f8dc5c2df128743c515d300c1}} 
+\index{memory management functions@{memory management functions}!wickr\+\_\+free@{wickr\+\_\+free}}
+\index{wickr\+\_\+free@{wickr\+\_\+free}!memory management functions@{memory management functions}}
+\subsubsection{\texorpdfstring{wickr\+\_\+free()}{wickr\_free()}}
+{\footnotesize\ttfamily void wickr\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{buf }\end{DoxyParamCaption})}
+
+Free memory
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & the pointer to memory that needs to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__memory__functions_gadad0d18d3a00f50082b6585971a62ae1}\label{group__memory__functions_gadad0d18d3a00f50082b6585971a62ae1}} 
+\index{memory management functions@{memory management functions}!wickr\+\_\+free\+\_\+zero@{wickr\+\_\+free\+\_\+zero}}
+\index{wickr\+\_\+free\+\_\+zero@{wickr\+\_\+free\+\_\+zero}!memory management functions@{memory management functions}}
+\subsubsection{\texorpdfstring{wickr\+\_\+free\+\_\+zero()}{wickr\_free\_zero()}}
+{\footnotesize\ttfamily void wickr\+\_\+free\+\_\+zero (\begin{DoxyParamCaption}\item[{void $\ast$}]{buf,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Zero-\/then-\/free memory
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & the buffer to fill with 0s and then free \\
+\hline
+{\em len} & the number of bytes to fill with 0s before freeing \textquotesingle{}buf\textquotesingle{} \\
+\hline
+\end{DoxyParams}

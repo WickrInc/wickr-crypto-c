@@ -1,0 +1,75 @@
+\hypertarget{structwickr__crypto__engine}{}\section{wickr\+\_\+crypto\+\_\+engine Struct Reference}
+\label{structwickr__crypto__engine}\index{wickr\+\_\+crypto\+\_\+engine@{wickr\+\_\+crypto\+\_\+engine}}
+
+
+Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h} and \hyperlink{kdf_8h_source}{kdf.\+h}.  
+
+
+
+
+{\ttfamily \#include $<$crypto\+\_\+engine.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} \hyperlink{structwickr__crypto__engine_a2145e35235dc5c5c944f33ea3d2963bd}{default\+\_\+curve}
+\item 
+\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{structwickr__crypto__engine_a307f7d46b55b1e0a93ce9d9489ba8fc5}{default\+\_\+cipher}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random} )(size\+\_\+t len)
+\item 
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random} )(\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\item 
+\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt} )(const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}{wickr\+\_\+crypto\+\_\+engine\+\_\+digest} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file} )(F\+I\+LE $\ast$in\+\_\+file, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key} )(\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign} )(const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify} )(const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature, const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+public\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+verify)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key} )(const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$expected)
+\item 
+\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen} )(\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\item 
+\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta} )(const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h} and \hyperlink{kdf_8h_source}{kdf.\+h}. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__crypto__engine_a307f7d46b55b1e0a93ce9d9489ba8fc5}\label{structwickr__crypto__engine_a307f7d46b55b1e0a93ce9d9489ba8fc5}} 
+\index{wickr\+\_\+crypto\+\_\+engine@{wickr\+\_\+crypto\+\_\+engine}!default\+\_\+cipher@{default\+\_\+cipher}}
+\index{default\+\_\+cipher@{default\+\_\+cipher}!wickr\+\_\+crypto\+\_\+engine@{wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{default\+\_\+cipher}{default\_cipher}}
+{\footnotesize\ttfamily wickr\+\_\+crypto\+\_\+engine\+::default\+\_\+cipher}
+
+the cipher to use by default for packets, local, and remote information \mbox{\Hypertarget{structwickr__crypto__engine_a2145e35235dc5c5c944f33ea3d2963bd}\label{structwickr__crypto__engine_a2145e35235dc5c5c944f33ea3d2963bd}} 
+\index{wickr\+\_\+crypto\+\_\+engine@{wickr\+\_\+crypto\+\_\+engine}!default\+\_\+curve@{default\+\_\+curve}}
+\index{default\+\_\+curve@{default\+\_\+curve}!wickr\+\_\+crypto\+\_\+engine@{wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{default\+\_\+curve}{default\_curve}}
+{\footnotesize\ttfamily wickr\+\_\+crypto\+\_\+engine\+::default\+\_\+curve}
+
+the curve to use when generating packets, message keys or a new context 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/crypto\+\_\+engine.\+h\end{DoxyCompactItemize}

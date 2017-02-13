@@ -1,0 +1,61 @@
+\hypertarget{group__openssl__file__encryption}{}\section{File Encryption With Open\+S\+SL}
+\label{group__openssl__file__encryption}\index{File Encryption With Open\+S\+SL@{File Encryption With Open\+S\+SL}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{group__openssl__file__encryption_ga5bd14a3efda3bceb0f77a40fe88075b7}{openssl\+\_\+aes256\+\_\+file\+\_\+encrypt} (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
+\item 
+bool \hyperlink{group__openssl__file__encryption_ga434cf0c2d289c409b3d92d6b0be001c7}{openssl\+\_\+aes256\+\_\+file\+\_\+decrypt} (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__openssl__file__encryption_ga434cf0c2d289c409b3d92d6b0be001c7}\label{group__openssl__file__encryption_ga434cf0c2d289c409b3d92d6b0be001c7}} 
+\index{File Encryption With Open\+S\+SL@{File Encryption With Open\+S\+SL}!openssl\+\_\+aes256\+\_\+file\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+file\+\_\+decrypt}}
+\index{openssl\+\_\+aes256\+\_\+file\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+file\+\_\+decrypt}!File Encryption With Open\+S\+SL@{File Encryption With Open\+S\+SL}}
+\subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+file\+\_\+decrypt()}{openssl\_aes256\_file\_decrypt()}}
+{\footnotesize\ttfamily bool openssl\+\_\+aes256\+\_\+file\+\_\+decrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{const char $\ast$}]{source\+File\+Path,  }\item[{const char $\ast$}]{destination\+File\+Path,  }\item[{bool}]{only\+\_\+auth\+\_\+ciphers }\end{DoxyParamCaption})}
+
+Decrypt a file to another file
+
+Utilizes a small amount of stack memory to decrypt a large file. This function is byte-\/format compatible with standard memory-\/based A\+ES functions from this library.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the cipher key to use for the decryption operation \\
+\hline
+{\em source\+File\+Path} & the path to the source file to decrypt \\
+\hline
+{\em destination\+File\+Path} & the location to save the decrypted file \\
+\hline
+{\em only\+\_\+auth\+\_\+ciphers} & if true, only authenticated ciphers may be used for decryption \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decryption succeeds, false if the source\+File\+Path, or destination\+File\+Path is inaccessible, or the incorrect key is presented 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__openssl__file__encryption_ga5bd14a3efda3bceb0f77a40fe88075b7}\label{group__openssl__file__encryption_ga5bd14a3efda3bceb0f77a40fe88075b7}} 
+\index{File Encryption With Open\+S\+SL@{File Encryption With Open\+S\+SL}!openssl\+\_\+aes256\+\_\+file\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+file\+\_\+encrypt}}
+\index{openssl\+\_\+aes256\+\_\+file\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+file\+\_\+encrypt}!File Encryption With Open\+S\+SL@{File Encryption With Open\+S\+SL}}
+\subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+file\+\_\+encrypt()}{openssl\_aes256\_file\_encrypt()}}
+{\footnotesize\ttfamily bool openssl\+\_\+aes256\+\_\+file\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{const char $\ast$}]{source\+File\+Path,  }\item[{const char $\ast$}]{destination\+File\+Path }\end{DoxyParamCaption})}
+
+Encrypt a file to another file
+
+Utilizes a small amount of stack memory to encrypt a large file. This function is byte-\/format compatible with standard memory-\/based A\+ES functions from this library.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the cipher key to use for the encryption operation \\
+\hline
+{\em source\+File\+Path} & the path to the source file to encrypt \\
+\hline
+{\em destination\+File\+Path} & the location to save the encrypted file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the encryption succeeds, false if the source\+File\+Path, or destination\+File\+Path is inaccessible, or the encryption operation fails. 
+\end{DoxyReturn}

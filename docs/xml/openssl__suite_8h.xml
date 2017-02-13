@@ -1,0 +1,966 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="openssl__suite_8h" kind="file" language="C++">
+    <compoundname>openssl_suite.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includes refid="cipher_8h" local="yes">cipher.h</includes>
+    <includes refid="crypto__engine_8h" local="yes">crypto_engine.h</includes>
+    <includes refid="ecdsa_8h" local="yes">ecdsa.h</includes>
+    <includes refid="eckey_8h" local="yes">eckey.h</includes>
+    <includes refid="ecdh_8h" local="yes">ecdh.h</includes>
+    <incdepgraph>
+      <node id="318">
+        <label>stdbool.h</label>
+      </node>
+      <node id="323">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+      <node id="319">
+        <label>stdint.h</label>
+      </node>
+      <node id="315">
+        <label>stdlib.h</label>
+      </node>
+      <node id="328">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+      </node>
+      <node id="320">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+      <node id="321">
+        <label>limits.h</label>
+      </node>
+      <node id="325">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+      </node>
+      <node id="326">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+      </node>
+      <node id="327">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+      </node>
+      <node id="314">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="324" relation="include">
+        </childnode>
+        <childnode refid="327" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+      </node>
+      <node id="316">
+        <label>stdio.h</label>
+      </node>
+      <node id="324">
+        <label>crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="327" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__openssl__crypto_1gadfe740d19f9f2096b818553e90dae0d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_crypto_random</definition>
+        <argsstring>(size_t len)</argsstring>
+        <name>openssl_crypto_random</name>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate secure random bytes using the rand_bytes function from OpenSSL</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes to generate </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing &apos;len&apos; secure random bytes or NULL if random byte generation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga9177055e488f0163d3eb946799df5a67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_cipher_key_t* openssl_cipher_key_random</definition>
+        <argsstring>(wickr_cipher_t cipher)</argsstring>
+        <name>openssl_cipher_key_random</name>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>cipher</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a secure random cipher key for a particular cipher Currently supports AES256-GCM and AES256-CTR cipher modes</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher to generate a random key for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a cipher key containing key material generated by &apos;openssl_crypto_random&apos; or NULL if random byte generation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+        <definition>wickr_cipher_result_t* openssl_aes256_encrypt</definition>
+        <argsstring>(const wickr_buffer_t *plaintext, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</argsstring>
+        <name>openssl_aes256_encrypt</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>plaintext</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>iv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encrypt a buffer using AES256 Currently supports AES256-GCM and AES256-CTR cipher modes</para><para>NOTE: IV is randomly chosen using &apos;openssl_crypto_random&apos; if one is not provided</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plaintext</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the content to encrypt using &apos;key&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher key to use to encrypt &apos;plaintext&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an initialization vector to use with the cipher mode, or NULL if one should be chosen at random </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a cipher result containing encrypted bytes, or NULL if the cipher mode fails or is not supported </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_aes256_decrypt</definition>
+        <argsstring>(const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *key, bool only_auth_ciphers)</argsstring>
+        <name>openssl_aes256_decrypt</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+          <declname>cipher_result</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>only_auth_ciphers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decrypt a cipher_result using AES256 Currently supports AES256-GCM and AES256-CTR cipher modes</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher_result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a cipher result generated from &apos;openssl_aes256_encrypt&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to use to attempt to decrypt &apos;cipher_result&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>only_auth_ciphers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, only authenticated ciphers may be used for decryption </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing decrypted bytes. If the AES mode is authenticated, NULL will be returned if key is incorrect. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_sha2</definition>
+        <argsstring>(const wickr_buffer_t *buffer, const wickr_buffer_t *salt, wickr_digest_t mode)</argsstring>
+        <name>openssl_sha2</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate a SHA2 hash of a buffer using an optional salt value Supported modes of SHA2 are SHA256, SHA384 and SHA512</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to hash </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a salt value to concatenate to buffer before taking the hash. The input to the SHA2 function will be SHA2(buffer || salt) Passing NULL will allow for no salt to be used </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mode of SHA2 to use for hashing </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the derived hash or NULL if the hashing operation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="105" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ec_key_t* openssl_ec_rand_key</definition>
+        <argsstring>(wickr_ec_curve_t curve)</argsstring>
+        <name>openssl_ec_rand_key</name>
+        <param>
+          <type><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref></type>
+          <declname>curve</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a random Elliptical Curve keypair Supported curve is currently limited to NIST P521</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>curve</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the curve parameters to use for random key pair generation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a random Elliptical Curve key pair or NULL if the random generation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ec_key_t* openssl_ec_key_import</definition>
+        <argsstring>(const wickr_buffer_t *buffer, bool is_private)</argsstring>
+        <name>openssl_ec_key_import</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>is_private</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Import an Elliptical Curve key from a buffer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer representing Elliptical Curve key material </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>is_private</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>false if the buffer represents a public key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an Elliptical Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="129" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gab32cef5c789ee1992afae98a81b65823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
+        <definition>wickr_ecdsa_result_t* openssl_ec_sign</definition>
+        <argsstring>(const wickr_ec_key_t *ec_signing_key, const wickr_buffer_t *data_to_sign, wickr_digest_t digest_mode)</argsstring>
+        <name>openssl_ec_sign</name>
+        <param>
+          <type>const <ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+          <declname>ec_signing_key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>data_to_sign</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>digest_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sign data using an Elliptical Curve key Data is hashed before signing. This function will calculate ECDSA(SHA2(data_to_sign))</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ec_signing_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>private signing key to use for the ECDSA algorithm </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_to_sign</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data to hash with &apos;digest_mode&apos;, and then sign with &apos;ec_signing_key&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>digest_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the digest mode to use for SHA2 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an ecdsa result containing the output of ECDSA(SHA2(data_to_sign)) or NULL if the &apos;ec_signing_key&apos; is not a private key </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="142" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga1e2b3f17c67e97360b616d0d673767f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_ec_verify</definition>
+        <argsstring>(const wickr_ecdsa_result_t *signature, const wickr_ec_key_t *ec_public_key, const wickr_buffer_t *data_to_verify)</argsstring>
+        <name>openssl_ec_verify</name>
+        <param>
+          <type>const <ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
+          <declname>signature</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+          <declname>ec_public_key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>data_to_verify</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Verify ECDSA signatures</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>signature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signature produced with &apos;openssl_ec_sign&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ec_public_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the public signing key to use for verification </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_to_verify</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the original data that should have been signed with &apos;ec_public_key&apos;. It will be hashed inside this function as part of the verification process </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if &apos;signature&apos; can be verified by &apos;ec_public_key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="156" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gaa9e626d984efe7fed046d5f62c6c24a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_ecdh_gen_key</definition>
+        <argsstring>(const wickr_ecdh_params_t *params)</argsstring>
+        <name>openssl_ecdh_gen_key</name>
+        <param>
+          <type>const <ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref> *</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a shared secret given Elliptical Curve Diffie-Hellman parameters This function internally uses &apos;openssl_hkdf&apos; to extract and expand the output of the ECDH function using &apos;params&apos; for options</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the parameters to use for the ECDH and HKDF algorithms </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="169" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gaeb4574976214a17eb79bbc3d76f573a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_hmac_create</definition>
+        <argsstring>(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)</argsstring>
+        <name>openssl_hmac_create</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>hmac_key</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate an HMAC</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data to take the HMAC of </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hmac_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a key to use for HMAC </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the digest mode to perform HMAC with. This will determine the length of the output </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the HMAC of &apos;data&apos; with &apos;hmac_key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="181" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gafbde176ef6f2b99ff9dab58ad69a9a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_hmac_verify</definition>
+        <argsstring>(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode, const wickr_buffer_t *expected)</argsstring>
+        <name>openssl_hmac_verify</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>hmac_key</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>expected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Verify an HMAC against an expected result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data to calculate the expected HMAC with </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hmac_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to use along with &apos;data&apos; to create the expected HMAC with </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mode to use for generating the expected HMAC </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to compare the generated HMAC with </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if &apos;expected&apos; is equal to the HMAC of &apos;data&apos; and &apos;hmac_key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="196" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga788a03002d8c6048401cf0bbc2d48c7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_hkdf</definition>
+        <argsstring>(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode)</argsstring>
+        <name>openssl_hkdf</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>input_key_material</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>hash_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Derive a key with HMAC Key Derivation Function</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input_key_material</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the original key to extract and expand using HKDF </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a salt value to provide to HKDF, this should be randomly generated or NULL if no salt should be used </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>contextual information to pass to HKDF, this can be NULL if no contextual information should be used </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hash_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the hash mode to use for the HKDF output, this will determine the length of the final output </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the calculated HKDF value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="212" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga12da75115315fbf7394f4791a2eb815c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* openssl_sha2_file</definition>
+        <argsstring>(FILE *in_file, wickr_digest_t mode)</argsstring>
+        <name>openssl_sha2_file</name>
+        <param>
+          <type>FILE *</type>
+          <declname>in_file</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calculate the SHA2 hash of a file</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>in_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a file to take the hash of it&apos;s contents </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mode to use for calculating the hash </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the output of the chosen SHA2 mode of the contents of in_file </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="226" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1ga178fa1f33ad2767c27411c3ebcdd3ca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_encrypt_file</definition>
+        <argsstring>(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file)</argsstring>
+        <name>openssl_encrypt_file</name>
+        <param>
+          <type>FILE *</type>
+          <declname>in_file</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>out_file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encrypt a file with AES256</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>in_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file to encrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to use for AES256 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>out_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a file that should contain the encrypted data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if encryption succeeds, and &apos;out_file&apos; can be written </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="238" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__openssl__crypto_1gaf1faa509e06c188acfbdf43e2197c61a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool openssl_decrypt_file</definition>
+        <argsstring>(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file, bool only_auth_ciphers)</argsstring>
+        <name>openssl_decrypt_file</name>
+        <param>
+          <type>FILE *</type>
+          <declname>in_file</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>out_file</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>only_auth_ciphers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decrypt a file with AES256</para><para>Note: Unauthenticated modes will always succeed and the contents of &apos;out_file&apos; may be incorrect For this reason it is useful to use an authenticated mode such as AES256 GCM when encrypting files</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>in_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the encrypted file to decrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to use for decryption </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>out_file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the file to write the decrypted data from &apos;in_file&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>only_auth_ciphers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, only authenticated ciphers may be used for decryption </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the decryption operation succeeds, and &apos;out_file&apos; can be written </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="255" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="openssl__suite_8h_1a9eca12efeb996ec1914ef4e375307715" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ec_key_t* openssl_ec_key_import_test_key</definition>
+        <argsstring>(wickr_ec_curve_t curve, const char *priv_hex)</argsstring>
+        <name>openssl_ec_key_import_test_key</name>
+        <param>
+          <type><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref></type>
+          <declname>curve</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>priv_hex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/openssl_suite.h" line="261" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>openssl_suite_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>openssl_suite_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;cipher.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;crypto_engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ecdsa.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;eckey.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ecdh.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gadfe740d19f9f2096b818553e90dae0d7" kindref="member">openssl_crypto_random</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga9177055e488f0163d3eb946799df5a67" kindref="member">openssl_cipher_key_random</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" kindref="member">openssl_aes256_encrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*plaintext,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*iv);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" kindref="member">openssl_aes256_decrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*cipher_result,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" kindref="member">openssl_sha2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" kindref="member">openssl_ec_rand_key</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" kindref="member">openssl_ec_key_import</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_private);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab32cef5c789ee1992afae98a81b65823" kindref="member">openssl_ec_sign</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_signing_key,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_sign,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga1e2b3f17c67e97360b616d0d673767f7" kindref="member">openssl_ec_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*signature,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_public_key,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_verify);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaa9e626d984efe7fed046d5f62c6c24a4" kindref="member">openssl_ecdh_gen_key</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref><sp/>*params);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaeb4574976214a17eb79bbc3d76f573a6" kindref="member">openssl_hmac_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gafbde176ef6f2b99ff9dab58ad69a9a74" kindref="member">openssl_hmac_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*expected);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga788a03002d8c6048401cf0bbc2d48c7a" kindref="member">openssl_hkdf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*input_key_material,</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*info,</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>hash_mode);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga12da75115315fbf7394f4791a2eb815c" kindref="member">openssl_sha2_file</ref>(FILE<sp/>*in_file,<sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga178fa1f33ad2767c27411c3ebcdd3ca0" kindref="member">openssl_encrypt_file</ref>(FILE<sp/>*in_file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,<sp/>FILE<sp/>*out_file);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gaf1faa509e06c188acfbdf43e2197c61a" kindref="member">openssl_decrypt_file</ref>(FILE<sp/>*in_file,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*out_file,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Functions<sp/>to<sp/>assist<sp/>with<sp/>testing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*openssl_ec_key_import_test_key(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*priv_hex);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>openssl_suite_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/openssl_suite.h"/>
+  </compounddef>
+</doxygen>

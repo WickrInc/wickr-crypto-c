@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__identity" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_identity</compoundname>
+    <includes refid="identity_8h" local="no">identity.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__identity_1a685dae977849c05c84ee4a0b10c9396d" prot="public" static="no" mutable="no">
+        <type>wickr_identity_type</type>
+        <definition>wickr_identity::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the type of identity (NODE OR ROOT) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/identity.h" line="85" column="1" bodyfile="src/crypto/identity.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__identity_1aed3657b22d83bb810b51ea1d1520b23e" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_identity::identifier</definition>
+        <argsstring></argsstring>
+        <name>identifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a system wide unique value for this identity </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/identity.h" line="86" column="1" bodyfile="src/crypto/identity.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__identity_1a788a08ac03576cb76d9b2eaf81a7af3e" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_identity::sig_key</definition>
+        <argsstring></argsstring>
+        <name>sig_key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the signing key of the identity, will contain private information for your local identity to support signing, and only public information of other identities </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/identity.h" line="87" column="1" bodyfile="src/crypto/identity.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__identity_1afb6bd9f5f9707be10fb273ce8d0b5928" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
+        <definition>wickr_identity::signature</definition>
+        <argsstring></argsstring>
+        <name>signature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the signature of the public &apos;sig_key&apos;, signed by the root private &apos;sig_key&apos;. NULL if root identity </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/identity.h" line="88" column="1" bodyfile="src/crypto/identity.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A signing identity on the Wickr system. </para>    </briefdescription>
+    <detaileddescription>
+<para>ROOT - Account level, serves as the root of trust for all nodes associated with it. The root sig_key signs each node to provide authenticity of its ownership NODE - Application level identifier, serves as the root of trust for all ephemeral keypairs associated with it, the node is owned / signed by a ROOT node. Nodes are messaging endpoints, owned by a particular root for the purpose of multi-client messaging</para><para>Identities are meant to be cached, pinned, and optimally &quot;verified&quot; either out of band, or in band using a feature such as Wickr&apos;s &quot;video verification&quot;. When verifying a new node identity, the root that was previously cached should be loaded and used to perform the signature validation of the new node. Node identities should also be cached, for the purpose of being able to consistently verify ephemeral keypairs signed by that node as part of generating message key exchanges </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="127">
+        <label>wickr_ecdsa_result</label>
+        <link refid="structwickr__ecdsa__result"/>
+        <childnode refid="126" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="128" relation="usage">
+          <edgelabel>digest_mode</edgelabel>
+        </childnode>
+        <childnode refid="124" relation="usage">
+          <edgelabel>sig_data</edgelabel>
+        </childnode>
+      </node>
+      <node id="126">
+        <label>wickr_ec_curve</label>
+        <link refid="structwickr__ec__curve"/>
+      </node>
+      <node id="128">
+        <label>wickr_digest</label>
+        <link refid="structwickr__digest"/>
+      </node>
+      <node id="123">
+        <label>wickr_identity</label>
+        <link refid="structwickr__identity"/>
+        <childnode refid="124" relation="usage">
+          <edgelabel>identifier</edgelabel>
+        </childnode>
+        <childnode refid="125" relation="usage">
+          <edgelabel>sig_key</edgelabel>
+        </childnode>
+        <childnode refid="127" relation="usage">
+          <edgelabel>signature</edgelabel>
+        </childnode>
+      </node>
+      <node id="124">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+      <node id="125">
+        <label>wickr_ec_key</label>
+        <link refid="structwickr__ec__key"/>
+        <childnode refid="126" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="124" relation="usage">
+          <edgelabel>pub_data</edgelabel>
+          <edgelabel>pri_data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/identity.h" line="84" column="1" bodyfile="src/crypto/identity.h" bodystart="84" bodyend="89"/>
+    <listofallmembers>
+      <member refid="structwickr__identity_1aed3657b22d83bb810b51ea1d1520b23e" prot="public" virt="non-virtual"><scope>wickr_identity</scope><name>identifier</name></member>
+      <member refid="structwickr__identity_1a788a08ac03576cb76d9b2eaf81a7af3e" prot="public" virt="non-virtual"><scope>wickr_identity</scope><name>sig_key</name></member>
+      <member refid="structwickr__identity_1afb6bd9f5f9707be10fb273ce8d0b5928" prot="public" virt="non-virtual"><scope>wickr_identity</scope><name>signature</name></member>
+      <member refid="structwickr__identity_1a685dae977849c05c84ee4a0b10c9396d" prot="public" virt="non-virtual"><scope>wickr_identity</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

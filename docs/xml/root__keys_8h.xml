@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="root__keys_8h" kind="file" language="C++">
+    <compoundname>root_keys.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includes refid="eckey_8h" local="yes">eckey.h</includes>
+    <includes refid="crypto__engine_8h" local="yes">crypto_engine.h</includes>
+    <includes refid="storage_8h" local="yes">storage.h</includes>
+    <includes refid="devinfo_8h" local="yes">devinfo.h</includes>
+    <includedby refid="identity_8h" local="yes">src/crypto/identity.h</includedby>
+    <includedby refid="node_8h" local="yes">src/crypto/node.h</includedby>
+    <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
+    <includedby refid="wickr__ctx_8h" local="yes">src/crypto/wickr_ctx.h</includedby>
+    <incdepgraph>
+      <node id="375">
+        <label>stdbool.h</label>
+      </node>
+      <node id="382">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="374" relation="include">
+        </childnode>
+      </node>
+      <node id="376">
+        <label>stdint.h</label>
+      </node>
+      <node id="373">
+        <label>stdlib.h</label>
+      </node>
+      <node id="387">
+        <label>storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+      </node>
+      <node id="385">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+      </node>
+      <node id="388">
+        <label>devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+      </node>
+      <node id="377">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+      </node>
+      <node id="378">
+        <label>limits.h</label>
+      </node>
+      <node id="372">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+        <childnode refid="387" relation="include">
+        </childnode>
+        <childnode refid="388" relation="include">
+        </childnode>
+      </node>
+      <node id="383">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="376" relation="include">
+        </childnode>
+      </node>
+      <node id="381">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="382" relation="include">
+        </childnode>
+      </node>
+      <node id="379">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="374" relation="include">
+        </childnode>
+      </node>
+      <node id="374">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="375" relation="include">
+        </childnode>
+        <childnode refid="376" relation="include">
+        </childnode>
+        <childnode refid="377" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+      </node>
+      <node id="384">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+      </node>
+      <node id="386">
+        <label>stdio.h</label>
+      </node>
+      <node id="380">
+        <label>crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="381" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="384" relation="include">
+        </childnode>
+        <childnode refid="385" relation="include">
+        </childnode>
+        <childnode refid="382" relation="include">
+        </childnode>
+        <childnode refid="373" relation="include">
+        </childnode>
+        <childnode refid="386" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="390">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="391" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+      </node>
+      <node id="395">
+        <label>src/crypto/wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="394" relation="include">
+        </childnode>
+      </node>
+      <node id="392">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="393" relation="include">
+        </childnode>
+        <childnode refid="394" relation="include">
+        </childnode>
+      </node>
+      <node id="391">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+      </node>
+      <node id="389">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h"/>
+        <childnode refid="390" relation="include">
+        </childnode>
+        <childnode refid="392" relation="include">
+        </childnode>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+      </node>
+      <node id="394">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+      <node id="393">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="394" relation="include">
+        </childnode>
+        <childnode refid="395" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwickr__root__keys" prot="public">wickr_root_keys</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="root__keys_8h_1aaeecc31c7a77eb5f4fde50af6b084f87" prot="public" static="no">
+        <type>struct <ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref></type>
+        <definition>typedef struct wickr_root_keys wickr_root_keys_t</definition>
+        <argsstring></argsstring>
+        <name>wickr_root_keys_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="631" column="1" bodyfile="src/crypto/root_keys.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__root__keys_1gab6289774ce4bcbdc08584695f9b7c34c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+        <definition>wickr_root_keys_t* wickr_root_keys_create</definition>
+        <argsstring>(wickr_ec_key_t *node_signature_root, wickr_cipher_key_t *node_storage_root, wickr_cipher_key_t *remote_storage_root)</argsstring>
+        <name>wickr_root_keys_create</name>
+        <param>
+          <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+          <declname>node_signature_root</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>node_storage_root</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>remote_storage_root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a root key set from components</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node_signature_root</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>node_storage_root</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>remote_storage_root</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated root key set. Takes ownership of the passed inputs </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1gac6d33868c25a85e5da5cff92a4eab189" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+        <definition>wickr_root_keys_t* wickr_root_keys_generate</definition>
+        <argsstring>(const wickr_crypto_engine_t *engine)</argsstring>
+        <name>wickr_root_keys_generate</name>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a random set of root keys</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a crypto engine supporting random EC and cipher key generation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a random set of root keys </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="79" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1ga5ab25c65aa25fbe96d978f8e06376653" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+        <definition>wickr_root_keys_t* wickr_root_keys_create_from_buffer</definition>
+        <argsstring>(const wickr_crypto_engine_t *engine, const wickr_buffer_t *buffer)</argsstring>
+        <name>wickr_root_keys_create_from_buffer</name>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a root key set from the serialized output of &apos;wickr_root_keys_serialize&apos;</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a crypto engine to validate the decoded EC keys </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer containing serialized root keys </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a root key set parsed out of buffer, or NULL if parsing fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1ga6875c9f677c4ec127276714976a623a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_root_keys_serialize</definition>
+        <argsstring>(const wickr_root_keys_t *keys)</argsstring>
+        <name>wickr_root_keys_serialize</name>
+        <param>
+          <type>const <ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+          <declname>keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Serialize root keys into a buffer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the keys to serialize </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing serialized root keys as a protocol buffer object </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="100" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1ga6e3a04e7e1c65ada93450051eb4f4459" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+        <definition>wickr_cipher_result_t* wickr_root_keys_export</definition>
+        <argsstring>(const wickr_root_keys_t *keys, const wickr_crypto_engine_t *engine, const wickr_cipher_key_t *export_key)</argsstring>
+        <name>wickr_root_keys_export</name>
+        <param>
+          <type>const <ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>export_key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Serialize and encrypt root keys</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the keys to serialize and encrypt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a crypto engine capable of encrypting data using &apos;export_key&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>export_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to use for encryption of the serialized keys </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a cipher result of serialized &apos;keys&apos; encrypted with &apos;export_key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1gaa34dd6c85c667b8b7fb025f56c7bcc46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__storage__keys" kindref="compound">wickr_storage_keys_t</ref> *</type>
+        <definition>wickr_storage_keys_t* wickr_root_keys_localize</definition>
+        <argsstring>(const wickr_root_keys_t *keys, const wickr_crypto_engine_t *engine, const wickr_dev_info_t *dev_info)</argsstring>
+        <name>wickr_root_keys_localize</name>
+        <param>
+          <type>const <ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__dev__info" kindref="compound">wickr_dev_info_t</ref> *</type>
+          <declname>dev_info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a root key set into a storage key set for a local device</para><para>Currently the local storage key is created by taking SHA256(keys-&gt;node_storage_root || dev_info-&gt;system_salt)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the keys to convert </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a crypto engine to use for conversion </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dev_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the device to localize the keys to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a set of storage keys bound to &apos;dev_info&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="125" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1gadda1b8fd1b5cc1cf6b7b2b0e72912858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+        <definition>wickr_root_keys_t* wickr_root_keys_copy</definition>
+        <argsstring>(const wickr_root_keys_t *source)</argsstring>
+        <name>wickr_root_keys_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a root key set</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the root key set to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated root key set holding a deep copy of the properties of &apos;source&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="136" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__root__keys_1gacabc33b7c56cbc84a5085d0a4330694f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_root_keys_destroy</definition>
+        <argsstring>(wickr_root_keys_t **keys)</argsstring>
+        <name>wickr_root_keys_destroy</name>
+        <param>
+          <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> **</type>
+          <declname>keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a root key set</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to a root key set to destroy. Will destroy the sub properties of &apos;*keys&apos; as well </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="145" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>wickr_root_keys_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>wickr_root_keys_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;eckey.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;crypto_engine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;storage.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;devinfo.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="structwickr__root__keys" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref><sp/>{</highlight></codeline>
+<codeline lineno="51" refid="structwickr__root__keys_1af3a0ca7b48b356e118dea24c26cdd9f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1af3a0ca7b48b356e118dea24c26cdd9f5" kindref="member">node_signature_root</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structwickr__root__keys_1ada908a5fa4aaf7c8b9a4b496c99e595a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1ada908a5fa4aaf7c8b9a4b496c99e595a" kindref="member">node_storage_root</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structwickr__root__keys_1a9bf1ff10b669493393e2bf918f5d4090" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1a9bf1ff10b669493393e2bf918f5d4090" kindref="member">remote_storage_root</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys</ref><sp/><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*<ref refid="group__wickr__root__keys_1gab6289774ce4bcbdc08584695f9b7c34c" kindref="member">wickr_root_keys_create</ref>(<ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1af3a0ca7b48b356e118dea24c26cdd9f5" kindref="member">node_signature_root</ref>,<sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1ada908a5fa4aaf7c8b9a4b496c99e595a" kindref="member">node_storage_root</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__root__keys_1a9bf1ff10b669493393e2bf918f5d4090" kindref="member">remote_storage_root</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*<ref refid="group__wickr__root__keys_1gac6d33868c25a85e5da5cff92a4eab189" kindref="member">wickr_root_keys_generate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*<ref refid="group__wickr__root__keys_1ga5ab25c65aa25fbe96d978f8e06376653" kindref="member">wickr_root_keys_create_from_buffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__root__keys_1ga6875c9f677c4ec127276714976a623a5" kindref="member">wickr_root_keys_serialize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*keys);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*<ref refid="group__wickr__root__keys_1ga6e3a04e7e1c65ada93450051eb4f4459" kindref="member">wickr_root_keys_export</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*keys,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*export_key);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><ref refid="structwickr__storage__keys" kindref="compound">wickr_storage_keys_t</ref><sp/>*<ref refid="group__wickr__root__keys_1gaa34dd6c85c667b8b7fb025f56c7bcc46" kindref="member">wickr_root_keys_localize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*keys,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__dev__info" kindref="compound">wickr_dev_info_t</ref><sp/>*dev_info);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*<ref refid="group__wickr__root__keys_1gadda1b8fd1b5cc1cf6b7b2b0e72912858" kindref="member">wickr_root_keys_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>*source);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__root__keys_1gacabc33b7c56cbc84a5085d0a4330694f" kindref="member">wickr_root_keys_destroy</ref>(<ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref><sp/>**keys);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>wickr_root_keys_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/root_keys.h"/>
+  </compounddef>
+</doxygen>

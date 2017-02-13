@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__kdf__result" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_kdf_result</compoundname>
+    <includes refid="kdf_8h" local="no">kdf.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__kdf__result_1a8cf0778f7cb1a157ba3f44f34cbcd92e" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
+        <definition>wickr_kdf_result::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>metadata describing the type of algorithm used, it&apos;s parameters, and the salt value that was used to produce the result. See &apos;<ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta</ref>&apos; documentation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="147" column="1" bodyfile="src/crypto/kdf.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__kdf__result_1a9b637f293f3243897f9e472b6ad06c21" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_kdf_result::hash</definition>
+        <argsstring></argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the output of the KDF function as a buffer of size &apos;meta-&gt;algo.output_size&apos; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="148" column="1" bodyfile="src/crypto/kdf.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents the result of a KDF function execution. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="147">
+        <label>wickr_kdf_algo</label>
+        <link refid="structwickr__kdf__algo"/>
+      </node>
+      <node id="146">
+        <label>wickr_kdf_meta</label>
+        <link refid="structwickr__kdf__meta"/>
+        <childnode refid="145" relation="usage">
+          <edgelabel>salt</edgelabel>
+        </childnode>
+        <childnode refid="147" relation="usage">
+          <edgelabel>algo</edgelabel>
+        </childnode>
+      </node>
+      <node id="144">
+        <label>wickr_kdf_result</label>
+        <link refid="structwickr__kdf__result"/>
+        <childnode refid="145" relation="usage">
+          <edgelabel>hash</edgelabel>
+        </childnode>
+        <childnode refid="146" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+      </node>
+      <node id="145">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/kdf.h" line="146" column="1" bodyfile="src/crypto/kdf.h" bodystart="146" bodyend="149"/>
+    <listofallmembers>
+      <member refid="structwickr__kdf__result_1a9b637f293f3243897f9e472b6ad06c21" prot="public" virt="non-virtual"><scope>wickr_kdf_result</scope><name>hash</name></member>
+      <member refid="structwickr__kdf__result_1a8cf0778f7cb1a157ba3f44f34cbcd92e" prot="public" virt="non-virtual"><scope>wickr_kdf_result</scope><name>meta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

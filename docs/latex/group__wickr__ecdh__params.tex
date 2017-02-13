@@ -1,0 +1,88 @@
+\hypertarget{group__wickr__ecdh__params}{}\section{wickr\+\_\+ecdh\+\_\+params\+\_\+t}
+\label{group__wickr__ecdh__params}\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}{wickr\+\_\+ecdh\+\_\+params\+\_\+create} (\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$local\+\_\+key, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$peer\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} kdf\+\_\+digest\+\_\+mode, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$kdf\+\_\+salt, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$kdf\+\_\+info)
+\item 
+\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}{wickr\+\_\+ecdh\+\_\+params\+\_\+copy} (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$source)
+\item 
+void \hyperlink{group__wickr__ecdh__params_gaf6efcaf58f603e323443063cde9b5621}{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy} (\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$$\ast$params)
+\item 
+bool \hyperlink{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid} (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}\label{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}} 
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid()}{wickr\_ecdh\_params\_are\_valid()}}
+{\footnotesize\ttfamily bool wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$}]{params }\end{DoxyParamCaption})}
+
+Determine Elliptical Curve Diffie-\/\+Hellman parameter set validity
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & the parameter set to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if parameters are valid. At a minimum, the public and private components of the \textquotesingle{}local\+\_\+key\textquotesingle{}, and the public component of the \textquotesingle{}peer\+\_\+key\textquotesingle{} must be set for this function to succeed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}\label{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}} 
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+copy()}{wickr\_ecdh\_params\_copy()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
+
+Copy an Elliptical Curve Diffie-\/\+Hellman parameter set
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & the Elliptical Curve Diffie-\/\+Hellman parameter set to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated Elliptical Curve Diffie-\/\+Hellman parameter set containing deep copies of the properties of \textquotesingle{}info\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}\label{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}} 
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+create()}{wickr\_ecdh\_params\_create()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{local\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{peer\+\_\+key,  }\item[{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}]{kdf\+\_\+digest\+\_\+mode,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{kdf\+\_\+salt,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{kdf\+\_\+info }\end{DoxyParamCaption})}
+
+Create an Elliptical Curve Diffie-\/\+Hellman parameter set from components
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+\_\+key} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
+\hline
+{\em peer\+\_\+key} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
+\hline
+{\em kdf\+\_\+digest\+\_\+mode} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
+\hline
+{\em kdf\+\_\+salt} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
+\hline
+{\em kdf\+\_\+info} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated ecdh parameter set owning the properties passed in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdh__params_gaf6efcaf58f603e323443063cde9b5621}\label{group__wickr__ecdh__params_gaf6efcaf58f603e323443063cde9b5621}} 
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy()}{wickr\_ecdh\_params\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+ecdh\+\_\+params\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$$\ast$}]{params }\end{DoxyParamCaption})}
+
+Destroy an Elliptical Curve Diffie-\/\+Hellman parameter set
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & a pointer to an Elliptical Curve Diffie-\/\+Hellman parameter set to destroy. Properties of \textquotesingle{}$\ast$params\textquotesingle{} will also be destroyed \\
+\hline
+\end{DoxyParams}

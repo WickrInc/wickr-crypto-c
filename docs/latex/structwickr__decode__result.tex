@@ -1,0 +1,49 @@
+\hypertarget{structwickr__decode__result}{}\section{wickr\+\_\+decode\+\_\+result Struct Reference}
+\label{structwickr__decode__result}\index{wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}}
+
+
+a packet decoding result  
+
+
+
+
+{\ttfamily \#include $<$protocol.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+wickr\+\_\+decode\+\_\+error \hyperlink{structwickr__decode__result_a63449a59c8a8bab451f5ab555be7895d}{err}
+\item 
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__decode__result_aed31d598b49bf696f286d673246d8b31}{payload\+\_\+key}
+\item 
+\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t} $\ast$ \hyperlink{structwickr__decode__result_a0c6e2140859e7d8ad113f1e7ebd95ad4}{decrypted\+\_\+payload}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a packet decoding result 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__decode__result_a0c6e2140859e7d8ad113f1e7ebd95ad4}\label{structwickr__decode__result_a0c6e2140859e7d8ad113f1e7ebd95ad4}} 
+\index{wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}!decrypted\+\_\+payload@{decrypted\+\_\+payload}}
+\index{decrypted\+\_\+payload@{decrypted\+\_\+payload}!wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}}
+\subsubsection{\texorpdfstring{decrypted\+\_\+payload}{decrypted\_payload}}
+{\footnotesize\ttfamily wickr\+\_\+decode\+\_\+result\+::decrypted\+\_\+payload}
+
+the payload that was decrypted from the packet using payload\+\_\+key \mbox{\Hypertarget{structwickr__decode__result_a63449a59c8a8bab451f5ab555be7895d}\label{structwickr__decode__result_a63449a59c8a8bab451f5ab555be7895d}} 
+\index{wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}!err@{err}}
+\index{err@{err}!wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}}
+\subsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily wickr\+\_\+decode\+\_\+result\+::err}
+
+error status for the decode \mbox{\Hypertarget{structwickr__decode__result_aed31d598b49bf696f286d673246d8b31}\label{structwickr__decode__result_aed31d598b49bf696f286d673246d8b31}} 
+\index{wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}!payload\+\_\+key@{payload\+\_\+key}}
+\index{payload\+\_\+key@{payload\+\_\+key}!wickr\+\_\+decode\+\_\+result@{wickr\+\_\+decode\+\_\+result}}
+\subsubsection{\texorpdfstring{payload\+\_\+key}{payload\_key}}
+{\footnotesize\ttfamily wickr\+\_\+decode\+\_\+result\+::payload\+\_\+key}
+
+the payload key that was derived from the key exchange during decoding 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/protocol.\+h\end{DoxyCompactItemize}

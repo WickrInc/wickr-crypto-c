@@ -1,0 +1,49 @@
+\hypertarget{structwickr__packet}{}\section{wickr\+\_\+packet Struct Reference}
+\label{structwickr__packet}\index{wickr\+\_\+packet@{wickr\+\_\+packet}}
+
+
+An encrypted packet made with the Wickr protocol.  
+
+
+
+
+{\ttfamily \#include $<$protocol.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{structwickr__packet_a35c17c926c267a603e810b88961c2bf3}{version}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__packet_a4d17d017c9d0fbb6e748a7ed935e5512}{content}
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{structwickr__packet_a8b5e9a4eed6f133ffedd1aa9178b5567}{signature}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An encrypted packet made with the Wickr protocol. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__packet_a4d17d017c9d0fbb6e748a7ed935e5512}\label{structwickr__packet_a4d17d017c9d0fbb6e748a7ed935e5512}} 
+\index{wickr\+\_\+packet@{wickr\+\_\+packet}!content@{content}}
+\index{content@{content}!wickr\+\_\+packet@{wickr\+\_\+packet}}
+\subsubsection{\texorpdfstring{content}{content}}
+{\footnotesize\ttfamily wickr\+\_\+packet\+::content}
+
+the content of the packet including the serialized header, and payload \mbox{\Hypertarget{structwickr__packet_a8b5e9a4eed6f133ffedd1aa9178b5567}\label{structwickr__packet_a8b5e9a4eed6f133ffedd1aa9178b5567}} 
+\index{wickr\+\_\+packet@{wickr\+\_\+packet}!signature@{signature}}
+\index{signature@{signature}!wickr\+\_\+packet@{wickr\+\_\+packet}}
+\subsubsection{\texorpdfstring{signature}{signature}}
+{\footnotesize\ttfamily wickr\+\_\+packet\+::signature}
+
+the E\+C\+D\+SA signature of \textquotesingle{}content\textquotesingle{} \mbox{\Hypertarget{structwickr__packet_a35c17c926c267a603e810b88961c2bf3}\label{structwickr__packet_a35c17c926c267a603e810b88961c2bf3}} 
+\index{wickr\+\_\+packet@{wickr\+\_\+packet}!version@{version}}
+\index{version@{version}!wickr\+\_\+packet@{wickr\+\_\+packet}}
+\subsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily wickr\+\_\+packet\+::version}
+
+the protocol version of the packet 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/protocol.\+h\end{DoxyCompactItemize}

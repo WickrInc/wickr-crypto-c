@@ -1,0 +1,6 @@
+framework module WickrCryptoC {
+    umbrella header "wickr-crypto-c.h"
+    
+    export *
+    module * { export * }
+}

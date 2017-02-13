@@ -1,0 +1,15 @@
+
+package wickr.proto;
+
+message root_keys {
+  required uint32 version = 1;
+  optional bytes node_storage_root = 2;
+  optional bytes remote_storage_root = 3;
+  optional bytes node_signature_root = 4;
+}
+
+message storage_keys {
+  required uint32 version = 1;
+  optional bytes local_storage = 2;
+  optional bytes remote_storage = 3;
+}

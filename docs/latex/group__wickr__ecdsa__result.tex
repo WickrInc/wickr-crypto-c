@@ -1,0 +1,102 @@
+\hypertarget{group__wickr__ecdsa__result}{}\section{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}
+\label{group__wickr__ecdsa__result}\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdsa__result_ga7e199a7c851fd07fb93180fb3a242749}{wickr\+\_\+ecdsa\+\_\+result\+\_\+create} (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$sig\+\_\+data)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdsa__result_ga417d1186e93d6ae4ee4cf701a2bfb1b2}{wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize} (const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$result)
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdsa__result_gaa3a5ba5ce3df076cf5a9984f68e34c3a}{wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdsa__result_ga8664bbdec0bc8b354b3cb35704c42f57}{wickr\+\_\+ecdsa\+\_\+result\+\_\+copy} (const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$source)
+\item 
+void \hyperlink{group__wickr__ecdsa__result_ga84fb120b34b4b7ede4042009c735ea5d}{wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy} (\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$$\ast$result)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__ecdsa__result_ga8664bbdec0bc8b354b3cb35704c42f57}\label{group__wickr__ecdsa__result_ga8664bbdec0bc8b354b3cb35704c42f57}} 
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}!wickr\+\_\+ecdsa\+\_\+result\+\_\+copy@{wickr\+\_\+ecdsa\+\_\+result\+\_\+copy}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+copy@{wickr\+\_\+ecdsa\+\_\+result\+\_\+copy}!wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+copy()}{wickr\_ecdsa\_result\_copy()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+ecdsa\+\_\+result\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
+
+Copy an E\+C\+D\+SA result
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & the E\+C\+D\+SA result to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated E\+C\+D\+SA result holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdsa__result_ga7e199a7c851fd07fb93180fb3a242749}\label{group__wickr__ecdsa__result_ga7e199a7c851fd07fb93180fb3a242749}} 
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}!wickr\+\_\+ecdsa\+\_\+result\+\_\+create@{wickr\+\_\+ecdsa\+\_\+result\+\_\+create}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+create@{wickr\+\_\+ecdsa\+\_\+result\+\_\+create}!wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+create()}{wickr\_ecdsa\_result\_create()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+ecdsa\+\_\+result\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve,  }\item[{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}]{digest\+\_\+mode,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{sig\+\_\+data }\end{DoxyParamCaption})}
+
+Create an E\+C\+D\+SA result from components
+
+
+\begin{DoxyParams}{Parameters}
+{\em curve} & see \textquotesingle{}\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result}\textquotesingle{} property documentation \\
+\hline
+{\em digest\+\_\+mode} & see \textquotesingle{}\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result}\textquotesingle{} property documentation \\
+\hline
+{\em sig\+\_\+data} & see \textquotesingle{}\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result}\textquotesingle{} property documentation property documentation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated E\+C\+D\+SA result owning the properties passed in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdsa__result_gaa3a5ba5ce3df076cf5a9984f68e34c3a}\label{group__wickr__ecdsa__result_gaa3a5ba5ce3df076cf5a9984f68e34c3a}} 
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}!wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer}!wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer()}{wickr\_ecdsa\_result\_create\_from\_buffer()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+ecdsa\+\_\+result\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Create an E\+C\+D\+SA result from a serialized E\+C\+D\+SA result buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & a buffer containing a serialized E\+C\+D\+SA result buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ecdsa result parsed from \textquotesingle{}buffer\textquotesingle{}. This function makes a copy of all bytes as it is parsing, so the resulting E\+C\+D\+SA result owns its properties. Returns N\+U\+LL on parsing failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ecdsa__result_ga84fb120b34b4b7ede4042009c735ea5d}\label{group__wickr__ecdsa__result_ga84fb120b34b4b7ede4042009c735ea5d}} 
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}!wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy@{wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy@{wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy}!wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy()}{wickr\_ecdsa\_result\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+ecdsa\+\_\+result\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$$\ast$}]{result }\end{DoxyParamCaption})}
+
+Destroy an E\+C\+D\+SA result
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & a pointer to the result to destroy. All properties of \textquotesingle{}$\ast$result\textquotesingle{} will also be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__ecdsa__result_ga417d1186e93d6ae4ee4cf701a2bfb1b2}\label{group__wickr__ecdsa__result_ga417d1186e93d6ae4ee4cf701a2bfb1b2}} 
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}!wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize@{wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize@{wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize}!wickr\+\_\+ecdsa\+\_\+result\+\_\+t@{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize()}{wickr\_ecdsa\_result\_serialize()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+ecdsa\+\_\+result\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+
+Serialize an E\+C\+D\+SA result into a buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em result} & the ecdsa result to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated buffer with serialized E\+C\+D\+SA result properties in the following format $\vert$ C\+U\+R\+V\+E\+\_\+\+ID D\+I\+G\+E\+S\+T\+\_\+\+ID $\vert$ S\+I\+G\+\_\+\+D\+A\+TA $\vert$. N\+O\+TE that C\+U\+R\+V\+E\+\_\+\+ID and D\+I\+G\+E\+S\+T\+\_\+\+ID are packed into 1 byte as 4 bit unsigned integers 
+\end{DoxyReturn}

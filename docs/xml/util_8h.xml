@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="util_8h" kind="file" language="C++">
+    <compoundname>util.h</compoundname>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
+    <incdepgraph>
+      <node id="422">
+        <label>stdbool.h</label>
+      </node>
+      <node id="419">
+        <label>src/crypto/util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="420" relation="include">
+        </childnode>
+      </node>
+      <node id="423">
+        <label>stdint.h</label>
+      </node>
+      <node id="421">
+        <label>stdlib.h</label>
+      </node>
+      <node id="424">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="421" relation="include">
+        </childnode>
+        <childnode refid="420" relation="include">
+        </childnode>
+      </node>
+      <node id="425">
+        <label>limits.h</label>
+      </node>
+      <node id="420">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="421" relation="include">
+        </childnode>
+        <childnode refid="422" relation="include">
+        </childnode>
+        <childnode refid="423" relation="include">
+        </childnode>
+        <childnode refid="424" relation="include">
+        </childnode>
+        <childnode refid="425" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="426">
+        <label>src/crypto/util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="427" relation="include">
+        </childnode>
+      </node>
+      <node id="427">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__data__conversion__utilities_1gae495c13035861b3410a4c19123e6cbde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* getBase64FromData</definition>
+        <argsstring>(const wickr_buffer_t *objData)</argsstring>
+        <name>getBase64FromData</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>objData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert data to base64 format</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>objData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing a null-terminated base64 string representation of objData </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/util.h" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__data__conversion__utilities_1ga5441647c0e13fec49a4ef4b97513a515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* getDataFromBase64</definition>
+        <argsstring>(const wickr_buffer_t *strBase64)</argsstring>
+        <name>getDataFromBase64</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>strBase64</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a base64 string to data</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strBase64</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a null terminated base64 buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the data represented by the base64 buffer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/util.h" line="57" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__data__conversion__utilities_1ga436efe786b59b2c46ad39a29255f2ecf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* getHexStringFromData</definition>
+        <argsstring>(const wickr_buffer_t *objData)</argsstring>
+        <name>getHexStringFromData</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>objData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert data to hex format</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>objData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to convert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing a null-terminated hex string representation of objData </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/util.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__data__conversion__utilities_1ga1ca57ec73a4daf858c3721569ab7feeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* getDataFromHexString</definition>
+        <argsstring>(const wickr_buffer_t *hexString)</argsstring>
+        <name>getDataFromHexString</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>hexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a hex string to data</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a null terminated hex buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing the data represented by the hex buffer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/util.h" line="79" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>util_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>util_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/><ref refid="group__data__conversion__utilities_1gae495c13035861b3410a4c19123e6cbde" kindref="member">getBase64FromData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/>objData);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/><ref refid="group__data__conversion__utilities_1ga5441647c0e13fec49a4ef4b97513a515" kindref="member">getDataFromBase64</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/>strBase64);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/><ref refid="group__data__conversion__utilities_1ga436efe786b59b2c46ad39a29255f2ecf" kindref="member">getHexStringFromData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*objData);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<sp/><ref refid="group__data__conversion__utilities_1ga1ca57ec73a4daf858c3721569ab7feeb" kindref="member">getDataFromHexString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hexString);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>util_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/util.h"/>
+  </compounddef>
+</doxygen>

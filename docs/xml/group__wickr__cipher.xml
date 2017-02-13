@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="group__wickr__cipher" kind="group">
+    <compoundname>wickr_cipher</compoundname>
+    <title>wickr_cipher_t</title>
+    <innerclass refid="structwickr__cipher" prot="public">wickr_cipher</innerclass>
+    <innerclass refid="structwickr__cipher__result" prot="public">wickr_cipher_result</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__cipher_1ga2b7a8bc33e1fd5af61763398ea9a4013" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref> *</type>
+        <definition>const wickr_cipher_t* wickr_cipher_find</definition>
+        <argsstring>(uint8_t cipher_id)</argsstring>
+        <name>wickr_cipher_find</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>cipher_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find a supported cipher by identifier. When cipher results are serialized they contain the identifier of the cipher that was used to create them as the first byte</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the identifier of the cipher </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a cipher with identifier &apos;cipher_id&apos;. NULL if cipher is not found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga234b60967d0b3ef0088ca3ac30755dde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+        <definition>wickr_cipher_result_t* wickr_cipher_result_create</definition>
+        <argsstring>(wickr_cipher_t cipher, wickr_buffer_t *iv, wickr_buffer_t *cipher_text, wickr_buffer_t *auth_tag)</argsstring>
+        <name>wickr_cipher_result_create</name>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>cipher</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>iv</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>cipher_text</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>auth_tag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct a cipher result from individual components.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher used in the cipher operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the initialization vector used in the cipher operation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cipher_text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the output bytes of a cipher function using &apos;cipher&apos; and &apos;iv&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>auth_tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the authentication tag associated with &apos;cipher_text&apos;. If &apos;cipher&apos; is authenticated this property is required, otherwise it should be NULL </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A newly allocated cipher result that takes ownership of the passed inputs, or NULL if allocation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="118" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1gace82050fcc8b7932df9a9e8109a2fc1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+        <definition>wickr_cipher_result_t* wickr_cipher_result_copy</definition>
+        <argsstring>(const wickr_cipher_result_t *result)</argsstring>
+        <name>wickr_cipher_result_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a cipher result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the source of the copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A newly allocated cipher_result that contains deep copies of all the properties of &apos;result&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="129" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1gad5d22ca53abc4397d88040f0f8003021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_cipher_result_destroy</definition>
+        <argsstring>(wickr_cipher_result_t **result)</argsstring>
+        <name>wickr_cipher_result_destroy</name>
+        <param>
+          <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a cipher result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the cipher result to destroy. Destruction will also destroy the individual properties of &apos;result&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="139" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga3f1b679c199987148952816b6fc4c009" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool wickr_cipher_result_is_valid</definition>
+        <argsstring>(const wickr_cipher_result_t *result)</argsstring>
+        <name>wickr_cipher_result_is_valid</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Determine if a cipher result is formed correctly</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher result to validate </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if result is structured correctly, false if a required field is missing </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="150" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1gacda386115dc52f83a0518f8ac0dad6a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_cipher_result_serialize</definition>
+        <argsstring>(const wickr_cipher_result_t *result)</argsstring>
+        <name>wickr_cipher_result_serialize</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Serialize a cipher result</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher result to serialize </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a buffer containing bytes representing the cipher result in the following format: | CIPHER_ID | IV | AUTH_TAG (IF REQUIRED) | CIPHER_TEXT | </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="162" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1gad42314812c457855c3799632494c91a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
+        <definition>wickr_cipher_result_t* wickr_cipher_result_from_buffer</definition>
+        <argsstring>(const wickr_buffer_t *buffer)</argsstring>
+        <name>wickr_cipher_result_from_buffer</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a cipher result from a serialized cipher result buffer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer created by &apos;wickr_cipher_result_serialize&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>cipher result parsed from &apos;buffer&apos;. This function makes a copy of all bytes as it is parsing, so the resulting cipher result owns its properties. Returns NULL on parsing failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="174" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga73e2a916ba0ff19517e30a65a68390f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_cipher_key_t* wickr_cipher_key_create</definition>
+        <argsstring>(wickr_cipher_t cipher, wickr_buffer_t *key_data)</argsstring>
+        <name>wickr_cipher_key_create</name>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>cipher</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>key_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a key from components</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher this key is to be used by </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>key_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer representing the raw bytes of the key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated cipher key that takes ownership over &apos;key_data&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="204" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1gaa473bc83f82d6353aa6f4cb4e36bf4f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_cipher_key_t* wickr_cipher_key_copy</definition>
+        <argsstring>(const wickr_cipher_key_t *key)</argsstring>
+        <name>wickr_cipher_key_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a cipher key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated cipher key holding a deep copy of the properties of &apos;key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="215" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga45790b3023ccb261c03346b069aca763" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_cipher_key_destroy</definition>
+        <argsstring>(wickr_cipher_key_t **key)</argsstring>
+        <name>wickr_cipher_key_destroy</name>
+        <param>
+          <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> **</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a cipher key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the key to destroy. All properties of &apos;*key&apos; will also be destroyed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="225" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga8716aebf03497c379d5ff81fe32cde32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_cipher_key_serialize</definition>
+        <argsstring>(const wickr_cipher_key_t *key)</argsstring>
+        <name>wickr_cipher_key_serialize</name>
+        <param>
+          <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Serialize a cipher key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to serialize to a buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer containing properties of &apos;key&apos; in the following format: | CIPHER_ID | KEY_DATA | </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="237" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__cipher_1ga1c073b87f2141cf35a1d91ba10f9e5ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_cipher_key_t* wickr_cipher_key_from_buffer</definition>
+        <argsstring>(const wickr_buffer_t *buffer)</argsstring>
+        <name>wickr_cipher_key_from_buffer</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a cipher key from serialized bytes</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer created by &apos;wickr_cipher_key_serialize&apos; </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>cipher key parsed from &apos;buffer&apos;. This function makes a copy of all bytes as it is parsing, so the resulting cipher key owns its properties. Returns NULL on parsing failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="249" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+        <definition>wickr_cipher_key::cipher</definition>
+        <argsstring></argsstring>
+        <name>cipher</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A key to be provided to a cipher operation</para><para>the cipher this key is to be used by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/cipher.h" line="188" column="1" bodyfile="src/crypto/cipher.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

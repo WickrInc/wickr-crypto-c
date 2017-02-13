@@ -1,0 +1,41 @@
+\hypertarget{structwickr__ec__curve}{}\section{wickr\+\_\+ec\+\_\+curve Struct Reference}
+\label{structwickr__ec__curve}\index{wickr\+\_\+ec\+\_\+curve@{wickr\+\_\+ec\+\_\+curve}}
+
+
+Metadata about curve types to help with key generation, and signatures.  
+
+
+
+
+{\ttfamily \#include $<$eckey.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+wickr\+\_\+ec\+\_\+curve\+\_\+id \hyperlink{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}{identifier}
+\item 
+uint8\+\_\+t \hyperlink{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}{signature\+\_\+size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Metadata about curve types to help with key generation, and signatures. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}\label{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}} 
+\index{wickr\+\_\+ec\+\_\+curve@{wickr\+\_\+ec\+\_\+curve}!identifier@{identifier}}
+\index{identifier@{identifier}!wickr\+\_\+ec\+\_\+curve@{wickr\+\_\+ec\+\_\+curve}}
+\subsubsection{\texorpdfstring{identifier}{identifier}}
+{\footnotesize\ttfamily wickr\+\_\+ec\+\_\+curve\+::identifier}
+
+numerical identifier for a curve. Used in serialization to help identify a curve that was used elsewhere. Must be less than 16 since it is serialized into buffers using a 4 bit space \mbox{\Hypertarget{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}\label{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}} 
+\index{wickr\+\_\+ec\+\_\+curve@{wickr\+\_\+ec\+\_\+curve}!signature\+\_\+size@{signature\+\_\+size}}
+\index{signature\+\_\+size@{signature\+\_\+size}!wickr\+\_\+ec\+\_\+curve@{wickr\+\_\+ec\+\_\+curve}}
+\subsubsection{\texorpdfstring{signature\+\_\+size}{signature\_size}}
+{\footnotesize\ttfamily wickr\+\_\+ec\+\_\+curve\+::signature\+\_\+size}
+
+the length of a serialized ecdsa signature using this curve, padded as needed 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/eckey.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,850 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="buffer_8h" kind="file" language="C++">
+    <compoundname>buffer.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdbool.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes refid="array_8h" local="yes">array.h</includes>
+    <includes local="yes">limits.h</includes>
+    <includedby refid="array_8h" local="yes">src/crypto/array.h</includedby>
+    <includedby refid="cipher_8h" local="yes">src/crypto/cipher.h</includedby>
+    <includedby refid="kdf_8h" local="yes">src/crypto/kdf.h</includedby>
+    <includedby refid="crypto__engine_8h" local="yes">src/crypto/crypto_engine.h</includedby>
+    <includedby refid="eckey_8h" local="yes">src/crypto/eckey.h</includedby>
+    <includedby refid="devinfo_8h" local="yes">src/crypto/devinfo.h</includedby>
+    <includedby refid="identity_8h" local="yes">src/crypto/identity.h</includedby>
+    <includedby refid="root__keys_8h" local="yes">src/crypto/root_keys.h</includedby>
+    <includedby refid="storage_8h" local="yes">src/crypto/storage.h</includedby>
+    <includedby refid="node_8h" local="yes">src/crypto/node.h</includedby>
+    <includedby refid="openssl__file__suite_8h" local="yes">src/crypto/openssl_file_suite.h</includedby>
+    <includedby refid="openssl__suite_8h" local="yes">src/crypto/openssl_suite.h</includedby>
+    <includedby refid="util_8h" local="yes">src/crypto/util.h</includedby>
+    <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
+    <incdepgraph>
+      <node id="29">
+        <label>stdbool.h</label>
+      </node>
+      <node id="30">
+        <label>stdint.h</label>
+      </node>
+      <node id="28">
+        <label>stdlib.h</label>
+      </node>
+      <node id="31">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>limits.h</label>
+      </node>
+      <node id="27">
+        <label>src/crypto/buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="48">
+        <label>src/crypto/kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/crypto/util.h</label>
+        <link refid="util_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/crypto/openssl_file_suite.h</label>
+        <link refid="openssl__file__suite_8h_source"/>
+      </node>
+      <node id="45">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/crypto/wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/crypto/ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/crypto/array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+      <node id="47">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
+      </node>
+      <node id="36">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/crypto/cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/crypto/eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/crypto/buffer.h</label>
+        <link refid="buffer_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/crypto/ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="40">
+        <label>src/crypto/crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwickr__buffer" prot="public">wickr_buffer</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__wickr__buffer_1ga0cf6db371b58617c9311f2a357d98164" prot="public" static="no">
+        <name>BUFFER_ARRAY_LEN</name>
+        <param><defname>x</defname></param>
+        <initializer>(sizeof(x) / sizeof(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *))</initializer>
+        <briefdescription>
+<para>Determine the number of elements in an array of buffers (wickr_buffer_t **). </para>        </briefdescription>
+        <detaileddescription>
+<para>NOTE: This function will only work on stack allocated arrays. It is meant only to be used in cases where the length of the array of buffers is determined at compile time, on the stack.</para><para>EXAMPLE: wickr_buffer_t *elements[] = { b1, b2 b3 }.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an array of wickr_buffer_t elements </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of elements in the array pointed to by x </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="71" column="9" bodyfile="src/crypto/buffer.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="buffer_8h_1a08eea49a9bb7f7fd90ba327c9fc28452" prot="public" static="no">
+        <type>struct <ref refid="structwickr__buffer" kindref="compound">wickr_buffer</ref></type>
+        <definition>typedef struct wickr_buffer wickr_buffer_t</definition>
+        <argsstring></argsstring>
+        <name>wickr_buffer_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="116" column="1" bodyfile="src/crypto/buffer.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="buffer_8h_1a692c0366dceec9d1bfd40ddee4d82c82" prot="public" static="no">
+        <type>int(*</type>
+        <definition>typedef int(* wickr_buffer_compare_func) (const volatile void *, const volatile void *, size_t)</definition>
+        <argsstring>)(const volatile void *, const volatile void *, size_t)</argsstring>
+        <name>wickr_buffer_compare_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="76" column="1" bodyfile="src/crypto/buffer.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="buffer_8h_1a367b116fa797c83935c8e0cb4c1f2cd5" prot="public" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t MAX_BUFFER_SIZE</definition>
+        <argsstring></argsstring>
+        <name>MAX_BUFFER_SIZE</name>
+        <initializer>= INT32_MAX - sizeof(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="74" column="1" bodyfile="src/crypto/buffer.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__buffer_1ga305edd191e38eb040710b631c1e4f05f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_create_empty</definition>
+        <argsstring>(size_t len)</argsstring>
+        <name>wickr_buffer_create_empty</name>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Creates an empty buffer of size length. </para>        </briefdescription>
+        <detaileddescription>
+<para>The bytes in the output are uninitialized</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes the buffer should hold. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer holding len bytes, or NULL if allocation fails or len is 0. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gaba0ae148a2f75e50eb3d36a4bef509d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_create_empty_zero</definition>
+        <argsstring>(size_t len)</argsstring>
+        <name>wickr_buffer_create_empty_zero</name>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Creates an zeroed empty buffer of size length. </para>        </briefdescription>
+        <detaileddescription>
+<para>The bytes in the output are initialized to 0</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes the buffer should hold. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer holding len bytes, or NULL if allocation fails or len is 0. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="102" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gacc3ad1220af28781bf678cab20e2f1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_create</definition>
+        <argsstring>(const uint8_t *bytes, size_t len)</argsstring>
+        <name>wickr_buffer_create</name>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Creates a buffer by copying an existing pointer to bytes of a specified length len. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a valid pointer to bytes of at least size len </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes the buffer should hold. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer holding len bytes copied from bytes. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gada179dda91e748d7bdf6028d3d4c4bcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_copy</definition>
+        <argsstring>(const wickr_buffer_t *source)</argsstring>
+        <name>wickr_buffer_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Copy a buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer containing a copy of the bytes held in source. The new buffer maintains ownership of the copied bytes </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="125" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gaceb6345c35ac2f6330ea0a685ce3fc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_copy_section</definition>
+        <argsstring>(const wickr_buffer_t *source, size_t start, size_t len)</argsstring>
+        <name>wickr_buffer_copy_section</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Create a buffer using a subsection of another buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to copy bytes out of </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the offset to start the copy process. Must be within the bounds 0 to source-&gt;length - 1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes to copy out of &apos;source&apos;. start + len must be less than source-&gt;length </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer containing the bytes within the range of start to start + len. NULL if start + len exceeds the length of source, or if start is out of bounds </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1ga67f817bf762e4ee401b31685197620be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool wickr_buffer_modify_section</definition>
+        <argsstring>(const wickr_buffer_t *buffer, const uint8_t *bytes, size_t start, size_t len)</argsstring>
+        <name>wickr_buffer_modify_section</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>bytes</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Modify a subsection of a buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para>NOTE: Buffers will not grow to accomidate extra bytes. The size of a buffer is currently fixed and cannot be modified</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer to modify </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to bytes to copy into &apos;buffer&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position to start overwriting the bytes held by buffer with &apos;bytes&apos;. Must be within the bounds 0 to source-&gt;length - 1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes from &apos;bytes&apos; to copy into the bytes held by &apos;buffer&apos;. start + len must be less than source-&gt;length. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the modification succeeds. false if start is out of range, or start + len is greater than source-&gt;length </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="154" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gad7721c1033a1fc378a0a11613f3cfb26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_concat</definition>
+        <argsstring>(const wickr_buffer_t *buffer1, const wickr_buffer_t *buffer2)</argsstring>
+        <name>wickr_buffer_concat</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>buffer2</declname>
+        </param>
+        <briefdescription>
+<para>Concatenate two buffers into one new buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>first source buffer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>second source buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer containing copied bytes from &apos;buffer1&apos; followed by copied bytes from &apos;buffer2&apos;. NULL if the length of &apos;buffer1&apos; combind with the length of &apos;buffer2&apos; exceeds MAX_BUFFER_SIZE </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="167" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1ga3aa7ea751a65310184d6c0ea9627dca8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_buffer_t* wickr_buffer_concat_multi</definition>
+        <argsstring>(wickr_buffer_t **buffers, uint8_t n_buffers)</argsstring>
+        <name>wickr_buffer_concat_multi</name>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> **</type>
+          <declname>buffers</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>n_buffers</declname>
+        </param>
+        <briefdescription>
+<para>Concatenate n buffers. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to an array of buffers of n length </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>n_buffers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of buffers in the array pointed to by buffers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated buffer containing copied bytes from each buffer in &apos;buffers&apos;. NULL if &apos;buffers&apos; contains a NULL or the total number of bytes held by &apos;buffers&apos; exceeds MAX_BUFFER_SIZE </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="179" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1ga51ec58848ab0b07d164c6f7d73200c24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool wickr_buffer_is_equal</definition>
+        <argsstring>(const wickr_buffer_t *b1, const wickr_buffer_t *b2, wickr_buffer_compare_func compare_func)</argsstring>
+        <name>wickr_buffer_is_equal</name>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>b1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>b2</declname>
+        </param>
+        <param>
+          <type>wickr_buffer_compare_func</type>
+          <declname>compare_func</declname>
+        </param>
+        <briefdescription>
+<para>Compare buffers for equality. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>b1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer to compare to b2 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>b2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer to compare to b1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>compare_func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function that will be used to compare the buffers. Passing NULL will result in memcmp being used. Function takes input as const volatile to support constant time memory comparison implemented by many crypto libraries </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the buffers are equal in length and in content </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="192" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1ga7ec1198db0739f3034ddd3969c64257f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_buffer_destroy</definition>
+        <argsstring>(wickr_buffer_t **buffer)</argsstring>
+        <name>wickr_buffer_destroy</name>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> **</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>Destroy a buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para>NOTE: This function does not modify the contents of buffer and simply calls free to deallocate the memory held. To zero out memory before deallocation use &apos;wickr_buffer_destroy_zero&apos;</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to destroy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="205" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__buffer_1gaf0ff6486debbfd676b7675f6f899fc40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_buffer_destroy_zero</definition>
+        <argsstring>(wickr_buffer_t **buffer)</argsstring>
+        <name>wickr_buffer_destroy_zero</name>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> **</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>Zero-then-deallocate a buffer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffer to zero out and then destroy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/buffer.h" line="216" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>buffer_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>buffer_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;array.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;limits.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="structwickr__buffer" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer</ref><sp/>{</highlight></codeline>
+<codeline lineno="52" refid="structwickr__buffer_1a8472d93dd98cfe6f98740a42ae16c86b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer_1a8472d93dd98cfe6f98740a42ae16c86b" kindref="member">length</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structwickr__buffer_1a892763a6b3cbe227c4015f948acbc2bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>*<ref refid="structwickr__buffer_1a892763a6b3cbe227c4015f948acbc2bf" kindref="member">bytes</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer</ref><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="group__wickr__buffer_1ga0cf6db371b58617c9311f2a357d98164" refkind="member"><highlight class="preprocessor">#define<sp/>BUFFER_ARRAY_LEN(x)<sp/>(sizeof(x)<sp/>/<sp/>sizeof(wickr_buffer_t<sp/>*))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Define<sp/>a<sp/>MAX_BUFFER_SIZE<sp/>that<sp/>limits<sp/>the<sp/>total<sp/>memory<sp/>consumed<sp/>by<sp/>a<sp/>buffer<sp/>to<sp/>INT32_MAX<sp/>(~2GB)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>MAX_BUFFER_SIZE<sp/>=<sp/>INT32_MAX<sp/>-<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>int<sp/>(*wickr_buffer_compare_func)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>size_t);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1ga305edd191e38eb040710b631c1e4f05f" kindref="member">wickr_buffer_create_empty</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1gaba0ae148a2f75e50eb3d36a4bef509d2" kindref="member">wickr_buffer_create_empty_zero</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1gacc3ad1220af28781bf678cab20e2f1c8" kindref="member">wickr_buffer_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="structwickr__buffer_1a892763a6b3cbe227c4015f948acbc2bf" kindref="member">bytes</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1gada179dda91e748d7bdf6028d3d4c4bcd" kindref="member">wickr_buffer_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*source);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1gaceb6345c35ac2f6330ea0a685ce3fc53" kindref="member">wickr_buffer_copy_section</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*source,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__wickr__buffer_1ga67f817bf762e4ee401b31685197620be" kindref="member">wickr_buffer_modify_section</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*<ref refid="structwickr__buffer_1a892763a6b3cbe227c4015f948acbc2bf" kindref="member">bytes</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1gad7721c1033a1fc378a0a11613f3cfb26" kindref="member">wickr_buffer_concat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer2);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__buffer_1ga3aa7ea751a65310184d6c0ea9627dca8" kindref="member">wickr_buffer_concat_multi</ref>(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>**buffers,<sp/>uint8_t<sp/>n_buffers);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__wickr__buffer_1ga51ec58848ab0b07d164c6f7d73200c24" kindref="member">wickr_buffer_is_equal</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*b1,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*b2,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wickr_buffer_compare_func<sp/>compare_func);</highlight></codeline>
+<codeline lineno="205"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__buffer_1ga7ec1198db0739f3034ddd3969c64257f" kindref="member">wickr_buffer_destroy</ref>(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>**buffer);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__buffer_1gaf0ff6486debbfd676b7675f6f899fc40" kindref="member">wickr_buffer_destroy_zero</ref>(<ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>**buffer);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>buffer_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/buffer.h"/>
+  </compounddef>
+</doxygen>

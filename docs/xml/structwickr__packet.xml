@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__packet" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_packet</compoundname>
+    <includes refid="protocol_8h" local="no">protocol.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__packet_1a35c17c926c267a603e810b88961c2bf3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>wickr_packet::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the protocol version of the packet </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/protocol.h" line="483" column="1" bodyfile="src/crypto/protocol.h" bodystart="483" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__packet_1a4d17d017c9d0fbb6e748a7ed935e5512" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_packet::content</definition>
+        <argsstring></argsstring>
+        <name>content</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the content of the packet including the serialized header, and payload </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/protocol.h" line="484" column="1" bodyfile="src/crypto/protocol.h" bodystart="484" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__packet_1a8b5e9a4eed6f133ffedd1aa9178b5567" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
+        <definition>wickr_packet::signature</definition>
+        <argsstring></argsstring>
+        <name>signature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the ECDSA signature of &apos;content&apos; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/protocol.h" line="485" column="1" bodyfile="src/crypto/protocol.h" bodystart="485" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An encrypted packet made with the Wickr protocol. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="164">
+        <label>wickr_ecdsa_result</label>
+        <link refid="structwickr__ecdsa__result"/>
+        <childnode refid="165" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="166" relation="usage">
+          <edgelabel>digest_mode</edgelabel>
+        </childnode>
+        <childnode refid="163" relation="usage">
+          <edgelabel>sig_data</edgelabel>
+        </childnode>
+      </node>
+      <node id="165">
+        <label>wickr_ec_curve</label>
+        <link refid="structwickr__ec__curve"/>
+      </node>
+      <node id="162">
+        <label>wickr_packet</label>
+        <link refid="structwickr__packet"/>
+        <childnode refid="163" relation="usage">
+          <edgelabel>content</edgelabel>
+        </childnode>
+        <childnode refid="164" relation="usage">
+          <edgelabel>signature</edgelabel>
+        </childnode>
+      </node>
+      <node id="166">
+        <label>wickr_digest</label>
+        <link refid="structwickr__digest"/>
+      </node>
+      <node id="163">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/protocol.h" line="482" column="1" bodyfile="src/crypto/protocol.h" bodystart="482" bodyend="486"/>
+    <listofallmembers>
+      <member refid="structwickr__packet_1a4d17d017c9d0fbb6e748a7ed935e5512" prot="public" virt="non-virtual"><scope>wickr_packet</scope><name>content</name></member>
+      <member refid="structwickr__packet_1a8b5e9a4eed6f133ffedd1aa9178b5567" prot="public" virt="non-virtual"><scope>wickr_packet</scope><name>signature</name></member>
+      <member refid="structwickr__packet_1a35c17c926c267a603e810b88961c2bf3" prot="public" virt="non-virtual"><scope>wickr_packet</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

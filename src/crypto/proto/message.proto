@@ -1,0 +1,33 @@
+package wickr.proto;
+
+message header {
+    message key_exchange {
+        required bytes node_id = 1;
+        required uint64 key_id = 2;
+        required bytes exchange_data = 3;
+    }
+    
+    required bytes sender_pub = 1;
+    repeated key_exchange exchanges = 2;
+}
+
+message packet {
+    required bytes enc_header = 1;
+    required bytes enc_payload = 2;
+}
+
+message payload {
+    
+    message meta {
+        message ephemerality {
+            required uint64 ttl = 1;
+            optional uint64 bor = 2;
+        }
+        required ephemerality ephemerality_settings = 1;
+        optional bytes channel_tag = 2;
+        optional uint32 content_type = 3;
+    }
+    
+    required meta metadata = 3;
+    required bytes body = 4;
+}

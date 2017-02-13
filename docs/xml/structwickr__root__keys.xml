@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__root__keys" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_root_keys</compoundname>
+    <includes refid="root__keys_8h" local="no">root_keys.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__root__keys_1af3a0ca7b48b356e118dea24c26cdd9f5" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_root_keys::node_signature_root</definition>
+        <argsstring></argsstring>
+        <name>node_signature_root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>signature key used to sign nodes </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="51" column="1" bodyfile="src/crypto/root_keys.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__root__keys_1ada908a5fa4aaf7c8b9a4b496c99e595a" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_root_keys::node_storage_root</definition>
+        <argsstring></argsstring>
+        <name>node_storage_root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the root storage key used to derive local storage key for nodes </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="52" column="1" bodyfile="src/crypto/root_keys.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__root__keys_1a9bf1ff10b669493393e2bf918f5d4090" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+        <definition>wickr_root_keys::remote_storage_root</definition>
+        <argsstring></argsstring>
+        <name>remote_storage_root</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the root storage key used to encrypt remote content for all nodes </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/root_keys.h" line="53" column="1" bodyfile="src/crypto/root_keys.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Root level crypto keys for signatures, local encryption, and remote encryption. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="192">
+        <label>wickr_cipher_key</label>
+        <link refid="structwickr__cipher__key"/>
+        <childnode refid="193" relation="usage">
+          <edgelabel>key_data</edgelabel>
+        </childnode>
+        <childnode refid="194" relation="usage">
+          <edgelabel>cipher</edgelabel>
+        </childnode>
+      </node>
+      <node id="194">
+        <label>wickr_cipher</label>
+        <link refid="structwickr__cipher"/>
+      </node>
+      <node id="196">
+        <label>wickr_ec_curve</label>
+        <link refid="structwickr__ec__curve"/>
+      </node>
+      <node id="191">
+        <label>wickr_root_keys</label>
+        <link refid="structwickr__root__keys"/>
+        <childnode refid="192" relation="usage">
+          <edgelabel>node_storage_root</edgelabel>
+          <edgelabel>remote_storage_root</edgelabel>
+        </childnode>
+        <childnode refid="195" relation="usage">
+          <edgelabel>node_signature_root</edgelabel>
+        </childnode>
+      </node>
+      <node id="193">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+      <node id="195">
+        <label>wickr_ec_key</label>
+        <link refid="structwickr__ec__key"/>
+        <childnode refid="196" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="193" relation="usage">
+          <edgelabel>pub_data</edgelabel>
+          <edgelabel>pri_data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/root_keys.h" line="50" column="1" bodyfile="src/crypto/root_keys.h" bodystart="50" bodyend="54"/>
+    <listofallmembers>
+      <member refid="structwickr__root__keys_1af3a0ca7b48b356e118dea24c26cdd9f5" prot="public" virt="non-virtual"><scope>wickr_root_keys</scope><name>node_signature_root</name></member>
+      <member refid="structwickr__root__keys_1ada908a5fa4aaf7c8b9a4b496c99e595a" prot="public" virt="non-virtual"><scope>wickr_root_keys</scope><name>node_storage_root</name></member>
+      <member refid="structwickr__root__keys_1a9bf1ff10b669493393e2bf918f5d4090" prot="public" virt="non-virtual"><scope>wickr_root_keys</scope><name>remote_storage_root</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

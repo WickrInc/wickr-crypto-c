@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__ephemeral__keypair" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_ephemeral_keypair</compoundname>
+    <includes refid="ephemeral__keypair_8h" local="no">ephemeral_keypair.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__ephemeral__keypair_1a9220b37a7db764818406bcc84e3ba86b" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>wickr_ephemeral_keypair::identifier</definition>
+        <argsstring></argsstring>
+        <name>identifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>identifier to associate with this key pair so it can be cataloged and later recalled when used </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ephemeral_keypair.h" line="61" column="1" bodyfile="src/crypto/ephemeral_keypair.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__ephemeral__keypair_1ad730ed9ba92e05d0a271edc838e548fe" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ephemeral_keypair::ec_key</definition>
+        <argsstring></argsstring>
+        <name>ec_key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>underlying elliptical curve key pair to use </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ephemeral_keypair.h" line="62" column="1" bodyfile="src/crypto/ephemeral_keypair.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__ephemeral__keypair_1aea420be2397d798a560fa973be86228c" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
+        <definition>wickr_ephemeral_keypair::signature</definition>
+        <argsstring></argsstring>
+        <name>signature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>a signature of the &apos;ec_key&apos; public component </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ephemeral_keypair.h" line="63" column="1" bodyfile="src/crypto/ephemeral_keypair.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a key pair used for message key exchanges within the Wickr Messaging Protocol. </para>    </briefdescription>
+    <detaileddescription>
+<para>Ephemeral kaypairs are identifiable by an integer value, and are signed by the node that generated the key. The additional properties outside of the key material itself provide clarity for both a message sender and receiver. For the sender, the signature can provide authenticity of the public key material if the key pair is retrived from a public place such as a server. The identifier can be passed as metadata by the sender so that the receiver has knowledge of which private key from their active pool to use decode the message. The goal of ephemeral keypairs is to provide an as constant as possible rotation / destruction cycle </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="120">
+        <label>wickr_ecdsa_result</label>
+        <link refid="structwickr__ecdsa__result"/>
+        <childnode refid="118" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="121" relation="usage">
+          <edgelabel>digest_mode</edgelabel>
+        </childnode>
+        <childnode refid="119" relation="usage">
+          <edgelabel>sig_data</edgelabel>
+        </childnode>
+      </node>
+      <node id="118">
+        <label>wickr_ec_curve</label>
+        <link refid="structwickr__ec__curve"/>
+      </node>
+      <node id="121">
+        <label>wickr_digest</label>
+        <link refid="structwickr__digest"/>
+      </node>
+      <node id="116">
+        <label>wickr_ephemeral_keypair</label>
+        <link refid="structwickr__ephemeral__keypair"/>
+        <childnode refid="117" relation="usage">
+          <edgelabel>ec_key</edgelabel>
+        </childnode>
+        <childnode refid="120" relation="usage">
+          <edgelabel>signature</edgelabel>
+        </childnode>
+      </node>
+      <node id="119">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+      <node id="117">
+        <label>wickr_ec_key</label>
+        <link refid="structwickr__ec__key"/>
+        <childnode refid="118" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="119" relation="usage">
+          <edgelabel>pub_data</edgelabel>
+          <edgelabel>pri_data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/ephemeral_keypair.h" line="60" column="1" bodyfile="src/crypto/ephemeral_keypair.h" bodystart="60" bodyend="64"/>
+    <listofallmembers>
+      <member refid="structwickr__ephemeral__keypair_1ad730ed9ba92e05d0a271edc838e548fe" prot="public" virt="non-virtual"><scope>wickr_ephemeral_keypair</scope><name>ec_key</name></member>
+      <member refid="structwickr__ephemeral__keypair_1a9220b37a7db764818406bcc84e3ba86b" prot="public" virt="non-virtual"><scope>wickr_ephemeral_keypair</scope><name>identifier</name></member>
+      <member refid="structwickr__ephemeral__keypair_1aea420be2397d798a560fa973be86228c" prot="public" virt="non-virtual"><scope>wickr_ephemeral_keypair</scope><name>signature</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

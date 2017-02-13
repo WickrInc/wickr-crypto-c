@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="array_8h" kind="file" language="C++">
+    <compoundname>array.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includedby refid="buffer_8h" local="yes">src/crypto/buffer.h</includedby>
+    <includedby refid="node_8h" local="yes">src/crypto/node.h</includedby>
+    <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+      <node id="4">
+        <label>stdint.h</label>
+      </node>
+      <node id="1">
+        <label>stdlib.h</label>
+      </node>
+      <node id="0">
+        <label>src/crypto/array.h</label>
+        <link refid="array_8h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>limits.h</label>
+      </node>
+      <node id="2">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="0" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="21">
+        <label>src/crypto/kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/crypto/util.h</label>
+        <link refid="util_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/crypto/openssl_file_suite.h</label>
+        <link refid="openssl__file__suite_8h_source"/>
+      </node>
+      <node id="18">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/crypto/wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/crypto/ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/crypto/array.h</label>
+        <link refid="array_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+      <node id="20">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
+      </node>
+      <node id="15">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/crypto/cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/crypto/eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/crypto/buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/crypto/ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="9">
+        <label>src/crypto/crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="array_8h_1a8cde1f92f61347109d0331dc629fb0f0" prot="public" static="no">
+        <type>struct wickr_array</type>
+        <definition>typedef struct wickr_array wickr_array_t</definition>
+        <argsstring></argsstring>
+        <name>wickr_array_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="1" column="1" bodyfile="src/crypto/array.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="array_8h_1acd2b9859f176e671691265f738ab2867" prot="public" static="no">
+        <type>void *(*</type>
+        <definition>typedef void*(* wickr_array_copy_func) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>wickr_array_copy_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="37" column="1" bodyfile="src/crypto/array.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="array_8h_1a079da946dc7928a1ce29c664a7bb29d0" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* wickr_array_destroy_func) (void **)</definition>
+        <argsstring>)(void **)</argsstring>
+        <name>wickr_array_destroy_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="38" column="1" bodyfile="src/crypto/array.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__array_1gad5842105c20b42cc4b5b4ffc2a72556b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wickr_array_t *</type>
+        <definition>wickr_array_t* wickr_array_new</definition>
+        <argsstring>(uint32_t item_count, uint8_t item_type, wickr_array_copy_func item_copy_func, wickr_array_destroy_func item_destroy_func)</argsstring>
+        <name>wickr_array_new</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>item_count</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>item_type</declname>
+        </param>
+        <param>
+          <type>wickr_array_copy_func</type>
+          <declname>item_copy_func</declname>
+        </param>
+        <param>
+          <type>wickr_array_destroy_func</type>
+          <declname>item_destroy_func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new array</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>item_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of items the array will hold </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an integer that will designate the type of item the array will hold. All items in the array must be of the same type </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item_copy_func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a function that will provide a deep copy of an item in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item_destroy_func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a function that will provide freeing memory consumed by an item in the array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__array_1gafe1191ce494529dbfd5240a84bcba5a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t wickr_array_get_item_count</definition>
+        <argsstring>(const wickr_array_t *array)</argsstring>
+        <name>wickr_array_get_item_count</name>
+        <param>
+          <type>const wickr_array_t *</type>
+          <declname>array</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetch the size of the array</para><para>Note that null values in the array, or uninitialized values in the array will still be counted. The size of the array remains static after it has been created with wickr_array_new. Increasing or decreasing the size of the array is not yet supported</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an array to get the item count of </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of items contained in the array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__array_1ga3b3c15b3c6a15f52d20c678b6829ee21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool wickr_array_set_item</definition>
+        <argsstring>(wickr_array_t *array, uint32_t index, void *item, bool copy)</argsstring>
+        <name>wickr_array_set_item</name>
+        <param>
+          <type>wickr_array_t *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Assign an item to a specified index in the array</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array the item is being set into </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position in the array the item is being set into </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the item that will be set in the array at the specified index </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, a deep copy of the item will be made, and the copy will be inserted into the array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the index is within the bounds of the array, and item points to a valid pointer, will return false if copy is set and the copy operation fails </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__array_1ga3a6dd3ee6295f6230e2047584a261774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* wickr_array_fetch_item</definition>
+        <argsstring>(const wickr_array_t *array, uint32_t index, bool copy)</argsstring>
+        <name>wickr_array_fetch_item</name>
+        <param>
+          <type>const wickr_array_t *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fetch an item at a specified index</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array from which an item will be fetched </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the position in the array the item will be fetched from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>copy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, a deep copy will be made and returned instead of the item stored in the array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the item in the array at position &apos;index&apos;. NULL is returned if the index is not within the bounds of the array, if the item at position &apos;index&apos; is NULL because it was never set with &apos;wickr_array_set_item&apos;, or because copy was true and the copy operation failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__array_1ga1e28a815bd4310985e493b67f66f26c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>wickr_array_t *</type>
+        <definition>wickr_array_t* wickr_array_copy</definition>
+        <argsstring>(const wickr_array_t *array, bool deep_copy)</argsstring>
+        <name>wickr_array_copy</name>
+        <param>
+          <type>const wickr_array_t *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>deep_copy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make a copy</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array that is being copied </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deep_copy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, items inserted into the copied array will be a deep copy of items in the original array. If false, items in the original array will be inserted into the new array without transferring ownership </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a copy of the array, or NULL if either allocating the copied array fails, or the deep_copy flag is set, and the copy operation fails on one of the items in the source array </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="106" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__array_1ga984338e0a278ef1b23aca7330f0bfcc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_array_destroy</definition>
+        <argsstring>(wickr_array_t **array, bool destroy_items)</argsstring>
+        <name>wickr_array_destroy</name>
+        <param>
+          <type>wickr_array_t **</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>destroy_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Free an array</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the array to destroy </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destroy_items</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, the destroy function specified in &apos;wickr_array_create&apos; will be called on each item in the array before destroying the array itself </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/array.h" line="116" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>array_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>array_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wickr_array;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wickr_array<sp/>wickr_array_t;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*(*wickr_array_copy_func)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*wickr_array_destroy_func)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">**);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">wickr_array_t<sp/>*<ref refid="group__wickr__array_1gad5842105c20b42cc4b5b4ffc2a72556b" kindref="member">wickr_array_new</ref>(uint32_t<sp/>item_count,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>item_type,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wickr_array_copy_func<sp/>item_copy_func,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wickr_array_destroy_func<sp/>item_destroy_func);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">uint32_t<sp/><ref refid="group__wickr__array_1gafe1191ce494529dbfd5240a84bcba5a2" kindref="member">wickr_array_get_item_count</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wickr_array_t<sp/>*array);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__wickr__array_1ga3b3c15b3c6a15f52d20c678b6829ee21" kindref="member">wickr_array_set_item</ref>(wickr_array_t<sp/>*array,<sp/>uint32_t<sp/>index,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*item,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copy);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="group__wickr__array_1ga3a6dd3ee6295f6230e2047584a261774" kindref="member">wickr_array_fetch_item</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wickr_array_t<sp/>*array,<sp/>uint32_t<sp/>index,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>copy);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">wickr_array_t<sp/>*<ref refid="group__wickr__array_1ga1e28a815bd4310985e493b67f66f26c7" kindref="member">wickr_array_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>wickr_array_t<sp/>*array,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>deep_copy);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__array_1ga984338e0a278ef1b23aca7330f0bfcc3" kindref="member">wickr_array_destroy</ref>(wickr_array_t<sp/>**array,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>destroy_items);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>array_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/array.h"/>
+  </compounddef>
+</doxygen>

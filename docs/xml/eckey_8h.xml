@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="eckey_8h" kind="file" language="C++">
+    <compoundname>eckey.h</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="buffer_8h" local="yes">buffer.h</includes>
+    <includedby refid="crypto__engine_8h" local="yes">src/crypto/crypto_engine.h</includedby>
+    <includedby refid="ecdsa_8h" local="yes">src/crypto/ecdsa.h</includedby>
+    <includedby refid="ecdh_8h" local="yes">src/crypto/ecdh.h</includedby>
+    <includedby refid="ephemeral__keypair_8h" local="yes">src/crypto/ephemeral_keypair.h</includedby>
+    <includedby refid="identity_8h" local="yes">src/crypto/identity.h</includedby>
+    <includedby refid="root__keys_8h" local="yes">src/crypto/root_keys.h</includedby>
+    <includedby refid="node_8h" local="yes">src/crypto/node.h</includedby>
+    <includedby refid="openssl__suite_8h" local="yes">src/crypto/openssl_suite.h</includedby>
+    <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
+    <includedby refid="wickr__ctx_8h" local="yes">src/crypto/wickr_ctx.h</includedby>
+    <incdepgraph>
+      <node id="189">
+        <label>stdbool.h</label>
+      </node>
+      <node id="190">
+        <label>stdint.h</label>
+      </node>
+      <node id="187">
+        <label>stdlib.h</label>
+      </node>
+      <node id="191">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
+        <label>limits.h</label>
+      </node>
+      <node id="186">
+        <label>src/crypto/eckey.h</label>
+        <link refid="eckey_8h"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="197">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="203">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="202">
+        <label>src/crypto/wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="201" relation="include">
+        </childnode>
+      </node>
+      <node id="207">
+        <label>src/crypto/ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+      </node>
+      <node id="199">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="198">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h_source"/>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="201">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+      <node id="205">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
+      </node>
+      <node id="200">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="193">
+        <label>src/crypto/eckey.h</label>
+        <link refid="eckey_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="206">
+        <label>src/crypto/ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="194">
+        <label>src/crypto/crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structwickr__ec__curve" prot="public">wickr_ec_curve</innerclass>
+    <innerclass refid="structwickr__ec__key" prot="public">wickr_ec_key</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="eckey_8h_1ad321318bf572c27573a0e10d71518d9a" prot="public" static="no">
+        <name>P521_SIGNATURE_MAX_SIZE</name>
+        <initializer>143</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wickr needs signatures to be a static size for easy parsing The static size of a signature for P521 was determined as follows Maximum r,s size in DER ASN.1 Integer format + fixed 2 byte length metadata: (curve id (4bits) + digest id (4bits) + padding size(1byte)) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="38" column="9" bodyfile="src/crypto/eckey.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="eckey_8h_1a6fc79d03818fde4729642e1baa4fd3c3" prot="public" static="no">
+        <name>wickr_ec_curve_id</name>
+        <enumvalue id="eckey_8h_1a6fc79d03818fde4729642e1baa4fd3c3ac5ce49647a73d542b8f99c419dcd2b50" prot="public">
+          <name>EC_CURVE_ID_NIST_P521</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="40" column="1" bodyfile="src/crypto/eckey.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="eckey_8h_1a497d0d3fffe326db9a31b5fbae050436" prot="public" static="no">
+        <type>struct <ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve</ref></type>
+        <definition>typedef struct wickr_ec_curve wickr_ec_curve_t</definition>
+        <argsstring></argsstring>
+        <name>wickr_ec_curve_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="55" column="1" bodyfile="src/crypto/eckey.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="eckey_8h_1a45278ec7b5c314dd639db90268e909bf" prot="public" static="no">
+        <type>struct <ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref></type>
+        <definition>typedef struct wickr_ec_key wickr_ec_key_t</definition>
+        <argsstring></argsstring>
+        <name>wickr_ec_key_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="64" column="1" bodyfile="src/crypto/eckey.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="eckey_8h_1acb5e202f1dd598ed8393a2194531ec1f" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref></type>
+        <definition>const wickr_ec_curve_t EC_CURVE_NIST_P521</definition>
+        <argsstring></argsstring>
+        <name>EC_CURVE_NIST_P521</name>
+        <initializer>= { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="64" column="1" bodyfile="src/crypto/eckey.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__ec__curve_1ga912f46bc12a39f57d8d1b87a639f7cdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ec_key_t* wickr_ec_key_create</definition>
+        <argsstring>(wickr_ec_curve_t curve, wickr_buffer_t *pub_data, wickr_buffer_t *pri_data)</argsstring>
+        <name>wickr_ec_key_create</name>
+        <param>
+          <type><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref></type>
+          <declname>curve</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>pub_data</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>pri_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an Elliptical Curve Keypair from components</para><para>NOTE: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-generated components. A crypto engine is required to generate random keypairs</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>curve</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pub_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pri_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref>&apos; property documentation. May be NULL to represent a public key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated elliptical key representing either a public or private key. Takes ownership of the passed inputs </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="102" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__ec__curve_1gaf12eff11d78b2ce9ff32710406d58d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+        <definition>wickr_ec_key_t* wickr_ec_key_copy</definition>
+        <argsstring>(const wickr_ec_key_t *source)</argsstring>
+        <name>wickr_ec_key_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy an EC Key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the EC key to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated EC key holding a deep copy of the properties of &apos;source&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__ec__curve_1gac18ac86b270f540bf5a55ad271ab0568" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_ec_key_destroy</definition>
+        <argsstring>(wickr_ec_key_t **key)</argsstring>
+        <name>wickr_ec_key_destroy</name>
+        <param>
+          <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> **</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy an EC Key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the key to destroy. All properties of &apos;*key&apos; will also be destroyed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="123" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__ec__curve_1ga35d0968431b69993b7a6e3351d503d72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref> *</type>
+        <definition>const wickr_ec_curve_t* wickr_ec_curve_find</definition>
+        <argsstring>(uint8_t identifier)</argsstring>
+        <name>wickr_ec_curve_find</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find an EC key by numerical identifier</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>identifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the identifier in which to return the curve information for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the requested curve information, or NULL if no matching information can be found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/eckey.h" line="134" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>©<sp/>2012-2017<sp/>Wickr<sp/>Inc.<sp/><sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>This<sp/>code<sp/>is<sp/>being<sp/>released<sp/>for<sp/>EDUCATIONAL,<sp/>ACADEMIC,<sp/>AND<sp/>CODE<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/><sp/>COMMERCIAL<sp/>USE<sp/>OF<sp/>THE<sp/>CODE<sp/>IS<sp/>EXPRESSLY<sp/>PROHIBITED.<sp/><sp/>For<sp/>additional<sp/>details,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>please<sp/>see<sp/>LICENSE</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>THE<sp/>CODE<sp/>IS<sp/>MADE<sp/>AVAILABLE<sp/>&quot;AS-IS&quot;<sp/>AND<sp/>WITHOUT<sp/>ANY<sp/>EXPRESS<sp/>OR</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>IMPLIED<sp/>GUARANTEES<sp/>AS<sp/>TO<sp/>FITNESS,<sp/>MERCHANTABILITY,<sp/>NON-</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>INFRINGEMENT<sp/>OR<sp/>OTHERWISE.<sp/>IT<sp/>IS<sp/>NOT<sp/>BEING<sp/>PROVIDED<sp/>IN<sp/>TRADE<sp/>BUT<sp/>ON</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>A<sp/>VOLUNTARY<sp/>BASIS<sp/>ON<sp/>BEHALF<sp/>OF<sp/>THE<sp/>AUTHOR’S<sp/>PART<sp/>FOR<sp/>THE<sp/>BENEFIT</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>LICENSEE<sp/>AND<sp/>IS<sp/>NOT<sp/>MADE<sp/>AVAILABLE<sp/>FOR<sp/>CONSUMER<sp/>USE<sp/>OR<sp/>ANY</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>OTHER<sp/>USE<sp/>OUTSIDE<sp/>THE<sp/>TERMS<sp/>OF<sp/>THIS<sp/>LICENSE.<sp/>ANYONE<sp/>ACCESSING<sp/>THE</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CODE<sp/>SHOULD<sp/>HAVE<sp/>THE<sp/>REQUISITE<sp/>EXPERTISE<sp/>TO<sp/>SECURE<sp/>THEIR<sp/>SYSTEM</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>AND<sp/>DEVICES<sp/>AND<sp/>TO<sp/>ACCESS<sp/>AND<sp/>USE<sp/>THE<sp/>CODE<sp/>FOR<sp/>REVIEW<sp/>PURPOSES</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>ONLY.<sp/>LICENSEE<sp/>BEARS<sp/>THE<sp/>RISK<sp/>OF<sp/>ACCESSING<sp/>AND<sp/>USING<sp/>THE<sp/>CODE.<sp/>IN</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PARTICULAR,<sp/>AUTHOR<sp/>BEARS<sp/>NO<sp/>LIABILITY<sp/>FOR<sp/>ANY<sp/>INTERFERENCE<sp/>WITH<sp/>OR</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>ADVERSE<sp/>EFFECT<sp/>THAT<sp/>MAY<sp/>OCCUR<sp/>AS<sp/>A<sp/>RESULT<sp/>OF<sp/>THE<sp/>LICENSEE</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ACCESSING<sp/>AND/OR<sp/>USING<sp/>THE<sp/>CODE<sp/>ON<sp/>LICENSEE’S<sp/>SYSTEM.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>eckey_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>eckey_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;buffer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor">#define<sp/>P521_SIGNATURE_MAX_SIZE<sp/>143</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/>EC_CURVE_ID_NIST_P521<sp/>}<sp/>wickr_ec_curve_id;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structwickr__ec__curve" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve</ref><sp/>{</highlight></codeline>
+<codeline lineno="58" refid="structwickr__ec__curve_1a6a3db9bd65c2b95edec61e0b48760bf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wickr_ec_curve_id<sp/><ref refid="structwickr__ec__curve_1a6a3db9bd65c2b95edec61e0b48760bf4" kindref="member">identifier</ref>;</highlight></codeline>
+<codeline lineno="59" refid="structwickr__ec__curve_1ab77300e816beace29e40cf8e643a5070" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structwickr__ec__curve_1ab77300e816beace29e40cf8e643a5070" kindref="member">signature_size</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve</ref><sp/><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>EC_CURVE_NIST_P521<sp/>=<sp/>{<sp/>EC_CURVE_ID_NIST_P521,<sp/>P521_SIGNATURE_MAX_SIZE<sp/>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="structwickr__ec__key" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref><sp/>{</highlight></codeline>
+<codeline lineno="82" refid="structwickr__ec__key_1a0fbe90131941d685f618ef6816e8c471" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/><ref refid="structwickr__ec__key_1a0fbe90131941d685f618ef6816e8c471" kindref="member">curve</ref>;</highlight></codeline>
+<codeline lineno="83" refid="structwickr__ec__key_1af972d3c8b571df0ef009ebf079705e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__ec__key_1af972d3c8b571df0ef009ebf079705e82" kindref="member">pub_data</ref>;</highlight></codeline>
+<codeline lineno="84" refid="structwickr__ec__key_1a67c23110b722401c6ba8b883b3aa74fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__ec__key_1a67c23110b722401c6ba8b883b3aa74fc" kindref="member">pri_data</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key</ref><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__wickr__ec__curve_1ga912f46bc12a39f57d8d1b87a639f7cdf" kindref="member">wickr_ec_key_create</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/><ref refid="structwickr__ec__key_1a0fbe90131941d685f618ef6816e8c471" kindref="member">curve</ref>,<sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__ec__key_1af972d3c8b571df0ef009ebf079705e82" kindref="member">pub_data</ref>,<sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__ec__key_1a67c23110b722401c6ba8b883b3aa74fc" kindref="member">pri_data</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__wickr__ec__curve_1gaf12eff11d78b2ce9ff32710406d58d4f" kindref="member">wickr_ec_key_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*source);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__ec__curve_1gac18ac86b270f540bf5a55ad271ab0568" kindref="member">wickr_ec_key_destroy</ref>(<ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>**key);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>*<ref refid="group__wickr__ec__curve_1ga35d0968431b69993b7a6e3351d503d72" kindref="member">wickr_ec_curve_find</ref>(uint8_t<sp/><ref refid="structwickr__ec__curve_1a6a3db9bd65c2b95edec61e0b48760bf4" kindref="member">identifier</ref>);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>eckey_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/eckey.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+\hypertarget{structwickr__dev__info}{}\section{wickr\+\_\+dev\+\_\+info Struct Reference}
+\label{structwickr__dev__info}\index{wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}}
+
+
+Device Information used to make a uniquely identifying set of data for each context running the Wickr Protocol.  
+
+
+
+
+{\ttfamily \#include $<$devinfo.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__dev__info_a78032877515c2b4cf67c48e4eb6fb0f7}{dev\+\_\+salt}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__dev__info_a084d0cd9e73d9f74f62c9e9abb85436f}{system\+\_\+salt}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__dev__info_a864ad03c4d10f51fe6251059007276d2}{msg\+\_\+proto\+\_\+id}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__dev__info_af5f2ff06ae74fcec85106f6ffd77c008}{srv\+\_\+comm\+\_\+id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Device Information used to make a uniquely identifying set of data for each context running the Wickr Protocol. 
+
+These identifiers are not required to be absolutely unique from a security perspective, but having a good amount of entropy in them is a nice property to attempt to achieve. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__dev__info_a78032877515c2b4cf67c48e4eb6fb0f7}\label{structwickr__dev__info_a78032877515c2b4cf67c48e4eb6fb0f7}} 
+\index{wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}!dev\+\_\+salt@{dev\+\_\+salt}}
+\index{dev\+\_\+salt@{dev\+\_\+salt}!wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}}
+\subsubsection{\texorpdfstring{dev\+\_\+salt}{dev\_salt}}
+{\footnotesize\ttfamily wickr\+\_\+dev\+\_\+info\+::dev\+\_\+salt}
+
+a random salt used in generating \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{} and \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{}. Ideally, this salt value is generated and stored on the device in a way it is quickly retrived. It does not need to be transmitted off the device, as it simply provides some entropy to Wickr specific identifier generation. \mbox{\Hypertarget{structwickr__dev__info_a864ad03c4d10f51fe6251059007276d2}\label{structwickr__dev__info_a864ad03c4d10f51fe6251059007276d2}} 
+\index{wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}!msg\+\_\+proto\+\_\+id@{msg\+\_\+proto\+\_\+id}}
+\index{msg\+\_\+proto\+\_\+id@{msg\+\_\+proto\+\_\+id}!wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}}
+\subsubsection{\texorpdfstring{msg\+\_\+proto\+\_\+id}{msg\_proto\_id}}
+{\footnotesize\ttfamily wickr\+\_\+dev\+\_\+info\+::msg\+\_\+proto\+\_\+id}
+
+messaging protocol identifier shared with devices transmitting data to you. Used as context within key exchanges where a context using the associated \textquotesingle{}dev\+\_\+salt\textquotesingle{} and \textquotesingle{}system\+\_\+salt\textquotesingle{} is the recipient \mbox{\Hypertarget{structwickr__dev__info_af5f2ff06ae74fcec85106f6ffd77c008}\label{structwickr__dev__info_af5f2ff06ae74fcec85106f6ffd77c008}} 
+\index{wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}!srv\+\_\+comm\+\_\+id@{srv\+\_\+comm\+\_\+id}}
+\index{srv\+\_\+comm\+\_\+id@{srv\+\_\+comm\+\_\+id}!wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}}
+\subsubsection{\texorpdfstring{srv\+\_\+comm\+\_\+id}{srv\_comm\_id}}
+{\footnotesize\ttfamily wickr\+\_\+dev\+\_\+info\+::srv\+\_\+comm\+\_\+id}
+
+server communication identifier transmitted to the server and used for salting operations outside of the messaging component of Wickr, such as communicating with the Wickr Server A\+PI. \mbox{\Hypertarget{structwickr__dev__info_a084d0cd9e73d9f74f62c9e9abb85436f}\label{structwickr__dev__info_a084d0cd9e73d9f74f62c9e9abb85436f}} 
+\index{wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}!system\+\_\+salt@{system\+\_\+salt}}
+\index{system\+\_\+salt@{system\+\_\+salt}!wickr\+\_\+dev\+\_\+info@{wickr\+\_\+dev\+\_\+info}}
+\subsubsection{\texorpdfstring{system\+\_\+salt}{system\_salt}}
+{\footnotesize\ttfamily wickr\+\_\+dev\+\_\+info\+::system\+\_\+salt}
+
+a salt that is optimally bound to a hardware context of the device the library is executing on. On systems where getting hardware specific values are not available, this salt can also be randomly generated and stored on the device. The system salt is used to salt your device storage key, and thus binding to a hardware value that is not recorded on disk could increase security of your local storage in some scenarios. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/devinfo.\+h\end{DoxyCompactItemize}

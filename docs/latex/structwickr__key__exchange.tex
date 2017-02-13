@@ -1,0 +1,49 @@
+\hypertarget{structwickr__key__exchange}{}\section{wickr\+\_\+key\+\_\+exchange Struct Reference}
+\label{structwickr__key__exchange}\index{wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}}
+
+
+Node-\/bound public key exchange data to put in a message header.  
+
+
+
+
+{\ttfamily \#include $<$protocol.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__key__exchange_ad5b271c9c3cf2043ec85dbb40c51fec6}{node\+\_\+id}
+\item 
+uint64\+\_\+t \hyperlink{structwickr__key__exchange_aa400c601e6a24cdffeb627501d36cd3e}{ephemeral\+\_\+key\+\_\+id}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__key__exchange_a6be89562df814a32b19cd57c49037691}{exchange\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Node-\/bound public key exchange data to put in a message header. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__key__exchange_aa400c601e6a24cdffeb627501d36cd3e}\label{structwickr__key__exchange_aa400c601e6a24cdffeb627501d36cd3e}} 
+\index{wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}!ephemeral\+\_\+key\+\_\+id@{ephemeral\+\_\+key\+\_\+id}}
+\index{ephemeral\+\_\+key\+\_\+id@{ephemeral\+\_\+key\+\_\+id}!wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}}
+\subsubsection{\texorpdfstring{ephemeral\+\_\+key\+\_\+id}{ephemeral\_key\_id}}
+{\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::ephemeral\+\_\+key\+\_\+id}
+
+the identifier of the \textquotesingle{}wickr\+\_\+ephemeral\+\_\+key\textquotesingle{} owned by \textquotesingle{}node\+\_\+id\textquotesingle{} that was used to create the \textquotesingle{}exchange\+\_\+data\textquotesingle{} \mbox{\Hypertarget{structwickr__key__exchange_a6be89562df814a32b19cd57c49037691}\label{structwickr__key__exchange_a6be89562df814a32b19cd57c49037691}} 
+\index{wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}!exchange\+\_\+data@{exchange\+\_\+data}}
+\index{exchange\+\_\+data@{exchange\+\_\+data}!wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}}
+\subsubsection{\texorpdfstring{exchange\+\_\+data}{exchange\_data}}
+{\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::exchange\+\_\+data}
+
+computed key exchange data destined for \textquotesingle{}node\+\_\+id\textquotesingle{} \mbox{\Hypertarget{structwickr__key__exchange_ad5b271c9c3cf2043ec85dbb40c51fec6}\label{structwickr__key__exchange_ad5b271c9c3cf2043ec85dbb40c51fec6}} 
+\index{wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}!node\+\_\+id@{node\+\_\+id}}
+\index{node\+\_\+id@{node\+\_\+id}!wickr\+\_\+key\+\_\+exchange@{wickr\+\_\+key\+\_\+exchange}}
+\subsubsection{\texorpdfstring{node\+\_\+id}{node\_id}}
+{\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::node\+\_\+id}
+
+the identifier of the node this key exchange is addressed to 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/protocol.\+h\end{DoxyCompactItemize}

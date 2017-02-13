@@ -1,0 +1,35 @@
+\section{Data Structures}
+Here are the data structures with brief descriptions\+:\begin{DoxyCompactList}
+\item\contentsline{section}{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer} \\*Represents an array of bytes and the length of the allocation associated with those bytes }{\pageref{structwickr__buffer}}{}
+\item\contentsline{section}{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher} \\*Represents a cipher that can be used in the crypto\+\_\+engine. This meta object holds parameters for the cipher algorithms and maintains an identifier that can be used to look up the desired parameters for an algorithm }{\pageref{structwickr__cipher}}{}
+\item\contentsline{section}{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key} }{\pageref{structwickr__cipher__key}}{}
+\item\contentsline{section}{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result} }{\pageref{structwickr__cipher__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine} \\*Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h} and \hyperlink{kdf_8h_source}{kdf.\+h} }{\pageref{structwickr__crypto__engine}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx} \\*Wickr encryption context for high level management of sending / receiving packets using the Wickr protocol }{\pageref{structwickr__ctx}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ctx__encode}{wickr\+\_\+ctx\+\_\+encode} \\*Result of a packet encoding operation }{\pageref{structwickr__ctx__encode}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result} \\*Output of a context generation }{\pageref{structwickr__ctx__gen__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ctx__packet}{wickr\+\_\+ctx\+\_\+packet} \\*Parsed inbound wickr packet that has yet to be decoded by this context }{\pageref{structwickr__ctx__packet}}{}
+\item\contentsline{section}{\hyperlink{structwickr__decode__result}{wickr\+\_\+decode\+\_\+result} \\*Packet decoding result }{\pageref{structwickr__decode__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info} \\*Device Information used to make a uniquely identifying set of data for each context running the Wickr Protocol }{\pageref{structwickr__dev__info}}{}
+\item\contentsline{section}{\hyperlink{structwickr__digest}{wickr\+\_\+digest} \\*Digest function parameters }{\pageref{structwickr__digest}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve} \\*Metadata about curve types to help with key generation, and signatures }{\pageref{structwickr__ec__curve}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key} \\*Representation of public and private Elliptical Curve Keypair information as buffers }{\pageref{structwickr__ec__key}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params} \\*Holds parameters used to generate Elliptical Curve Diffie-\/\+Hellman based secrets }{\pageref{structwickr__ecdh__params}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result} \\*Elliptical Curve Digital Signature Algorithm Result }{\pageref{structwickr__ecdsa__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+info} \\*Message destruction control metadata }{\pageref{structwickr__ephemeral__info}}{}
+\item\contentsline{section}{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair} \\*Represents a key pair used for message key exchanges within the Wickr Messaging Protocol }{\pageref{structwickr__ephemeral__keypair}}{}
+\item\contentsline{section}{\hyperlink{structwickr__identity}{wickr\+\_\+identity} \\*A signing identity on the Wickr system }{\pageref{structwickr__identity}}{}
+\item\contentsline{section}{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain} \\*Represents a root -\/$>$ node relationship as well as it\textquotesingle{}s signature status }{\pageref{structwickr__identity__chain}}{}
+\item\contentsline{section}{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo} \\*Metadata associated with a particular K\+DF function }{\pageref{structwickr__kdf__algo}}{}
+\item\contentsline{section}{\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta} \\*Represents the information the K\+DF function will need along with it\textquotesingle{}s input to derive a particular output }{\pageref{structwickr__kdf__meta}}{}
+\item\contentsline{section}{\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result} \\*Represents the result of a K\+DF function execution }{\pageref{structwickr__kdf__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange} \\*Node-\/bound public key exchange data to put in a message header }{\pageref{structwickr__key__exchange}}{}
+\item\contentsline{section}{\hyperlink{structwickr__node}{wickr\+\_\+node} \\*Represents a message destination at a point in time }{\pageref{structwickr__node}}{}
+\item\contentsline{section}{\hyperlink{structwickr__packet}{wickr\+\_\+packet} \\*An encrypted packet made with the Wickr protocol }{\pageref{structwickr__packet}}{}
+\item\contentsline{section}{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header} \\*The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper \textquotesingle{}Prepare Packet Header\textquotesingle{} section for more information }{\pageref{structwickr__packet__header}}{}
+\item\contentsline{section}{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta} \\*Control metadata found in the encrypted payload of a packet }{\pageref{structwickr__packet__meta}}{}
+\item\contentsline{section}{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result} \\*Result from parsing an inbound packet }{\pageref{structwickr__parse__result}}{}
+\item\contentsline{section}{\hyperlink{structwickr__payload}{wickr\+\_\+payload} \\*The encrypted body content of a Wickr packet }{\pageref{structwickr__payload}}{}
+\item\contentsline{section}{\hyperlink{structwickr__root__keys}{wickr\+\_\+root\+\_\+keys} \\*Root level crypto keys for signatures, local encryption, and remote encryption }{\pageref{structwickr__root__keys}}{}
+\item\contentsline{section}{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys} \\*Key\textquotesingle{}s used for the client to encrypt data meant for itself, and not for other clients }{\pageref{structwickr__storage__keys}}{}
+\end{DoxyCompactList}

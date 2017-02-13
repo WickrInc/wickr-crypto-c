@@ -1,0 +1,5 @@
+# if local build tree...
+lib/
+include/
+src/
+tmp/

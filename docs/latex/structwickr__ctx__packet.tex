@@ -1,0 +1,49 @@
+\hypertarget{structwickr__ctx__packet}{}\section{wickr\+\_\+ctx\+\_\+packet Struct Reference}
+\label{structwickr__ctx__packet}\index{wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}}
+
+
+a parsed inbound wickr packet that has yet to be decoded by this context  
+
+
+
+
+{\ttfamily \#include $<$wickr\+\_\+ctx.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t} $\ast$ \hyperlink{structwickr__ctx__packet_a0cdbc84b6fcc6115b8ddf21b235cc645}{packet}
+\item 
+\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{structwickr__ctx__packet_ac57d2b0f48fc3dad5b72d408e30b7b8b}{sender}
+\item 
+\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t} $\ast$ \hyperlink{structwickr__ctx__packet_a7bc4643a99b787536ee8b7505412ecce}{parse\+\_\+result}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a parsed inbound wickr packet that has yet to be decoded by this context 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__ctx__packet_a0cdbc84b6fcc6115b8ddf21b235cc645}\label{structwickr__ctx__packet_a0cdbc84b6fcc6115b8ddf21b235cc645}} 
+\index{wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}!packet@{packet}}
+\index{packet@{packet}!wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}}
+\subsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily wickr\+\_\+ctx\+\_\+packet\+::packet}
+
+the packet metadata that has been parsed \mbox{\Hypertarget{structwickr__ctx__packet_a7bc4643a99b787536ee8b7505412ecce}\label{structwickr__ctx__packet_a7bc4643a99b787536ee8b7505412ecce}} 
+\index{wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}!parse\+\_\+result@{parse\+\_\+result}}
+\index{parse\+\_\+result@{parse\+\_\+result}!wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}}
+\subsubsection{\texorpdfstring{parse\+\_\+result}{parse\_result}}
+{\footnotesize\ttfamily wickr\+\_\+ctx\+\_\+packet\+::parse\+\_\+result}
+
+additional information about the parse, disclosing discovered key destined for this context, as well as signature status and error status \mbox{\Hypertarget{structwickr__ctx__packet_ac57d2b0f48fc3dad5b72d408e30b7b8b}\label{structwickr__ctx__packet_ac57d2b0f48fc3dad5b72d408e30b7b8b}} 
+\index{wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}!sender@{sender}}
+\index{sender@{sender}!wickr\+\_\+ctx\+\_\+packet@{wickr\+\_\+ctx\+\_\+packet}}
+\subsubsection{\texorpdfstring{sender}{sender}}
+{\footnotesize\ttfamily wickr\+\_\+ctx\+\_\+packet\+::sender}
+
+the identity information of the sender of this packet 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/wickr\+\_\+ctx.\+h\end{DoxyCompactItemize}

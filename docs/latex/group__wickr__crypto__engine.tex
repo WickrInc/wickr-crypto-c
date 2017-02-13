@@ -1,0 +1,504 @@
+\hypertarget{group__wickr__crypto__engine}{}\section{Wickr\+\_\+crypto\+\_\+engine}
+\label{group__wickr__crypto__engine}\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine}
+\begin{DoxyCompactList}\small\item\em Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h} and \hyperlink{kdf_8h_source}{kdf.\+h}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga74d5cea6c7d1d6e67b1be476fbaf6235}{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default} ()
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__crypto__engine_ga5709d94cd09ef0fb47d1a5f59232f115}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$value, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__crypto__engine_gab60480270e80ba34aa44385633037983}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$input\+\_\+buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\item 
+\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}{wickr\+\_\+digest\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\item 
+\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}{wickr\+\_\+digest\+\_\+matching\+\_\+curve} (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
+\item 
+\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random} )(size\+\_\+t len)
+\item 
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random} )(\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\item 
+\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt} )(const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file} )(F\+I\+LE $\ast$in\+\_\+file, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key} )(\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign} )(const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify} )(const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature, const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+public\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+verify)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key} )(const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\item 
+bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$expected)
+\item 
+\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen} )(\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\item 
+\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta} )(const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga74d5cea6c7d1d6e67b1be476fbaf6235}\label{group__wickr__crypto__engine_ga74d5cea6c7d1d6e67b1be476fbaf6235}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default@{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default@{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default()}{wickr\_crypto\_engine\_get\_default()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wickr default crypto engine
+
+\begin{DoxyReturn}{Returns}
+an engine containing default crypto primitive implementations (currently implemented with Open\+S\+SL 1.\+0.\+2, libscrypt, libbcrypt) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga5709d94cd09ef0fb47d1a5f59232f115}\label{group__wickr__crypto__engine_ga5709d94cd09ef0fb47d1a5f59232f115}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher()}{wickr\_crypto\_engine\_kdf\_cipher()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}}]{algo,  }\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{value,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+
+Encrypt a buffer with a K\+DF + C\+I\+P\+H\+ER
+
+The K\+DF + C\+I\+P\+H\+ER functions currently acts as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item Calculate K\+DF(random\+Salt $\vert$$\vert$ passphrase)
+\item Use the output of step 1. as a cipher key to encrypt the buffer \textquotesingle{}value\textquotesingle{} with the default engine cipher
+\item The output of step 2 is then packed as $\vert$ K\+D\+F\+\_\+\+ID $\vert$ R\+A\+N\+D\+O\+M\+\_\+\+S\+A\+LT $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+T\+E\+XT $\vert$
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & the engine to use for ciphering / kdf functions \\
+\hline
+{\em algo} & the kdf algorithm to use for key derivation \\
+\hline
+{\em cipher} & the cipher to use to encrypt \textquotesingle{}value\textquotesingle{} with the output of the K\+DF function with \textquotesingle{}passphrase\textquotesingle{} as input \\
+\hline
+{\em value} & the value to protect with the K\+DF cipher \\
+\hline
+{\em passphrase} & the K\+DF input to use for getting a cipher key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer serialized in the following format\+: 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gab60480270e80ba34aa44385633037983}\label{group__wickr__crypto__engine_gab60480270e80ba34aa44385633037983}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher()}{wickr\_crypto\_engine\_kdf\_decipher()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{input\+\_\+buffer,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & the engine to use for deciphering / kdf functions \\
+\hline
+{\em input\+\_\+buffer} & the output of a kdf + cipher operation with \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{} \\
+\hline
+{\em passphrase} & the passphrase for the kdf + cipher operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the original buffer protected by \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{} or N\+U\+LL if the K\+DF + cipher function fails due to an incorrect passphrase 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}\label{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+digest\+\_\+matching\+\_\+cipher@{wickr\+\_\+digest\+\_\+matching\+\_\+cipher}}
+\index{wickr\+\_\+digest\+\_\+matching\+\_\+cipher@{wickr\+\_\+digest\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+digest\+\_\+matching\+\_\+cipher()}{wickr\_digest\_matching\_cipher()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} wickr\+\_\+digest\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+
+Get the matching digest type for a function based on size
+
+N\+O\+TE\+: Currently only 256bit A\+ES ciphers are supported, so this function always returns S\+H\+A\+\_\+256
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher} & the cipher to find the matching digest for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a digest that has an output which is the same size as the length of the cipher\textquotesingle{}s key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}\label{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+digest\+\_\+matching\+\_\+curve@{wickr\+\_\+digest\+\_\+matching\+\_\+curve}}
+\index{wickr\+\_\+digest\+\_\+matching\+\_\+curve@{wickr\+\_\+digest\+\_\+matching\+\_\+curve}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+digest\+\_\+matching\+\_\+curve()}{wickr\_digest\_matching\_curve()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} wickr\+\_\+digest\+\_\+matching\+\_\+curve (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve }\end{DoxyParamCaption})}
+
+Get the matching digest for a curve, this is to be used for signature operations using this curve
+
+
+\begin{DoxyParams}{Parameters}
+{\em curve} & a curve to get the matching digest for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the digest to use for signature operations using \textquotesingle{}curve\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}\label{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher@{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher}}
+\index{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher@{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher()}{wickr\_exchange\_cipher\_matching\_cipher()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+
+Get the matching exchange cipher given a message packet cipher
+
+An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+from\+\_\+components) This function currently always returns C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+C\+TR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+G\+CM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the G\+CM mode packet content
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher} & the cipher being used for packet content encryption / decryption \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the exchange cipher matching \textquotesingle{}cipher\textquotesingle{} 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}\label{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}{wickr\_crypto\_engine\_cipher\_decrypt}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt) (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)}
+
+Decrypt a cipher\+\_\+result
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+result} & a cipher result generated from \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt\textquotesingle{} \\
+\hline
+{\em key} & the key to use to attempt to decrypt \textquotesingle{}cipher\+\_\+result\textquotesingle{} \\
+\hline
+{\em only\+\_\+auth\+\_\+ciphers} & if true, only authenticated ciphers may be used for decryption \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing decrypted bytes. If the A\+ES mode is authenticated, N\+U\+LL will be returned if key is incorrect. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}\label{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}{wickr\_crypto\_engine\_cipher\_encrypt}}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)}
+
+Encrypt a buffer
+
+N\+O\+TE\+: IV is randomly chosen using a secure random function if one is not provided
+
+
+\begin{DoxyParams}{Parameters}
+{\em plaintext} & the content to encrypt using \textquotesingle{}key\textquotesingle{} \\
+\hline
+{\em key} & the cipher key to use to encrypt \textquotesingle{}plaintext\textquotesingle{} \\
+\hline
+{\em iv} & an initialization vector to use with the cipher mode, or N\+U\+LL if one should be chosen at random \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a cipher result containing encrypted bytes, or N\+U\+LL if the cipher mode fails or is not supported 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}\label{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}{wickr\_crypto\_engine\_cipher\_key\_random}}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random) (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)}
+
+Generate a secure random cipher key for a particular cipher
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher} & the cipher to generate a random key for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a cipher key containing key material generated by a secure random function or N\+U\+LL if random byte generation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}\label{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}{wickr\_crypto\_engine\_crypto\_random}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random) (size\+\_\+t len)}
+
+Generate secure random bytes
+
+
+\begin{DoxyParams}{Parameters}
+{\em len} & the number of bytes to generate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing \textquotesingle{}len\textquotesingle{} secure random bytes or N\+U\+LL if random byte generation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}\label{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}{wickr\_crypto\_engine\_decrypt\_file}}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file) (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)}
+
+Decrypt a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+file} & the encrypted file to decrypt \\
+\hline
+{\em key} & the key to use for decryption \\
+\hline
+{\em out\+\_\+file} & the file to write the decrypted data from \textquotesingle{}in\+\_\+file\textquotesingle{} \\
+\hline
+{\em only\+\_\+auth\+\_\+ciphers} & if true, only authenticated ciphers may be used for decryption \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the decryption operation succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}\label{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+digest@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+digest@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}{wickr\_crypto\_engine\_digest}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+
+Calculate a hash of a buffer using an optional salt value
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to hash \\
+\hline
+{\em salt} & a salt value mix with buffer before taking the hash Passing N\+U\+LL will allow for no salt to be used \\
+\hline
+{\em mode} & the mode of the hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the derived hash or N\+U\+LL if the hashing operation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}\label{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}{wickr\_crypto\_engine\_digest\_file}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file) (F\+I\+LE $\ast$in\+\_\+file, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)}
+
+Calculate the hash of a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+file} & a file to take the hash of it\textquotesingle{}s contents \\
+\hline
+{\em mode} & the mode to use for calculating the hash \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the output of the chosen mode of the contents of in\+\_\+file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}\label{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}{wickr\_crypto\_engine\_ec\_key\_import}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)}
+
+Import an Elliptical Curve key from a buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer representing Elliptical Curve key material \\
+\hline
+{\em is\+\_\+private} & false if the buffer represents a public key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an Elliptical Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}\label{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}{wickr\_crypto\_engine\_ec\_rand\_key}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key) (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)}
+
+Generate a random Elliptical Curve keypair
+
+
+\begin{DoxyParams}{Parameters}
+{\em curve} & the curve parameters to use for random key pair generation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a random Elliptical Curve key pair or N\+U\+LL if the random generation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}\label{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}{wickr\_crypto\_engine\_ec\_sign}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign) (const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+
+Sign data using an Elliptical Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
+
+
+\begin{DoxyParams}{Parameters}
+{\em ec\+\_\+signing\+\_\+key} & private signing key to use for the E\+C\+D\+SA algorithm \\
+\hline
+{\em data\+\_\+to\+\_\+sign} & the data to hash with \textquotesingle{}digest\+\_\+mode\textquotesingle{}, and then sign with \textquotesingle{}ec\+\_\+signing\+\_\+key\textquotesingle{} \\
+\hline
+{\em digest\+\_\+mode} & the digest mode to use for S\+H\+A2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an ecdsa result containing the output of E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign)) or N\+U\+LL if the \textquotesingle{}ec\+\_\+signing\+\_\+key\textquotesingle{} is not a private key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}\label{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}{wickr\_crypto\_engine\_ec\_verify}}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify) (const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature, const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+public\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+verify)}
+
+Verify E\+C\+D\+SA signatures
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & a signature produced with \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign\textquotesingle{} \\
+\hline
+{\em ec\+\_\+public\+\_\+key} & the public signing key to use for verification \\
+\hline
+{\em data\+\_\+to\+\_\+verify} & the original data that should have been signed with \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{}. It will be hashed inside this function as part of the verification process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}signature\textquotesingle{} can be verified by \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}\label{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}{wickr\_crypto\_engine\_ecdh\_gen\_key}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key) (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)}
+
+Generate a shared secret given Elliptical Curve Diffie-\/\+Hellman parameters and a K\+DF
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & the parameters to use for the E\+C\+DH and K\+DF algorithms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the expanded shared secret or N\+U\+LL if the key exchange cannot be computed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}\label{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}{wickr\_crypto\_engine\_encrypt\_file}}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file) (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)}
+
+Encrypt a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+file} & the file to encrypt \\
+\hline
+{\em key} & the key to use for encryption \\
+\hline
+{\em out\+\_\+file} & a file that should contain the encrypted data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if encryption succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}\label{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}{wickr\_crypto\_engine\_hmac\_create}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+
+Generate an H\+M\+AC
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the data to take the H\+M\+AC of \\
+\hline
+{\em hmac\+\_\+key} & a key to use for H\+M\+AC \\
+\hline
+{\em mode} & the digest mode to perform H\+M\+AC with. This will determine the length of the output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the H\+M\+AC of \textquotesingle{}data\textquotesingle{} with \textquotesingle{}hmac\+\_\+key\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}\label{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}{wickr\_crypto\_engine\_hmac\_verify}}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$expected)}
+
+Verify an H\+M\+AC against an expected result
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the data to calculate the expected H\+M\+AC with \\
+\hline
+{\em hmac\+\_\+key} & the key to use along with \textquotesingle{}data\textquotesingle{} to create the expected H\+M\+AC with \\
+\hline
+{\em mode} & the mode to use for generating the expected H\+M\+AC \\
+\hline
+{\em expected} & the value to compare the generated H\+M\+AC with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}expected\textquotesingle{} is equal to the H\+M\+AC of \textquotesingle{}data\textquotesingle{} and \textquotesingle{}hmac\+\_\+key\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}\label{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+kdf\+\_\+gen@{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}}
+\index{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen@{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}{wickr\_crypto\_kdf\_gen}}
+{\footnotesize\ttfamily \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen) (\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)}
+
+Execute a K\+DF function given an input buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em algo} & the algorithm info to use for execution of the K\+DF \\
+\hline
+{\em passphrase} & bytes to use as input to the K\+DF function. There are no restrictions for the content of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the K\+DF function, including the generated random salt that was used for the computation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}\label{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+kdf\+\_\+meta@{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}}
+\index{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta@{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}{wickr\_crypto\_kdf\_meta}}
+{\footnotesize\ttfamily \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta) (const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)}
+
+Execute a K\+DF function given an input buffer and specified parameters
+
+
+\begin{DoxyParams}{Parameters}
+{\em existing\+\_\+meta} & the parameters to use for execution, including a specific salt \\
+\hline
+{\em passphrase} & bytes to use as input to the K\+DF function. There are no restrictions for the content of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the K\+DF function, including the generated random salt that was used for the computation 
+\end{DoxyReturn}

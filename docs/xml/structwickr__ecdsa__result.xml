@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structwickr__ecdsa__result" kind="struct" language="C++" prot="public">
+    <compoundname>wickr_ecdsa_result</compoundname>
+    <includes refid="ecdsa_8h" local="no">ecdsa.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structwickr__ecdsa__result_1a76bcae0ea46e0f99bfd8fb70aac165bb" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref></type>
+        <definition>wickr_ecdsa_result::curve</definition>
+        <argsstring></argsstring>
+        <name>curve</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>information about the curve that the signing key belonged to </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ecdsa.h" line="53" column="1" bodyfile="src/crypto/ecdsa.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__ecdsa__result_1a33c820900693a016ac43702e76b54cff" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+        <definition>wickr_ecdsa_result::digest_mode</definition>
+        <argsstring></argsstring>
+        <name>digest_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the digest used on the input data to the ECDSA function before the signature was taken </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ecdsa.h" line="54" column="1" bodyfile="src/crypto/ecdsa.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structwickr__ecdsa__result_1ada32a17d9f713f84142fc6a338ebcc48" prot="public" static="no" mutable="no">
+        <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+        <definition>wickr_ecdsa_result::sig_data</definition>
+        <argsstring></argsstring>
+        <name>sig_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the raw signature output of the ECDSA algorithm </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/ecdsa.h" line="55" column="1" bodyfile="src/crypto/ecdsa.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Elliptical Curve Digital Signature Algorithm Result. </para>    </briefdescription>
+    <detaileddescription>
+<para>Holds values related to a generated signature using Elliptical Curve Digital Signature Algorithm </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="109">
+        <label>wickr_ecdsa_result</label>
+        <link refid="structwickr__ecdsa__result"/>
+        <childnode refid="110" relation="usage">
+          <edgelabel>curve</edgelabel>
+        </childnode>
+        <childnode refid="111" relation="usage">
+          <edgelabel>digest_mode</edgelabel>
+        </childnode>
+        <childnode refid="112" relation="usage">
+          <edgelabel>sig_data</edgelabel>
+        </childnode>
+      </node>
+      <node id="110">
+        <label>wickr_ec_curve</label>
+        <link refid="structwickr__ec__curve"/>
+      </node>
+      <node id="111">
+        <label>wickr_digest</label>
+        <link refid="structwickr__digest"/>
+      </node>
+      <node id="112">
+        <label>wickr_buffer</label>
+        <link refid="structwickr__buffer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/crypto/ecdsa.h" line="52" column="1" bodyfile="src/crypto/ecdsa.h" bodystart="52" bodyend="56"/>
+    <listofallmembers>
+      <member refid="structwickr__ecdsa__result_1a76bcae0ea46e0f99bfd8fb70aac165bb" prot="public" virt="non-virtual"><scope>wickr_ecdsa_result</scope><name>curve</name></member>
+      <member refid="structwickr__ecdsa__result_1a33c820900693a016ac43702e76b54cff" prot="public" virt="non-virtual"><scope>wickr_ecdsa_result</scope><name>digest_mode</name></member>
+      <member refid="structwickr__ecdsa__result_1ada32a17d9f713f84142fc6a338ebcc48" prot="public" virt="non-virtual"><scope>wickr_ecdsa_result</scope><name>sig_data</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

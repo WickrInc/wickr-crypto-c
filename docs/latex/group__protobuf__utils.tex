@@ -1,0 +1,41 @@
+\hypertarget{group__protobuf__utils}{}\section{protobuf utilities}
+\label{group__protobuf__utils}\index{protobuf utilities@{protobuf utilities}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Create a cipher key from protocol buffers binary data object
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the protocol buffers binary data object to create the cipher key with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a cipher key created from serialized bytes within \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing buffer fails 
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}\label{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}} 
+\index{protobuf utilities@{protobuf utilities}!wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes}}
+\index{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes}!protobuf utilities@{protobuf utilities}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes()}{wickr\_ec\_key\_from\_protobytes()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+
+Create an EC Key from protocol buffers binary data object
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the protocol buffers binary data object to create the EC key with \\
+\hline
+{\em engine} & a crypto engine that supports the parsing / importing of EC keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an EC key created from serialized bytes within \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing buffer fails 
+\end{DoxyReturn}
