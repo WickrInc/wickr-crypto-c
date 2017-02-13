@@ -9,6 +9,14 @@ A white paper describing details of the protocol and it's security model can be 
 
 This crypto lib is released for public review for educational, academic, and code audit purposes only (*this is not an open source license, more on license [here](LICENSE)). We strongly believe in the value of the open source movement and are looking forward to contributing to it with this and other future projects including under the GNU license. 
 
+## Issue Reporting
+
+Please keep the issue tracker of this repo limited to code level bugs found in the implementation of the protocol as described in the white paper. Pull requests are always welcome! 
+
+Any questions regarding the protocol itself (i.e: crypto design ideas, suggestions,  high-level conceptual critique) can be be directed at github@wickr.com. 
+
+For all other security issues, please contact Wickr’s bug bounty program [here](https://wickr.com/about-us/blog/2014/01/15/calling-all-hackers-wickr-s-bug-bounty-begins).
+
 ## Goals
 Starting with this crypto lib, Wickr is opening its source code to its customers, partners, and the larger community—here is why:
 
