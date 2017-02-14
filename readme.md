@@ -3,11 +3,11 @@
 ## About
 **wickr-crypto-c** is an implementation of the Wickr Secure Messaging Protocol in C, which provides a platform for secure communications on **Wickr Professional**. 
 
-A white paper describing details of the protocol and it's security model can be found [here](https://www.wickr.com/security). A markdown version of the white paper can also be found in the wiki. 
+A white paper describing details of the protocol and its security model can be found [here](https://www.wickr.com/security). A markdown version of the white paper can also be found in the wiki. 
 
 **Please Note**
 
-This crypto lib is released for public review for educational, academic, and code audit purposes only (*this is not an open source license, more on license [here](LICENSE)). We strongly believe in the value of the open source movement and are looking forward to contributing to it with this and other future projects including under the GNU license. 
+This crypto lib is released for public review for educational, academic, and code audit purposes only (*this is not an open source license, more on license [here](LICENSE)). We strongly believe in the value of the open source movement and are looking forward to collaborating with the community on this and other future projects, including under the GNU license. 
 
 ## Issue Reporting
 
@@ -20,7 +20,7 @@ For all other security issues, please contact Wickr’s bug bounty program [here
 ## Goals
 Starting with this crypto lib, Wickr is opening its source code to its customers, partners, and the larger community—here is why:
 
-* **Transparency:** It is important for us to share with Wickr Professional customers how the Wickr crypto is designed and why in a way that is easy to review
+* **Transparency:** It is important for us to share with Wickr Professional customers how the Wickr crypto is designed in a way that is easy to review
 
 * **Security:** While Wickr is not a new tool for peer-to-peer encrypted ephemeral messaging, this protocol represents a new generation crypto in Wickr products. We are confident that the GitHub community will have ideas and constructive suggestions on how we can further evolve our protocol to make it stronger against emerging attacks (and, of course, fix a bug or two)
 
