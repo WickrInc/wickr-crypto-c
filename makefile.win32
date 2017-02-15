@@ -24,11 +24,17 @@ $(WICKR_CRYPTO_WIN32_REL): $(WICKR_CRYPTO_WIN32)
 	@date >$(WICKR_CRYPTO_WIN32_REL)
 
 $(WICKR_CRYPTO_WIN32)/lib/Debug/libwickr_crypto_lib.a: $(WICKR_CRYPTO_WIN32_DEB)
+	@if test -f $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl/NUL; then \
+		cd $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl; rm -f NUL; \
+	fi
 	msbuild $(WICKR_CRYPTO_WIN32)/Crypto.sln /p:Configuration=Debug
 
 debug: $(WICKR_CRYPTO_WIN32)/lib/Debug/libwickr_crypto_lib.a
 
 $(WICKR_CRYPTO_WIN32)/lib/Release/libwickr_crypto_lib.a: $(WICKR_CRYPTO_WIN32_REL)
+	@if test -f $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl/NUL; then \
+		cd $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl; rm -f NUL; \
+	fi
 	msbuild $(WICKR_CRYPTO_WIN32)/Crypto.sln /p:Configuration=Release
 
 release: $(WICKR_CRYPTO_WIN32)/lib/Release/libwickr_crypto_lib.a
@@ -40,4 +46,9 @@ test.debug: debug $(WICKR_CRYPTO_WIN32)/bin/Debug/crypto_test.exe
 	    $(WICKR_CRYPTO_WIN32)/bin/Debug/crypto_test.exe
 
 clean:
-	rm -rf $(WICKR_CRYPTO_WIN32)
+	@echo removing $(WICKR_CRYPTO_WIN32)
+	@if test -f $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl/NUL; then \
+		cd $(WICKR_CRYPTO_WIN32)/third-party/src/wickr-openssl; rm -f NUL; \
+	fi
+	@rm -rf $(WICKR_CRYPTO_WIN32)
+	@echo done
