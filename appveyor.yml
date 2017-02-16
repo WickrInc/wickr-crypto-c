@@ -1,0 +1,32 @@
+os: Visual Studio 2015
+
+install:
+  - set PATH=C:\msys64\usr\bin;C:\msys64\mingw64\bin;%PATH%
+  - appveyor DownloadFile "https://raw.githubusercontent.com/swig/cccl/master/cccl"
+  - call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %PLATFORM%
+  - appveyor-retry bash -c "pacman -Syu --noconfirm"
+  - appveyor-retry bash -c "pacman -S --noconfirm autoconf automake libtool gtk-doc mingw-w64-x86_64-pkg-config mingw-w64-x86_64-harfbuzz mingw-w64-x86_64-fribidi mingw-w64-x86_64-freetype"
+  - set CMAKE_URL="https://cmake.org/files/v3.4/cmake-3.4.0-win32-x86.zip"
+  - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip
+  - 7z x cmake.zip -oC:\projects\deps\cmake > nul
+  - set PATH=C:\projects\deps\cmake\bin;%PATH%
+  - cmake --version
+
+  # install NASM
+  - cd \
+  - appveyor DownloadFile "http://www.nasm.us/pub/nasm/releasebuilds/2.12.01/win32/nasm-2.12.01-win32.zip" -FileName "c:\nasm.zip"
+  - 7z x "nasm.zip" > nul
+  - move nasm-* NASM
+  - set PATH=%PATH%;c:\NASM;
+  - nasm -v
+
+build_script:
+  - set PKG_CONFIG_PATH=%PKG_CONFIG_PATH%:/mingw64/lib/pkgconfig
+  - cd C:\projects\wickr-crypto-c
+  - rm -rf build_win32
+  - mkdir build_win32
+  - cd build_win32
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CONFIGURATION_TYPES="Release;Debug;MinSizeRel;RelWithDebInfo" -G "Visual Studio 14 2015" ..
+  - msbuild Crypto.sln /p:Configuration=Release
+  - cd bin/Release
+  - crypto_test.exe
