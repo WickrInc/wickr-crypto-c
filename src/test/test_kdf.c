@@ -181,7 +181,7 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
         }
         END_IT
         
-        sprintf( it_statement, "should make hashes with random hashes %i", i );
+        sprintf( it_statement, "should make hashes with random salts %i", i );
         
         IT(it_statement)
         {
