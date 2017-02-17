@@ -52,6 +52,51 @@ if(WIN32)
         INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/src/wickr-openssl/tmp32/lib.pdb" DESTINATION lib/${CMAKE_BUILD_TYPE})
     endif()
 
+elseif(APPLE AND IOS)
+    if(IOS_ARCH MATCHES "armv7")
+        message("openssl: iOS: arch=armv7")
+        message("openssl: CROSS_TOP = ${CROSS_TOP}")
+        ExternalProject_add(wickr-openssl
+            PREFIX "${PORTS_PREFIX}"
+            URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz"
+            URL_HASH
+            SHA256=${OSSL_HASH}
+            CONFIGURE_COMMAND "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} ./Configure --prefix=${PORTS_PREFIX} iphoneos-cross
+            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make depend && "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
+            INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make install_sw
+
+            BUILD_IN_SOURCE 1
+         )
+    elseif(IOS_ARCH MATCHES "arm64")
+        message("openssl: iOS: arch=arm64")
+        set( ENV{IOS_ARCH} ${IOS_ARCH} )
+        ExternalProject_add(wickr-openssl
+            PREFIX "${PORTS_PREFIX}"
+            URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz"
+            URL_HASH
+            SHA256=${OSSL_HASH}
+            CONFIGURE_COMMAND "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} ./Configure --prefix=${PORTS_PREFIX} iphoneos-cross
+            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make depend && "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
+            INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make install_sw
+            BUILD_IN_SOURCE 1
+         )
+    elseif(IOS_ARCH MATCHES "x86_64")
+        message("openssl: iOS: arch=x86_64")
+        set( ENV{IOS_ARCH} ${IOS_ARCH} )
+        ExternalProject_add(wickr-openssl
+            PREFIX "${PORTS_PREFIX}"
+            URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz"
+            URL_HASH
+            SHA256=${OSSL_HASH}
+            CONFIGURE_COMMAND "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} "${PORTS_SCRIPTS}/openssl-configure-ios.sh ${PORTS_PREFIX}"
+            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make
+            INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all install_sw
+            BUILD_IN_SOURCE 1
+         )
+    else()
+        message("openssl: iOS: arch=undefined")
+    endif()
+    INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" DESTINATION lib)
 elseif(APPLE)
     ExternalProject_add(wickr-openssl
         PREFIX "${PORTS_PREFIX}"
