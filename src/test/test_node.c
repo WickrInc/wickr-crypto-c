@@ -133,9 +133,10 @@ DESCRIBE(node_tests, "node.c")
         
         SHOULD_BE_TRUE(wickr_node_rotate_keypair(node, copy_keypair, true));
         
-        wickr_ephemeral_keypair_destroy(&copy_keypair);
+        SHOULD_NOT_EQUAL(node->ephemeral_keypair, copy_keypair);
         
-        SHOULD_NOT_EQUAL(node->ephemeral_keypair, another_keypair);
+        wickr_ephemeral_keypair_destroy(&copy_keypair);
+
         SHOULD_EQUAL(node->ephemeral_keypair->identifier, 2);
     }
     END_IT
