@@ -22,7 +22,7 @@ install:
 
 build_script:
   - set PKG_CONFIG_PATH=%PKG_CONFIG_PATH%:/mingw64/lib/pkgconfig
-  - cd C:\projects\wickr-crypto-c
+  - cd %APPVEYOR_BUILD_FOLDER%
   - rm -rf build_win32
   - mkdir build_win32
   - cd build_win32
