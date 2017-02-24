@@ -1,7 +1,7 @@
 # wickr-crypto-c
 
 [![Build Status](https://travis-ci.org/WickrInc/wickr-crypto-c.svg?branch=master)](https://travis-ci.org/WickrInc/wickr-crypto-c)
-[![Build status](https://ci.appveyor.com/api/projects/status/jb36tviaypjch87a?svg=true)](https://ci.appveyor.com/project/tomleavy/wickr-crypto-c-vsd9i)
+[![Build status](https://ci.appveyor.com/api/projects/status/jb36tviaypjch87a/branch/master?svg=true)](https://ci.appveyor.com/project/tomleavy/wickr-crypto-c-vsd9i/branch/master)
 
 ## About
 **wickr-crypto-c** is an implementation of the Wickr Secure Messaging Protocol in C, which provides a platform for secure communications on **Wickr Professional**. 
