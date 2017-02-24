@@ -11,7 +11,11 @@ MINSDKVERSION="8.0"
 if [ "${ARCH}" == "i386" ] || [ "${ARCH}" == "x86_64" ] ;
 then
     export IOS_PLATFORM="iPhoneSimulator"
-    export CONFIGURE_FOR="darwin64-x86_64-cc"
+    if [ "${ARCH}" == "x86_64" ]; then
+      export CONFIGURE_FOR="darwin64-x86_64-cc"
+    else
+      export CONFIGURE_FOR="iphoneos-cross"
+    fi
 else
     export IOS_PLATFORM="iPhoneOS"
     export CONFIGURE_FOR="iphoneos-cross"
