@@ -80,7 +80,7 @@ elseif(APPLE AND IOS)
             INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make install_sw
             BUILD_IN_SOURCE 1
          )
-    elseif(IOS_ARCH MATCHES "x86_64")
+    elseif(IOS_ARCH MATCHES "x86_64" OR IOS_ARCH MATCHES "i386")
         message("openssl: iOS: arch=x86_64")
         set( ENV{IOS_ARCH} ${IOS_ARCH} )
         ExternalProject_add(wickr-openssl

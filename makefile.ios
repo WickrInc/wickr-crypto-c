@@ -47,9 +47,17 @@ $(WICKR_CRYPTO_IOS_REL)/x86_64/lib/libwickr_crypto_lib.a: $(WICKR_CRYPTO_IOS_REL
 
 x86_64: $(WICKR_CRYPTO_IOS_REL)/x86_64/lib/libwickr_crypto_lib.a
 
+#
+$(WICKR_CRYPTO_IOS_REL)/i386/Makefile:
+	$(call cmake_create,i386,Release,SIMULATOR)
 
-release: armv7 arm64 x86_64
+$(WICKR_CRYPTO_IOS_REL)/i386/lib/libwickr_crypto_lib.a: $(WICKR_CRYPTO_IOS_REL)/i386/Makefile
+	$(call cmake_build,i386,Release)
 
+i386: $(WICKR_CRYPTO_IOS_REL)/i386/lib/libwickr_crypto_lib.a
+
+
+release: armv7 arm64 x86_64 i386
 
 armv7.install: $(WICKR_CRYPTO_IOS_REL)/armv7/lib/libwickr_crypto_lib.a
 	$(call cmake_install,armv7,Release)
@@ -59,8 +67,11 @@ arm64.install: $(WICKR_CRYPTO_IOS_REL)/arm64/lib/libwickr_crypto_lib.a
 
 x86_64.install: $(WICKR_CRYPTO_IOS_REL)/x86_64/lib/libwickr_crypto_lib.a
 	$(call cmake_install,x86_64,Release)
+	
+i386.install: $(WICKR_CRYPTO_IOS_REL)/i386/lib/libwickr_crypto_lib.a
+	$(call cmake_install,i386,Release)
 
-install: armv7.install arm64.install x86_64.install
+install: armv7.install arm64.install x86_64.install i386.install
 
 
 #################################################################
@@ -98,8 +109,15 @@ $(WICKR_CRYPTO_IOS_DEB)/x86_64/lib/libwickr_crypto_lib.a: $(WICKR_CRYPTO_IOS_DEB
 
 debug.x86_64: $(WICKR_CRYPTO_IOS_DEB)/x86_64/lib/libwickr_crypto_lib.a
 
+$(WICKR_CRYPTO_IOS_DEB)/i386/Makefile:
+	$(call cmake_create,i386,Debug,SIMULATOR)
 
-debug: debug.armv7 debug.arm64 debug.x86_64
+$(WICKR_CRYPTO_IOS_DEB)/i386/lib/libwickr_crypto_lib.a: $(WICKR_CRYPTO_IOS_DEB)/i386/Makefile
+	$(call cmake_build,i386,Debug)
+
+debug.i386: $(WICKR_CRYPTO_IOS_DEB)/i386/lib/libwickr_crypto_lib.a
+
+debug: debug.armv7 debug.arm64 debug.x86_64 debug.i386
 
 
 debug.armv7.install: $(WICKR_CRYPTO_IOS_DEB)/armv7/lib/libwickr_crypto_lib.a
@@ -110,8 +128,11 @@ debug.arm64.install: $(WICKR_CRYPTO_IOS_DEB)/arm64/lib/libwickr_crypto_lib.a
 
 debug.x86_64.install: $(WICKR_CRYPTO_IOS_DEB)/x86_64/lib/libwickr_crypto_lib.a
 	$(call cmake_install,x86_64,Debug)
+	
+debug.i386.install: $(WICKR_CRYPTO_IOS_DEB)/x86_64/lib/libwickr_crypto_lib.a
+	$(call cmake_install,i386,Debug)
 
-debug.install: debug.armv7.install debug.arm64.install debug.x86_64.install
+debug.install: debug.armv7.install debug.arm64.install debug.x86_64.install debug.i386.install
 
 
 #################################################################
