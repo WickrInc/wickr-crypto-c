@@ -10,6 +10,11 @@
 #include <string.h>
 #include <limits.h>
 
+#if OPENSSL_VERSION_NUMBER >= 0x010100000
+#include <openssl/ossl_typ.h>
+#include <openssl/kdf.h>
+#endif
+
 static const EVP_MD *__openssl_get_digest_mode(wickr_digest_t mode)
 {
     switch (mode.digest_id) {
@@ -221,7 +226,7 @@ static EVP_MD_CTX * __openssl_digest_sign_ctx_create(wickr_digest_t digest_mode,
     }
     
     /* Initialize the digest context into a signing context */
-    if (1 != EVP_DigestSignInit(ctx, NULL, ctx->digest, NULL, evp_signing_key)) {
+    if (1 != EVP_DigestSignInit(ctx, NULL, EVP_MD_CTX_md(ctx), NULL, evp_signing_key)) {
         EVP_PKEY_free(evp_signing_key);
         EVP_MD_CTX_destroy(ctx);
         return NULL;
@@ -243,7 +248,7 @@ static EVP_MD_CTX * __openssl_digest_verify_ctx_create(wickr_digest_t digest_mod
     }
     
     /* Initialize a digest context with the digest the signature was created with */
-    if (1 != EVP_DigestInit_ex(ctx, ctx->digest, NULL)) {
+    if (1 != EVP_DigestInit_ex(ctx, EVP_MD_CTX_md(ctx), NULL)) {
         return NULL;
     }
     
@@ -256,7 +261,7 @@ static EVP_MD_CTX * __openssl_digest_verify_ctx_create(wickr_digest_t digest_mod
     }
     
     /* Initialize the digest context to a verify context */
-    if (1 != EVP_DigestVerifyInit(ctx, NULL, ctx->digest, NULL, evp_signing_key)) {
+    if (1 != EVP_DigestVerifyInit(ctx, NULL, EVP_MD_CTX_md(ctx), NULL, evp_signing_key)) {
         EVP_MD_CTX_destroy(ctx);
         EVP_PKEY_free(evp_signing_key);
         return NULL;
@@ -568,30 +573,40 @@ wickr_buffer_t *openssl_sha2(const wickr_buffer_t *buffer, const wickr_buffer_t 
         return NULL;
     }
     
-    EVP_MD_CTX c;
+    EVP_MD_CTX *c = EVP_MD_CTX_create();
     
-    if (!__openssl_sha2_initialize_ctx(mode, &c)) {
+    if (!c) {
+        return NULL;
+    }
+    
+    if (!__openssl_sha2_initialize_ctx(mode, c)) {
+        EVP_MD_CTX_destroy(c);
         return NULL;
     }
     
     /* Perform the digest */
-    if (1 != EVP_DigestUpdate(&c, buffer->bytes, buffer->length)) {
+    if (1 != EVP_DigestUpdate(c, buffer->bytes, buffer->length)) {
+        EVP_MD_CTX_destroy(c);
         return NULL;
     }
     
     /* If a salt has been requested, it is added into the digest */
     if (salt) {
-        if (1 != EVP_DigestUpdate(&c, salt->bytes, salt->length)) {
+        if (1 != EVP_DigestUpdate(c, salt->bytes, salt->length)) {
+            EVP_MD_CTX_destroy(c);
             return NULL;
         }
     }
     
     wickr_buffer_t *hash_result = wickr_buffer_create_empty_zero(mode.size);
     
-    if (1 != EVP_DigestFinal(&c, hash_result->bytes, NULL)) {
+    if (1 != EVP_DigestFinal(c, hash_result->bytes, NULL)) {
         wickr_buffer_destroy(&hash_result);
+        EVP_MD_CTX_destroy(c);
         return NULL;
     }
+    
+    EVP_MD_CTX_destroy(c);
     
     return hash_result;
 }
@@ -602,9 +617,14 @@ wickr_buffer_t *openssl_sha2_file(FILE *in_file, wickr_digest_t mode)
         return NULL;
     }
     
-    EVP_MD_CTX c;
+    EVP_MD_CTX *c = EVP_MD_CTX_create();
     
-    if (!__openssl_sha2_initialize_ctx(mode, &c)) {
+    if (!c) {
+        return NULL;
+    }
+    
+    if (!__openssl_sha2_initialize_ctx(mode, c)) {
+        EVP_MD_CTX_destroy(c);
         return NULL;
     }
     
@@ -613,6 +633,7 @@ wickr_buffer_t *openssl_sha2_file(FILE *in_file, wickr_digest_t mode)
     wickr_buffer_t *hash_result = wickr_buffer_create_empty_zero(mode.size);
     
     if (!hash_result) {
+        EVP_MD_CTX_destroy(c);
         return NULL;
     }
     
@@ -621,22 +642,27 @@ wickr_buffer_t *openssl_sha2_file(FILE *in_file, wickr_digest_t mode)
         
         if (ferror(in_file)) {
             wickr_buffer_destroy(&hash_result);
+            EVP_MD_CTX_destroy(c);
             return NULL;
         }
         
-        if (1 != EVP_DigestUpdate(&c, plainBuffer, bytesRead)) {
+        if (1 != EVP_DigestUpdate(c, plainBuffer, bytesRead)) {
             wickr_buffer_destroy(&hash_result);
+            EVP_MD_CTX_destroy(c);
             return NULL;
         }
         
         if (bytesRead < sizeof(plainBuffer)) {
-            if (1 != EVP_DigestFinal(&c, hash_result->bytes, NULL)) {
+            if (1 != EVP_DigestFinal(c, hash_result->bytes, NULL)) {
                 wickr_buffer_destroy(&hash_result);
+                EVP_MD_CTX_destroy(c);
                 return NULL;
             }
             break;
         }
     }
+    
+    EVP_MD_CTX_destroy(c);
     
     return hash_result;
 }
@@ -695,7 +721,26 @@ wickr_ec_key_t *openssl_ec_rand_key(wickr_ec_curve_t curve)
 
 static const wickr_ec_curve_t *__openssl_get_pkey_ec_curve(EVP_PKEY *key)
 {
-    const EC_GROUP *group = EC_KEY_get0_group(key->pkey.ec);
+    if (!key) {
+        return NULL;
+    }
+    
+#if OPENSSL_VERSION_NUMBER >= 0x010100000
+    EC_KEY *ec_key = EVP_PKEY_get0_EC_KEY(key);
+#else
+    EC_KEY *ec_key = key->pkey.ec;
+#endif
+    
+    if (!ec_key) {
+        return NULL;
+    }
+    
+    const EC_GROUP *group = EC_KEY_get0_group(ec_key);
+    
+    if (!group) {
+        return NULL;
+    }
+    
     int nid = EC_GROUP_get_curve_name(group);
     
     switch (nid) {
@@ -708,6 +753,10 @@ static const wickr_ec_curve_t *__openssl_get_pkey_ec_curve(EVP_PKEY *key)
 
 wickr_ec_key_t *openssl_ec_key_import(const wickr_buffer_t *buffer, bool is_private)
 {
+    if (!buffer) {
+        return NULL;
+    }
+    
     EVP_PKEY *key = NULL;
     
     if (is_private) {
@@ -717,8 +766,38 @@ wickr_ec_key_t *openssl_ec_key_import(const wickr_buffer_t *buffer, bool is_priv
         key = __openssl_evp_public_key_from_buffer(buffer);
     }
     
+    if (!key) {
+        return NULL;
+    }
+    
+#if OPENSSL_VERSION_NUMBER >= 0x010100000
+    EC_KEY *ec_key = EVP_PKEY_get0_EC_KEY(key);
+#else
+    EC_KEY *ec_key = key->pkey.ec;
+#endif
+    
+    if (!ec_key) {
+        EVP_PKEY_free(key);
+        return NULL;
+    }
+    
+    const EC_GROUP *ec_key_group = EC_KEY_get0_group(ec_key);
+    
+    if (!ec_key_group) {
+        EVP_PKEY_free(key);
+        return NULL;
+    }
+    
+    const EC_POINT *pub_key = EC_KEY_get0_public_key(ec_key);
+    
+    if (!pub_key) {
+        EVP_PKEY_free(key);
+        return NULL;
+    }
+    
     /* Check if the key is the point at infinity, OpenSSL does a poor job of detecting this in certain cases */
-    if (!key || EC_POINT_is_at_infinity(EC_KEY_get0_group(key->pkey.ec), EC_KEY_get0_public_key(key->pkey.ec))) {
+    if (EC_POINT_is_at_infinity(ec_key_group, pub_key)) {
+        EVP_PKEY_free(key);
         return NULL;
     }
     
@@ -729,7 +808,7 @@ wickr_ec_key_t *openssl_ec_key_import(const wickr_buffer_t *buffer, bool is_priv
         return NULL;
     }
     
-    wickr_buffer_t *public_key = __openssl_ec_pub_key_to_buffer(*curve, key->pkey.ec);
+    wickr_buffer_t *public_key = __openssl_ec_pub_key_to_buffer(*curve, ec_key);
     
     if (!public_key) {
         EVP_PKEY_free(key);
@@ -739,7 +818,7 @@ wickr_ec_key_t *openssl_ec_key_import(const wickr_buffer_t *buffer, bool is_priv
     wickr_buffer_t *private_key = NULL;
     
     if (is_private) {
-        private_key = __openssl_ec_pri_key_to_buffer(key->pkey.ec);
+        private_key = __openssl_ec_pri_key_to_buffer(ec_key);
         
         if (!private_key) {
             EVP_PKEY_free(key);
@@ -1278,6 +1357,8 @@ wickr_ec_key_t *openssl_ec_key_import_test_key(wickr_ec_curve_t curve, const cha
     return converted_key;
 }
 
+#if OPENSSL_VERSION_NUMBER < 0x010100000
+
 /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
 
 static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
@@ -1405,9 +1486,16 @@ err:
     return NULL;
 }
 
+#endif
+
 wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode)
 {
     if (!input_key_material) {
+        return NULL;
+    }
+    
+    /* Don't let info exceed 1024 bytes. https://www.openssl.org/docs/man1.1.0/crypto/EVP_PKEY_CTX_set_hkdf_md.html */
+    if (info && info->length > 1024) {
         return NULL;
     }
     
@@ -1416,13 +1504,15 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
     if (!openssl_digest) {
         return NULL;
     }
-    
+
+#if OPENSSL_VERSION_NUMBER < 0x010100000
     wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
     
     if (!out_buffer) {
         return NULL;
     }
     
+
     if (!HKDF(openssl_digest,
               salt ? salt->bytes : NULL, salt ? salt->length : 0,
               input_key_material->bytes, input_key_material->length,
@@ -1432,6 +1522,58 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
         wickr_buffer_destroy(&out_buffer);
         return NULL;
     }
+#else
+    
+    EVP_PKEY_CTX *pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, NULL);
+    
+    if (!pctx) {
+        return NULL;
+    }
+    
+    if (1 != EVP_PKEY_derive_init(pctx)) {
+        EVP_PKEY_CTX_free(pctx);
+        return NULL;
+    }
+    
+    if (1 != EVP_PKEY_CTX_set_hkdf_md(pctx, openssl_digest)) {
+        EVP_PKEY_CTX_free(pctx);
+        return NULL;
+    }
+    
+    if (1 != EVP_PKEY_CTX_set1_hkdf_key(pctx, input_key_material->bytes, input_key_material->length)) {
+        EVP_PKEY_CTX_free(pctx);
+        return NULL;
+    }
+    
+    if (salt) {
+        if (1 != EVP_PKEY_CTX_set1_hkdf_salt(pctx, salt->bytes, salt->length)) {
+            EVP_PKEY_CTX_free(pctx);
+            return NULL;
+        }
+    }
+    
+    if (info) {
+        if (1 != EVP_PKEY_CTX_add1_hkdf_info(pctx, info->bytes, info->length)) {
+            EVP_PKEY_CTX_free(pctx);
+            return NULL;
+        }
+    }
+    
+    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
+    
+    if (!out_buffer) {
+        EVP_PKEY_CTX_free(pctx);
+        return NULL;
+    }
+    
+    int res = EVP_PKEY_derive(pctx, out_buffer->bytes, &out_buffer->length);
+    EVP_PKEY_CTX_free(pctx);
+    
+    if (1 != res) {
+        wickr_buffer_destroy(&out_buffer);
+    }
+    
+#endif
     
     return out_buffer;
 }
