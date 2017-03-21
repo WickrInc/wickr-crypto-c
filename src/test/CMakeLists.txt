@@ -43,9 +43,7 @@ if (NOT APPLE AND UNIX)
     message("OpenSSL include dir: ${OPENSSL_INCLUDE_DIR}")
     message("OpenSSL libraries: ${OPENSSL_LIBRARIES}")
 
-    target_link_libraries(crypto_test libcrypto.a)
-
-    find_library(OPENSSL_CRYPTO libcrypto.a REQUIRED)
+    find_library(OPENSSL_CRYPTO NAMES libcrypto.a libcrypto.so REQUIRED)
     message("OpenSSL crypt library: ${OPENSSL_CRYPTO}")
     target_link_libraries(crypto_test ${OPENSSL_CRYPTO})
 

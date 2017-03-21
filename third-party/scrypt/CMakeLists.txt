@@ -5,6 +5,8 @@ use_c99()
 file(GLOB_RECURSE ScryptSources *.c)
 file(GLOB_RECURSE ScryptHeaders *.h)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+
 add_library(scrypt STATIC ${ScryptSources} ${ScryptHeaders})
 
 foreach(FILE ${ScryptSources} ${ScryptHeaders} )
