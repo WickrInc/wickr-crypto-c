@@ -27,7 +27,6 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo apt-get install openssl -y; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install cmake -y; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; brew install cmake; brew install pkgconfig; fi
 
 script:
  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make -f makefile.linux release; fi
