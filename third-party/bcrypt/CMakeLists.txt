@@ -8,7 +8,7 @@ file(GLOB_RECURSE BcryptHeaders *.h)
 if (WIN32)
 set(CMAKE_C_FLAGS "-Wall -Oy -O2")
 else()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -W -Wall -Wbad-function-cast -Wcast-align -Wcast-qual -Wmissing-prototypes -Wstrict-prototypes -Wshadow -Wundef -Wpointer-arith -fomit-frame-pointer -funroll-loops")
+set(CMAKE_C_FLAGS "-fPIC -W -Wall -Wbad-function-cast -Wcast-align -Wcast-qual -Wmissing-prototypes -Wstrict-prototypes -Wshadow -Wundef -Wpointer-arith -fomit-frame-pointer -funroll-loops")
 endif()
 
 add_library(bcrypt STATIC ${BcryptSources} ${BcryptHeaders})
