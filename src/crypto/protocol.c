@@ -768,7 +768,7 @@ wickr_packet_t *wickr_packet_create(uint8_t version, wickr_buffer_t *content, wi
     return new_packet;
 }
 
-wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t *engine, const wickr_cipher_result_t *enc_header, const wickr_cipher_result_t *enc_payload, const wickr_ec_key_t *signing_key)
+wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t *engine, const wickr_cipher_result_t *enc_header, const wickr_cipher_result_t *enc_payload, const wickr_ec_key_t *signing_key, uint8_t version)
 {
     if (!engine || !enc_payload || !signing_key) {
         return NULL;
@@ -811,7 +811,7 @@ wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t 
         return NULL;
     }
     
-    wickr_packet_t *new_packet = wickr_packet_create(CURRENT_PACKET_VERSION, result_buffer, signature);
+    wickr_packet_t *new_packet = wickr_packet_create(version, result_buffer, signature);
     
     if (!new_packet) {
         wickr_buffer_destroy(&result_buffer);
@@ -902,7 +902,7 @@ wickr_buffer_t *wickr_packet_serialize(const wickr_packet_t *packet)
         return NULL;
     }
     
-    uint8_t version = CURRENT_PACKET_VERSION;
+    uint8_t version = packet->version;
     uint8_t meta_data = (uint8_t)packet->signature->curve.identifier;
     
     wickr_buffer_t *sig_data = wickr_ecdsa_result_serialize(packet->signature);
@@ -1103,7 +1103,8 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
                                                     wickr_ec_key_t *exchange_key,
                                                     const wickr_payload_t *payload,
                                                     const wickr_node_array_t *recipients,
-                                                    const wickr_identity_chain_t *sender_signing_identity)
+                                                    const wickr_identity_chain_t *sender_signing_identity,
+                                                    uint8_t version)
 {
     if (!engine || !payload_key || !header_key || !payload || !recipients || !sender_signing_identity) {
         return NULL;
@@ -1125,7 +1126,7 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         
         wickr_node_t *one_node = wickr_node_array_fetch_item(recipients, i);
         
-        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_from_components(engine, sender_signing_identity, one_node, exchange_key, payload_key, CURRENT_PACKET_VERSION);
+        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_from_components(engine, sender_signing_identity, one_node, exchange_key, payload_key, version);
         
         if (!one_exchange) {
             wickr_exchange_array_destroy(&exchange_array);
@@ -1158,7 +1159,7 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         return NULL;
     }
     
-    wickr_packet_t *packet = wickr_packet_create_with_components(engine, enc_header, enc_payload, sender_signing_identity->node->sig_key);
+    wickr_packet_t *packet = wickr_packet_create_with_components(engine, enc_header, enc_payload, sender_signing_identity->node->sig_key, version);
     wickr_cipher_result_destroy(&enc_header);
     wickr_cipher_result_destroy(&enc_payload);
     

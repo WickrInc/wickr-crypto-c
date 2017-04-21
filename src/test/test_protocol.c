@@ -117,20 +117,22 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     
     IT("should work with valid older version exchanges")
     {
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_key_exchange_t *exchange =  wickr_key_exchange_create_from_components(&engine, sender_identity, receiver, exchange_key, pktKey, i);
+            
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, exchange, i);
+            
+            SHOULD_BE_TRUE(wickr_buffer_is_equal(cipher_key->key_data, pktKey->key_data, NULL));
+            SHOULD_EQUAL(cipher_key->cipher.cipher_id, pktKey->cipher.cipher_id);
+            SHOULD_EQUAL(cipher_key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
+            SHOULD_EQUAL(cipher_key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
+            SHOULD_EQUAL(cipher_key->cipher.key_len, pktKey->cipher.key_len);
+            SHOULD_EQUAL(cipher_key->cipher.iv_len, pktKey->cipher.iv_len);
+            wickr_cipher_key_destroy(&cipher_key);
+            
+            wickr_key_exchange_destroy(&exchange);
+        }
         
-        wickr_key_exchange_t *exchange =  wickr_key_exchange_create_from_components(&engine, sender_identity, receiver, exchange_key, pktKey, 2);
-        
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, exchange, 2);
-        
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(cipher_key->key_data, pktKey->key_data, NULL));
-        SHOULD_EQUAL(cipher_key->cipher.cipher_id, pktKey->cipher.cipher_id);
-        SHOULD_EQUAL(cipher_key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
-        SHOULD_EQUAL(cipher_key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
-        SHOULD_EQUAL(cipher_key->cipher.key_len, pktKey->cipher.key_len);
-        SHOULD_EQUAL(cipher_key->cipher.iv_len, pktKey->cipher.iv_len);
-        wickr_cipher_key_destroy(&cipher_key);
-        
-        wickr_key_exchange_destroy(&exchange);
     }
     END_IT
     
@@ -223,6 +225,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
         wickr_identity_chain_destroy(&sender_copy);
         
         SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        wickr_cipher_key_destroy(&cipher_key);
     }
     END_IT
     
@@ -452,7 +455,8 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
                                             exchangeKey,
                                             payload,
                                             recipients,
-                                            user2Node->id_chain);
+                                            user2Node->id_chain,
+                                            CURRENT_PACKET_VERSION);
         
         
         
@@ -477,7 +481,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         wickr_node_t *first_recipient = wickr_node_array_fetch_item(recipients, 0);
         first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
         
-        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients, user2Node->id_chain);
+        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients, user2Node->id_chain, CURRENT_PACKET_VERSION);
         SHOULD_BE_NULL(bad_packet);
     }
     END_IT
@@ -494,13 +498,13 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         first_recipient->ephemeral_keypair->signature = wickr_identity_sign(first_recipient->id_chain->node, &engine, random_data);
         wickr_buffer_destroy(&random_data);
 
-        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain);
+        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain, CURRENT_PACKET_VERSION);
         SHOULD_BE_NULL(bad_packet);
         
         /* Force a valid identity chain state, make sure it still fails */
         first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_VALID;
         
-        bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain);
+        bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain, CURRENT_PACKET_VERSION);
         SHOULD_BE_NULL(bad_packet);
         
         wickr_array_destroy(&recipients_copy, true);
@@ -519,7 +523,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         first_recipient->id_chain->node->signature = wickr_identity_sign(first_recipient->id_chain->node, &engine, random_data);
         wickr_buffer_destroy(&random_data);
         
-        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain);
+        wickr_packet_t *bad_packet = wickr_packet_create_from_components(&engine, headerKey, payloadKey, exchangeKey, payload, recipients_copy, user2Node->id_chain, CURRENT_PACKET_VERSION);
         SHOULD_BE_NULL(bad_packet);
         
         wickr_array_destroy(&recipients_copy, true);

@@ -72,6 +72,7 @@ struct wickr_ctx {
     wickr_identity_chain_t *id_chain;
     wickr_storage_keys_t *storage_keys;
     wickr_cipher_key_t *packet_header_key;
+    uint8_t pkt_enc_version;
 };
 
 typedef struct wickr_ctx wickr_ctx_t;

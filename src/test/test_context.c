@@ -288,6 +288,47 @@ DESCRIBE(wickr_ctx_functions, "wickr_ctx: general functions")
 }
 END_DESCRIBE
 
+void __test_packet_decode(wickr_ctx_t *ctxUser1,
+                          wickr_ctx_t *ctxUser2,
+                          wickr_node_t *nodeUser2,
+                          wickr_ctx_encode_t *encodePkt,
+                          wickr_buffer_t *bodyData,
+                          wickr_buffer_t *channelTag,
+                          uint64_t contentType,
+                          wickr_ephemeral_info_t ephemeralData)
+{
+    wickr_ctx_packet_t *inPacket = NULL;
+    SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet(ctxUser2, encodePkt->encoded_packet, ctxUser1->id_chain))
+    
+    if (inPacket != NULL) {
+        
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange);
+        SHOULD_EQUAL(inPacket->parse_result->err, E_SUCCESS);
+        SHOULD_NOT_BE_NULL(inPacket->packet);
+        SHOULD_NOT_BE_NULL(inPacket->packet->content);
+        SHOULD_NOT_BE_NULL(inPacket->packet->signature);
+        SHOULD_EQUAL(inPacket->packet->version, ctxUser1->pkt_enc_version);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
+        SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
+        
+        wickr_decode_result_t *decodeResult;
+        SHOULD_NOT_BE_NULL(decodeResult = wickr_ctx_decode_packet(ctxUser2, inPacket, nodeUser2->ephemeral_keypair->ec_key))
+        
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(decodeResult->decrypted_payload->body, inPacket->packet->content, NULL))
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(bodyData, inPacket->packet->content, NULL));
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bodyData, decodeResult->decrypted_payload->body, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(channelTag, decodeResult->decrypted_payload->meta->channel_tag, NULL));
+        SHOULD_EQUAL(ephemeralData.bor, decodeResult->decrypted_payload->meta->ephemerality_settings.bor);
+        SHOULD_EQUAL(ephemeralData.ttl, decodeResult->decrypted_payload->meta->ephemerality_settings.ttl);
+        SHOULD_EQUAL(contentType, decodeResult->decrypted_payload->meta->content_type);
+        
+        wickr_decode_result_destroy(&decodeResult);
+        wickr_ctx_packet_destroy(&inPacket);
+    }
+}
+
 DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
 {
     initTest();
@@ -343,6 +384,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
         
         wickr_ctx_encode_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients);
         SHOULD_BE_NULL(bad_packet);
+        first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
     }
     END_IT
     
@@ -390,8 +432,6 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     }
     END_IT
     
-    wickr_node_array_destroy(&recipients);
-    
     IT("should parse packets for non decoding purposes")
     {
         wickr_ctx_packet_t *inPacket = NULL;
@@ -404,7 +444,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
             SHOULD_NOT_BE_NULL(inPacket->packet);
             SHOULD_NOT_BE_NULL(inPacket->packet->content);
             SHOULD_NOT_BE_NULL(inPacket->packet->signature);
-            SHOULD_EQUAL(inPacket->packet->version, 3);
+            SHOULD_EQUAL(inPacket->packet->version, CURRENT_PACKET_VERSION);
             SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
             SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
             SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
@@ -423,48 +463,25 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
 
     IT("should parse packets for decoding")
     {
-        wickr_ctx_packet_t *inPacket = NULL;
-
-        if (encodePkt != NULL) {
-            
-            SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet(ctxUser2, encodePkt->encoded_packet, ctxUser1->id_chain))
-            
-            if (inPacket != NULL) {
-                
-                SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange);
-                SHOULD_EQUAL(inPacket->parse_result->err, E_SUCCESS);
-                SHOULD_NOT_BE_NULL(inPacket->packet);
-                SHOULD_NOT_BE_NULL(inPacket->packet->content);
-                SHOULD_NOT_BE_NULL(inPacket->packet->signature);
-                SHOULD_EQUAL(inPacket->packet->version, 3);
-                SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
-                SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
-                SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
-                
-                wickr_decode_result_t *decodeResult;
-                SHOULD_NOT_BE_NULL(decodeResult = wickr_ctx_decode_packet(ctxUser2, inPacket, nodeUser2->ephemeral_keypair->ec_key))
-                
-                SHOULD_BE_FALSE(wickr_buffer_is_equal(decodeResult->decrypted_payload->body, inPacket->packet->content, NULL))
-                SHOULD_BE_FALSE(wickr_buffer_is_equal(bodyData, inPacket->packet->content, NULL));
-                
-                SHOULD_BE_TRUE(wickr_buffer_is_equal(bodyData, decodeResult->decrypted_payload->body, NULL));
-                SHOULD_BE_TRUE(wickr_buffer_is_equal(channelTag, decodeResult->decrypted_payload->meta->channel_tag, NULL));
-                SHOULD_EQUAL(ephemeralData.bor, decodeResult->decrypted_payload->meta->ephemerality_settings.bor);
-                SHOULD_EQUAL(ephemeralData.ttl, decodeResult->decrypted_payload->meta->ephemerality_settings.ttl);
-                SHOULD_EQUAL(contentType, decodeResult->decrypted_payload->meta->content_type);
-                
-                wickr_decode_result_destroy(&decodeResult);
-            }
-        }
-        
-        wickr_ctx_packet_destroy(&inPacket);
+        __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
+        wickr_ctx_encode_destroy(&encodePkt);
     }
     END_IT
     
+    IT("should support encoding and decoding older verisons of packets for stagged rollout scenarios")
+    {
+        ctxUser1->pkt_enc_version = 2;
+        SHOULD_NOT_BE_NULL(encodePkt = wickr_ctx_encode_packet(ctxUser1, payload, recipients))
+        __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
+        wickr_ctx_encode_destroy(&encodePkt);
+
+    }
+    END_IT
+    
+    wickr_node_array_destroy(&recipients);
     wickr_node_destroy(&nodeUser1);
     wickr_node_destroy(&nodeUser2);
     wickr_payload_destroy(&payload);
-    wickr_ctx_encode_destroy(&encodePkt);
     wickr_ctx_destroy(&ctxUser1);
     wickr_ctx_destroy(&ctxUser2);
 
