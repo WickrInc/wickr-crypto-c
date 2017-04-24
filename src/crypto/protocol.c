@@ -81,14 +81,22 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     wickr_cipher_t packet_key_wrap_cipher = wickr_exchange_cipher_matching_cipher(packet_key->cipher);
     
-    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(wickr_digest_matching_cipher(packet_key_wrap_cipher));
+    wickr_kdf_algo_t algo;
     
-    if (!algo) {
-        return NULL;
+    switch (version) {
+        case 2:
+        case 3:
+            algo = KDF_HKDF_SHA256;
+            break;
+        case 4:
+            algo = wickr_key_exchange_kdf_matching_cipher(packet_key->cipher);
+            break;
+        default:
+            return NULL;
     }
     
     wickr_kdf_meta_t kdf_params;
-    kdf_params.algo = *algo;
+    kdf_params.algo = algo;
     kdf_params.salt = NULL;
     kdf_params.info = NULL;
     
@@ -107,6 +115,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
             exchange_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
+        case 4:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
             exchange_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
@@ -191,16 +200,22 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
-    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(wickr_digest_matching_cipher(wrapped_packet_key->cipher));
+    wickr_kdf_algo_t algo;
     
-    if (!algo) {
-        wickr_cipher_result_destroy(&wrapped_packet_key);
-        return NULL;
+    switch (version) {
+        case 2:
+        case 3:
+            algo = KDF_HKDF_SHA256;
+            break;
+        case 4:
+            algo = wickr_key_exchange_kdf_matching_cipher(wrapped_packet_key->cipher);
+            break;
+        default:
+            return NULL;
     }
-
     
     wickr_kdf_meta_t kdf_params;
-    kdf_params.algo = *algo;
+    kdf_params.algo = algo;
     kdf_params.info = NULL;
     kdf_params.salt = NULL;
     
@@ -219,6 +234,7 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
             ecdh_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
+        case 4:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
             ecdh_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
@@ -862,6 +878,7 @@ wickr_packet_t *wickr_packet_create_from_buffer(const wickr_buffer_t *buffer)
             sig_type = (buffer->bytes[1] & 0xF);
             break;
         case 3:
+        case 4:
             sig_type = (buffer->bytes[1]);
             break;
         default:

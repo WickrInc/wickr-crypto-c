@@ -42,9 +42,9 @@ extern "C" {
 
 /**
  @ingroup wickr_protocol
- The most recent version of the protocol is version 3
+ The most recent version of the protocol is version 4
  */
-#define CURRENT_PACKET_VERSION 3
+#define CURRENT_PACKET_VERSION 4
 
 typedef enum {
     E_SUCCESS,

@@ -391,7 +391,7 @@ wickr_ctx_t *wickr_ctx_create(const wickr_crypto_engine_t engine, wickr_dev_info
     new_ctx->storage_keys = storage_keys;
     new_ctx->packet_header_key = packet_header_key;
     new_ctx->engine = engine;
-    new_ctx->pkt_enc_version = CURRENT_PACKET_VERSION;
+    new_ctx->pkt_enc_version = DEFAULT_PKT_ENC_VERSION;
     
     if (!new_ctx->packet_header_key) {
         wickr_ctx_destroy(&new_ctx);

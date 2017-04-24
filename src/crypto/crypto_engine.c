@@ -178,6 +178,22 @@ wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve)
     }
 }
 
+wickr_kdf_algo_t wickr_key_exchange_kdf_matching_cipher(wickr_cipher_t cipher)
+{
+    wickr_kdf_algo_t algo;
+    
+    switch (cipher.cipher_id) {
+        case CIPHER_ID_AES256_GCM:
+        case CIPHER_ID_AES256_CTR:
+            algo = KDF_HKDF_SHA512;
+            break;
+    }
+    
+    algo.output_size = cipher.key_len;
+    
+    return algo;
+}
+
 /* Use unauthenticated cipher for msg key unwrapping since the output is an authenticated cipher key. 
    This eliminates unnecessary tag bytes for each recipient */
 

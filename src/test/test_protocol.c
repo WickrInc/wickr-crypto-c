@@ -231,8 +231,10 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     
     IT("should fail if the version is not compatible with the input")
     {
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, keyExchange, 2);
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        for (uint8_t i = OLDEST_PACKET_VERSION; i < CURRENT_PACKET_VERSION; i++) {
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, keyExchange, i);
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        }
     }
     END_IT
     
@@ -544,7 +546,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         wickr_packet_t *pkt_restored = wickr_packet_create_from_buffer(pkt_buffer);
         SHOULD_NOT_BE_NULL(pkt_restored);
         SHOULD_EQUAL(pkt_restored->version, pkt->version);
-        SHOULD_EQUAL(pkt_restored->version, 3);
+        SHOULD_EQUAL(pkt_restored->version, CURRENT_PACKET_VERSION);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(pkt_restored->content, pkt->content, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(pkt_restored->signature->sig_data, pkt->signature->sig_data, NULL));
         SHOULD_EQUAL(pkt_restored->signature->curve.identifier, pkt->signature->curve.identifier);

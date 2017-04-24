@@ -444,7 +444,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
             SHOULD_NOT_BE_NULL(inPacket->packet);
             SHOULD_NOT_BE_NULL(inPacket->packet->content);
             SHOULD_NOT_BE_NULL(inPacket->packet->signature);
-            SHOULD_EQUAL(inPacket->packet->version, CURRENT_PACKET_VERSION);
+            SHOULD_EQUAL(inPacket->packet->version, DEFAULT_PKT_ENC_VERSION);
             SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
             SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
             SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
@@ -470,11 +470,12 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     
     IT("should support encoding and decoding older verisons of packets for stagged rollout scenarios")
     {
-        ctxUser1->pkt_enc_version = 2;
-        SHOULD_NOT_BE_NULL(encodePkt = wickr_ctx_encode_packet(ctxUser1, payload, recipients))
-        __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
-        wickr_ctx_encode_destroy(&encodePkt);
-
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            ctxUser1->pkt_enc_version = i;
+            SHOULD_NOT_BE_NULL(encodePkt = wickr_ctx_encode_packet(ctxUser1, payload, recipients))
+            __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
+            wickr_ctx_encode_destroy(&encodePkt);
+        }
     }
     END_IT
     
