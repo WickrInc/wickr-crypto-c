@@ -56,10 +56,14 @@ struct wickr_digest {
 };
 
 typedef struct wickr_digest wickr_digest_t;
-
-static const wickr_digest_t DIGEST_SHA_256 = { DIGEST_SHA2, DIGEST_ID_SHA256, 32 };
-static const wickr_digest_t DIGEST_SHA_384 = { DIGEST_SHA2, DIGEST_ID_SHA384, 48 };
-static const wickr_digest_t DIGEST_SHA_512 = { DIGEST_SHA2, DIGEST_ID_SHA512, 64 };
+    
+#define SHA256_DIGEST_SIZE 32
+#define SHA384_DIGEST_SIZE 48
+#define SHA512_DIGEST_SIZE 64
+    
+static const wickr_digest_t DIGEST_SHA_256 = { DIGEST_SHA2, DIGEST_ID_SHA256, SHA256_DIGEST_SIZE };
+static const wickr_digest_t DIGEST_SHA_384 = { DIGEST_SHA2, DIGEST_ID_SHA384, SHA384_DIGEST_SIZE };
+static const wickr_digest_t DIGEST_SHA_512 = { DIGEST_SHA2, DIGEST_ID_SHA512, SHA512_DIGEST_SIZE };
 
 /**
  

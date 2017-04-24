@@ -962,14 +962,21 @@ wickr_buffer_t *openssl_ecdh_gen_key(const wickr_ecdh_params_t *params)
     }
     
     /* Run the ECDH shared secret through HKDF with the provided salt and info from the ECDH params */
-    wickr_buffer_t *kdf_result = openssl_hkdf(shared_secret_buffer, params->kdf_salt, params->kdf_info, params->kdf_digest_mode);
-    
+    wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(params->kdf_info, shared_secret_buffer);
+
     EVP_PKEY_free(local_key);
     EVP_PKEY_free(peer_key);
     EVP_PKEY_CTX_free(ctx);
     wickr_buffer_destroy_zero(&shared_secret_buffer);
     
-    return kdf_result;
+    if (!kdf_result) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *final_buffer = wickr_buffer_copy(kdf_result->hash);
+    wickr_kdf_result_destroy(&kdf_result);
+    
+    return final_buffer;
 }
 
 wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)

@@ -81,11 +81,21 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     wickr_cipher_t packet_key_wrap_cipher = wickr_exchange_cipher_matching_cipher(packet_key->cipher);
     
+    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(wickr_digest_matching_cipher(packet_key_wrap_cipher));
+    
+    if (!algo) {
+        return NULL;
+    }
+    
+    wickr_kdf_meta_t kdf_params;
+    kdf_params.algo = *algo;
+    kdf_params.salt = NULL;
+    kdf_params.info = NULL;
+    
     wickr_ecdh_params_t exchange_params;
     exchange_params.local_key = packet_exchange_key;
     exchange_params.peer_key = receiver->ephemeral_keypair->ec_key;
-    exchange_params.kdf_digest_mode = wickr_digest_matching_cipher(packet_key_wrap_cipher);
-    exchange_params.kdf_salt = NULL;
+    exchange_params.kdf_info = &kdf_params;
     
     /* Set the info field to remote_dev_id so that it can be used as application context data in HKDF */
     
@@ -94,12 +104,12 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     switch (version) {
         case 2:
-            exchange_params.kdf_info = wickr_buffer_copy(receiver->dev_id);
+            exchange_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
-            exchange_params.kdf_info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
+            exchange_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
         }
             break;
         default:
@@ -113,7 +123,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     wickr_buffer_t *shared_secret_buffer = engine->wickr_crypto_engine_ecdh_gen_key(&exchange_params);
     
-    wickr_buffer_destroy_zero(&exchange_params.kdf_info);
+    wickr_buffer_destroy_zero(&exchange_params.kdf_info->info);
     
     if (!shared_secret_buffer) {
         return NULL;
@@ -174,17 +184,30 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
+    
     wickr_cipher_result_t *wrapped_packet_key = wickr_cipher_result_from_buffer(exchange->exchange_data);
     
     if (!wrapped_packet_key) {
         return NULL;
     }
     
+    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(wickr_digest_matching_cipher(wrapped_packet_key->cipher));
+    
+    if (!algo) {
+        wickr_cipher_result_destroy(&wrapped_packet_key);
+        return NULL;
+    }
+
+    
+    wickr_kdf_meta_t kdf_params;
+    kdf_params.algo = *algo;
+    kdf_params.info = NULL;
+    kdf_params.salt = NULL;
+    
     wickr_ecdh_params_t ecdh_params;
-    ecdh_params.kdf_digest_mode = wickr_digest_matching_cipher(wrapped_packet_key->cipher);
     ecdh_params.local_key = receiver->ephemeral_keypair->ec_key;
     ecdh_params.peer_key = packet_exchange_key;
-    ecdh_params.kdf_info = NULL;
+    ecdh_params.kdf_info = &kdf_params;
     
     /* Set the info field to remote_dev_id so that it can be used as application context data in HKDF */
     
@@ -193,12 +216,12 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
     
     switch (version) {
         case 2:
-            ecdh_params.kdf_info = wickr_buffer_copy(receiver->dev_id);
+            ecdh_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
-            ecdh_params.kdf_info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
+            ecdh_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
         }
             break;
         default:
@@ -210,11 +233,9 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
-    ecdh_params.kdf_salt = NULL;
-    
     wickr_buffer_t *shared_secret_buffer = engine->wickr_crypto_engine_ecdh_gen_key(&ecdh_params);
     
-    wickr_buffer_destroy_zero(&ecdh_params.kdf_info);
+    wickr_buffer_destroy_zero(&ecdh_params.kdf_info->info);
     
     if (!shared_secret_buffer || shared_secret_buffer->length != wrapped_packet_key->cipher.key_len) {
         return NULL;

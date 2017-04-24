@@ -23,6 +23,7 @@
 #define kdf_h
 
 #include "buffer.h"
+#include "digest.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,13 +40,13 @@ extern "C" {
  
  KDF Algorithm ID
  
- Define the base algorithm a particular kdf function uses. Scrypt and Bcrypt are currently supported.
+ Define the base algorithm a particular kdf function uses. Scrypt, Bcrypt, and HKDF are currently supported.
  The preferred default is to use scrypt, with a minimum of n = 2^17
  
  */
-typedef enum { KDF_BCRYPT, KDF_SCRYPT } wickr_kdf_algo_id;
+typedef enum { KDF_BCRYPT, KDF_SCRYPT, KDF_HMAC_SHA2 } wickr_kdf_algo_id;
 
-typedef enum { KDF_ID_SCRYPT_17 = 1, KDF_ID_SCRYPT_18, KDF_ID_SCRYPT_19, KDF_ID_SCRYPT_20, KDF_ID_BCRYPT_15 } wickr_kdf_id;
+typedef enum { KDF_ID_SCRYPT_17 = 1, KDF_ID_SCRYPT_18, KDF_ID_SCRYPT_19, KDF_ID_SCRYPT_20, KDF_ID_BCRYPT_15, KDF_ID_HKDF_SHA256, KDF_ID_HKDF_SHA384, KDF_ID_HKDF_SHA512 } wickr_kdf_id;
 
 /**
  
@@ -111,6 +112,11 @@ static const wickr_kdf_algo_t KDF_SCRYPT_2_20 = { KDF_SCRYPT, KDF_ID_SCRYPT_20, 
 
 /* BCRYPT Mode Definitions */
 static const wickr_kdf_algo_t KDF_BCRYPT_15 = { KDF_BCRYPT, KDF_ID_BCRYPT_15, BCRYPT_SALT_SIZE, BCRYPT_HASH_SIZE, BCRYPT_15_COST };
+    
+/* HKDF Mode Definitions */
+static const wickr_kdf_algo_t KDF_HKDF_SHA256 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA256, SHA256_DIGEST_SIZE, SHA256_DIGEST_SIZE, 0 };
+static const wickr_kdf_algo_t KDF_HKDF_SHA384 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA384, SHA384_DIGEST_SIZE, SHA384_DIGEST_SIZE, 0 };
+static const wickr_kdf_algo_t KDF_HKDF_SHA512 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA512, SHA512_DIGEST_SIZE, SHA512_DIGEST_SIZE, 0 };
 
 /**
  
@@ -123,10 +129,13 @@ static const wickr_kdf_algo_t KDF_BCRYPT_15 = { KDF_BCRYPT, KDF_ID_BCRYPT_15, BC
  serialized algorithm identifier to help define the set of parameters for the KDF as an integer
  @var wickr_kdf_meta::salt
  value that should be / was used as an input to the KDF function
+ @var wickr_kdf_meta::info
+ context information that can be used as part of the KDF function. INFO varies from SALT as it is not intended to be random, and instead holds contextual information. May be NULL if no context information is provided
  */
 struct wickr_kdf_meta {
     wickr_kdf_algo_t algo;
     wickr_buffer_t *salt;
+    wickr_buffer_t *info;
 };
 
 typedef struct wickr_kdf_meta wickr_kdf_meta_t;
@@ -158,9 +167,10 @@ typedef struct wickr_kdf_result wickr_kdf_result_t;
 
  @param algo see 'wickr_kdf_meta' property documentation
  @param salt see 'wickr_kdf_meta' property documentation
+ @param info see 'wickr_kdf_meta' property documentation
  @return a newly allocated KDF Metadata set, owning the properties that were passed in
  */
-wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *salt);
+wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *salt, wickr_buffer_t *info);
 
 /**
  
@@ -275,6 +285,17 @@ wickr_kdf_result_t *wickr_perform_kdf(wickr_kdf_algo_t algo, const wickr_buffer_
  @return the output of the KDF function, including the generated random salt that was used for the computation
  */
 wickr_kdf_result_t *wickr_perform_kdf_meta(const wickr_kdf_meta_t *existing_meta, const wickr_buffer_t *passphrase);
+ 
+/**
+ 
+ @ingroup wickr_kdf
+ 
+ Find the HKDF wickr_kdf_algo that matches a specific digest
+ 
+ @param digest the digest to search for
+ @return HKDF wickr_kdf_algo that uses 'digest'
+ */
+const wickr_kdf_algo_t *wickr_hkdf_algo_for_digest(wickr_digest_t digest);
 
 #ifdef __cplusplus
 }

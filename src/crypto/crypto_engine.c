@@ -63,8 +63,8 @@ wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engi
         return NULL;
     }
     
-    /* Don't allow bcrypt or unauthenticated ciphers for this operation, not supported */
-    if (algo.algo_id == KDF_BCRYPT || !cipher.is_authenticated || algo.output_size != cipher.key_len) {
+    /* Don't allow bcrypt, HKDF or unauthenticated ciphers for this operation, not supported */
+    if (algo.algo_id != KDF_SCRYPT || !cipher.is_authenticated || algo.output_size != cipher.key_len) {
         return NULL;
     }
     
