@@ -62,23 +62,23 @@
     <detaileddescription>
 <para>The result of a cipher operation. Contains the components that are outputted by a cipher function </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="11">
+      <node id="30">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="9">
+      <node id="28">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="10" relation="usage">
+        <childnode refid="29" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="11" relation="usage">
+        <childnode refid="30" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="10">
+      <node id="29">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

@@ -49,14 +49,14 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="150">
+      <node id="170">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="149">
+      <node id="169">
         <label>wickr_key_exchange</label>
         <link refid="structwickr__key__exchange"/>
-        <childnode refid="150" relation="usage">
+        <childnode refid="170" relation="usage">
           <edgelabel>node_id</edgelabel>
           <edgelabel>exchange_data</edgelabel>
         </childnode>

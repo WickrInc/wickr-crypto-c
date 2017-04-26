@@ -53,7 +53,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="112" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="118" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga458f74fb060fb98da491d733e51fc3ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__gen__result" kindref="compound">wickr_ctx_gen_result_t</ref> *</type>
@@ -112,7 +112,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="128" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="134" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga286a513a606b6643f796539413357c34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__gen__result" kindref="compound">wickr_ctx_gen_result_t</ref> *</type>
@@ -171,7 +171,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="147" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="153" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gaab0b2731d76d6ea91afd1b147c53a29a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__gen__result" kindref="compound">wickr_ctx_gen_result_t</ref> *</type>
@@ -252,7 +252,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="168" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="174" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga2e9c63af0e76f1977844ea2dc895e90a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__gen__result" kindref="compound">wickr_ctx_gen_result_t</ref> *</type>
@@ -322,7 +322,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="189" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="195" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga2dadd40adc0217dd337ee6cf745cbc12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -359,7 +359,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="209" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="215" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gaa32727731391f1e3fbde26094924b533" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -385,7 +385,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="228" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="234" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga0bde95494141673604b9e4e1f7954e2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__root__keys" kindref="compound">wickr_root_keys_t</ref> *</type>
@@ -433,7 +433,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="238" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="244" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gae095a8cb40d209090212136f8580dc77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__gen__result" kindref="compound">wickr_ctx_gen_result_t</ref> *</type>
@@ -459,7 +459,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="251" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="257" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga865854408d22e4697eebe5bc129cc6b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -484,7 +484,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="262" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="268" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga085975d71519bf5729a7cf264a5f7876" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx" kindref="compound">wickr_ctx_t</ref> *</type>
@@ -543,7 +543,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="277" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="283" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gaaa74a32619fb3b382fbeeeddc425a910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx" kindref="compound">wickr_ctx_t</ref> *</type>
@@ -569,7 +569,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="291" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="297" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gaadfdef183c86992efc33b0d730c90327" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -594,7 +594,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="301" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="307" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga67e64bed3fc0a8ee550c0fc24d44c787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -631,7 +631,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="315" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="321" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gae344e5202193c4b92ee2686529285fe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__storage__keys" kindref="compound">wickr_storage_keys_t</ref> *</type>
@@ -679,7 +679,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="326" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="332" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gaeff6704dded2d44f689eca5ad25843f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
@@ -716,7 +716,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="339" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="345" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga0b985fb2cd05fb482b5ed175dfd650a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
@@ -753,7 +753,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="358" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="364" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gacc1038d3690ba4860b74f13239c65600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -790,7 +790,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="369" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="375" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga45b2531085c430942122dcbf45736e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ephemeral__keypair" kindref="compound">wickr_ephemeral_keypair_t</ref> *</type>
@@ -827,7 +827,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="382" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="388" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga8ac1e1c9a0b9802d7f259278a09df56c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__packet" kindref="compound">wickr_ctx_packet_t</ref> *</type>
@@ -875,7 +875,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="414" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="420" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1gad7063bcfca4878d290e598ed6bc22e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -900,7 +900,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="425" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="431" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga810ee459cb0ab1037b5fd1f983d0ded3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__encode" kindref="compound">wickr_ctx_encode_t</ref> *</type>
@@ -937,7 +937,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="452" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="458" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga9ed3f7c0f4d672a2ac562b279e2da4e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -962,7 +962,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="461" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="467" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga3766720fd6654fad791a26cd2c1161b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__encode" kindref="compound">wickr_ctx_encode_t</ref> *</type>
@@ -1010,7 +1010,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="475" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="481" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ctx_1ga5032fb65627a509fd9486ea9696e643d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ctx__packet" kindref="compound">wickr_ctx_packet_t</ref> *</type>
@@ -1058,7 +1058,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="489" column="1"/>
+        <location file="src/crypto/wickr_ctx.h" line="495" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -23,20 +23,27 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="group__wickr__kdf_1gga106149e3507106abb6b5be843a4e7c16aac5e432bbfb638c1b7db568cadb49150" prot="public">
+          <name>KDF_HMAC_SHA2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>KDF Algorithm ID</para><para>Define the base algorithm a particular kdf function uses. Scrypt and Bcrypt are currently supported. The preferred default is to use scrypt, with a minimum of n = 2^17 </para>        </detaileddescription>
+<para>KDF Algorithm ID</para><para>Define the base algorithm a particular kdf function uses. Scrypt, Bcrypt, and HKDF are currently supported. The preferred default is to use scrypt, with a minimum of n = 2^17 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="46" column="1" bodyfile="src/crypto/kdf.h" bodystart="46" bodyend="46"/>
+        <location file="src/crypto/kdf.h" line="47" column="1" bodyfile="src/crypto/kdf.h" bodystart="47" bodyend="47"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group__wickr__kdf_1gaf8d52b4e277d4e0eff6b60a510831b8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__wickr__kdf_1gaeee99bcfbf94fd964158ac402e2deb48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
         <definition>wickr_kdf_meta_t* wickr_kdf_meta_create</definition>
-        <argsstring>(wickr_kdf_algo_t algo, wickr_buffer_t *salt)</argsstring>
+        <argsstring>(wickr_kdf_algo_t algo, wickr_buffer_t *salt, wickr_buffer_t *info)</argsstring>
         <name>wickr_kdf_meta_create</name>
         <param>
           <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
@@ -45,6 +52,10 @@
         <param>
           <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
           <declname>salt</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>info</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -63,12 +74,19 @@
 <parameterdescription>
 <para>see &apos;<ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta</ref>&apos; property documentation </para></parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see &apos;<ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta</ref>&apos; property documentation </para></parameterdescription>
+</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>a newly allocated KDF Metadata set, owning the properties that were passed in </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="163" column="1"/>
+        <location file="src/crypto/kdf.h" line="173" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga92020ae3e8ffb469c927d17f95a7dff1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -94,7 +112,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="176" column="1"/>
+        <location file="src/crypto/kdf.h" line="186" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga1bc501706b4a8a727dfd34f8a00e56da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -120,7 +138,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="188" column="1"/>
+        <location file="src/crypto/kdf.h" line="198" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1gaebd1caf94717c403c4afb5cca8f511b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
@@ -146,7 +164,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="199" column="1"/>
+        <location file="src/crypto/kdf.h" line="209" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga6ed878108fd58ee420239689de505190" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
@@ -172,7 +190,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="210" column="1"/>
+        <location file="src/crypto/kdf.h" line="220" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga2bd458ae83d4d5bb03b9d0835baeefd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -197,7 +215,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="220" column="1"/>
+        <location file="src/crypto/kdf.h" line="230" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga514c095b3b2f1ead49bd7fbf0b427407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
@@ -234,7 +252,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="232" column="1"/>
+        <location file="src/crypto/kdf.h" line="242" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga69c03c94bf446471ba74f76ee883f8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
@@ -260,7 +278,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="243" column="1"/>
+        <location file="src/crypto/kdf.h" line="253" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga61ff0036a7257321ff0bbdc184d856a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -285,7 +303,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="253" column="1"/>
+        <location file="src/crypto/kdf.h" line="263" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1gabc745cc1349f64c0f25d6d12de5f64cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
@@ -322,7 +340,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="265" column="1"/>
+        <location file="src/crypto/kdf.h" line="275" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__kdf_1ga69674856e11652a18663fc7f833ad974" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *</type>
@@ -359,7 +377,33 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="277" column="1"/>
+        <location file="src/crypto/kdf.h" line="287" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__kdf_1ga81c7a5adea69d04e019dd58080268a08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref> *</type>
+        <definition>const wickr_kdf_algo_t* wickr_hkdf_algo_for_digest</definition>
+        <argsstring>(wickr_digest_t digest)</argsstring>
+        <name>wickr_hkdf_algo_for_digest</name>
+        <param>
+          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
+          <declname>digest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Find the HKDF <ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo</ref> that matches a specific digest</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>digest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the digest to search for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HKDF <ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo</ref> that uses &apos;digest&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/kdf.h" line="298" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -372,7 +416,7 @@
 <para>Scrypt Cost</para><para>In order to conform to MCF format, scrypt provides a method of compressing its parameters into a single uint32 value. This calculation is leveraged here for the simplicity of having a single value represent N, r, and p values </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="91" column="9" bodyfile="src/crypto/kdf.h" bodystart="91" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="92" column="9" bodyfile="src/crypto/kdf.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -83,6 +83,8 @@ Functions</h2></td></tr>
 <tr class="separator:gab60480270e80ba34aa44385633037983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga18c21501a41c97f2ba79a9366343cdcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__digest.html">wickr_digest_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga18c21501a41c97f2ba79a9366343cdcf">wickr_digest_matching_cipher</a> (<a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> cipher)</td></tr>
 <tr class="separator:ga18c21501a41c97f2ba79a9366343cdcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6cdd263ddccd0b28a85ed61889805e60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga6cdd263ddccd0b28a85ed61889805e60">wickr_key_exchange_kdf_matching_cipher</a> (<a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> cipher)</td></tr>
+<tr class="separator:ga6cdd263ddccd0b28a85ed61889805e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0a708e5e46c40eae5eaeb581f6a1aed2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__digest.html">wickr_digest_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga0a708e5e46c40eae5eaeb581f6a1aed2">wickr_digest_matching_curve</a> (<a class="el" href="structwickr__ec__curve.html">wickr_ec_curve_t</a> curve)</td></tr>
 <tr class="separator:ga0a708e5e46c40eae5eaeb581f6a1aed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf44e3be9066727bf83034d3593dc74e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher.html">wickr_cipher_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gaf44e3be9066727bf83034d3593dc74e2">wickr_exchange_cipher_matching_cipher</a> (<a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> cipher)</td></tr>
@@ -269,6 +271,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get the matching digest type for a function based on size</p>
+<p>DEPRECATED IN FAVOR OF wickr_exchange_kdf_matching_cipher</p>
 <p>NOTE: Currently only 256bit AES ciphers are supported, so this function always returns SHA_256</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -330,6 +333,33 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the exchange cipher matching 'cipher' </dd></dl>
+
+</div>
+</div>
+<a id="ga6cdd263ddccd0b28a85ed61889805e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6cdd263ddccd0b28a85ed61889805e60">&#9670;&nbsp;</a></span>wickr_key_exchange_kdf_matching_cipher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a> wickr_key_exchange_kdf_matching_cipher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__cipher.html">wickr_cipher_t</a>&#160;</td>
+          <td class="paramname"><em>cipher</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the matching message key exchange kdf for a cipher</p>
+<p>NOTE: Currently all ciphers return HKDF with SHA512 as a digest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cipher</td><td>the cipher to find the matching kdf for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a kdf that has an output which is the same size as the length of the cipher's key </dd></dl>
 
 </div>
 </div>

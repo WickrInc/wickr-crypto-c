@@ -21,6 +21,8 @@ Wickr encryption context for high level management of sending / receiving packet
 \hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t} $\ast$ \hyperlink{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}{storage\+\_\+keys}
 \item 
 \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__ctx_a86da8359c914b1fec0d60e1c64fcf048}{packet\+\_\+header\+\_\+key}
+\item 
+uint8\+\_\+t \hyperlink{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75}{pkt\+\_\+enc\+\_\+version}
 \end{DoxyCompactItemize}
 
 
@@ -52,7 +54,13 @@ the identity chain for this context, it contains the node and root level signatu
 \subsubsection{\texorpdfstring{packet\+\_\+header\+\_\+key}{packet\_header\_key}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::packet\+\_\+header\+\_\+key}
 
-the active header key to use on all outbound packets \mbox{\Hypertarget{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}\label{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}} 
+the active header key to use on all outbound packets \mbox{\Hypertarget{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75}\label{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75}} 
+\index{wickr\+\_\+ctx@{wickr\+\_\+ctx}!pkt\+\_\+enc\+\_\+version@{pkt\+\_\+enc\+\_\+version}}
+\index{pkt\+\_\+enc\+\_\+version@{pkt\+\_\+enc\+\_\+version}!wickr\+\_\+ctx@{wickr\+\_\+ctx}}
+\subsubsection{\texorpdfstring{pkt\+\_\+enc\+\_\+version}{pkt\_enc\_version}}
+{\footnotesize\ttfamily wickr\+\_\+ctx\+::pkt\+\_\+enc\+\_\+version}
+
+the packet version to use for encoding, this is useful for supporting older clients \mbox{\Hypertarget{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}\label{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}} 
 \index{wickr\+\_\+ctx@{wickr\+\_\+ctx}!storage\+\_\+keys@{storage\+\_\+keys}}
 \index{storage\+\_\+keys@{storage\+\_\+keys}!wickr\+\_\+ctx@{wickr\+\_\+ctx}}
 \subsubsection{\texorpdfstring{storage\+\_\+keys}{storage\_keys}}

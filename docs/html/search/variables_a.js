@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['node',['node',['../structwickr__identity__chain.html#a4343dae5f1c82057289c26e5c7bb1226',1,'wickr_identity_chain']]],
-  ['node_5fid',['node_id',['../structwickr__key__exchange.html#ad5b271c9c3cf2043ec85dbb40c51fec6',1,'wickr_key_exchange']]],
-  ['node_5fsignature_5froot',['node_signature_root',['../structwickr__root__keys.html#af3a0ca7b48b356e118dea24c26cdd9f5',1,'wickr_root_keys']]],
-  ['node_5fstorage_5froot',['node_storage_root',['../structwickr__root__keys.html#ada908a5fa4aaf7c8b9a4b496c99e595a',1,'wickr_root_keys']]]
+  ['meta',['meta',['../structwickr__kdf__result.html#a8cf0778f7cb1a157ba3f44f34cbcd92e',1,'wickr_kdf_result::meta()'],['../structwickr__payload.html#a7df63984a660a0c09c166d60b213213f',1,'wickr_payload::meta()']]],
+  ['msg_5fproto_5fid',['msg_proto_id',['../structwickr__dev__info.html#a864ad03c4d10f51fe6251059007276d2',1,'wickr_dev_info']]]
 ];

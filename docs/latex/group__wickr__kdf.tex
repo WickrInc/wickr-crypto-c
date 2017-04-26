@@ -18,13 +18,14 @@ struct \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result}
 \begin{DoxyCompactItemize}
 \item 
 enum \hyperlink{group__wickr__kdf_ga106149e3507106abb6b5be843a4e7c16}{wickr\+\_\+kdf\+\_\+algo\+\_\+id} \{ {\bfseries K\+D\+F\+\_\+\+B\+C\+R\+Y\+PT}, 
-{\bfseries K\+D\+F\+\_\+\+S\+C\+R\+Y\+PT}
+{\bfseries K\+D\+F\+\_\+\+S\+C\+R\+Y\+PT}, 
+{\bfseries K\+D\+F\+\_\+\+H\+M\+A\+C\+\_\+\+S\+H\+A2}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$ \hyperlink{group__wickr__kdf_gaf8d52b4e277d4e0eff6b60a510831b8c}{wickr\+\_\+kdf\+\_\+meta\+\_\+create} (\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt)
+\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$ \hyperlink{group__wickr__kdf_gaeee99bcfbf94fd964158ac402e2deb48}{wickr\+\_\+kdf\+\_\+meta\+\_\+create} (\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$info)
 \item 
 uint8\+\_\+t \hyperlink{group__wickr__kdf_ga92020ae3e8ffb469c927d17f95a7dff1}{wickr\+\_\+kdf\+\_\+meta\+\_\+size\+\_\+with\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
 \item 
@@ -45,6 +46,8 @@ void \hyperlink{group__wickr__kdf_ga61ff0036a7257321ff0bbdc184d856a3}{wickr\+\_\
 \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__kdf_gabc745cc1349f64c0f25d6d12de5f64cd}{wickr\+\_\+perform\+\_\+kdf} (\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
 \item 
 \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__kdf_ga69674856e11652a18663fc7f833ad974}{wickr\+\_\+perform\+\_\+kdf\+\_\+meta} (const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\item 
+const \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} $\ast$ \hyperlink{group__wickr__kdf_ga81c7a5adea69d04e019dd58080268a08}{wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest} (\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest)
 \end{DoxyCompactItemize}
 
 
@@ -71,9 +74,25 @@ In order to conform to M\+CF format, scrypt provides a method of compressing its
 
 K\+DF Algorithm ID
 
-Define the base algorithm a particular kdf function uses. Scrypt and Bcrypt are currently supported. The preferred default is to use scrypt, with a minimum of n = 2$^\wedge$17 
+Define the base algorithm a particular kdf function uses. Scrypt, Bcrypt, and H\+K\+DF are currently supported. The preferred default is to use scrypt, with a minimum of n = 2$^\wedge$17 
 
 \subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__kdf_ga81c7a5adea69d04e019dd58080268a08}\label{group__wickr__kdf_ga81c7a5adea69d04e019dd58080268a08}} 
+\index{wickr\+\_\+kdf@{wickr\+\_\+kdf}!wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest@{wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest}}
+\index{wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest@{wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest}!wickr\+\_\+kdf@{wickr\+\_\+kdf}}
+\subsubsection{\texorpdfstring{wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest()}{wickr\_hkdf\_algo\_for\_digest()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}$\ast$ wickr\+\_\+hkdf\+\_\+algo\+\_\+for\+\_\+digest (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}]{digest }\end{DoxyParamCaption})}
+
+Find the H\+K\+DF \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo} that matches a specific digest
+
+
+\begin{DoxyParams}{Parameters}
+{\em digest} & the digest to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+H\+K\+DF \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo} that uses \textquotesingle{}digest\textquotesingle{} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__kdf_ga6ed878108fd58ee420239689de505190}\label{group__wickr__kdf_ga6ed878108fd58ee420239689de505190}} 
 \index{wickr\+\_\+kdf@{wickr\+\_\+kdf}!wickr\+\_\+kdf\+\_\+meta\+\_\+copy@{wickr\+\_\+kdf\+\_\+meta\+\_\+copy}}
 \index{wickr\+\_\+kdf\+\_\+meta\+\_\+copy@{wickr\+\_\+kdf\+\_\+meta\+\_\+copy}!wickr\+\_\+kdf@{wickr\+\_\+kdf}}
@@ -90,11 +109,11 @@ Copy a K\+DF Metadata set
 \begin{DoxyReturn}{Returns}
 a newly allocated metadata set holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__kdf_gaf8d52b4e277d4e0eff6b60a510831b8c}\label{group__wickr__kdf_gaf8d52b4e277d4e0eff6b60a510831b8c}} 
+\mbox{\Hypertarget{group__wickr__kdf_gaeee99bcfbf94fd964158ac402e2deb48}\label{group__wickr__kdf_gaeee99bcfbf94fd964158ac402e2deb48}} 
 \index{wickr\+\_\+kdf@{wickr\+\_\+kdf}!wickr\+\_\+kdf\+\_\+meta\+\_\+create@{wickr\+\_\+kdf\+\_\+meta\+\_\+create}}
 \index{wickr\+\_\+kdf\+\_\+meta\+\_\+create@{wickr\+\_\+kdf\+\_\+meta\+\_\+create}!wickr\+\_\+kdf@{wickr\+\_\+kdf}}
 \subsubsection{\texorpdfstring{wickr\+\_\+kdf\+\_\+meta\+\_\+create()}{wickr\_kdf\_meta\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t}$\ast$ wickr\+\_\+kdf\+\_\+meta\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}}]{algo,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{salt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t}$\ast$ wickr\+\_\+kdf\+\_\+meta\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}}]{algo,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{salt,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{info }\end{DoxyParamCaption})}
 
 Create a K\+DF Metadata set from components
 
@@ -103,6 +122,8 @@ Create a K\+DF Metadata set from components
 {\em algo} & see \textquotesingle{}\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta}\textquotesingle{} property documentation \\
 \hline
 {\em salt} & see \textquotesingle{}\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta}\textquotesingle{} property documentation \\
+\hline
+{\em info} & see \textquotesingle{}\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta}\textquotesingle{} property documentation \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

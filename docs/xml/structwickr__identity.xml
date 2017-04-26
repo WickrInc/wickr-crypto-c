@@ -62,51 +62,51 @@
     <detaileddescription>
 <para>ROOT - Account level, serves as the root of trust for all nodes associated with it. The root sig_key signs each node to provide authenticity of its ownership NODE - Application level identifier, serves as the root of trust for all ephemeral keypairs associated with it, the node is owned / signed by a ROOT node. Nodes are messaging endpoints, owned by a particular root for the purpose of multi-client messaging</para><para>Identities are meant to be cached, pinned, and optimally &quot;verified&quot; either out of band, or in band using a feature such as Wickr&apos;s &quot;video verification&quot;. When verifying a new node identity, the root that was previously cached should be loaded and used to perform the signature validation of the new node. Node identities should also be cached, for the purpose of being able to consistently verify ephemeral keypairs signed by that node as part of generating message key exchanges </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="127">
+      <node id="147">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="126" relation="usage">
+        <childnode refid="146" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="128" relation="usage">
+        <childnode refid="148" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="124" relation="usage">
+        <childnode refid="144" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="126">
+      <node id="146">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="128">
+      <node id="148">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="123">
+      <node id="143">
         <label>wickr_identity</label>
         <link refid="structwickr__identity"/>
-        <childnode refid="124" relation="usage">
+        <childnode refid="144" relation="usage">
           <edgelabel>identifier</edgelabel>
         </childnode>
-        <childnode refid="125" relation="usage">
+        <childnode refid="145" relation="usage">
           <edgelabel>sig_key</edgelabel>
         </childnode>
-        <childnode refid="127" relation="usage">
+        <childnode refid="147" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="124">
+      <node id="144">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="125">
+      <node id="145">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="126" relation="usage">
+        <childnode refid="146" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="124" relation="usage">
+        <childnode refid="144" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

@@ -1,0 +1,909 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="stream_8pb-c_8h" kind="file" language="C++">
+    <compoundname>stream.pb-c.h</compoundname>
+    <includes local="yes">protobuf-c.h</includes>
+    <incdepgraph>
+      <node id="443">
+        <label>src/crypto/stream.pb-c.h</label>
+        <link refid="stream_8pb-c_8h"/>
+        <childnode refid="444" relation="include">
+        </childnode>
+      </node>
+      <node id="444">
+        <label>protobuf-c.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="struct___wickr_____proto_____handshake_____seed" prot="public">_Wickr__Proto__Handshake__Seed</innerclass>
+    <innerclass refid="struct___wickr_____proto_____handshake_____key_exchange" prot="public">_Wickr__Proto__Handshake__KeyExchange</innerclass>
+    <innerclass refid="struct___wickr_____proto_____handshake_____response" prot="public">_Wickr__Proto__Handshake__Response</innerclass>
+    <innerclass refid="struct___wickr_____proto_____handshake_____finish" prot="public">_Wickr__Proto__Handshake__Finish</innerclass>
+    <innerclass refid="struct___wickr_____proto_____handshake" prot="public">_Wickr__Proto__Handshake</innerclass>
+    <innerclass refid="struct___wickr_____proto_____stream_key" prot="public">_Wickr__Proto__StreamKey</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="stream_8pb-c_8h_1aeeb53aa82b8fa5c21e314d09bb2ae2d4" prot="public" static="no">
+        <name>WICKR__PROTO__HANDSHAKE__SEED__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__handshake__seed__descriptor) \
+    , 0,{0,NULL} }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="43" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stream_8pb-c_8h_1a4299828f1a8b14c65fc8cf04239ffe2e" prot="public" static="no">
+        <name>WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__handshake__key_exchange__descriptor) \
+    , 0,{0,NULL}, 0,{0,NULL} }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="56" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stream_8pb-c_8h_1aaf542b6dbb80bed6e3e603ae0263a344" prot="public" static="no">
+        <name>WICKR__PROTO__HANDSHAKE__RESPONSE__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__handshake__response__descriptor) \
+    , 0, NULL, NULL }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="68" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stream_8pb-c_8h_1a2c63ef56f3830f6671ad64c44b644121" prot="public" static="no">
+        <name>WICKR__PROTO__HANDSHAKE__FINISH__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__handshake__finish__descriptor) \
+    , 0, NULL }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="79" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stream_8pb-c_8h_1ad39df2f9e1fae7154394d56b84c2b723" prot="public" static="no">
+        <name>WICKR__PROTO__HANDSHAKE__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__handshake__descriptor) \
+    , 0, WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET, {0} }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="102" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stream_8pb-c_8h_1a4849e954d0efab50e4d658aeed25f72d" prot="public" static="no">
+        <name>WICKR__PROTO__STREAM_KEY__INIT</name>
+        <initializer>{ PROTOBUF_C_MESSAGE_INIT (&amp;wickr__proto__stream_key__descriptor) \
+    , 0,{0,NULL}, 0,{0,NULL}, 0,0 }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="117" column="9" bodyfile="src/crypto/stream.pb-c.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299a" prot="public" static="no">
+        <name>Wickr__Proto__Handshake__PayloadCase</name>
+        <enumvalue id="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aabf91710bb71ddb4eeb2193f060a8bdc5" prot="public">
+          <name>WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aa7ee29a9ecc04d7b4939abd5d565a5413" prot="public">
+          <name>WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aaf937fa180e9ae68de0ae3975ef2e3381" prot="public">
+          <name>WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aad8903f0d268da6512f03eea395cd9928" prot="public">
+          <name>WICKR__PROTO__HANDSHAKE__PAYLOAD_FINISH</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="84" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="84" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a05185ba05a91f4b65897ddc044d6df78" prot="public" static="no">
+        <type>typedefPROTOBUF_C__BEGIN_DECLS struct <ref refid="struct___wickr_____proto_____handshake" kindref="compound">_Wickr__Proto__Handshake</ref></type>
+        <definition>typedef typedefPROTOBUF_C__BEGIN_DECLS struct _Wickr__Proto__Handshake Wickr__Proto__Handshake</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__Handshake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1aa8f5e33aa3ecc1f5a1be751749efdba1" prot="public" static="no">
+        <type>struct <ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">_Wickr__Proto__Handshake__Seed</ref></type>
+        <definition>typedef struct _Wickr__Proto__Handshake__Seed Wickr__Proto__Handshake__Seed</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__Handshake__Seed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a9612535a958ac567c979c47c6667f9a4" prot="public" static="no">
+        <type>struct <ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">_Wickr__Proto__Handshake__KeyExchange</ref></type>
+        <definition>typedef struct _Wickr__Proto__Handshake__KeyExchange Wickr__Proto__Handshake__KeyExchange</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__Handshake__KeyExchange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a3fc9f48dd64a04a20e46ba52c466b3ba" prot="public" static="no">
+        <type>struct <ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">_Wickr__Proto__Handshake__Response</ref></type>
+        <definition>typedef struct _Wickr__Proto__Handshake__Response Wickr__Proto__Handshake__Response</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__Handshake__Response</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a8533f4c27468eb99d73d14efe51c7325" prot="public" static="no">
+        <type>struct <ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">_Wickr__Proto__Handshake__Finish</ref></type>
+        <definition>typedef struct _Wickr__Proto__Handshake__Finish Wickr__Proto__Handshake__Finish</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__Handshake__Finish</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a4be0c848ccf7bb66325075e157b15b1a" prot="public" static="no">
+        <type>struct <ref refid="struct___wickr_____proto_____stream_key" kindref="compound">_Wickr__Proto__StreamKey</ref></type>
+        <definition>typedef struct _Wickr__Proto__StreamKey Wickr__Proto__StreamKey</definition>
+        <argsstring></argsstring>
+        <name>Wickr__Proto__StreamKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="15" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a65f05bd033db4560b15d120fcd60dcc2" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__Handshake__Seed_Closure) (const Wickr__Proto__Handshake__Seed *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__Handshake__Seed *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__Handshake__Seed_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="174" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1aaa011b348971601d78b16a8fb38f8bf5" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__Handshake__KeyExchange_Closure) (const Wickr__Proto__Handshake__KeyExchange *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__Handshake__KeyExchange *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__Handshake__KeyExchange_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="177" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a1c46ce2af33f2173ed7c3d0f33d8b6a1" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__Handshake__Response_Closure) (const Wickr__Proto__Handshake__Response *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__Handshake__Response *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__Handshake__Response_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="180" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a4005b0d3fa607919df58a370ab26b370" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__Handshake__Finish_Closure) (const Wickr__Proto__Handshake__Finish *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__Handshake__Finish *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__Handshake__Finish_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="183" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1ac3edb6dc20a542c2e615975c9e569fb9" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__Handshake_Closure) (const Wickr__Proto__Handshake *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__Handshake *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__Handshake_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="186" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="stream_8pb-c_8h_1a1776ab46c3e62dfb15a2eab367f73ac8" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* Wickr__Proto__StreamKey_Closure) (const Wickr__Proto__StreamKey *message, void *closure_data)</definition>
+        <argsstring>)(const Wickr__Proto__StreamKey *message, void *closure_data)</argsstring>
+        <name>Wickr__Proto__StreamKey_Closure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="189" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="stream_8pb-c_8h_1a937a80a2346b6e674747094e6e89be8e" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__handshake__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__handshake__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="198" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="stream_8pb-c_8h_1acf6a315a7fbc4957199eb88bddc01c73" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__handshake__seed__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__handshake__seed__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="199" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="stream_8pb-c_8h_1aa82729c73471f2eaf047a33cf9a0464a" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__handshake__key_exchange__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__handshake__key_exchange__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="200" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="stream_8pb-c_8h_1a17ccea303b6ca32fe168e4a5ed560029" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__handshake__response__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__handshake__response__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="201" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="stream_8pb-c_8h_1aeb63cab12a9ba0027b005babd8bf4694" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__handshake__finish__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__handshake__finish__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="202" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="stream_8pb-c_8h_1aab0706d0ad0e414cb0ac04da20814517" prot="public" static="no" mutable="no">
+        <type>const ProtobufCMessageDescriptor</type>
+        <definition>const ProtobufCMessageDescriptor wickr__proto__stream_key__descriptor</definition>
+        <argsstring></argsstring>
+        <name>wickr__proto__stream_key__descriptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="203" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="stream_8pb-c_8h_1a1bcfabf33284af59d590d25577b7a0ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__seed__init</definition>
+        <argsstring>(Wickr__Proto__Handshake__Seed *message)</argsstring>
+        <name>wickr__proto__handshake__seed__init</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="123" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1ac5840f07751d236f27ba91c3c04a0db6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__key_exchange__init</definition>
+        <argsstring>(Wickr__Proto__Handshake__KeyExchange *message)</argsstring>
+        <name>wickr__proto__handshake__key_exchange__init</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="126" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a0ddc658261148af227ad1d64dbffcba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__response__init</definition>
+        <argsstring>(Wickr__Proto__Handshake__Response *message)</argsstring>
+        <name>wickr__proto__handshake__response__init</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">Wickr__Proto__Handshake__Response</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="129" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1aae2b193fbbdde855093701f2798e7b40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__finish__init</definition>
+        <argsstring>(Wickr__Proto__Handshake__Finish *message)</argsstring>
+        <name>wickr__proto__handshake__finish__init</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">Wickr__Proto__Handshake__Finish</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="132" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a898c593016a81756127bfc167cf88057" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__init</definition>
+        <argsstring>(Wickr__Proto__Handshake *message)</argsstring>
+        <name>wickr__proto__handshake__init</name>
+        <param>
+          <type>Wickr__Proto__Handshake *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="135" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1aadc83aeaed69a422f93bd91a3f6f6ac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__handshake__get_packed_size</definition>
+        <argsstring>(const Wickr__Proto__Handshake *message)</argsstring>
+        <name>wickr__proto__handshake__get_packed_size</name>
+        <param>
+          <type>const Wickr__Proto__Handshake *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a763cbee6fba605bf457e497ecc7c14a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__handshake__pack</definition>
+        <argsstring>(const Wickr__Proto__Handshake *message, uint8_t *out)</argsstring>
+        <name>wickr__proto__handshake__pack</name>
+        <param>
+          <type>const Wickr__Proto__Handshake *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="139" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1ab365b0d57c20090b0e8330df074f0feb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__handshake__pack_to_buffer</definition>
+        <argsstring>(const Wickr__Proto__Handshake *message, ProtobufCBuffer *buffer)</argsstring>
+        <name>wickr__proto__handshake__pack_to_buffer</name>
+        <param>
+          <type>const Wickr__Proto__Handshake *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>ProtobufCBuffer *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="142" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a0c05f27f8b04f62962f56218132d05cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Wickr__Proto__Handshake *</type>
+        <definition>Wickr__Proto__Handshake* wickr__proto__handshake__unpack</definition>
+        <argsstring>(ProtobufCAllocator *allocator, size_t len, const uint8_t *data)</argsstring>
+        <name>wickr__proto__handshake__unpack</name>
+        <param>
+          <type>ProtobufCAllocator *</type>
+          <declname>allocator</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="146" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a987fa9c4c8701b53ecdc5dd5914ae9ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__handshake__free_unpacked</definition>
+        <argsstring>(Wickr__Proto__Handshake *message, ProtobufCAllocator *allocator)</argsstring>
+        <name>wickr__proto__handshake__free_unpacked</name>
+        <param>
+          <type>Wickr__Proto__Handshake *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>ProtobufCAllocator *</type>
+          <declname>allocator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="150" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a55df66b2ebbbeb8fdde32a4399273343" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__stream_key__init</definition>
+        <argsstring>(Wickr__Proto__StreamKey *message)</argsstring>
+        <name>wickr__proto__stream_key__init</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="154" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1ac262a51389396797c6895150e867a4db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__stream_key__get_packed_size</definition>
+        <argsstring>(const Wickr__Proto__StreamKey *message)</argsstring>
+        <name>wickr__proto__stream_key__get_packed_size</name>
+        <param>
+          <type>const <ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="156" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1acded1e362b11fefb7b5a491e1b7edb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__stream_key__pack</definition>
+        <argsstring>(const Wickr__Proto__StreamKey *message, uint8_t *out)</argsstring>
+        <name>wickr__proto__stream_key__pack</name>
+        <param>
+          <type>const <ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="158" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a8f4314492131397eb7aca40b3f4b993c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t wickr__proto__stream_key__pack_to_buffer</definition>
+        <argsstring>(const Wickr__Proto__StreamKey *message, ProtobufCBuffer *buffer)</argsstring>
+        <name>wickr__proto__stream_key__pack_to_buffer</name>
+        <param>
+          <type>const <ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>ProtobufCBuffer *</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="161" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1aa1cfccde515cb4a3969f59b80aa99f7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+        <definition>Wickr__Proto__StreamKey* wickr__proto__stream_key__unpack</definition>
+        <argsstring>(ProtobufCAllocator *allocator, size_t len, const uint8_t *data)</argsstring>
+        <name>wickr__proto__stream_key__unpack</name>
+        <param>
+          <type>ProtobufCAllocator *</type>
+          <declname>allocator</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="165" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="stream_8pb-c_8h_1a67ddf81a4a2fa489e2bb8c3e016faf7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr__proto__stream_key__free_unpacked</definition>
+        <argsstring>(Wickr__Proto__StreamKey *message, ProtobufCAllocator *allocator)</argsstring>
+        <name>wickr__proto__stream_key__free_unpacked</name>
+        <param>
+          <type><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref> *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>ProtobufCAllocator *</type>
+          <declname>allocator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="169" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>Generated<sp/>by<sp/>the<sp/>protocol<sp/>buffer<sp/>compiler.<sp/><sp/>DO<sp/>NOT<sp/>EDIT!<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Generated<sp/>from:<sp/>stream.proto<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>PROTOBUF_C_stream_2eproto__INCLUDED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PROTOBUF_C_stream_2eproto__INCLUDED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>__has_include(&lt;protobuf-c/protobuf-c.h&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;protobuf-c/protobuf-c.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>__has_include(&lt;protobuf_c/protobuf-c.h&gt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;protobuf_c/protobuf-c.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;protobuf-c.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">PROTOBUF_C__BEGIN_DECLS</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>PROTOBUF_C_VERSION_NUMBER<sp/>&lt;<sp/>1000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>error<sp/>This<sp/>file<sp/>was<sp/>generated<sp/>by<sp/>a<sp/>newer<sp/>version<sp/>of<sp/>protoc-c<sp/>which<sp/>is<sp/>incompatible<sp/>with<sp/>your<sp/>libprotobuf-c<sp/>headers.<sp/>Please<sp/>update<sp/>your<sp/>headers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>1002001<sp/>&lt;<sp/>PROTOBUF_C_MIN_COMPILER_VERSION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>error<sp/>This<sp/>file<sp/>was<sp/>generated<sp/>by<sp/>an<sp/>older<sp/>version<sp/>of<sp/>protoc-c<sp/>which<sp/>is<sp/>incompatible<sp/>with<sp/>your<sp/>libprotobuf-c<sp/>headers.<sp/>Please<sp/>regenerate<sp/>this<sp/>file<sp/>with<sp/>a<sp/>newer<sp/>version<sp/>of<sp/>protoc-c.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake" kindref="compound">_Wickr__Proto__Handshake</ref><sp/>Wickr__Proto__Handshake;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">_Wickr__Proto__Handshake__Seed</ref><sp/><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">_Wickr__Proto__Handshake__KeyExchange</ref><sp/><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">_Wickr__Proto__Handshake__Response</ref><sp/><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">Wickr__Proto__Handshake__Response</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">_Wickr__Proto__Handshake__Finish</ref><sp/><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">Wickr__Proto__Handshake__Finish</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">_Wickr__Proto__StreamKey</ref><sp/><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>enums<sp/>---<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>messages<sp/>---<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="struct___wickr_____proto_____handshake_____seed" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">_Wickr__Proto__Handshake__Seed</ref></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_pubkey;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>ProtobufCBinaryData<sp/>pubkey;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__HANDSHAKE__SEED__INIT<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__handshake__seed__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,{0,NULL}<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="struct___wickr_____proto_____handshake_____key_exchange" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">_Wickr__Proto__Handshake__KeyExchange</ref></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_sender_pub;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>ProtobufCBinaryData<sp/>sender_pub;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_exchange_data;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>ProtobufCBinaryData<sp/>exchange_data;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__handshake__key_exchange__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,{0,NULL},<sp/>0,{0,NULL}<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="struct___wickr_____proto_____handshake_____response" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">_Wickr__Proto__Handshake__Response</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>drop;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref><sp/>*key_exchange;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref><sp/>*response_key;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__HANDSHAKE__RESPONSE__INIT<sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__handshake__response__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,<sp/>NULL,<sp/>NULL<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="struct___wickr_____proto_____handshake_____finish" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">_Wickr__Proto__Handshake__Finish</ref></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>drop;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref><sp/>*key_exchange;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__HANDSHAKE__FINISH__INIT<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__handshake__finish__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,<sp/>NULL<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>WICKR__PROTO__HANDSHAKE__PAYLOAD_FINISH<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<sp/>Wickr__Proto__Handshake__PayloadCase;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="struct___wickr_____proto_____handshake" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____handshake" kindref="compound">_Wickr__Proto__Handshake</ref></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>uint32_t<sp/>version;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>Wickr__Proto__Handshake__PayloadCase<sp/>payload_case;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">union<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref><sp/>*seed;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">Wickr__Proto__Handshake__Response</ref><sp/>*response;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">Wickr__Proto__Handshake__Finish</ref><sp/>*finish;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__HANDSHAKE__INIT<sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__handshake__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,<sp/>WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET,<sp/>{0}<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="struct___wickr_____proto_____stream_key" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/><sp/></highlight><highlight class="normal"><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">_Wickr__Proto__StreamKey</ref></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>ProtobufCMessage<sp/>base;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_cipher_key;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>ProtobufCBinaryData<sp/>cipher_key;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_evolution_key;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>ProtobufCBinaryData<sp/>evolution_key;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>protobuf_c_boolean<sp/>has_packets_per_evo;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>uint32_t<sp/>packets_per_evo;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WICKR__PROTO__STREAM_KEY__INIT<sp/>\</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"><sp/>{<sp/>PROTOBUF_C_MESSAGE_INIT<sp/>(&amp;wickr__proto__stream_key__descriptor)<sp/>\</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>,<sp/>0,{0,NULL},<sp/>0,{0,NULL},<sp/>0,0<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__Handshake__Seed<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__seed__init</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__Handshake__KeyExchange<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__key_exchange__init</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__Handshake__Response<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__response__init</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">Wickr__Proto__Handshake__Response</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__Handshake__Finish<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__finish__init</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">Wickr__Proto__Handshake__Finish</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__Handshake<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__init</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Wickr__Proto__Handshake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__handshake__get_packed_size</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Wickr__Proto__Handshake<sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__handshake__pack</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Wickr__Proto__Handshake<sp/><sp/><sp/>*message,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__handshake__pack_to_buffer</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Wickr__Proto__Handshake<sp/><sp/><sp/>*message,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ProtobufCBuffer<sp/><sp/><sp/><sp/><sp/>*buffer);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">Wickr__Proto__Handshake<sp/>*</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wickr__proto__handshake__unpack</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(ProtobufCAllocator<sp/><sp/>*allocator,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>len,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*data);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__handshake__free_unpacked</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Wickr__Proto__Handshake<sp/>*message,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ProtobufCAllocator<sp/>*allocator);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Wickr__Proto__StreamKey<sp/>methods<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__stream_key__init</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__stream_key__get_packed_size</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/><sp/><sp/>*message);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__stream_key__pack</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/><sp/><sp/>*message,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*out);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>wickr__proto__stream_key__pack_to_buffer</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/><sp/><sp/>*message,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ProtobufCBuffer<sp/><sp/><sp/><sp/><sp/>*buffer);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/>*</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wickr__proto__stream_key__unpack</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(ProtobufCAllocator<sp/><sp/>*allocator,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>len,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*data);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/>wickr__proto__stream_key__free_unpacked</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ProtobufCAllocator<sp/>*allocator);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>per-message<sp/>closures<sp/>---<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__Handshake__Seed_Closure)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____handshake_____seed" kindref="compound">Wickr__Proto__Handshake__Seed</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__Handshake__KeyExchange_Closure)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____handshake_____key_exchange" kindref="compound">Wickr__Proto__Handshake__KeyExchange</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__Handshake__Response_Closure)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____handshake_____response" kindref="compound">Wickr__Proto__Handshake__Response</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__Handshake__Finish_Closure)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____handshake_____finish" kindref="compound">Wickr__Proto__Handshake__Finish</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__Handshake_Closure)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Wickr__Proto__Handshake<sp/>*message,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*Wickr__Proto__StreamKey_Closure)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct___wickr_____proto_____stream_key" kindref="compound">Wickr__Proto__StreamKey</ref><sp/>*message,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*closure_data);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>services<sp/>---<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>---<sp/>descriptors<sp/>---<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__handshake__descriptor;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__handshake__seed__descriptor;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__handshake__key_exchange__descriptor;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__handshake__response__descriptor;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__handshake__finish__descriptor;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ProtobufCMessageDescriptor<sp/>wickr__proto__stream_key__descriptor;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal">PROTOBUF_C__END_DECLS</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>PROTOBUF_C_stream_2eproto__INCLUDED<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="src/crypto/stream.pb-c.h"/>
+  </compounddef>
+</doxygen>

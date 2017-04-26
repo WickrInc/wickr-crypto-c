@@ -4,10 +4,10 @@
     <compoundname>wickr_ecdh_params</compoundname>
     <title>wickr_ecdh_params_t</title>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group__wickr__ecdh__params_1ga57bb855c4155488cf41d6c9e0d1f373d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__wickr__ecdh__params_1ga8a5be72f13caa4bf5ee99e16cc3b092f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref> *</type>
         <definition>wickr_ecdh_params_t* wickr_ecdh_params_create</definition>
-        <argsstring>(wickr_ec_key_t *local_key, wickr_ec_key_t *peer_key, wickr_digest_t kdf_digest_mode, wickr_buffer_t *kdf_salt, wickr_buffer_t *kdf_info)</argsstring>
+        <argsstring>(wickr_ec_key_t *local_key, wickr_ec_key_t *peer_key, wickr_kdf_meta_t *kdf_info)</argsstring>
         <name>wickr_ecdh_params_create</name>
         <param>
           <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
@@ -18,15 +18,7 @@
           <declname>peer_key</declname>
         </param>
         <param>
-          <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
-          <declname>kdf_digest_mode</declname>
-        </param>
-        <param>
-          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
-          <declname>kdf_salt</declname>
-        </param>
-        <param>
-          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
           <declname>kdf_info</declname>
         </param>
         <briefdescription>
@@ -48,20 +40,6 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>kdf_digest_mode</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>See documentation in &apos;<ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params</ref>&apos; property declarations </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kdf_salt</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>See documentation in &apos;<ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params</ref>&apos; property declarations </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername>kdf_info</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -72,7 +50,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="79" column="1"/>
+        <location file="src/crypto/ecdh.h" line="76" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1ga016f2b643f2636c05ed72bc08a0314f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref> *</type>
@@ -98,7 +76,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="90" column="1"/>
+        <location file="src/crypto/ecdh.h" line="87" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1gaf6efcaf58f603e323443063cde9b5621" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -123,7 +101,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="100" column="1"/>
+        <location file="src/crypto/ecdh.h" line="97" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1ga801f1bfae11ac0c94d59bf9dd58f78aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -149,7 +127,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="111" column="1"/>
+        <location file="src/crypto/ecdh.h" line="108" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

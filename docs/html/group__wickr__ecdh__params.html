@@ -67,8 +67,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga57bb855c4155488cf41d6c9e0d1f373d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ecdh__params.html#ga57bb855c4155488cf41d6c9e0d1f373d">wickr_ecdh_params_create</a> (<a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local_key, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer_key, <a class="el" href="structwickr__digest.html">wickr_digest_t</a> kdf_digest_mode, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *kdf_salt, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *kdf_info)</td></tr>
-<tr class="separator:ga57bb855c4155488cf41d6c9e0d1f373d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a5be72f13caa4bf5ee99e16cc3b092f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ecdh__params.html#ga8a5be72f13caa4bf5ee99e16cc3b092f">wickr_ecdh_params_create</a> (<a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local_key, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer_key, <a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *kdf_info)</td></tr>
+<tr class="separator:ga8a5be72f13caa4bf5ee99e16cc3b092f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga016f2b643f2636c05ed72bc08a0314f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ecdh__params.html#ga016f2b643f2636c05ed72bc08a0314f0">wickr_ecdh_params_copy</a> (const <a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *source)</td></tr>
 <tr class="separator:ga016f2b643f2636c05ed72bc08a0314f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf6efcaf58f603e323443063cde9b5621"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ecdh__params.html#gaf6efcaf58f603e323443063cde9b5621">wickr_ecdh_params_destroy</a> (<a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> **params)</td></tr>
@@ -130,8 +130,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga57bb855c4155488cf41d6c9e0d1f373d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga57bb855c4155488cf41d6c9e0d1f373d">&#9670;&nbsp;</a></span>wickr_ecdh_params_create()</h2>
+<a id="ga8a5be72f13caa4bf5ee99e16cc3b092f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8a5be72f13caa4bf5ee99e16cc3b092f">&#9670;&nbsp;</a></span>wickr_ecdh_params_create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,19 +151,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structwickr__digest.html">wickr_digest_t</a>&#160;</td>
-          <td class="paramname"><em>kdf_digest_mode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
-          <td class="paramname"><em>kdf_salt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *&#160;</td>
           <td class="paramname"><em>kdf_info</em>&#160;</td>
         </tr>
         <tr>
@@ -178,8 +166,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">local_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
     <tr><td class="paramname">peer_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
-    <tr><td class="paramname">kdf_digest_mode</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
-    <tr><td class="paramname">kdf_salt</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
     <tr><td class="paramname">kdf_info</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
   </table>
   </dd>

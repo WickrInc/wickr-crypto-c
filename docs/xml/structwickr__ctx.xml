@@ -69,52 +69,65 @@
         </inbodydescription>
         <location file="src/crypto/wickr_ctx.h" line="74" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="74" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="structwickr__ctx_1ad43117fbe3f70681f0ab982b06c6cd75" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>wickr_ctx::pkt_enc_version</definition>
+        <argsstring></argsstring>
+        <name>pkt_enc_version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the packet version to use for encoding, this is useful for supporting older clients </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/wickr_ctx.h" line="75" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Wickr encryption context for high level management of sending / receiving packets using the Wickr protocol. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="35">
+      <node id="54">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="53" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="36" relation="usage">
+        <childnode refid="55" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="28">
+      <node id="47">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="30" relation="usage">
+        <childnode refid="49" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="42">
+      <node id="61">
         <label>wickr_kdf_algo</label>
         <link refid="structwickr__kdf__algo"/>
       </node>
-      <node id="38">
+      <node id="57">
         <label>wickr_crypto_engine</label>
         <link refid="structwickr__crypto__engine"/>
-        <childnode refid="28" relation="usage">
+        <childnode refid="47" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_key_random</edgelabel>
         </childnode>
-        <childnode refid="34" relation="usage">
+        <childnode refid="53" relation="usage">
           <edgelabel>default_curve</edgelabel>
         </childnode>
-        <childnode refid="39" relation="usage">
+        <childnode refid="58" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_encrypt</edgelabel>
         </childnode>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>wickr_crypto_engine_hmac_create</edgelabel>
           <edgelabel>wickr_crypto_engine_cipher_decrypt</edgelabel>
           <edgelabel>wickr_crypto_engine_crypto_random</edgelabel>
@@ -122,132 +135,133 @@
           <edgelabel>wickr_crypto_engine_ecdh_gen_key</edgelabel>
           <edgelabel>wickr_crypto_engine_digest_file</edgelabel>
         </childnode>
-        <childnode refid="30" relation="usage">
+        <childnode refid="49" relation="usage">
           <edgelabel>default_cipher</edgelabel>
         </childnode>
-        <childnode refid="33" relation="usage">
+        <childnode refid="52" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_key_import</edgelabel>
           <edgelabel>wickr_crypto_engine_ec_rand_key</edgelabel>
         </childnode>
-        <childnode refid="40" relation="usage">
+        <childnode refid="59" relation="usage">
           <edgelabel>wickr_crypto_kdf_meta</edgelabel>
           <edgelabel>wickr_crypto_kdf_gen</edgelabel>
         </childnode>
-        <childnode refid="35" relation="usage">
+        <childnode refid="54" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_sign</edgelabel>
         </childnode>
       </node>
-      <node id="30">
+      <node id="49">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="41">
+      <node id="60">
         <label>wickr_kdf_meta</label>
         <link refid="structwickr__kdf__meta"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>salt</edgelabel>
+          <edgelabel>info</edgelabel>
         </childnode>
-        <childnode refid="42" relation="usage">
+        <childnode refid="61" relation="usage">
           <edgelabel>algo</edgelabel>
         </childnode>
       </node>
-      <node id="27">
+      <node id="46">
         <label>wickr_storage_keys</label>
         <link refid="structwickr__storage__keys"/>
-        <childnode refid="28" relation="usage">
+        <childnode refid="47" relation="usage">
           <edgelabel>local</edgelabel>
           <edgelabel>remote</edgelabel>
         </childnode>
       </node>
-      <node id="34">
+      <node id="53">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="36">
+      <node id="55">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="26">
+      <node id="45">
         <label>wickr_ctx</label>
         <link refid="structwickr__ctx"/>
-        <childnode refid="27" relation="usage">
+        <childnode refid="46" relation="usage">
           <edgelabel>storage_keys</edgelabel>
         </childnode>
-        <childnode refid="28" relation="usage">
+        <childnode refid="47" relation="usage">
           <edgelabel>packet_header_key</edgelabel>
         </childnode>
-        <childnode refid="31" relation="usage">
+        <childnode refid="50" relation="usage">
           <edgelabel>id_chain</edgelabel>
         </childnode>
-        <childnode refid="37" relation="usage">
+        <childnode refid="56" relation="usage">
           <edgelabel>dev_info</edgelabel>
         </childnode>
-        <childnode refid="38" relation="usage">
+        <childnode refid="57" relation="usage">
           <edgelabel>engine</edgelabel>
         </childnode>
       </node>
-      <node id="40">
+      <node id="59">
         <label>wickr_kdf_result</label>
         <link refid="structwickr__kdf__result"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>hash</edgelabel>
         </childnode>
-        <childnode refid="41" relation="usage">
+        <childnode refid="60" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>
-      <node id="39">
+      <node id="58">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="30" relation="usage">
+        <childnode refid="49" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="32">
+      <node id="51">
         <label>wickr_identity</label>
         <link refid="structwickr__identity"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>identifier</edgelabel>
         </childnode>
-        <childnode refid="33" relation="usage">
+        <childnode refid="52" relation="usage">
           <edgelabel>sig_key</edgelabel>
         </childnode>
-        <childnode refid="35" relation="usage">
+        <childnode refid="54" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="29">
+      <node id="48">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="31">
+      <node id="50">
         <label>wickr_identity_chain</label>
         <link refid="structwickr__identity__chain"/>
-        <childnode refid="32" relation="usage">
+        <childnode refid="51" relation="usage">
           <edgelabel>node</edgelabel>
           <edgelabel>root</edgelabel>
         </childnode>
       </node>
-      <node id="33">
+      <node id="52">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="53" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
-      <node id="37">
+      <node id="56">
         <label>wickr_dev_info</label>
         <link refid="structwickr__dev__info"/>
-        <childnode refid="29" relation="usage">
+        <childnode refid="48" relation="usage">
           <edgelabel>system_salt</edgelabel>
           <edgelabel>srv_comm_id</edgelabel>
           <edgelabel>msg_proto_id</edgelabel>
@@ -255,12 +269,13 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/wickr_ctx.h" line="69" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="69" bodyend="75"/>
+    <location file="src/crypto/wickr_ctx.h" line="69" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="69" bodyend="76"/>
     <listofallmembers>
       <member refid="structwickr__ctx_1a043ea3b027c4d27909f77bb195550b11" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>dev_info</name></member>
       <member refid="structwickr__ctx_1a244c238ad74f2dbcddc280822d1fb93f" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>engine</name></member>
       <member refid="structwickr__ctx_1a044a292ab5cbba50fd3ec2f5bf7a00ef" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>id_chain</name></member>
       <member refid="structwickr__ctx_1a86da8359c914b1fec0d60e1c64fcf048" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>packet_header_key</name></member>
+      <member refid="structwickr__ctx_1ad43117fbe3f70681f0ab982b06c6cd75" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>pkt_enc_version</name></member>
       <member refid="structwickr__ctx_1ab6d3ad69a6a16c0f582186b9d8461b66" prot="public" virt="non-virtual"><scope>wickr_ctx</scope><name>storage_keys</name></member>
     </listofallmembers>
   </compounddef>

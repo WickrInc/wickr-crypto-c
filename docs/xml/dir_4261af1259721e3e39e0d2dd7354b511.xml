@@ -22,6 +22,9 @@
     <innerfile refid="protocol_8h">protocol.h</innerfile>
     <innerfile refid="root__keys_8h">root_keys.h</innerfile>
     <innerfile refid="storage_8h">storage.h</innerfile>
+    <innerfile refid="stream_8pb-c_8h">stream.pb-c.h</innerfile>
+    <innerfile refid="stream__cipher_8h">stream_cipher.h</innerfile>
+    <innerfile refid="stream__iv_8h">stream_iv.h</innerfile>
     <innerfile refid="util_8h">util.h</innerfile>
     <innerfile refid="wickr-crypto-c_8h">wickr-crypto-c.h</innerfile>
     <innerfile refid="wickr__ctx_8h">wickr_ctx.h</innerfile>

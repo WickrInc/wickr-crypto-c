@@ -76,32 +76,13 @@ Data Fields</h2></td></tr>
 <tr class="separator:aab5a55e6a516ab8268ef6739ae1422cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab17d6191b23fa7fd1befd03b2eee4ba9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html#ab17d6191b23fa7fd1befd03b2eee4ba9">peer_key</a></td></tr>
 <tr class="separator:ab17d6191b23fa7fd1befd03b2eee4ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cffc5933efafe74e4b723516f2cd542"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__digest.html">wickr_digest_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html#a8cffc5933efafe74e4b723516f2cd542">kdf_digest_mode</a></td></tr>
-<tr class="separator:a8cffc5933efafe74e4b723516f2cd542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7e1b337665c957189e21a2d6dfe7cd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html#ad7e1b337665c957189e21a2d6dfe7cd8">kdf_salt</a></td></tr>
-<tr class="separator:ad7e1b337665c957189e21a2d6dfe7cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0259f327ae0bdcc9e44b1d43a1216cac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html#a0259f327ae0bdcc9e44b1d43a1216cac">kdf_info</a></td></tr>
+<tr class="memitem:a0259f327ae0bdcc9e44b1d43a1216cac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html#a0259f327ae0bdcc9e44b1d43a1216cac">kdf_info</a></td></tr>
 <tr class="separator:a0259f327ae0bdcc9e44b1d43a1216cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. </p>
 <p>All ECDH secrets are created in two phases. In the first phase, a local key pair and peer public key are used to generate a standard ECDH shared secret, the length of which varies by curve. In the second phase, the ECDH shared secret is expanded by a KDF to get specific length output. The specific KDF and the length of it's output are controlled by the implementation provided by the crypto engine that is used to perform the key exchange operation. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a8cffc5933efafe74e4b723516f2cd542"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cffc5933efafe74e4b723516f2cd542">&#9670;&nbsp;</a></span>kdf_digest_mode</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_ecdh_params::kdf_digest_mode</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>digest mode to be used as part a KDF function for ECDH shared secret expansion </p>
-
-</div>
-</div>
 <a id="a0259f327ae0bdcc9e44b1d43a1216cac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0259f327ae0bdcc9e44b1d43a1216cac">&#9670;&nbsp;</a></span>kdf_info</h2>
 
@@ -113,22 +94,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>the kdf parameters to execute against the calculated shared secret, currently supports HKDF</p>
 <p>context information that can be used as part of the KDF function for ECDH shared secret expansion. INFO varies from SALT as it is not intended to be random, and instead holds contextual information about the involved parties. May be NULL if no context information is provided </p>
-
-</div>
-</div>
-<a id="ad7e1b337665c957189e21a2d6dfe7cd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7e1b337665c957189e21a2d6dfe7cd8">&#9670;&nbsp;</a></span>kdf_salt</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_ecdh_params::kdf_salt</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>a random salt value used as part of a KDF function for ECDH shared secret expansion. May be NULL if no salt is used, if a salt is provided it should be a secure random value </p>
 
 </div>
 </div>

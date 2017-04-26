@@ -33,7 +33,7 @@ wickr_stream_iv_t *wickr_stream_iv_create(const wickr_crypto_engine_t engine, wi
     return new_iv;
 }
 
-wickr_stream_iv_t *wickr_stream_iv_copy(wickr_stream_iv_t *iv)
+wickr_stream_iv_t *wickr_stream_iv_copy(const wickr_stream_iv_t *iv)
 {
     if (!iv) {
         return NULL;

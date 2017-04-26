@@ -49,38 +49,38 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="164">
+      <node id="184">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="165" relation="usage">
+        <childnode refid="185" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="166" relation="usage">
+        <childnode refid="186" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="163" relation="usage">
+        <childnode refid="183" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="165">
+      <node id="185">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="162">
+      <node id="182">
         <label>wickr_packet</label>
         <link refid="structwickr__packet"/>
-        <childnode refid="163" relation="usage">
+        <childnode refid="183" relation="usage">
           <edgelabel>content</edgelabel>
         </childnode>
-        <childnode refid="164" relation="usage">
+        <childnode refid="184" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="166">
+      <node id="186">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="163">
+      <node id="183">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

@@ -1259,10 +1259,10 @@
         </inbodydescription>
         <location file="src/crypto/protocol.h" line="677" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="group__wickr__protocol_1gaa1b1db03ca4b5b4109825539e6fead2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__wickr__protocol_1gaf34d8082df52a7ade2fea54eea65d342" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet" kindref="compound">wickr_packet_t</ref> *</type>
         <definition>wickr_packet_t* wickr_packet_create_from_components</definition>
-        <argsstring>(const wickr_crypto_engine_t *engine, const wickr_cipher_key_t *header_key, const wickr_cipher_key_t *payload_key, wickr_ec_key_t *exchange_key, const wickr_payload_t *payload, const wickr_node_array_t *recipients, const wickr_identity_chain_t *sender_signing_identity)</argsstring>
+        <argsstring>(const wickr_crypto_engine_t *engine, const wickr_cipher_key_t *header_key, const wickr_cipher_key_t *payload_key, wickr_ec_key_t *exchange_key, const wickr_payload_t *payload, const wickr_node_array_t *recipients, const wickr_identity_chain_t *sender_signing_identity, uint8_t version)</argsstring>
         <name>wickr_packet_create_from_components</name>
         <param>
           <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
@@ -1291,6 +1291,10 @@
         <param>
           <type>const <ref refid="structwickr__identity__chain" kindref="compound">wickr_identity_chain_t</ref> *</type>
           <declname>sender_signing_identity</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>version</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -1419,7 +1423,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="723" column="1"/>
+        <location file="src/crypto/protocol.h" line="724" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga32d9da2e10d1d653b2ac894d50aaedb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__decode__result" kindref="compound">wickr_decode_result_t</ref> *</type>
@@ -1511,7 +1515,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="747" column="1"/>
+        <location file="src/crypto/protocol.h" line="748" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -1528,11 +1532,11 @@
       </memberdef>
       <memberdef kind="define" id="group__wickr__protocol_1ga89ff9f93c5494db53d3ff27353989862" prot="public" static="no">
         <name>CURRENT_PACKET_VERSION</name>
-        <initializer>3</initializer>
+        <initializer>4</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>The most recent version of the protocol is version 3 </para>        </detaileddescription>
+<para>The most recent version of the protocol is version 4 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/crypto/protocol.h" line="47" column="9" bodyfile="src/crypto/protocol.h" bodystart="47" bodyend="-1"/>

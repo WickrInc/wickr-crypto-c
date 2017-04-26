@@ -82,6 +82,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:ab6d3ad69a6a16c0f582186b9d8461b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86da8359c914b1fec0d60e1c64fcf048"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ctx.html#a86da8359c914b1fec0d60e1c64fcf048">packet_header_key</a></td></tr>
 <tr class="separator:a86da8359c914b1fec0d60e1c64fcf048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43117fbe3f70681f0ab982b06c6cd75"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ctx.html#ad43117fbe3f70681f0ab982b06c6cd75">pkt_enc_version</a></td></tr>
+<tr class="separator:ad43117fbe3f70681f0ab982b06c6cd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wickr encryption context for high level management of sending / receiving packets using the Wickr protocol. </p>
@@ -143,6 +145,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the active header key to use on all outbound packets </p>
+
+</div>
+</div>
+<a id="ad43117fbe3f70681f0ab982b06c6cd75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43117fbe3f70681f0ab982b06c6cd75">&#9670;&nbsp;</a></span>pkt_enc_version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_ctx::pkt_enc_version</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the packet version to use for encoding, this is useful for supporting older clients </p>
 
 </div>
 </div>

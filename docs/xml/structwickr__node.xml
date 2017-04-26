@@ -49,83 +49,83 @@
     <detaileddescription>
 <para>A particular root identity may be associated with many different node identities, each of which are bound to their root identity (see &apos;<ref refid="structwickr__identity__chain" kindref="compound">wickr_identity_chain</ref>&apos; documentation). The node identity is also associated with a device identifier (see &apos;msg_proto_id&apos; in &apos;<ref refid="structwickr__dev__info" kindref="compound">wickr_dev_info</ref>&apos;) representing the environment the node is executing in. On each send to a particular node, the ephemeral_keypair can be rotated by replacing it with another ephemeral_keypair in the node&apos;s pool. The chain of signatures in this node must be verifiable, as it will be checked for validity during message composition via a call to &apos;wickr_node_verify_signature_chain&apos; </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="158">
+      <node id="178">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="157" relation="usage">
+        <childnode refid="177" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="159" relation="usage">
+        <childnode refid="179" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="155" relation="usage">
+        <childnode refid="175" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="157">
+      <node id="177">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="159">
+      <node id="179">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="160">
+      <node id="180">
         <label>wickr_ephemeral_keypair</label>
         <link refid="structwickr__ephemeral__keypair"/>
-        <childnode refid="156" relation="usage">
+        <childnode refid="176" relation="usage">
           <edgelabel>ec_key</edgelabel>
         </childnode>
-        <childnode refid="158" relation="usage">
+        <childnode refid="178" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="154">
+      <node id="174">
         <label>wickr_identity</label>
         <link refid="structwickr__identity"/>
-        <childnode refid="155" relation="usage">
+        <childnode refid="175" relation="usage">
           <edgelabel>identifier</edgelabel>
         </childnode>
-        <childnode refid="156" relation="usage">
+        <childnode refid="176" relation="usage">
           <edgelabel>sig_key</edgelabel>
         </childnode>
-        <childnode refid="158" relation="usage">
+        <childnode refid="178" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="155">
+      <node id="175">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="153">
+      <node id="173">
         <label>wickr_identity_chain</label>
         <link refid="structwickr__identity__chain"/>
-        <childnode refid="154" relation="usage">
+        <childnode refid="174" relation="usage">
           <edgelabel>node</edgelabel>
           <edgelabel>root</edgelabel>
         </childnode>
       </node>
-      <node id="156">
+      <node id="176">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="157" relation="usage">
+        <childnode refid="177" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="155" relation="usage">
+        <childnode refid="175" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
-      <node id="152">
+      <node id="172">
         <label>wickr_node</label>
         <link refid="structwickr__node"/>
-        <childnode refid="153" relation="usage">
+        <childnode refid="173" relation="usage">
           <edgelabel>id_chain</edgelabel>
         </childnode>
-        <childnode refid="155" relation="usage">
+        <childnode refid="175" relation="usage">
           <edgelabel>dev_id</edgelabel>
         </childnode>
-        <childnode refid="160" relation="usage">
+        <childnode refid="180" relation="usage">
           <edgelabel>ephemeral_keypair</edgelabel>
         </childnode>
       </node>

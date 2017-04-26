@@ -206,7 +206,7 @@ wickr_stream_ctx_t *wickr_stream_ctx_create(const wickr_crypto_engine_t engine, 
     return stream_cipher;
 }
 
-wickr_stream_ctx_t *wickr_stream_ctx_copy(wickr_stream_ctx_t *ctx)
+wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx)
 {
     if (!ctx) {
         return NULL;

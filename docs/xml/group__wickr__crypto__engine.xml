@@ -695,7 +695,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get the matching digest type for a function based on size</para><para>NOTE: Currently only 256bit AES ciphers are supported, so this function always returns SHA_256</para><para><parameterlist kind="param"><parameteritem>
+<para>Get the matching digest type for a function based on size</para><para>DEPRECATED IN FAVOR OF wickr_exchange_kdf_matching_cipher</para><para>NOTE: Currently only 256bit AES ciphers are supported, so this function always returns SHA_256</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>cipher</parametername>
 </parameternamelist>
@@ -707,7 +707,33 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="337" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="340" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__crypto__engine_1ga6cdd263ddccd0b28a85ed61889805e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
+        <definition>wickr_kdf_algo_t wickr_key_exchange_kdf_matching_cipher</definition>
+        <argsstring>(wickr_cipher_t cipher)</argsstring>
+        <name>wickr_key_exchange_kdf_matching_cipher</name>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>cipher</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the matching message key exchange kdf for a cipher</para><para>NOTE: Currently all ciphers return HKDF with SHA512 as a digest</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher to find the matching kdf for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a kdf that has an output which is the same size as the length of the cipher&apos;s key </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/crypto_engine.h" line="353" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1ga0a708e5e46c40eae5eaeb581f6a1aed2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
@@ -733,7 +759,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="347" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="363" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1gaf44e3be9066727bf83034d3593dc74e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
@@ -759,7 +785,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="362" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="378" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

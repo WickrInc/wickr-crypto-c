@@ -88,14 +88,15 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga106149e3507106abb6b5be843a4e7c16"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#ga106149e3507106abb6b5be843a4e7c16">wickr_kdf_algo_id</a> { <b>KDF_BCRYPT</b>, 
-<b>KDF_SCRYPT</b>
+<b>KDF_SCRYPT</b>, 
+<b>KDF_HMAC_SHA2</b>
  }</td></tr>
 <tr class="separator:ga106149e3507106abb6b5be843a4e7c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaf8d52b4e277d4e0eff6b60a510831b8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#gaf8d52b4e277d4e0eff6b60a510831b8c">wickr_kdf_meta_create</a> (<a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a> algo, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *salt)</td></tr>
-<tr class="separator:gaf8d52b4e277d4e0eff6b60a510831b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeee99bcfbf94fd964158ac402e2deb48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#gaeee99bcfbf94fd964158ac402e2deb48">wickr_kdf_meta_create</a> (<a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a> algo, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *salt, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *info)</td></tr>
+<tr class="separator:gaeee99bcfbf94fd964158ac402e2deb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga92020ae3e8ffb469c927d17f95a7dff1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#ga92020ae3e8ffb469c927d17f95a7dff1">wickr_kdf_meta_size_with_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer)</td></tr>
 <tr class="separator:ga92020ae3e8ffb469c927d17f95a7dff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1bc501706b4a8a727dfd34f8a00e56da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#ga1bc501706b4a8a727dfd34f8a00e56da">wickr_kdf_meta_serialize</a> (const <a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *meta)</td></tr>
@@ -116,6 +117,8 @@ Functions</h2></td></tr>
 <tr class="separator:gabc745cc1349f64c0f25d6d12de5f64cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga69674856e11652a18663fc7f833ad974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__kdf__result.html">wickr_kdf_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#ga69674856e11652a18663fc7f833ad974">wickr_perform_kdf_meta</a> (const <a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *existing_meta, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *passphrase)</td></tr>
 <tr class="separator:ga69674856e11652a18663fc7f833ad974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81c7a5adea69d04e019dd58080268a08"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__kdf.html#ga81c7a5adea69d04e019dd58080268a08">wickr_hkdf_algo_for_digest</a> (<a class="el" href="structwickr__digest.html">wickr_digest_t</a> digest)</td></tr>
+<tr class="separator:ga81c7a5adea69d04e019dd58080268a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -148,11 +151,37 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>KDF Algorithm ID</p>
-<p>Define the base algorithm a particular kdf function uses. Scrypt and Bcrypt are currently supported. The preferred default is to use scrypt, with a minimum of n = 2^17 </p>
+<p>Define the base algorithm a particular kdf function uses. Scrypt, Bcrypt, and HKDF are currently supported. The preferred default is to use scrypt, with a minimum of n = 2^17 </p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga81c7a5adea69d04e019dd58080268a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga81c7a5adea69d04e019dd58080268a08">&#9670;&nbsp;</a></span>wickr_hkdf_algo_for_digest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structwickr__kdf__algo.html">wickr_kdf_algo_t</a>* wickr_hkdf_algo_for_digest </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__digest.html">wickr_digest_t</a>&#160;</td>
+          <td class="paramname"><em>digest</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Find the HKDF <a class="el" href="structwickr__kdf__algo.html" title="Metadata associated with a particular KDF function. ">wickr_kdf_algo</a> that matches a specific digest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">digest</td><td>the digest to search for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>HKDF <a class="el" href="structwickr__kdf__algo.html" title="Metadata associated with a particular KDF function. ">wickr_kdf_algo</a> that uses 'digest' </dd></dl>
+
+</div>
+</div>
 <a id="ga6ed878108fd58ee420239689de505190"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6ed878108fd58ee420239689de505190">&#9670;&nbsp;</a></span>wickr_kdf_meta_copy()</h2>
 
@@ -179,8 +208,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaf8d52b4e277d4e0eff6b60a510831b8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf8d52b4e277d4e0eff6b60a510831b8c">&#9670;&nbsp;</a></span>wickr_kdf_meta_create()</h2>
+<a id="gaeee99bcfbf94fd964158ac402e2deb48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeee99bcfbf94fd964158ac402e2deb48">&#9670;&nbsp;</a></span>wickr_kdf_meta_create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +224,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
-          <td class="paramname"><em>salt</em>&#160;</td>
+          <td class="paramname"><em>salt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -209,6 +244,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">algo</td><td>see '<a class="el" href="structwickr__kdf__meta.html" title="Represents the information the KDF function will need along with it&#39;s input to derive a particular ou...">wickr_kdf_meta</a>' property documentation </td></tr>
     <tr><td class="paramname">salt</td><td>see '<a class="el" href="structwickr__kdf__meta.html" title="Represents the information the KDF function will need along with it&#39;s input to derive a particular ou...">wickr_kdf_meta</a>' property documentation </td></tr>
+    <tr><td class="paramname">info</td><td>see '<a class="el" href="structwickr__kdf__meta.html" title="Represents the information the KDF function will need along with it&#39;s input to derive a particular ou...">wickr_kdf_meta</a>' property documentation </td></tr>
   </table>
   </dd>
 </dl>

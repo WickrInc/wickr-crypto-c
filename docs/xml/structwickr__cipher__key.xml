@@ -35,21 +35,21 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="5">
+      <node id="24">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="6" relation="usage">
+        <childnode refid="25" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="7" relation="usage">
+        <childnode refid="26" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="7">
+      <node id="26">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="6">
+      <node id="25">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

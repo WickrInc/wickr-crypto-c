@@ -24,7 +24,7 @@ struct \hyperlink{structwickr__decode__result}{wickr\+\_\+decode\+\_\+result}
 \item 
 \#define \hyperlink{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}~2
 \item 
-\#define \hyperlink{group__wickr__protocol_ga89ff9f93c5494db53d3ff27353989862}{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}~3
+\#define \hyperlink{group__wickr__protocol_ga89ff9f93c5494db53d3ff27353989862}{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}~4
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -101,7 +101,7 @@ void \hyperlink{group__wickr__protocol_ga706d39419c8991f417f37f556cee8df9}{wickr
 \item 
 void \hyperlink{group__wickr__protocol_ga94154ab44a6c2e9b97a115e37416efe1}{wickr\+\_\+decode\+\_\+result\+\_\+destroy} (\hyperlink{structwickr__decode__result}{wickr\+\_\+decode\+\_\+result\+\_\+t} $\ast$$\ast$result)
 \item 
-\hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t} $\ast$ \hyperlink{group__wickr__protocol_gaa1b1db03ca4b5b4109825539e6fead2f}{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$header\+\_\+key, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$payload\+\_\+key, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$exchange\+\_\+key, const \hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t} $\ast$payload, const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$recipients, const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$sender\+\_\+signing\+\_\+identity)
+\hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t} $\ast$ \hyperlink{group__wickr__protocol_gaf34d8082df52a7ade2fea54eea65d342}{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$header\+\_\+key, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$payload\+\_\+key, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$exchange\+\_\+key, const \hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t} $\ast$payload, const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$recipients, const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$sender\+\_\+signing\+\_\+identity, uint8\+\_\+t version)
 \item 
 \hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__protocol_ga1654ef299f9189b27e5e58485f1ffcf5}{wickr\+\_\+parse\+\_\+result\+\_\+from\+\_\+packet} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t} $\ast$packet, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$receiver\+\_\+node\+\_\+id, wickr\+\_\+header\+\_\+keygen\+\_\+func header\+\_\+keygen\+\_\+func, const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$sender\+\_\+signing\+\_\+identity)
 \item 
@@ -117,9 +117,9 @@ void \hyperlink{group__wickr__protocol_ga94154ab44a6c2e9b97a115e37416efe1}{wickr
 \index{Wickr Protocol@{Wickr Protocol}!C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}
 \index{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}!Wickr Protocol@{Wickr Protocol}}
 \subsubsection{\texorpdfstring{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}{CURRENT\_PACKET\_VERSION}}
-{\footnotesize\ttfamily \#define C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON~3}
+{\footnotesize\ttfamily \#define C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON~4}
 
-The most recent version of the protocol is version 3 \mbox{\Hypertarget{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}\label{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}} 
+The most recent version of the protocol is version 4 \mbox{\Hypertarget{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}\label{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}} 
 \index{Wickr Protocol@{Wickr Protocol}!O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}
 \index{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}!Wickr Protocol@{Wickr Protocol}}
 \subsubsection{\texorpdfstring{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}{OLDEST\_PACKET\_VERSION}}
@@ -437,11 +437,11 @@ Parse a packet from a buffer generated by \textquotesingle{}wickr\+\_\+packet\+\
 \begin{DoxyReturn}{Returns}
 a newly allocated packet using parsed data from \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing fails 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gaa1b1db03ca4b5b4109825539e6fead2f}\label{group__wickr__protocol_gaa1b1db03ca4b5b4109825539e6fead2f}} 
+\mbox{\Hypertarget{group__wickr__protocol_gaf34d8082df52a7ade2fea54eea65d342}\label{group__wickr__protocol_gaf34d8082df52a7ade2fea54eea65d342}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components@{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components}}
 \index{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components@{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components}!Wickr Protocol@{Wickr Protocol}}
 \subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components()}{wickr\_packet\_create\_from\_components()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t}$\ast$ wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{header\+\_\+key,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{payload\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{exchange\+\_\+key,  }\item[{const \hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t} $\ast$}]{payload,  }\item[{const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$}]{recipients,  }\item[{const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$}]{sender\+\_\+signing\+\_\+identity }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t}$\ast$ wickr\+\_\+packet\+\_\+create\+\_\+from\+\_\+components (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{header\+\_\+key,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{payload\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{exchange\+\_\+key,  }\item[{const \hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t} $\ast$}]{payload,  }\item[{const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$}]{recipients,  }\item[{const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$}]{sender\+\_\+signing\+\_\+identity,  }\item[{uint8\+\_\+t}]{version }\end{DoxyParamCaption})}
 
 Generate a packet given components
 

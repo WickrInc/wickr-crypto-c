@@ -16,5 +16,7 @@ var searchData=
   ['wickr_5fnode_5ft',['wickr_node_t',['../group__wickr__node.html',1,'']]],
   ['wickr_20protocol',['Wickr Protocol',['../group__wickr__protocol.html',1,'']]],
   ['wickr_5froot_5fkeys',['Wickr_root_keys',['../group__wickr__root__keys.html',1,'']]],
-  ['wickr_5fstorage_5fkeys_5ft',['wickr_storage_keys_t',['../group__wickr__storage__keys.html',1,'']]]
+  ['wickr_5fstorage_5fkeys_5ft',['wickr_storage_keys_t',['../group__wickr__storage__keys.html',1,'']]],
+  ['wickr_5fstream',['wickr_stream',['../group__wickr__stream.html',1,'']]],
+  ['wickr_5fstream_5fiv',['wickr_stream_iv',['../group__wickr__stream__iv.html',1,'']]]
 ];

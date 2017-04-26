@@ -15,7 +15,7 @@
 <para>the base algorithm used by this kdf function </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="71" column="1" bodyfile="src/crypto/kdf.h" bodystart="71" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="72" column="1" bodyfile="src/crypto/kdf.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__kdf__algo_1a0cf9976901115634ddbb6193b6e326ba" prot="public" static="no" mutable="no">
         <type>wickr_kdf_id</type>
@@ -28,7 +28,7 @@
 <para>the specific sub-algorithm used by this kdf function </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="72" column="1" bodyfile="src/crypto/kdf.h" bodystart="72" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="73" column="1" bodyfile="src/crypto/kdf.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__kdf__algo_1a9a6ccf9787e16898d1724292dab6593e" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -41,7 +41,7 @@
 <para>the number of bytes this algorithm expects for a salt value </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="73" column="1" bodyfile="src/crypto/kdf.h" bodystart="73" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="74" column="1" bodyfile="src/crypto/kdf.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__kdf__algo_1a75e5396b3c53817c6799dbf3107e36d6" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -54,7 +54,7 @@
 <para>the number of bytes this algorithm will produce as an ouput </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="74" column="1" bodyfile="src/crypto/kdf.h" bodystart="74" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="75" column="1" bodyfile="src/crypto/kdf.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__kdf__algo_1a3591ba4f7b6b916381ad28327a67d08c" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -67,14 +67,14 @@
 <para>a number representing the difficulty of calculating the KDF function as either CPU power, Memory use, or a combination of both </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/kdf.h" line="75" column="1" bodyfile="src/crypto/kdf.h" bodystart="75" bodyend="-1"/>
+        <location file="src/crypto/kdf.h" line="76" column="1" bodyfile="src/crypto/kdf.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Metadata associated with a particular KDF function. </para>    </briefdescription>
     <detaileddescription>
 <para>The algorithm is defined by a base algorithm, as well as a specific sub-algorithm associated with it. As an example KDF_SCRYPT as the algo_id with KDF_ID_SCRYPT_17 as the kdf_id. </para>    </detaileddescription>
-    <location file="src/crypto/kdf.h" line="70" column="1" bodyfile="src/crypto/kdf.h" bodystart="70" bodyend="76"/>
+    <location file="src/crypto/kdf.h" line="71" column="1" bodyfile="src/crypto/kdf.h" bodystart="71" bodyend="77"/>
     <listofallmembers>
       <member refid="structwickr__kdf__algo_1a1bc420e2ca0f36169e261205bf6246e9" prot="public" virt="non-virtual"><scope>wickr_kdf_algo</scope><name>algo_id</name></member>
       <member refid="structwickr__kdf__algo_1a3591ba4f7b6b916381ad28327a67d08c" prot="public" virt="non-virtual"><scope>wickr_kdf_algo</scope><name>cost</name></member>

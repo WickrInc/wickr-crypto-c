@@ -96,9 +96,13 @@ $(function() {
 <li>cipher
 : <a class="el" href="group__wickr__cipher.html#ga6506e1a07f7bc2c5ceeb0ca5ce81385b">wickr_cipher_key</a>
 , <a class="el" href="structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9">wickr_cipher_result</a>
+, <a class="el" href="structwickr__stream__iv.html#a86379d83e28b96d4852ac047482713d1">wickr_stream_iv</a>
 </li>
 <li>cipher_id
 : <a class="el" href="structwickr__cipher.html#a2ce240f5bd396df05ddd4f30ba944b36">wickr_cipher</a>
+</li>
+<li>cipher_key
+: <a class="el" href="structwickr__stream__key.html#a3d957a51193dda882cb89ced2ceeb91e">wickr_stream_key</a>
 </li>
 <li>cipher_text
 : <a class="el" href="structwickr__cipher__result.html#a29fe7c04025f39cc574ac41f846d167a">wickr_cipher_result</a>
@@ -147,6 +151,9 @@ $(function() {
 <li>digest_mode
 : <a class="el" href="structwickr__ecdsa__result.html#a33c820900693a016ac43702e76b54cff">wickr_ecdsa_result</a>
 </li>
+<li>direction
+: <a class="el" href="structwickr__stream__ctx.html#a34c622c3ca61348321261ee7a9c3ff91">wickr_stream_ctx</a>
+</li>
 </ul>
 
 
@@ -162,6 +169,8 @@ $(function() {
 </li>
 <li>engine
 : <a class="el" href="structwickr__ctx.html#a244c238ad74f2dbcddc280822d1fb93f">wickr_ctx</a>
+, <a class="el" href="structwickr__stream__ctx.html#a14ef322bbeec579ded7f35c5aeb0d3fa">wickr_stream_ctx</a>
+, <a class="el" href="structwickr__stream__iv.html#a8c597718ade583db19204df7bfed7e85">wickr_stream_iv</a>
 </li>
 <li>ephemeral_key_id
 : <a class="el" href="structwickr__key__exchange.html#aa400c601e6a24cdffeb627501d36cd3e">wickr_key_exchange</a>
@@ -176,11 +185,21 @@ $(function() {
 : <a class="el" href="structwickr__decode__result.html#a63449a59c8a8bab451f5ab555be7895d">wickr_decode_result</a>
 , <a class="el" href="structwickr__parse__result.html#a69a3ee332921b4fdbc0e07dbfa74a8ed">wickr_parse_result</a>
 </li>
+<li>evolution_key
+: <a class="el" href="structwickr__stream__key.html#ae7210bd67e61cb4c38733a237dae95d9">wickr_stream_key</a>
+</li>
 <li>exchange_data
 : <a class="el" href="structwickr__key__exchange.html#a6be89562df814a32b19cd57c49037691">wickr_key_exchange</a>
 </li>
 <li>exchanges
 : <a class="el" href="structwickr__packet__header.html#a49af3b4865a9deee0e60883134ebbb83">wickr_packet_header</a>
+</li>
+</ul>
+
+
+<h3><a id="index_g"></a>- g -</h3><ul>
+<li>gen_count
+: <a class="el" href="structwickr__stream__iv.html#ae7d500c34333c546ee044fe875e10dfc">wickr_stream_iv</a>
 </li>
 </ul>
 
@@ -205,11 +224,17 @@ $(function() {
 , <a class="el" href="structwickr__ephemeral__keypair.html#a9220b37a7db764818406bcc84e3ba86b">wickr_ephemeral_keypair</a>
 , <a class="el" href="structwickr__identity.html#aed3657b22d83bb810b51ea1d1520b23e">wickr_identity</a>
 </li>
+<li>info
+: <a class="el" href="structwickr__kdf__meta.html#abf3edef445c8849c356d1282e49033f4">wickr_kdf_meta</a>
+</li>
 <li>is_authenticated
 : <a class="el" href="structwickr__cipher.html#a21499cb78c9db301261c9d0d647b3e50">wickr_cipher</a>
 </li>
 <li>iv
 : <a class="el" href="structwickr__cipher__result.html#a741b49cc09cddfce1924e7a26ab8b35b">wickr_cipher_result</a>
+</li>
+<li>iv_factory
+: <a class="el" href="structwickr__stream__ctx.html#a67c5066e87dbdc026358563daa51f174">wickr_stream_ctx</a>
 </li>
 <li>iv_len
 : <a class="el" href="structwickr__cipher.html#a1cd39366934a31345d63ff42deeac1e3">wickr_cipher</a>
@@ -218,17 +243,14 @@ $(function() {
 
 
 <h3><a id="index_k"></a>- k -</h3><ul>
-<li>kdf_digest_mode
-: <a class="el" href="structwickr__ecdh__params.html#a8cffc5933efafe74e4b723516f2cd542">wickr_ecdh_params</a>
-</li>
 <li>kdf_id
 : <a class="el" href="structwickr__kdf__algo.html#a0cf9976901115634ddbb6193b6e326ba">wickr_kdf_algo</a>
 </li>
 <li>kdf_info
 : <a class="el" href="structwickr__ecdh__params.html#a0259f327ae0bdcc9e44b1d43a1216cac">wickr_ecdh_params</a>
 </li>
-<li>kdf_salt
-: <a class="el" href="structwickr__ecdh__params.html#ad7e1b337665c957189e21a2d6dfe7cd8">wickr_ecdh_params</a>
+<li>key
+: <a class="el" href="structwickr__stream__ctx.html#a3598b3c0415d13fafab6633f8c00a3c8">wickr_stream_ctx</a>
 </li>
 <li>key_data
 : <a class="el" href="structwickr__cipher__key.html#a0bf9fa22f1db80010410ae609aac8a2a">wickr_cipher_key</a>
@@ -243,6 +265,9 @@ $(function() {
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
+<li>last_seq
+: <a class="el" href="structwickr__stream__ctx.html#abf2c6ab54e1663e6a47e310fd68b3b3f">wickr_stream_ctx</a>
+</li>
 <li>length
 : <a class="el" href="structwickr__buffer.html#a8472d93dd98cfe6f98740a42ae16c86b">wickr_buffer</a>
 </li>
@@ -299,6 +324,9 @@ $(function() {
 <li>packet_key
 : <a class="el" href="structwickr__ctx__encode.html#af96f392d9f5081e3c229d0342f71d629">wickr_ctx_encode</a>
 </li>
+<li>packets_per_evolution
+: <a class="el" href="structwickr__stream__key.html#a78777e4c64048b6dae38f8772744194e">wickr_stream_key</a>
+</li>
 <li>parse_result
 : <a class="el" href="structwickr__ctx__packet.html#a7bc4643a99b787536ee8b7505412ecce">wickr_ctx_packet</a>
 </li>
@@ -307,6 +335,9 @@ $(function() {
 </li>
 <li>peer_key
 : <a class="el" href="structwickr__ecdh__params.html#ab17d6191b23fa7fd1befd03b2eee4ba9">wickr_ecdh_params</a>
+</li>
+<li>pkt_enc_version
+: <a class="el" href="structwickr__ctx.html#ad43117fbe3f70681f0ab982b06c6cd75">wickr_ctx</a>
 </li>
 <li>pri_data
 : <a class="el" href="structwickr__ec__key.html#a67c23110b722401c6ba8b883b3aa74fc">wickr_ec_key</a>
@@ -342,6 +373,9 @@ $(function() {
 </li>
 <li>salt_size
 : <a class="el" href="structwickr__kdf__algo.html#a9a6ccf9787e16898d1724292dab6593e">wickr_kdf_algo</a>
+</li>
+<li>seed
+: <a class="el" href="structwickr__stream__iv.html#a221017bc41b4cc36bf31f13a0c299db1">wickr_stream_iv</a>
 </li>
 <li>sender
 : <a class="el" href="structwickr__ctx__packet.html#ac57d2b0f48fc3dad5b72d408e30b7b8b">wickr_ctx_packet</a>
