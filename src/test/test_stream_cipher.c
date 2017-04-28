@@ -112,7 +112,7 @@ static void __test_encode_decode_evolution(wickr_stream_ctx_t *enc, wickr_stream
     wickr_buffer_t *test_data = engine.wickr_crypto_engine_crypto_random(1024);
     SHOULD_NOT_BE_NULL(test_data);
     
-    wickr_cipher_result_t *encode = wickr_stream_ctx_encode(enc, test_data, test_packet_num);
+    wickr_cipher_result_t *encode = wickr_stream_ctx_encode(enc, test_data, NULL, test_packet_num);
     
     
     SHOULD_NOT_BE_NULL(encode);
@@ -128,9 +128,9 @@ static void __test_encode_decode_evolution(wickr_stream_ctx_t *enc, wickr_stream
         SHOULD_BE_TRUE(wickr_buffer_is_equal(enc->key->evolution_key, old_encode_key->evolution_key, NULL));
     }
     
-    SHOULD_BE_NULL(wickr_stream_ctx_decode(dec, encode, 1));
+    SHOULD_BE_NULL(wickr_stream_ctx_decode(dec, encode, NULL, 1));
     
-    wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, test_packet_num);
+    wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, NULL, test_packet_num);
     SHOULD_NOT_BE_NULL(decode);
     SHOULD_EQUAL(test_packet_num, dec->last_seq);
     
@@ -200,12 +200,12 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
         wickr_buffer_t *test_data = engine.wickr_crypto_engine_crypto_random(1024);
         SHOULD_NOT_BE_NULL(test_data);
         
-        wickr_cipher_result_t *encode = wickr_stream_ctx_encode(enc, test_data, 1);
+        wickr_cipher_result_t *encode = wickr_stream_ctx_encode(enc, test_data, NULL, 1);
         SHOULD_NOT_BE_NULL(encode);
         SHOULD_BE_FALSE(wickr_buffer_is_equal(encode->cipher_text, test_data, NULL));
         SHOULD_EQUAL(1, enc->last_seq);
         
-        wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, 1);
+        wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, NULL, 1);
         SHOULD_NOT_BE_NULL(decode);
         SHOULD_EQUAL(1, dec->last_seq);
         
@@ -217,9 +217,41 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
         wickr_stream_key_t *rand_key = wickr_stream_key_create_rand(engine, CIPHER_AES256_GCM, test_evolution);
         wickr_stream_ctx_t *bad_dec = wickr_stream_ctx_create(engine, rand_key, STREAM_DIRECTION_DECODE);
         
-        wickr_buffer_t *bad_decode = wickr_stream_ctx_decode(bad_dec, encode, 1);
+        wickr_buffer_t *bad_decode = wickr_stream_ctx_decode(bad_dec, encode, NULL, 1);
         SHOULD_BE_NULL(bad_decode);
         wickr_stream_ctx_destroy(&bad_dec);
+        wickr_cipher_result_destroy(&encode);
+    }
+    END_IT
+    
+    /* Reset seq number to do another test */
+    enc->last_seq = 0;
+    dec->last_seq = 0;
+    
+    IT("should allow transfer of encrypted packeets that also authenticates additional data")
+    {
+        wickr_buffer_t *test_data = engine.wickr_crypto_engine_crypto_random(1024);
+        wickr_buffer_t *test_aad = engine.wickr_crypto_engine_crypto_random(64);
+        
+        SHOULD_NOT_BE_NULL(test_data);
+        
+        wickr_cipher_result_t *encode = wickr_stream_ctx_encode(enc, test_data, test_aad, 1);
+        SHOULD_NOT_BE_NULL(encode);
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(encode->cipher_text, test_data, NULL));
+        SHOULD_EQUAL(1, enc->last_seq);
+        
+        wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, test_aad, 1);
+        SHOULD_NOT_BE_NULL(decode);
+        SHOULD_EQUAL(1, dec->last_seq);
+        
+        dec->last_seq = 0;
+        SHOULD_BE_NULL(wickr_stream_ctx_decode(dec, encode, NULL, 1));
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_data, decode, NULL));
+        
+        wickr_buffer_destroy(&test_aad);
+        wickr_buffer_destroy(&test_data);
+        wickr_buffer_destroy(&decode);
         wickr_cipher_result_destroy(&encode);
     }
     END_IT
