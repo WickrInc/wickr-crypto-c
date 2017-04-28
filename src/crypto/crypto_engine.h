@@ -367,7 +367,7 @@ wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve);
 
  Get the matching exchange cipher given a message packet cipher
  
- An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_from_components)
+ An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_with_packet_key)
  This function currently always returns CIPHER_ID_AES256_CTR
  The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always CIPHER_ID_AES256_GCM) to be used for packet content decryption
  If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the GCM mode packet content
