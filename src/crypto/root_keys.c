@@ -187,7 +187,7 @@ wickr_cipher_result_t *wickr_root_keys_export(const wickr_root_keys_t *keys, con
         return NULL;
     }
     
-    wickr_cipher_result_t *cipher_result = engine->wickr_crypto_engine_cipher_encrypt(serialized_keys, export_key, NULL);
+    wickr_cipher_result_t *cipher_result = engine->wickr_crypto_engine_cipher_encrypt(serialized_keys, NULL, export_key, NULL);
     wickr_buffer_destroy_zero(&serialized_keys);
     
     return cipher_result;

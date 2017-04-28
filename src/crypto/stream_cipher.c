@@ -349,7 +349,7 @@ wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wi
         return NULL;
     }
     
-    wickr_cipher_result_t *encrypt_result = ctx->engine.wickr_crypto_engine_cipher_encrypt(data, ctx->key->cipher_key, iv);
+    wickr_cipher_result_t *encrypt_result = ctx->engine.wickr_crypto_engine_cipher_encrypt(data, NULL, ctx->key->cipher_key, iv);
     wickr_buffer_destroy(&iv);
     
     ctx->last_seq = seq_num;
@@ -367,7 +367,7 @@ wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cip
         return NULL;
     }
     
-    wickr_buffer_t *decrypt_result = ctx->engine.wickr_crypto_engine_cipher_decrypt(data, ctx->key->cipher_key, true);
+    wickr_buffer_t *decrypt_result = ctx->engine.wickr_crypto_engine_cipher_decrypt(data, NULL, ctx->key->cipher_key, true);
     
     ctx->last_seq = seq_num;
     

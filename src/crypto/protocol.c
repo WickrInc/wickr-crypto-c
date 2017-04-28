@@ -141,8 +141,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
     shared_secret_key.cipher = exchange_cipher;
     shared_secret_key.key_data = shared_secret_buffer;
     
-    wickr_cipher_result_t *wraped_packet_key = engine->wickr_crypto_engine_cipher_encrypt(data_to_wrap, &shared_secret_key, NULL);
-    
+    wickr_cipher_result_t *wraped_packet_key = engine->wickr_crypto_engine_cipher_encrypt(data_to_wrap, NULL, &shared_secret_key, NULL);
     wickr_buffer_destroy_zero(&shared_secret_buffer);
     
     if (!wraped_packet_key) {
@@ -300,7 +299,7 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
     shared_secret_key.cipher = wrapped_packet_key->cipher;
     shared_secret_key.key_data = shared_secret_buffer;
     
-    wickr_buffer_t *packet_key_buffer = engine->wickr_crypto_engine_cipher_decrypt(wrapped_packet_key, &shared_secret_key, false);
+    wickr_buffer_t *packet_key_buffer = engine->wickr_crypto_engine_cipher_decrypt(wrapped_packet_key, NULL, &shared_secret_key, false);
     wickr_buffer_destroy_zero(&shared_secret_buffer);
     wickr_cipher_result_destroy(&wrapped_packet_key);
     
@@ -601,7 +600,7 @@ wickr_cipher_result_t *wickr_packet_header_encrypt(const wickr_packet_header_t *
         return NULL;
     }
     
-    wickr_cipher_result_t *cipher_result = engine->wickr_crypto_engine_cipher_encrypt(serialized_exchange, header_key, NULL);
+    wickr_cipher_result_t *cipher_result = engine->wickr_crypto_engine_cipher_encrypt(serialized_exchange, NULL, header_key, NULL);
     wickr_buffer_destroy_zero(&serialized_exchange);
 
     return cipher_result;
@@ -613,7 +612,7 @@ wickr_packet_header_t *wickr_packet_header_create_from_cipher(const wickr_crypto
         return NULL;
     }
     
-    wickr_buffer_t *decrypted_exchange = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, header_key, true);
+    wickr_buffer_t *decrypted_exchange = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, NULL, header_key, true);
     
     if (!decrypted_exchange) {
         return NULL;
@@ -793,7 +792,7 @@ wickr_cipher_result_t *wickr_payload_encrypt(const wickr_payload_t *payload, con
         return NULL;
     }
     
-    wickr_cipher_result_t *return_result = engine->wickr_crypto_engine_cipher_encrypt(buffer, payload_key, NULL);
+    wickr_cipher_result_t *return_result = engine->wickr_crypto_engine_cipher_encrypt(buffer, NULL, payload_key, NULL);
     wickr_buffer_destroy_zero(&buffer);
     
     return return_result;
@@ -806,7 +805,7 @@ wickr_payload_t *wickr_payload_create_from_cipher(const wickr_crypto_engine_t *e
         return NULL;
     }
     
-    wickr_buffer_t *decoded_payload = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, payload_key, true);
+    wickr_buffer_t *decoded_payload = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, NULL, payload_key, true);
     
     if (!decoded_payload) {
         return NULL;

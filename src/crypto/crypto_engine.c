@@ -78,7 +78,7 @@ wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engi
     cipher_key.cipher = cipher;
     cipher_key.key_data = kdf_result->hash;
     
-    wickr_cipher_result_t *ciphered_data = engine->wickr_crypto_engine_cipher_encrypt(value, &cipher_key, NULL);
+    wickr_cipher_result_t *ciphered_data = engine->wickr_crypto_engine_cipher_encrypt(value, NULL, &cipher_key, NULL);
     
     if (!ciphered_data) {
         wickr_kdf_result_destroy(&kdf_result);
@@ -153,7 +153,7 @@ wickr_buffer_t *wickr_crypto_engine_kdf_decipher(const wickr_crypto_engine_t *en
     }
     
     /* Attempt decrypt with derived cipher key, only allow authenticated ciphers */
-    wickr_buffer_t *decoded_data = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, cipher_key, true);
+    wickr_buffer_t *decoded_data = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, NULL, cipher_key, true);
     wickr_cipher_result_destroy(&cipher_result);
     wickr_cipher_key_destroy(&cipher_key);
     
