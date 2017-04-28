@@ -68,18 +68,17 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id, uint64_
     return new_exchange;
 }
 
-wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_crypto_engine_t *engine,
-                                                                const wickr_identity_chain_t *sender,
-                                                                const wickr_node_t *receiver,
-                                                                wickr_ec_key_t *packet_exchange_key,
-                                                                const wickr_cipher_key_t *packet_key,
-                                                                uint8_t version)
+wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_engine_t *engine,
+                                                          const wickr_identity_chain_t *sender,
+                                                          const wickr_node_t *receiver,
+                                                          wickr_ec_key_t *packet_exchange_key,
+                                                          const wickr_buffer_t *data_to_wrap,
+                                                          wickr_cipher_t exchange_cipher,
+                                                          uint8_t version)
 {
-    if (!engine || !sender || !receiver || !packet_key) {
+    if (!engine || !sender || !receiver || !packet_exchange_key) {
         return NULL;
     }
-    
-    wickr_cipher_t packet_key_wrap_cipher = wickr_exchange_cipher_matching_cipher(packet_key->cipher);
     
     wickr_kdf_algo_t algo;
     
@@ -89,7 +88,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
             algo = KDF_HKDF_SHA256;
             break;
         case 4:
-            algo = wickr_key_exchange_kdf_matching_cipher(packet_key->cipher);
+            algo = wickr_key_exchange_kdf_matching_cipher(exchange_cipher);
             break;
         default:
             return NULL;
@@ -139,20 +138,12 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     }
     
     wickr_cipher_key_t shared_secret_key;
-    shared_secret_key.cipher = packet_key_wrap_cipher;
+    shared_secret_key.cipher = exchange_cipher;
     shared_secret_key.key_data = shared_secret_buffer;
     
-    wickr_buffer_t *serialized_packet_key = wickr_cipher_key_serialize(packet_key);
-    
-    if (!serialized_packet_key) {
-        wickr_buffer_destroy_zero(&shared_secret_buffer);
-        return NULL;
-    }
-    
-    wickr_cipher_result_t *wraped_packet_key = engine->wickr_crypto_engine_cipher_encrypt(serialized_packet_key, &shared_secret_key, NULL);
+    wickr_cipher_result_t *wraped_packet_key = engine->wickr_crypto_engine_cipher_encrypt(data_to_wrap, &shared_secret_key, NULL);
     
     wickr_buffer_destroy_zero(&shared_secret_buffer);
-    wickr_buffer_destroy_zero(&serialized_packet_key);
     
     if (!wraped_packet_key) {
         return NULL;
@@ -181,6 +172,32 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     return exchange;
 }
 
+wickr_key_exchange_t *wickr_key_exchange_create_with_packet_key(const wickr_crypto_engine_t *engine,
+                                                                const wickr_identity_chain_t *sender,
+                                                                const wickr_node_t *receiver,
+                                                                wickr_ec_key_t *packet_exchange_key,
+                                                                const wickr_cipher_key_t *packet_key,
+                                                                uint8_t version)
+{
+    if (!engine || !sender || !receiver || !packet_key || !packet_exchange_key) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *serialized_packet_key = wickr_cipher_key_serialize(packet_key);
+    
+    if (!serialized_packet_key) {
+        return NULL;
+    }
+    
+    wickr_cipher_t cipher = wickr_exchange_cipher_matching_cipher(packet_key->cipher);
+    
+    wickr_key_exchange_t *key_exchange = wickr_key_exchange_create_with_data(engine, sender, receiver, packet_exchange_key, serialized_packet_key, cipher, version);
+    
+    wickr_buffer_destroy_zero(&serialized_packet_key);
+    
+    return key_exchange;
+}
+
 /* Low level decrypting of key exchanges, safer to call from wickr_ctx instead! */
 wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engine_t *engine,
                                                          const wickr_identity_chain_t *sender,
@@ -193,6 +210,28 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
+    wickr_buffer_t *packet_key_buffer = wickr_key_exchange_derive_data(engine, sender, receiver, packet_exchange_key, exchange, version);
+    
+    wickr_cipher_key_t *packet_key = wickr_cipher_key_from_buffer(packet_key_buffer);
+    wickr_buffer_destroy_zero(&packet_key_buffer);
+    
+    if (!packet_key) {
+        return NULL;
+    }
+    
+    return packet_key;
+}
+
+wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engine,
+                                               const wickr_identity_chain_t *sender,
+                                               const wickr_node_t *receiver,
+                                               wickr_ec_key_t *packet_exchange_key,
+                                               const wickr_key_exchange_t *exchange,
+                                               uint8_t version)
+{
+    if (!exchange || !engine || !sender || !receiver) {
+        return NULL;
+    }
     
     wickr_cipher_result_t *wrapped_packet_key = wickr_cipher_result_from_buffer(exchange->exchange_data);
     
@@ -265,14 +304,7 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
     wickr_buffer_destroy_zero(&shared_secret_buffer);
     wickr_cipher_result_destroy(&wrapped_packet_key);
     
-    wickr_cipher_key_t *packet_key = wickr_cipher_key_from_buffer(packet_key_buffer);
-    wickr_buffer_destroy_zero(&packet_key_buffer);
-    
-    if (!packet_key) {
-        return NULL;
-    }
-    
-    return packet_key;
+    return packet_key_buffer;
 }
 
 wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source)
@@ -1164,7 +1196,7 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         
         wickr_node_t *one_node = wickr_node_array_fetch_item(recipients, i);
         
-        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_from_components(engine, sender_signing_identity, one_node, exchange_key, payload_key, version);
+        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_with_packet_key(engine, sender_signing_identity, one_node, exchange_key, payload_key, version);
         
         if (!one_exchange) {
             wickr_exchange_array_destroy(&exchange_array);
