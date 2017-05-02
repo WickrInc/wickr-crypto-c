@@ -81,11 +81,29 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     wickr_cipher_t packet_key_wrap_cipher = wickr_exchange_cipher_matching_cipher(packet_key->cipher);
     
+    wickr_kdf_algo_t algo;
+    
+    switch (version) {
+        case 2:
+        case 3:
+            algo = KDF_HKDF_SHA256;
+            break;
+        case 4:
+            algo = wickr_key_exchange_kdf_matching_cipher(packet_key->cipher);
+            break;
+        default:
+            return NULL;
+    }
+    
+    wickr_kdf_meta_t kdf_params;
+    kdf_params.algo = algo;
+    kdf_params.salt = NULL;
+    kdf_params.info = NULL;
+    
     wickr_ecdh_params_t exchange_params;
     exchange_params.local_key = packet_exchange_key;
     exchange_params.peer_key = receiver->ephemeral_keypair->ec_key;
-    exchange_params.kdf_digest_mode = wickr_digest_matching_cipher(packet_key_wrap_cipher);
-    exchange_params.kdf_salt = NULL;
+    exchange_params.kdf_info = &kdf_params;
     
     /* Set the info field to remote_dev_id so that it can be used as application context data in HKDF */
     
@@ -94,12 +112,13 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     switch (version) {
         case 2:
-            exchange_params.kdf_info = wickr_buffer_copy(receiver->dev_id);
+            exchange_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
+        case 4:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
-            exchange_params.kdf_info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
+            exchange_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
         }
             break;
         default:
@@ -113,7 +132,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
     
     wickr_buffer_t *shared_secret_buffer = engine->wickr_crypto_engine_ecdh_gen_key(&exchange_params);
     
-    wickr_buffer_destroy_zero(&exchange_params.kdf_info);
+    wickr_buffer_destroy_zero(&exchange_params.kdf_info->info);
     
     if (!shared_secret_buffer) {
         return NULL;
@@ -174,17 +193,36 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
+    
     wickr_cipher_result_t *wrapped_packet_key = wickr_cipher_result_from_buffer(exchange->exchange_data);
     
     if (!wrapped_packet_key) {
         return NULL;
     }
     
+    wickr_kdf_algo_t algo;
+    
+    switch (version) {
+        case 2:
+        case 3:
+            algo = KDF_HKDF_SHA256;
+            break;
+        case 4:
+            algo = wickr_key_exchange_kdf_matching_cipher(wrapped_packet_key->cipher);
+            break;
+        default:
+            return NULL;
+    }
+    
+    wickr_kdf_meta_t kdf_params;
+    kdf_params.algo = algo;
+    kdf_params.info = NULL;
+    kdf_params.salt = NULL;
+    
     wickr_ecdh_params_t ecdh_params;
-    ecdh_params.kdf_digest_mode = wickr_digest_matching_cipher(wrapped_packet_key->cipher);
     ecdh_params.local_key = receiver->ephemeral_keypair->ec_key;
     ecdh_params.peer_key = packet_exchange_key;
-    ecdh_params.kdf_info = NULL;
+    ecdh_params.kdf_info = &kdf_params;
     
     /* Set the info field to remote_dev_id so that it can be used as application context data in HKDF */
     
@@ -193,12 +231,13 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
     
     switch (version) {
         case 2:
-            ecdh_params.kdf_info = wickr_buffer_copy(receiver->dev_id);
+            ecdh_params.kdf_info->info = wickr_buffer_copy(receiver->dev_id);
             break;
         case 3:
+        case 4:
         {
             wickr_buffer_t *info_buffers[] = { sender_root_pub, receiver_root_pub, receiver->dev_id };
-            ecdh_params.kdf_info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
+            ecdh_params.kdf_info->info = wickr_buffer_concat_multi(info_buffers, BUFFER_ARRAY_LEN(info_buffers));
         }
             break;
         default:
@@ -210,11 +249,9 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
         return NULL;
     }
     
-    ecdh_params.kdf_salt = NULL;
-    
     wickr_buffer_t *shared_secret_buffer = engine->wickr_crypto_engine_ecdh_gen_key(&ecdh_params);
     
-    wickr_buffer_destroy_zero(&ecdh_params.kdf_info);
+    wickr_buffer_destroy_zero(&ecdh_params.kdf_info->info);
     
     if (!shared_secret_buffer || shared_secret_buffer->length != wrapped_packet_key->cipher.key_len) {
         return NULL;
@@ -768,7 +805,7 @@ wickr_packet_t *wickr_packet_create(uint8_t version, wickr_buffer_t *content, wi
     return new_packet;
 }
 
-wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t *engine, const wickr_cipher_result_t *enc_header, const wickr_cipher_result_t *enc_payload, const wickr_ec_key_t *signing_key)
+wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t *engine, const wickr_cipher_result_t *enc_header, const wickr_cipher_result_t *enc_payload, const wickr_ec_key_t *signing_key, uint8_t version)
 {
     if (!engine || !enc_payload || !signing_key) {
         return NULL;
@@ -811,7 +848,7 @@ wickr_packet_t *wickr_packet_create_with_components(const wickr_crypto_engine_t 
         return NULL;
     }
     
-    wickr_packet_t *new_packet = wickr_packet_create(CURRENT_PACKET_VERSION, result_buffer, signature);
+    wickr_packet_t *new_packet = wickr_packet_create(version, result_buffer, signature);
     
     if (!new_packet) {
         wickr_buffer_destroy(&result_buffer);
@@ -841,6 +878,7 @@ wickr_packet_t *wickr_packet_create_from_buffer(const wickr_buffer_t *buffer)
             sig_type = (buffer->bytes[1] & 0xF);
             break;
         case 3:
+        case 4:
             sig_type = (buffer->bytes[1]);
             break;
         default:
@@ -902,7 +940,7 @@ wickr_buffer_t *wickr_packet_serialize(const wickr_packet_t *packet)
         return NULL;
     }
     
-    uint8_t version = CURRENT_PACKET_VERSION;
+    uint8_t version = packet->version;
     uint8_t meta_data = (uint8_t)packet->signature->curve.identifier;
     
     wickr_buffer_t *sig_data = wickr_ecdsa_result_serialize(packet->signature);
@@ -1103,7 +1141,8 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
                                                     wickr_ec_key_t *exchange_key,
                                                     const wickr_payload_t *payload,
                                                     const wickr_node_array_t *recipients,
-                                                    const wickr_identity_chain_t *sender_signing_identity)
+                                                    const wickr_identity_chain_t *sender_signing_identity,
+                                                    uint8_t version)
 {
     if (!engine || !payload_key || !header_key || !payload || !recipients || !sender_signing_identity) {
         return NULL;
@@ -1125,7 +1164,7 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         
         wickr_node_t *one_node = wickr_node_array_fetch_item(recipients, i);
         
-        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_from_components(engine, sender_signing_identity, one_node, exchange_key, payload_key, CURRENT_PACKET_VERSION);
+        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create_from_components(engine, sender_signing_identity, one_node, exchange_key, payload_key, version);
         
         if (!one_exchange) {
             wickr_exchange_array_destroy(&exchange_array);
@@ -1158,7 +1197,7 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         return NULL;
     }
     
-    wickr_packet_t *packet = wickr_packet_create_with_components(engine, enc_header, enc_payload, sender_signing_identity->node->sig_key);
+    wickr_packet_t *packet = wickr_packet_create_with_components(engine, enc_header, enc_payload, sender_signing_identity->node->sig_key, version);
     wickr_cipher_result_destroy(&enc_header);
     wickr_cipher_result_destroy(&enc_payload);
     

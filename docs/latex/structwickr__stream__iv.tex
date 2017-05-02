@@ -1,0 +1,59 @@
+\hypertarget{structwickr__stream__iv}{}\section{wickr\+\_\+stream\+\_\+iv Struct Reference}
+\label{structwickr__stream__iv}\index{wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}}
+
+
+A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512.  
+
+
+
+
+{\ttfamily \#include $<$stream\+\_\+iv.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} \hyperlink{structwickr__stream__iv_a8c597718ade583db19204df7bfed7e85}{engine}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}{seed}
+\item 
+\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{structwickr__stream__iv_a86379d83e28b96d4852ac047482713d1}{cipher}
+\item 
+uint64\+\_\+t \hyperlink{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}{gen\+\_\+count}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512. 
+
+On each call to generate, the IV generator will be called with H\+M\+A\+C(gen\+\_\+count, seed) The gen count value is incremented by one each time the generate method is called 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__stream__iv_a86379d83e28b96d4852ac047482713d1}\label{structwickr__stream__iv_a86379d83e28b96d4852ac047482713d1}} 
+\index{wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}!cipher@{cipher}}
+\index{cipher@{cipher}!wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}}
+\subsubsection{\texorpdfstring{cipher}{cipher}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::cipher}
+
+the cipher that this engine is generating IV\textquotesingle{}s for, this will determine the output length of the generated IV values \mbox{\Hypertarget{structwickr__stream__iv_a8c597718ade583db19204df7bfed7e85}\label{structwickr__stream__iv_a8c597718ade583db19204df7bfed7e85}} 
+\index{wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}!engine@{engine}}
+\index{engine@{engine}!wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}}
+\subsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::engine}
+
+crypto engine engine used to supply secure random bytes and H\+M\+AC functions \mbox{\Hypertarget{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}\label{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}} 
+\index{wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}!gen\+\_\+count@{gen\+\_\+count}}
+\index{gen\+\_\+count@{gen\+\_\+count}!wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}}
+\subsubsection{\texorpdfstring{gen\+\_\+count}{gen\_count}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::gen\+\_\+count}
+
+an internal count value used as the H\+M\+AC value to deterministically generate unique I\+Vs \mbox{\Hypertarget{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}\label{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}} 
+\index{wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}!seed@{seed}}
+\index{seed@{seed}!wickr\+\_\+stream\+\_\+iv@{wickr\+\_\+stream\+\_\+iv}}
+\subsubsection{\texorpdfstring{seed}{seed}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::seed}
+
+a 64 byte secure random seed generated at creation of the stream\+\_\+iv generator 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/stream\+\_\+iv.\+h\end{DoxyCompactItemize}

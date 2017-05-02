@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include "eckey.h"
 #include "digest.h"
+#include "kdf.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,8 +47,8 @@ extern "C" {
  Elliptical Curve key with both public and private components set used to compute the ECDH shared secret
  @var wickr_ecdh_params::peer_key
  Elliptical Curve key with the public component of the other party's key pair used to compute the ECDH shared secret
- @var wickr_ecdh_params::kdf_digest_mode
- digest mode to be used as part a KDF function for ECDH shared secret expansion
+ @var wickr_ecdh_params::kdf_info
+ the kdf parameters to execute against the calculated shared secret, currently supports HKDF
  @var wickr_ecdh_params::kdf_salt
  a random salt value used as part of a KDF function for ECDH shared secret expansion. May be NULL if no salt is used, if a salt is provided it should be a secure random value
  @var wickr_ecdh_params::kdf_info 
@@ -56,9 +57,7 @@ extern "C" {
 struct wickr_ecdh_params {
     wickr_ec_key_t *local_key;
     wickr_ec_key_t *peer_key;
-    wickr_digest_t kdf_digest_mode;
-    wickr_buffer_t *kdf_salt;
-    wickr_buffer_t *kdf_info;
+    wickr_kdf_meta_t *kdf_info;
 };
 
 typedef struct wickr_ecdh_params wickr_ecdh_params_t;
@@ -71,12 +70,10 @@ typedef struct wickr_ecdh_params wickr_ecdh_params_t;
 
  @param local_key See documentation in 'wickr_ecdh_params' property declarations
  @param peer_key See documentation in 'wickr_ecdh_params' property declarations
- @param kdf_digest_mode See documentation in 'wickr_ecdh_params' property declarations
- @param kdf_salt See documentation in 'wickr_ecdh_params' property declarations
  @param kdf_info See documentation in 'wickr_ecdh_params' property declarations
  @return a newly allocated ecdh parameter set owning the properties passed in
  */
-wickr_ecdh_params_t *wickr_ecdh_params_create(wickr_ec_key_t *local_key, wickr_ec_key_t *peer_key, wickr_digest_t kdf_digest_mode, wickr_buffer_t *kdf_salt, wickr_buffer_t *kdf_info);
+wickr_ecdh_params_t *wickr_ecdh_params_create(wickr_ec_key_t *local_key, wickr_ec_key_t *peer_key, wickr_kdf_meta_t *kdf_info);
 
 /**
  

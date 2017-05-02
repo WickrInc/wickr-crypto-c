@@ -15,7 +15,7 @@
 <para>the packet key that was randomly chosen to encrypt the payload of the packet </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="437" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="437" bodyend="-1"/>
+        <location file="src/crypto/wickr_ctx.h" line="443" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="443" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__ctx__encode_1ac83f0d28849ec047ccf8fb4b14319ad9" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -28,7 +28,7 @@
 <para>a serialized Wickr packet that has been generated from user input </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/wickr_ctx.h" line="438" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="438" bodyend="-1"/>
+        <location file="src/crypto/wickr_ctx.h" line="444" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="444" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -36,36 +36,36 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="45">
+      <node id="64">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="46" relation="usage">
+        <childnode refid="65" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="47" relation="usage">
+        <childnode refid="66" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="47">
+      <node id="66">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="44">
+      <node id="63">
         <label>wickr_ctx_encode</label>
         <link refid="structwickr__ctx__encode"/>
-        <childnode refid="45" relation="usage">
+        <childnode refid="64" relation="usage">
           <edgelabel>packet_key</edgelabel>
         </childnode>
-        <childnode refid="46" relation="usage">
+        <childnode refid="65" relation="usage">
           <edgelabel>encoded_packet</edgelabel>
         </childnode>
       </node>
-      <node id="46">
+      <node id="65">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/wickr_ctx.h" line="436" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="436" bodyend="439"/>
+    <location file="src/crypto/wickr_ctx.h" line="442" column="1" bodyfile="src/crypto/wickr_ctx.h" bodystart="442" bodyend="445"/>
     <listofallmembers>
       <member refid="structwickr__ctx__encode_1ac83f0d28849ec047ccf8fb4b14319ad9" prot="public" virt="non-virtual"><scope>wickr_ctx_encode</scope><name>encoded_packet</name></member>
       <member refid="structwickr__ctx__encode_1af96f392d9f5081e3c229d0342f71d629" prot="public" virt="non-virtual"><scope>wickr_ctx_encode</scope><name>packet_key</name></member>

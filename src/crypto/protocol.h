@@ -42,9 +42,9 @@ extern "C" {
 
 /**
  @ingroup wickr_protocol
- The most recent version of the protocol is version 3
+ The most recent version of the protocol is version 4
  */
-#define CURRENT_PACKET_VERSION 3
+#define CURRENT_PACKET_VERSION 4
 
 typedef enum {
     E_SUCCESS,
@@ -700,7 +700,8 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
                                                     wickr_ec_key_t *exchange_key,
                                                     const wickr_payload_t *payload,
                                                     const wickr_node_array_t *recipients,
-                                                    const wickr_identity_chain_t *sender_signing_identity);
+                                                    const wickr_identity_chain_t *sender_signing_identity,
+                                                    uint8_t version);
 
 typedef wickr_cipher_key_t *(*wickr_header_keygen_func)(const wickr_crypto_engine_t engine, wickr_cipher_t cipher, const wickr_identity_chain_t *id_chain);
 

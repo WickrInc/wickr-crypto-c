@@ -11,6 +11,7 @@
 #include "test_context.h"
 #include "test_node.h"
 #include "test_buffer.h"
+#include "test_stream_cipher.h"
 
 #include "cspec_output_unit.h"
 
@@ -61,6 +62,9 @@ int main(int argc, char *argv[])
     CSpec_Run(DESCRIPTION(wickr_packet_create_from_components), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_result), output);
+    CSpec_Run(DESCRIPTION(wickr_stream_key), output);
+    CSpec_Run(DESCRIPTION(wickr_stream_cipher), output);
+    CSpec_Run(DESCRIPTION(wickr_stream_iv), output);
     CSpec_Run(DESCRIPTION(wickr_perform_kdf), output);
     CSpec_Run(DESCRIPTION(wickr_crypto_engine_kdf), output);
     

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="struct___wickr_____proto_____handshake_____key_exchange" kind="struct" language="C++" prot="public">
+    <compoundname>_Wickr__Proto__Handshake__KeyExchange</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct___wickr_____proto_____handshake_____key_exchange_1aba2684db9ac9791aac197bd8263f7678" prot="public" static="no" mutable="no">
+        <type>ProtobufCMessage</type>
+        <definition>ProtobufCMessage _Wickr__Proto__Handshake__KeyExchange::base</definition>
+        <argsstring></argsstring>
+        <name>base</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="50" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct___wickr_____proto_____handshake_____key_exchange_1ac9b4b0e62f8a53ad7fdff84ab5f442dd" prot="public" static="no" mutable="no">
+        <type>protobuf_c_boolean</type>
+        <definition>protobuf_c_boolean _Wickr__Proto__Handshake__KeyExchange::has_sender_pub</definition>
+        <argsstring></argsstring>
+        <name>has_sender_pub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="51" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct___wickr_____proto_____handshake_____key_exchange_1ab85a9447340668bede61222c6e6c0731" prot="public" static="no" mutable="no">
+        <type>ProtobufCBinaryData</type>
+        <definition>ProtobufCBinaryData _Wickr__Proto__Handshake__KeyExchange::sender_pub</definition>
+        <argsstring></argsstring>
+        <name>sender_pub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="52" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct___wickr_____proto_____handshake_____key_exchange_1a0f5bc63f0be52de3def2e065b663ec4f" prot="public" static="no" mutable="no">
+        <type>protobuf_c_boolean</type>
+        <definition>protobuf_c_boolean _Wickr__Proto__Handshake__KeyExchange::has_exchange_data</definition>
+        <argsstring></argsstring>
+        <name>has_exchange_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="53" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct___wickr_____proto_____handshake_____key_exchange_1a494d47162f1b13c7cb5f6f9eaf7b9b05" prot="public" static="no" mutable="no">
+        <type>ProtobufCBinaryData</type>
+        <definition>ProtobufCBinaryData _Wickr__Proto__Handshake__KeyExchange::exchange_data</definition>
+        <argsstring></argsstring>
+        <name>exchange_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream.pb-c.h" line="54" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/crypto/stream.pb-c.h" line="49" column="1" bodyfile="src/crypto/stream.pb-c.h" bodystart="48" bodyend="55"/>
+    <listofallmembers>
+      <member refid="struct___wickr_____proto_____handshake_____key_exchange_1aba2684db9ac9791aac197bd8263f7678" prot="public" virt="non-virtual"><scope>_Wickr__Proto__Handshake__KeyExchange</scope><name>base</name></member>
+      <member refid="struct___wickr_____proto_____handshake_____key_exchange_1a494d47162f1b13c7cb5f6f9eaf7b9b05" prot="public" virt="non-virtual"><scope>_Wickr__Proto__Handshake__KeyExchange</scope><name>exchange_data</name></member>
+      <member refid="struct___wickr_____proto_____handshake_____key_exchange_1a0f5bc63f0be52de3def2e065b663ec4f" prot="public" virt="non-virtual"><scope>_Wickr__Proto__Handshake__KeyExchange</scope><name>has_exchange_data</name></member>
+      <member refid="struct___wickr_____proto_____handshake_____key_exchange_1ac9b4b0e62f8a53ad7fdff84ab5f442dd" prot="public" virt="non-virtual"><scope>_Wickr__Proto__Handshake__KeyExchange</scope><name>has_sender_pub</name></member>
+      <member refid="struct___wickr_____proto_____handshake_____key_exchange_1ab85a9447340668bede61222c6e6c0731" prot="public" virt="non-virtual"><scope>_Wickr__Proto__Handshake__KeyExchange</scope><name>sender_pub</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

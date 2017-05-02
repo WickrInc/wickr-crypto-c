@@ -49,48 +49,48 @@
     <detaileddescription>
 <para>Ephemeral kaypairs are identifiable by an integer value, and are signed by the node that generated the key. The additional properties outside of the key material itself provide clarity for both a message sender and receiver. For the sender, the signature can provide authenticity of the public key material if the key pair is retrived from a public place such as a server. The identifier can be passed as metadata by the sender so that the receiver has knowledge of which private key from their active pool to use decode the message. The goal of ephemeral keypairs is to provide an as constant as possible rotation / destruction cycle </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="120">
+      <node id="140">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="118" relation="usage">
+        <childnode refid="138" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="121" relation="usage">
+        <childnode refid="141" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="119" relation="usage">
+        <childnode refid="139" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="118">
+      <node id="138">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="121">
+      <node id="141">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="116">
+      <node id="136">
         <label>wickr_ephemeral_keypair</label>
         <link refid="structwickr__ephemeral__keypair"/>
-        <childnode refid="117" relation="usage">
+        <childnode refid="137" relation="usage">
           <edgelabel>ec_key</edgelabel>
         </childnode>
-        <childnode refid="120" relation="usage">
+        <childnode refid="140" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="119">
+      <node id="139">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="117">
+      <node id="137">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="118" relation="usage">
+        <childnode refid="138" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="119" relation="usage">
+        <childnode refid="139" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

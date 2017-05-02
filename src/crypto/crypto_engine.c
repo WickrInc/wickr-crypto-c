@@ -63,8 +63,8 @@ wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engi
         return NULL;
     }
     
-    /* Don't allow bcrypt or unauthenticated ciphers for this operation, not supported */
-    if (algo.algo_id == KDF_BCRYPT || !cipher.is_authenticated || algo.output_size != cipher.key_len) {
+    /* Don't allow bcrypt, HKDF or unauthenticated ciphers for this operation, not supported */
+    if (algo.algo_id != KDF_SCRYPT || !cipher.is_authenticated || algo.output_size != cipher.key_len) {
         return NULL;
     }
     
@@ -176,6 +176,22 @@ wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve)
         case EC_CURVE_ID_NIST_P521:
             return DIGEST_SHA_512;
     }
+}
+
+wickr_kdf_algo_t wickr_key_exchange_kdf_matching_cipher(wickr_cipher_t cipher)
+{
+    wickr_kdf_algo_t algo;
+    
+    switch (cipher.cipher_id) {
+        case CIPHER_ID_AES256_GCM:
+        case CIPHER_ID_AES256_CTR:
+            algo = KDF_HKDF_SHA512;
+            break;
+    }
+    
+    algo.output_size = cipher.key_len;
+    
+    return algo;
 }
 
 /* Use unauthenticated cipher for msg key unwrapping since the output is an authenticated cipher key. 

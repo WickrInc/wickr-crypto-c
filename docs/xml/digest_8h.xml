@@ -4,181 +4,259 @@
     <compoundname>digest.h</compoundname>
     <includes local="no">stdlib.h</includes>
     <includes local="no">stdint.h</includes>
+    <includedby refid="kdf_8h" local="yes">src/crypto/kdf.h</includedby>
     <includedby refid="crypto__engine_8h" local="yes">src/crypto/crypto_engine.h</includedby>
     <includedby refid="ecdsa_8h" local="yes">src/crypto/ecdsa.h</includedby>
     <includedby refid="ecdh_8h" local="yes">src/crypto/ecdh.h</includedby>
     <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
     <incdepgraph>
-      <node id="126">
+      <node id="135">
         <label>stdint.h</label>
       </node>
-      <node id="125">
+      <node id="134">
         <label>stdlib.h</label>
       </node>
-      <node id="124">
+      <node id="133">
         <label>src/crypto/digest.h</label>
         <link refid="digest_8h"/>
-        <childnode refid="125" relation="include">
+        <childnode refid="134" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
+        <childnode refid="135" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="131">
-        <label>src/crypto/identity.h</label>
-        <link refid="identity_8h_source"/>
-        <childnode refid="132" relation="include">
+      <node id="143">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="144" relation="include">
         </childnode>
-        <childnode refid="133" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
       </node>
-      <node id="137">
-        <label>src/crypto/storage.h</label>
-        <link refid="storage_8h_source"/>
-        <childnode refid="130" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="136" relation="include">
-        </childnode>
-      </node>
-      <node id="136">
+      <node id="147">
         <label>src/crypto/wickr_ctx.h</label>
         <link refid="wickr__ctx_8h_source"/>
-        <childnode refid="135" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
       </node>
       <node id="141">
-        <label>src/crypto/ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="128" relation="include">
-        </childnode>
-        <childnode refid="138" relation="include">
-        </childnode>
-        <childnode refid="134" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-      </node>
-      <node id="133">
-        <label>src/crypto/node.h</label>
-        <link refid="node_8h_source"/>
-        <childnode refid="134" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-      </node>
-      <node id="129">
-        <label>src/crypto/devinfo.h</label>
-        <link refid="devinfo_8h_source"/>
-        <childnode refid="130" relation="include">
-        </childnode>
-        <childnode refid="133" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="136" relation="include">
-        </childnode>
-      </node>
-      <node id="132">
-        <label>src/crypto/ephemeral_keypair.h</label>
-        <link refid="ephemeral__keypair_8h_source"/>
-        <childnode refid="133" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="136" relation="include">
-        </childnode>
-      </node>
-      <node id="130">
         <label>src/crypto/root_keys.h</label>
         <link refid="root__keys_8h_source"/>
-        <childnode refid="131" relation="include">
+        <childnode refid="142" relation="include">
         </childnode>
-        <childnode refid="133" relation="include">
+        <childnode refid="144" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
       </node>
-      <node id="135">
+      <node id="146">
         <label>src/crypto/wickr-crypto-c.h</label>
         <link refid="wickr-crypto-c_8h_source"/>
       </node>
-      <node id="127">
-        <label>src/crypto/digest.h</label>
-        <link refid="digest_8h"/>
-        <childnode refid="128" relation="include">
-        </childnode>
+      <node id="139">
+        <label>src/crypto/crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
         <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
         </childnode>
         <childnode refid="141" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
         </childnode>
       </node>
-      <node id="139">
-        <label>src/crypto/protobuf_util.h</label>
-        <link refid="protobuf__util_8h_source"/>
+      <node id="148">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
       </node>
-      <node id="134">
+      <node id="153">
+        <label>src/crypto/ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="145">
         <label>src/crypto/protocol.h</label>
         <link refid="protocol_8h_source"/>
-        <childnode refid="135" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
       </node>
-      <node id="140">
-        <label>src/crypto/ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="128" relation="include">
-        </childnode>
-        <childnode refid="132" relation="include">
-        </childnode>
-        <childnode refid="131" relation="include">
-        </childnode>
-        <childnode refid="133" relation="include">
-        </childnode>
+      <node id="137">
+        <label>src/crypto/kdf.h</label>
+        <link refid="kdf_8h_source"/>
         <childnode refid="138" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-      </node>
-      <node id="138">
-        <label>src/crypto/openssl_suite.h</label>
-        <link refid="openssl__suite_8h_source"/>
-      </node>
-      <node id="128">
-        <label>src/crypto/crypto_engine.h</label>
-        <link refid="crypto__engine_8h_source"/>
-        <childnode refid="129" relation="include">
-        </childnode>
-        <childnode refid="132" relation="include">
-        </childnode>
-        <childnode refid="131" relation="include">
-        </childnode>
-        <childnode refid="130" relation="include">
-        </childnode>
-        <childnode refid="137" relation="include">
-        </childnode>
-        <childnode refid="133" relation="include">
-        </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="153" relation="include">
         </childnode>
         <childnode refid="139" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
+      </node>
+      <node id="149">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="144">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="152">
+        <label>src/crypto/stream_iv.h</label>
+        <link refid="stream__iv_8h_source"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+      </node>
+      <node id="136">
+        <label>src/crypto/digest.h</label>
+        <link refid="digest_8h"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>src/crypto/stream_cipher.h</label>
+        <link refid="stream__cipher_8h_source"/>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="138">
+        <label>src/crypto/cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="140">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+      </node>
+      <node id="142">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>src/crypto/ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+      </node>
+      <node id="150">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structwickr__digest" prot="public">wickr_digest</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="digest_8h_1a81efbc0fc101b06a914f7ff9e2fbc0e9" prot="public" static="no">
+        <name>SHA256_DIGEST_SIZE</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/digest.h" line="60" column="9" bodyfile="src/crypto/digest.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="digest_8h_1afb6d310df497c25c1e85af07f71ee2b3" prot="public" static="no">
+        <name>SHA384_DIGEST_SIZE</name>
+        <initializer>48</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/digest.h" line="61" column="9" bodyfile="src/crypto/digest.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="digest_8h_1a67f489f3eee39c447a6db3ba34ef75f2" prot="public" static="no">
+        <name>SHA512_DIGEST_SIZE</name>
+        <initializer>64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/digest.h" line="62" column="9" bodyfile="src/crypto/digest.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="digest_8h_1a9cd66870c2c471a5f0456930290ea110" prot="public" static="no">
         <name>wickr_digest_type</name>
@@ -251,42 +329,42 @@
         <definition>const wickr_digest_t DIGEST_SHA_256</definition>
         <argsstring></argsstring>
         <name>DIGEST_SHA_256</name>
-        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA256, 32 }</initializer>
+        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA256, SHA256_DIGEST_SIZE }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/digest.h" line="60" column="1" bodyfile="src/crypto/digest.h" bodystart="60" bodyend="-1"/>
+        <location file="src/crypto/digest.h" line="64" column="1" bodyfile="src/crypto/digest.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="digest_8h_1a4fb4ae71b41e07cd8bd7d66cd39e2bb9" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
         <definition>const wickr_digest_t DIGEST_SHA_384</definition>
         <argsstring></argsstring>
         <name>DIGEST_SHA_384</name>
-        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA384, 48 }</initializer>
+        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA384, SHA384_DIGEST_SIZE }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/digest.h" line="61" column="1" bodyfile="src/crypto/digest.h" bodystart="61" bodyend="-1"/>
+        <location file="src/crypto/digest.h" line="65" column="1" bodyfile="src/crypto/digest.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="digest_8h_1a5cc088bb2ab1d86d34294f7bb3400b93" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
         <definition>const wickr_digest_t DIGEST_SHA_512</definition>
         <argsstring></argsstring>
         <name>DIGEST_SHA_512</name>
-        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA512, 64 }</initializer>
+        <initializer>= { DIGEST_SHA2, DIGEST_ID_SHA512, SHA512_DIGEST_SIZE }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/digest.h" line="62" column="1" bodyfile="src/crypto/digest.h" bodystart="62" bodyend="-1"/>
+        <location file="src/crypto/digest.h" line="66" column="1" bodyfile="src/crypto/digest.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -314,7 +392,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/digest.h" line="73" column="1"/>
+        <location file="src/crypto/digest.h" line="77" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -363,18 +441,22 @@
 <codeline lineno="56"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__digest" kindref="compound">wickr_digest</ref><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref>;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_256<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA256,<sp/>32<sp/>};</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_384<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA384,<sp/>48<sp/>};</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_512<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA512,<sp/>64<sp/>};</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>*<ref refid="group__wickr__digest_1ga64a18a57a861988bf1a4898bebc712cb" kindref="member">wickr_digest_find_with_id</ref>(uint8_t<sp/><ref refid="structwickr__digest_1aa63245abbb5350e3b4f0ef25d50bce77" kindref="member">digest_id</ref>);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SHA256_DIGEST_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SHA384_DIGEST_SIZE<sp/>48</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SHA512_DIGEST_SIZE<sp/>64</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_256<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA256,<sp/>SHA256_DIGEST_SIZE<sp/>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_384<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA384,<sp/>SHA384_DIGEST_SIZE<sp/>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>DIGEST_SHA_512<sp/>=<sp/>{<sp/>DIGEST_SHA2,<sp/>DIGEST_ID_SHA512,<sp/>SHA512_DIGEST_SIZE<sp/>};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>*<ref refid="group__wickr__digest_1ga64a18a57a861988bf1a4898bebc712cb" kindref="member">wickr_digest_find_with_id</ref>(uint8_t<sp/><ref refid="structwickr__digest_1aa63245abbb5350e3b4f0ef25d50bce77" kindref="member">digest_id</ref>);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>digest_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>digest_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="src/crypto/digest.h"/>
   </compounddef>

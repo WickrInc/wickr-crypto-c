@@ -49,21 +49,21 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="174">
+      <node id="194">
         <label>wickr_ephemeral_info</label>
         <link refid="structwickr__ephemeral__info"/>
       </node>
-      <node id="173">
+      <node id="193">
         <label>wickr_packet_meta</label>
         <link refid="structwickr__packet__meta"/>
-        <childnode refid="174" relation="usage">
+        <childnode refid="194" relation="usage">
           <edgelabel>ephemerality_settings</edgelabel>
         </childnode>
-        <childnode refid="175" relation="usage">
+        <childnode refid="195" relation="usage">
           <edgelabel>channel_tag</edgelabel>
         </childnode>
       </node>
-      <node id="175">
+      <node id="195">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

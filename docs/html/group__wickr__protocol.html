@@ -98,7 +98,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:gad269883d0b8b26c4fa52da595ef5ddf7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gad269883d0b8b26c4fa52da595ef5ddf7">OLDEST_PACKET_VERSION</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:gad269883d0b8b26c4fa52da595ef5ddf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga89ff9f93c5494db53d3ff27353989862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga89ff9f93c5494db53d3ff27353989862">CURRENT_PACKET_VERSION</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:ga89ff9f93c5494db53d3ff27353989862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga89ff9f93c5494db53d3ff27353989862">CURRENT_PACKET_VERSION</a>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:ga89ff9f93c5494db53d3ff27353989862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -175,8 +175,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga36183bf96372661f890aefbe388bd32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga94154ab44a6c2e9b97a115e37416efe1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga94154ab44a6c2e9b97a115e37416efe1">wickr_decode_result_destroy</a> (<a class="el" href="structwickr__decode__result.html">wickr_decode_result_t</a> **result)</td></tr>
 <tr class="separator:ga94154ab44a6c2e9b97a115e37416efe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1b1db03ca4b5b4109825539e6fead2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet.html">wickr_packet_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gaa1b1db03ca4b5b4109825539e6fead2f">wickr_packet_create_from_components</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *payload_key, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *exchange_key, const <a class="el" href="structwickr__payload.html">wickr_payload_t</a> *payload, const wickr_node_array_t *recipients, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender_signing_identity)</td></tr>
-<tr class="separator:gaa1b1db03ca4b5b4109825539e6fead2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf34d8082df52a7ade2fea54eea65d342"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet.html">wickr_packet_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gaf34d8082df52a7ade2fea54eea65d342">wickr_packet_create_from_components</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *payload_key, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *exchange_key, const <a class="el" href="structwickr__payload.html">wickr_payload_t</a> *payload, const wickr_node_array_t *recipients, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender_signing_identity, uint8_t version)</td></tr>
+<tr class="separator:gaf34d8082df52a7ade2fea54eea65d342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1654ef299f9189b27e5e58485f1ffcf5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga1654ef299f9189b27e5e58485f1ffcf5">wickr_parse_result_from_packet</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__packet.html">wickr_packet_t</a> *packet, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *receiver_node_id, wickr_header_keygen_func header_keygen_func, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender_signing_identity)</td></tr>
 <tr class="separator:ga1654ef299f9189b27e5e58485f1ffcf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga32d9da2e10d1d653b2ac894d50aaedb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__decode__result.html">wickr_decode_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga32d9da2e10d1d653b2ac894d50aaedb0">wickr_decode_result_from_parse_result</a> (const <a class="el" href="structwickr__packet.html">wickr_packet_t</a> *packet, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *parse_result, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *receiver_dev_id, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *receiver_decode_key, <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *receiver_signing_identity, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender_signing_identity)</td></tr>
@@ -191,11 +191,11 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CURRENT_PACKET_VERSION&#160;&#160;&#160;3</td>
+          <td class="memname">#define CURRENT_PACKET_VERSION&#160;&#160;&#160;4</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The most recent version of the protocol is version 3 </p>
+<p>The most recent version of the protocol is version 4 </p>
 
 </div>
 </div>
@@ -819,8 +819,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa1b1db03ca4b5b4109825539e6fead2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa1b1db03ca4b5b4109825539e6fead2f">&#9670;&nbsp;</a></span>wickr_packet_create_from_components()</h2>
+<a id="gaf34d8082df52a7ade2fea54eea65d342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf34d8082df52a7ade2fea54eea65d342">&#9670;&nbsp;</a></span>wickr_packet_create_from_components()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -865,7 +865,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *&#160;</td>
-          <td class="paramname"><em>sender_signing_identity</em>&#160;</td>
+          <td class="paramname"><em>sender_signing_identity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>version</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

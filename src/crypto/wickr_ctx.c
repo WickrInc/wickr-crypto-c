@@ -391,6 +391,7 @@ wickr_ctx_t *wickr_ctx_create(const wickr_crypto_engine_t engine, wickr_dev_info
     new_ctx->storage_keys = storage_keys;
     new_ctx->packet_header_key = packet_header_key;
     new_ctx->engine = engine;
+    new_ctx->pkt_enc_version = DEFAULT_PKT_ENC_VERSION;
     
     if (!new_ctx->packet_header_key) {
         wickr_ctx_destroy(&new_ctx);
@@ -428,12 +429,14 @@ wickr_ctx_t *wickr_ctx_copy(const wickr_ctx_t *ctx)
     }
     
     wickr_ctx_t *copy = wickr_ctx_create(ctx->engine, dev_info_copy, id_chain_copy, storage_keys_copy);
-    
+
     if (!copy) {
         wickr_dev_info_destroy(&dev_info_copy);
         wickr_identity_chain_destroy(&id_chain_copy);
         wickr_storage_keys_destroy(&storage_keys_copy);
     }
+    
+    copy->pkt_enc_version = ctx->pkt_enc_version;
     
     return copy;
 }
@@ -624,7 +627,7 @@ wickr_ctx_encode_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx, const wickr_
     }
     
     /* Pass our keys, payload, and recipient information to the packet generation function */
-    wickr_packet_t *generated_packet = wickr_packet_create_from_components(&ctx->engine, ctx->packet_header_key, rnd_payload_key, rnd_exchange_key, payload, nodes, ctx->id_chain);
+    wickr_packet_t *generated_packet = wickr_packet_create_from_components(&ctx->engine, ctx->packet_header_key, rnd_payload_key, rnd_exchange_key, payload, nodes, ctx->id_chain, ctx->pkt_enc_version);
     
     wickr_ec_key_destroy(&rnd_exchange_key);
     

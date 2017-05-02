@@ -36,31 +36,31 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="189">
+      <node id="209">
         <label>wickr_ephemeral_info</label>
         <link refid="structwickr__ephemeral__info"/>
       </node>
-      <node id="188">
+      <node id="208">
         <label>wickr_packet_meta</label>
         <link refid="structwickr__packet__meta"/>
-        <childnode refid="189" relation="usage">
+        <childnode refid="209" relation="usage">
           <edgelabel>ephemerality_settings</edgelabel>
         </childnode>
-        <childnode refid="187" relation="usage">
+        <childnode refid="207" relation="usage">
           <edgelabel>channel_tag</edgelabel>
         </childnode>
       </node>
-      <node id="187">
+      <node id="207">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="186">
+      <node id="206">
         <label>wickr_payload</label>
         <link refid="structwickr__payload"/>
-        <childnode refid="187" relation="usage">
+        <childnode refid="207" relation="usage">
           <edgelabel>body</edgelabel>
         </childnode>
-        <childnode refid="188" relation="usage">
+        <childnode refid="208" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>

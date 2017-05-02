@@ -5,6 +5,7 @@
 #include "memory.h"
 #include "openssl_suite.h"
 #include "ow-crypt.h"
+#include "openssl_suite.h"
 
 #include <string.h>
 
@@ -27,10 +28,18 @@ static const wickr_kdf_algo_t *__find_dkf_algo_with_id(uint8_t algo_id)
     }
 }
 
-wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *salt)
+wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *salt, wickr_buffer_t *info)
 {
-    if (!salt || salt->length != algo.salt_size) {
-        return NULL;
+    /* HKDF has salt as an optional field, but we don't recomend setting NULL for salt unless info is set */
+    if (algo.algo_id == KDF_HMAC_SHA2) {
+        if (!salt && !info) {
+            return NULL;
+        }
+    }
+    else {
+        if (!salt || salt->length != algo.salt_size) {
+            return NULL;
+        }
     }
     
     wickr_kdf_meta_t *meta = wickr_alloc_zero(sizeof(wickr_kdf_meta_t));
@@ -41,6 +50,7 @@ wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *s
     
     meta->algo = algo;
     meta->salt = salt;
+    meta->info = info;
     
     return meta;
 }
@@ -88,12 +98,17 @@ wickr_kdf_meta_t *wickr_kdf_meta_create_with_buffer(const wickr_buffer_t *buffer
         return NULL;
     }
     
-    return wickr_kdf_meta_create(*algo, salt_buffer);
+    return wickr_kdf_meta_create(*algo, salt_buffer, NULL);
 }
 
 wickr_buffer_t *wickr_kdf_meta_serialize(const wickr_kdf_meta_t *meta)
 {
     if (!meta) {
+        return NULL;
+    }
+    
+    /* Don't allow serialization of meta from HKDF where salt is NULL */
+    if (meta->algo.algo_id == KDF_HMAC_SHA2 && !meta->salt) {
         return NULL;
     }
     
@@ -114,11 +129,18 @@ wickr_kdf_meta_t *wickr_kdf_meta_copy(const wickr_kdf_meta_t *source)
     
     wickr_buffer_t *salt_copy = wickr_buffer_copy(source->salt);
     
-    if (!salt_copy) {
+    if (!salt_copy && source->salt) {
         return NULL;
     }
     
-    return wickr_kdf_meta_create(source->algo, salt_copy);
+    wickr_buffer_t *info_copy = wickr_buffer_copy(source->info);
+    
+    if (!info_copy && source->info) {
+        wickr_buffer_destroy(&salt_copy);
+        return NULL;
+    }
+    
+    return wickr_kdf_meta_create(source->algo, salt_copy, info_copy);
 }
 
 void wickr_kdf_meta_destroy(wickr_kdf_meta_t **meta)
@@ -128,6 +150,7 @@ void wickr_kdf_meta_destroy(wickr_kdf_meta_t **meta)
     }
     
     wickr_buffer_destroy_zero(&(*meta)->salt);
+    wickr_buffer_destroy(&(*meta)->info);
     wickr_free(*meta);
     *meta = NULL;
 }
@@ -185,7 +208,7 @@ void wickr_kdf_result_destroy(wickr_kdf_result_t **result)
     *result = NULL;
 }
 
-static wickr_buffer_t *__scrypt_generate_salt(uint8_t len)
+static wickr_buffer_t *__openssl_generate_salt(uint8_t len)
 {
     return openssl_crypto_random(len);
 }
@@ -194,7 +217,7 @@ static const char *_bcrypt_header = "$2y$15$";
 
 static wickr_buffer_t *__bcrypt_generate_salt(int workfactor, int salt_size)
 {
-    wickr_buffer_t *rand_bytes = openssl_crypto_random(BCRYPT_SALT_BYTE_LEN);
+    wickr_buffer_t *rand_bytes = __openssl_generate_salt(BCRYPT_SALT_BYTE_LEN);
     
     if (!rand_bytes) {
         return NULL;
@@ -311,11 +334,41 @@ static wickr_buffer_t *__scrypt_generate_hash(const wickr_kdf_meta_t *meta, cons
     return hash_buffer;
 }
 
+static wickr_buffer_t *__hkdf_generate_hash(const wickr_kdf_meta_t *meta, const wickr_buffer_t *passphrase)
+{
+    if (!meta || meta->algo.algo_id != KDF_HMAC_SHA2) {
+        return NULL;
+    }
+    
+    wickr_digest_t digest;
+    
+    switch (meta->algo.kdf_id) {
+        case KDF_ID_HKDF_SHA256:
+            digest = DIGEST_SHA_256;
+            break;
+        case KDF_ID_HKDF_SHA384:
+            digest = DIGEST_SHA_384;
+            break;
+        case KDF_ID_HKDF_SHA512:
+            digest = DIGEST_SHA_512;
+            break;
+        default:
+            return NULL;
+            break;
+    }
+    
+    /* Adjust the digest size, as this is what the openssl_hkdf function uses as a desired output length for HKDF */
+    digest.size = meta->algo.output_size;
+    
+    return openssl_hkdf(passphrase, meta->salt, meta->info, digest);
+}
+
 static wickr_buffer_t *__kdf_algo_generate_salt(wickr_kdf_algo_t algo)
 {
     switch (algo.algo_id) {
         case KDF_SCRYPT:
-            return __scrypt_generate_salt(algo.salt_size);
+        case KDF_HMAC_SHA2:
+            return __openssl_generate_salt(algo.salt_size);
         case KDF_BCRYPT:
             return __bcrypt_generate_salt(algo.cost, algo.salt_size);
         default:
@@ -334,6 +387,8 @@ static wickr_buffer_t *__kdf_algo_hash(const wickr_kdf_meta_t *meta, const wickr
             return __scrypt_generate_hash(meta, passphrase);
         case KDF_BCRYPT:
             return __bcrypt_generate_hash(meta, passphrase);
+        case KDF_HMAC_SHA2:
+            return __hkdf_generate_hash(meta, passphrase);
         default:
             return NULL;
     }
@@ -354,6 +409,7 @@ wickr_kdf_result_t *wickr_perform_kdf(wickr_kdf_algo_t algo, const wickr_buffer_
     wickr_kdf_meta_t meta;
     meta.algo = algo;
     meta.salt = salt;
+    meta.info = NULL;
     
     wickr_kdf_result_t *result = wickr_perform_kdf_meta(&meta, passphrase);
     wickr_buffer_destroy(&salt);
@@ -383,4 +439,16 @@ wickr_kdf_result_t *wickr_perform_kdf_meta(const wickr_kdf_meta_t *existing_meta
     return wickr_kdf_result_create(result_meta, hash_output);
 }
 
-
+const wickr_kdf_algo_t *wickr_hkdf_algo_for_digest(wickr_digest_t digest)
+{
+    switch (digest.digest_id) {
+        case DIGEST_ID_SHA256:
+            return &KDF_HKDF_SHA256;
+        case DIGEST_ID_SHA384:
+            return &KDF_HKDF_SHA384;
+        case DIGEST_ID_SHA512:
+            return &KDF_HKDF_SHA512;
+        default:
+            return NULL;
+    }
+}

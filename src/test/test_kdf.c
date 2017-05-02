@@ -29,8 +29,18 @@ DESCRIBE(wickr_kdf_meta, "kdf.c: wickr_kdf_meta")
     
     IT("can't be created if a salt is missing or the wrong size")
     {
-        SHOULD_BE_NULL(wickr_kdf_meta_create(KDF_SCRYPT_2_17, NULL));
-        SHOULD_BE_NULL(wickr_kdf_meta_create(KDF_SCRYPT_2_17, &one_byte_buffer));
+        SHOULD_BE_NULL(wickr_kdf_meta_create(KDF_SCRYPT_2_17, NULL, NULL));
+        SHOULD_BE_NULL(wickr_kdf_meta_create(KDF_SCRYPT_2_17, &one_byte_buffer, NULL));
+        SHOULD_BE_NULL(wickr_kdf_meta_create(KDF_HKDF_SHA256, NULL, NULL));
+    }
+    END_IT
+    
+    IT("should allow HKDF without a salt and with info")
+    {
+        wickr_buffer_t *info_buffer = wickr_buffer_create_empty(KDF_SCRYPT_2_17.salt_size);
+        wickr_kdf_meta_t *test = wickr_kdf_meta_create(KDF_HKDF_SHA256, NULL, info_buffer);
+        SHOULD_NOT_BE_NULL(test);
+        wickr_kdf_meta_destroy(&test);
     }
     END_IT
     
@@ -39,7 +49,7 @@ DESCRIBE(wickr_kdf_meta, "kdf.c: wickr_kdf_meta")
     IT("can be created given an algorithm and a salt")
     {
         wickr_buffer_t *salt_buffer = wickr_buffer_create_empty(KDF_SCRYPT_2_17.salt_size);
-        test_meta = wickr_kdf_meta_create(KDF_SCRYPT_2_17, salt_buffer);
+        test_meta = wickr_kdf_meta_create(KDF_SCRYPT_2_17, salt_buffer, NULL);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(salt_buffer, test_meta->salt, NULL));
         test_kdf_algo_equality(test_meta->algo, KDF_SCRYPT_2_17);
         SHOULD_NOT_BE_NULL(test_meta);
@@ -57,6 +67,16 @@ DESCRIBE(wickr_kdf_meta, "kdf.c: wickr_kdf_meta")
         test_kdf_meta_equality(test_meta, test_deserialize);
         wickr_buffer_destroy(&test_serialization);
         wickr_kdf_meta_destroy(&test_deserialize);
+    }
+    END_IT
+    
+    IT("can't be serialized into a buffer if HKDF and no salt was used")
+    {
+        wickr_buffer_t *info_buffer = wickr_buffer_create_empty(KDF_SCRYPT_2_17.salt_size);
+        wickr_kdf_meta_t *test = wickr_kdf_meta_create(KDF_HKDF_SHA256, NULL, info_buffer);
+        SHOULD_BE_NULL(wickr_kdf_meta_serialize(test));
+        SHOULD_NOT_BE_NULL(test);
+        wickr_kdf_meta_destroy(&test);
     }
     END_IT
     
@@ -87,7 +107,7 @@ DESCRIBE(wickr_kdf_result, "kdf.c: wickr_kdf_result")
     IT("can't be created unless it has a valid meta and hash")
     {
         wickr_buffer_t *test_salt = wickr_buffer_create_empty(KDF_SCRYPT_2_17.salt_size);
-        wickr_kdf_meta_t *test_meta = wickr_kdf_meta_create(KDF_SCRYPT_2_17, test_salt);
+        wickr_kdf_meta_t *test_meta = wickr_kdf_meta_create(KDF_SCRYPT_2_17, test_salt, NULL);
         SHOULD_BE_NULL(wickr_kdf_result_create(NULL, &one_byte_buffer));
         SHOULD_BE_NULL(wickr_kdf_result_create(test_meta, NULL));
         
@@ -116,7 +136,9 @@ END_DESCRIBE
 struct kdf_test_vector
 {
     wickr_kdf_algo_t algo;
+    const char *algo_name;
     wickr_buffer_t *salt;
+    wickr_buffer_t *info;
     wickr_buffer_t *passphrase;
     wickr_buffer_t *expected_out;
 };
@@ -127,51 +149,85 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
 {
     char *test_bcrypt_salt = "qqM9HeaGheyCy99QtDm0kO";
     
-    kdf_test_vector_t test_vectors[5] =
+    kdf_test_vector_t test_vectors[8] =
     {
         { KDF_SCRYPT_2_17,
+            "KDF_SCRIPT_2_17",
             hex_char_to_buffer("31323334353637383930616263646566"),
+            NULL,
             hex_char_to_buffer("70617373776f7264"),
             hex_char_to_buffer("1add828da5c436e578b458a59619081e273b58b06b99ff5b363c88fc3246a948")
         },
         { KDF_SCRYPT_2_18,
+            "KDF_SCRIPT_2_18",
             hex_char_to_buffer("31323334353637383930616263646566"),
+            NULL,
             hex_char_to_buffer("70617373776f7264"),
             hex_char_to_buffer("63c7c9f4cc120c7750b6318aa4945df80d9d7f02cd5d4ac51b7bfe3bd2730b0f")
         },
         { KDF_SCRYPT_2_19,
+            "KDF_SCRIPT_2_19",
             hex_char_to_buffer("31323334353637383930616263646566"),
+            NULL,
             hex_char_to_buffer("70617373776f7264"),
             hex_char_to_buffer("88947413b203f3ef7a8ef14a4f80bbd3c44880b5f54790dd5c1731d73f4ac89b")
         },
         { KDF_SCRYPT_2_20,
+            "KDF_SCRIPT_2_20",
             hex_char_to_buffer("31323334353637383930616263646566"),
+            NULL,
             hex_char_to_buffer("70617373776f7264"),
             hex_char_to_buffer("f77171051a2b7bd32a377cb81c83a40d2ee1965e9a77978ec29cd06196707097")
         },
         { KDF_BCRYPT_15,
+            "KDF_BCRYPT_15",
             wickr_buffer_create((uint8_t *)test_bcrypt_salt, strlen(test_bcrypt_salt)) ,
+            NULL,
             hex_char_to_buffer("70617373776f7264"),
             hex_char_to_buffer("2432792431352471714d3948656147686579437939395174446d306b4f334b654c65637863656c304a7861664c4e415338716a766f6b336172616575")
+        },
+        { KDF_HKDF_SHA256,
+            "KDF_HKDF_SHA256",
+            hex_char_to_buffer("3132333435363738393061626364656631323334353637383930616263646566"),
+            hex_char_to_buffer("1234"),
+            hex_char_to_buffer("70617373776f7264"),
+            hex_char_to_buffer("03fe9d71dddff316b108f0293211c04e54d60df66bad0971a035afaf2e0230de")
+        },
+        { KDF_HKDF_SHA384,
+            "KDF_HKDF_SHA384",
+            hex_char_to_buffer("313233343536373839306162636465663132333435363738393061626364656631323334353637383930616263646566"),
+            hex_char_to_buffer("1234"),
+            hex_char_to_buffer("70617373776f7264"),
+            hex_char_to_buffer("81e0c1d469c2cf1df6ea9a442ffe94c88df7b1789033fa8f1a970064312796f758770b5771aedc0cbb190ecdf05cd949")
+        },
+        { KDF_HKDF_SHA512,
+            "KDF_HKDF_SHA512",
+        hex_char_to_buffer("31323334353637383930616263646566313233343536373839306162636465663132333435363738393061626364656631323334353637383930616263646566"),
+            hex_char_to_buffer("1234"),
+            hex_char_to_buffer("70617373776f7264"),
+        hex_char_to_buffer("40dae76d651610413f4d03fdcab9ea0ea4d6213997b81be43de7fc0b642ab474a10cea8f6edabcce99ac0bc8663ddf622d2fed40d8972a00fd8e4d1c80008c86")
         }
     };
     
     
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 8; i++) {
         
         char it_statement[1024];
-        sprintf( it_statement, "should calculare proper hashes given specific known metadata %i", i );
+        sprintf( it_statement, "should calculare proper hashes given specific known metadata: %s", test_vectors[i].algo_name );
         
         IT(it_statement)
         {
-            wickr_kdf_meta_t *meta = wickr_kdf_meta_create(test_vectors[i].algo, wickr_buffer_copy(test_vectors[i].salt));
+            wickr_kdf_meta_t *meta = wickr_kdf_meta_create(test_vectors[i].algo, wickr_buffer_copy(test_vectors[i].salt), wickr_buffer_copy(test_vectors[i].info));
+            
             SHOULD_NOT_BE_NULL(meta);
             
-            wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(meta, test_vectors[i].passphrase);
             
+            wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(meta, test_vectors[i].passphrase);
+
             wickr_kdf_result_t expected_result;
             expected_result.meta = meta;
             expected_result.hash =  wickr_buffer_copy(test_vectors[i].expected_out);
+            
             test_kdf_result_equality(kdf_result, &expected_result);
             
             wickr_kdf_result_destroy(&kdf_result);
@@ -181,7 +237,63 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
         }
         END_IT
         
-        sprintf( it_statement, "should make hashes with random salts %i", i );
+        if (test_vectors[i].algo.algo_id == KDF_HMAC_SHA2) {
+            
+            sprintf( it_statement, "should get different output if salt or info is left out: %s", test_vectors[i].algo_name );
+            
+            IT(it_statement)
+            {
+                wickr_kdf_meta_t *meta_no_info = wickr_kdf_meta_create(test_vectors[i].algo, wickr_buffer_copy(test_vectors[i].salt), NULL);
+                SHOULD_NOT_BE_NULL(meta_no_info);
+                
+                wickr_kdf_meta_t *meta_no_salt = wickr_kdf_meta_create(test_vectors[i].algo, NULL, wickr_buffer_copy(test_vectors[i].info));
+                SHOULD_NOT_BE_NULL(meta_no_salt);
+                
+                wickr_kdf_result_t *kdf_result_no_info = wickr_perform_kdf_meta(meta_no_info, test_vectors[i].passphrase);
+                wickr_kdf_result_t *kdf_result_no_salt = wickr_perform_kdf_meta(meta_no_salt, test_vectors[i].passphrase);
+                
+                SHOULD_BE_FALSE(wickr_buffer_is_equal(test_vectors[i].expected_out, kdf_result_no_info->hash, NULL));
+                SHOULD_BE_FALSE(wickr_buffer_is_equal(test_vectors[i].expected_out, kdf_result_no_salt->hash, NULL));
+                SHOULD_BE_FALSE(wickr_buffer_is_equal(kdf_result_no_salt->hash, kdf_result_no_info->hash, NULL));
+
+                wickr_kdf_result_destroy(&kdf_result_no_info);
+                wickr_kdf_meta_destroy(&meta_no_info);
+                
+                wickr_kdf_result_destroy(&kdf_result_no_salt);
+                wickr_kdf_meta_destroy(&meta_no_salt);
+            }
+            END_IT
+            
+            sprintf( it_statement, "should allow you to get smaller output: %s", test_vectors[i].algo_name );
+            
+            IT(it_statement)
+            {
+                wickr_kdf_algo_t algo = test_vectors[i].algo;
+                algo.output_size = test_vectors[i].algo.output_size / 2;
+                
+                wickr_kdf_meta_t *meta = wickr_kdf_meta_create(algo, wickr_buffer_copy(test_vectors[i].salt), wickr_buffer_copy(test_vectors[i].info));
+                SHOULD_NOT_BE_NULL(meta);
+                
+                wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(meta, test_vectors[i].passphrase);
+
+                wickr_kdf_result_t expected_result;
+                expected_result.meta = meta;
+                expected_result.hash =  wickr_buffer_copy(test_vectors[i].expected_out);
+                expected_result.hash->length = expected_result.hash->length / 2;
+                
+                test_kdf_result_equality(kdf_result, &expected_result);
+                
+                wickr_kdf_result_destroy(&kdf_result);
+                wickr_buffer_destroy(&expected_result.hash);
+                wickr_kdf_meta_destroy(&expected_result.meta);
+            }
+            END_IT
+            
+            sprintf( it_statement, "should allow you to get larger output: %s", test_vectors[i].algo_name );
+            
+        }
+        
+        sprintf( it_statement, "should make hashes with random salts: %s", test_vectors[i].algo_name );
         
         IT(it_statement)
         {
@@ -201,6 +313,7 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
         wickr_buffer_destroy(&test_vectors[i].expected_out);
         wickr_buffer_destroy(&test_vectors[i].passphrase);
         wickr_buffer_destroy(&test_vectors[i].salt);
+        wickr_buffer_destroy(&test_vectors[i].info);
     }
 
     

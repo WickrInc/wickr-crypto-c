@@ -28,7 +28,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/digest.h" line="73" column="1"/>
+        <location file="src/crypto/digest.h" line="77" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

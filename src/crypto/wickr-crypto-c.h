@@ -41,5 +41,6 @@
 #include "storage.h"
 #include "util.h"
 #include "wickr_ctx.h"
+#include "stream_cipher.h"
 
 #endif /* wickr_crypto_c_h */

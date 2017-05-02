@@ -15,6 +15,8 @@ Represents the information the K\+DF function will need along with it\textquotes
 \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} \hyperlink{structwickr__kdf__meta_a263e1f7c77447a5a2a57c0d5d2f4ee34}{algo}
 \item 
 \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__kdf__meta_a315c54ee4578a01266a4e7352a52d459}{salt}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__kdf__meta_abf3edef445c8849c356d1282e49033f4}{info}
 \end{DoxyCompactItemize}
 
 
@@ -28,7 +30,13 @@ Represents the information the K\+DF function will need along with it\textquotes
 \subsubsection{\texorpdfstring{algo}{algo}}
 {\footnotesize\ttfamily wickr\+\_\+kdf\+\_\+meta\+::algo}
 
-serialized algorithm identifier to help define the set of parameters for the K\+DF as an integer \mbox{\Hypertarget{structwickr__kdf__meta_a315c54ee4578a01266a4e7352a52d459}\label{structwickr__kdf__meta_a315c54ee4578a01266a4e7352a52d459}} 
+serialized algorithm identifier to help define the set of parameters for the K\+DF as an integer \mbox{\Hypertarget{structwickr__kdf__meta_abf3edef445c8849c356d1282e49033f4}\label{structwickr__kdf__meta_abf3edef445c8849c356d1282e49033f4}} 
+\index{wickr\+\_\+kdf\+\_\+meta@{wickr\+\_\+kdf\+\_\+meta}!info@{info}}
+\index{info@{info}!wickr\+\_\+kdf\+\_\+meta@{wickr\+\_\+kdf\+\_\+meta}}
+\subsubsection{\texorpdfstring{info}{info}}
+{\footnotesize\ttfamily wickr\+\_\+kdf\+\_\+meta\+::info}
+
+context information that can be used as part of the K\+DF function. I\+N\+FO varies from S\+A\+LT as it is not intended to be random, and instead holds contextual information. May be N\+U\+LL if no context information is provided \mbox{\Hypertarget{structwickr__kdf__meta_a315c54ee4578a01266a4e7352a52d459}\label{structwickr__kdf__meta_a315c54ee4578a01266a4e7352a52d459}} 
 \index{wickr\+\_\+kdf\+\_\+meta@{wickr\+\_\+kdf\+\_\+meta}!salt@{salt}}
 \index{salt@{salt}!wickr\+\_\+kdf\+\_\+meta@{wickr\+\_\+kdf\+\_\+meta}}
 \subsubsection{\texorpdfstring{salt}{salt}}

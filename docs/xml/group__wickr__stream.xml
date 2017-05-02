@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="group__wickr__stream" kind="group">
+    <compoundname>wickr_stream</compoundname>
+    <title>wickr_stream</title>
+    <innerclass refid="structwickr__stream__ctx" prot="public">wickr_stream_ctx</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__wickr__stream_1ga54449667a25d9e64cd04dae58dd76418" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
+        <definition>wickr_stream_key_t* wickr_stream_key_create</definition>
+        <argsstring>(wickr_cipher_key_t *cipher_key, wickr_buffer_t *evolution_key, uint32_t packets_per_evolution)</argsstring>
+        <name>wickr_stream_key_create</name>
+        <param>
+          <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
+          <declname>cipher_key</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>evolution_key</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>packets_per_evolution</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a stream key from components</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cipher_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see documentation of &apos;<ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref>&apos; structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>evolution_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see documentation of &apos;<ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref>&apos; structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packets_per_evolution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>see documentation of &apos;<ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref>&apos; structure </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated stream key owning the properties passed in </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream_cipher.h" line="103" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__stream_1ga9e95dd486dbe2f3db647c65042601b34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
+        <definition>wickr_stream_key_t* wickr_stream_key_create_rand</definition>
+        <argsstring>(const wickr_crypto_engine_t engine, wickr_cipher_t cipher, uint32_t packets_per_evolution)</argsstring>
+        <name>wickr_stream_key_create_rand</name>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref></type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>cipher</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>packets_per_evolution</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a random stream key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the crypto engine to use for secure random cipher key generation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher to use for generation of the internal &apos;cipher_key&apos; property </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packets_per_evolution</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of times this key should be used before it evoloves </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated stream key </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream_cipher.h" line="116" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__stream_1ga0201dd73adf773834d7dbb4bbc307fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
+        <definition>wickr_stream_key_t* wickr_stream_key_copy</definition>
+        <argsstring>(const wickr_stream_key_t *stream_key)</argsstring>
+        <name>wickr_stream_key_copy</name>
+        <param>
+          <type>const <ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
+          <declname>stream_key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy a stream key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the stream key to copy </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated stream key holding a deep copy of properties from &apos;stream_key&apos; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream_cipher.h" line="126" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__stream_1ga3bb3dec760c5b7f3a1bd2d0bb13bcc79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void wickr_stream_key_destroy</definition>
+        <argsstring>(wickr_stream_key_t **stream_key)</argsstring>
+        <name>wickr_stream_key_destroy</name>
+        <param>
+          <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> **</type>
+          <declname>stream_key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a stream key</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stream_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to the stream key to destroy. All properties of &apos;*stream_key&apos; will also be destroyed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream_cipher.h" line="152" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

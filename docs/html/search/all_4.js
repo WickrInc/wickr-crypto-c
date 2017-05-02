@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['ec_5fkey',['ec_key',['../structwickr__ephemeral__keypair.html#ad730ed9ba92e05d0a271edc838e548fe',1,'wickr_ephemeral_keypair']]],
-  ['enc_5fpayload',['enc_payload',['../structwickr__parse__result.html#a584d3b94e032f09188ee4006c067c180',1,'wickr_parse_result']]],
-  ['encoded_5fpacket',['encoded_packet',['../structwickr__ctx__encode.html#ac83f0d28849ec047ccf8fb4b14319ad9',1,'wickr_ctx_encode']]],
-  ['engine',['engine',['../structwickr__ctx.html#a244c238ad74f2dbcddc280822d1fb93f',1,'wickr_ctx']]],
-  ['ephemeral_5fkey_5fid',['ephemeral_key_id',['../structwickr__key__exchange.html#aa400c601e6a24cdffeb627501d36cd3e',1,'wickr_key_exchange']]],
-  ['ephemeral_5fkeypair',['ephemeral_keypair',['../structwickr__node.html#a628b61eed5cb17b831ff687143393b93',1,'wickr_node']]],
-  ['ephemerality_5fsettings',['ephemerality_settings',['../structwickr__packet__meta.html#a0ef43c179038ba036fc9db17976b8b1e',1,'wickr_packet_meta']]],
-  ['err',['err',['../structwickr__parse__result.html#a69a3ee332921b4fdbc0e07dbfa74a8ed',1,'wickr_parse_result::err()'],['../structwickr__decode__result.html#a63449a59c8a8bab451f5ab555be7895d',1,'wickr_decode_result::err()']]],
-  ['exchange_5fdata',['exchange_data',['../structwickr__key__exchange.html#a6be89562df814a32b19cd57c49037691',1,'wickr_key_exchange']]],
-  ['exchanges',['exchanges',['../structwickr__packet__header.html#a49af3b4865a9deee0e60883134ebbb83',1,'wickr_packet_header']]]
+  ['data_20conversion_20utilities',['Data Conversion Utilities',['../group__data__conversion__utilities.html',1,'']]],
+  ['decrypted_5fpayload',['decrypted_payload',['../structwickr__decode__result.html#a0c6e2140859e7d8ad113f1e7ebd95ad4',1,'wickr_decode_result']]],
+  ['default_5fcipher',['default_cipher',['../structwickr__crypto__engine.html#a307f7d46b55b1e0a93ce9d9489ba8fc5',1,'wickr_crypto_engine']]],
+  ['default_5fcurve',['default_curve',['../structwickr__crypto__engine.html#a2145e35235dc5c5c944f33ea3d2963bd',1,'wickr_crypto_engine']]],
+  ['dev_5fid',['dev_id',['../structwickr__node.html#a564e42fc1d4b63353d74e5fbf0bead82',1,'wickr_node']]],
+  ['dev_5finfo',['dev_info',['../structwickr__ctx.html#a043ea3b027c4d27909f77bb195550b11',1,'wickr_ctx']]],
+  ['dev_5fsalt',['dev_salt',['../structwickr__dev__info.html#a78032877515c2b4cf67c48e4eb6fb0f7',1,'wickr_dev_info']]],
+  ['digest_5fid',['digest_id',['../structwickr__digest.html#aa63245abbb5350e3b4f0ef25d50bce77',1,'wickr_digest']]],
+  ['digest_5fmode',['digest_mode',['../structwickr__ecdsa__result.html#a33c820900693a016ac43702e76b54cff',1,'wickr_ecdsa_result']]],
+  ['direction',['direction',['../structwickr__stream__ctx.html#a34c622c3ca61348321261ee7a9c3ff91',1,'wickr_stream_ctx']]]
 ];

@@ -62,14 +62,14 @@
     <detaileddescription>
 <para>These identifiers are not required to be absolutely unique from a security perspective, but having a good amount of entropy in them is a nice property to attempt to achieve. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="93">
+      <node id="112">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="92">
+      <node id="111">
         <label>wickr_dev_info</label>
         <link refid="structwickr__dev__info"/>
-        <childnode refid="93" relation="usage">
+        <childnode refid="112" relation="usage">
           <edgelabel>system_salt</edgelabel>
           <edgelabel>srv_comm_id</edgelabel>
           <edgelabel>msg_proto_id</edgelabel>

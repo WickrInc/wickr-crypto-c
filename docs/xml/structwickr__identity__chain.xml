@@ -49,59 +49,59 @@
     <detaileddescription>
 <para>Wickr Crypto Identity Chain </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="135">
+      <node id="155">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="134" relation="usage">
+        <childnode refid="154" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="136" relation="usage">
+        <childnode refid="156" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="132" relation="usage">
+        <childnode refid="152" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="134">
+      <node id="154">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="136">
+      <node id="156">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="131">
+      <node id="151">
         <label>wickr_identity</label>
         <link refid="structwickr__identity"/>
-        <childnode refid="132" relation="usage">
+        <childnode refid="152" relation="usage">
           <edgelabel>identifier</edgelabel>
         </childnode>
-        <childnode refid="133" relation="usage">
+        <childnode refid="153" relation="usage">
           <edgelabel>sig_key</edgelabel>
         </childnode>
-        <childnode refid="135" relation="usage">
+        <childnode refid="155" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="132">
+      <node id="152">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="130">
+      <node id="150">
         <label>wickr_identity_chain</label>
         <link refid="structwickr__identity__chain"/>
-        <childnode refid="131" relation="usage">
+        <childnode refid="151" relation="usage">
           <edgelabel>node</edgelabel>
           <edgelabel>root</edgelabel>
         </childnode>
       </node>
-      <node id="133">
+      <node id="153">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="134" relation="usage">
+        <childnode refid="154" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="132" relation="usage">
+        <childnode refid="152" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

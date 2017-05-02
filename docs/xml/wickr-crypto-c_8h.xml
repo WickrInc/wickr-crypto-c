@@ -21,288 +21,309 @@
     <includes refid="storage_8h" local="yes">storage.h</includes>
     <includes refid="util_8h" local="yes">util.h</includes>
     <includes refid="wickr__ctx_8h" local="yes">wickr_ctx.h</includes>
+    <includes refid="stream__cipher_8h" local="yes">stream_cipher.h</includes>
     <incdepgraph>
-      <node id="432">
-        <label>stdbool.h</label>
-      </node>
-      <node id="436">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
-        <childnode refid="431" relation="include">
-        </childnode>
-      </node>
-      <node id="445">
-        <label>identity.h</label>
-        <link refid="identity_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="439" relation="include">
-        </childnode>
-        <childnode refid="440" relation="include">
-        </childnode>
-        <childnode refid="437" relation="include">
-        </childnode>
-        <childnode refid="446" relation="include">
-        </childnode>
-      </node>
-      <node id="451">
-        <label>util.h</label>
-        <link refid="util_8h_source"/>
-        <childnode refid="431" relation="include">
-        </childnode>
-      </node>
-      <node id="433">
-        <label>stdint.h</label>
-      </node>
-      <node id="430">
-        <label>stdlib.h</label>
-      </node>
-      <node id="447">
-        <label>storage.h</label>
-        <link refid="storage_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="437" relation="include">
-        </childnode>
-      </node>
-      <node id="452">
-        <label>wickr_ctx.h</label>
-        <link refid="wickr__ctx_8h_source"/>
-        <childnode refid="439" relation="include">
-        </childnode>
-        <childnode refid="443" relation="include">
-        </childnode>
-        <childnode refid="446" relation="include">
-        </childnode>
-        <childnode refid="444" relation="include">
-        </childnode>
-        <childnode refid="447" relation="include">
-        </childnode>
-        <childnode refid="445" relation="include">
-        </childnode>
-        <childnode refid="450" relation="include">
-        </childnode>
-      </node>
-      <node id="441">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="439" relation="include">
-        </childnode>
-        <childnode refid="438" relation="include">
-        </childnode>
-      </node>
-      <node id="449">
-        <label>node.h</label>
-        <link refid="node_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="440" relation="include">
-        </childnode>
-        <childnode refid="439" relation="include">
-        </childnode>
-        <childnode refid="443" relation="include">
-        </childnode>
-        <childnode refid="437" relation="include">
-        </childnode>
-        <childnode refid="446" relation="include">
-        </childnode>
-        <childnode refid="445" relation="include">
-        </childnode>
-        <childnode refid="444" relation="include">
-        </childnode>
-        <childnode refid="429" relation="include">
-        </childnode>
-      </node>
-      <node id="443">
-        <label>devinfo.h</label>
-        <link refid="devinfo_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="437" relation="include">
-        </childnode>
-      </node>
-      <node id="444">
+      <node id="507">
         <label>ephemeral_keypair.h</label>
         <link refid="ephemeral__keypair_8h_source"/>
-        <childnode refid="430" relation="include">
+        <childnode refid="493" relation="include">
         </childnode>
-        <childnode refid="440" relation="include">
+        <childnode refid="503" relation="include">
         </childnode>
-        <childnode refid="439" relation="include">
+        <childnode refid="502" relation="include">
         </childnode>
-        <childnode refid="437" relation="include">
+        <childnode refid="501" relation="include">
         </childnode>
-        <childnode refid="445" relation="include">
-        </childnode>
-      </node>
-      <node id="429">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
+        <childnode refid="508" relation="include">
         </childnode>
       </node>
-      <node id="434">
-        <label>limits.h</label>
+      <node id="495">
+        <label>stdbool.h</label>
       </node>
-      <node id="446">
+      <node id="515">
+        <label>wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="506" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="510" relation="include">
+        </childnode>
+        <childnode refid="508" relation="include">
+        </childnode>
+        <childnode refid="513" relation="include">
+        </childnode>
+      </node>
+      <node id="509">
         <label>root_keys.h</label>
         <link refid="root__keys_8h_source"/>
-        <childnode refid="430" relation="include">
+        <childnode refid="493" relation="include">
         </childnode>
-        <childnode refid="431" relation="include">
+        <childnode refid="494" relation="include">
         </childnode>
-        <childnode refid="439" relation="include">
+        <childnode refid="502" relation="include">
         </childnode>
-        <childnode refid="437" relation="include">
+        <childnode refid="501" relation="include">
         </childnode>
-        <childnode refid="447" relation="include">
+        <childnode refid="510" relation="include">
         </childnode>
-        <childnode refid="443" relation="include">
+        <childnode refid="506" relation="include">
         </childnode>
       </node>
-      <node id="428">
+      <node id="496">
+        <label>stdint.h</label>
+      </node>
+      <node id="493">
+        <label>stdlib.h</label>
+      </node>
+      <node id="491">
         <label>src/crypto/wickr-crypto-c.h</label>
         <link refid="wickr-crypto-c_8h"/>
-        <childnode refid="429" relation="include">
+        <childnode refid="492" relation="include">
         </childnode>
-        <childnode refid="431" relation="include">
+        <childnode refid="494" relation="include">
         </childnode>
-        <childnode refid="435" relation="include">
+        <childnode refid="498" relation="include">
         </childnode>
-        <childnode refid="437" relation="include">
+        <childnode refid="501" relation="include">
         </childnode>
-        <childnode refid="443" relation="include">
+        <childnode refid="506" relation="include">
         </childnode>
-        <childnode refid="438" relation="include">
+        <childnode refid="500" relation="include">
         </childnode>
-        <childnode refid="441" relation="include">
+        <childnode refid="504" relation="include">
         </childnode>
-        <childnode refid="440" relation="include">
+        <childnode refid="503" relation="include">
         </childnode>
-        <childnode refid="439" relation="include">
+        <childnode refid="502" relation="include">
         </childnode>
-        <childnode refid="444" relation="include">
+        <childnode refid="507" relation="include">
         </childnode>
-        <childnode refid="445" relation="include">
+        <childnode refid="508" relation="include">
         </childnode>
-        <childnode refid="436" relation="include">
+        <childnode refid="499" relation="include">
         </childnode>
-        <childnode refid="448" relation="include">
+        <childnode refid="511" relation="include">
         </childnode>
-        <childnode refid="449" relation="include">
+        <childnode refid="512" relation="include">
         </childnode>
-        <childnode refid="450" relation="include">
+        <childnode refid="513" relation="include">
         </childnode>
-        <childnode refid="446" relation="include">
+        <childnode refid="509" relation="include">
         </childnode>
-        <childnode refid="447" relation="include">
+        <childnode refid="510" relation="include">
         </childnode>
-        <childnode refid="451" relation="include">
+        <childnode refid="514" relation="include">
         </childnode>
-        <childnode refid="452" relation="include">
+        <childnode refid="515" relation="include">
         </childnode>
-      </node>
-      <node id="448">
-        <label>memory.h</label>
-        <link refid="memory_8h_source"/>
-        <childnode refid="442" relation="include">
+        <childnode refid="516" relation="include">
         </childnode>
       </node>
-      <node id="438">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="433" relation="include">
-        </childnode>
-      </node>
-      <node id="450">
-        <label>protocol.h</label>
-        <link refid="protocol_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="441" relation="include">
-        </childnode>
-      </node>
-      <node id="435">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-        <childnode refid="436" relation="include">
-        </childnode>
-      </node>
-      <node id="439">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="431" relation="include">
-        </childnode>
-      </node>
-      <node id="431">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="432" relation="include">
-        </childnode>
-        <childnode refid="433" relation="include">
-        </childnode>
-        <childnode refid="429" relation="include">
-        </childnode>
-        <childnode refid="434" relation="include">
-        </childnode>
-      </node>
-      <node id="440">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="430" relation="include">
-        </childnode>
-        <childnode refid="439" relation="include">
-        </childnode>
-        <childnode refid="438" relation="include">
-        </childnode>
-      </node>
-      <node id="442">
-        <label>stdio.h</label>
-      </node>
-      <node id="437">
+      <node id="501">
         <label>crypto_engine.h</label>
         <link refid="crypto__engine_8h_source"/>
-        <childnode refid="431" relation="include">
+        <childnode refid="494" relation="include">
         </childnode>
-        <childnode refid="435" relation="include">
+        <childnode refid="498" relation="include">
         </childnode>
-        <childnode refid="438" relation="include">
+        <childnode refid="500" relation="include">
         </childnode>
-        <childnode refid="439" relation="include">
+        <childnode refid="502" relation="include">
         </childnode>
-        <childnode refid="440" relation="include">
+        <childnode refid="503" relation="include">
         </childnode>
-        <childnode refid="441" relation="include">
+        <childnode refid="504" relation="include">
         </childnode>
-        <childnode refid="436" relation="include">
+        <childnode refid="499" relation="include">
         </childnode>
-        <childnode refid="430" relation="include">
+        <childnode refid="493" relation="include">
         </childnode>
-        <childnode refid="442" relation="include">
+        <childnode refid="505" relation="include">
+        </childnode>
+      </node>
+      <node id="510">
+        <label>storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+      </node>
+      <node id="497">
+        <label>limits.h</label>
+      </node>
+      <node id="504">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="513">
+        <label>protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="512" relation="include">
+        </childnode>
+        <childnode refid="504" relation="include">
+        </childnode>
+      </node>
+      <node id="499">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+      </node>
+      <node id="492">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+      </node>
+      <node id="512">
+        <label>node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="503" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="506" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+        <childnode refid="508" relation="include">
+        </childnode>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="492" relation="include">
+        </childnode>
+      </node>
+      <node id="517">
+        <label>stream_iv.h</label>
+        <link refid="stream__iv_8h_source"/>
+        <childnode refid="501" relation="include">
+        </childnode>
+      </node>
+      <node id="500">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+      </node>
+      <node id="516">
+        <label>stream_cipher.h</label>
+        <link refid="stream__cipher_8h_source"/>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="517" relation="include">
+        </childnode>
+      </node>
+      <node id="494">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="492" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+      </node>
+      <node id="498">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+      </node>
+      <node id="506">
+        <label>devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+      </node>
+      <node id="508">
+        <label>identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="503" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+      </node>
+      <node id="511">
+        <label>memory.h</label>
+        <link refid="memory_8h_source"/>
+        <childnode refid="505" relation="include">
+        </childnode>
+      </node>
+      <node id="514">
+        <label>util.h</label>
+        <link refid="util_8h_source"/>
+        <childnode refid="494" relation="include">
+        </childnode>
+      </node>
+      <node id="505">
+        <label>stdio.h</label>
+      </node>
+      <node id="503">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+      </node>
+      <node id="502">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="493" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -354,8 +375,9 @@
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;storage.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;wickr_ctx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>wickr_crypto_c_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stream_cipher.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>wickr_crypto_c_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="src/crypto/wickr-crypto-c.h"/>
   </compounddef>

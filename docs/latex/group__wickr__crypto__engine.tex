@@ -16,6 +16,8 @@ const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\
 \item 
 \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}{wickr\+\_\+digest\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
 \item 
+\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga6cdd263ddccd0b28a85ed61889805e60}{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\item 
 \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}{wickr\+\_\+digest\+\_\+matching\+\_\+curve} (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
 \item 
 \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
@@ -133,6 +135,8 @@ the original buffer protected by \textquotesingle{}wickr\+\_\+crypto\+\_\+engine
 
 Get the matching digest type for a function based on size
 
+D\+E\+P\+R\+E\+C\+A\+T\+ED IN F\+A\+V\+OR OF wickr\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher
+
 N\+O\+TE\+: Currently only 256bit A\+ES ciphers are supported, so this function always returns S\+H\+A\+\_\+256
 
 
@@ -176,6 +180,24 @@ An exchange cipher is used for wrapping / unwrapping packet content decryption k
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 the exchange cipher matching \textquotesingle{}cipher\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga6cdd263ddccd0b28a85ed61889805e60}\label{group__wickr__crypto__engine_ga6cdd263ddccd0b28a85ed61889805e60}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher()}{wickr\_key\_exchange\_kdf\_matching\_cipher()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+
+Get the matching message key exchange kdf for a cipher
+
+N\+O\+TE\+: Currently all ciphers return H\+K\+DF with S\+H\+A512 as a digest
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher} & the cipher to find the matching kdf for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a kdf that has an output which is the same size as the length of the cipher\textquotesingle{}s key 
 \end{DoxyReturn}
 
 

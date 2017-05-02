@@ -327,14 +327,30 @@ wickr_buffer_t *wickr_crypto_engine_kdf_decipher(const wickr_crypto_engine_t *en
 /**
  @ingroup wickr_crypto_engine
 
+ 
  Get the matching digest type for a function based on size
  
- NOTE: Currently only 256bit AES ciphers are supported, so this function always returns SHA_256
+ DEPRECATED IN FAVOR OF wickr_exchange_kdf_matching_cipher
  
+ NOTE: Currently only 256bit AES ciphers are supported, so this function always returns SHA_256
+  
  @param cipher the cipher to find the matching digest for
  @return a digest that has an output which is the same size as the length of the cipher's key
  */
 wickr_digest_t wickr_digest_matching_cipher(wickr_cipher_t cipher);
+
+/**
+ @ingroup wickr_crypto_engine
+ 
+ 
+ Get the matching message key exchange kdf for a cipher
+ 
+ NOTE: Currently all ciphers return HKDF with SHA512 as a digest
+ 
+ @param cipher the cipher to find the matching kdf for
+ @return a kdf that has an output which is the same size as the length of the cipher's key
+ */
+wickr_kdf_algo_t wickr_key_exchange_kdf_matching_cipher(wickr_cipher_t cipher);
 
 /**
  @ingroup wickr_crypto_engine

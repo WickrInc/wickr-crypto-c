@@ -36,29 +36,29 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="199">
+      <node id="219">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="200" relation="usage">
+        <childnode refid="220" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="201" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="201">
+      <node id="221">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="198">
+      <node id="218">
         <label>wickr_storage_keys</label>
         <link refid="structwickr__storage__keys"/>
-        <childnode refid="199" relation="usage">
+        <childnode refid="219" relation="usage">
           <edgelabel>local</edgelabel>
           <edgelabel>remote</edgelabel>
         </childnode>
       </node>
-      <node id="200">
+      <node id="220">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

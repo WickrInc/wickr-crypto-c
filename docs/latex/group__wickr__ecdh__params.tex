@@ -3,7 +3,7 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}{wickr\+\_\+ecdh\+\_\+params\+\_\+create} (\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$local\+\_\+key, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$peer\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} kdf\+\_\+digest\+\_\+mode, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$kdf\+\_\+salt, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$kdf\+\_\+info)
+\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdh__params_ga8a5be72f13caa4bf5ee99e16cc3b092f}{wickr\+\_\+ecdh\+\_\+params\+\_\+create} (\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$local\+\_\+key, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$peer\+\_\+key, \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$kdf\+\_\+info)
 \item 
 \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$ \hyperlink{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}{wickr\+\_\+ecdh\+\_\+params\+\_\+copy} (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$source)
 \item 
@@ -49,11 +49,11 @@ Copy an Elliptical Curve Diffie-\/\+Hellman parameter set
 \begin{DoxyReturn}{Returns}
 a newly allocated Elliptical Curve Diffie-\/\+Hellman parameter set containing deep copies of the properties of \textquotesingle{}info\textquotesingle{} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}\label{group__wickr__ecdh__params_ga57bb855c4155488cf41d6c9e0d1f373d}} 
+\mbox{\Hypertarget{group__wickr__ecdh__params_ga8a5be72f13caa4bf5ee99e16cc3b092f}\label{group__wickr__ecdh__params_ga8a5be72f13caa4bf5ee99e16cc3b092f}} 
 \index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}}
 \index{wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+create()}{wickr\_ecdh\_params\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{local\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{peer\+\_\+key,  }\item[{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}]{kdf\+\_\+digest\+\_\+mode,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{kdf\+\_\+salt,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{kdf\+\_\+info }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{local\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{peer\+\_\+key,  }\item[{\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$}]{kdf\+\_\+info }\end{DoxyParamCaption})}
 
 Create an Elliptical Curve Diffie-\/\+Hellman parameter set from components
 
@@ -62,10 +62,6 @@ Create an Elliptical Curve Diffie-\/\+Hellman parameter set from components
 {\em local\+\_\+key} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
 \hline
 {\em peer\+\_\+key} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
-\hline
-{\em kdf\+\_\+digest\+\_\+mode} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
-\hline
-{\em kdf\+\_\+salt} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
 \hline
 {\em kdf\+\_\+info} & See documentation in \textquotesingle{}\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}\textquotesingle{} property declarations \\
 \hline

@@ -559,12 +559,18 @@ DESCRIBE(openssl_hmac, "openssl_suite: openssl_hmac_create, openssl_hmac_verify"
 }
 END_DESCRIBE
 
-void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wickr_digest_t digest, wickr_buffer_t *expected_shared_secret)
+void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wickr_digest_t digest, wickr_buffer_t *expected_shared_secret, wickr_buffer_t *expected_kdf_output)
 {
     SHOULD_NOT_BE_NULL(peer_test_key);
     wickr_buffer_destroy(&peer_test_key->pri_data);
     
-    wickr_ecdh_params_t *test_params = wickr_ecdh_params_create(local_test_key, peer_test_key, digest, hex_char_to_buffer("f00d"), hex_char_to_buffer("bar"));
+    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(digest);
+    SHOULD_NOT_BE_NULL(algo);
+    
+    wickr_kdf_meta_t *kdf_info = wickr_kdf_meta_create(*algo, hex_char_to_buffer("f00d"), hex_char_to_buffer("bar"));
+    SHOULD_NOT_BE_NULL(kdf_info);
+    
+    wickr_ecdh_params_t *test_params = wickr_ecdh_params_create(local_test_key, peer_test_key, kdf_info);
     
     SHOULD_BE_TRUE(wickr_ecdh_params_are_valid(test_params));
     
@@ -573,14 +579,14 @@ void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wi
     wickr_ecdh_params_t *copy_params = wickr_ecdh_params_copy(test_params);
     
     SHOULD_NOT_BE_NULL(copy_params);
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_salt, test_params->kdf_salt, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_info, test_params->kdf_info, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_info->salt, test_params->kdf_info->salt, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_info->info, test_params->kdf_info->info, NULL));
     SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->local_key->pri_data, test_params->local_key->pri_data, NULL));
     SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->local_key->pub_data, test_params->local_key->pub_data, NULL));
     SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->peer_key->pub_data, test_params->peer_key->pub_data, NULL));
     SHOULD_EQUAL(copy_params->local_key->curve.identifier, test_params->local_key->curve.identifier);
     SHOULD_EQUAL(copy_params->peer_key->curve.identifier, test_params->peer_key->curve.identifier);
-    SHOULD_EQUAL(copy_params->kdf_digest_mode.digest_id, test_params->kdf_digest_mode.digest_id);
+    SHOULD_EQUAL(copy_params->kdf_info->algo.algo_id, test_params->kdf_info->algo.algo_id);
     
     SHOULD_BE_TRUE(wickr_ecdh_params_are_valid(copy_params));
 
@@ -593,7 +599,7 @@ void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wi
     
     /* The expected output is the expected shared secret as input to a KDF function that performs
      a digest using a provided salt */
-    wickr_buffer_t *expected_output = openssl_hkdf(expected_shared_secret, test_params->kdf_salt, test_params->kdf_info, test_params->kdf_digest_mode);
+    wickr_buffer_t *expected_output = openssl_hkdf(expected_shared_secret, test_params->kdf_info->salt, test_params->kdf_info->info, digest);
     
     SHOULD_NOT_BE_NULL(expected_output);
     
@@ -626,12 +632,16 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
     
     SHOULD_NOT_BE_NULL(expected_shared_secret);
     
+    wickr_buffer_t *expected_256_output = hex_char_to_buffer("95640c1817115db83b9d9a2f56c29fcca8a05cc787a95a9055e9b1b6a03a8478");
+    wickr_buffer_t *expected_384_output = hex_char_to_buffer("54b8bab40639df5561bc53fdd31ec56ad0e4e5b6dadd89e3d4e70f373ce647dfabefe51a9ee9be10a25e772e3758ff2e");
+    wickr_buffer_t *expected_512_output = hex_char_to_buffer("fe4178413af02bbbb11f93fd8cbc65b71faa6ff9f33ef49c0da49c33bc73277b0578813f5c3a54e9909ac5dc803dad2a01da3aec371c67b683638d9f7ee0b247");
+    
     IT("should make a proper 256bit shared secret (A is local)")
     {
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret, expected_256_output);
     }
     END_IT
     
@@ -640,7 +650,7 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret, expected_256_output);
     }
     END_IT
     
@@ -649,7 +659,7 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret, expected_384_output);
     }
     END_IT
     
@@ -658,7 +668,7 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret, expected_384_output);
     }
     END_IT
     
@@ -667,7 +677,7 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret, expected_512_output);
     }
     END_IT
     
@@ -676,10 +686,13 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret);
+        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret, expected_512_output);
     }
     END_IT
     
+    wickr_buffer_destroy(&expected_256_output);
+    wickr_buffer_destroy(&expected_384_output);
+    wickr_buffer_destroy(&expected_512_output);
     wickr_ec_key_destroy(&dA);
     wickr_ec_key_destroy(&dB);
     wickr_buffer_destroy(&expected_shared_secret);
@@ -704,18 +717,28 @@ DESCRIBE(openssl_hkdf, "openssl_suite: openssl_hkdf")
         wickr_digest_t sha_256_42_len = DIGEST_SHA_256;
         sha_256_42_len.size = 42;
         
-        wickr_buffer_t *output = openssl_hkdf(initial_key_material, salt, info, sha_256_42_len);
-        wickr_buffer_t *expected_output = hex_char_to_buffer("3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865");
+        wickr_digest_t sha_512_42_len = DIGEST_SHA_512;
+        sha_512_42_len.size = 42;
         
-        SHOULD_NOT_BE_NULL(output);
+        wickr_buffer_t *output_256 = openssl_hkdf(initial_key_material, salt, info, sha_256_42_len);
+        wickr_buffer_t *output_512 = openssl_hkdf(initial_key_material, salt, info, sha_512_42_len);
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output, output, NULL));
+        wickr_buffer_t *expected_output_256 = hex_char_to_buffer("3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865");
+        wickr_buffer_t *expected_output_512 = hex_char_to_buffer("832390086cda71fb47625bb5ceb168e4c8e26a1a16ed34d9fc7fe92c1481579338da362cb8d9f925d7cb");
+        
+        SHOULD_NOT_BE_NULL(output_256);
+        SHOULD_NOT_BE_NULL(output_512);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_256, output_256, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_512, output_512, NULL));
         
         wickr_buffer_destroy(&initial_key_material);
         wickr_buffer_destroy(&salt);
         wickr_buffer_destroy(&info);
-        wickr_buffer_destroy(&output);
-        wickr_buffer_destroy(&expected_output);
+        wickr_buffer_destroy(&output_256);
+        wickr_buffer_destroy(&output_512);
+        wickr_buffer_destroy(&expected_output_256);
+        wickr_buffer_destroy(&expected_output_512);
     }
     END_IT
     
@@ -728,18 +751,29 @@ DESCRIBE(openssl_hkdf, "openssl_suite: openssl_hkdf")
         wickr_digest_t sha_256_82_len = DIGEST_SHA_256;
         sha_256_82_len.size = 82;
         
-        wickr_buffer_t *output = openssl_hkdf(initial_key_material, salt, info, sha_256_82_len);
-        wickr_buffer_t *expected_output = hex_char_to_buffer("b11e398dc80327a1c8e7f78c596a49344f012eda2d4efad8a050cc4c19afa97c59045a99cac7827271cb41c65e590e09da3275600c2f09b8367793a9aca3db71cc30c58179ec3e87c14c01d5c1f3434f1d87");
+        wickr_digest_t sha_512_82_len = DIGEST_SHA_512;
+        sha_512_82_len.size = 82;
         
-        SHOULD_NOT_BE_NULL(output);
+        wickr_buffer_t *output_256 = openssl_hkdf(initial_key_material, salt, info, sha_256_82_len);
+        wickr_buffer_t *output_512 = openssl_hkdf(initial_key_material, salt, info, sha_512_82_len);
+
+        wickr_buffer_t *expected_output_256 = hex_char_to_buffer("b11e398dc80327a1c8e7f78c596a49344f012eda2d4efad8a050cc4c19afa97c59045a99cac7827271cb41c65e590e09da3275600c2f09b8367793a9aca3db71cc30c58179ec3e87c14c01d5c1f3434f1d87");
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output, output, NULL));
+        wickr_buffer_t *expected_output_512 = hex_char_to_buffer("ce6c97192805b346e6161e821ed165673b84f400a2b514b2fe23d84cd189ddf1b695b48cbd1c8388441137b3ce28f16aa64ba33ba466b24df6cfcb021ecff235f6a2056ce3af1de44d572097a8505d9e7a93");
         
+        SHOULD_NOT_BE_NULL(output_256);
+        SHOULD_NOT_BE_NULL(output_512);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_256, output_256, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_512, output_512, NULL));
+
         wickr_buffer_destroy(&initial_key_material);
         wickr_buffer_destroy(&salt);
         wickr_buffer_destroy(&info);
-        wickr_buffer_destroy(&output);
-        wickr_buffer_destroy(&expected_output);
+        wickr_buffer_destroy(&output_256);
+        wickr_buffer_destroy(&expected_output_256);
+        wickr_buffer_destroy(&output_512);
+        wickr_buffer_destroy(&expected_output_512);
     }
     END_IT
     
@@ -750,16 +784,27 @@ DESCRIBE(openssl_hkdf, "openssl_suite: openssl_hkdf")
         wickr_digest_t sha_256_42_len = DIGEST_SHA_256;
         sha_256_42_len.size = 42;
         
-        wickr_buffer_t *output = openssl_hkdf(initial_key_material, NULL, NULL, sha_256_42_len);
-        wickr_buffer_t *expected_output = hex_char_to_buffer("8da4e775a563c18f715f802a063c5a31b8a11f5c5ee1879ec3454e5f3c738d2d9d201395faa4b61a96c8");
+        wickr_digest_t sha_512_42_len = DIGEST_SHA_512;
+        sha_512_42_len.size = 42;
         
-        SHOULD_NOT_BE_NULL(output);
+        wickr_buffer_t *output_256 = openssl_hkdf(initial_key_material, NULL, NULL, sha_256_42_len);
+        wickr_buffer_t *output_512 = openssl_hkdf(initial_key_material, NULL, NULL, sha_512_42_len);
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output, output, NULL));
         
+        wickr_buffer_t *expected_output_256 = hex_char_to_buffer("8da4e775a563c18f715f802a063c5a31b8a11f5c5ee1879ec3454e5f3c738d2d9d201395faa4b61a96c8");
+        wickr_buffer_t *expected_output_512 = hex_char_to_buffer("f5fa02b18298a72a8c23898a8703472c6eb179dc204c03425c970e3b164bf90fff22d04836d0e2343bac");
+        
+        SHOULD_NOT_BE_NULL(output_256);
+        SHOULD_NOT_BE_NULL(output_512);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_256, output_256, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output_512, output_512, NULL));
+
         wickr_buffer_destroy(&initial_key_material);
-        wickr_buffer_destroy(&output);
-        wickr_buffer_destroy(&expected_output);
+        wickr_buffer_destroy(&output_256);
+        wickr_buffer_destroy(&expected_output_256);
+        wickr_buffer_destroy(&output_512);
+        wickr_buffer_destroy(&expected_output_512);
     }
     END_IT
 }

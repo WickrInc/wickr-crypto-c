@@ -10,181 +10,207 @@
     <includedby refid="protobuf__util_8h" local="yes">src/crypto/protobuf_util.h</includedby>
     <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
     <incdepgraph>
-      <node id="57">
+      <node id="61">
         <label>stdbool.h</label>
       </node>
-      <node id="61">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
-        <childnode refid="56" relation="include">
-        </childnode>
-      </node>
-      <node id="58">
+      <node id="62">
         <label>stdint.h</label>
       </node>
-      <node id="55">
+      <node id="59">
         <label>stdlib.h</label>
       </node>
-      <node id="59">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-      </node>
-      <node id="60">
+      <node id="64">
         <label>limits.h</label>
       </node>
-      <node id="54">
-        <label>src/crypto/cipher.h</label>
-        <link refid="cipher_8h"/>
-        <childnode refid="55" relation="include">
+      <node id="65">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
       </node>
-      <node id="56">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
+      <node id="63">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
         <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
       </node>
+      <node id="66">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>src/crypto/cipher.h</label>
+        <link refid="cipher_8h"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="66">
-        <label>src/crypto/identity.h</label>
-        <link refid="identity_8h_source"/>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-      </node>
       <node id="72">
-        <label>src/crypto/storage.h</label>
-        <link refid="storage_8h_source"/>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-      </node>
-      <node id="71">
-        <label>src/crypto/wickr_ctx.h</label>
-        <link refid="wickr__ctx_8h_source"/>
-        <childnode refid="70" relation="include">
-        </childnode>
-      </node>
-      <node id="68">
-        <label>src/crypto/node.h</label>
-        <link refid="node_8h_source"/>
-        <childnode refid="69" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-      </node>
-      <node id="64">
-        <label>src/crypto/devinfo.h</label>
-        <link refid="devinfo_8h_source"/>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-      </node>
-      <node id="67">
         <label>src/crypto/ephemeral_keypair.h</label>
         <link refid="ephemeral__keypair_8h_source"/>
-        <childnode refid="68" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="65">
-        <label>src/crypto/root_keys.h</label>
-        <link refid="root__keys_8h_source"/>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
+      <node id="76">
+        <label>src/crypto/wickr_ctx.h</label>
+        <link refid="wickr__ctx_8h_source"/>
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
       <node id="70">
+        <label>src/crypto/root_keys.h</label>
+        <link refid="root__keys_8h_source"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
         <label>src/crypto/wickr-crypto-c.h</label>
         <link refid="wickr-crypto-c_8h_source"/>
       </node>
-      <node id="74">
-        <label>src/crypto/protobuf_util.h</label>
-        <link refid="protobuf__util_8h_source"/>
-      </node>
-      <node id="69">
-        <label>src/crypto/protocol.h</label>
-        <link refid="protocol_8h_source"/>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-      </node>
-      <node id="62">
-        <label>src/crypto/cipher.h</label>
-        <link refid="cipher_8h"/>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-      </node>
-      <node id="73">
-        <label>src/crypto/openssl_suite.h</label>
-        <link refid="openssl__suite_8h_source"/>
-      </node>
-      <node id="63">
+      <node id="68">
         <label>src/crypto/crypto_engine.h</label>
         <link refid="crypto__engine_8h_source"/>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
         </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="73">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>src/crypto/stream_iv.h</label>
+        <link refid="stream__iv_8h_source"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>src/crypto/stream_cipher.h</label>
+        <link refid="stream__cipher_8h_source"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>src/crypto/cipher.h</label>
+        <link refid="cipher_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structwickr__cipher" prot="public">wickr_cipher</innerclass>

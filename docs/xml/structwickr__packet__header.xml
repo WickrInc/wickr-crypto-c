@@ -36,28 +36,28 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="168">
+      <node id="188">
         <label>wickr_packet_header</label>
         <link refid="structwickr__packet__header"/>
-        <childnode refid="169" relation="usage">
+        <childnode refid="189" relation="usage">
           <edgelabel>sender_pub</edgelabel>
         </childnode>
       </node>
-      <node id="170">
+      <node id="190">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="171">
+      <node id="191">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="169">
+      <node id="189">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="170" relation="usage">
+        <childnode refid="190" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="171" relation="usage">
+        <childnode refid="191" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

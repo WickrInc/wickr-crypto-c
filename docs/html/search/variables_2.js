@@ -1,8 +1,9 @@
 var searchData=
 [
   ['channel_5ftag',['channel_tag',['../structwickr__packet__meta.html#ab160a2ecfc6146ddf2ce40fe301c8ce9',1,'wickr_packet_meta']]],
-  ['cipher',['cipher',['../structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9',1,'wickr_cipher_result::cipher()'],['../group__wickr__cipher.html#ga6506e1a07f7bc2c5ceeb0ca5ce81385b',1,'wickr_cipher_key::cipher()']]],
+  ['cipher',['cipher',['../structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9',1,'wickr_cipher_result::cipher()'],['../group__wickr__cipher.html#ga6506e1a07f7bc2c5ceeb0ca5ce81385b',1,'wickr_cipher_key::cipher()'],['../structwickr__stream__iv.html#a86379d83e28b96d4852ac047482713d1',1,'wickr_stream_iv::cipher()']]],
   ['cipher_5fid',['cipher_id',['../structwickr__cipher.html#a2ce240f5bd396df05ddd4f30ba944b36',1,'wickr_cipher']]],
+  ['cipher_5fkey',['cipher_key',['../structwickr__stream__key.html#a3d957a51193dda882cb89ced2ceeb91e',1,'wickr_stream_key']]],
   ['cipher_5ftext',['cipher_text',['../structwickr__cipher__result.html#a29fe7c04025f39cc574ac41f846d167a',1,'wickr_cipher_result']]],
   ['content',['content',['../structwickr__packet.html#a4d17d017c9d0fbb6e748a7ed935e5512',1,'wickr_packet']]],
   ['content_5ftype',['content_type',['../structwickr__packet__meta.html#ada659f7c31d257c76edab5db52973f6e',1,'wickr_packet_meta']]],

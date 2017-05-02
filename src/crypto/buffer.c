@@ -5,6 +5,10 @@
 
 static bool __validate_buffer_range(const wickr_buffer_t *buffer, size_t start, size_t len)
 {
+    if (!buffer) {
+        return NULL;
+    }
+    
     if (start >= MAX_BUFFER_SIZE || len >= MAX_BUFFER_SIZE || len == 0) {
         return false;
     }
@@ -69,6 +73,9 @@ wickr_buffer_t *wickr_buffer_create(const uint8_t *bytes, size_t len)
 
 wickr_buffer_t *wickr_buffer_copy(const wickr_buffer_t *source)
 {
+    if (!source) {
+        return NULL;
+    }
     return wickr_buffer_create(source->bytes, source->length);
 }
 

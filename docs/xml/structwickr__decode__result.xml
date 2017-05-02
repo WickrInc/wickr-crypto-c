@@ -49,55 +49,55 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="85">
+      <node id="104">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="86" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="87" relation="usage">
+        <childnode refid="106" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="90">
+      <node id="109">
         <label>wickr_ephemeral_info</label>
         <link refid="structwickr__ephemeral__info"/>
       </node>
-      <node id="84">
+      <node id="103">
         <label>wickr_decode_result</label>
         <link refid="structwickr__decode__result"/>
-        <childnode refid="85" relation="usage">
+        <childnode refid="104" relation="usage">
           <edgelabel>payload_key</edgelabel>
         </childnode>
-        <childnode refid="88" relation="usage">
+        <childnode refid="107" relation="usage">
           <edgelabel>decrypted_payload</edgelabel>
         </childnode>
       </node>
-      <node id="87">
+      <node id="106">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="89">
+      <node id="108">
         <label>wickr_packet_meta</label>
         <link refid="structwickr__packet__meta"/>
-        <childnode refid="90" relation="usage">
+        <childnode refid="109" relation="usage">
           <edgelabel>ephemerality_settings</edgelabel>
         </childnode>
-        <childnode refid="86" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>channel_tag</edgelabel>
         </childnode>
       </node>
-      <node id="86">
+      <node id="105">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="88">
+      <node id="107">
         <label>wickr_payload</label>
         <link refid="structwickr__payload"/>
-        <childnode refid="86" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>body</edgelabel>
         </childnode>
-        <childnode refid="89" relation="usage">
+        <childnode refid="108" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>
