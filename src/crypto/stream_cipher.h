@@ -26,6 +26,7 @@
 #include "stream_iv.h"
 
 #define PACKET_PER_EVO_MIN 64
+#define PACKET_PER_EVO_DEFAULT 512
 #define PACKET_PER_EVO_MAX 32768
 
 typedef enum { STREAM_DIRECTION_ENCODE, STREAM_DIRECTION_DECODE } wickr_stream_direction;
