@@ -4,7 +4,7 @@
 
 wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create(uint64_t identifier, wickr_ec_key_t *ec_key, wickr_ecdsa_result_t *signature)
 {
-    if (!ec_key || !signature) {
+    if (!ec_key) {
         return NULL;
     }
     
