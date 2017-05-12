@@ -160,7 +160,7 @@ DESCRIBE(decodeCipherFile, "openssl_file_suite: decodeCipherFile")
 
 				wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
 
-				wickr_buffer_t *decode = engine.wickr_crypto_engine_cipher_decrypt(cipher_result, cipherKey, true);
+				wickr_buffer_t *decode = engine.wickr_crypto_engine_cipher_decrypt(cipher_result, NULL, cipherKey, true);
 
 				SHOULD_NOT_BE_NULL(decode);
 				SHOULD_BE_TRUE(wickr_buffer_is_equal(decode, testData, NULL));

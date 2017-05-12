@@ -357,9 +357,14 @@ wickr_cipher_key_t *openssl_cipher_key_random(wickr_cipher_t cipher)
     return new_key;
 }
 
-wickr_cipher_result_t *openssl_aes256_encrypt(const wickr_buffer_t *plaintext, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)
+wickr_cipher_result_t *openssl_aes256_encrypt(const wickr_buffer_t *plaintext, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)
 {
     if (!plaintext || !key) {
+        return NULL;
+    }
+    
+    /* AAD only works if the cipher supports authentication */
+    if (aad && !key->cipher.is_authenticated) {
         return NULL;
     }
     
@@ -413,6 +418,13 @@ wickr_cipher_result_t *openssl_aes256_encrypt(const wickr_buffer_t *plaintext, c
     int temp_length = 0;
     int final_length = 0;
     
+    /* Insert AAD */
+    if (aad) {
+        if (1 != EVP_EncryptUpdate(ctx, NULL, &temp_length, aad->bytes, (int)aad->length)) {
+            goto process_error;
+        }
+    }
+    
     /* Perform the cipher */
     if (1 != EVP_EncryptUpdate(ctx, cipher_text->bytes, &temp_length, plaintext->bytes, (int)plaintext->length)) {
         goto process_error;
@@ -457,13 +469,18 @@ process_error:
     return NULL;
 }
 
-wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *key, bool only_auth_ciphers)
+wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool only_auth_ciphers)
 {
     if (!cipher_result || !key) {
         return NULL;
     }
     
     if (only_auth_ciphers && !cipher_result->cipher.is_authenticated) {
+        return NULL;
+    }
+    
+    /* AAD only works with authenticated ciphers */
+    if (aad && !cipher_result->cipher.is_authenticated) {
         return NULL;
     }
 
@@ -500,7 +517,7 @@ wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_resul
         goto process_error;
     }
     
-    /* In GCM mode, raise the IV length from OpenSSL default of 12 to 16 */
+    /* In GCM mode, set the IV length to match our cipher (currently 12 bytes, which happens to be OpenSSL default) */
     if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
         if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_IVLEN, cipher_result->cipher.iv_len, NULL)) {
             goto process_error;
@@ -521,6 +538,14 @@ wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_resul
     
     int temp_length = 0;
     int final_length = 0;
+    
+    /* Update the AAD if needed */
+    
+    if (aad) {
+        if (1 != EVP_DecryptUpdate(ctx, NULL, &temp_length, aad->bytes, aad->length)) {
+            goto process_error;
+        }
+    }
     
     /* Perform the decryption */
     if (1 != EVP_DecryptUpdate(ctx, output_buffer->bytes, &temp_length,

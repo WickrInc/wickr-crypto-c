@@ -178,7 +178,7 @@ wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx);
  @param seq_num the sequence number assoiciated with 'data'
  @return a cipher result representing 'data' encrypted with 'ctx->key'
  */
-wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wickr_buffer_t *data, uint64_t seq_num);
+wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wickr_buffer_t *data, const wickr_buffer_t *aad, uint64_t seq_num);
 
 /**
  Encode a packet
@@ -188,7 +188,7 @@ wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wi
  @param seq_num the sequence number assoiciated with 'data'
  @return a buffer representing 'data' decrypted with 'ctx->key'
  */
-wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cipher_result_t *data, uint64_t seq_num);
+wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cipher_result_t *data, const wickr_buffer_t *aad, uint64_t seq_num);
 
 /**
  Destroy a stream context

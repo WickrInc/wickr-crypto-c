@@ -84,11 +84,13 @@ struct wickr_crypto_engine {
      NOTE: IV is randomly chosen using a secure random function if one is not provided
      
      @param plaintext the content to encrypt using 'key'
+     @param aad additional data to authenticate with the ciphertext (only works with authenticated ciphers)
      @param key the cipher key to use to encrypt 'plaintext'
      @param iv an initialization vector to use with the cipher mode, or NULL if one should be chosen at random
      @return a cipher result containing encrypted bytes, or NULL if the cipher mode fails or is not supported
      */
     wickr_cipher_result_t *(*wickr_crypto_engine_cipher_encrypt)(const wickr_buffer_t *plaintext,
+                                                                 const wickr_buffer_t *aad,
                                                                  const wickr_cipher_key_t *key,
                                                                  const wickr_buffer_t *iv);
     
@@ -98,11 +100,13 @@ struct wickr_crypto_engine {
      Decrypt a cipher_result 
      
      @param cipher_result a cipher result generated from 'wickr_crypto_engine_cipher_encrypt'
+     @param aad additional data to authenticate with the ciphertext (only works with authenticated ciphers)
      @param key the key to use to attempt to decrypt 'cipher_result'
      @param only_auth_ciphers if true, only authenticated ciphers may be used for decryption
      @return a buffer containing decrypted bytes. If the AES mode is authenticated, NULL will be returned if key is incorrect.
      */
     wickr_buffer_t *(*wickr_crypto_engine_cipher_decrypt)(const wickr_cipher_result_t *cipher_result,
+                                                          const wickr_buffer_t *aad,
                                                           const wickr_cipher_key_t *key,
                                                           bool only_auth_ciphers);
     

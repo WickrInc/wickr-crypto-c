@@ -134,7 +134,7 @@ wickr_root_keys_t *wickr_ctx_gen_import_recovery(const wickr_crypto_engine_t eng
         return NULL;
     }
     
-    wickr_buffer_t *decrypt_result = engine.wickr_crypto_engine_cipher_decrypt(ciphered_keys, recovery_key, true);
+    wickr_buffer_t *decrypt_result = engine.wickr_crypto_engine_cipher_decrypt(ciphered_keys, NULL, recovery_key, true);
     wickr_cipher_result_destroy(&ciphered_keys);
     
     if (!decrypt_result) {
@@ -500,7 +500,7 @@ wickr_cipher_result_t *wickr_ctx_cipher_local(const wickr_ctx_t *ctx, const wick
         return NULL;
     }
     
-    return ctx->engine.wickr_crypto_engine_cipher_encrypt(plaintext, ctx->storage_keys->local, NULL);
+    return ctx->engine.wickr_crypto_engine_cipher_encrypt(plaintext, NULL, ctx->storage_keys->local, NULL);
 }
 
 wickr_buffer_t *wickr_ctx_decipher_local(const wickr_ctx_t *ctx, const wickr_cipher_result_t *cipher_text)
@@ -509,7 +509,7 @@ wickr_buffer_t *wickr_ctx_decipher_local(const wickr_ctx_t *ctx, const wickr_cip
         return NULL;
     }
     
-    return ctx->engine.wickr_crypto_engine_cipher_decrypt(cipher_text, ctx->storage_keys->local, true);
+    return ctx->engine.wickr_crypto_engine_cipher_decrypt(cipher_text, NULL, ctx->storage_keys->local, true);
 }
 
 /* Encrypts data using the remote storage key (used for account level backups such as contact / conversation information) */
@@ -519,7 +519,7 @@ wickr_cipher_result_t *wickr_ctx_cipher_remote(const wickr_ctx_t *ctx, const wic
         return NULL;
     }
     
-    return ctx->engine.wickr_crypto_engine_cipher_encrypt(plaintext, ctx->storage_keys->remote, NULL);
+    return ctx->engine.wickr_crypto_engine_cipher_encrypt(plaintext, NULL, ctx->storage_keys->remote, NULL);
 }
 
 wickr_buffer_t *wickr_ctx_decipher_remote(const wickr_ctx_t *ctx, const wickr_cipher_result_t *cipher_text)
@@ -528,7 +528,7 @@ wickr_buffer_t *wickr_ctx_decipher_remote(const wickr_ctx_t *ctx, const wickr_ci
         return NULL;
     }
     
-    return ctx->engine.wickr_crypto_engine_cipher_decrypt(cipher_text, ctx->storage_keys->remote, true);
+    return ctx->engine.wickr_crypto_engine_cipher_decrypt(cipher_text, NULL, ctx->storage_keys->remote, true);
 }
 
 /* Generate ephemeral message keypairs */

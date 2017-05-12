@@ -128,21 +128,21 @@ END_DESCRIBE
 
 static void test_cipher_inputs(wickr_cipher_key_t *test_key, wickr_buffer_t *test_plaintext)
 {
-    wickr_cipher_result_t *result = openssl_aes256_encrypt(NULL, test_key, NULL);
+    wickr_cipher_result_t *result = openssl_aes256_encrypt(NULL, NULL, test_key, NULL);
     SHOULD_BE_NULL(result);
-    result = openssl_aes256_encrypt(test_plaintext, NULL, NULL);
+    result = openssl_aes256_encrypt(test_plaintext, NULL, NULL, NULL);
     SHOULD_BE_NULL(result);
 }
 
 static void test_cipher_random_iv(wickr_cipher_key_t *test_key, wickr_buffer_t *test_plaintext)
 {
-    wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, test_key, NULL);
+    wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, NULL, test_key, NULL);
     SHOULD_NOT_BE_NULL(result);
     
     bool found_equal = false;
     
     for (int i = 0; i < 1000; i++) {
-        wickr_cipher_result_t *another_result = openssl_aes256_encrypt(test_plaintext, test_key, NULL);
+        wickr_cipher_result_t *another_result = openssl_aes256_encrypt(test_plaintext, NULL, test_key, NULL);
         SHOULD_NOT_BE_NULL(another_result);
         bool is_equal = wickr_buffer_is_equal(another_result->iv, result->iv, NULL);
         if (!is_equal) {
@@ -159,9 +159,9 @@ static void test_cipher_random_iv(wickr_cipher_key_t *test_key, wickr_buffer_t *
     wickr_cipher_result_destroy(&result);
 }
 
-static void test_cipher_provided_iv(wickr_cipher_key_t *test_key, wickr_buffer_t *test_plaintext, wickr_buffer_t *test_iv, wickr_buffer_t *expected_cipher_text, wickr_buffer_t *expected_tag, wickr_cipher_t cipher)
+static void test_cipher_provided_iv(wickr_cipher_key_t *test_key, wickr_buffer_t *test_plaintext, wickr_buffer_t *test_iv, wickr_buffer_t *test_aad, wickr_buffer_t *expected_cipher_text, wickr_buffer_t *expected_tag, wickr_cipher_t cipher)
 {
-    wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, test_key, test_iv);
+    wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, test_aad, test_key, test_iv);
     SHOULD_NOT_BE_NULL(result);
     SHOULD_EQUAL(result->cipher.cipher_id, cipher.cipher_id);
     SHOULD_BE_TRUE(wickr_buffer_is_equal(result->cipher_text, expected_cipher_text, NULL));
@@ -170,7 +170,7 @@ static void test_cipher_provided_iv(wickr_cipher_key_t *test_key, wickr_buffer_t
     }
     SHOULD_BE_TRUE(wickr_buffer_is_equal(result->iv, test_iv, NULL));
     
-    wickr_buffer_t *decoded = openssl_aes256_decrypt(result, test_key, false);
+    wickr_buffer_t *decoded = openssl_aes256_decrypt(result, test_aad, test_key, false);
     SHOULD_NOT_BE_NULL(decoded);
     SHOULD_BE_TRUE(wickr_buffer_is_equal(decoded, test_plaintext, NULL));
     wickr_cipher_result_destroy(&result);
@@ -205,7 +205,15 @@ DESCRIBE(openssl_cipher_ctr, "openssl_suite: openssl_aes256_encrypt(ctr), openss
     
     IT("should perform encryption with a provided IV")
     {
-        test_cipher_provided_iv(test_key, test_plaintext, test_iv, expected_cipher_text, NULL, CIPHER_AES256_CTR);
+        test_cipher_provided_iv(test_key, test_plaintext, test_iv, NULL, expected_cipher_text, NULL, CIPHER_AES256_CTR);
+    }
+    END_IT
+    
+    IT("should fail encryption if you pass AAD to a non authenticated cipher")
+    {
+        wickr_buffer_t *test_aad = hex_char_to_buffer("feedfacedeadbeeffeedfacedeadbeefabaddad2");
+        SHOULD_BE_NULL(openssl_aes256_encrypt(test_plaintext, test_aad, test_key, test_iv));
+        wickr_buffer_destroy(&test_aad);
     }
     END_IT
     
@@ -218,9 +226,11 @@ END_DESCRIBE
 
 DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openssl_aes256_decrypt(gcm)")
 {
-    /* http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-revised-spec.pdf CASE 15 */
+    /* http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/gcm/gcm-revised-spec.pdf CASE 15, 16 */
     
     wickr_buffer_t *test_plaintext = hex_char_to_buffer("d9313225f88406e5a55909c5aff5269a86a7a9531534f7da2e4c303d8a318a721c3c0c95956809532fcf0e2449a6b525b16aedf5aa0de657ba637b391aafd255");
+    
+    wickr_buffer_t *test_plaintext_aad = hex_char_to_buffer("d9313225f88406e5a55909c5aff5269a86a7a9531534f7da2e4c303d8a318a721c3c0c95956809532fcf0e2449a6b525b16aedf5aa0de657ba637b39");
     
     wickr_buffer_t *key_data = hex_char_to_buffer("feffe9928665731c6d6a8f9467308308feffe9928665731c6d6a8f9467308308");
     
@@ -228,9 +238,16 @@ DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openss
     
     wickr_buffer_t *test_iv = hex_char_to_buffer("cafebabefacedbaddecaf888");
     
-    wickr_buffer_t *expected_tag = hex_char_to_buffer("b094dac5d93471bdec1a502270e3cc6c");
+    wickr_buffer_t *test_aad = hex_char_to_buffer("feedfacedeadbeeffeedfacedeadbeefabaddad2");
+    
+    wickr_buffer_t *expected_tag_no_aad = hex_char_to_buffer("b094dac5d93471bdec1a502270e3cc6c");
+    
+    wickr_buffer_t *expected_tag_aad = hex_char_to_buffer("76fc6ece0f4e1768cddf8853bb2d551b");
     
     wickr_buffer_t *expected_cipher_text = hex_char_to_buffer("522dc1f099567d07f47f37a32a84427d643a8cdcbfe5c0c97598a2bd2555d1aa8cb08e48590dbb3da7b08b1056828838c5f61e6393ba7a0abcc9f662898015ad");
+    
+    wickr_buffer_t *expected_cipher_text_aad = hex_char_to_buffer("522dc1f099567d07f47f37a32a84427d643a8cdcbfe5c0c97598a2bd2555d1aa8cb08e48590dbb3da7b08b1056828838c5f61e6393ba7a0abcc9f662");
+    
     
     IT("should fail if required inputs are missing")
     {
@@ -246,17 +263,23 @@ DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openss
     
     IT("should perform encryption with a provided IV")
     {
-        test_cipher_provided_iv(test_key, test_plaintext, test_iv, expected_cipher_text, expected_tag, CIPHER_AES256_GCM);
+        test_cipher_provided_iv(test_key, test_plaintext, test_iv, NULL, expected_cipher_text, expected_tag_no_aad, CIPHER_AES256_GCM);
+    }
+    END_IT
+    
+    IT("should perform encryption with a provided IV and AAD")
+    {
+        test_cipher_provided_iv(test_key, test_plaintext_aad, test_iv, test_aad, expected_cipher_text_aad, expected_tag_aad, CIPHER_AES256_GCM);
     }
     END_IT
     
     IT("should fail if the key is correct but the tag is wrong")
     {
-        wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, test_key, test_iv);
+        wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, NULL, test_key, test_iv);
         wickr_buffer_destroy(&result->auth_tag);
         result->auth_tag = hex_char_to_buffer("f00df00df00df00df00df00df00df00d");
         
-        wickr_buffer_t *decoded = openssl_aes256_decrypt(result, test_key, false);
+        wickr_buffer_t *decoded = openssl_aes256_decrypt(result, NULL, test_key, false);
         SHOULD_BE_NULL(decoded);
         wickr_cipher_result_destroy(&result);
     }
@@ -264,24 +287,28 @@ DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openss
     
     IT("should fail if the decryption function is set to only accept authenticated modes and gets an unauthenticated mode")
     {
-        wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, test_key, test_iv);
+        wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, NULL, test_key, test_iv);
         result->cipher = CIPHER_AES256_CTR;
         wickr_buffer_destroy(&result->auth_tag);
         
         wickr_cipher_key_t *ctr_key = wickr_cipher_key_copy(test_key);
         ctr_key->cipher = CIPHER_AES256_CTR;
         
-        SHOULD_BE_NULL(openssl_aes256_decrypt(result, ctr_key, true));
+        SHOULD_BE_NULL(openssl_aes256_decrypt(result, NULL, ctr_key, true));
         wickr_cipher_result_destroy(&result);
         wickr_cipher_key_destroy(&ctr_key);
     }
     END_IT
     
+    wickr_buffer_destroy(&expected_cipher_text_aad);
+    wickr_buffer_destroy(&test_plaintext_aad);
     wickr_buffer_destroy(&test_plaintext);
+    wickr_buffer_destroy(&test_aad);
     wickr_cipher_key_destroy(&test_key);
     wickr_buffer_destroy(&test_iv);
     wickr_buffer_destroy(&expected_cipher_text);
-    wickr_buffer_destroy(&expected_tag);
+    wickr_buffer_destroy(&expected_tag_no_aad);
+    wickr_buffer_destroy(&expected_tag_aad);
     
 }
 END_DESCRIBE
