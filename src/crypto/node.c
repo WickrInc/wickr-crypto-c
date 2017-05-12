@@ -6,7 +6,7 @@
 
 wickr_node_t *wickr_node_create(wickr_buffer_t *dev_id, wickr_identity_chain_t *id_chain, wickr_ephemeral_keypair_t *ephemeral_keypair)
 {
-    if (!dev_id || !id_chain || !ephemeral_keypair) {
+    if (!dev_id || !id_chain) {
         return NULL;
     }
     
@@ -88,7 +88,7 @@ wickr_node_t *wickr_node_copy(const wickr_node_t *source)
     
     wickr_ephemeral_keypair_t *keypair_copy = wickr_ephemeral_keypair_copy(source->ephemeral_keypair);
     
-    if (!keypair_copy) {
+    if (!keypair_copy && source->ephemeral_keypair) {
         wickr_buffer_destroy(&dev_id_copy);
         wickr_identity_chain_destroy(&id_chain_copy);
         return NULL;

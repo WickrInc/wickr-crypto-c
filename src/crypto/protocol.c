@@ -76,7 +76,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
                                                           wickr_cipher_t exchange_cipher,
                                                           uint8_t version)
 {
-    if (!engine || !sender || !receiver || !packet_exchange_key) {
+    if (!engine || !sender || !receiver || !receiver->ephemeral_keypair || !packet_exchange_key) {
         return NULL;
     }
     
@@ -228,7 +228,7 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
                                                const wickr_key_exchange_t *exchange,
                                                uint8_t version)
 {
-    if (!exchange || !engine || !sender || !receiver) {
+    if (!exchange || !engine || !sender || !receiver || !receiver->ephemeral_keypair) {
         return NULL;
     }
     

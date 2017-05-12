@@ -25,7 +25,6 @@ DESCRIBE(node_tests, "node.c")
     {
         SHOULD_BE_NULL(wickr_node_create(NULL, NULL, NULL));
         SHOULD_BE_NULL(wickr_node_create(test_dev_id, NULL, NULL));
-        SHOULD_BE_NULL(wickr_node_create(test_dev_id, test_id_chain, NULL));
         SHOULD_BE_NULL(wickr_node_create(NULL, test_id_chain, NULL));
         SHOULD_BE_NULL(wickr_node_create(NULL, NULL, test_keypair));
         SHOULD_BE_NULL(wickr_node_create(NULL, test_id_chain, test_keypair));
@@ -59,6 +58,7 @@ DESCRIBE(node_tests, "node.c")
     }
     END_IT
     
+    
     IT("should be able to validate it's signing chain")
     {
         SHOULD_BE_TRUE(wickr_node_verify_signature_chain(node, &engine));
@@ -72,6 +72,15 @@ DESCRIBE(node_tests, "node.c")
         wickr_node_t *copy_node = wickr_node_copy(node);
         copy_node->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
         
+        SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        wickr_node_destroy(&copy_node);
+    }
+    END_IT
+    
+    IT("should fail validation if it doesn't have a keypair")
+    {
+        wickr_node_t *copy_node = wickr_node_copy(node);
+        wickr_ephemeral_keypair_destroy(&copy_node->ephemeral_keypair);
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
         wickr_node_destroy(&copy_node);
     }
