@@ -171,7 +171,9 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id,
  
  @ingroup wickr_protocol
  
- Compute a key exchange given sender/receiver information (Sender Encoding)
+ Compute a key exchange given sender/receiver information and a packet key to protect (Sender Encoding)
+ Thie function is a convience function around 'wickr_key_exchange_create_with_data' that determines exchange_cipher automaticallly
+ based on 'packet_key' cipher and also takes care of serializing 'packet_key'
  
  See Wickr white paper 'Prepare Key Exchange Data' for more information
  
@@ -185,7 +187,7 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id,
  @param version the version of the packet being generated
  @return a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data
  */
-wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_crypto_engine_t *engine,
+wickr_key_exchange_t *wickr_key_exchange_create_with_packet_key(const wickr_crypto_engine_t *engine,
                                                                 const wickr_identity_chain_t *sender,
                                                                 const wickr_node_t *receiver,
                                                                 wickr_ec_key_t *packet_exchange_key,
@@ -193,7 +195,39 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
                                                                 uint8_t version);
 
 /**
+ 
+ @ingroup wickr_protocol
+ 
+ Compute a key exchange given sender/receiver information and bytes to protect (Sender Encoding)
+ This method at a high level creates a shared secret between a sender and receiver (ECDH), runs the shared secret through a kdf (HKDF)
+ and then uses the resulting secret as a cipher key to encrypt bytes of data. 'wickr_key_exchange_create_with_packet_key' also exists as
+ a version of this function to specifically wrap cipher_keys instead of raw data
+ 
+ See Wickr white paper 'Prepare Key Exchange Data' for more information
+ 
+ NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
+ 
+ @param engine a crypto engine supporting ECDH key exchanges
+ @param sender the identity chain of the sender
+ @param receiver the node this key exchange is destined for
+ @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver
+ @param data_to_wrap This is the data we are protecting by the output of the key exchange
+ @param exchange_cipher the cipher that the exchange should use protect 'data_to_wrap' with
+ @param version the version of the packet being generated
+ @return a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data
+ */
+wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_engine_t *engine,
+                                                          const wickr_identity_chain_t *sender,
+                                                          const wickr_node_t *receiver,
+                                                          wickr_ec_key_t *packet_exchange_key,
+                                                          const wickr_buffer_t *data_to_wrap,
+                                                          wickr_cipher_t exchange_cipher,
+                                                          uint8_t version);
+
+/**
  Derive a packet key given a key exchange, and a receiver private exchange key (Receiver Decoding)
+ This function is a conveinence function around 'wickr_key_exchange_derive_packet_key'. The returned key is created
+ by treating the output of 'wickr_key_exchange_derive_packet_key' as a serialized wickr_cipher_key
  
  See Wickr white paper 'Receiving a Message' for more information
  
@@ -202,7 +236,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_from_components(const wickr_cryp
  @param engine a crypto engine supporting ECDH key exchanges
  @param sender the identity chain of the original creator of the key exchange
  @param receiver a node representing the receiver, including an 'ephemeral_keyair' property that has a matching identifier to 'ephemeral_key_id' in the key exchange, and the proper private key materal associated with it
- @param packet_exchange_key the public EC key information that was used for the 'packet_exchange_key' param of 'wickr_key_exchange_create_from_components'
+ @param packet_exchange_key the public EC key information that was used for the 'packet_exchange_key' param of 'wickr_key_exchange_create_with_packet_key'
  @param exchange the key exchange to decode into a cipher key
  @param version the version of the packet being decoded
  @return a cipher key or NULL if provided receiver key is incorrect and a cipher key cannot be decoded
@@ -213,6 +247,28 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
                                                          wickr_ec_key_t *packet_exchange_key,
                                                          const wickr_key_exchange_t *exchange,
                                                          uint8_t version);
+
+/**
+ Decode data that was protected by a key exchnage, this is the decode side of 'wickr_key_exchange_create_with_data' (Receiver Decoding)
+ 
+ See Wickr white paper 'Receiving a Message' for more information
+ 
+ NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
+ 
+ @param engine a crypto engine supporting ECDH key exchanges
+ @param sender the identity chain of the original creator of the key exchange
+ @param receiver a node representing the receiver, including an 'ephemeral_keyair' property that has a matching identifier to 'ephemeral_key_id' in the key exchange, and the proper private key materal associated with it
+ @param packet_exchange_key the public EC key information that was used for the 'packet_exchange_key' param of 'wickr_key_exchange_create_with_packet_key'
+ @param exchange the key exchange to decode into a cipher key
+ @param version the version of the packet being decoded
+ @return buffer or NULL if provided receiver key is incorrect and the wrapped data can't be decoded
+ */
+wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engine,
+                                               const wickr_identity_chain_t *sender,
+                                               const wickr_node_t *receiver,
+                                               wickr_ec_key_t *packet_exchange_key,
+                                               const wickr_key_exchange_t *exchange,
+                                               uint8_t version);
 
 /**
  

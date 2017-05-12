@@ -101,7 +101,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     wickr_ec_key_t *exchange_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
     wickr_node_t *receiver = createUserNode("Bob", engine.wickr_crypto_engine_crypto_random(32));
     
-    keyExchange = wickr_key_exchange_create_from_components(&engine, sender_identity, receiver, exchange_key, pktKey, CURRENT_PACKET_VERSION);
+    keyExchange = wickr_key_exchange_create_with_packet_key(&engine, sender_identity, receiver, exchange_key, pktKey, CURRENT_PACKET_VERSION);
     
     
     IT( "Create Key Exchange From Components should not return NULL")
@@ -118,7 +118,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     IT("should work with valid older version exchanges")
     {
         for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
-            wickr_key_exchange_t *exchange =  wickr_key_exchange_create_from_components(&engine, sender_identity, receiver, exchange_key, pktKey, i);
+            wickr_key_exchange_t *exchange =  wickr_key_exchange_create_with_packet_key(&engine, sender_identity, receiver, exchange_key, pktKey, i);
             
             wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, exchange, i);
             
@@ -138,7 +138,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     
     IT("should be able to derive a packet key from an existing exchange")
     {
-        keyExchange =  wickr_key_exchange_create_from_components(&engine, sender_identity, receiver, exchange_key, pktKey, CURRENT_PACKET_VERSION);
+        keyExchange =  wickr_key_exchange_create_with_packet_key(&engine, sender_identity, receiver, exchange_key, pktKey, CURRENT_PACKET_VERSION);
 
         wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine, sender_identity, receiver, exchange_key, keyExchange, CURRENT_PACKET_VERSION);
         
