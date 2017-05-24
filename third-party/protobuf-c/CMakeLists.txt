@@ -5,6 +5,8 @@ use_c99()
 file(GLOB_RECURSE ProtobufCSources *.c)
 file(GLOB_RECURSE ProtobufCHeaders *.h)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+
 add_library(protobuf-c STATIC ${ProtobufCSources} ${ProtobufCHeaders})
 
 foreach(FILE ${ProtobufCSources} ${ProtobufCHeaders} )
