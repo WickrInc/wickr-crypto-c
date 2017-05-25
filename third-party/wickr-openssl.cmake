@@ -6,8 +6,8 @@ if(POLICY CMP0020)
     cmake_policy(SET CMP0020 NEW)
 endif()
 
-set(OSSL_VERSION "1.0.2j")
-set(OSSL_HASH "e7aff292be21c259c6af26469c7a9b3ba26e9abaaffd325e3dccc9785256c431")
+set(OSSL_VERSION "1.0.2l")
+set(OSSL_HASH "ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c")
 set(CMAKE_BUILD_TYPE Release)
 # Create PORTS_PREFIX variable with spaces escaped
 string(REGEX REPLACE " " "\ " PORTS_PREFIX "${CMAKE_CURRENT_BINARY_DIR}")
