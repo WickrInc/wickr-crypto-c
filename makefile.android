@@ -71,8 +71,8 @@ define cmake_create
 	cd $(WICKR_CRYPTO_ANDROID)/$(1); \
 	cmake -DCMAKE_SYSTEM_NAME=Android \
         -DCMAKE_TOOLCHAIN_FILE=$(DIR)/Toolchain-Android.cmake \
-        -DANDROID_NDK=~/android-ndk-r13 \
-        -DANDROID_NATIVE_API_LEVEL=android-17 \
+        -DANDROID_NDK=$(ANDROID_NDK) \
+        -DANDROID_NATIVE_API_LEVEL=$(ANDROID_NATIVE_API_LEVEL) \
         -DCMAKE_BUILD_TYPE=$(2) \
         -DANDROID_ABI=$(1) \
         -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX)/$(1) \
