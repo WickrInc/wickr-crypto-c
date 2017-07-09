@@ -1,3 +1,6 @@
+syntax = "proto2";
+import "node.proto";
+
 package wickr.proto;
 
 message Handshake {
@@ -5,7 +8,8 @@ message Handshake {
     required uint32 version = 1;
 
     message Seed {
-        optional bytes pubkey = 1;
+        reserved 1;
+        optional Node node_info = 2;
     }
     
     message KeyExchange {
@@ -14,13 +18,11 @@ message Handshake {
     }
 
     message Response {
-        required bool drop = 1;
         optional KeyExchange key_exchange = 2;
         optional Seed response_key = 3;
     }
 
     message Finish {
-        required bool drop = 1;
         optional KeyExchange key_exchange = 2;
     }
 
