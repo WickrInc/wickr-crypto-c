@@ -95,7 +95,7 @@ Pod::Spec.new do |s|
   s.preserve_paths = "build-ios/Release/fat/include/**/*.h", "build-ios/Release/fat/lib/*.a"
 
   #s.public_header_files = "src/crypto/*.h"
-  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "build-ios/Release/fat/include/**/*.h"
+  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/*_priv", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "build-ios/Release/fat/include/**/*.h"
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the
