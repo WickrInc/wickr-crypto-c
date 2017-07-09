@@ -1,0 +1,8 @@
+syntax = "proto2";
+package wickr.proto;
+
+message EphemeralKeypair {
+    optional uint64 identifier = 1;
+    optional bytes ec_key = 2;
+    optional bytes key_signature = 3;
+}

@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package wickr.proto;
+
+message Identity {
+    enum Type {
+        IDENTITY_TYPE_ROOT = 0;
+        IDENTITY_TYPE_NODE = 1;
+    }
+    optional bytes identifier = 1;
+    optional bytes sig_key = 2;
+    optional bytes signature = 3;
+    optional Type type = 4;
+}
+
+message IdentityChain {
+    optional Identity root = 1;
+    optional Identity node = 2;
+}
