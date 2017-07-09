@@ -1,5 +1,6 @@
 
 #include "ephemeral_keypair.h"
+#include "ephemeral_keypair_priv.h"
 #include "memory.h"
 
 wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create(uint64_t identifier, wickr_ec_key_t *ec_key, wickr_ecdsa_result_t *signature)
@@ -65,7 +66,7 @@ wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_copy(const wickr_ephemeral_ke
     
     wickr_ecdsa_result_t *signature_copy = wickr_ecdsa_result_copy(source->signature);
     
-    if (!signature_copy) {
+    if (source->signature && !signature_copy) {
         wickr_ec_key_destroy(&keypair_copy);
         return NULL;
     }
@@ -99,4 +100,49 @@ void wickr_ephemeral_keypair_destroy(wickr_ephemeral_keypair_t **keypair)
     wickr_ecdsa_result_destroy(&(*keypair)->signature);
     wickr_free(*keypair);
     *keypair = NULL;
+}
+
+wickr_buffer_t *wickr_ephemeral_keypair_serialize(const wickr_ephemeral_keypair_t *keypair)
+{
+    if (!keypair) {
+        return NULL;
+    }
+    
+    Wickr__Proto__EphemeralKeypair *proto_keypair = wickr_ephemeral_keypair_to_proto(keypair);
+    
+    if (!proto_keypair) {
+        return NULL;
+    }
+    
+    size_t packed_size = wickr__proto__ephemeral_keypair__get_packed_size(proto_keypair);
+    
+    wickr_buffer_t *packed_buffer = wickr_buffer_create_empty(packed_size);
+    
+    if (!packed_buffer) {
+        wickr_ephemeral_keypair_proto_free(proto_keypair);
+        return NULL;
+    }
+    
+    wickr__proto__ephemeral_keypair__pack(proto_keypair, packed_buffer->bytes);
+    wickr_ephemeral_keypair_proto_free(proto_keypair);
+    
+    return packed_buffer;
+}
+
+wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
+{
+    if (!buffer) {
+        return NULL;
+    }
+    
+    Wickr__Proto__EphemeralKeypair *proto_keypair = wickr__proto__ephemeral_keypair__unpack(NULL, buffer->length, buffer->bytes);
+    
+    if (!proto_keypair) {
+        return NULL;
+    }
+    
+    wickr_ephemeral_keypair_t *return_keypair = wickr_ephemeral_keypair_create_from_proto(proto_keypair, engine);
+    wickr__proto__ephemeral_keypair__free_unpacked(proto_keypair, NULL);
+    
+    return return_keypair;
 }

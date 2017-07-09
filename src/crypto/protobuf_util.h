@@ -52,10 +52,33 @@ wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer)
 
  @param buffer the protocol buffers binary data object to create the EC key with
  @param engine a crypto engine that supports the parsing / importing of EC keys
+ @param is_private are the bytes in buffer a private or public key
  @return an EC key created from serialized bytes within 'buffer' or NULL if parsing buffer fails
  */
-wickr_ec_key_t *wickr_ec_key_from_protobytes(ProtobufCBinaryData buffer, const wickr_crypto_engine_t *engine);
+    wickr_ec_key_t *wickr_ec_key_from_protobytes(ProtobufCBinaryData buffer, const wickr_crypto_engine_t *engine, bool is_private);
+    
+/**
+ 
+ @ingroup protobuf_utils
+ 
+ Create an ECDSA result from protocol buffers binary data object
+ 
+ @param buffer the protocol buffers binary data object to create the ecdsa result with
+ @return an ecdsa result created from serialized bytes within 'buffer' or NULL if parsing buffer fails
+ */
+wickr_ecdsa_result_t *wickr_ecdsa_result_from_protobytes(ProtobufCBinaryData buffer);
 
+/**
+ 
+ @ingroup protobuf_utils
+ 
+ Create a wickr buffer from a protocol buffer binary data structure
+ 
+ @param buffer the protocol buffer binary data to create the wickr_buffer from
+ @return a wickr_buffer containing the contents of 'buffer' or NULL
+ */
+wickr_buffer_t *wickr_buffer_from_protobytes(ProtobufCBinaryData buffer);
+    
 #ifdef __cplusplus
 }
 #endif

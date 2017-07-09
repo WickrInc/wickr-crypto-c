@@ -173,6 +173,50 @@ wickr_identity_t *wickr_identity_copy(const wickr_identity_t *source);
  @param identity a pointer to the identity to destroy. All properties of '*identity' will also be destroyed
  */
 void wickr_identity_destroy(wickr_identity_t **identity);
+    
+/**
+ 
+ @ingroup wickr_identity
+ 
+ Serialize an identity to bytes
+ 
+ @param identity the identity to serialize
+ @return a buffer containing a serialized representation of 'identity' or null if serialization fails
+ */
+wickr_buffer_t *wickr_identity_serialize(const wickr_identity_t *identity);
+
+/**
+ 
+ @ingroup wickr_identity
+ 
+ Create an identity from a buffer that was created with 'wickr_identity_serialize'
+ 
+ @param buffer the buffer that contains a serialized representation of an identity
+ @return deserialized identity or null if the deserialization fails
+ */
+wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
+    
+/**
+ 
+ @ingroup wickr_identity_chain
+ 
+ Serialize an identity chain to bytes
+ 
+ @param identity_chain the identity to serialize
+ @return a buffer containing a serialized representation of 'identity_chain' or null if serialization fails
+ */
+wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain);
+
+/**
+ 
+ @ingroup wickr_identity_chain
+ 
+ Create an identity chain from a buffer that was created with 'wickr_identity_chain_serialize'
+ 
+ @param buffer the buffer that contains a serialized representation of an identity chain
+ @return deserialized identity chain or null if the deserialization fails
+ */
+wickr_identity_chain_t *wickr_identity_chain_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
 
 /**
  

@@ -183,6 +183,28 @@ wickr_node_t *wickr_node_array_fetch_item(const wickr_array_t *array, uint32_t i
  @return a newly allocated wickr_node_array that contains a copy of each element from 'array'
  */
 wickr_node_array_t *wickr_node_array_copy(const wickr_node_array_t *array);
+    
+/**
+ 
+ @ingroup wickr_node
+ 
+ Serialize a node to bytes
+ 
+ @param node the node to serialize
+ @return a buffer containing a serialized representation of 'node' or null if serialization fails
+ */
+wickr_buffer_t *wickr_node_serialize(const wickr_node_t *node);
+    
+/**
+ 
+ @ingroup wickr_node
+ 
+ Create a node from a buffer that was created with 'wickr_node_serialize'
+ 
+ @param buffer the buffer that contains a serialized representation of a node
+ @return deserialized node or null if the deserialization fails
+ */
+wickr_node_t *wickr_node_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
 
 /**
  

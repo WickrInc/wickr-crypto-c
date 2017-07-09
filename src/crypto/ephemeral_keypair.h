@@ -126,6 +126,28 @@ bool wickr_ephemeral_keypair_verify_owner(const wickr_ephemeral_keypair_t *keypa
  @param keypair the key pair to make public
  */
 void wickr_ephemeral_keypair_make_public(const wickr_ephemeral_keypair_t *keypair);
+    
+/**
+ 
+ @ingroup wickr_ephemeral_keypair
+ 
+ Serialize an ephemeral keypair to bytes
+ 
+ @param keypair the ephemeral keypair to serialize
+ @return a buffer containing a serialized representation of 'keypair' or null if serialization fails
+ */
+wickr_buffer_t *wickr_ephemeral_keypair_serialize(const wickr_ephemeral_keypair_t *keypair);
+
+/**
+ 
+ @ingroup wickr_ephemeral_keypair
+ 
+ Create an ephemeral keypair from a buffer that was created with 'wickr_ephemeral_keypair_serialize'
+ 
+ @param buffer the buffer that contains a serialized representation of an identity chain
+ @return deserialized ephemeral keypair or null if the deserialization fails
+ */
+wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
 
 /**
  

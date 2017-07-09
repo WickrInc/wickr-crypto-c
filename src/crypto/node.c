@@ -1,5 +1,6 @@
 
 #include "node.h"
+#include "node_priv.h"
 #include "memory.h"
 
 #define NODE_ARRAY_TYPE_ID 1
@@ -146,4 +147,49 @@ void wickr_node_array_destroy(wickr_node_array_t **array)
     }
     
     wickr_array_destroy(array, false);
+}
+
+wickr_buffer_t *wickr_node_serialize(const wickr_node_t *node)
+{
+    if (!node) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Node *proto_node = wickr_node_to_proto(node);
+    
+    if (!proto_node) {
+        return NULL;
+    }
+    
+    size_t packed_size = wickr__proto__node__get_packed_size(proto_node);
+    
+    wickr_buffer_t *packed_buffer = wickr_buffer_create_empty(packed_size);
+    
+    if (!packed_buffer) {
+        wickr_node_proto_free(proto_node);
+        return NULL;
+    }
+    
+    wickr__proto__node__pack(proto_node, packed_buffer->bytes);
+    wickr_node_proto_free(proto_node);
+    
+    return packed_buffer;
+}
+
+wickr_node_t *wickr_node_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
+{
+    if (!buffer) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Node *proto_node = wickr__proto__node__unpack(NULL, buffer->length, buffer->bytes);
+    
+    if (!proto_node) {
+        return NULL;
+    }
+    
+    wickr_node_t *return_node = wickr_node_create_from_proto(proto_node, engine);
+    wickr__proto__node__free_unpacked(proto_node, NULL);
+    
+    return return_node;
 }
