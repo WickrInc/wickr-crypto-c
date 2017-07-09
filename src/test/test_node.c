@@ -4,6 +4,7 @@
 #include "crypto_engine.h"
 #include "identity.h"
 #include "node.h"
+#include "node_priv.h"
 
 DESCRIBE(node_tests, "node.c")
 {
@@ -165,6 +166,24 @@ DESCRIBE(node_tests, "node.c")
         wickr_array_destroy(&copy_array, true);
         
         wickr_node_array_destroy(&node_array);
+    }
+    END_IT
+    
+    IT("can be seralized / deserialized")
+    {
+        wickr_buffer_t *serialized = wickr_node_serialize(node);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_node_t *deserialized = wickr_node_create_from_buffer(serialized, &engine);
+        SHOULD_NOT_BE_NULL(deserialized);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->dev_id, deserialized->dev_id, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->ephemeral_keypair->ec_key->pub_data, deserialized->ephemeral_keypair->ec_key->pub_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->node->identifier, deserialized->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->root->identifier, deserialized->id_chain->root->identifier, NULL));
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_node_destroy(&deserialized);
     }
     END_IT
     
