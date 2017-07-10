@@ -30,6 +30,6 @@ before_install:
 
 script:
  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make -f makefile.linux release; fi
- - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make -f makefile.linux test; fi
+ - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CI_FLAGS='--ci'; make -f makefile.linux test; fi
  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make -f makefile.osx release; fi
- - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make -f makefile.osx test.release; fi
+ - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CI_FLAGS='--ci'; make -f makefile.osx test.release; fi
