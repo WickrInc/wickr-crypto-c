@@ -16,6 +16,63 @@
       <node id="399">
         <label>stdbool.h</label>
       </node>
+      <node id="406">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="398" relation="include">
+        </childnode>
+        <childnode refid="407" relation="include">
+        </childnode>
+      </node>
+      <node id="400">
+        <label>stdint.h</label>
+      </node>
+      <node id="397">
+        <label>stdlib.h</label>
+      </node>
+      <node id="411">
+        <label>storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+        <childnode refid="404" relation="include">
+        </childnode>
+      </node>
+      <node id="409">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="403" relation="include">
+        </childnode>
+        <childnode refid="407" relation="include">
+        </childnode>
+        <childnode refid="406" relation="include">
+        </childnode>
+      </node>
+      <node id="412">
+        <label>devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+        <childnode refid="404" relation="include">
+        </childnode>
+      </node>
+      <node id="401">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+      </node>
+      <node id="402">
+        <label>limits.h</label>
+      </node>
       <node id="396">
         <label>src/crypto/root_keys.h</label>
         <link refid="root__keys_8h"/>
@@ -32,11 +89,58 @@
         <childnode refid="412" relation="include">
         </childnode>
       </node>
-      <node id="400">
-        <label>stdint.h</label>
+      <node id="407">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="400" relation="include">
+        </childnode>
       </node>
-      <node id="397">
-        <label>stdlib.h</label>
+      <node id="405">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+        <childnode refid="406" relation="include">
+        </childnode>
+      </node>
+      <node id="403">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="398" relation="include">
+        </childnode>
+      </node>
+      <node id="398">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="399" relation="include">
+        </childnode>
+        <childnode refid="400" relation="include">
+        </childnode>
+        <childnode refid="401" relation="include">
+        </childnode>
+        <childnode refid="402" relation="include">
+        </childnode>
+      </node>
+      <node id="408">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="397" relation="include">
+        </childnode>
+        <childnode refid="403" relation="include">
+        </childnode>
+        <childnode refid="407" relation="include">
+        </childnode>
+      </node>
+      <node id="410">
+        <label>stdio.h</label>
       </node>
       <node id="404">
         <label>crypto_engine.h</label>
@@ -60,115 +164,13 @@
         <childnode refid="410" relation="include">
         </childnode>
       </node>
-      <node id="411">
-        <label>storage.h</label>
-        <link refid="storage_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="404" relation="include">
-        </childnode>
-      </node>
-      <node id="402">
-        <label>limits.h</label>
-      </node>
-      <node id="409">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="407" relation="include">
-        </childnode>
-        <childnode refid="406" relation="include">
-        </childnode>
-      </node>
-      <node id="406">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="407" relation="include">
-        </childnode>
-      </node>
-      <node id="401">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-      </node>
-      <node id="407">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="400" relation="include">
-        </childnode>
-      </node>
-      <node id="398">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="399" relation="include">
-        </childnode>
-        <childnode refid="400" relation="include">
-        </childnode>
-        <childnode refid="401" relation="include">
-        </childnode>
-        <childnode refid="402" relation="include">
-        </childnode>
-      </node>
-      <node id="405">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="406" relation="include">
-        </childnode>
-      </node>
-      <node id="412">
-        <label>devinfo.h</label>
-        <link refid="devinfo_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-        <childnode refid="404" relation="include">
-        </childnode>
-      </node>
-      <node id="410">
-        <label>stdio.h</label>
-      </node>
-      <node id="408">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="403" relation="include">
-        </childnode>
-        <childnode refid="407" relation="include">
-        </childnode>
-      </node>
-      <node id="403">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="397" relation="include">
-        </childnode>
-        <childnode refid="398" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="415">
-        <label>src/crypto/ephemeral_keypair.h</label>
-        <link refid="ephemeral__keypair_8h_source"/>
+      <node id="414">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="415" relation="include">
+        </childnode>
         <childnode refid="416" relation="include">
         </childnode>
         <childnode refid="418" relation="include">
@@ -180,6 +182,24 @@
         <label>src/crypto/wickr_ctx.h</label>
         <link refid="wickr__ctx_8h_source"/>
         <childnode refid="418" relation="include">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="417" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="416" relation="include">
+        </childnode>
+        <childnode refid="418" relation="include">
+        </childnode>
+        <childnode refid="419" relation="include">
         </childnode>
       </node>
       <node id="413">
@@ -206,26 +226,6 @@
         <childnode refid="419" relation="include">
         </childnode>
       </node>
-      <node id="416">
-        <label>src/crypto/node.h</label>
-        <link refid="node_8h_source"/>
-        <childnode refid="417" relation="include">
-        </childnode>
-        <childnode refid="418" relation="include">
-        </childnode>
-      </node>
-      <node id="414">
-        <label>src/crypto/identity.h</label>
-        <link refid="identity_8h_source"/>
-        <childnode refid="415" relation="include">
-        </childnode>
-        <childnode refid="416" relation="include">
-        </childnode>
-        <childnode refid="418" relation="include">
-        </childnode>
-        <childnode refid="419" relation="include">
-        </childnode>
-      </node>
     </invincdepgraph>
     <innerclass refid="structwickr__root__keys" prot="public">wickr_root_keys</innerclass>
       <sectiondef kind="typedef">
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/root_keys.h" line="631" column="1" bodyfile="src/crypto/root_keys.h" bodystart="56" bodyend="-1"/>
+        <location file="src/crypto/root_keys.h" line="687" column="1" bodyfile="src/crypto/root_keys.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">

@@ -60,8 +60,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">wickr_cipher_t</div>  </div>
 </div><!--header-->
@@ -73,6 +72,8 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a cipher that can be used in the crypto_engine. This meta object holds parameters for the cipher algorithms and maintains an identifier that can be used to look up the desired parameters for an algorithm.  <a href="structwickr__cipher.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -101,11 +102,6 @@ Functions</h2></td></tr>
 <tr class="separator:ga8716aebf03497c379d5ff81fe32cde32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c073b87f2141cf35a1d91ba10f9e5ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__cipher.html#ga1c073b87f2141cf35a1d91ba10f9e5ba">wickr_cipher_key_from_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer)</td></tr>
 <tr class="separator:ga1c073b87f2141cf35a1d91ba10f9e5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga6506e1a07f7bc2c5ceeb0ca5ce81385b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher.html">wickr_cipher_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__cipher.html#ga6506e1a07f7bc2c5ceeb0ca5ce81385b">wickr_cipher_key::cipher</a></td></tr>
-<tr class="separator:ga6506e1a07f7bc2c5ceeb0ca5ce81385b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -452,23 +448,6 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a buffer containing bytes representing the cipher result in the following format: | CIPHER_ID | IV | AUTH_TAG (IF REQUIRED) | CIPHER_TEXT | </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ga6506e1a07f7bc2c5ceeb0ca5ce81385b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6506e1a07f7bc2c5ceeb0ca5ce81385b">&#9670;&nbsp;</a></span>cipher</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_cipher_key::cipher</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>A key to be provided to a cipher operation</p>
-<p>the cipher this key is to be used by </p>
 
 </div>
 </div>

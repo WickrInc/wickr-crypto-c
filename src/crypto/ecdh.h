@@ -49,10 +49,6 @@ extern "C" {
  Elliptical Curve key with the public component of the other party's key pair used to compute the ECDH shared secret
  @var wickr_ecdh_params::kdf_info
  the kdf parameters to execute against the calculated shared secret, currently supports HKDF
- @var wickr_ecdh_params::kdf_salt
- a random salt value used as part of a KDF function for ECDH shared secret expansion. May be NULL if no salt is used, if a salt is provided it should be a secure random value
- @var wickr_ecdh_params::kdf_info 
- context information that can be used as part of the KDF function for ECDH shared secret expansion. INFO varies from SALT as it is not intended to be random, and instead holds contextual information about the involved parties. May be NULL if no context information is provided
  */
 struct wickr_ecdh_params {
     wickr_ec_key_t *local_key;

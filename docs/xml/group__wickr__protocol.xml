@@ -159,11 +159,11 @@
         </inbodydescription>
         <location file="src/crypto/protocol.h" line="166" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="group__wickr__protocol_1gae031f68d2286e0399d90b0316a7d5299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__wickr__protocol_1ga26d4b847f11801354e4111d3ec1d1d13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
-        <definition>wickr_key_exchange_t* wickr_key_exchange_create_from_components</definition>
+        <definition>wickr_key_exchange_t* wickr_key_exchange_create_with_packet_key</definition>
         <argsstring>(const wickr_crypto_engine_t *engine, const wickr_identity_chain_t *sender, const wickr_node_t *receiver, wickr_ec_key_t *packet_exchange_key, const wickr_cipher_key_t *packet_key, uint8_t version)</argsstring>
-        <name>wickr_key_exchange_create_from_components</name>
+        <name>wickr_key_exchange_create_with_packet_key</name>
         <param>
           <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
           <declname>engine</declname>
@@ -191,7 +191,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Compute a key exchange given sender/receiver information (Sender Encoding)</para><para>See Wickr white paper &apos;Prepare Key Exchange Data&apos; for more information</para><para>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the &apos;<ref refid="structwickr__ctx" kindref="compound">wickr_ctx</ref>&apos; API instead since it is a higher level and safer set of functions</para><para><parameterlist kind="param"><parameteritem>
+<para>Compute a key exchange given sender/receiver information and a packet key to protect (Sender Encoding) Thie function is a convience function around &apos;wickr_key_exchange_create_with_data&apos; that determines exchange_cipher automaticallly based on &apos;packet_key&apos; cipher and also takes care of serializing &apos;packet_key&apos;</para><para>See Wickr white paper &apos;Prepare Key Exchange Data&apos; for more information</para><para>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the &apos;<ref refid="structwickr__ctx" kindref="compound">wickr_ctx</ref>&apos; API instead since it is a higher level and safer set of functions</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>engine</parametername>
 </parameternamelist>
@@ -238,7 +238,99 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="188" column="1"/>
+        <location file="src/crypto/protocol.h" line="190" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__wickr__protocol_1ga9e69db5af6825e72c443dd5ef3605a5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
+        <definition>wickr_key_exchange_t* wickr_key_exchange_create_with_data</definition>
+        <argsstring>(const wickr_crypto_engine_t *engine, const wickr_identity_chain_t *sender, const wickr_node_t *receiver, wickr_ec_key_t *packet_exchange_key, const wickr_buffer_t *data_to_wrap, wickr_cipher_t exchange_cipher, uint8_t version)</argsstring>
+        <name>wickr_key_exchange_create_with_data</name>
+        <param>
+          <type>const <ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref> *</type>
+          <declname>engine</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__identity__chain" kindref="compound">wickr_identity_chain_t</ref> *</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__node" kindref="compound">wickr_node_t</ref> *</type>
+          <declname>receiver</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
+          <declname>packet_exchange_key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>data_to_wrap</declname>
+        </param>
+        <param>
+          <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
+          <declname>exchange_cipher</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Compute a key exchange given sender/receiver information and bytes to protect (Sender Encoding) This method at a high level creates a shared secret between a sender and receiver (ECDH), runs the shared secret through a kdf (HKDF) and then uses the resulting secret as a cipher key to encrypt bytes of data. &apos;wickr_key_exchange_create_with_packet_key&apos; also exists as a version of this function to specifically wrap cipher_keys instead of raw data</para><para>See Wickr white paper &apos;Prepare Key Exchange Data&apos; for more information</para><para>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the &apos;<ref refid="structwickr__ctx" kindref="compound">wickr_ctx</ref>&apos; API instead since it is a higher level and safer set of functions</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a crypto engine supporting ECDH key exchanges </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the identity chain of the sender </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>receiver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node this key exchange is destined for </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>packet_exchange_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_to_wrap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>This is the data we are protecting by the output of the key exchange </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exchange_cipher</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the cipher that the exchange should use protect &apos;data_to_wrap&apos; with </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>version</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the version of the packet being generated </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/protocol.h" line="219" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga2235a7c168e3806aa1a71b5a5c8dee48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
@@ -264,7 +356,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="226" column="1"/>
+        <location file="src/crypto/protocol.h" line="282" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga54b6481f8f4b61fb949bec17d47cd3de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -289,7 +381,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="236" column="1"/>
+        <location file="src/crypto/protocol.h" line="292" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga907d700b76b748f80796b4404c7172c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>wickr_exchange_array_t *</type>
@@ -315,7 +407,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="249" column="1"/>
+        <location file="src/crypto/protocol.h" line="305" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gad3c6687c07ae5e66efcbc55da0febd85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -363,7 +455,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="263" column="1"/>
+        <location file="src/crypto/protocol.h" line="319" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga333510c3c7eeb8e33f94495de6bb122d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
@@ -400,7 +492,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="276" column="1"/>
+        <location file="src/crypto/protocol.h" line="332" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gacd04405337871aa3bcd550a051d778e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>wickr_array_t *</type>
@@ -426,7 +518,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="284" column="1"/>
+        <location file="src/crypto/protocol.h" line="340" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gadc1e5f5836bc09c1d6b8d6203d02a0eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -451,7 +543,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="291" column="1"/>
+        <location file="src/crypto/protocol.h" line="347" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga8ad519d1b5dc3960c426db9a556404e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet__header" kindref="compound">wickr_packet_header_t</ref> *</type>
@@ -488,7 +580,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="319" column="1"/>
+        <location file="src/crypto/protocol.h" line="375" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gac9fab2b713e40a607735bcce0befee96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
@@ -525,7 +617,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="330" column="1"/>
+        <location file="src/crypto/protocol.h" line="386" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga5ffb8763c9ebf2ad7322d507d117d7ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet__header" kindref="compound">wickr_packet_header_t</ref> *</type>
@@ -551,7 +643,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="341" column="1"/>
+        <location file="src/crypto/protocol.h" line="397" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gacb41cb9ad58871f01d8660e3ab115f4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -576,7 +668,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="351" column="1"/>
+        <location file="src/crypto/protocol.h" line="407" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga3495440a494c33a38ce4154b400e9809" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
@@ -624,7 +716,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="368" column="1"/>
+        <location file="src/crypto/protocol.h" line="424" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga53ff33471ac0c4c7e3feedfcce520639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet__header" kindref="compound">wickr_packet_header_t</ref> *</type>
@@ -672,7 +764,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="384" column="1"/>
+        <location file="src/crypto/protocol.h" line="440" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gad7d51d39a8477d87557536ff42399186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__payload" kindref="compound">wickr_payload_t</ref> *</type>
@@ -709,7 +801,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="413" column="1"/>
+        <location file="src/crypto/protocol.h" line="469" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga96e1b0eabf307d112985946cbe2f6969" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__payload" kindref="compound">wickr_payload_t</ref> *</type>
@@ -735,7 +827,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="424" column="1"/>
+        <location file="src/crypto/protocol.h" line="480" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga821c48aa748408e47ba2149e1628a487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -760,7 +852,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="434" column="1"/>
+        <location file="src/crypto/protocol.h" line="490" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga7e4fd2ad4de22c2f7d6160400d2e15e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
@@ -808,7 +900,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="450" column="1"/>
+        <location file="src/crypto/protocol.h" line="506" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gaeeebf95ba580b92254a91009245028ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__payload" kindref="compound">wickr_payload_t</ref> *</type>
@@ -856,7 +948,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="466" column="1"/>
+        <location file="src/crypto/protocol.h" line="522" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gac952913ddaf848d2def181cd55b30883" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet" kindref="compound">wickr_packet_t</ref> *</type>
@@ -904,7 +996,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="500" column="1"/>
+        <location file="src/crypto/protocol.h" line="556" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga3427a40815c9f65a78516405d1b88072" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet" kindref="compound">wickr_packet_t</ref> *</type>
@@ -930,7 +1022,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="510" column="1"/>
+        <location file="src/crypto/protocol.h" line="566" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gaa983fe863635b69d69d6d86d01443ecf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -956,7 +1048,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="521" column="1"/>
+        <location file="src/crypto/protocol.h" line="577" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga0c95ad86819bacf98c11115d748039db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet" kindref="compound">wickr_packet_t</ref> *</type>
@@ -982,7 +1074,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="532" column="1"/>
+        <location file="src/crypto/protocol.h" line="588" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gab15d7556ad2806aa823ec2d3e3bf5a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1007,7 +1099,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="542" column="1"/>
+        <location file="src/crypto/protocol.h" line="598" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gac2673bcfeae2f8d693e523809bb6bb30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__parse__result" kindref="compound">wickr_parse_result_t</ref> *</type>
@@ -1044,7 +1136,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="579" column="1"/>
+        <location file="src/crypto/protocol.h" line="635" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gae9d6837e2cea5b64993c124e671bd25f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__parse__result" kindref="compound">wickr_parse_result_t</ref> *</type>
@@ -1092,7 +1184,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="592" column="1"/>
+        <location file="src/crypto/protocol.h" line="648" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga1671066ddc19b38ed05d4460d5a96706" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__parse__result" kindref="compound">wickr_parse_result_t</ref> *</type>
@@ -1118,7 +1210,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="605" column="1"/>
+        <location file="src/crypto/protocol.h" line="661" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga706d39419c8991f417f37f556cee8df9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1143,7 +1235,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="615" column="1"/>
+        <location file="src/crypto/protocol.h" line="671" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga2bd6f49ed993d2290aaafa514eba43ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__decode__result" kindref="compound">wickr_decode_result_t</ref> *</type>
@@ -1169,7 +1261,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="644" column="1"/>
+        <location file="src/crypto/protocol.h" line="700" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga633aaf4cb6159be0110401f06dae458c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__decode__result" kindref="compound">wickr_decode_result_t</ref> *</type>
@@ -1206,7 +1298,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="655" column="1"/>
+        <location file="src/crypto/protocol.h" line="711" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga36183bf96372661f890aefbe388bd32a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__decode__result" kindref="compound">wickr_decode_result_t</ref> *</type>
@@ -1232,7 +1324,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="667" column="1"/>
+        <location file="src/crypto/protocol.h" line="723" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga94154ab44a6c2e9b97a115e37416efe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1257,7 +1349,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="677" column="1"/>
+        <location file="src/crypto/protocol.h" line="733" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1gaf34d8082df52a7ade2fea54eea65d342" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__packet" kindref="compound">wickr_packet_t</ref> *</type>
@@ -1348,12 +1440,19 @@
 <parameterdescription>
 <para>the identity chain belonging to the creator of the packet </para></parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>version</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the version of the protocol encoding to use for this packet </para></parameterdescription>
+</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>a &apos;sender_signing_identity&apos; signed packet containing encrypted payload &apos;payload, and header containing key exchanges for &apos;recipients&apos; </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="697" column="1"/>
+        <location file="src/crypto/protocol.h" line="754" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga1654ef299f9189b27e5e58485f1ffcf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__parse__result" kindref="compound">wickr_parse_result_t</ref> *</type>
@@ -1423,7 +1522,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="724" column="1"/>
+        <location file="src/crypto/protocol.h" line="781" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__protocol_1ga32d9da2e10d1d653b2ac894d50aaedb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__decode__result" kindref="compound">wickr_decode_result_t</ref> *</type>
@@ -1515,7 +1614,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="748" column="1"/>
+        <location file="src/crypto/protocol.h" line="805" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">

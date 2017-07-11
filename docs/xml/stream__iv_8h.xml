@@ -5,143 +5,143 @@
     <includes refid="crypto__engine_8h" local="yes">crypto_engine.h</includes>
     <includedby refid="stream__cipher_8h" local="yes">src/crypto/stream_cipher.h</includedby>
     <incdepgraph>
-      <node id="468">
+      <node id="465">
         <label>stdbool.h</label>
       </node>
-      <node id="469">
-        <label>stdint.h</label>
-      </node>
-      <node id="467">
-        <label>stdlib.h</label>
-      </node>
-      <node id="465">
-        <label>crypto_engine.h</label>
-        <link refid="crypto__engine_8h_source"/>
-        <childnode refid="466" relation="include">
-        </childnode>
-        <childnode refid="472" relation="include">
-        </childnode>
-        <childnode refid="474" relation="include">
-        </childnode>
-        <childnode refid="475" relation="include">
-        </childnode>
-        <childnode refid="476" relation="include">
-        </childnode>
-        <childnode refid="477" relation="include">
-        </childnode>
-        <childnode refid="473" relation="include">
-        </childnode>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="478" relation="include">
-        </childnode>
-      </node>
-      <node id="471">
-        <label>limits.h</label>
-      </node>
-      <node id="477">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="475" relation="include">
-        </childnode>
-        <childnode refid="474" relation="include">
-        </childnode>
-        <childnode refid="473" relation="include">
-        </childnode>
-      </node>
-      <node id="473">
+      <node id="470">
         <label>kdf.h</label>
         <link refid="kdf_8h_source"/>
-        <childnode refid="466" relation="include">
-        </childnode>
-        <childnode refid="474" relation="include">
-        </childnode>
-      </node>
-      <node id="470">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="466" relation="include">
-        </childnode>
-      </node>
-      <node id="464">
-        <label>src/crypto/stream_iv.h</label>
-        <link refid="stream__iv_8h"/>
-        <childnode refid="465" relation="include">
-        </childnode>
-      </node>
-      <node id="474">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="469" relation="include">
-        </childnode>
-      </node>
-      <node id="466">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="468" relation="include">
-        </childnode>
-        <childnode refid="469" relation="include">
-        </childnode>
-        <childnode refid="470" relation="include">
+        <childnode refid="463" relation="include">
         </childnode>
         <childnode refid="471" relation="include">
         </childnode>
       </node>
-      <node id="472">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="467" relation="include">
+      <node id="466">
+        <label>stdint.h</label>
+      </node>
+      <node id="464">
+        <label>stdlib.h</label>
+      </node>
+      <node id="474">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+      </node>
+      <node id="467">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+      </node>
+      <node id="468">
+        <label>limits.h</label>
+      </node>
+      <node id="471">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="464" relation="include">
         </childnode>
         <childnode refid="466" relation="include">
         </childnode>
-        <childnode refid="473" relation="include">
+      </node>
+      <node id="469">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
         </childnode>
       </node>
-      <node id="478">
-        <label>stdio.h</label>
+      <node id="472">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
       </node>
-      <node id="476">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
+      <node id="463">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="465" relation="include">
+        </childnode>
+        <childnode refid="466" relation="include">
+        </childnode>
         <childnode refid="467" relation="include">
         </childnode>
-        <childnode refid="475" relation="include">
+        <childnode refid="468" relation="include">
         </childnode>
-        <childnode refid="474" relation="include">
+      </node>
+      <node id="473">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+      </node>
+      <node id="461">
+        <label>src/crypto/stream_iv.h</label>
+        <link refid="stream__iv_8h"/>
+        <childnode refid="462" relation="include">
         </childnode>
       </node>
       <node id="475">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="467" relation="include">
+        <label>stdio.h</label>
+      </node>
+      <node id="462">
+        <label>crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="463" relation="include">
         </childnode>
-        <childnode refid="466" relation="include">
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="474" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="481">
+      <node id="477">
+        <label>src/crypto/stream_cipher.h</label>
+        <link refid="stream__cipher_8h_source"/>
+        <childnode refid="478" relation="include">
+        </childnode>
+      </node>
+      <node id="478">
         <label>src/crypto/wickr-crypto-c.h</label>
         <link refid="wickr-crypto-c_8h_source"/>
       </node>
-      <node id="479">
+      <node id="476">
         <label>src/crypto/stream_iv.h</label>
         <link refid="stream__iv_8h"/>
-        <childnode refid="480" relation="include">
-        </childnode>
-      </node>
-      <node id="480">
-        <label>src/crypto/stream_cipher.h</label>
-        <link refid="stream__cipher_8h_source"/>
-        <childnode refid="481" relation="include">
+        <childnode refid="477" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_iv.h" line="87" column="1" bodyfile="src/crypto/stream_iv.h" bodystart="53" bodyend="-1"/>
+        <location file="src/crypto/stream_iv.h" line="88" column="1" bodyfile="src/crypto/stream_iv.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -213,7 +213,7 @@
         <detaileddescription>
 <para>Copy a stream iv generator</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>source</parametername>
+<parametername>iv</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>the stream iv generator to copy </para></parameterdescription>

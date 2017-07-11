@@ -6,6 +6,8 @@
 struct \hyperlink{structwickr__cipher}{wickr\+\_\+cipher}
 \begin{DoxyCompactList}\small\item\em Represents a cipher that can be used in the crypto\+\_\+engine. This meta object holds parameters for the cipher algorithms and maintains an identifier that can be used to look up the desired parameters for an algorithm. \end{DoxyCompactList}\item 
 struct \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result}
+\item 
+struct \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -33,11 +35,6 @@ void \hyperlink{group__wickr__cipher_ga45790b3023ccb261c03346b069aca763}{wickr\+
 \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga8716aebf03497c379d5ff81fe32cde32}{wickr\+\_\+cipher\+\_\+key\+\_\+serialize} (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key)
 \item 
 \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga1c073b87f2141cf35a1d91ba10f9e5ba}{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
-\end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{group__wickr__cipher_ga6506e1a07f7bc2c5ceeb0ca5ce81385b}{wickr\+\_\+cipher\+\_\+key\+::cipher}
 \end{DoxyCompactItemize}
 
 
@@ -239,15 +236,3 @@ Serialize a cipher result
 \begin{DoxyReturn}{Returns}
 a buffer containing bytes representing the cipher result in the following format\+: $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+ID $\vert$ IV $\vert$ A\+U\+T\+H\+\_\+\+T\+AG (IF R\+E\+Q\+U\+I\+R\+ED) $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+T\+E\+XT $\vert$ 
 \end{DoxyReturn}
-
-
-\subsection{Variable Documentation}
-\mbox{\Hypertarget{group__wickr__cipher_ga6506e1a07f7bc2c5ceeb0ca5ce81385b}\label{group__wickr__cipher_ga6506e1a07f7bc2c5ceeb0ca5ce81385b}} 
-\index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!cipher@{cipher}}
-\index{cipher@{cipher}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
-\subsubsection{\texorpdfstring{cipher}{cipher}}
-{\footnotesize\ttfamily wickr\+\_\+cipher\+\_\+key\+::cipher}
-
-A key to be provided to a cipher operation
-
-the cipher this key is to be used by 

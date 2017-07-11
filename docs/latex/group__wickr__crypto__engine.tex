@@ -29,9 +29,9 @@ const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\
 \item 
 \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random} )(\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
+\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt} )(const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga459ef821cc40edb5e3c9ce1d571ddc00}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt} )(const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
 \item 
 bool($\ast$ \hyperlink{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
 \item 
@@ -171,7 +171,7 @@ the digest to use for signature operations using \textquotesingle{}curve\textquo
 
 Get the matching exchange cipher given a message packet cipher
 
-An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+from\+\_\+components) This function currently always returns C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+C\+TR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+G\+CM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the G\+CM mode packet content
+An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+packet\+\_\+key) This function currently always returns C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+C\+TR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always C\+I\+P\+H\+E\+R\+\_\+\+I\+D\+\_\+\+A\+E\+S256\+\_\+\+G\+CM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the G\+CM mode packet content
 
 
 \begin{DoxyParams}{Parameters}
@@ -202,17 +202,19 @@ a kdf that has an output which is the same size as the length of the cipher\text
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}\label{group__wickr__crypto__engine_ga81cff182bb87f963996b75891e242ed4}} 
+\mbox{\Hypertarget{group__wickr__crypto__engine_ga459ef821cc40edb5e3c9ce1d571ddc00}\label{group__wickr__crypto__engine_ga459ef821cc40edb5e3c9ce1d571ddc00}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}{wickr\_crypto\_engine\_cipher\_decrypt}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt) (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt) (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)}
 
 Decrypt a cipher\+\_\+result
 
 
 \begin{DoxyParams}{Parameters}
 {\em cipher\+\_\+result} & a cipher result generated from \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt\textquotesingle{} \\
+\hline
+{\em aad} & additional data to authenticate with the ciphertext (only works with authenticated ciphers) \\
 \hline
 {\em key} & the key to use to attempt to decrypt \textquotesingle{}cipher\+\_\+result\textquotesingle{} \\
 \hline
@@ -222,11 +224,11 @@ Decrypt a cipher\+\_\+result
 \begin{DoxyReturn}{Returns}
 a buffer containing decrypted bytes. If the A\+ES mode is authenticated, N\+U\+LL will be returned if key is incorrect. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}\label{group__wickr__crypto__engine_ga5aacf927a96a30aa63f3fc1bce262caf}} 
+\mbox{\Hypertarget{group__wickr__crypto__engine_gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e}\label{group__wickr__crypto__engine_gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}{wickr\_crypto\_engine\_cipher\_encrypt}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)}
 
 Encrypt a buffer
 
@@ -235,6 +237,8 @@ N\+O\+TE\+: IV is randomly chosen using a secure random function if one is not p
 
 \begin{DoxyParams}{Parameters}
 {\em plaintext} & the content to encrypt using \textquotesingle{}key\textquotesingle{} \\
+\hline
+{\em aad} & additional data to authenticate with the ciphertext (only works with authenticated ciphers) \\
 \hline
 {\em key} & the cipher key to use to encrypt \textquotesingle{}plaintext\textquotesingle{} \\
 \hline

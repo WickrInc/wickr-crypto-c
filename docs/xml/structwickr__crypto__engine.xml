@@ -74,10 +74,10 @@
         </inbodydescription>
         <location file="src/crypto/crypto_engine.h" line="77" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="77" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="group__wickr__crypto__engine_1ga5aacf927a96a30aa63f3fc1bce262caf" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="group__wickr__crypto__engine_1gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *(*</type>
-        <definition>wickr_cipher_result_t*(* wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt) (const wickr_buffer_t *plaintext, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</definition>
-        <argsstring>)(const wickr_buffer_t *plaintext, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</argsstring>
+        <definition>wickr_cipher_result_t*(* wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt) (const wickr_buffer_t *plaintext, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</definition>
+        <argsstring>)(const wickr_buffer_t *plaintext, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</argsstring>
         <name>wickr_crypto_engine_cipher_encrypt</name>
         <briefdescription>
         </briefdescription>
@@ -88,6 +88,13 @@
 </parameternamelist>
 <parameterdescription>
 <para>the content to encrypt using &apos;key&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -108,12 +115,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="91" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="91" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="92" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="92" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="group__wickr__crypto__engine_1ga81cff182bb87f963996b75891e242ed4" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="group__wickr__crypto__engine_1ga459ef821cc40edb5e3c9ce1d571ddc00" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *(*</type>
-        <definition>wickr_buffer_t*(* wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt) (const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *key, bool only_auth_ciphers)</definition>
-        <argsstring>)(const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *key, bool only_auth_ciphers)</argsstring>
+        <definition>wickr_buffer_t*(* wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt) (const wickr_cipher_result_t *cipher_result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool only_auth_ciphers)</definition>
+        <argsstring>)(const wickr_cipher_result_t *cipher_result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool only_auth_ciphers)</argsstring>
         <name>wickr_crypto_engine_cipher_decrypt</name>
         <briefdescription>
         </briefdescription>
@@ -124,6 +131,13 @@
 </parameternamelist>
 <parameterdescription>
 <para>a cipher result generated from &apos;wickr_crypto_engine_cipher_encrypt&apos; </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -144,7 +158,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="105" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="105" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="108" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" prot="public" static="no" mutable="no">
         <type>bool(*</type>
@@ -180,7 +194,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="119" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="119" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="123" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" prot="public" static="no" mutable="no">
         <type>bool(*</type>
@@ -223,7 +237,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="135" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="135" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="139" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga42dfc5b4df166616d962ee4c792ceaf4" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *(*</type>
@@ -259,7 +273,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="151" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="151" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="155" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga298d2dea6722151c11e04458d3924823" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *(*</type>
@@ -288,7 +302,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="164" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="164" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="168" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1gad16b229b7d16cf00d3983c277ee3b88b" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *(*</type>
@@ -310,7 +324,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="175" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="175" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="179" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga87a069bbd3cdf509946e4ca0ca008f8f" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *(*</type>
@@ -339,7 +353,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="186" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="186" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="190" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="190" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1gac5a36d2a53e06a75a2b818e6a5cc96a1" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *(*</type>
@@ -375,7 +389,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="200" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="200" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="204" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1gae541acc6433f6f5ffe84382ccd5e4f97" prot="public" static="no" mutable="no">
         <type>bool(*</type>
@@ -411,7 +425,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="214" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="214" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="218" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga94bdc8d3b88ac04b9defe663afa48e78" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *(*</type>
@@ -433,7 +447,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="226" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="226" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="230" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga782e0e8786ecf8a55c8ae2aea2f178aa" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *(*</type>
@@ -469,7 +483,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="238" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="238" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="242" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga00c52a816403192af5b21d952265d0b6" prot="public" static="no" mutable="no">
         <type>bool(*</type>
@@ -512,7 +526,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="253" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="253" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="257" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga5ab29968c993423df83c9f1a3d7e685d" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *(*</type>
@@ -541,7 +555,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="268" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="268" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="272" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__wickr__crypto__engine_1ga640cbc86ca36c4deb2c197de89dce7d1" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref> *(*</type>
@@ -570,7 +584,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="281" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="281" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="285" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="285" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -578,46 +592,46 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="42">
+      <node id="23">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="36" relation="usage">
+        <childnode refid="17" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="43" relation="usage">
+        <childnode refid="24" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="33">
+      <node id="14">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="35" relation="usage">
+        <childnode refid="16" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="41">
+      <node id="22">
         <label>wickr_kdf_algo</label>
         <link refid="structwickr__kdf__algo"/>
       </node>
-      <node id="32">
+      <node id="13">
         <label>wickr_crypto_engine</label>
         <link refid="structwickr__crypto__engine"/>
-        <childnode refid="33" relation="usage">
+        <childnode refid="14" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_key_random</edgelabel>
         </childnode>
-        <childnode refid="36" relation="usage">
+        <childnode refid="17" relation="usage">
           <edgelabel>default_curve</edgelabel>
         </childnode>
-        <childnode refid="37" relation="usage">
+        <childnode refid="18" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_encrypt</edgelabel>
         </childnode>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>wickr_crypto_engine_hmac_create</edgelabel>
           <edgelabel>wickr_crypto_engine_cipher_decrypt</edgelabel>
           <edgelabel>wickr_crypto_engine_crypto_random</edgelabel>
@@ -625,88 +639,88 @@
           <edgelabel>wickr_crypto_engine_ecdh_gen_key</edgelabel>
           <edgelabel>wickr_crypto_engine_digest_file</edgelabel>
         </childnode>
-        <childnode refid="35" relation="usage">
+        <childnode refid="16" relation="usage">
           <edgelabel>default_cipher</edgelabel>
         </childnode>
-        <childnode refid="38" relation="usage">
+        <childnode refid="19" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_key_import</edgelabel>
           <edgelabel>wickr_crypto_engine_ec_rand_key</edgelabel>
         </childnode>
-        <childnode refid="39" relation="usage">
+        <childnode refid="20" relation="usage">
           <edgelabel>wickr_crypto_kdf_meta</edgelabel>
           <edgelabel>wickr_crypto_kdf_gen</edgelabel>
         </childnode>
-        <childnode refid="42" relation="usage">
+        <childnode refid="23" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_sign</edgelabel>
         </childnode>
       </node>
-      <node id="35">
+      <node id="16">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="40">
+      <node id="21">
         <label>wickr_kdf_meta</label>
         <link refid="structwickr__kdf__meta"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>salt</edgelabel>
           <edgelabel>info</edgelabel>
         </childnode>
-        <childnode refid="41" relation="usage">
+        <childnode refid="22" relation="usage">
           <edgelabel>algo</edgelabel>
         </childnode>
       </node>
-      <node id="36">
+      <node id="17">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="43">
+      <node id="24">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="39">
+      <node id="20">
         <label>wickr_kdf_result</label>
         <link refid="structwickr__kdf__result"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>hash</edgelabel>
         </childnode>
-        <childnode refid="40" relation="usage">
+        <childnode refid="21" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>
-      <node id="37">
+      <node id="18">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="35" relation="usage">
+        <childnode refid="16" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="34">
+      <node id="15">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="38">
+      <node id="19">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="36" relation="usage">
+        <childnode refid="17" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="34" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/crypto_engine.h" line="54" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="54" bodyend="283"/>
+    <location file="src/crypto/crypto_engine.h" line="54" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="54" bodyend="287"/>
     <listofallmembers>
       <member refid="structwickr__crypto__engine_1a307f7d46b55b1e0a93ce9d9489ba8fc5" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>default_cipher</name></member>
       <member refid="structwickr__crypto__engine_1a2145e35235dc5c5c944f33ea3d2963bd" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>default_curve</name></member>
-      <member refid="group__wickr__crypto__engine_1ga81cff182bb87f963996b75891e242ed4" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_cipher_decrypt</name></member>
-      <member refid="group__wickr__crypto__engine_1ga5aacf927a96a30aa63f3fc1bce262caf" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_cipher_encrypt</name></member>
+      <member refid="group__wickr__crypto__engine_1ga459ef821cc40edb5e3c9ce1d571ddc00" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_cipher_decrypt</name></member>
+      <member refid="group__wickr__crypto__engine_1gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_cipher_encrypt</name></member>
       <member refid="group__wickr__crypto__engine_1gabc120effc5248a491b18138f9b74b526" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_cipher_key_random</name></member>
       <member refid="group__wickr__crypto__engine_1gae12855853c05caa473e748a62611d307" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_crypto_random</name></member>
       <member refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" prot="public" virt="non-virtual"><scope>wickr_crypto_engine</scope><name>wickr_crypto_engine_decrypt_file</name></member>

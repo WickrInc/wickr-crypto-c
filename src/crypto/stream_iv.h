@@ -70,7 +70,7 @@ wickr_stream_iv_t *wickr_stream_iv_create(const wickr_crypto_engine_t engine, wi
  
  Copy a stream iv generator
  
- @param source the stream iv generator to copy
+ @param iv the stream iv generator to copy
  @return a newly allocated stream iv generator set holding a deep copy of the properties of 'source'
  */
 wickr_stream_iv_t *wickr_stream_iv_copy(const wickr_stream_iv_t *iv);

@@ -55,7 +55,7 @@
         <detaileddescription>
 <para>Copy a stream iv generator</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>source</parametername>
+<parametername>iv</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>the stream iv generator to copy </para></parameterdescription>

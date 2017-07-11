@@ -36,11 +36,11 @@ A faithful implementation of the Wickr protocol enables confidentiality of messa
 * End-to-End Encryption – Message encryption keys are available only within Wickr clients and are not disclosed to network attackers or Wickr server operators;  
 * Perfect Forward Secrecy – Old message content is not compromised if the long-term key of a user or device is compromised. Backward secrecy is also provided against passive adversaries.  
 
-### [Crypto Engine] (src/crypto/crypto_engine.h)
+### [Crypto Engine](src/crypto/crypto_engine.h)
 
 A struct that represents a set of cryptographic functions that the library can utilize. The goal of its design is expose security primitives in an organized and generic way. This allows for the protocol implementation to not be bound to a single dependency such as OpenSSL. It is also designed to be easy to use, and to provide a high level interface that enforces best practices. 
 
-#### [OpenSSL Crypto Suite] (src/crypto/openssl_suite.h)
+#### [OpenSSL Crypto Suite](src/crypto/openssl_suite.h)
 
 The current default implementation of crypto engine is based primarily off the EVP interface from OpenSSL 1.0.2
 
@@ -58,11 +58,11 @@ The current default implementation of crypto engine is based primarily off the E
 * SCRYPT
 * BCRYPT
 
-### [Protocol] (src/crypto/protocol.h)
+### [Protocol](src/crypto/protocol.h)
 
 Low level implementation of the encoding and decoding of encrypted message packets
 
-### [Context] (src/crypto/wickr_ctx.h)
+### [Context](src/crypto/wickr_ctx.h)
 
 High level interface for managing an endpoint that can send and receive encrypted message packets. This is the way the front end client apps integrate with the crypto library.
 
@@ -73,6 +73,17 @@ High level interface for managing an endpoint that can send and receive encrypte
 * Secure import/export of recovery keys with scrypt
 * Generation of signed messaging key pairs
 * Message packet encoding / decoding
+
+### [Stream Cipher](src/crypto/stream_cipher.h)
+
+A state machine to help with the encryption of continuous streams of data. This is used for encoding / decoding data within a live voice / video stream between users on a 1:1 or conference call. It is seeded with a key that was negotiated prior by the messaging protocol. Each stream of data within a particular call has its own stream_cipher object to hold it's state.
+
+#### Features
+
+* Understanding of position within a sequence of protected data, to assist with key rotation done via symmetric ratcheting
+* Generation of IV's using a sequence number and a private random seed to prevent collisions
+* Support for authenticating additional information during serialization using AES-GCM + AAD
+* Rotation of key material and key rotation seed at a predetermined interval (defaults to 512 packets)
 
 # Steps to build and test
 

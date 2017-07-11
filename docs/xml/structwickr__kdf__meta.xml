@@ -49,22 +49,22 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="162">
+      <node id="143">
         <label>wickr_kdf_algo</label>
         <link refid="structwickr__kdf__algo"/>
       </node>
-      <node id="160">
+      <node id="141">
         <label>wickr_kdf_meta</label>
         <link refid="structwickr__kdf__meta"/>
-        <childnode refid="161" relation="usage">
+        <childnode refid="142" relation="usage">
           <edgelabel>salt</edgelabel>
           <edgelabel>info</edgelabel>
         </childnode>
-        <childnode refid="162" relation="usage">
+        <childnode refid="143" relation="usage">
           <edgelabel>algo</edgelabel>
         </childnode>
       </node>
-      <node id="161">
+      <node id="142">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

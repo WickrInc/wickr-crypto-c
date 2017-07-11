@@ -15,7 +15,7 @@
 <para>protected metadata for the body </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="398" column="1" bodyfile="src/crypto/protocol.h" bodystart="398" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="454" column="1" bodyfile="src/crypto/protocol.h" bodystart="454" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__payload_1a6ef1b92ffd07c37b86202b4cc88a0522" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -28,7 +28,7 @@
 <para>the body content of the message as provided by the sender </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="399" column="1" bodyfile="src/crypto/protocol.h" bodystart="399" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="455" column="1" bodyfile="src/crypto/protocol.h" bodystart="455" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -36,36 +36,36 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="209">
+      <node id="190">
         <label>wickr_ephemeral_info</label>
         <link refid="structwickr__ephemeral__info"/>
       </node>
-      <node id="208">
+      <node id="189">
         <label>wickr_packet_meta</label>
         <link refid="structwickr__packet__meta"/>
-        <childnode refid="209" relation="usage">
+        <childnode refid="190" relation="usage">
           <edgelabel>ephemerality_settings</edgelabel>
         </childnode>
-        <childnode refid="207" relation="usage">
+        <childnode refid="188" relation="usage">
           <edgelabel>channel_tag</edgelabel>
         </childnode>
       </node>
-      <node id="207">
+      <node id="188">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="206">
+      <node id="187">
         <label>wickr_payload</label>
         <link refid="structwickr__payload"/>
-        <childnode refid="207" relation="usage">
+        <childnode refid="188" relation="usage">
           <edgelabel>body</edgelabel>
         </childnode>
-        <childnode refid="208" relation="usage">
+        <childnode refid="189" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/protocol.h" line="397" column="1" bodyfile="src/crypto/protocol.h" bodystart="397" bodyend="400"/>
+    <location file="src/crypto/protocol.h" line="453" column="1" bodyfile="src/crypto/protocol.h" bodystart="453" bodyend="456"/>
     <listofallmembers>
       <member refid="structwickr__payload_1a6ef1b92ffd07c37b86202b4cc88a0522" prot="public" virt="non-virtual"><scope>wickr_payload</scope><name>body</name></member>
       <member refid="structwickr__payload_1a7df63984a660a0c09c166d60b213213f" prot="public" virt="non-virtual"><scope>wickr_payload</scope><name>meta</name></member>

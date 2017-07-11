@@ -62,46 +62,46 @@
     <detaileddescription>
 <para>On each call to generate, the IV generator will be called with HMAC(gen_count, seed) The gen count value is incremented by one each time the generate method is called </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="250">
+      <node id="231">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="244" relation="usage">
+        <childnode refid="225" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="251" relation="usage">
+        <childnode refid="232" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="243">
+      <node id="224">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="241" relation="usage">
+        <childnode refid="222" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="249">
+      <node id="230">
         <label>wickr_kdf_algo</label>
         <link refid="structwickr__kdf__algo"/>
       </node>
-      <node id="242">
+      <node id="223">
         <label>wickr_crypto_engine</label>
         <link refid="structwickr__crypto__engine"/>
-        <childnode refid="243" relation="usage">
+        <childnode refid="224" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_key_random</edgelabel>
         </childnode>
-        <childnode refid="244" relation="usage">
+        <childnode refid="225" relation="usage">
           <edgelabel>default_curve</edgelabel>
         </childnode>
-        <childnode refid="245" relation="usage">
+        <childnode refid="226" relation="usage">
           <edgelabel>wickr_crypto_engine_cipher_encrypt</edgelabel>
         </childnode>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>wickr_crypto_engine_hmac_create</edgelabel>
           <edgelabel>wickr_crypto_engine_cipher_decrypt</edgelabel>
           <edgelabel>wickr_crypto_engine_crypto_random</edgelabel>
@@ -109,90 +109,90 @@
           <edgelabel>wickr_crypto_engine_ecdh_gen_key</edgelabel>
           <edgelabel>wickr_crypto_engine_digest_file</edgelabel>
         </childnode>
-        <childnode refid="241" relation="usage">
+        <childnode refid="222" relation="usage">
           <edgelabel>default_cipher</edgelabel>
         </childnode>
-        <childnode refid="246" relation="usage">
+        <childnode refid="227" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_key_import</edgelabel>
           <edgelabel>wickr_crypto_engine_ec_rand_key</edgelabel>
         </childnode>
-        <childnode refid="247" relation="usage">
+        <childnode refid="228" relation="usage">
           <edgelabel>wickr_crypto_kdf_meta</edgelabel>
           <edgelabel>wickr_crypto_kdf_gen</edgelabel>
         </childnode>
-        <childnode refid="250" relation="usage">
+        <childnode refid="231" relation="usage">
           <edgelabel>wickr_crypto_engine_ec_sign</edgelabel>
         </childnode>
       </node>
-      <node id="241">
+      <node id="222">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="239">
+      <node id="220">
         <label>wickr_stream_iv</label>
         <link refid="structwickr__stream__iv"/>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>seed</edgelabel>
         </childnode>
-        <childnode refid="241" relation="usage">
+        <childnode refid="222" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
-        <childnode refid="242" relation="usage">
+        <childnode refid="223" relation="usage">
           <edgelabel>engine</edgelabel>
         </childnode>
       </node>
-      <node id="248">
+      <node id="229">
         <label>wickr_kdf_meta</label>
         <link refid="structwickr__kdf__meta"/>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>salt</edgelabel>
           <edgelabel>info</edgelabel>
         </childnode>
-        <childnode refid="249" relation="usage">
+        <childnode refid="230" relation="usage">
           <edgelabel>algo</edgelabel>
         </childnode>
       </node>
-      <node id="244">
+      <node id="225">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="251">
+      <node id="232">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="247">
+      <node id="228">
         <label>wickr_kdf_result</label>
         <link refid="structwickr__kdf__result"/>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>hash</edgelabel>
         </childnode>
-        <childnode refid="248" relation="usage">
+        <childnode refid="229" relation="usage">
           <edgelabel>meta</edgelabel>
         </childnode>
       </node>
-      <node id="245">
+      <node id="226">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="241" relation="usage">
+        <childnode refid="222" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="240">
+      <node id="221">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="246">
+      <node id="227">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="244" relation="usage">
+        <childnode refid="225" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="240" relation="usage">
+        <childnode refid="221" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
