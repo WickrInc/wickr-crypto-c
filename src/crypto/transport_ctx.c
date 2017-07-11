@@ -690,13 +690,51 @@ static bool __wickr_transport_handshake_set_remote_identity(wickr_transport_ctx_
         return false;
     }
     
-    Wickr__Proto__Handshake *handshake_data = wickr_transport_packet_to_proto_handshake(pkt, WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED);
+    Wickr__Proto__Handshake__PayloadCase expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET;
+    
+    switch (ctx->status) {
+        case TRANSPORT_STATUS_TX_INIT:
+        case TRANSPORT_STATUS_ERROR:
+        case TRANSPORT_STATUS_ACTIVE:
+            return false;
+        case TRANSPORT_STATUS_SEEDED:
+            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE;
+            break;
+        case TRANSPORT_STATUS_NONE:
+            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED;
+            break;
+    }
+    
+    Wickr__Proto__Handshake *handshake_data = wickr_transport_packet_to_proto_handshake(pkt, expected_case);
     
     if (!handshake_data) {
         return false;
     }
     
-    wickr_node_t *remote_node = wickr_node_create_from_proto(handshake_data->seed->node_info, &ctx->engine);
+    Wickr__Proto__Node *node = NULL;
+    
+    switch (expected_case) {
+        case WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE:
+        {
+            if (!handshake_data->response || !handshake_data->response->response_key) {
+                return false;
+            }
+            node = handshake_data->response->response_key->node_info;
+        }
+            break;
+        case WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED:
+        {
+            if (!handshake_data->seed) {
+                return false;
+            }
+            node = handshake_data->seed->node_info;
+        }
+            break;
+        default:
+            return false;
+    }
+    
+    wickr_node_t *remote_node = wickr_node_create_from_proto(node, &ctx->engine);
     wickr__proto__handshake__free_unpacked(handshake_data, NULL);
     
     if (!remote_node) {

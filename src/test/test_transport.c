@@ -119,7 +119,7 @@ bool wickr_test_transport_verify_remote_bob(const wickr_transport_ctx_t *ctx, wi
     return false;
 }
 
-bool wickr_test_transport_verify_remote_bob_failure(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *users)
+bool wickr_test_transport_verify_remote_failure(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *users)
 {
     return false;
 }
@@ -1051,7 +1051,7 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     reset_alice_bob();
     wickr_node_destroy(&bob_transport->remote_identity);
-    bob_transport->callbacks.on_identity_verify = &wickr_test_transport_verify_remote_bob_failure;
+    bob_transport->callbacks.on_identity_verify = &wickr_test_transport_verify_remote_failure;
     
     IT("will fail connection establishment if the remote party rejects the incoming identity (non pinned remote)")
     {
@@ -1060,6 +1060,21 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_ERROR);
         SHOULD_BE_NULL(bob_transport->tx_stream);
         SHOULD_BE_NULL(bob_transport->rx_stream);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    wickr_node_destroy(&bob_transport->remote_identity);
+    wickr_node_destroy(&alice_transport->remote_identity);
+    alice_transport->callbacks.on_identity_verify = &wickr_test_transport_verify_remote_failure;
+    
+    IT("will fail connection establishment if any party rejects the incoming identity (non pinned remote)")
+    {
+        wickr_transport_ctx_start(alice_transport);
+        SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
+        SHOULD_BE_NULL(alice_transport->tx_stream);
+        SHOULD_BE_NULL(alice_transport->rx_stream);
     }
     END_IT
     
@@ -1104,6 +1119,52 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
             test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
         }
          
+    }
+    END_IT
+    
+    reset_alice_bob();
+    wickr_node_destroy(&bob_transport->remote_identity);
+    wickr_node_destroy(&alice_transport->remote_identity);
+    
+    IT("can establish a secure connection when neither side has a pinned remote")
+    {
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
+        SHOULD_NOT_BE_NULL(verified_identity_bob);
+        SHOULD_NOT_BE_NULL(verified_identity_alice);
+        SHOULD_NOT_BE_NULL(bob_transport->remote_identity);
+        
+        /* Verify equality between parties */
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->dev_id, alice_transport->local_identity->dev_id, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->root->identifier, alice_transport->local_identity->id_chain->root->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->node->identifier, alice_transport->local_identity->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->node->sig_key->pub_data, alice_transport->local_identity->id_chain->node->sig_key->pub_data, NULL));
+        
+        /* Verify equality between verified identity and used identity */
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->root->identifier, verified_identity_bob->root->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->node->identifier,verified_identity_bob->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->remote_identity->id_chain->node->sig_key->pub_data, verified_identity_bob->node->sig_key->pub_data, NULL));
+    }
+    END_IT
+    
+    IT("can transmit secure packets after the handshake is established (no pinned remotes)")
+    {
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 1);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 1);
+    }
+    END_IT
+    
+    IT("can transmit many secure packets (non pinned remotes)")
+    {
+        
+        for (int i = 0; i < 10000; i++) {
+            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 2);
+        }
+        
+        for (int i = 0; i < 10000; i++) {
+            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
+        }
+        
     }
     END_IT
     
