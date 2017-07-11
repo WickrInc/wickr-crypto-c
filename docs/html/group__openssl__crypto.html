@@ -71,10 +71,10 @@ Functions</h2></td></tr>
 <tr class="separator:gadfe740d19f9f2096b818553e90dae0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9177055e488f0163d3eb946799df5a67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga9177055e488f0163d3eb946799df5a67">openssl_cipher_key_random</a> (<a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> cipher)</td></tr>
 <tr class="separator:ga9177055e488f0163d3eb946799df5a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga528fe693df65582a58d10b9cae0757a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga528fe693df65582a58d10b9cae0757a7">openssl_aes256_encrypt</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td></tr>
-<tr class="separator:ga528fe693df65582a58d10b9cae0757a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac3650e924145a56ac236b6ce3e1bc9d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gac3650e924145a56ac236b6ce3e1bc9d9">openssl_aes256_decrypt</a> (const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td></tr>
-<tr class="separator:gac3650e924145a56ac236b6ce3e1bc9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf51493d43d3572265abba27e2b3fbc54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gaf51493d43d3572265abba27e2b3fbc54">openssl_aes256_encrypt</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td></tr>
+<tr class="separator:gaf51493d43d3572265abba27e2b3fbc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75eaf118b28fb76e75579d0a74517b18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga75eaf118b28fb76e75579d0a74517b18">openssl_aes256_decrypt</a> (const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td></tr>
+<tr class="separator:ga75eaf118b28fb76e75579d0a74517b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga19991a9b00d0c383c64935fa2acecda7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga19991a9b00d0c383c64935fa2acecda7">openssl_sha2</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *salt, <a class="el" href="structwickr__digest.html">wickr_digest_t</a> mode)</td></tr>
 <tr class="separator:ga19991a9b00d0c383c64935fa2acecda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga75a01a740d558bfcc0f10920266cd9d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga75a01a740d558bfcc0f10920266cd9d5">openssl_ec_rand_key</a> (<a class="el" href="structwickr__ec__curve.html">wickr_ec_curve_t</a> curve)</td></tr>
@@ -102,8 +102,8 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gac3650e924145a56ac236b6ce3e1bc9d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac3650e924145a56ac236b6ce3e1bc9d9">&#9670;&nbsp;</a></span>openssl_aes256_decrypt()</h2>
+<a id="ga75eaf118b28fb76e75579d0a74517b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75eaf118b28fb76e75579d0a74517b18">&#9670;&nbsp;</a></span>openssl_aes256_decrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -113,6 +113,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td>
           <td class="paramname"><em>cipher_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>aad</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -137,6 +143,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cipher_result</td><td>a cipher result generated from 'openssl_aes256_encrypt' </td></tr>
+    <tr><td class="paramname">aad</td><td>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </td></tr>
     <tr><td class="paramname">key</td><td>the key to use to attempt to decrypt 'cipher_result' </td></tr>
     <tr><td class="paramname">only_auth_ciphers</td><td>if true, only authenticated ciphers may be used for decryption </td></tr>
   </table>
@@ -146,8 +153,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga528fe693df65582a58d10b9cae0757a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga528fe693df65582a58d10b9cae0757a7">&#9670;&nbsp;</a></span>openssl_aes256_encrypt()</h2>
+<a id="gaf51493d43d3572265abba27e2b3fbc54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf51493d43d3572265abba27e2b3fbc54">&#9670;&nbsp;</a></span>openssl_aes256_encrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,6 +164,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
           <td class="paramname"><em>plaintext</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>aad</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -182,6 +195,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">plaintext</td><td>the content to encrypt using 'key' </td></tr>
+    <tr><td class="paramname">aad</td><td>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </td></tr>
     <tr><td class="paramname">key</td><td>the cipher key to use to encrypt 'plaintext' </td></tr>
     <tr><td class="paramname">iv</td><td>an initialization vector to use with the cipher mode, or NULL if one should be chosen at random </td></tr>
   </table>

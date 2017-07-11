@@ -96,10 +96,10 @@ Variables</h2></td></tr>
 <tr class="separator:gae12855853c05caa473e748a62611d307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabc120effc5248a491b18138f9b74b526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gabc120effc5248a491b18138f9b74b526">wickr_crypto_engine::wickr_crypto_engine_cipher_key_random</a> )(<a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> cipher)</td></tr>
 <tr class="separator:gabc120effc5248a491b18138f9b74b526"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5aacf927a96a30aa63f3fc1bce262caf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga5aacf927a96a30aa63f3fc1bce262caf">wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt</a> )(const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td></tr>
-<tr class="separator:ga5aacf927a96a30aa63f3fc1bce262caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81cff182bb87f963996b75891e242ed4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga81cff182bb87f963996b75891e242ed4">wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt</a> )(const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td></tr>
-<tr class="separator:ga81cff182bb87f963996b75891e242ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e">wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt</a> )(const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td></tr>
+<tr class="separator:gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga459ef821cc40edb5e3c9ce1d571ddc00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga459ef821cc40edb5e3c9ce1d571ddc00">wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt</a> )(const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td></tr>
+<tr class="separator:ga459ef821cc40edb5e3c9ce1d571ddc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa77b1bc373d92d9db9d801bcc4a4d29c"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gaa77b1bc373d92d9db9d801bcc4a4d29c">wickr_crypto_engine::wickr_crypto_engine_encrypt_file</a> )(const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const char *sourceFilePath, const char *destinationFilePath)</td></tr>
 <tr class="separator:gaa77b1bc373d92d9db9d801bcc4a4d29c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga361b843efc839e30f90ce24c15b1dd27"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga361b843efc839e30f90ce24c15b1dd27">wickr_crypto_engine::wickr_crypto_engine_decrypt_file</a> )(const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const char *sourceFilePath, const char *destinationFilePath, bool only_auth_ciphers)</td></tr>
@@ -325,7 +325,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Get the matching exchange cipher given a message packet cipher</p>
-<p>An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_from_components) This function currently always returns CIPHER_ID_AES256_CTR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always CIPHER_ID_AES256_GCM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the GCM mode packet content</p>
+<p>An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_with_packet_key) This function currently always returns CIPHER_ID_AES256_CTR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always CIPHER_ID_AES256_GCM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the GCM mode packet content</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cipher</td><td>the cipher being used for packet content encryption / decryption </td></tr>
@@ -364,14 +364,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ga81cff182bb87f963996b75891e242ed4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga81cff182bb87f963996b75891e242ed4">&#9670;&nbsp;</a></span>wickr_crypto_engine_cipher_decrypt</h2>
+<a id="ga459ef821cc40edb5e3c9ce1d571ddc00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga459ef821cc40edb5e3c9ce1d571ddc00">&#9670;&nbsp;</a></span>wickr_crypto_engine_cipher_decrypt</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt) (const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_cipher_decrypt) (const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, bool only_auth_ciphers)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -379,6 +379,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cipher_result</td><td>a cipher result generated from 'wickr_crypto_engine_cipher_encrypt' </td></tr>
+    <tr><td class="paramname">aad</td><td>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </td></tr>
     <tr><td class="paramname">key</td><td>the key to use to attempt to decrypt 'cipher_result' </td></tr>
     <tr><td class="paramname">only_auth_ciphers</td><td>if true, only authenticated ciphers may be used for decryption </td></tr>
   </table>
@@ -388,14 +389,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5aacf927a96a30aa63f3fc1bce262caf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5aacf927a96a30aa63f3fc1bce262caf">&#9670;&nbsp;</a></span>wickr_crypto_engine_cipher_encrypt</h2>
+<a id="gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e">&#9670;&nbsp;</a></span>wickr_crypto_engine_cipher_encrypt</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt) (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td>
+          <td class="memname"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_cipher_encrypt) (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *plaintext, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *aad, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *iv)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -404,6 +405,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">plaintext</td><td>the content to encrypt using 'key' </td></tr>
+    <tr><td class="paramname">aad</td><td>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </td></tr>
     <tr><td class="paramname">key</td><td>the cipher key to use to encrypt 'plaintext' </td></tr>
     <tr><td class="paramname">iv</td><td>an initialization vector to use with the cipher mode, or NULL if one should be chosen at random </td></tr>
   </table>

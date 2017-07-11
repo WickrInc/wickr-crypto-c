@@ -15,7 +15,7 @@
 <para>the protocol version of the packet </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="483" column="1" bodyfile="src/crypto/protocol.h" bodystart="483" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="539" column="1" bodyfile="src/crypto/protocol.h" bodystart="539" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__packet_1a4d17d017c9d0fbb6e748a7ed935e5512" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -28,7 +28,7 @@
 <para>the content of the packet including the serialized header, and payload </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="484" column="1" bodyfile="src/crypto/protocol.h" bodystart="484" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="540" column="1" bodyfile="src/crypto/protocol.h" bodystart="540" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__packet_1a8b5e9a4eed6f133ffedd1aa9178b5567" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
@@ -41,7 +41,7 @@
 <para>the ECDSA signature of &apos;content&apos; </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="485" column="1" bodyfile="src/crypto/protocol.h" bodystart="485" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="541" column="1" bodyfile="src/crypto/protocol.h" bodystart="541" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -49,43 +49,43 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="184">
+      <node id="165">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="185" relation="usage">
+        <childnode refid="166" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="186" relation="usage">
+        <childnode refid="167" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="183" relation="usage">
+        <childnode refid="164" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="185">
+      <node id="166">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="182">
+      <node id="163">
         <label>wickr_packet</label>
         <link refid="structwickr__packet"/>
-        <childnode refid="183" relation="usage">
+        <childnode refid="164" relation="usage">
           <edgelabel>content</edgelabel>
         </childnode>
-        <childnode refid="184" relation="usage">
+        <childnode refid="165" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="186">
+      <node id="167">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="183">
+      <node id="164">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/protocol.h" line="482" column="1" bodyfile="src/crypto/protocol.h" bodystart="482" bodyend="486"/>
+    <location file="src/crypto/protocol.h" line="538" column="1" bodyfile="src/crypto/protocol.h" bodystart="538" bodyend="542"/>
     <listofallmembers>
       <member refid="structwickr__packet_1a4d17d017c9d0fbb6e748a7ed935e5512" prot="public" virt="non-virtual"><scope>wickr_packet</scope><name>content</name></member>
       <member refid="structwickr__packet_1a8b5e9a4eed6f133ffedd1aa9178b5567" prot="public" virt="non-virtual"><scope>wickr_packet</scope><name>signature</name></member>

@@ -1,46 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
-  <compound refid="struct___wickr_____proto_____handshake" kind="struct"><name>_Wickr__Proto__Handshake</name>
-    <member refid="struct___wickr_____proto_____handshake_1a9f396a117ad48730614733f6d90fe0ea" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1a8d056b739d37c5bd8d875227a0a2ccbc" kind="variable"><name>version</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1abd99e4c396ee822c22b0623e077a055a" kind="variable"><name>payload_case</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1a269df17fe46cb220c49b2d8980e6f068" kind="variable"><name>seed</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1aa099f6af096e3d5e55a08bfce4885842" kind="variable"><name>response</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1a49bb4c10a94337e3eeed6ecd0c6723aa" kind="variable"><name>finish</name></member>
-    <member refid="struct___wickr_____proto_____handshake_1a1233b32e5eedf320c5e476e974621bde" kind="variable"><name>@1</name></member>
-  </compound>
-  <compound refid="struct___wickr_____proto_____handshake_____finish" kind="struct"><name>_Wickr__Proto__Handshake__Finish</name>
-    <member refid="struct___wickr_____proto_____handshake_____finish_1a60f003e97baa30a7759436a459af6b5a" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____finish_1a8fc567cc58c6349af71ea4d0bc810ecf" kind="variable"><name>drop</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____finish_1a9e7738964496436460aeee10af8cb827" kind="variable"><name>key_exchange</name></member>
-  </compound>
-  <compound refid="struct___wickr_____proto_____handshake_____key_exchange" kind="struct"><name>_Wickr__Proto__Handshake__KeyExchange</name>
-    <member refid="struct___wickr_____proto_____handshake_____key_exchange_1aba2684db9ac9791aac197bd8263f7678" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____key_exchange_1ac9b4b0e62f8a53ad7fdff84ab5f442dd" kind="variable"><name>has_sender_pub</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____key_exchange_1ab85a9447340668bede61222c6e6c0731" kind="variable"><name>sender_pub</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____key_exchange_1a0f5bc63f0be52de3def2e065b663ec4f" kind="variable"><name>has_exchange_data</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____key_exchange_1a494d47162f1b13c7cb5f6f9eaf7b9b05" kind="variable"><name>exchange_data</name></member>
-  </compound>
-  <compound refid="struct___wickr_____proto_____handshake_____response" kind="struct"><name>_Wickr__Proto__Handshake__Response</name>
-    <member refid="struct___wickr_____proto_____handshake_____response_1a9434c95dc5ec7d1a57825a1c4fe952c9" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____response_1afa7c1683d219c9b3c4a4cdc2b23c42c5" kind="variable"><name>drop</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____response_1ac731157cf6f6ba128a9b686977c37cae" kind="variable"><name>key_exchange</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____response_1a8fcaab0d059232f0d19c323e95a8f79c" kind="variable"><name>response_key</name></member>
-  </compound>
-  <compound refid="struct___wickr_____proto_____handshake_____seed" kind="struct"><name>_Wickr__Proto__Handshake__Seed</name>
-    <member refid="struct___wickr_____proto_____handshake_____seed_1ab2b6750f6961fa8a998e8ea4cac74e1f" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____seed_1a12a178358ed539f175e148cd32f3c5f7" kind="variable"><name>has_pubkey</name></member>
-    <member refid="struct___wickr_____proto_____handshake_____seed_1af0f810ed0b88166a3de22f2d13629a6f" kind="variable"><name>pubkey</name></member>
-  </compound>
-  <compound refid="struct___wickr_____proto_____stream_key" kind="struct"><name>_Wickr__Proto__StreamKey</name>
-    <member refid="struct___wickr_____proto_____stream_key_1a22e6f5341e7c353f8124605e06f3f07d" kind="variable"><name>base</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1a66247b20aee875c60af78c9a7e4e513e" kind="variable"><name>has_cipher_key</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1a10ab062c24f8eec72d27521b83e9211b" kind="variable"><name>cipher_key</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1abaa75e813d5e60a698e72bce490f7174" kind="variable"><name>has_evolution_key</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1ab08ca5b563521d8b3c4ce046ba8e7aaa" kind="variable"><name>evolution_key</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1aa98ffb7650c02c8e1fbeb2f133a804be" kind="variable"><name>has_packets_per_evo</name></member>
-    <member refid="struct___wickr_____proto_____stream_key_1a45e88c0764d286c6186267316147bb5c" kind="variable"><name>packets_per_evo</name></member>
-  </compound>
   <compound refid="structwickr__buffer" kind="struct"><name>wickr_buffer</name>
     <member refid="structwickr__buffer_1a8472d93dd98cfe6f98740a42ae16c86b" kind="variable"><name>length</name></member>
     <member refid="structwickr__buffer_1a892763a6b3cbe227c4015f948acbc2bf" kind="variable"><name>bytes</name></member>
@@ -53,7 +12,7 @@
     <member refid="structwickr__cipher_1a21499cb78c9db301261c9d0d647b3e50" kind="variable"><name>is_authenticated</name></member>
   </compound>
   <compound refid="structwickr__cipher__key" kind="struct"><name>wickr_cipher_key</name>
-    <member refid="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" kind="variable"><name>cipher</name></member>
+    <member refid="structwickr__cipher__key_1a6506e1a07f7bc2c5ceeb0ca5ce81385b" kind="variable"><name>cipher</name></member>
     <member refid="structwickr__cipher__key_1a0bf9fa22f1db80010410ae609aac8a2a" kind="variable"><name>key_data</name></member>
   </compound>
   <compound refid="structwickr__cipher__result" kind="struct"><name>wickr_cipher_result</name>
@@ -67,8 +26,8 @@
     <member refid="structwickr__crypto__engine_1a307f7d46b55b1e0a93ce9d9489ba8fc5" kind="variable"><name>default_cipher</name></member>
     <member refid="group__wickr__crypto__engine_1gae12855853c05caa473e748a62611d307" kind="variable"><name>wickr_crypto_engine_crypto_random</name></member>
     <member refid="group__wickr__crypto__engine_1gabc120effc5248a491b18138f9b74b526" kind="variable"><name>wickr_crypto_engine_cipher_key_random</name></member>
-    <member refid="group__wickr__crypto__engine_1ga5aacf927a96a30aa63f3fc1bce262caf" kind="variable"><name>wickr_crypto_engine_cipher_encrypt</name></member>
-    <member refid="group__wickr__crypto__engine_1ga81cff182bb87f963996b75891e242ed4" kind="variable"><name>wickr_crypto_engine_cipher_decrypt</name></member>
+    <member refid="group__wickr__crypto__engine_1gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e" kind="variable"><name>wickr_crypto_engine_cipher_encrypt</name></member>
+    <member refid="group__wickr__crypto__engine_1ga459ef821cc40edb5e3c9ce1d571ddc00" kind="variable"><name>wickr_crypto_engine_cipher_decrypt</name></member>
     <member refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" kind="variable"><name>wickr_crypto_engine_encrypt_file</name></member>
     <member refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" kind="variable"><name>wickr_crypto_engine_decrypt_file</name></member>
     <member refid="group__wickr__crypto__engine_1ga42dfc5b4df166616d962ee4c792ceaf4" kind="variable"><name>wickr_crypto_engine_digest</name></member>
@@ -453,8 +412,8 @@
   <compound refid="openssl__suite_8h" kind="file"><name>openssl_suite.h</name>
     <member refid="group__openssl__crypto_1gadfe740d19f9f2096b818553e90dae0d7" kind="function"><name>openssl_crypto_random</name></member>
     <member refid="group__openssl__crypto_1ga9177055e488f0163d3eb946799df5a67" kind="function"><name>openssl_cipher_key_random</name></member>
-    <member refid="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" kind="function"><name>openssl_aes256_encrypt</name></member>
-    <member refid="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" kind="function"><name>openssl_aes256_decrypt</name></member>
+    <member refid="group__openssl__crypto_1gaf51493d43d3572265abba27e2b3fbc54" kind="function"><name>openssl_aes256_encrypt</name></member>
+    <member refid="group__openssl__crypto_1ga75eaf118b28fb76e75579d0a74517b18" kind="function"><name>openssl_aes256_decrypt</name></member>
     <member refid="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" kind="function"><name>openssl_sha2</name></member>
     <member refid="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" kind="function"><name>openssl_ec_rand_key</name></member>
     <member refid="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" kind="function"><name>openssl_ec_key_import</name></member>
@@ -501,8 +460,10 @@
     <member refid="group__wickr__protocol_1ga1bb5a0f2a49069679b174b3e6521fe9b" kind="function"><name>wickr_packet_meta_copy</name></member>
     <member refid="group__wickr__protocol_1gad165ad670da761478cf5f8f91223c1d3" kind="function"><name>wickr_packet_meta_destroy</name></member>
     <member refid="group__wickr__protocol_1gac2823b3430070b0db9ef1f40d3a804ea" kind="function"><name>wickr_key_exchange_create</name></member>
-    <member refid="group__wickr__protocol_1gae031f68d2286e0399d90b0316a7d5299" kind="function"><name>wickr_key_exchange_create_from_components</name></member>
+    <member refid="group__wickr__protocol_1ga26d4b847f11801354e4111d3ec1d1d13" kind="function"><name>wickr_key_exchange_create_with_packet_key</name></member>
+    <member refid="group__wickr__protocol_1ga9e69db5af6825e72c443dd5ef3605a5b" kind="function"><name>wickr_key_exchange_create_with_data</name></member>
     <member refid="protocol_8h_1a27a4bb0255eade51b32f62020aca04d4" kind="function"><name>wickr_key_exchange_derive_packet_key</name></member>
+    <member refid="protocol_8h_1a6623f79936709b63ae3323a02363a982" kind="function"><name>wickr_key_exchange_derive_data</name></member>
     <member refid="group__wickr__protocol_1ga2235a7c168e3806aa1a71b5a5c8dee48" kind="function"><name>wickr_key_exchange_copy</name></member>
     <member refid="group__wickr__protocol_1ga54b6481f8f4b61fb949bec17d47cd3de" kind="function"><name>wickr_key_exchange_destroy</name></member>
     <member refid="group__wickr__protocol_1ga907d700b76b748f80796b4404c7172c2" kind="function"><name>wickr_exchange_array_new</name></member>
@@ -557,55 +518,9 @@
     <member refid="group__wickr__storage__keys_1ga10a0d6e13442682b2fecff2ed753c2f6" kind="function"><name>wickr_storage_keys_serialize</name></member>
     <member refid="group__wickr__storage__keys_1ga2c1494802577d025d70bf553c43da344" kind="function"><name>wickr_storage_keys_destroy</name></member>
   </compound>
-  <compound refid="stream_8pb-c_8h" kind="file"><name>stream.pb-c.h</name>
-    <member refid="stream_8pb-c_8h_1aeeb53aa82b8fa5c21e314d09bb2ae2d4" kind="define"><name>WICKR__PROTO__HANDSHAKE__SEED__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1a4299828f1a8b14c65fc8cf04239ffe2e" kind="define"><name>WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1aaf542b6dbb80bed6e3e603ae0263a344" kind="define"><name>WICKR__PROTO__HANDSHAKE__RESPONSE__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1a2c63ef56f3830f6671ad64c44b644121" kind="define"><name>WICKR__PROTO__HANDSHAKE__FINISH__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1ad39df2f9e1fae7154394d56b84c2b723" kind="define"><name>WICKR__PROTO__HANDSHAKE__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1a4849e954d0efab50e4d658aeed25f72d" kind="define"><name>WICKR__PROTO__STREAM_KEY__INIT</name></member>
-    <member refid="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299a" kind="enum"><name>Wickr__Proto__Handshake__PayloadCase</name></member>
-    <member refid="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aabf91710bb71ddb4eeb2193f060a8bdc5" kind="enumvalue"><name>WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET</name></member>
-    <member refid="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aa7ee29a9ecc04d7b4939abd5d565a5413" kind="enumvalue"><name>WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED</name></member>
-    <member refid="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aaf937fa180e9ae68de0ae3975ef2e3381" kind="enumvalue"><name>WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE</name></member>
-    <member refid="stream_8pb-c_8h_1a4bcbbab6fe782afce8210e883b96299aad8903f0d268da6512f03eea395cd9928" kind="enumvalue"><name>WICKR__PROTO__HANDSHAKE__PAYLOAD_FINISH</name></member>
-    <member refid="stream_8pb-c_8h_1a05185ba05a91f4b65897ddc044d6df78" kind="typedef"><name>Wickr__Proto__Handshake</name></member>
-    <member refid="stream_8pb-c_8h_1aa8f5e33aa3ecc1f5a1be751749efdba1" kind="typedef"><name>Wickr__Proto__Handshake__Seed</name></member>
-    <member refid="stream_8pb-c_8h_1a9612535a958ac567c979c47c6667f9a4" kind="typedef"><name>Wickr__Proto__Handshake__KeyExchange</name></member>
-    <member refid="stream_8pb-c_8h_1a3fc9f48dd64a04a20e46ba52c466b3ba" kind="typedef"><name>Wickr__Proto__Handshake__Response</name></member>
-    <member refid="stream_8pb-c_8h_1a8533f4c27468eb99d73d14efe51c7325" kind="typedef"><name>Wickr__Proto__Handshake__Finish</name></member>
-    <member refid="stream_8pb-c_8h_1a4be0c848ccf7bb66325075e157b15b1a" kind="typedef"><name>Wickr__Proto__StreamKey</name></member>
-    <member refid="stream_8pb-c_8h_1a65f05bd033db4560b15d120fcd60dcc2" kind="typedef"><name>Wickr__Proto__Handshake__Seed_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1aaa011b348971601d78b16a8fb38f8bf5" kind="typedef"><name>Wickr__Proto__Handshake__KeyExchange_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1a1c46ce2af33f2173ed7c3d0f33d8b6a1" kind="typedef"><name>Wickr__Proto__Handshake__Response_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1a4005b0d3fa607919df58a370ab26b370" kind="typedef"><name>Wickr__Proto__Handshake__Finish_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1ac3edb6dc20a542c2e615975c9e569fb9" kind="typedef"><name>Wickr__Proto__Handshake_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1a1776ab46c3e62dfb15a2eab367f73ac8" kind="typedef"><name>Wickr__Proto__StreamKey_Closure</name></member>
-    <member refid="stream_8pb-c_8h_1a937a80a2346b6e674747094e6e89be8e" kind="variable"><name>wickr__proto__handshake__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1acf6a315a7fbc4957199eb88bddc01c73" kind="variable"><name>wickr__proto__handshake__seed__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1aa82729c73471f2eaf047a33cf9a0464a" kind="variable"><name>wickr__proto__handshake__key_exchange__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1a17ccea303b6ca32fe168e4a5ed560029" kind="variable"><name>wickr__proto__handshake__response__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1aeb63cab12a9ba0027b005babd8bf4694" kind="variable"><name>wickr__proto__handshake__finish__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1aab0706d0ad0e414cb0ac04da20814517" kind="variable"><name>wickr__proto__stream_key__descriptor</name></member>
-    <member refid="stream_8pb-c_8h_1a1bcfabf33284af59d590d25577b7a0ab" kind="function"><name>wickr__proto__handshake__seed__init</name></member>
-    <member refid="stream_8pb-c_8h_1ac5840f07751d236f27ba91c3c04a0db6" kind="function"><name>wickr__proto__handshake__key_exchange__init</name></member>
-    <member refid="stream_8pb-c_8h_1a0ddc658261148af227ad1d64dbffcba1" kind="function"><name>wickr__proto__handshake__response__init</name></member>
-    <member refid="stream_8pb-c_8h_1aae2b193fbbdde855093701f2798e7b40" kind="function"><name>wickr__proto__handshake__finish__init</name></member>
-    <member refid="stream_8pb-c_8h_1a898c593016a81756127bfc167cf88057" kind="function"><name>wickr__proto__handshake__init</name></member>
-    <member refid="stream_8pb-c_8h_1aadc83aeaed69a422f93bd91a3f6f6ac0" kind="function"><name>wickr__proto__handshake__get_packed_size</name></member>
-    <member refid="stream_8pb-c_8h_1a763cbee6fba605bf457e497ecc7c14a4" kind="function"><name>wickr__proto__handshake__pack</name></member>
-    <member refid="stream_8pb-c_8h_1ab365b0d57c20090b0e8330df074f0feb" kind="function"><name>wickr__proto__handshake__pack_to_buffer</name></member>
-    <member refid="stream_8pb-c_8h_1a0c05f27f8b04f62962f56218132d05cf" kind="function"><name>wickr__proto__handshake__unpack</name></member>
-    <member refid="stream_8pb-c_8h_1a987fa9c4c8701b53ecdc5dd5914ae9ed" kind="function"><name>wickr__proto__handshake__free_unpacked</name></member>
-    <member refid="stream_8pb-c_8h_1a55df66b2ebbbeb8fdde32a4399273343" kind="function"><name>wickr__proto__stream_key__init</name></member>
-    <member refid="stream_8pb-c_8h_1ac262a51389396797c6895150e867a4db" kind="function"><name>wickr__proto__stream_key__get_packed_size</name></member>
-    <member refid="stream_8pb-c_8h_1acded1e362b11fefb7b5a491e1b7edb4e" kind="function"><name>wickr__proto__stream_key__pack</name></member>
-    <member refid="stream_8pb-c_8h_1a8f4314492131397eb7aca40b3f4b993c" kind="function"><name>wickr__proto__stream_key__pack_to_buffer</name></member>
-    <member refid="stream_8pb-c_8h_1aa1cfccde515cb4a3969f59b80aa99f7d" kind="function"><name>wickr__proto__stream_key__unpack</name></member>
-    <member refid="stream_8pb-c_8h_1a67ddf81a4a2fa489e2bb8c3e016faf7a" kind="function"><name>wickr__proto__stream_key__free_unpacked</name></member>
-  </compound>
   <compound refid="stream__cipher_8h" kind="file"><name>stream_cipher.h</name>
     <member refid="stream__cipher_8h_1aace0c067efdc7a34dc2c5b2f62673675" kind="define"><name>PACKET_PER_EVO_MIN</name></member>
+    <member refid="stream__cipher_8h_1ab1a4700741317b1b4d5859e0070439d6" kind="define"><name>PACKET_PER_EVO_DEFAULT</name></member>
     <member refid="stream__cipher_8h_1a7e2e980aefee3da1f3fc694a86f97cbf" kind="define"><name>PACKET_PER_EVO_MAX</name></member>
     <member refid="stream__cipher_8h_1a2f0c1b6a17b2b970cf3acc11b9f9542b" kind="enum"><name>wickr_stream_direction</name></member>
     <member refid="stream__cipher_8h_1a2f0c1b6a17b2b970cf3acc11b9f9542baf02cd03e185ab7892bcfa79c2782cdf8" kind="enumvalue"><name>STREAM_DIRECTION_ENCODE</name></member>
@@ -620,8 +535,8 @@
     <member refid="group__wickr__stream_1ga3bb3dec760c5b7f3a1bd2d0bb13bcc79" kind="function"><name>wickr_stream_key_destroy</name></member>
     <member refid="stream__cipher_8h_1a0b5c513a3e0958dc7fd4f8455206e32e" kind="function"><name>wickr_stream_ctx_create</name></member>
     <member refid="stream__cipher_8h_1a707b685e35eb437c33f5ec32c6760005" kind="function"><name>wickr_stream_ctx_copy</name></member>
-    <member refid="stream__cipher_8h_1a59499a3976db614ceb286e5b2267b59e" kind="function"><name>wickr_stream_ctx_encode</name></member>
-    <member refid="stream__cipher_8h_1a647495f00723712e75099aba1badfd20" kind="function"><name>wickr_stream_ctx_decode</name></member>
+    <member refid="stream__cipher_8h_1a621a3ec801ab996b4fab1fe905c450bd" kind="function"><name>wickr_stream_ctx_encode</name></member>
+    <member refid="stream__cipher_8h_1aa1eb323694f2c1652b51127b0b89138c" kind="function"><name>wickr_stream_ctx_decode</name></member>
     <member refid="stream__cipher_8h_1a05260bfce1f50352cad32e0354c28a1d" kind="function"><name>wickr_stream_ctx_destroy</name></member>
   </compound>
   <compound refid="stream__iv_8h" kind="file"><name>stream_iv.h</name>
@@ -710,13 +625,12 @@
     <member refid="group__wickr__cipher_1ga45790b3023ccb261c03346b069aca763" kind="function"><name>wickr_cipher_key_destroy</name></member>
     <member refid="group__wickr__cipher_1ga8716aebf03497c379d5ff81fe32cde32" kind="function"><name>wickr_cipher_key_serialize</name></member>
     <member refid="group__wickr__cipher_1ga1c073b87f2141cf35a1d91ba10f9e5ba" kind="function"><name>wickr_cipher_key_from_buffer</name></member>
-    <member refid="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" kind="variable"><name>cipher</name></member>
   </compound>
   <compound refid="group__wickr__crypto__engine" kind="group"><name>Wickr_crypto_engine</name>
     <member refid="group__wickr__crypto__engine_1gae12855853c05caa473e748a62611d307" kind="variable"><name>wickr_crypto_engine_crypto_random</name></member>
     <member refid="group__wickr__crypto__engine_1gabc120effc5248a491b18138f9b74b526" kind="variable"><name>wickr_crypto_engine_cipher_key_random</name></member>
-    <member refid="group__wickr__crypto__engine_1ga5aacf927a96a30aa63f3fc1bce262caf" kind="variable"><name>wickr_crypto_engine_cipher_encrypt</name></member>
-    <member refid="group__wickr__crypto__engine_1ga81cff182bb87f963996b75891e242ed4" kind="variable"><name>wickr_crypto_engine_cipher_decrypt</name></member>
+    <member refid="group__wickr__crypto__engine_1gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e" kind="variable"><name>wickr_crypto_engine_cipher_encrypt</name></member>
+    <member refid="group__wickr__crypto__engine_1ga459ef821cc40edb5e3c9ce1d571ddc00" kind="variable"><name>wickr_crypto_engine_cipher_decrypt</name></member>
     <member refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" kind="variable"><name>wickr_crypto_engine_encrypt_file</name></member>
     <member refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" kind="variable"><name>wickr_crypto_engine_decrypt_file</name></member>
     <member refid="group__wickr__crypto__engine_1ga42dfc5b4df166616d962ee4c792ceaf4" kind="variable"><name>wickr_crypto_engine_digest</name></member>
@@ -835,8 +749,8 @@
   <compound refid="group__openssl__crypto" kind="group"><name>openssl_crypto</name>
     <member refid="group__openssl__crypto_1gadfe740d19f9f2096b818553e90dae0d7" kind="function"><name>openssl_crypto_random</name></member>
     <member refid="group__openssl__crypto_1ga9177055e488f0163d3eb946799df5a67" kind="function"><name>openssl_cipher_key_random</name></member>
-    <member refid="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" kind="function"><name>openssl_aes256_encrypt</name></member>
-    <member refid="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" kind="function"><name>openssl_aes256_decrypt</name></member>
+    <member refid="group__openssl__crypto_1gaf51493d43d3572265abba27e2b3fbc54" kind="function"><name>openssl_aes256_encrypt</name></member>
+    <member refid="group__openssl__crypto_1ga75eaf118b28fb76e75579d0a74517b18" kind="function"><name>openssl_aes256_decrypt</name></member>
     <member refid="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" kind="function"><name>openssl_sha2</name></member>
     <member refid="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" kind="function"><name>openssl_ec_rand_key</name></member>
     <member refid="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" kind="function"><name>openssl_ec_key_import</name></member>
@@ -858,7 +772,8 @@
     <member refid="group__wickr__protocol_1ga1bb5a0f2a49069679b174b3e6521fe9b" kind="function"><name>wickr_packet_meta_copy</name></member>
     <member refid="group__wickr__protocol_1gad165ad670da761478cf5f8f91223c1d3" kind="function"><name>wickr_packet_meta_destroy</name></member>
     <member refid="group__wickr__protocol_1gac2823b3430070b0db9ef1f40d3a804ea" kind="function"><name>wickr_key_exchange_create</name></member>
-    <member refid="group__wickr__protocol_1gae031f68d2286e0399d90b0316a7d5299" kind="function"><name>wickr_key_exchange_create_from_components</name></member>
+    <member refid="group__wickr__protocol_1ga26d4b847f11801354e4111d3ec1d1d13" kind="function"><name>wickr_key_exchange_create_with_packet_key</name></member>
+    <member refid="group__wickr__protocol_1ga9e69db5af6825e72c443dd5ef3605a5b" kind="function"><name>wickr_key_exchange_create_with_data</name></member>
     <member refid="group__wickr__protocol_1ga2235a7c168e3806aa1a71b5a5c8dee48" kind="function"><name>wickr_key_exchange_copy</name></member>
     <member refid="group__wickr__protocol_1ga54b6481f8f4b61fb949bec17d47cd3de" kind="function"><name>wickr_key_exchange_destroy</name></member>
     <member refid="group__wickr__protocol_1ga907d700b76b748f80796b4404c7172c2" kind="function"><name>wickr_exchange_array_new</name></member>

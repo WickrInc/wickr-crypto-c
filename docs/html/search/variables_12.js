@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['wickr_5fcrypto_5fengine_5fcipher_5fdecrypt',['wickr_crypto_engine_cipher_decrypt',['../group__wickr__crypto__engine.html#ga81cff182bb87f963996b75891e242ed4',1,'wickr_crypto_engine']]],
-  ['wickr_5fcrypto_5fengine_5fcipher_5fencrypt',['wickr_crypto_engine_cipher_encrypt',['../group__wickr__crypto__engine.html#ga5aacf927a96a30aa63f3fc1bce262caf',1,'wickr_crypto_engine']]],
+  ['wickr_5fcrypto_5fengine_5fcipher_5fdecrypt',['wickr_crypto_engine_cipher_decrypt',['../group__wickr__crypto__engine.html#ga459ef821cc40edb5e3c9ce1d571ddc00',1,'wickr_crypto_engine']]],
+  ['wickr_5fcrypto_5fengine_5fcipher_5fencrypt',['wickr_crypto_engine_cipher_encrypt',['../group__wickr__crypto__engine.html#gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e',1,'wickr_crypto_engine']]],
   ['wickr_5fcrypto_5fengine_5fcipher_5fkey_5frandom',['wickr_crypto_engine_cipher_key_random',['../group__wickr__crypto__engine.html#gabc120effc5248a491b18138f9b74b526',1,'wickr_crypto_engine']]],
   ['wickr_5fcrypto_5fengine_5fcrypto_5frandom',['wickr_crypto_engine_crypto_random',['../group__wickr__crypto__engine.html#gae12855853c05caa473e748a62611d307',1,'wickr_crypto_engine']]],
   ['wickr_5fcrypto_5fengine_5fdecrypt_5ffile',['wickr_crypto_engine_decrypt_file',['../group__wickr__crypto__engine.html#ga361b843efc839e30f90ce24c15b1dd27',1,'wickr_crypto_engine']]],

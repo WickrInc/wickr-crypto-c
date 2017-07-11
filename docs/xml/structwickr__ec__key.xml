@@ -49,21 +49,21 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="119">
+      <node id="100">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="120">
+      <node id="101">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="118">
+      <node id="99">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="119" relation="usage">
+        <childnode refid="100" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="120" relation="usage">
+        <childnode refid="101" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

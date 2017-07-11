@@ -49,28 +49,28 @@
     <detaileddescription>
 <para>Holds values related to a generated signature using Elliptical Curve Digital Signature Algorithm </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="129">
+      <node id="110">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="130" relation="usage">
+        <childnode refid="111" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="131" relation="usage">
+        <childnode refid="112" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="132" relation="usage">
+        <childnode refid="113" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="130">
+      <node id="111">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="131">
+      <node id="112">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="132">
+      <node id="113">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>

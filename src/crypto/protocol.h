@@ -748,6 +748,7 @@ void wickr_decode_result_destroy(wickr_decode_result_t **result);
  @param payload the plaintext payload to encrypt and bundle into the packet
  @param recipients the array of nodes that the
  @param sender_signing_identity the identity chain belonging to the creator of the packet
+ @param version the version of the protocol encoding to use for this packet
  @return a 'sender_signing_identity' signed packet containing encrypted payload 'payload, and header containing key exchanges for 'recipients'
  */
 wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t *engine,

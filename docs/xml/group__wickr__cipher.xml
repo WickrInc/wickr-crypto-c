@@ -5,6 +5,7 @@
     <title>wickr_cipher_t</title>
     <innerclass refid="structwickr__cipher" prot="public">wickr_cipher</innerclass>
     <innerclass refid="structwickr__cipher__result" prot="public">wickr_cipher_result</innerclass>
+    <innerclass refid="structwickr__cipher__key" prot="public">wickr_cipher_key</innerclass>
       <sectiondef kind="func">
       <memberdef kind="function" id="group__wickr__cipher_1ga2b7a8bc33e1fd5af61763398ea9a4013" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref> *</type>
@@ -255,7 +256,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/cipher.h" line="204" column="1"/>
+        <location file="src/crypto/cipher.h" line="206" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__cipher_1gaa473bc83f82d6353aa6f4cb4e36bf4f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
@@ -281,7 +282,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/cipher.h" line="215" column="1"/>
+        <location file="src/crypto/cipher.h" line="217" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__cipher_1ga45790b3023ccb261c03346b069aca763" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -306,7 +307,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/cipher.h" line="225" column="1"/>
+        <location file="src/crypto/cipher.h" line="227" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__cipher_1ga8716aebf03497c379d5ff81fe32cde32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -332,7 +333,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/cipher.h" line="237" column="1"/>
+        <location file="src/crypto/cipher.h" line="239" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__cipher_1ga1c073b87f2141cf35a1d91ba10f9e5ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
@@ -358,22 +359,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/cipher.h" line="249" column="1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="group__wickr__cipher_1ga6506e1a07f7bc2c5ceeb0ca5ce81385b" prot="public" static="no" mutable="no">
-        <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
-        <definition>wickr_cipher_key::cipher</definition>
-        <argsstring></argsstring>
-        <name>cipher</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>A key to be provided to a cipher operation</para><para>the cipher this key is to be used by </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/crypto/cipher.h" line="188" column="1" bodyfile="src/crypto/cipher.h" bodystart="188" bodyend="-1"/>
+        <location file="src/crypto/cipher.h" line="251" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

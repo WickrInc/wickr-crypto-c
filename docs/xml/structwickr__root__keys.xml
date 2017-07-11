@@ -49,46 +49,46 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="212">
+      <node id="193">
         <label>wickr_cipher_key</label>
         <link refid="structwickr__cipher__key"/>
-        <childnode refid="213" relation="usage">
+        <childnode refid="194" relation="usage">
           <edgelabel>key_data</edgelabel>
         </childnode>
-        <childnode refid="214" relation="usage">
+        <childnode refid="195" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="214">
+      <node id="195">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="216">
+      <node id="197">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="211">
+      <node id="192">
         <label>wickr_root_keys</label>
         <link refid="structwickr__root__keys"/>
-        <childnode refid="212" relation="usage">
+        <childnode refid="193" relation="usage">
           <edgelabel>node_storage_root</edgelabel>
           <edgelabel>remote_storage_root</edgelabel>
         </childnode>
-        <childnode refid="215" relation="usage">
+        <childnode refid="196" relation="usage">
           <edgelabel>node_signature_root</edgelabel>
         </childnode>
       </node>
-      <node id="213">
+      <node id="194">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="215">
+      <node id="196">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="216" relation="usage">
+        <childnode refid="197" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="213" relation="usage">
+        <childnode refid="194" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>

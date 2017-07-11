@@ -26,11 +26,95 @@
       <node id="85">
         <label>stdbool.h</label>
       </node>
+      <node id="90">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
       <node id="86">
         <label>stdint.h</label>
       </node>
       <node id="84">
         <label>stdlib.h</label>
+      </node>
+      <node id="94">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>limits.h</label>
+      </node>
+      <node id="91">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>stdio.h</label>
       </node>
       <node id="82">
         <label>src/crypto/crypto_engine.h</label>
@@ -54,96 +138,24 @@
         <childnode refid="95" relation="include">
         </childnode>
       </node>
-      <node id="88">
-        <label>limits.h</label>
-      </node>
-      <node id="94">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
-        </childnode>
-        <childnode refid="90" relation="include">
-        </childnode>
-      </node>
-      <node id="90">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
-        <childnode refid="83" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
-        </childnode>
-      </node>
-      <node id="87">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-      </node>
-      <node id="91">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-      </node>
-      <node id="83">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="87" relation="include">
-        </childnode>
-        <childnode refid="88" relation="include">
-        </childnode>
-      </node>
-      <node id="89">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-        <childnode refid="90" relation="include">
-        </childnode>
-      </node>
-      <node id="95">
-        <label>stdio.h</label>
-      </node>
-      <node id="93">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
-        </childnode>
-      </node>
-      <node id="92">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="100">
-        <label>src/crypto/ephemeral_keypair.h</label>
-        <link refid="ephemeral__keypair_8h_source"/>
+      <node id="99">
+        <label>src/crypto/identity.h</label>
+        <link refid="identity_8h_source"/>
+        <childnode refid="100" relation="include">
+        </childnode>
         <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>src/crypto/storage.h</label>
+        <link refid="storage_8h_source"/>
+        <childnode refid="98" relation="include">
         </childnode>
         <childnode refid="103" relation="include">
         </childnode>
@@ -154,6 +166,42 @@
         <label>src/crypto/wickr_ctx.h</label>
         <link refid="wickr__ctx_8h_source"/>
         <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="108">
+        <label>src/crypto/stream_cipher.h</label>
+        <link refid="stream__cipher_8h_source"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>src/crypto/node.h</label>
+        <link refid="node_8h_source"/>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>src/crypto/devinfo.h</label>
+        <link refid="devinfo_8h_source"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>src/crypto/ephemeral_keypair.h</label>
+        <link refid="ephemeral__keypair_8h_source"/>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
         </childnode>
       </node>
       <node id="98">
@@ -171,6 +219,28 @@
       <node id="103">
         <label>src/crypto/wickr-crypto-c.h</label>
         <link refid="wickr-crypto-c_8h_source"/>
+      </node>
+      <node id="107">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h_source"/>
+      </node>
+      <node id="102">
+        <label>src/crypto/protocol.h</label>
+        <link refid="protocol_8h_source"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>src/crypto/openssl_suite.h</label>
+        <link refid="openssl__suite_8h_source"/>
+      </node>
+      <node id="109">
+        <label>src/crypto/stream_iv.h</label>
+        <link refid="stream__iv_8h_source"/>
+        <childnode refid="108" relation="include">
+        </childnode>
       </node>
       <node id="96">
         <label>src/crypto/crypto_engine.h</label>
@@ -198,76 +268,6 @@
         <childnode refid="103" relation="include">
         </childnode>
       </node>
-      <node id="105">
-        <label>src/crypto/storage.h</label>
-        <link refid="storage_8h_source"/>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="103" relation="include">
-        </childnode>
-        <childnode refid="104" relation="include">
-        </childnode>
-      </node>
-      <node id="102">
-        <label>src/crypto/protocol.h</label>
-        <link refid="protocol_8h_source"/>
-        <childnode refid="103" relation="include">
-        </childnode>
-        <childnode refid="104" relation="include">
-        </childnode>
-      </node>
-      <node id="106">
-        <label>src/crypto/openssl_suite.h</label>
-        <link refid="openssl__suite_8h_source"/>
-      </node>
-      <node id="101">
-        <label>src/crypto/node.h</label>
-        <link refid="node_8h_source"/>
-        <childnode refid="102" relation="include">
-        </childnode>
-        <childnode refid="103" relation="include">
-        </childnode>
-      </node>
-      <node id="109">
-        <label>src/crypto/stream_iv.h</label>
-        <link refid="stream__iv_8h_source"/>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="108">
-        <label>src/crypto/stream_cipher.h</label>
-        <link refid="stream__cipher_8h_source"/>
-        <childnode refid="103" relation="include">
-        </childnode>
-      </node>
-      <node id="97">
-        <label>src/crypto/devinfo.h</label>
-        <link refid="devinfo_8h_source"/>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="103" relation="include">
-        </childnode>
-        <childnode refid="104" relation="include">
-        </childnode>
-      </node>
-      <node id="99">
-        <label>src/crypto/identity.h</label>
-        <link refid="identity_8h_source"/>
-        <childnode refid="100" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="103" relation="include">
-        </childnode>
-        <childnode refid="104" relation="include">
-        </childnode>
-      </node>
-      <node id="107">
-        <label>src/crypto/protobuf_util.h</label>
-        <link refid="protobuf__util_8h_source"/>
-      </node>
     </invincdepgraph>
     <innerclass refid="structwickr__crypto__engine" prot="public">wickr_crypto_engine</innerclass>
       <sectiondef kind="typedef">
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="189" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="285" bodyend="-1"/>
+        <location file="src/crypto/crypto_engine.h" line="191" column="1" bodyfile="src/crypto/crypto_engine.h" bodystart="289" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -298,7 +298,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="294" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="298" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1ga5709d94cd09ef0fb47d1a5f59232f115" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -370,7 +370,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="315" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="319" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1gab60480270e80ba34aa44385633037983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -418,7 +418,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="325" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="329" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1ga18c21501a41c97f2ba79a9366343cdcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
@@ -444,7 +444,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="340" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="344" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1ga6cdd263ddccd0b28a85ed61889805e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref></type>
@@ -470,7 +470,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="353" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="357" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1ga0a708e5e46c40eae5eaeb581f6a1aed2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref></type>
@@ -496,7 +496,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="363" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="367" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__crypto__engine_1gaf44e3be9066727bf83034d3593dc74e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref></type>
@@ -510,7 +510,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get the matching exchange cipher given a message packet cipher</para><para>An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_from_components) This function currently always returns CIPHER_ID_AES256_CTR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always CIPHER_ID_AES256_GCM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the GCM mode packet content</para><para><parameterlist kind="param"><parameteritem>
+<para>Get the matching exchange cipher given a message packet cipher</para><para>An exchange cipher is used for wrapping / unwrapping packet content decryption key material (see wickr_key_exchange_create_with_packet_key) This function currently always returns CIPHER_ID_AES256_CTR The lack of authentication on this layer is a performance / space optimization, since it is ultimately protecting authenticated mode key material (currently always CIPHER_ID_AES256_GCM) to be used for packet content decryption If bits are flipped in the key exchange itself, the resulting unauthenticated output will not be able to decrypt the GCM mode packet content</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>cipher</parametername>
 </parameternamelist>
@@ -522,7 +522,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/crypto_engine.h" line="378" column="1"/>
+        <location file="src/crypto/crypto_engine.h" line="382" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -578,82 +578,84 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="77" refid="group__wickr__crypto__engine_1gabc120effc5248a491b18138f9b74b526" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*(*wickr_crypto_engine_cipher_key_random)(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="91" refid="group__wickr__crypto__engine_1ga5aacf927a96a30aa63f3fc1bce262caf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*(*wickr_crypto_engine_cipher_encrypt)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*plaintext,</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*iv);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="105" refid="group__wickr__crypto__engine_1ga81cff182bb87f963996b75891e242ed4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_cipher_decrypt)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*cipher_result,</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="119" refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" kindref="member">wickr_crypto_engine_encrypt_file</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="135" refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" kindref="member">wickr_crypto_engine_decrypt_file</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath,</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="151" refid="group__wickr__crypto__engine_1ga42dfc5b4df166616d962ee4c792ceaf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_digest)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="164" refid="group__wickr__crypto__engine_1ga298d2dea6722151c11e04458d3924823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_digest_file)(FILE<sp/>*in_file,</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="175" refid="group__wickr__crypto__engine_1gad16b229b7d16cf00d3983c277ee3b88b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*(*wickr_crypto_engine_ec_rand_key)(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="186" refid="group__wickr__crypto__engine_1ga87a069bbd3cdf509946e4ca0ca008f8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*(*wickr_crypto_engine_ec_key_import)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_private);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="200" refid="group__wickr__crypto__engine_1gac5a36d2a53e06a75a2b818e6a5cc96a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*(*wickr_crypto_engine_ec_sign)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_signing_key,</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_sign,</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="214" refid="group__wickr__crypto__engine_1gae541acc6433f6f5ffe84382ccd5e4f97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1gae541acc6433f6f5ffe84382ccd5e4f97" kindref="member">wickr_crypto_engine_ec_verify</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*signature,</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_public_key,</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_verify);</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="226" refid="group__wickr__crypto__engine_1ga94bdc8d3b88ac04b9defe663afa48e78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_ecdh_gen_key)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref><sp/>*params);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="238" refid="group__wickr__crypto__engine_1ga782e0e8786ecf8a55c8ae2aea2f178aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_hmac_create)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="253" refid="group__wickr__crypto__engine_1ga00c52a816403192af5b21d952265d0b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1ga00c52a816403192af5b21d952265d0b6" kindref="member">wickr_crypto_engine_hmac_verify</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode,</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*expected);</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="268" refid="group__wickr__crypto__engine_1ga5ab29968c993423df83c9f1a3d7e685d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref><sp/>*(*wickr_crypto_kdf_gen)(<ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/>algo,</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="281" refid="group__wickr__crypto__engine_1ga640cbc86ca36c4deb2c197de89dce7d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref><sp/>*(*wickr_crypto_kdf_meta)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref><sp/>*existing_meta,</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
-<codeline lineno="283"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine</ref><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref>;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga74d5cea6c7d1d6e67b1be476fbaf6235" kindref="member">wickr_crypto_engine_get_default</ref>();</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"></highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__crypto__engine_1ga5709d94cd09ef0fb47d1a5f59232f115" kindref="member">wickr_crypto_engine_kdf_cipher</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/>algo,<sp/><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"></highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__crypto__engine_1gab60480270e80ba34aa44385633037983" kindref="member">wickr_crypto_engine_kdf_decipher</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*input_buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga18c21501a41c97f2ba79a9366343cdcf" kindref="member">wickr_digest_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
-<codeline lineno="341"><highlight class="normal"></highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga6cdd263ddccd0b28a85ed61889805e60" kindref="member">wickr_key_exchange_kdf_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga0a708e5e46c40eae5eaeb581f6a1aed2" kindref="member">wickr_digest_matching_curve</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/><ref refid="group__wickr__crypto__engine_1gaf44e3be9066727bf83034d3593dc74e2" kindref="member">wickr_exchange_cipher_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
-<codeline lineno="379"><highlight class="normal"></highlight></codeline>
-<codeline lineno="380"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="group__wickr__crypto__engine_1gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*(*wickr_crypto_engine_cipher_encrypt)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*plaintext,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*iv);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108" refid="group__wickr__crypto__engine_1ga459ef821cc40edb5e3c9ce1d571ddc00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_cipher_decrypt)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*cipher_result,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123" refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1gaa77b1bc373d92d9db9d801bcc4a4d29c" kindref="member">wickr_crypto_engine_encrypt_file</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1ga361b843efc839e30f90ce24c15b1dd27" kindref="member">wickr_crypto_engine_decrypt_file</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sourceFilePath,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*destinationFilePath,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155" refid="group__wickr__crypto__engine_1ga42dfc5b4df166616d962ee4c792ceaf4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_digest)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168" refid="group__wickr__crypto__engine_1ga298d2dea6722151c11e04458d3924823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_digest_file)(FILE<sp/>*in_file,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179" refid="group__wickr__crypto__engine_1gad16b229b7d16cf00d3983c277ee3b88b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*(*wickr_crypto_engine_ec_rand_key)(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190" refid="group__wickr__crypto__engine_1ga87a069bbd3cdf509946e4ca0ca008f8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*(*wickr_crypto_engine_ec_key_import)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_private);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204" refid="group__wickr__crypto__engine_1gac5a36d2a53e06a75a2b818e6a5cc96a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*(*wickr_crypto_engine_ec_sign)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_signing_key,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_sign,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218" refid="group__wickr__crypto__engine_1gae541acc6433f6f5ffe84382ccd5e4f97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1gae541acc6433f6f5ffe84382ccd5e4f97" kindref="member">wickr_crypto_engine_ec_verify</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*signature,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_public_key,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_verify);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="230" refid="group__wickr__crypto__engine_1ga94bdc8d3b88ac04b9defe663afa48e78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_ecdh_gen_key)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref><sp/>*params);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="242" refid="group__wickr__crypto__engine_1ga782e0e8786ecf8a55c8ae2aea2f178aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*(*wickr_crypto_engine_hmac_create)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="257" refid="group__wickr__crypto__engine_1ga00c52a816403192af5b21d952265d0b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>(*<ref refid="group__wickr__crypto__engine_1ga00c52a816403192af5b21d952265d0b6" kindref="member">wickr_crypto_engine_hmac_verify</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*expected);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="272" refid="group__wickr__crypto__engine_1ga5ab29968c993423df83c9f1a3d7e685d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref><sp/>*(*wickr_crypto_kdf_gen)(<ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/>algo,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="285" refid="group__wickr__crypto__engine_1ga640cbc86ca36c4deb2c197de89dce7d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__kdf__result" kindref="compound">wickr_kdf_result_t</ref><sp/>*(*wickr_crypto_kdf_meta)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref><sp/>*existing_meta,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine</ref><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref>;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga74d5cea6c7d1d6e67b1be476fbaf6235" kindref="member">wickr_crypto_engine_get_default</ref>();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__crypto__engine_1ga5709d94cd09ef0fb47d1a5f59232f115" kindref="member">wickr_crypto_engine_kdf_cipher</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/>algo,<sp/><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__wickr__crypto__engine_1gab60480270e80ba34aa44385633037983" kindref="member">wickr_crypto_engine_kdf_decipher</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/>*engine,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*input_buffer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*passphrase);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga18c21501a41c97f2ba79a9366343cdcf" kindref="member">wickr_digest_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><ref refid="structwickr__kdf__algo" kindref="compound">wickr_kdf_algo_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga6cdd263ddccd0b28a85ed61889805e60" kindref="member">wickr_key_exchange_kdf_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/><ref refid="group__wickr__crypto__engine_1ga0a708e5e46c40eae5eaeb581f6a1aed2" kindref="member">wickr_digest_matching_curve</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/><ref refid="group__wickr__crypto__engine_1gaf44e3be9066727bf83034d3593dc74e2" kindref="member">wickr_exchange_cipher_matching_cipher</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
 <codeline lineno="383"><highlight class="normal"></highlight></codeline>
-<codeline lineno="384"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>crypto_engine_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>crypto_engine_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="src/crypto/crypto_engine.h"/>
   </compounddef>
