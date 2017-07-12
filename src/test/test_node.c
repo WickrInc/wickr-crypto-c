@@ -187,7 +187,27 @@ DESCRIBE(node_tests, "node.c")
     }
     END_IT
     
+    IT("can be serialized / deserialized without an active ephemeral keypair")
+    {
+        wickr_ephemeral_keypair_destroy(&node->ephemeral_keypair);
+        
+        wickr_buffer_t *serialized = wickr_node_serialize(node);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_node_t *deserialized = wickr_node_create_from_buffer(serialized, &engine);
+        SHOULD_NOT_BE_NULL(deserialized);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->dev_id, deserialized->dev_id, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->node->identifier, deserialized->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->root->identifier, deserialized->id_chain->root->identifier, NULL));
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_node_destroy(&deserialized);
+    }
+    END_IT
+    
     wickr_node_destroy(&node);
+    SHOULD_BE_NULL(node);
     
 }
 END_DESCRIBE

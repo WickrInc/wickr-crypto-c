@@ -25,7 +25,7 @@ Wickr__Proto__Node *wickr_node_to_proto(const wickr_node_t *node)
     
     Wickr__Proto__EphemeralKeypair *ephemeral_keypair = wickr_ephemeral_keypair_to_proto(node->ephemeral_keypair);
     
-    if (!ephemeral_keypair) {
+    if (node->ephemeral_keypair && !ephemeral_keypair) {
         return NULL;
     }
     
@@ -71,12 +71,16 @@ wickr_node_t *wickr_node_create_from_proto(const Wickr__Proto__Node *proto, cons
         return NULL;
     }
     
-    wickr_ephemeral_keypair_t *keypair = wickr_ephemeral_keypair_create_from_proto(proto->ephemeral_keypair, engine);
+    wickr_ephemeral_keypair_t *keypair = NULL;
     
-    if (!keypair) {
-        wickr_buffer_destroy(&dev_id);
-        wickr_identity_chain_destroy(&id_chain);
-        return NULL;
+    if (proto->ephemeral_keypair) {
+        keypair = wickr_ephemeral_keypair_create_from_proto(proto->ephemeral_keypair, engine);
+        
+        if (!keypair) {
+            wickr_buffer_destroy(&dev_id);
+            wickr_identity_chain_destroy(&id_chain);
+            return NULL;
+        }
     }
     
     wickr_node_t *node = wickr_node_create(dev_id, id_chain, keypair);
