@@ -14,36 +14,19 @@
       <node id="342">
         <label>stdbool.h</label>
       </node>
+      <node id="347">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+      </node>
       <node id="343">
         <label>stdint.h</label>
       </node>
       <node id="339">
         <label>stdlib.h</label>
-      </node>
-      <node id="349">
-        <label>crypto_engine.h</label>
-        <link refid="crypto__engine_8h_source"/>
-        <childnode refid="341" relation="include">
-        </childnode>
-        <childnode refid="346" relation="include">
-        </childnode>
-        <childnode refid="348" relation="include">
-        </childnode>
-        <childnode refid="350" relation="include">
-        </childnode>
-        <childnode refid="351" relation="include">
-        </childnode>
-        <childnode refid="352" relation="include">
-        </childnode>
-        <childnode refid="347" relation="include">
-        </childnode>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="340" relation="include">
-        </childnode>
-      </node>
-      <node id="345">
-        <label>limits.h</label>
       </node>
       <node id="352">
         <label>ecdh.h</label>
@@ -57,10 +40,63 @@
         <childnode refid="347" relation="include">
         </childnode>
       </node>
-      <node id="347">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
+      <node id="344">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
         <childnode refid="341" relation="include">
+        </childnode>
+      </node>
+      <node id="345">
+        <label>limits.h</label>
+      </node>
+      <node id="348">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+      </node>
+      <node id="346">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="347" relation="include">
+        </childnode>
+      </node>
+      <node id="350">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+      </node>
+      <node id="341">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+      </node>
+      <node id="351">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="350" relation="include">
         </childnode>
         <childnode refid="348" relation="include">
         </childnode>
@@ -85,65 +121,29 @@
         <childnode refid="352" relation="include">
         </childnode>
       </node>
-      <node id="344">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="341" relation="include">
-        </childnode>
-      </node>
-      <node id="348">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="343" relation="include">
-        </childnode>
-      </node>
-      <node id="341">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="342" relation="include">
-        </childnode>
-        <childnode refid="343" relation="include">
-        </childnode>
-        <childnode refid="344" relation="include">
-        </childnode>
-        <childnode refid="345" relation="include">
-        </childnode>
-      </node>
-      <node id="346">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="339" relation="include">
-        </childnode>
-        <childnode refid="341" relation="include">
-        </childnode>
-        <childnode refid="347" relation="include">
-        </childnode>
-      </node>
       <node id="340">
         <label>stdio.h</label>
       </node>
-      <node id="351">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="339" relation="include">
+      <node id="349">
+        <label>crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="341" relation="include">
         </childnode>
-        <childnode refid="350" relation="include">
+        <childnode refid="346" relation="include">
         </childnode>
         <childnode refid="348" relation="include">
         </childnode>
-      </node>
-      <node id="350">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
+        <childnode refid="350" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="352" relation="include">
+        </childnode>
+        <childnode refid="347" relation="include">
+        </childnode>
         <childnode refid="339" relation="include">
         </childnode>
-        <childnode refid="341" relation="include">
+        <childnode refid="340" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -200,14 +200,18 @@
         </inbodydescription>
         <location file="src/crypto/openssl_suite.h" line="59" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__openssl__crypto_1gaf51493d43d3572265abba27e2b3fbc54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
         <definition>wickr_cipher_result_t* openssl_aes256_encrypt</definition>
-        <argsstring>(const wickr_buffer_t *plaintext, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</argsstring>
+        <argsstring>(const wickr_buffer_t *plaintext, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, const wickr_buffer_t *iv)</argsstring>
         <name>openssl_aes256_encrypt</name>
         <param>
           <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
           <declname>plaintext</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>aad</declname>
         </param>
         <param>
           <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
@@ -229,6 +233,13 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>key</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -246,16 +257,20 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="74" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="75" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__openssl__crypto_1ga75eaf118b28fb76e75579d0a74517b18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
         <definition>wickr_buffer_t* openssl_aes256_decrypt</definition>
-        <argsstring>(const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *key, bool only_auth_ciphers)</argsstring>
+        <argsstring>(const wickr_cipher_result_t *cipher_result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool only_auth_ciphers)</argsstring>
         <name>openssl_aes256_decrypt</name>
         <param>
           <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
           <declname>cipher_result</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>aad</declname>
         </param>
         <param>
           <type>const <ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref> *</type>
@@ -277,6 +292,13 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext (only works with authenticated ciphers) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>key</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -294,7 +316,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="89" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="92" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -342,7 +364,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="105" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="109" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
@@ -368,7 +390,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="118" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="122" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
@@ -405,7 +427,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="129" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="133" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gab32cef5c789ee1992afae98a81b65823" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref> *</type>
@@ -453,7 +475,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="142" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="146" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga1e2b3f17c67e97360b616d0d673767f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -501,7 +523,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="156" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="160" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gaa9e626d984efe7fed046d5f62c6c24a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -527,7 +549,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="169" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="173" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gaeb4574976214a17eb79bbc3d76f573a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -575,7 +597,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="181" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="185" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gafbde176ef6f2b99ff9dab58ad69a9a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -634,7 +656,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="196" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="200" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga788a03002d8c6048401cf0bbc2d48c7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -693,7 +715,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="212" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="216" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga12da75115315fbf7394f4791a2eb815c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -730,7 +752,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="226" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="230" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1ga178fa1f33ad2767c27411c3ebcdd3ca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -778,7 +800,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="238" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="242" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__openssl__crypto_1gaf1faa509e06c188acfbdf43e2197c61a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -837,7 +859,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="255" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="259" column="1"/>
       </memberdef>
       <memberdef kind="function" id="openssl__suite_8h_1a9eca12efeb996ec1914ef4e375307715" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
@@ -858,7 +880,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/openssl_suite.h" line="261" column="1"/>
+        <location file="src/crypto/openssl_suite.h" line="265" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -907,63 +929,65 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga9177055e488f0163d3eb946799df5a67" kindref="member">openssl_cipher_key_random</ref>(<ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher);</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga528fe693df65582a58d10b9cae0757a7" kindref="member">openssl_aes256_encrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*plaintext,</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*iv);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gac3650e924145a56ac236b6ce3e1bc9d9" kindref="member">openssl_aes256_decrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*cipher_result,</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" kindref="member">openssl_sha2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" kindref="member">openssl_ec_rand_key</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" kindref="member">openssl_ec_key_import</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_private);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab32cef5c789ee1992afae98a81b65823" kindref="member">openssl_ec_sign</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_signing_key,</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_sign,</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga1e2b3f17c67e97360b616d0d673767f7" kindref="member">openssl_ec_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*signature,</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_public_key,</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_verify);</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaa9e626d984efe7fed046d5f62c6c24a4" kindref="member">openssl_ecdh_gen_key</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref><sp/>*params);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaeb4574976214a17eb79bbc3d76f573a6" kindref="member">openssl_hmac_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gafbde176ef6f2b99ff9dab58ad69a9a74" kindref="member">openssl_hmac_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode,</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*expected);</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga788a03002d8c6048401cf0bbc2d48c7a" kindref="member">openssl_hkdf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*input_key_material,</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*info,</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>hash_mode);</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga12da75115315fbf7394f4791a2eb815c" kindref="member">openssl_sha2_file</ref>(FILE<sp/>*in_file,<sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga178fa1f33ad2767c27411c3ebcdd3ca0" kindref="member">openssl_encrypt_file</ref>(FILE<sp/>*in_file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,<sp/>FILE<sp/>*out_file);</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gaf1faa509e06c188acfbdf43e2197c61a" kindref="member">openssl_decrypt_file</ref>(FILE<sp/>*in_file,</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*out_file,</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Functions<sp/>to<sp/>assist<sp/>with<sp/>testing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*openssl_ec_key_import_test_key(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*priv_hex);</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaf51493d43d3572265abba27e2b3fbc54" kindref="member">openssl_aes256_encrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*plaintext,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*iv);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga75eaf118b28fb76e75579d0a74517b18" kindref="member">openssl_aes256_decrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*cipher_result,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga19991a9b00d0c383c64935fa2acecda7" kindref="member">openssl_sha2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga75a01a740d558bfcc0f10920266cd9d5" kindref="member">openssl_ec_rand_key</ref>(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab2cc137ada900eba89796857603cd8cd" kindref="member">openssl_ec_key_import</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_private);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*<ref refid="group__openssl__crypto_1gab32cef5c789ee1992afae98a81b65823" kindref="member">openssl_ec_sign</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_signing_key,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_sign,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>digest_mode);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga1e2b3f17c67e97360b616d0d673767f7" kindref="member">openssl_ec_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdsa__result" kindref="compound">wickr_ecdsa_result_t</ref><sp/>*signature,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*ec_public_key,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data_to_verify);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaa9e626d984efe7fed046d5f62c6c24a4" kindref="member">openssl_ecdh_gen_key</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref><sp/>*params);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1gaeb4574976214a17eb79bbc3d76f573a6" kindref="member">openssl_hmac_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gafbde176ef6f2b99ff9dab58ad69a9a74" kindref="member">openssl_hmac_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*hmac_key,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*expected);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga788a03002d8c6048401cf0bbc2d48c7a" kindref="member">openssl_hkdf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*input_key_material,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*salt,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*info,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>hash_mode);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="group__openssl__crypto_1ga12da75115315fbf7394f4791a2eb815c" kindref="member">openssl_sha2_file</ref>(FILE<sp/>*in_file,<sp/><ref refid="structwickr__digest" kindref="compound">wickr_digest_t</ref><sp/>mode);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1ga178fa1f33ad2767c27411c3ebcdd3ca0" kindref="member">openssl_encrypt_file</ref>(FILE<sp/>*in_file,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,<sp/>FILE<sp/>*out_file);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="group__openssl__crypto_1gaf1faa509e06c188acfbdf43e2197c61a" kindref="member">openssl_decrypt_file</ref>(FILE<sp/>*in_file,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*key,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*out_file,</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>only_auth_ciphers);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Functions<sp/>to<sp/>assist<sp/>with<sp/>testing<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref><sp/>*openssl_ec_key_import_test_key(<ref refid="structwickr__ec__curve" kindref="compound">wickr_ec_curve_t</ref><sp/>curve,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*priv_hex);</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>openssl_suite_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>openssl_suite_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="src/crypto/openssl_suite.h"/>
   </compounddef>

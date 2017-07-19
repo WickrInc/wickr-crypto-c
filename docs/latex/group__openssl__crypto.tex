@@ -7,9 +7,9 @@
 \item 
 \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_ga9177055e488f0163d3eb946799df5a67}{openssl\+\_\+cipher\+\_\+key\+\_\+random} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_ga528fe693df65582a58d10b9cae0757a7}{openssl\+\_\+aes256\+\_\+encrypt} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
+\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_gaf51493d43d3572265abba27e2b3fbc54}{openssl\+\_\+aes256\+\_\+encrypt} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_gac3650e924145a56ac236b6ce3e1bc9d9}{openssl\+\_\+aes256\+\_\+decrypt} (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_ga75eaf118b28fb76e75579d0a74517b18}{openssl\+\_\+aes256\+\_\+decrypt} (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
 \item 
 \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__openssl__crypto_ga19991a9b00d0c383c64935fa2acecda7}{openssl\+\_\+sha2} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)
 \item 
@@ -41,17 +41,19 @@ bool \hyperlink{group__openssl__crypto_gaf1faa509e06c188acfbdf43e2197c61a}{opens
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{group__openssl__crypto_gac3650e924145a56ac236b6ce3e1bc9d9}\label{group__openssl__crypto_gac3650e924145a56ac236b6ce3e1bc9d9}} 
+\mbox{\Hypertarget{group__openssl__crypto_ga75eaf118b28fb76e75579d0a74517b18}\label{group__openssl__crypto_ga75eaf118b28fb76e75579d0a74517b18}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+aes256\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+decrypt}}
 \index{openssl\+\_\+aes256\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+decrypt}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
 \subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+decrypt()}{openssl\_aes256\_decrypt()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ openssl\+\_\+aes256\+\_\+decrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$}]{cipher\+\_\+result,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{bool}]{only\+\_\+auth\+\_\+ciphers }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ openssl\+\_\+aes256\+\_\+decrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$}]{cipher\+\_\+result,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{aad,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{bool}]{only\+\_\+auth\+\_\+ciphers }\end{DoxyParamCaption})}
 
 Decrypt a cipher\+\_\+result using A\+E\+S256 Currently supports A\+E\+S256-\/\+G\+CM and A\+E\+S256-\/\+C\+TR cipher modes
 
 
 \begin{DoxyParams}{Parameters}
 {\em cipher\+\_\+result} & a cipher result generated from \textquotesingle{}openssl\+\_\+aes256\+\_\+encrypt\textquotesingle{} \\
+\hline
+{\em aad} & additional data to authenticate with the ciphertext (only works with authenticated ciphers) \\
 \hline
 {\em key} & the key to use to attempt to decrypt \textquotesingle{}cipher\+\_\+result\textquotesingle{} \\
 \hline
@@ -61,11 +63,11 @@ Decrypt a cipher\+\_\+result using A\+E\+S256 Currently supports A\+E\+S256-\/\+
 \begin{DoxyReturn}{Returns}
 a buffer containing decrypted bytes. If the A\+ES mode is authenticated, N\+U\+LL will be returned if key is incorrect. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__openssl__crypto_ga528fe693df65582a58d10b9cae0757a7}\label{group__openssl__crypto_ga528fe693df65582a58d10b9cae0757a7}} 
+\mbox{\Hypertarget{group__openssl__crypto_gaf51493d43d3572265abba27e2b3fbc54}\label{group__openssl__crypto_gaf51493d43d3572265abba27e2b3fbc54}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+aes256\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+encrypt}}
 \index{openssl\+\_\+aes256\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+encrypt}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
 \subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+encrypt()}{openssl\_aes256\_encrypt()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$ openssl\+\_\+aes256\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{plaintext,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{iv }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$ openssl\+\_\+aes256\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{plaintext,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{aad,  }\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{iv }\end{DoxyParamCaption})}
 
 Encrypt a buffer using A\+E\+S256 Currently supports A\+E\+S256-\/\+G\+CM and A\+E\+S256-\/\+C\+TR cipher modes
 
@@ -74,6 +76,8 @@ N\+O\+TE\+: IV is randomly chosen using \textquotesingle{}openssl\+\_\+crypto\+\
 
 \begin{DoxyParams}{Parameters}
 {\em plaintext} & the content to encrypt using \textquotesingle{}key\textquotesingle{} \\
+\hline
+{\em aad} & additional data to authenticate with the ciphertext (only works with authenticated ciphers) \\
 \hline
 {\em key} & the cipher key to use to encrypt \textquotesingle{}plaintext\textquotesingle{} \\
 \hline

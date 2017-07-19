@@ -177,6 +177,8 @@ wickr_cipher_result_t *wickr_cipher_result_from_buffer(const wickr_buffer_t *buf
  
  @ingroup wickr_cipher
  
+ @struct wickr_cipher_key
+ 
  A key to be provided to a cipher operation
  
  @var wickr_cipher_key::cipher 

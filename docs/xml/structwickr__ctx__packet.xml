@@ -49,126 +49,126 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="94">
+      <node id="75">
         <label>wickr_ecdsa_result</label>
         <link refid="structwickr__ecdsa__result"/>
-        <childnode refid="93" relation="usage">
+        <childnode refid="74" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="95" relation="usage">
+        <childnode refid="76" relation="usage">
           <edgelabel>digest_mode</edgelabel>
         </childnode>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>sig_data</edgelabel>
         </childnode>
       </node>
-      <node id="99">
+      <node id="80">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="88">
+      <node id="69">
         <label>wickr_ctx_packet</label>
         <link refid="structwickr__ctx__packet"/>
-        <childnode refid="89" relation="usage">
+        <childnode refid="70" relation="usage">
           <edgelabel>sender</edgelabel>
         </childnode>
-        <childnode refid="96" relation="usage">
+        <childnode refid="77" relation="usage">
           <edgelabel>parse_result</edgelabel>
         </childnode>
-        <childnode refid="101" relation="usage">
+        <childnode refid="82" relation="usage">
           <edgelabel>packet</edgelabel>
         </childnode>
       </node>
-      <node id="100">
+      <node id="81">
         <label>wickr_packet_header</label>
         <link refid="structwickr__packet__header"/>
-        <childnode refid="92" relation="usage">
+        <childnode refid="73" relation="usage">
           <edgelabel>sender_pub</edgelabel>
         </childnode>
       </node>
-      <node id="93">
+      <node id="74">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="101">
+      <node id="82">
         <label>wickr_packet</label>
         <link refid="structwickr__packet"/>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>content</edgelabel>
         </childnode>
-        <childnode refid="94" relation="usage">
+        <childnode refid="75" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="95">
+      <node id="76">
         <label>wickr_digest</label>
         <link refid="structwickr__digest"/>
       </node>
-      <node id="98">
+      <node id="79">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="99" relation="usage">
+        <childnode refid="80" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="90">
+      <node id="71">
         <label>wickr_identity</label>
         <link refid="structwickr__identity"/>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>identifier</edgelabel>
         </childnode>
-        <childnode refid="92" relation="usage">
+        <childnode refid="73" relation="usage">
           <edgelabel>sig_key</edgelabel>
         </childnode>
-        <childnode refid="94" relation="usage">
+        <childnode refid="75" relation="usage">
           <edgelabel>signature</edgelabel>
         </childnode>
       </node>
-      <node id="91">
+      <node id="72">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="89">
+      <node id="70">
         <label>wickr_identity_chain</label>
         <link refid="structwickr__identity__chain"/>
-        <childnode refid="90" relation="usage">
+        <childnode refid="71" relation="usage">
           <edgelabel>node</edgelabel>
           <edgelabel>root</edgelabel>
         </childnode>
       </node>
-      <node id="92">
+      <node id="73">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="93" relation="usage">
+        <childnode refid="74" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
-      <node id="96">
+      <node id="77">
         <label>wickr_parse_result</label>
         <link refid="structwickr__parse__result"/>
-        <childnode refid="97" relation="usage">
+        <childnode refid="78" relation="usage">
           <edgelabel>key_exchange</edgelabel>
         </childnode>
-        <childnode refid="98" relation="usage">
+        <childnode refid="79" relation="usage">
           <edgelabel>enc_payload</edgelabel>
         </childnode>
-        <childnode refid="100" relation="usage">
+        <childnode refid="81" relation="usage">
           <edgelabel>header</edgelabel>
         </childnode>
       </node>
-      <node id="97">
+      <node id="78">
         <label>wickr_key_exchange</label>
         <link refid="structwickr__key__exchange"/>
-        <childnode refid="91" relation="usage">
+        <childnode refid="72" relation="usage">
           <edgelabel>node_id</edgelabel>
           <edgelabel>exchange_data</edgelabel>
         </childnode>

@@ -15,7 +15,7 @@
 <para>Elliptical Curve key with both public and private components set used to compute the ECDH shared secret </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="58" column="1" bodyfile="src/crypto/ecdh.h" bodystart="58" bodyend="-1"/>
+        <location file="src/crypto/ecdh.h" line="54" column="1" bodyfile="src/crypto/ecdh.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__ecdh__params_1ab17d6191b23fa7fd1befd03b2eee4ba9" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__ec__key" kindref="compound">wickr_ec_key_t</ref> *</type>
@@ -28,7 +28,7 @@
 <para>Elliptical Curve key with the public component of the other party&apos;s key pair used to compute the ECDH shared secret </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="59" column="1" bodyfile="src/crypto/ecdh.h" bodystart="59" bodyend="-1"/>
+        <location file="src/crypto/ecdh.h" line="55" column="1" bodyfile="src/crypto/ecdh.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__ecdh__params_1a0259f327ae0bdcc9e44b1d43a1216cac" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__kdf__meta" kindref="compound">wickr_kdf_meta_t</ref> *</type>
@@ -38,10 +38,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>the kdf parameters to execute against the calculated shared secret, currently supports HKDF</para><para>context information that can be used as part of the KDF function for ECDH shared secret expansion. INFO varies from SALT as it is not intended to be random, and instead holds contextual information about the involved parties. May be NULL if no context information is provided </para>        </detaileddescription>
+<para>the kdf parameters to execute against the calculated shared secret, currently supports HKDF </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="60" column="1" bodyfile="src/crypto/ecdh.h" bodystart="60" bodyend="-1"/>
+        <location file="src/crypto/ecdh.h" line="56" column="1" bodyfile="src/crypto/ecdh.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -49,53 +49,53 @@
     <detaileddescription>
 <para>All ECDH secrets are created in two phases. In the first phase, a local key pair and peer public key are used to generate a standard ECDH shared secret, the length of which varies by curve. In the second phase, the ECDH shared secret is expanded by a KDF to get specific length output. The specific KDF and the length of it&apos;s output are controlled by the implementation provided by the crypto engine that is used to perform the key exchange operation. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="125">
+      <node id="106">
         <label>wickr_kdf_algo</label>
         <link refid="structwickr__kdf__algo"/>
       </node>
-      <node id="123">
+      <node id="104">
         <label>wickr_kdf_meta</label>
         <link refid="structwickr__kdf__meta"/>
-        <childnode refid="124" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>salt</edgelabel>
           <edgelabel>info</edgelabel>
         </childnode>
-        <childnode refid="125" relation="usage">
+        <childnode refid="106" relation="usage">
           <edgelabel>algo</edgelabel>
         </childnode>
       </node>
-      <node id="127">
+      <node id="108">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="124">
+      <node id="105">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="122">
+      <node id="103">
         <label>wickr_ecdh_params</label>
         <link refid="structwickr__ecdh__params"/>
-        <childnode refid="123" relation="usage">
+        <childnode refid="104" relation="usage">
           <edgelabel>kdf_info</edgelabel>
         </childnode>
-        <childnode refid="126" relation="usage">
+        <childnode refid="107" relation="usage">
           <edgelabel>local_key</edgelabel>
           <edgelabel>peer_key</edgelabel>
         </childnode>
       </node>
-      <node id="126">
+      <node id="107">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="127" relation="usage">
+        <childnode refid="108" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="124" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/ecdh.h" line="57" column="1" bodyfile="src/crypto/ecdh.h" bodystart="57" bodyend="61"/>
+    <location file="src/crypto/ecdh.h" line="53" column="1" bodyfile="src/crypto/ecdh.h" bodystart="53" bodyend="57"/>
     <listofallmembers>
       <member refid="structwickr__ecdh__params_1a0259f327ae0bdcc9e44b1d43a1216cac" prot="public" virt="non-virtual"><scope>wickr_ecdh_params</scope><name>kdf_info</name></member>
       <member refid="structwickr__ecdh__params_1aab5a55e6a516ab8268ef6739ae1422cd" prot="public" virt="non-virtual"><scope>wickr_ecdh_params</scope><name>local_key</name></member>

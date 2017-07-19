@@ -50,7 +50,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="76" column="1"/>
+        <location file="src/crypto/ecdh.h" line="72" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1ga016f2b643f2636c05ed72bc08a0314f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__ecdh__params" kindref="compound">wickr_ecdh_params_t</ref> *</type>
@@ -76,7 +76,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="87" column="1"/>
+        <location file="src/crypto/ecdh.h" line="83" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1gaf6efcaf58f603e323443063cde9b5621" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -101,7 +101,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="97" column="1"/>
+        <location file="src/crypto/ecdh.h" line="93" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__ecdh__params_1ga801f1bfae11ac0c94d59bf9dd58f78aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -127,7 +127,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/ecdh.h" line="108" column="1"/>
+        <location file="src/crypto/ecdh.h" line="104" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

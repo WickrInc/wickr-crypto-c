@@ -15,7 +15,7 @@
 <para>status of the parse operation </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="561" column="1" bodyfile="src/crypto/protocol.h" bodystart="561" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="617" column="1" bodyfile="src/crypto/protocol.h" bodystart="617" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__parse__result_1a989166b5471898853f03b9e9c58f69c0" prot="public" static="no" mutable="no">
         <type>wickr_packet_signature_status</type>
@@ -28,7 +28,7 @@
 <para>status of the message signature </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="562" column="1" bodyfile="src/crypto/protocol.h" bodystart="562" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="618" column="1" bodyfile="src/crypto/protocol.h" bodystart="618" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__parse__result_1acf549d7cbae0f227d5aa60c3c5bb12d3" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__packet__header" kindref="compound">wickr_packet_header_t</ref> *</type>
@@ -41,7 +41,7 @@
 <para>parsed header content of the message after decrypting it with the header key </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="563" column="1" bodyfile="src/crypto/protocol.h" bodystart="563" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="619" column="1" bodyfile="src/crypto/protocol.h" bodystart="619" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__parse__result_1ab33e5d00121c229280bbee814ca7ef5a" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__key__exchange" kindref="compound">wickr_key_exchange_t</ref> *</type>
@@ -54,7 +54,7 @@
 <para>if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key_exchange will be NULL </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="564" column="1" bodyfile="src/crypto/protocol.h" bodystart="564" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="620" column="1" bodyfile="src/crypto/protocol.h" bodystart="620" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structwickr__parse__result_1a584d3b94e032f09188ee4006c067c180" prot="public" static="no" mutable="no">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
@@ -67,7 +67,7 @@
 <para>the encrypted payload of the message, to decrypt the payload you must call &apos;wickr_decode_result_from_parse_result&apos; with the private key matching the &apos;ephemeral_key_id&apos; from &apos;key_exchange&apos; </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/protocol.h" line="565" column="1" bodyfile="src/crypto/protocol.h" bodystart="565" bodyend="-1"/>
+        <location file="src/crypto/protocol.h" line="621" column="1" bodyfile="src/crypto/protocol.h" bodystart="621" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,71 +75,71 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="201">
+      <node id="182">
         <label>wickr_cipher</label>
         <link refid="structwickr__cipher"/>
       </node>
-      <node id="202">
+      <node id="183">
         <label>wickr_packet_header</label>
         <link refid="structwickr__packet__header"/>
-        <childnode refid="203" relation="usage">
+        <childnode refid="184" relation="usage">
           <edgelabel>sender_pub</edgelabel>
         </childnode>
       </node>
-      <node id="204">
+      <node id="185">
         <label>wickr_ec_curve</label>
         <link refid="structwickr__ec__curve"/>
       </node>
-      <node id="200">
+      <node id="181">
         <label>wickr_cipher_result</label>
         <link refid="structwickr__cipher__result"/>
-        <childnode refid="199" relation="usage">
+        <childnode refid="180" relation="usage">
           <edgelabel>cipher_text</edgelabel>
           <edgelabel>iv</edgelabel>
           <edgelabel>auth_tag</edgelabel>
         </childnode>
-        <childnode refid="201" relation="usage">
+        <childnode refid="182" relation="usage">
           <edgelabel>cipher</edgelabel>
         </childnode>
       </node>
-      <node id="199">
+      <node id="180">
         <label>wickr_buffer</label>
         <link refid="structwickr__buffer"/>
       </node>
-      <node id="203">
+      <node id="184">
         <label>wickr_ec_key</label>
         <link refid="structwickr__ec__key"/>
-        <childnode refid="204" relation="usage">
+        <childnode refid="185" relation="usage">
           <edgelabel>curve</edgelabel>
         </childnode>
-        <childnode refid="199" relation="usage">
+        <childnode refid="180" relation="usage">
           <edgelabel>pub_data</edgelabel>
           <edgelabel>pri_data</edgelabel>
         </childnode>
       </node>
-      <node id="197">
+      <node id="178">
         <label>wickr_parse_result</label>
         <link refid="structwickr__parse__result"/>
-        <childnode refid="198" relation="usage">
+        <childnode refid="179" relation="usage">
           <edgelabel>key_exchange</edgelabel>
         </childnode>
-        <childnode refid="200" relation="usage">
+        <childnode refid="181" relation="usage">
           <edgelabel>enc_payload</edgelabel>
         </childnode>
-        <childnode refid="202" relation="usage">
+        <childnode refid="183" relation="usage">
           <edgelabel>header</edgelabel>
         </childnode>
       </node>
-      <node id="198">
+      <node id="179">
         <label>wickr_key_exchange</label>
         <link refid="structwickr__key__exchange"/>
-        <childnode refid="199" relation="usage">
+        <childnode refid="180" relation="usage">
           <edgelabel>node_id</edgelabel>
           <edgelabel>exchange_data</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/crypto/protocol.h" line="560" column="1" bodyfile="src/crypto/protocol.h" bodystart="560" bodyend="566"/>
+    <location file="src/crypto/protocol.h" line="616" column="1" bodyfile="src/crypto/protocol.h" bodystart="616" bodyend="622"/>
     <listofallmembers>
       <member refid="structwickr__parse__result_1a584d3b94e032f09188ee4006c067c180" prot="public" virt="non-virtual"><scope>wickr_parse_result</scope><name>enc_payload</name></member>
       <member refid="structwickr__parse__result_1a69a3ee332921b4fdbc0e07dbfa74a8ed" prot="public" virt="non-virtual"><scope>wickr_parse_result</scope><name>err</name></member>

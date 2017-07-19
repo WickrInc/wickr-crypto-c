@@ -6,146 +6,146 @@
     <includes refid="stream__iv_8h" local="yes">stream_iv.h</includes>
     <includedby refid="wickr-crypto-c_8h" local="yes">src/crypto/wickr-crypto-c.h</includedby>
     <incdepgraph>
-      <node id="450">
+      <node id="447">
         <label>stdbool.h</label>
       </node>
-      <node id="451">
-        <label>stdint.h</label>
-      </node>
-      <node id="449">
-        <label>stdlib.h</label>
-      </node>
-      <node id="447">
-        <label>crypto_engine.h</label>
-        <link refid="crypto__engine_8h_source"/>
-        <childnode refid="448" relation="include">
-        </childnode>
-        <childnode refid="454" relation="include">
-        </childnode>
-        <childnode refid="456" relation="include">
-        </childnode>
-        <childnode refid="457" relation="include">
-        </childnode>
-        <childnode refid="458" relation="include">
-        </childnode>
-        <childnode refid="459" relation="include">
-        </childnode>
-        <childnode refid="455" relation="include">
-        </childnode>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="460" relation="include">
-        </childnode>
-      </node>
-      <node id="453">
-        <label>limits.h</label>
-      </node>
-      <node id="459">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="457" relation="include">
-        </childnode>
-        <childnode refid="456" relation="include">
-        </childnode>
-        <childnode refid="455" relation="include">
-        </childnode>
-      </node>
-      <node id="455">
+      <node id="452">
         <label>kdf.h</label>
         <link refid="kdf_8h_source"/>
-        <childnode refid="448" relation="include">
-        </childnode>
-        <childnode refid="456" relation="include">
-        </childnode>
-      </node>
-      <node id="452">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="448" relation="include">
-        </childnode>
-      </node>
-      <node id="461">
-        <label>stream_iv.h</label>
-        <link refid="stream__iv_8h_source"/>
-        <childnode refid="447" relation="include">
-        </childnode>
-      </node>
-      <node id="456">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="451" relation="include">
-        </childnode>
-      </node>
-      <node id="446">
-        <label>src/crypto/stream_cipher.h</label>
-        <link refid="stream__cipher_8h"/>
-        <childnode refid="447" relation="include">
-        </childnode>
-        <childnode refid="461" relation="include">
-        </childnode>
-      </node>
-      <node id="448">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="449" relation="include">
-        </childnode>
-        <childnode refid="450" relation="include">
-        </childnode>
-        <childnode refid="451" relation="include">
-        </childnode>
-        <childnode refid="452" relation="include">
+        <childnode refid="445" relation="include">
         </childnode>
         <childnode refid="453" relation="include">
         </childnode>
       </node>
-      <node id="454">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="449" relation="include">
+      <node id="448">
+        <label>stdint.h</label>
+      </node>
+      <node id="446">
+        <label>stdlib.h</label>
+      </node>
+      <node id="443">
+        <label>src/crypto/stream_cipher.h</label>
+        <link refid="stream__cipher_8h"/>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="458" relation="include">
+        </childnode>
+      </node>
+      <node id="456">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
+        </childnode>
+      </node>
+      <node id="449">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+      </node>
+      <node id="450">
+        <label>limits.h</label>
+      </node>
+      <node id="453">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="446" relation="include">
         </childnode>
         <childnode refid="448" relation="include">
         </childnode>
-        <childnode refid="455" relation="include">
+      </node>
+      <node id="451">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
         </childnode>
       </node>
-      <node id="460">
-        <label>stdio.h</label>
+      <node id="454">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
       </node>
-      <node id="458">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
+      <node id="445">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="448" relation="include">
+        </childnode>
         <childnode refid="449" relation="include">
         </childnode>
-        <childnode refid="457" relation="include">
+        <childnode refid="450" relation="include">
         </childnode>
-        <childnode refid="456" relation="include">
+      </node>
+      <node id="455">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+      </node>
+      <node id="458">
+        <label>stream_iv.h</label>
+        <link refid="stream__iv_8h_source"/>
+        <childnode refid="444" relation="include">
         </childnode>
       </node>
       <node id="457">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="449" relation="include">
+        <label>stdio.h</label>
+      </node>
+      <node id="444">
+        <label>crypto_engine.h</label>
+        <link refid="crypto__engine_8h_source"/>
+        <childnode refid="445" relation="include">
         </childnode>
-        <childnode refid="448" relation="include">
+        <childnode refid="451" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="455" relation="include">
+        </childnode>
+        <childnode refid="456" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="457" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="463">
-        <label>src/crypto/wickr-crypto-c.h</label>
-        <link refid="wickr-crypto-c_8h_source"/>
-      </node>
-      <node id="462">
+      <node id="459">
         <label>src/crypto/stream_cipher.h</label>
         <link refid="stream__cipher_8h"/>
-        <childnode refid="463" relation="include">
+        <childnode refid="460" relation="include">
         </childnode>
+      </node>
+      <node id="460">
+        <label>src/crypto/wickr-crypto-c.h</label>
+        <link refid="wickr-crypto-c_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structwickr__stream__key" prot="public">wickr_stream_key</innerclass>
@@ -162,6 +162,17 @@
         </inbodydescription>
         <location file="src/crypto/stream_cipher.h" line="28" column="9" bodyfile="src/crypto/stream_cipher.h" bodystart="28" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="define" id="stream__cipher_8h_1ab1a4700741317b1b4d5859e0070439d6" prot="public" static="no">
+        <name>PACKET_PER_EVO_DEFAULT</name>
+        <initializer>512</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/crypto/stream_cipher.h" line="29" column="9" bodyfile="src/crypto/stream_cipher.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="define" id="stream__cipher_8h_1a7e2e980aefee3da1f3fc694a86f97cbf" prot="public" static="no">
         <name>PACKET_PER_EVO_MAX</name>
         <initializer>32768</initializer>
@@ -171,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="29" column="9" bodyfile="src/crypto/stream_cipher.h" bodystart="29" bodyend="-1"/>
+        <location file="src/crypto/stream_cipher.h" line="30" column="9" bodyfile="src/crypto/stream_cipher.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -197,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="31" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="31" bodyend="31"/>
+        <location file="src/crypto/stream_cipher.h" line="32" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="32" bodyend="32"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -212,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="115" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="55" bodyend="-1"/>
+        <location file="src/crypto/stream_cipher.h" line="49" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="stream__cipher_8h_1aeb7fbf0cb255f554e650fd40b52a300a" prot="public" static="no">
         <type>struct <ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx</ref></type>
@@ -225,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="115" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="90" bodyend="-1"/>
+        <location file="src/crypto/stream_cipher.h" line="49" column="1" bodyfile="src/crypto/stream_cipher.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -275,7 +286,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="103" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="104" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__stream_1ga9e95dd486dbe2f3db647c65042601b34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
@@ -323,7 +334,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="116" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="117" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__stream_1ga0201dd73adf773834d7dbb4bbc307fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
@@ -349,7 +360,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="126" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="127" column="1"/>
       </memberdef>
       <memberdef kind="function" id="stream__cipher_8h_1ae1540c98a88e2f62e96fb2ee209e2290" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
@@ -375,7 +386,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="134" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="135" column="1"/>
       </memberdef>
       <memberdef kind="function" id="stream__cipher_8h_1adf1565329fed927531e1a14334ed23e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref> *</type>
@@ -401,7 +412,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="142" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="143" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__wickr__stream_1ga3bb3dec760c5b7f3a1bd2d0bb13bcc79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -426,7 +437,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="152" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="153" column="1"/>
       </memberdef>
       <memberdef kind="function" id="stream__cipher_8h_1a0b5c513a3e0958dc7fd4f8455206e32e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref> *</type>
@@ -474,7 +485,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="162" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="163" column="1"/>
       </memberdef>
       <memberdef kind="function" id="stream__cipher_8h_1a707b685e35eb437c33f5ec32c6760005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref> *</type>
@@ -500,12 +511,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="170" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="171" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="stream__cipher_8h_1a59499a3976db614ceb286e5b2267b59e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="stream__cipher_8h_1a621a3ec801ab996b4fab1fe905c450bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
         <definition>wickr_cipher_result_t* wickr_stream_ctx_encode</definition>
-        <argsstring>(wickr_stream_ctx_t *ctx, const wickr_buffer_t *data, uint64_t seq_num)</argsstring>
+        <argsstring>(wickr_stream_ctx_t *ctx, const wickr_buffer_t *data, const wickr_buffer_t *aad, uint64_t seq_num)</argsstring>
         <name>wickr_stream_ctx_encode</name>
         <param>
           <type><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref> *</type>
@@ -514,6 +525,10 @@
         <param>
           <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
           <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>aad</declname>
         </param>
         <param>
           <type>uint64_t</type>
@@ -538,6 +553,13 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>seq_num</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -548,12 +570,12 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="180" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="182" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="stream__cipher_8h_1a647495f00723712e75099aba1badfd20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="stream__cipher_8h_1aa1eb323694f2c1652b51127b0b89138c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
         <definition>wickr_buffer_t* wickr_stream_ctx_decode</definition>
-        <argsstring>(wickr_stream_ctx_t *ctx, const wickr_cipher_result_t *data, uint64_t seq_num)</argsstring>
+        <argsstring>(wickr_stream_ctx_t *ctx, const wickr_cipher_result_t *data, const wickr_buffer_t *aad, uint64_t seq_num)</argsstring>
         <name>wickr_stream_ctx_decode</name>
         <param>
           <type><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref> *</type>
@@ -562,6 +584,10 @@
         <param>
           <type>const <ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref> *</type>
           <declname>data</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref> *</type>
+          <declname>aad</declname>
         </param>
         <param>
           <type>uint64_t</type>
@@ -586,6 +612,13 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>aad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>additional data to authenticate with the ciphertext </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>seq_num</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -596,7 +629,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="190" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="193" column="1"/>
       </memberdef>
       <memberdef kind="function" id="stream__cipher_8h_1a05260bfce1f50352cad32e0354c28a1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -621,7 +654,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/crypto/stream_cipher.h" line="197" column="1"/>
+        <location file="src/crypto/stream_cipher.h" line="200" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -657,51 +690,52 @@
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;stream_iv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PACKET_PER_EVO_MIN<sp/>64</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PACKET_PER_EVO_MAX<sp/>32768</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/>STREAM_DIRECTION_ENCODE,<sp/>STREAM_DIRECTION_DECODE<sp/>}<sp/>wickr_stream_direction;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="structwickr__stream__key" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref><sp/>{</highlight></codeline>
-<codeline lineno="50" refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" kindref="member">cipher_key</ref>;</highlight></codeline>
-<codeline lineno="51" refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" kindref="member">evolution_key</ref>;</highlight></codeline>
-<codeline lineno="52" refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref>;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="structwickr__stream__ctx" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx</ref><sp/>{</highlight></codeline>
-<codeline lineno="83" refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>;</highlight></codeline>
-<codeline lineno="84" refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" kindref="member">key</ref>;</highlight></codeline>
-<codeline lineno="85" refid="structwickr__stream__ctx_1a67c5066e87dbdc026358563daa51f174" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__stream__iv" kindref="compound">wickr_stream_iv_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a67c5066e87dbdc026358563daa51f174" kindref="member">iv_factory</ref>;</highlight></codeline>
-<codeline lineno="86" refid="structwickr__stream__ctx_1abf2c6ab54e1663e6a47e310fd68b3b3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structwickr__stream__ctx_1abf2c6ab54e1663e6a47e310fd68b3b3f" kindref="member">last_seq</ref>;</highlight></codeline>
-<codeline lineno="87" refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wickr_stream_direction<sp/><ref refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" kindref="member">direction</ref>;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx</ref><sp/><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref>;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga54449667a25d9e64cd04dae58dd76418" kindref="member">wickr_stream_key_create</ref>(<ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" kindref="member">cipher_key</ref>,<sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" kindref="member">evolution_key</ref>,<sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga9e95dd486dbe2f3db647c65042601b34" kindref="member">wickr_stream_key_create_rand</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>,<sp/><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher,<sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga0201dd73adf773834d7dbb4bbc307fae" kindref="member">wickr_stream_key_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*stream_key);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*wickr_stream_key_serialize(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" kindref="member">key</ref>);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*wickr_stream_key_create_from_buffer(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__stream_1ga3bb3dec760c5b7f3a1bd2d0bb13bcc79" kindref="member">wickr_stream_key_destroy</ref>(<ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>**stream_key);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*wickr_stream_ctx_create(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>,<sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*stream_key,<sp/>wickr_stream_direction<sp/><ref refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" kindref="member">direction</ref>);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*wickr_stream_ctx_copy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*wickr_stream_ctx_encode(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,<sp/>uint64_t<sp/>seq_num);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*wickr_stream_ctx_decode(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*data,<sp/>uint64_t<sp/>seq_num);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>wickr_stream_ctx_destroy(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>**ctx);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>stream_cipher_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PACKET_PER_EVO_DEFAULT<sp/>512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PACKET_PER_EVO_MAX<sp/>32768</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/>STREAM_DIRECTION_ENCODE,<sp/>STREAM_DIRECTION_DECODE<sp/>}<sp/>wickr_stream_direction;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="structwickr__stream__key" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref><sp/>{</highlight></codeline>
+<codeline lineno="51" refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" kindref="member">cipher_key</ref>;</highlight></codeline>
+<codeline lineno="52" refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" kindref="member">evolution_key</ref>;</highlight></codeline>
+<codeline lineno="53" refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key</ref><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="structwickr__stream__ctx" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx</ref><sp/>{</highlight></codeline>
+<codeline lineno="84" refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>;</highlight></codeline>
+<codeline lineno="85" refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" kindref="member">key</ref>;</highlight></codeline>
+<codeline lineno="86" refid="structwickr__stream__ctx_1a67c5066e87dbdc026358563daa51f174" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structwickr__stream__iv" kindref="compound">wickr_stream_iv_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a67c5066e87dbdc026358563daa51f174" kindref="member">iv_factory</ref>;</highlight></codeline>
+<codeline lineno="87" refid="structwickr__stream__ctx_1abf2c6ab54e1663e6a47e310fd68b3b3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structwickr__stream__ctx_1abf2c6ab54e1663e6a47e310fd68b3b3f" kindref="member">last_seq</ref>;</highlight></codeline>
+<codeline lineno="88" refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wickr_stream_direction<sp/><ref refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" kindref="member">direction</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx</ref><sp/><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga54449667a25d9e64cd04dae58dd76418" kindref="member">wickr_stream_key_create</ref>(<ref refid="structwickr__cipher__key" kindref="compound">wickr_cipher_key_t</ref><sp/>*<ref refid="structwickr__stream__key_1a3d957a51193dda882cb89ced2ceeb91e" kindref="member">cipher_key</ref>,<sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*<ref refid="structwickr__stream__key_1ae7210bd67e61cb4c38733a237dae95d9" kindref="member">evolution_key</ref>,<sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga9e95dd486dbe2f3db647c65042601b34" kindref="member">wickr_stream_key_create_rand</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>,<sp/><ref refid="structwickr__cipher" kindref="compound">wickr_cipher_t</ref><sp/>cipher,<sp/>uint32_t<sp/><ref refid="structwickr__stream__key_1a78777e4c64048b6dae38f8772744194e" kindref="member">packets_per_evolution</ref>);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="group__wickr__stream_1ga0201dd73adf773834d7dbb4bbc307fae" kindref="member">wickr_stream_key_copy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*stream_key);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*wickr_stream_key_serialize(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*<ref refid="structwickr__stream__ctx_1a3598b3c0415d13fafab6633f8c00a3c8" kindref="member">key</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*wickr_stream_key_create_from_buffer(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*buffer);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__wickr__stream_1ga3bb3dec760c5b7f3a1bd2d0bb13bcc79" kindref="member">wickr_stream_key_destroy</ref>(<ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>**stream_key);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*wickr_stream_ctx_create(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__crypto__engine" kindref="compound">wickr_crypto_engine_t</ref><sp/><ref refid="structwickr__stream__ctx_1a14ef322bbeec579ded7f35c5aeb0d3fa" kindref="member">engine</ref>,<sp/><ref refid="structwickr__stream__key" kindref="compound">wickr_stream_key_t</ref><sp/>*stream_key,<sp/>wickr_stream_direction<sp/><ref refid="structwickr__stream__ctx_1a34c622c3ca61348321261ee7a9c3ff91" kindref="member">direction</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*wickr_stream_ctx_copy(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*wickr_stream_ctx_encode(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,<sp/>uint64_t<sp/>seq_num);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*wickr_stream_ctx_decode(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__cipher__result" kindref="compound">wickr_cipher_result_t</ref><sp/>*data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structwickr__buffer" kindref="compound">wickr_buffer_t</ref><sp/>*aad,<sp/>uint64_t<sp/>seq_num);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>wickr_stream_ctx_destroy(<ref refid="structwickr__stream__ctx" kindref="compound">wickr_stream_ctx_t</ref><sp/>**ctx);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>stream_cipher_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="src/crypto/stream_cipher.h"/>
   </compounddef>

@@ -175,6 +175,7 @@ wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx);
 
  @param ctx context to use for encoding
  @param data the data to encode using the context's key
+ @param aad additional data to authenticate with the ciphertext
  @param seq_num the sequence number assoiciated with 'data'
  @return a cipher result representing 'data' encrypted with 'ctx->key'
  */
@@ -185,6 +186,7 @@ wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wi
  
  @param ctx context to use for decoding
  @param data the data to decode using the context's key
+ @param aad additional data to authenticate with the ciphertext
  @param seq_num the sequence number assoiciated with 'data'
  @return a buffer representing 'data' decrypted with 'ctx->key'
  */

@@ -11,11 +11,115 @@
       <node id="359">
         <label>stdbool.h</label>
       </node>
+      <node id="363">
+        <label>kdf.h</label>
+        <link refid="kdf_8h_source"/>
+        <childnode refid="358" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+      </node>
       <node id="360">
         <label>stdint.h</label>
       </node>
       <node id="357">
         <label>stdlib.h</label>
+      </node>
+      <node id="370">
+        <label>ecdh.h</label>
+        <link refid="ecdh_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="368" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
+      </node>
+      <node id="361">
+        <label>array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+      </node>
+      <node id="362">
+        <label>limits.h</label>
+      </node>
+      <node id="364">
+        <label>digest.h</label>
+        <link refid="digest_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="360" relation="include">
+        </childnode>
+      </node>
+      <node id="354">
+        <label>src/crypto/protobuf_util.h</label>
+        <link refid="protobuf__util_8h"/>
+        <childnode refid="355" relation="include">
+        </childnode>
+        <childnode refid="356" relation="include">
+        </childnode>
+        <childnode refid="365" relation="include">
+        </childnode>
+        <childnode refid="366" relation="include">
+        </childnode>
+        <childnode refid="367" relation="include">
+        </childnode>
+      </node>
+      <node id="366">
+        <label>protobuf-c.h</label>
+      </node>
+      <node id="356">
+        <label>cipher.h</label>
+        <link refid="cipher_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+        <childnode refid="363" relation="include">
+        </childnode>
+      </node>
+      <node id="368">
+        <label>eckey.h</label>
+        <link refid="eckey_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="358" relation="include">
+        </childnode>
+      </node>
+      <node id="358">
+        <label>buffer.h</label>
+        <link refid="buffer_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="359" relation="include">
+        </childnode>
+        <childnode refid="360" relation="include">
+        </childnode>
+        <childnode refid="361" relation="include">
+        </childnode>
+        <childnode refid="362" relation="include">
+        </childnode>
+      </node>
+      <node id="365">
+        <label>storage.pb-c.h</label>
+      </node>
+      <node id="369">
+        <label>ecdsa.h</label>
+        <link refid="ecdsa_8h_source"/>
+        <childnode refid="357" relation="include">
+        </childnode>
+        <childnode refid="368" relation="include">
+        </childnode>
+        <childnode refid="364" relation="include">
+        </childnode>
+      </node>
+      <node id="355">
+        <label>stdio.h</label>
       </node>
       <node id="367">
         <label>crypto_engine.h</label>
@@ -37,110 +141,6 @@
         <childnode refid="357" relation="include">
         </childnode>
         <childnode refid="355" relation="include">
-        </childnode>
-      </node>
-      <node id="362">
-        <label>limits.h</label>
-      </node>
-      <node id="370">
-        <label>ecdh.h</label>
-        <link refid="ecdh_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="368" relation="include">
-        </childnode>
-        <childnode refid="364" relation="include">
-        </childnode>
-        <childnode refid="363" relation="include">
-        </childnode>
-      </node>
-      <node id="363">
-        <label>kdf.h</label>
-        <link refid="kdf_8h_source"/>
-        <childnode refid="358" relation="include">
-        </childnode>
-        <childnode refid="364" relation="include">
-        </childnode>
-      </node>
-      <node id="361">
-        <label>array.h</label>
-        <link refid="array_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="358" relation="include">
-        </childnode>
-      </node>
-      <node id="366">
-        <label>protobuf-c.h</label>
-      </node>
-      <node id="364">
-        <label>digest.h</label>
-        <link refid="digest_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="360" relation="include">
-        </childnode>
-      </node>
-      <node id="365">
-        <label>storage.pb-c.h</label>
-      </node>
-      <node id="358">
-        <label>buffer.h</label>
-        <link refid="buffer_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="359" relation="include">
-        </childnode>
-        <childnode refid="360" relation="include">
-        </childnode>
-        <childnode refid="361" relation="include">
-        </childnode>
-        <childnode refid="362" relation="include">
-        </childnode>
-      </node>
-      <node id="356">
-        <label>cipher.h</label>
-        <link refid="cipher_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="358" relation="include">
-        </childnode>
-        <childnode refid="363" relation="include">
-        </childnode>
-      </node>
-      <node id="355">
-        <label>stdio.h</label>
-      </node>
-      <node id="369">
-        <label>ecdsa.h</label>
-        <link refid="ecdsa_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="368" relation="include">
-        </childnode>
-        <childnode refid="364" relation="include">
-        </childnode>
-      </node>
-      <node id="368">
-        <label>eckey.h</label>
-        <link refid="eckey_8h_source"/>
-        <childnode refid="357" relation="include">
-        </childnode>
-        <childnode refid="358" relation="include">
-        </childnode>
-      </node>
-      <node id="354">
-        <label>src/crypto/protobuf_util.h</label>
-        <link refid="protobuf__util_8h"/>
-        <childnode refid="355" relation="include">
-        </childnode>
-        <childnode refid="356" relation="include">
-        </childnode>
-        <childnode refid="365" relation="include">
-        </childnode>
-        <childnode refid="366" relation="include">
-        </childnode>
-        <childnode refid="367" relation="include">
         </childnode>
       </node>
     </incdepgraph>
