@@ -47,7 +47,10 @@ extern "C" {
  ***************************************/
 
 /**
- @defgroup wickr_ctx wickr_ctx_t
+ @addtogroup wickr_ctx
+ */
+    
+/**
  @ingroup wickr_ctx
  @struct wickr_ctx
  

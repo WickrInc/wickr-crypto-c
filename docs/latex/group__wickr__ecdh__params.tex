@@ -1,5 +1,10 @@
-\hypertarget{group__wickr__ecdh__params}{}\section{wickr\+\_\+ecdh\+\_\+params\+\_\+t}
-\label{group__wickr__ecdh__params}\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\hypertarget{group__wickr__ecdh__params}{}\section{Wickr\+\_\+ecdh\+\_\+params}
+\label{group__wickr__ecdh__params}\index{Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params}
+\begin{DoxyCompactList}\small\item\em Holds parameters used to generate Elliptic Curve Diffie-\/\+Hellman based secrets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,12 +23,12 @@ bool \hyperlink{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}{w
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}\label{group__wickr__ecdh__params_ga801f1bfae11ac0c94d59bf9dd58f78aa}} 
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}}
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\index{Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}!wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid@{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid}!Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid()}{wickr\_ecdh\_params\_are\_valid()}}
 {\footnotesize\ttfamily bool wickr\+\_\+ecdh\+\_\+params\+\_\+are\+\_\+valid (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$}]{params }\end{DoxyParamCaption})}
 
-Determine Elliptical Curve Diffie-\/\+Hellman parameter set validity
+Determine Elliptic Curve Diffie-\/\+Hellman parameter set validity
 
 
 \begin{DoxyParams}{Parameters}
@@ -34,28 +39,28 @@ Determine Elliptical Curve Diffie-\/\+Hellman parameter set validity
 true if parameters are valid. At a minimum, the public and private components of the \textquotesingle{}local\+\_\+key\textquotesingle{}, and the public component of the \textquotesingle{}peer\+\_\+key\textquotesingle{} must be set for this function to succeed 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}\label{group__wickr__ecdh__params_ga016f2b643f2636c05ed72bc08a0314f0}} 
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}}
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\index{Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}!wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+copy@{wickr\+\_\+ecdh\+\_\+params\+\_\+copy}!Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+copy()}{wickr\_ecdh\_params\_copy()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
 
-Copy an Elliptical Curve Diffie-\/\+Hellman parameter set
+Copy an Elliptic Curve Diffie-\/\+Hellman parameter set
 
 
 \begin{DoxyParams}{Parameters}
-{\em source} & the Elliptical Curve Diffie-\/\+Hellman parameter set to copy \\
+{\em source} & the Elliptic Curve Diffie-\/\+Hellman parameter set to copy \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated Elliptical Curve Diffie-\/\+Hellman parameter set containing deep copies of the properties of \textquotesingle{}info\textquotesingle{} 
+a newly allocated Elliptic Curve Diffie-\/\+Hellman parameter set containing deep copies of the properties of \textquotesingle{}info\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ecdh__params_ga8a5be72f13caa4bf5ee99e16cc3b092f}\label{group__wickr__ecdh__params_ga8a5be72f13caa4bf5ee99e16cc3b092f}} 
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}}
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\index{Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}!wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+create@{wickr\+\_\+ecdh\+\_\+params\+\_\+create}!Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+create()}{wickr\_ecdh\_params\_create()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}$\ast$ wickr\+\_\+ecdh\+\_\+params\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{local\+\_\+key,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{peer\+\_\+key,  }\item[{\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$}]{kdf\+\_\+info }\end{DoxyParamCaption})}
 
-Create an Elliptical Curve Diffie-\/\+Hellman parameter set from components
+Create an Elliptic Curve Diffie-\/\+Hellman parameter set from components
 
 
 \begin{DoxyParams}{Parameters}
@@ -70,15 +75,15 @@ Create an Elliptical Curve Diffie-\/\+Hellman parameter set from components
 a newly allocated ecdh parameter set owning the properties passed in 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ecdh__params_gaf6efcaf58f603e323443063cde9b5621}\label{group__wickr__ecdh__params_gaf6efcaf58f603e323443063cde9b5621}} 
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}!wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}}
-\index{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}!wickr\+\_\+ecdh\+\_\+params\+\_\+t@{wickr\+\_\+ecdh\+\_\+params\+\_\+t}}
+\index{Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}!wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}}
+\index{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy@{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy}!Wickr\+\_\+ecdh\+\_\+params@{Wickr\+\_\+ecdh\+\_\+params}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ecdh\+\_\+params\+\_\+destroy()}{wickr\_ecdh\_params\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+ecdh\+\_\+params\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$$\ast$}]{params }\end{DoxyParamCaption})}
 
-Destroy an Elliptical Curve Diffie-\/\+Hellman parameter set
+Destroy an Elliptic Curve Diffie-\/\+Hellman parameter set
 
 
 \begin{DoxyParams}{Parameters}
-{\em params} & a pointer to an Elliptical Curve Diffie-\/\+Hellman parameter set to destroy. Properties of \textquotesingle{}$\ast$params\textquotesingle{} will also be destroyed \\
+{\em params} & a pointer to an Elliptic Curve Diffie-\/\+Hellman parameter set to destroy. Properties of \textquotesingle{}$\ast$params\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}

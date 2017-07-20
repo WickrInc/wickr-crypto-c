@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-/** @defgroup wickr_root_keys */
+/** @addtogroup wickr_root_keys */
 
 /**
  @ingroup wickr_root_keys

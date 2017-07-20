@@ -34,5 +34,7 @@ var searchData=
   ['wickr_5fstorage_5fkeys',['wickr_storage_keys',['../structwickr__storage__keys.html',1,'']]],
   ['wickr_5fstream_5fctx',['wickr_stream_ctx',['../structwickr__stream__ctx.html',1,'']]],
   ['wickr_5fstream_5fiv',['wickr_stream_iv',['../structwickr__stream__iv.html',1,'']]],
-  ['wickr_5fstream_5fkey',['wickr_stream_key',['../structwickr__stream__key.html',1,'']]]
+  ['wickr_5fstream_5fkey',['wickr_stream_key',['../structwickr__stream__key.html',1,'']]],
+  ['wickr_5ftransport_5fcallbacks',['wickr_transport_callbacks',['../structwickr__transport__callbacks.html',1,'']]],
+  ['wickr_5ftransport_5fctx',['wickr_transport_ctx',['../structwickr__transport__ctx.html',1,'']]]
 ];

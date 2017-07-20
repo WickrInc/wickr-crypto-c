@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wickr-crypto-c: wickr_ecdh_params_t</title>
+<title>wickr-crypto-c: Wickr_ecdh_params</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,12 +59,19 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_ecdh_params_t</div>  </div>
+<div class="title">Wickr_ecdh_params</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets.  <a href="structwickr__ecdh__params.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga8a5be72f13caa4bf5ee99e16cc3b092f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ecdh__params.html#ga8a5be72f13caa4bf5ee99e16cc3b092f">wickr_ecdh_params_create</a> (<a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local_key, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer_key, <a class="el" href="structwickr__kdf__meta.html">wickr_kdf_meta_t</a> *kdf_info)</td></tr>
@@ -93,7 +100,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Determine Elliptical Curve Diffie-Hellman parameter set validity</p>
+<p>Determine Elliptic Curve Diffie-Hellman parameter set validity</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">params</td><td>the parameter set to validate </td></tr>
@@ -119,14 +126,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy an Elliptical Curve Diffie-Hellman parameter set</p>
+<p>Copy an Elliptic Curve Diffie-Hellman parameter set</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>the Elliptical Curve Diffie-Hellman parameter set to copy </td></tr>
+    <tr><td class="paramname">source</td><td>the Elliptic Curve Diffie-Hellman parameter set to copy </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated Elliptical Curve Diffie-Hellman parameter set containing deep copies of the properties of 'info' </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a newly allocated Elliptic Curve Diffie-Hellman parameter set containing deep copies of the properties of 'info' </dd></dl>
 
 </div>
 </div>
@@ -161,12 +168,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create an Elliptical Curve Diffie-Hellman parameter set from components</p>
+<p>Create an Elliptic Curve Diffie-Hellman parameter set from components</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">local_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
-    <tr><td class="paramname">peer_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
-    <tr><td class="paramname">kdf_info</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
+    <tr><td class="paramname">local_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
+    <tr><td class="paramname">peer_key</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
+    <tr><td class="paramname">kdf_info</td><td>See documentation in '<a class="el" href="structwickr__ecdh__params.html" title="Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets. ">wickr_ecdh_params</a>' property declarations </td></tr>
   </table>
   </dd>
 </dl>
@@ -189,10 +196,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destroy an Elliptical Curve Diffie-Hellman parameter set</p>
+<p>Destroy an Elliptic Curve Diffie-Hellman parameter set</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">params</td><td>a pointer to an Elliptical Curve Diffie-Hellman parameter set to destroy. Properties of '*params' will also be destroyed </td></tr>
+    <tr><td class="paramname">params</td><td>a pointer to an Elliptic Curve Diffie-Hellman parameter set to destroy. Properties of '*params' will also be destroyed </td></tr>
   </table>
   </dd>
 </dl>

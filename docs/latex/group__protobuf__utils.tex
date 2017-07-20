@@ -3,11 +3,42 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_ga29c41b9d38441ba0fc54c7ffc0ea91a4}{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer)
+\item 
+\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_gac18223ab7af7d533ac09084f3c2caa4b}{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, bool is\+\_\+private)
+\item 
+\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_ga3b5c6c2941820a16a527fccebb0b8821}{wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer)
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__protobuf__utils_ga82aef3139be67d3646dc1e76c31a3352}{wickr\+\_\+buffer\+\_\+from\+\_\+protobytes} (Protobuf\+C\+Binary\+Data buffer)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__protobuf__utils_ga82aef3139be67d3646dc1e76c31a3352}\label{group__protobuf__utils_ga82aef3139be67d3646dc1e76c31a3352}} 
+\index{protobuf utilities@{protobuf utilities}!wickr\+\_\+buffer\+\_\+from\+\_\+protobytes@{wickr\+\_\+buffer\+\_\+from\+\_\+protobytes}}
+\index{wickr\+\_\+buffer\+\_\+from\+\_\+protobytes@{wickr\+\_\+buffer\+\_\+from\+\_\+protobytes}!protobuf utilities@{protobuf utilities}}
+\subsubsection{\texorpdfstring{wickr\+\_\+buffer\+\_\+from\+\_\+protobytes()}{wickr\_buffer\_from\_protobytes()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+buffer\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer }\end{DoxyParamCaption})}
+
+Create a wickr buffer from a protocol buffer binary data structure
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the protocol buffer binary data to create the \hyperlink{structwickr__buffer}{wickr\+\_\+buffer} from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \hyperlink{structwickr__buffer}{wickr\+\_\+buffer} containing the contents of \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protobuf__utils_ga29c41b9d38441ba0fc54c7ffc0ea91a4}\label{group__protobuf__utils_ga29c41b9d38441ba0fc54c7ffc0ea91a4}} 
+\index{protobuf utilities@{protobuf utilities}!wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes}}
+\index{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes}!protobuf utilities@{protobuf utilities}}
+\subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes()}{wickr\_cipher\_key\_from\_protobytes()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer }\end{DoxyParamCaption})}
+
 Create a cipher key from protocol buffers binary data object
 
 
@@ -18,14 +49,11 @@ Create a cipher key from protocol buffers binary data object
 \begin{DoxyReturn}{Returns}
 a cipher key created from serialized bytes within \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing buffer fails 
 \end{DoxyReturn}
-
-
-\subsection{Function Documentation}
-\mbox{\Hypertarget{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}\label{group__protobuf__utils_gae6d8cb6ff807fbff046065555bbece2e}} 
+\mbox{\Hypertarget{group__protobuf__utils_gac18223ab7af7d533ac09084f3c2caa4b}\label{group__protobuf__utils_gac18223ab7af7d533ac09084f3c2caa4b}} 
 \index{protobuf utilities@{protobuf utilities}!wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes}}
 \index{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes@{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes}!protobuf utilities@{protobuf utilities}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes()}{wickr\_ec\_key\_from\_protobytes()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{bool}]{is\+\_\+private }\end{DoxyParamCaption})}
 
 Create an EC Key from protocol buffers binary data object
 
@@ -35,7 +63,25 @@ Create an EC Key from protocol buffers binary data object
 \hline
 {\em engine} & a crypto engine that supports the parsing / importing of EC keys \\
 \hline
+{\em is\+\_\+private} & are the bytes in buffer a private or public key \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 an EC key created from serialized bytes within \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing buffer fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__protobuf__utils_ga3b5c6c2941820a16a527fccebb0b8821}\label{group__protobuf__utils_ga3b5c6c2941820a16a527fccebb0b8821}} 
+\index{protobuf utilities@{protobuf utilities}!wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes@{wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes}}
+\index{wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes@{wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes}!protobuf utilities@{protobuf utilities}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes()}{wickr\_ecdsa\_result\_from\_protobytes()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+ecdsa\+\_\+result\+\_\+from\+\_\+protobytes (\begin{DoxyParamCaption}\item[{Protobuf\+C\+Binary\+Data}]{buffer }\end{DoxyParamCaption})}
+
+Create an E\+C\+D\+SA result from protocol buffers binary data object
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the protocol buffers binary data object to create the ecdsa result with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an ecdsa result created from serialized bytes within \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing buffer fails 
 \end{DoxyReturn}

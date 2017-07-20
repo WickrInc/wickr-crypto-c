@@ -29,9 +29,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 /**
- @defgroup wickr_storage_keys wickr_storage_keys_t
+ @addtogroup wickr_storage_keys
+ */
+/**
  
  @ingroup wickr_storage_keys
  

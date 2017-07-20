@@ -29,7 +29,7 @@
 extern "C" {
 #endif
 
-/** @defgroup wickr_array wickr_array_t */
+/** @addtogroup wickr_array wickr_array_t */
 
 struct wickr_array;
 typedef struct wickr_array wickr_array_t;

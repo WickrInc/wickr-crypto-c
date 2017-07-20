@@ -102,6 +102,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga14d1fb3ddd1dbd7797eb9b628eef99fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9e4a0f3736d52836c9a9fc61794c8ddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga9e4a0f3736d52836c9a9fc61794c8ddd">wickr_identity_destroy</a> (<a class="el" href="structwickr__identity.html">wickr_identity_t</a> **identity)</td></tr>
 <tr class="separator:ga9e4a0f3736d52836c9a9fc61794c8ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga79ca0713d0b90873e584379f26cbd051"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga79ca0713d0b90873e584379f26cbd051">wickr_identity_serialize</a> (const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *identity)</td></tr>
+<tr class="separator:ga79ca0713d0b90873e584379f26cbd051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga378e5b6ddabfe2c6ae7dbd5bdc43278e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga378e5b6ddabfe2c6ae7dbd5bdc43278e">wickr_identity_create_from_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine)</td></tr>
+<tr class="separator:ga378e5b6ddabfe2c6ae7dbd5bdc43278e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga79551385194ba6b044b676ce5c7400e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga79551385194ba6b044b676ce5c7400e6">wickr_identity_chain_create</a> (<a class="el" href="structwickr__identity.html">wickr_identity_t</a> *root, <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *node)</td></tr>
 <tr class="separator:ga79551385194ba6b044b676ce5c7400e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9d708d340abcd0b54d87434b71d2d9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#gac9d708d340abcd0b54d87434b71d2d9e">wickr_identity_chain_copy</a> (const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *source)</td></tr>
@@ -348,6 +352,43 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga378e5b6ddabfe2c6ae7dbd5bdc43278e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga378e5b6ddabfe2c6ae7dbd5bdc43278e">&#9670;&nbsp;</a></span>wickr_identity_create_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__identity.html">wickr_identity_t</a>* wickr_identity_create_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
+          <td class="paramname"><em>engine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create an identity from a buffer that was created with 'wickr_identity_serialize'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the buffer that contains a serialized representation of an identity </td></tr>
+    <tr><td class="paramname">engine</td><td>the crypto engine to use to import the key components of the identity </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>deserialized identity or null if the deserialization fails </dd></dl>
+
+</div>
+</div>
 <a id="ga9e4a0f3736d52836c9a9fc61794c8ddd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga9e4a0f3736d52836c9a9fc61794c8ddd">&#9670;&nbsp;</a></span>wickr_identity_destroy()</h2>
 
@@ -370,6 +411,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga79ca0713d0b90873e584379f26cbd051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga79ca0713d0b90873e584379f26cbd051">&#9670;&nbsp;</a></span>wickr_identity_serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_identity_serialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td>
+          <td class="paramname"><em>identity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize an identity to bytes</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identity</td><td>the identity to serialize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a buffer containing a serialized representation of 'identity' or null if serialization fails </dd></dl>
 
 </div>
 </div>
@@ -445,7 +512,7 @@ Functions</h2></td></tr>
 <p>Generate a new random node identity, given a root identity</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engine</td><td>a crypto engine supporting random Elliptical Curve Key generation </td></tr>
+    <tr><td class="paramname">engine</td><td>a crypto engine supporting random Elliptic Curve Key generation </td></tr>
     <tr><td class="paramname">root_identity</td><td>a root identity that supports generating signatures with a private signing key </td></tr>
   </table>
   </dd>

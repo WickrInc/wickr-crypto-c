@@ -61,11 +61,11 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_ecdh_params Struct Reference</div>  </div>
+<div class="title">wickr_ecdh_params Struct Reference<div class="ingroups"><a class="el" href="group__wickr__ecdh__params.html">Wickr_ecdh_params</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets.  
+<p>Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets.  
  <a href="structwickr__ecdh__params.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ecdh_8h_source.html">ecdh.h</a>&gt;</code></p>
@@ -80,7 +80,7 @@ Data Fields</h2></td></tr>
 <tr class="separator:a0259f327ae0bdcc9e44b1d43a1216cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds parameters used to generate Elliptical Curve Diffie-Hellman based secrets. </p>
+<div class="textblock"><p>Holds parameters used to generate Elliptic Curve Diffie-Hellman based secrets. </p>
 <p>All ECDH secrets are created in two phases. In the first phase, a local key pair and peer public key are used to generate a standard ECDH shared secret, the length of which varies by curve. In the second phase, the ECDH shared secret is expanded by a KDF to get specific length output. The specific KDF and the length of it's output are controlled by the implementation provided by the crypto engine that is used to perform the key exchange operation. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a0259f327ae0bdcc9e44b1d43a1216cac"></a>
@@ -109,7 +109,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Elliptical Curve key with both public and private components set used to compute the ECDH shared secret </p>
+<p>Elliptic Curve key with both public and private components set used to compute the ECDH shared secret </p>
 
 </div>
 </div>
@@ -124,7 +124,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Elliptical Curve key with the public component of the other party's key pair used to compute the ECDH shared secret </p>
+<p>Elliptic Curve key with the public component of the other party's key pair used to compute the ECDH shared secret </p>
 
 </div>
 </div>

@@ -67,10 +67,58 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae6d8cb6ff807fbff046065555bbece2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protobuf__utils.html#gae6d8cb6ff807fbff046065555bbece2e">wickr_ec_key_from_protobytes</a> (ProtobufCBinaryData buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine)</td></tr>
-<tr class="separator:gae6d8cb6ff807fbff046065555bbece2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29c41b9d38441ba0fc54c7ffc0ea91a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protobuf__utils.html#ga29c41b9d38441ba0fc54c7ffc0ea91a4">wickr_cipher_key_from_protobytes</a> (ProtobufCBinaryData buffer)</td></tr>
+<tr class="separator:ga29c41b9d38441ba0fc54c7ffc0ea91a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac18223ab7af7d533ac09084f3c2caa4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protobuf__utils.html#gac18223ab7af7d533ac09084f3c2caa4b">wickr_ec_key_from_protobytes</a> (ProtobufCBinaryData buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, bool is_private)</td></tr>
+<tr class="separator:gac18223ab7af7d533ac09084f3c2caa4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b5c6c2941820a16a527fccebb0b8821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ecdsa__result.html">wickr_ecdsa_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protobuf__utils.html#ga3b5c6c2941820a16a527fccebb0b8821">wickr_ecdsa_result_from_protobytes</a> (ProtobufCBinaryData buffer)</td></tr>
+<tr class="separator:ga3b5c6c2941820a16a527fccebb0b8821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga82aef3139be67d3646dc1e76c31a3352"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__protobuf__utils.html#ga82aef3139be67d3646dc1e76c31a3352">wickr_buffer_from_protobytes</a> (ProtobufCBinaryData buffer)</td></tr>
+<tr class="separator:ga82aef3139be67d3646dc1e76c31a3352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga82aef3139be67d3646dc1e76c31a3352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga82aef3139be67d3646dc1e76c31a3352">&#9670;&nbsp;</a></span>wickr_buffer_from_protobytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_buffer_from_protobytes </td>
+          <td>(</td>
+          <td class="paramtype">ProtobufCBinaryData&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a wickr buffer from a protocol buffer binary data structure</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the protocol buffer binary data to create the <a class="el" href="structwickr__buffer.html" title="Represents an array of bytes and the length of the allocation associated with those bytes...">wickr_buffer</a> from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="structwickr__buffer.html" title="Represents an array of bytes and the length of the allocation associated with those bytes...">wickr_buffer</a> containing the contents of 'buffer' or NULL </dd></dl>
+
+</div>
+</div>
+<a id="ga29c41b9d38441ba0fc54c7ffc0ea91a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga29c41b9d38441ba0fc54c7ffc0ea91a4">&#9670;&nbsp;</a></span>wickr_cipher_key_from_protobytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a>* wickr_cipher_key_from_protobytes </td>
+          <td>(</td>
+          <td class="paramtype">ProtobufCBinaryData&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 <p>Create a cipher key from protocol buffers binary data object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -79,9 +127,11 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a cipher key created from serialized bytes within 'buffer' or NULL if parsing buffer fails </dd></dl>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="gae6d8cb6ff807fbff046065555bbece2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae6d8cb6ff807fbff046065555bbece2e">&#9670;&nbsp;</a></span>wickr_ec_key_from_protobytes()</h2>
+
+</div>
+</div>
+<a id="gac18223ab7af7d533ac09084f3c2caa4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac18223ab7af7d533ac09084f3c2caa4b">&#9670;&nbsp;</a></span>wickr_ec_key_from_protobytes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -96,7 +146,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
-          <td class="paramname"><em>engine</em>&#160;</td>
+          <td class="paramname"><em>engine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_private</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -110,10 +166,37 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>the protocol buffers binary data object to create the EC key with </td></tr>
     <tr><td class="paramname">engine</td><td>a crypto engine that supports the parsing / importing of EC keys </td></tr>
+    <tr><td class="paramname">is_private</td><td>are the bytes in buffer a private or public key </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an EC key created from serialized bytes within 'buffer' or NULL if parsing buffer fails </dd></dl>
+
+</div>
+</div>
+<a id="ga3b5c6c2941820a16a527fccebb0b8821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3b5c6c2941820a16a527fccebb0b8821">&#9670;&nbsp;</a></span>wickr_ecdsa_result_from_protobytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__ecdsa__result.html">wickr_ecdsa_result_t</a>* wickr_ecdsa_result_from_protobytes </td>
+          <td>(</td>
+          <td class="paramtype">ProtobufCBinaryData&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create an ECDSA result from protocol buffers binary data object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the protocol buffers binary data object to create the ecdsa result with </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an ecdsa result created from serialized bytes within 'buffer' or NULL if parsing buffer fails </dd></dl>
 
 </div>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wickr-crypto-c: wickr_node_t</title>
+<title>wickr-crypto-c: Wickr_node</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,12 +59,19 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_node_t</div>  </div>
+<div class="title">Wickr_node</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__node.html">wickr_node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a message destination at a point in time.  <a href="structwickr__node.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga293b1210648e2db5449be23fe0f3e644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__node.html">wickr_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#ga293b1210648e2db5449be23fe0f3e644">wickr_node_create</a> (<a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *dev_id, <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *id_chain, <a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *ephemeral_keypair)</td></tr>
@@ -85,6 +92,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga878a3015abc8563d512c0e5acf10df60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab577103b1752357b8575b064e22a4970"><td class="memItemLeft" align="right" valign="top">wickr_node_array_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#gab577103b1752357b8575b064e22a4970">wickr_node_array_copy</a> (const wickr_node_array_t *array)</td></tr>
 <tr class="separator:gab577103b1752357b8575b064e22a4970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6012a4fe980b1a616369cbc4b0a95f74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#ga6012a4fe980b1a616369cbc4b0a95f74">wickr_node_serialize</a> (const <a class="el" href="structwickr__node.html">wickr_node_t</a> *node)</td></tr>
+<tr class="separator:ga6012a4fe980b1a616369cbc4b0a95f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3906f6da9fbd61172d2d65466773aa83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__node.html">wickr_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#ga3906f6da9fbd61172d2d65466773aa83">wickr_node_create_from_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine)</td></tr>
+<tr class="separator:ga3906f6da9fbd61172d2d65466773aa83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab3f40f122baca50bcc62af54eaa08fe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#gab3f40f122baca50bcc62af54eaa08fe9">wickr_node_array_destroy</a> (wickr_node_array_t **array)</td></tr>
 <tr class="separator:gab3f40f122baca50bcc62af54eaa08fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -321,6 +332,43 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga3906f6da9fbd61172d2d65466773aa83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3906f6da9fbd61172d2d65466773aa83">&#9670;&nbsp;</a></span>wickr_node_create_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__node.html">wickr_node_t</a>* wickr_node_create_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
+          <td class="paramname"><em>engine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a node from a buffer that was created with 'wickr_node_serialize'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the buffer that contains a serialized representation of a node </td></tr>
+    <tr><td class="paramname">engine</td><td>the crypto engine to use to import the key components of the node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>deserialized node or null if the deserialization fails </dd></dl>
+
+</div>
+</div>
 <a id="ga6acf07885403d9df6baad36a8d797f73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6acf07885403d9df6baad36a8d797f73">&#9670;&nbsp;</a></span>wickr_node_destroy()</h2>
 
@@ -388,6 +436,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the rotation succeeds, false if the copy fails </dd></dl>
+
+</div>
+</div>
+<a id="ga6012a4fe980b1a616369cbc4b0a95f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6012a4fe980b1a616369cbc4b0a95f74">&#9670;&nbsp;</a></span>wickr_node_serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_node_serialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__node.html">wickr_node_t</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize a node to bytes</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the node to serialize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a buffer containing a serialized representation of 'node' or null if serialization fails </dd></dl>
 
 </div>
 </div>

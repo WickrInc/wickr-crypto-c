@@ -334,15 +334,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Import an Elliptical Curve key from a buffer</p>
+<p>Import an Elliptic Curve key from a buffer</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buffer</td><td>the buffer representing Elliptical Curve key material </td></tr>
+    <tr><td class="paramname">buffer</td><td>the buffer representing Elliptic Curve key material </td></tr>
     <tr><td class="paramname">is_private</td><td>false if the buffer represents a public key </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an Elliptical Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an Elliptic Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set </dd></dl>
 
 </div>
 </div>
@@ -361,14 +361,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Generate a random Elliptical Curve keypair Supported curve is currently limited to NIST P521</p>
+<p>Generate a random Elliptic Curve keypair Supported curve is currently limited to NIST P521</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">curve</td><td>the curve parameters to use for random key pair generation </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a random Elliptical Curve key pair or NULL if the random generation fails </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a random Elliptic Curve key pair or NULL if the random generation fails </dd></dl>
 
 </div>
 </div>
@@ -403,7 +403,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sign data using an Elliptical Curve key Data is hashed before signing. This function will calculate ECDSA(SHA2(data_to_sign))</p>
+<p>Sign data using an Elliptic Curve key Data is hashed before signing. This function will calculate ECDSA(SHA2(data_to_sign))</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ec_signing_key</td><td>private signing key to use for the ECDSA algorithm </td></tr>
@@ -475,7 +475,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Generate a shared secret given Elliptical Curve Diffie-Hellman parameters This function internally uses 'openssl_hkdf' to extract and expand the output of the ECDH function using 'params' for options</p>
+<p>Generate a shared secret given Elliptic Curve Diffie-Hellman parameters This function internally uses 'openssl_hkdf' to extract and expand the output of the ECDH function using 'params' for options</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">params</td><td>the parameters to use for the ECDH and HKDF algorithms </td></tr>

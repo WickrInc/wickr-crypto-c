@@ -40,7 +40,10 @@ extern "C" {
 typedef wickr_array_t wickr_node_array_t;
 
 /**
- @defgroup wickr_node wickr_node_t
+ @addtogroup wickr_node
+ */
+    
+/**
  
  @ingroup wickr_node
  @struct wickr_node
@@ -202,6 +205,7 @@ wickr_buffer_t *wickr_node_serialize(const wickr_node_t *node);
  Create a node from a buffer that was created with 'wickr_node_serialize'
  
  @param buffer the buffer that contains a serialized representation of a node
+ @param engine the crypto engine to use to import the key components of the node
  @return deserialized node or null if the deserialization fails
  */
 wickr_node_t *wickr_node_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);

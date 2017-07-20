@@ -34,7 +34,7 @@ extern "C" {
 #endif
     
 /**
- @defgroup wickr_identity wickr_identity
+ @addtogroup wickr_identity wickr_identity
  */
 
 /** @ingroup wickr_identity
@@ -147,7 +147,7 @@ wickr_ecdsa_result_t *wickr_identity_sign(const wickr_identity_t *identity, cons
  
  Generate a new random node identity, given a root identity
 
- @param engine a crypto engine supporting random Elliptical Curve Key generation
+ @param engine a crypto engine supporting random Elliptic Curve Key generation
  @param root_identity a root identity that supports generating signatures with a private signing key
  @return a newly allocated node identity signing by root identity 'root_identity'. The 'identifier' property of the node is generated at random to be 'IDENTIFIER_LEN' in length (currently 32 bytes). NULL if root_identity is not a root, or it does not contain a private signing key
  */
@@ -192,6 +192,7 @@ wickr_buffer_t *wickr_identity_serialize(const wickr_identity_t *identity);
  Create an identity from a buffer that was created with 'wickr_identity_serialize'
  
  @param buffer the buffer that contains a serialized representation of an identity
+ @param engine the crypto engine to use to import the key components of the identity
  @return deserialized identity or null if the deserialization fails
  */
 wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
@@ -214,6 +215,7 @@ wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *ide
  Create an identity chain from a buffer that was created with 'wickr_identity_chain_serialize'
  
  @param buffer the buffer that contains a serialized representation of an identity chain
+ @param engine the crypto engine to use to import the key components of the identity chain
  @return deserialized identity chain or null if the deserialization fails
  */
 wickr_identity_chain_t *wickr_identity_chain_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);

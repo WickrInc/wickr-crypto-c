@@ -1,0 +1,59 @@
+\hypertarget{structwickr__transport__callbacks}{}\section{wickr\+\_\+transport\+\_\+callbacks Struct Reference}
+\label{structwickr__transport__callbacks}\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+
+
+callbacks to notify the user of events within the transport  
+
+
+
+
+{\ttfamily \#include $<$transport\+\_\+ctx.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+wickr\+\_\+transport\+\_\+tx\+\_\+func \hyperlink{structwickr__transport__callbacks_a06c4b21b847c00e92373cf1402e1cb9d}{tx}
+\item 
+wickr\+\_\+transport\+\_\+rx\+\_\+func \hyperlink{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}{rx}
+\item 
+wickr\+\_\+transport\+\_\+state\+\_\+change\+\_\+func \hyperlink{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}{on\+\_\+state}
+\item 
+wickr\+\_\+transport\+\_\+validate\+\_\+identity\+\_\+func \hyperlink{structwickr__transport__callbacks_ab1afc16797b1bb30dde87936a97f682e}{on\+\_\+identity\+\_\+verify}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+callbacks to notify the user of events within the transport 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__transport__callbacks_ab1afc16797b1bb30dde87936a97f682e}\label{structwickr__transport__callbacks_ab1afc16797b1bb30dde87936a97f682e}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!on\+\_\+identity\+\_\+verify@{on\+\_\+identity\+\_\+verify}}
+\index{on\+\_\+identity\+\_\+verify@{on\+\_\+identity\+\_\+verify}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{on\+\_\+identity\+\_\+verify}{on\_identity\_verify}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+identity\+\_\+verify}
+
+Called when no remote data is provided for pinning, so the identity of the remote needs to be verified by the application
+
+status of the message signature \mbox{\Hypertarget{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}\label{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!on\+\_\+state@{on\+\_\+state}}
+\index{on\+\_\+state@{on\+\_\+state}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{on\+\_\+state}{on\_state}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+state}
+
+Called whenever the state of the transport context is updated \mbox{\Hypertarget{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}\label{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!rx@{rx}}
+\index{rx@{rx}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{rx}{rx}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::rx}
+
+Called when a buffer passed to wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer is decoded \mbox{\Hypertarget{structwickr__transport__callbacks_a06c4b21b847c00e92373cf1402e1cb9d}\label{structwickr__transport__callbacks_a06c4b21b847c00e92373cf1402e1cb9d}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!tx@{tx}}
+\index{tx@{tx}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{tx}{tx}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::tx}
+
+Called when a buffer passed to wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer is encoded and ready for sending 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/crypto/transport\+\_\+ctx.\+h\end{DoxyCompactItemize}

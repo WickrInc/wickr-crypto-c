@@ -31,7 +31,7 @@ extern "C" {
 #endif
 
 /**
- @defgroup wickr_protocol Wickr Protocol
+ @addtogroup wickr_protocol Wickr Protocol
  */
 
 /**

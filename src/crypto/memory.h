@@ -29,7 +29,7 @@ extern "C" {
 #endif
 
 /**
- @defgroup memory_functions memory management functions
+ @addtogroup memory_functions memory management functions
  
  */
 

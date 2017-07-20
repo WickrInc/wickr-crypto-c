@@ -32,8 +32,10 @@ extern "C" {
 #endif
 
 /**
- 
- @defgroup protobuf_utils protobuf utilities
+ @addtogroup protobuf_utils protobuf utilities
+ */
+    
+/**
  
  @ingroup protobuf_utils
  

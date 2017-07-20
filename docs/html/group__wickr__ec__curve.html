@@ -68,8 +68,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ec__curve.html">wickr_ec_curve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metadata about curve types to help with key generation, and signatures.  <a href="structwickr__ec__curve.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ec__key.html">wickr_ec_key</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of public and private Elliptical Curve Keypair information as buffers.  <a href="structwickr__ec__key.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representation of public and private Elliptic Curve Keypair information as buffers.  <a href="structwickr__ec__key.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -168,17 +171,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create an Elliptical Curve Keypair from components</p>
+<p>Create an Elliptic Curve Keypair from components</p>
 <p>NOTE: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-generated components. A crypto engine is required to generate random keypairs</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">curve</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptical Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation </td></tr>
-    <tr><td class="paramname">pub_data</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptical Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation </td></tr>
-    <tr><td class="paramname">pri_data</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptical Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation. May be NULL to represent a public key </td></tr>
+    <tr><td class="paramname">curve</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptic Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation </td></tr>
+    <tr><td class="paramname">pub_data</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptic Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation </td></tr>
+    <tr><td class="paramname">pri_data</td><td>see '<a class="el" href="structwickr__ec__key.html" title="Representation of public and private Elliptic Curve Keypair information as buffers. ">wickr_ec_key</a>' property documentation. May be NULL to represent a public key </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated elliptical key representing either a public or private key. Takes ownership of the passed inputs </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a newly allocated elliptic curve key representing either a public or private key. Takes ownership of the passed inputs </dd></dl>
 
 </div>
 </div>

@@ -31,16 +31,18 @@ extern "C" {
 #endif
 
 /**
- 
- @defgroup wickr_ecdsa_result wickr_ecdsa_result_t
+ @addtogroup wickr_ecdsa_result
+ */
+
+/**
  
  @ingroup wickr_ecdsa_result
  
  @struct wickr_ecdsa_result
  
- @brief Elliptical Curve Digital Signature Algorithm Result
+ @brief Elliptic Curve Digital Signature Algorithm Result
  
- Holds values related to a generated signature using Elliptical Curve Digital Signature Algorithm
+ Holds values related to a generated signature using Elliptic Curve Digital Signature Algorithm
  
  @var wickr_ecdsa_result::curve
  information about the curve that the signing key belonged to
