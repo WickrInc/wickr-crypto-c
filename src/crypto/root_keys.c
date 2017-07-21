@@ -100,7 +100,7 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
         return NULL;
     }
     
-    wickr_ec_key_t *node_signature_root = wickr_ec_key_from_protobytes(proto_keypair->node_signature_root, engine);
+    wickr_ec_key_t *node_signature_root = wickr_ec_key_from_protobytes(proto_keypair->node_signature_root, engine, true);
     
     if (!node_signature_root) {
         wickr_cipher_key_destroy(&remote_storage_key);

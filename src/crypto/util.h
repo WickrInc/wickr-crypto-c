@@ -30,7 +30,7 @@ extern "C" {
 
 /**
  
- @defgroup data_conversion_utilities Data Conversion Utilities
+ @addtogroup data_conversion_utilities Data Conversion Utilities
  
  */
 

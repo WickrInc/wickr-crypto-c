@@ -31,7 +31,7 @@ extern "C" {
     
 
 /**
- @defgroup wickr_kdf wickr_kdf
+ @addtogroup wickr_kdf wickr_kdf
  */
 
 /**

@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "identity.proto";
+import "ephemeral_keypair.proto";
+
+package wickr.proto;
+
+message Node {
+    optional bytes devid = 1;
+    optional IdentityChain id_chain = 2;
+    optional EphemeralKeypair ephemeral_keypair = 3;
+}

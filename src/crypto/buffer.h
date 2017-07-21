@@ -34,7 +34,7 @@ extern "C" {
 
 /**
  
- @defgroup wickr_buffer wickr_buffer_t
+ @addtogroup wickr_buffer wickr_buffer_t
  
  @struct wickr_buffer
  @ingroup wickr_buffer

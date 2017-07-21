@@ -1,5 +1,6 @@
 
 #include "identity.h"
+#include "identity_priv.h"
 #include "memory.h"
 
 wickr_identity_t *wickr_identity_create(wickr_identity_type type, wickr_buffer_t *identifier, wickr_ec_key_t *sig_key, wickr_ecdsa_result_t *signature)
@@ -114,6 +115,51 @@ void wickr_identity_destroy(wickr_identity_t **identity)
     *identity = NULL;
 }
 
+wickr_buffer_t *wickr_identity_serialize(const wickr_identity_t *identity)
+{
+    if (!identity) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Identity *proto_identity = wickr_identity_to_proto(identity);
+    
+    if (!proto_identity) {
+        return NULL;
+    }
+    
+    size_t packed_size = wickr__proto__identity__get_packed_size(proto_identity);
+    
+    wickr_buffer_t *packed_buffer = wickr_buffer_create_empty(packed_size);
+    
+    if (!packed_buffer) {
+        wickr_identity_proto_free(proto_identity);
+        return NULL;
+    }
+    
+    wickr__proto__identity__pack(proto_identity, packed_buffer->bytes);
+    wickr_identity_proto_free(proto_identity);
+    
+    return packed_buffer;
+}
+
+wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
+{
+    if (!buffer) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Identity *proto_identity = wickr__proto__identity__unpack(NULL, buffer->length, buffer->bytes);
+    
+    if (!proto_identity) {
+        return NULL;
+    }
+    
+    wickr_identity_t *return_identity = wickr_identity_create_from_proto(proto_identity, engine);
+    wickr__proto__identity__free_unpacked(proto_identity, NULL);
+    
+    return return_identity;
+}
+
 wickr_identity_chain_t *wickr_identity_chain_create(wickr_identity_t *root, wickr_identity_t *node)
 {
     if (!root || !node) {
@@ -172,6 +218,51 @@ bool wickr_identity_chain_validate(const wickr_identity_chain_t *chain, const wi
     }
     
     return engine->wickr_crypto_engine_ec_verify(chain->node->signature, chain->root->sig_key, chain->node->sig_key->pub_data);
+}
+
+wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain)
+{
+    if (!identity_chain) {
+        return NULL;
+    }
+    
+    Wickr__Proto__IdentityChain *proto_identity = wickr_identity_chain_to_proto(identity_chain);
+    
+    if (!proto_identity) {
+        return NULL;
+    }
+    
+    size_t packed_size = wickr__proto__identity_chain__get_packed_size(proto_identity);
+    
+    wickr_buffer_t *packed_buffer = wickr_buffer_create_empty(packed_size);
+    
+    if (!packed_buffer) {
+        wickr_identity_chain_proto_free(proto_identity);
+        return NULL;
+    }
+    
+    wickr__proto__identity_chain__pack(proto_identity, packed_buffer->bytes);
+    wickr_identity_chain_proto_free(proto_identity);
+    
+    return packed_buffer;
+}
+
+wickr_identity_chain_t *wickr_identity_chain_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
+{
+    if (!buffer) {
+        return NULL;
+    }
+    
+    Wickr__Proto__IdentityChain *proto_identity = wickr__proto__identity_chain__unpack(NULL, buffer->length, buffer->bytes);
+    
+    if (!proto_identity) {
+        return NULL;
+    }
+    
+    wickr_identity_chain_t *return_chain = wickr_identity_chain_create_from_proto(proto_identity, engine);
+    wickr__proto__identity_chain__free_unpacked(proto_identity, NULL);
+    
+    return return_chain;
 }
 
 void wickr_identity_chain_destroy(wickr_identity_chain_t **chain)

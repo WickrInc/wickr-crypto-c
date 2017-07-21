@@ -346,17 +346,17 @@ a buffer containing the output of the chosen mode of the contents of in\+\_\+fil
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}{wickr\_crypto\_engine\_ec\_key\_import}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)}
 
-Import an Elliptical Curve key from a buffer
+Import an Elliptic Curve key from a buffer
 
 
 \begin{DoxyParams}{Parameters}
-{\em buffer} & the buffer representing Elliptical Curve key material \\
+{\em buffer} & the buffer representing Elliptic Curve key material \\
 \hline
 {\em is\+\_\+private} & false if the buffer represents a public key \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an Elliptical Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
+an Elliptic Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}\label{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}}
@@ -364,7 +364,7 @@ an Elliptical Curve key pair parsed from buffer or N\+U\+LL if buffer does not c
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}{wickr\_crypto\_engine\_ec\_rand\_key}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key) (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)}
 
-Generate a random Elliptical Curve keypair
+Generate a random Elliptic Curve keypair
 
 
 \begin{DoxyParams}{Parameters}
@@ -372,7 +372,7 @@ Generate a random Elliptical Curve keypair
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a random Elliptical Curve key pair or N\+U\+LL if the random generation fails 
+a random Elliptic Curve key pair or N\+U\+LL if the random generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}\label{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}}
@@ -380,7 +380,7 @@ a random Elliptical Curve key pair or N\+U\+LL if the random generation fails
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}{wickr\_crypto\_engine\_ec\_sign}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign) (const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
 
-Sign data using an Elliptical Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
+Sign data using an Elliptic Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
 
 
 \begin{DoxyParams}{Parameters}
@@ -420,7 +420,7 @@ true if \textquotesingle{}signature\textquotesingle{} can be verified by \textqu
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}{wickr\_crypto\_engine\_ecdh\_gen\_key}}
 {\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key) (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)}
 
-Generate a shared secret given Elliptical Curve Diffie-\/\+Hellman parameters and a K\+DF
+Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters and a K\+DF
 
 
 \begin{DoxyParams}{Parameters}

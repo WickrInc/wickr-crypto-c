@@ -149,17 +149,17 @@ true if the decryption operation succeeds, and \textquotesingle{}out\+\_\+file\t
 \subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+key\+\_\+import()}{openssl\_ec\_key\_import()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ openssl\+\_\+ec\+\_\+key\+\_\+import (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer,  }\item[{bool}]{is\+\_\+private }\end{DoxyParamCaption})}
 
-Import an Elliptical Curve key from a buffer
+Import an Elliptic Curve key from a buffer
 
 
 \begin{DoxyParams}{Parameters}
-{\em buffer} & the buffer representing Elliptical Curve key material \\
+{\em buffer} & the buffer representing Elliptic Curve key material \\
 \hline
 {\em is\+\_\+private} & false if the buffer represents a public key \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an Elliptical Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
+an Elliptic Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga75a01a740d558bfcc0f10920266cd9d5}\label{group__openssl__crypto_ga75a01a740d558bfcc0f10920266cd9d5}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+rand\+\_\+key@{openssl\+\_\+ec\+\_\+rand\+\_\+key}}
@@ -167,7 +167,7 @@ an Elliptical Curve key pair parsed from buffer or N\+U\+LL if buffer does not c
 \subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+rand\+\_\+key()}{openssl\_ec\_rand\_key()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ openssl\+\_\+ec\+\_\+rand\+\_\+key (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve }\end{DoxyParamCaption})}
 
-Generate a random Elliptical Curve keypair Supported curve is currently limited to N\+I\+ST P521
+Generate a random Elliptic Curve keypair Supported curve is currently limited to N\+I\+ST P521
 
 
 \begin{DoxyParams}{Parameters}
@@ -175,7 +175,7 @@ Generate a random Elliptical Curve keypair Supported curve is currently limited 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a random Elliptical Curve key pair or N\+U\+LL if the random generation fails 
+a random Elliptic Curve key pair or N\+U\+LL if the random generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gab32cef5c789ee1992afae98a81b65823}\label{group__openssl__crypto_gab32cef5c789ee1992afae98a81b65823}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+sign@{openssl\+\_\+ec\+\_\+sign}}
@@ -183,7 +183,7 @@ a random Elliptical Curve key pair or N\+U\+LL if the random generation fails
 \subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+sign()}{openssl\_ec\_sign()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ openssl\+\_\+ec\+\_\+sign (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{ec\+\_\+signing\+\_\+key,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{data\+\_\+to\+\_\+sign,  }\item[{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}]{digest\+\_\+mode }\end{DoxyParamCaption})}
 
-Sign data using an Elliptical Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
+Sign data using an Elliptic Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
 
 
 \begin{DoxyParams}{Parameters}
@@ -223,7 +223,7 @@ true if \textquotesingle{}signature\textquotesingle{} can be verified by \textqu
 \subsubsection{\texorpdfstring{openssl\+\_\+ecdh\+\_\+gen\+\_\+key()}{openssl\_ecdh\_gen\_key()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ openssl\+\_\+ecdh\+\_\+gen\+\_\+key (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$}]{params }\end{DoxyParamCaption})}
 
-Generate a shared secret given Elliptical Curve Diffie-\/\+Hellman parameters This function internally uses \textquotesingle{}openssl\+\_\+hkdf\textquotesingle{} to extract and expand the output of the E\+C\+DH function using \textquotesingle{}params\textquotesingle{} for options
+Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters This function internally uses \textquotesingle{}openssl\+\_\+hkdf\textquotesingle{} to extract and expand the output of the E\+C\+DH function using \textquotesingle{}params\textquotesingle{} for options
 
 
 \begin{DoxyParams}{Parameters}

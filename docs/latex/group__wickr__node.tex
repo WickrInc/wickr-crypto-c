@@ -1,5 +1,10 @@
-\hypertarget{group__wickr__node}{}\section{wickr\+\_\+node\+\_\+t}
-\label{group__wickr__node}\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\hypertarget{group__wickr__node}{}\section{Wickr\+\_\+node}
+\label{group__wickr__node}\index{Wickr\+\_\+node@{Wickr\+\_\+node}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwickr__node}{wickr\+\_\+node}
+\begin{DoxyCompactList}\small\item\em Represents a message destination at a point in time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,6 +26,10 @@ bool \hyperlink{group__wickr__node_gae511a75489982fc2e90271be63d9d753}{wickr\+\_
 \item 
 wickr\+\_\+node\+\_\+array\+\_\+t $\ast$ \hyperlink{group__wickr__node_gab577103b1752357b8575b064e22a4970}{wickr\+\_\+node\+\_\+array\+\_\+copy} (const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$array)
 \item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__node_ga6012a4fe980b1a616369cbc4b0a95f74}{wickr\+\_\+node\+\_\+serialize} (const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$node)
+\item 
+\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$ \hyperlink{group__wickr__node_ga3906f6da9fbd61172d2d65466773aa83}{wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+\item 
 void \hyperlink{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}{wickr\+\_\+node\+\_\+array\+\_\+destroy} (wickr\+\_\+node\+\_\+array\+\_\+t $\ast$$\ast$array)
 \end{DoxyCompactItemize}
 
@@ -30,8 +39,8 @@ void \hyperlink{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}{wickr\+\_
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__node_gab577103b1752357b8575b064e22a4970}\label{group__wickr__node_gab577103b1752357b8575b064e22a4970}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+array\+\_\+copy@{wickr\+\_\+node\+\_\+array\+\_\+copy}}
-\index{wickr\+\_\+node\+\_\+array\+\_\+copy@{wickr\+\_\+node\+\_\+array\+\_\+copy}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+array\+\_\+copy@{wickr\+\_\+node\+\_\+array\+\_\+copy}}
+\index{wickr\+\_\+node\+\_\+array\+\_\+copy@{wickr\+\_\+node\+\_\+array\+\_\+copy}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+array\+\_\+copy()}{wickr\_node\_array\_copy()}}
 {\footnotesize\ttfamily wickr\+\_\+node\+\_\+array\+\_\+t$\ast$ wickr\+\_\+node\+\_\+array\+\_\+copy (\begin{DoxyParamCaption}\item[{const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$}]{array }\end{DoxyParamCaption})}
 
@@ -46,8 +55,8 @@ Make a deep copy of a node array
 a newly allocated wickr\+\_\+node\+\_\+array that contains a copy of each element from \textquotesingle{}array\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}\label{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+array\+\_\+destroy@{wickr\+\_\+node\+\_\+array\+\_\+destroy}}
-\index{wickr\+\_\+node\+\_\+array\+\_\+destroy@{wickr\+\_\+node\+\_\+array\+\_\+destroy}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+array\+\_\+destroy@{wickr\+\_\+node\+\_\+array\+\_\+destroy}}
+\index{wickr\+\_\+node\+\_\+array\+\_\+destroy@{wickr\+\_\+node\+\_\+array\+\_\+destroy}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+array\+\_\+destroy()}{wickr\_node\_array\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+node\+\_\+array\+\_\+destroy (\begin{DoxyParamCaption}\item[{wickr\+\_\+node\+\_\+array\+\_\+t $\ast$$\ast$}]{array }\end{DoxyParamCaption})}
 
@@ -61,8 +70,8 @@ N\+O\+TE\+: Nodes in the array are not destroyed, only the container array
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{group__wickr__node_ga878a3015abc8563d512c0e5acf10df60}\label{group__wickr__node_ga878a3015abc8563d512c0e5acf10df60}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item}}
-\index{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item}}
+\index{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item()}{wickr\_node\_array\_fetch\_item()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item (\begin{DoxyParamCaption}\item[{const wickr\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index }\end{DoxyParamCaption})}
 
@@ -81,8 +90,8 @@ N\+O\+TE\+: a fetched node is not copied out of the array, it is still owned by 
 the node at \textquotesingle{}index\textquotesingle{}. N\+U\+LL if the index is out of bounds 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}\label{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+array\+\_\+new@{wickr\+\_\+node\+\_\+array\+\_\+new}}
-\index{wickr\+\_\+node\+\_\+array\+\_\+new@{wickr\+\_\+node\+\_\+array\+\_\+new}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+array\+\_\+new@{wickr\+\_\+node\+\_\+array\+\_\+new}}
+\index{wickr\+\_\+node\+\_\+array\+\_\+new@{wickr\+\_\+node\+\_\+array\+\_\+new}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+array\+\_\+new()}{wickr\_node\_array\_new()}}
 {\footnotesize\ttfamily wickr\+\_\+node\+\_\+array\+\_\+t$\ast$ wickr\+\_\+node\+\_\+array\+\_\+new (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{node\+\_\+count }\end{DoxyParamCaption})}
 
@@ -97,8 +106,8 @@ Create an array of nodes
 a newly allocated array with enough space to hold \textquotesingle{}node\+\_\+count\textquotesingle{} nodes 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_gae511a75489982fc2e90271be63d9d753}\label{group__wickr__node_gae511a75489982fc2e90271be63d9d753}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item}}
-\index{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item}}
+\index{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item()}{wickr\_node\_array\_set\_item()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item (\begin{DoxyParamCaption}\item[{wickr\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index,  }\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{node }\end{DoxyParamCaption})}
 
@@ -119,8 +128,8 @@ N\+O\+TE\+: \textquotesingle{}node\textquotesingle{} is not copied into the arra
 true if the insert succeeds, false if the index is out of range 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_ga393c4fb42022fdc6f4336a62dbc7af91}\label{group__wickr__node_ga393c4fb42022fdc6f4336a62dbc7af91}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+copy@{wickr\+\_\+node\+\_\+copy}}
-\index{wickr\+\_\+node\+\_\+copy@{wickr\+\_\+node\+\_\+copy}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+copy@{wickr\+\_\+node\+\_\+copy}}
+\index{wickr\+\_\+node\+\_\+copy@{wickr\+\_\+node\+\_\+copy}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+copy()}{wickr\_node\_copy()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
 
@@ -135,8 +144,8 @@ Copy an node
 a newly allocated node holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_ga293b1210648e2db5449be23fe0f3e644}\label{group__wickr__node_ga293b1210648e2db5449be23fe0f3e644}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+create@{wickr\+\_\+node\+\_\+create}}
-\index{wickr\+\_\+node\+\_\+create@{wickr\+\_\+node\+\_\+create}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+create@{wickr\+\_\+node\+\_\+create}}
+\index{wickr\+\_\+node\+\_\+create@{wickr\+\_\+node\+\_\+create}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+create()}{wickr\_node\_create()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{dev\+\_\+id,  }\item[{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$}]{id\+\_\+chain,  }\item[{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t} $\ast$}]{ephemeral\+\_\+keypair }\end{DoxyParamCaption})}
 
@@ -154,9 +163,27 @@ Create a node from components
 \begin{DoxyReturn}{Returns}
 a newly allocated node. Takes ownership of the passed inputs 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__node_ga3906f6da9fbd61172d2d65466773aa83}\label{group__wickr__node_ga3906f6da9fbd61172d2d65466773aa83}} 
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer}}
+\index{wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer}!Wickr\+\_\+node@{Wickr\+\_\+node}}
+\subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer()}{wickr\_node\_create\_from\_buffer()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+
+Create a node from a buffer that was created with \textquotesingle{}wickr\+\_\+node\+\_\+serialize\textquotesingle{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer that contains a serialized representation of a node \\
+\hline
+{\em engine} & the crypto engine to use to import the key components of the node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+deserialized node or null if the deserialization fails 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_ga6acf07885403d9df6baad36a8d797f73}\label{group__wickr__node_ga6acf07885403d9df6baad36a8d797f73}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+destroy@{wickr\+\_\+node\+\_\+destroy}}
-\index{wickr\+\_\+node\+\_\+destroy@{wickr\+\_\+node\+\_\+destroy}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+destroy@{wickr\+\_\+node\+\_\+destroy}}
+\index{wickr\+\_\+node\+\_\+destroy@{wickr\+\_\+node\+\_\+destroy}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+destroy()}{wickr\_node\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+node\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$$\ast$}]{node }\end{DoxyParamCaption})}
 
@@ -168,8 +195,8 @@ Destroy a node
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{group__wickr__node_ga2ed650b947df7316cf0f915805ac5aa4}\label{group__wickr__node_ga2ed650b947df7316cf0f915805ac5aa4}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+rotate\+\_\+keypair@{wickr\+\_\+node\+\_\+rotate\+\_\+keypair}}
-\index{wickr\+\_\+node\+\_\+rotate\+\_\+keypair@{wickr\+\_\+node\+\_\+rotate\+\_\+keypair}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+rotate\+\_\+keypair@{wickr\+\_\+node\+\_\+rotate\+\_\+keypair}}
+\index{wickr\+\_\+node\+\_\+rotate\+\_\+keypair@{wickr\+\_\+node\+\_\+rotate\+\_\+keypair}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+rotate\+\_\+keypair()}{wickr\_node\_rotate\_keypair()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+rotate\+\_\+keypair (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{node,  }\item[{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t} $\ast$}]{new\+\_\+keypair,  }\item[{bool}]{copy }\end{DoxyParamCaption})}
 
@@ -189,9 +216,25 @@ N\+O\+TE\+: This function D\+O\+ES N\+OT ensure that new\+\_\+keypair is signed 
 \begin{DoxyReturn}{Returns}
 true if the rotation succeeds, false if the copy fails 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__node_ga6012a4fe980b1a616369cbc4b0a95f74}\label{group__wickr__node_ga6012a4fe980b1a616369cbc4b0a95f74}} 
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+serialize@{wickr\+\_\+node\+\_\+serialize}}
+\index{wickr\+\_\+node\+\_\+serialize@{wickr\+\_\+node\+\_\+serialize}!Wickr\+\_\+node@{Wickr\+\_\+node}}
+\subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+serialize()}{wickr\_node\_serialize()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Serialize a node to bytes
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & the node to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing a serialized representation of \textquotesingle{}node\textquotesingle{} or null if serialization fails 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_gac9e2d96e9109590124b2fd05a8826c1d}\label{group__wickr__node_gac9e2d96e9109590124b2fd05a8826c1d}} 
-\index{wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}!wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain@{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain}}
-\index{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain@{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain}!wickr\+\_\+node\+\_\+t@{wickr\+\_\+node\+\_\+t}}
+\index{Wickr\+\_\+node@{Wickr\+\_\+node}!wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain@{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain}}
+\index{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain@{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain}!Wickr\+\_\+node@{Wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain()}{wickr\_node\_verify\_signature\_chain()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{node,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
 

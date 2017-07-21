@@ -37,7 +37,7 @@
 extern "C" {
 #endif
 
-/** @defgroup wickr_crypto_engine */
+/** @addtogroup wickr_crypto_engine */
 
 /**
  @ingroup wickr_crypto_engine
@@ -171,21 +171,21 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
-     Generate a random Elliptical Curve keypair
+     Generate a random Elliptic Curve keypair
      
      @param curve the curve parameters to use for random key pair generation
-     @return a random Elliptical Curve key pair or NULL if the random generation fails
+     @return a random Elliptic Curve key pair or NULL if the random generation fails
      */
     wickr_ec_key_t *(*wickr_crypto_engine_ec_rand_key)(wickr_ec_curve_t curve);
     
     /**
      @ingroup wickr_crypto_engine
      
-     Import an Elliptical Curve key from a buffer
+     Import an Elliptic Curve key from a buffer
      
-     @param buffer the buffer representing Elliptical Curve key material
+     @param buffer the buffer representing Elliptic Curve key material
      @param is_private false if the buffer represents a public key
-     @return an Elliptical Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set
+     @return an Elliptic Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set
      */
     wickr_ec_key_t *(*wickr_crypto_engine_ec_key_import)(const wickr_buffer_t *buffer,
                                                          bool is_private);
@@ -193,7 +193,7 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
-     Sign data using an Elliptical Curve key
+     Sign data using an Elliptic Curve key
      Data is hashed before signing. This function will calculate ECDSA(SHA2(data_to_sign))
      
      @param ec_signing_key private signing key to use for the ECDSA algorithm
@@ -222,7 +222,7 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
-     Generate a shared secret given Elliptical Curve Diffie-Hellman parameters and a KDF
+     Generate a shared secret given Elliptic Curve Diffie-Hellman parameters and a KDF
      
      @param params the parameters to use for the ECDH and KDF algorithms
      @return a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed

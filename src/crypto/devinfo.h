@@ -31,8 +31,10 @@ extern "C" {
 #endif
 
 /**
- 
- @defgroup wickr_dev_info wickr_dev_info_t
+ @addtogroup wickr_dev_info
+ */
+    
+/**
  
  @ingroup wickr_dev_info
  

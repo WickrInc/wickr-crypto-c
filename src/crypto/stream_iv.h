@@ -25,7 +25,10 @@
 #include "crypto_engine.h"
 
 /**
- @defgroup wickr_stream_iv wickr_stream_iv
+ @addtogroup wickr_stream_iv
+ */
+
+/**
  @ingroup wickr_stream_iv
  @struct wickr_stream_iv
  

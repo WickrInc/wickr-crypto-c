@@ -33,6 +33,10 @@ enum \hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr
 \item 
 void \hyperlink{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}{wickr\+\_\+identity\+\_\+destroy} (\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$$\ast$identity)
 \item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}{wickr\+\_\+identity\+\_\+serialize} (const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$identity)
+\item 
+\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+\item 
 \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga79551385194ba6b044b676ce5c7400e6}{wickr\+\_\+identity\+\_\+chain\+\_\+create} (\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$root, \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$node)
 \item 
 \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}{wickr\+\_\+identity\+\_\+chain\+\_\+copy} (const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$source)
@@ -170,6 +174,24 @@ Create an identity from components
 \begin{DoxyReturn}{Returns}
 a newly allocated identity that takes ownership of the passed inputs 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}\label{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}}
+\index{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer()}{wickr\_identity\_create\_from\_buffer()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+
+Create an identity from a buffer that was created with \textquotesingle{}wickr\+\_\+identity\+\_\+serialize\textquotesingle{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer that contains a serialized representation of an identity \\
+\hline
+{\em engine} & the crypto engine to use to import the key components of the identity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+deserialized identity or null if the deserialization fails 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}\label{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}} 
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+destroy@{wickr\+\_\+identity\+\_\+destroy}}
 \index{wickr\+\_\+identity\+\_\+destroy@{wickr\+\_\+identity\+\_\+destroy}!wickr\+\_\+identity@{wickr\+\_\+identity}}
@@ -183,6 +205,22 @@ Destroy an identity
 {\em identity} & a pointer to the identity to destroy. All properties of \textquotesingle{}$\ast$identity\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}\label{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}}
+\index{wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+serialize()}{wickr\_identity\_serialize()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{identity }\end{DoxyParamCaption})}
+
+Serialize an identity to bytes
+
+
+\begin{DoxyParams}{Parameters}
+{\em identity} & the identity to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing a serialized representation of \textquotesingle{}identity\textquotesingle{} or null if serialization fails 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_ga32097764e57e70d85a2e1277146495c9}\label{group__wickr__identity_ga32097764e57e70d85a2e1277146495c9}} 
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+sign@{wickr\+\_\+identity\+\_\+sign}}
 \index{wickr\+\_\+identity\+\_\+sign@{wickr\+\_\+identity\+\_\+sign}!wickr\+\_\+identity@{wickr\+\_\+identity}}
@@ -213,7 +251,7 @@ Generate a new random node identity, given a root identity
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine supporting random Elliptical Curve Key generation \\
+{\em engine} & a crypto engine supporting random Elliptic Curve Key generation \\
 \hline
 {\em root\+\_\+identity} & a root identity that supports generating signatures with a private signing key \\
 \hline

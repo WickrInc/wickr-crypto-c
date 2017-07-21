@@ -3,8 +3,10 @@
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
+struct \hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve}
+\begin{DoxyCompactList}\small\item\em Metadata about curve types to help with key generation, and signatures. \end{DoxyCompactList}\item 
 struct \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}
-\begin{DoxyCompactList}\small\item\em Representation of public and private Elliptical Curve Keypair information as buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Representation of public and private Elliptic Curve Keypair information as buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,7 +62,7 @@ a newly allocated EC key holding a deep copy of the properties of \textquotesing
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+create()}{wickr\_ec\_key\_create()}}
 {\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{pub\+\_\+data,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{pri\+\_\+data }\end{DoxyParamCaption})}
 
-Create an Elliptical Curve Keypair from components
+Create an Elliptic Curve Keypair from components
 
 N\+O\+TE\+: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-\/generated components. A crypto engine is required to generate random keypairs
 
@@ -74,7 +76,7 @@ N\+O\+TE\+: This function does not have the capability to generate key pair info
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated elliptical key representing either a public or private key. Takes ownership of the passed inputs 
+a newly allocated elliptic curve key representing either a public or private key. Takes ownership of the passed inputs 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ec__curve_gac18ac86b270f540bf5a55ad271ab0568}\label{group__wickr__ec__curve_gac18ac86b270f540bf5a55ad271ab0568}} 
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}!wickr\+\_\+ec\+\_\+key\+\_\+destroy@{wickr\+\_\+ec\+\_\+key\+\_\+destroy}}

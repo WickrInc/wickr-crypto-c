@@ -33,8 +33,10 @@ typedef enum { DIGEST_SHA2 } wickr_digest_type;
 typedef enum { DIGEST_ID_SHA256 = 1, DIGEST_ID_SHA384, DIGEST_ID_SHA512 } wickr_digest_id;
 
 /**
- 
- @defgroup wickr_digest wickr_digest_t
+ @addtogroup wickr_digest
+ */
+    
+/**
  
  @ingroup wickr_digest
  

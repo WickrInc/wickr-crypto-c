@@ -32,10 +32,10 @@ $(WICKR_CRYPTO_OSX)/lib/Release/libwickr_crypto_lib.a: $(WICKR_CRYPTO_OSX_REL)
 release: $(WICKR_CRYPTO_OSX)/lib/Release/libwickr_crypto_lib.a
 
 test.release: release $(WICKR_CRYPTO_OSX)/bin/Release/crypto_test
-	    $(WICKR_CRYPTO_OSX)/bin/Release/crypto_test
+	    $(WICKR_CRYPTO_OSX)/bin/Release/crypto_test $(CI_FLAGS)
 
 test.debug: debug $(WICKR_CRYPTO_OSX)/bin/Debug/crypto_test
-	    $(WICKR_CRYPTO_OSX)/bin/Debug/crypto_test
+	    $(WICKR_CRYPTO_OSX)/bin/Debug/crypto_test $(CI_FLAGS)
 
 clean:
 	rm -rf build-osx

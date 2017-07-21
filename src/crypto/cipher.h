@@ -30,7 +30,7 @@
 extern "C" {
 #endif
 
-/** @defgroup wickr_cipher wickr_cipher_t */
+/** @addtogroup wickr_cipher wickr_cipher_t */
 
 typedef enum { CIPHER_ID_AES256_GCM = 0, CIPHER_ID_AES256_CTR = 1 } wickr_cipher_id;
 

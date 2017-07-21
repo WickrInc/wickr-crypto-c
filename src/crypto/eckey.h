@@ -40,8 +40,10 @@ extern "C" {
 typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
 
 /**
- 
- @defgroup wickr_ec_curve wickr_ec_curve_t
+ @addtogroup wickr_ec_curve wickr_ec_curve_t
+ */
+    
+/**
  
  @ingroup wickr_ec_curve
  
@@ -69,7 +71,7 @@ static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521
  
  @struct wickr_ec_key
  
- @brief Representation of public and private Elliptical Curve Keypair information as buffers
+ @brief Representation of public and private Elliptic Curve Keypair information as buffers
  
  @var wickr_ec_key::curve
  the curve information associated with this keypair
@@ -90,14 +92,14 @@ typedef struct wickr_ec_key wickr_ec_key_t;
  
  @ingroup wickr_ec_curve
  
- Create an Elliptical Curve Keypair from components
+ Create an Elliptic Curve Keypair from components
  
  NOTE: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-generated components. A crypto engine is required to generate random keypairs
 
  @param curve see 'wickr_ec_key' property documentation
  @param pub_data see 'wickr_ec_key' property documentation
  @param pri_data see 'wickr_ec_key' property documentation. May be NULL to represent a public key
- @return a newly allocated elliptical key representing either a public or private key. Takes ownership of the passed inputs
+ @return a newly allocated elliptic curve key representing either a public or private key. Takes ownership of the passed inputs
  */
 wickr_ec_key_t *wickr_ec_key_create(wickr_ec_curve_t curve, wickr_buffer_t *pub_data, wickr_buffer_t *pri_data);
 

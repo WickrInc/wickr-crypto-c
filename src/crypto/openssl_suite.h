@@ -35,7 +35,7 @@
 extern "C" {
 #endif
 
-/** @defgroup openssl_crypto OpenSSL Crypto Engine **/
+/** @addtogroup openssl_crypto OpenSSL Crypto Engine **/
 
 /**
  @ingroup openssl_crypto
@@ -113,29 +113,29 @@ wickr_buffer_t *openssl_sha2(const wickr_buffer_t *buffer,
 /**
  @ingroup openssl_crypto
  
- Generate a random Elliptical Curve keypair
+ Generate a random Elliptic Curve keypair
  Supported curve is currently limited to NIST P521
 
  @param curve the curve parameters to use for random key pair generation
- @return a random Elliptical Curve key pair or NULL if the random generation fails
+ @return a random Elliptic Curve key pair or NULL if the random generation fails
  */
 wickr_ec_key_t *openssl_ec_rand_key(wickr_ec_curve_t curve);
 
 /**
  @ingroup openssl_crypto
  
- Import an Elliptical Curve key from a buffer
+ Import an Elliptic Curve key from a buffer
 
- @param buffer the buffer representing Elliptical Curve key material
+ @param buffer the buffer representing Elliptic Curve key material
  @param is_private false if the buffer represents a public key
- @return an Elliptical Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set
+ @return an Elliptic Curve key pair parsed from buffer or NULL if buffer does not contain a valid key, or is_private is incorrectly set
  */
 wickr_ec_key_t *openssl_ec_key_import(const wickr_buffer_t *buffer, bool is_private);
 
 /**
  @ingroup openssl_crypto
  
- Sign data using an Elliptical Curve key
+ Sign data using an Elliptic Curve key
  Data is hashed before signing. This function will calculate ECDSA(SHA2(data_to_sign))
 
  @param ec_signing_key private signing key to use for the ECDSA algorithm
@@ -164,7 +164,7 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature,
 /**
  @ingroup openssl_crypto
  
- Generate a shared secret given Elliptical Curve Diffie-Hellman parameters
+ Generate a shared secret given Elliptic Curve Diffie-Hellman parameters
  This function internally uses 'openssl_hkdf' to extract and expand the output of the ECDH function using 'params' for options
 
  @param params the parameters to use for the ECDH and HKDF algorithms

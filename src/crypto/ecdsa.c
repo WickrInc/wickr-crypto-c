@@ -89,7 +89,7 @@ wickr_ecdsa_result_t *wickr_ecdsa_result_copy(const wickr_ecdsa_result_t *source
 
 void wickr_ecdsa_result_destroy(wickr_ecdsa_result_t **result)
 {
-    if (!*result) {
+    if (!result || !*result) {
         return;
     }
     

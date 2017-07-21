@@ -120,24 +120,24 @@ void   wickr__proto__stream_key__free_unpacked
 static const ProtobufCFieldDescriptor wickr__proto__handshake__seed__field_descriptors[1] =
 {
   {
-    "pubkey",
-    1,
+    "node_info",
+    2,
     PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Wickr__Proto__Handshake__Seed, has_pubkey),
-    offsetof(Wickr__Proto__Handshake__Seed, pubkey),
-    NULL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Wickr__Proto__Handshake__Seed, node_info),
+    &wickr__proto__node__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
 static const unsigned wickr__proto__handshake__seed__field_indices_by_name[] = {
-  0,   /* field[0] = pubkey */
+  0,   /* field[0] = node_info */
 };
 static const ProtobufCIntRange wickr__proto__handshake__seed__number_ranges[1 + 1] =
 {
-  { 1, 0 },
+  { 2, 0 },
   { 0, 1 }
 };
 const ProtobufCMessageDescriptor wickr__proto__handshake__seed__descriptor =
@@ -206,20 +206,8 @@ const ProtobufCMessageDescriptor wickr__proto__handshake__key_exchange__descript
   (ProtobufCMessageInit) wickr__proto__handshake__key_exchange__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__handshake__response__field_descriptors[3] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake__response__field_descriptors[2] =
 {
-  {
-    "drop",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_BOOL,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Response, drop),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
   {
     "key_exchange",
     2,
@@ -246,14 +234,13 @@ static const ProtobufCFieldDescriptor wickr__proto__handshake__response__field_d
   },
 };
 static const unsigned wickr__proto__handshake__response__field_indices_by_name[] = {
-  0,   /* field[0] = drop */
-  1,   /* field[1] = key_exchange */
-  2,   /* field[2] = response_key */
+  0,   /* field[0] = key_exchange */
+  1,   /* field[1] = response_key */
 };
 static const ProtobufCIntRange wickr__proto__handshake__response__number_ranges[1 + 1] =
 {
-  { 1, 0 },
-  { 0, 3 }
+  { 2, 0 },
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor wickr__proto__handshake__response__descriptor =
 {
@@ -263,27 +250,15 @@ const ProtobufCMessageDescriptor wickr__proto__handshake__response__descriptor =
   "Wickr__Proto__Handshake__Response",
   "wickr.proto",
   sizeof(Wickr__Proto__Handshake__Response),
-  3,
+  2,
   wickr__proto__handshake__response__field_descriptors,
   wickr__proto__handshake__response__field_indices_by_name,
   1,  wickr__proto__handshake__response__number_ranges,
   (ProtobufCMessageInit) wickr__proto__handshake__response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__handshake__finish__field_descriptors[2] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake__finish__field_descriptors[1] =
 {
-  {
-    "drop",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_BOOL,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Finish, drop),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
   {
     "key_exchange",
     2,
@@ -298,13 +273,12 @@ static const ProtobufCFieldDescriptor wickr__proto__handshake__finish__field_des
   },
 };
 static const unsigned wickr__proto__handshake__finish__field_indices_by_name[] = {
-  0,   /* field[0] = drop */
-  1,   /* field[1] = key_exchange */
+  0,   /* field[0] = key_exchange */
 };
 static const ProtobufCIntRange wickr__proto__handshake__finish__number_ranges[1 + 1] =
 {
-  { 1, 0 },
-  { 0, 2 }
+  { 2, 0 },
+  { 0, 1 }
 };
 const ProtobufCMessageDescriptor wickr__proto__handshake__finish__descriptor =
 {
@@ -314,7 +288,7 @@ const ProtobufCMessageDescriptor wickr__proto__handshake__finish__descriptor =
   "Wickr__Proto__Handshake__Finish",
   "wickr.proto",
   sizeof(Wickr__Proto__Handshake__Finish),
-  2,
+  1,
   wickr__proto__handshake__finish__field_descriptors,
   wickr__proto__handshake__finish__field_indices_by_name,
   1,  wickr__proto__handshake__finish__number_ranges,

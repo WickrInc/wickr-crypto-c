@@ -1,0 +1,132 @@
+\hypertarget{group__wickr__transport__ctx}{}\section{Wickr\+\_\+transport\+\_\+ctx}
+\label{group__wickr__transport__ctx}\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}
+\begin{DoxyCompactList}\small\item\em Transport context to manage the state machine of a point to point connection using fundamentals of the Wickr protocol as building blocks. \end{DoxyCompactList}\item 
+struct \hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks}
+\begin{DoxyCompactList}\small\item\em callbacks to notify the user of events within the transport \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_ga4731758cf20b71d4469c74904bf662c0}{wickr\+\_\+transport\+\_\+ctx\+\_\+create} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} engine, \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$local\+\_\+identity, \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$remote\+\_\+identity, uint32\+\_\+t evo\+\_\+count, \hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks\+\_\+t} callbacks, void $\ast$user)
+\item 
+\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_gaa49b2cf44bcb02d656598a17e5ae1c52}{wickr\+\_\+transport\+\_\+ctx\+\_\+copy} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+void \hyperlink{group__wickr__transport__ctx_gabe547b01f4f02efea3f518d7445a71ee}{wickr\+\_\+transport\+\_\+ctx\+\_\+destroy} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$$\ast$ctx)
+\item 
+void \hyperlink{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}{wickr\+\_\+transport\+\_\+ctx\+\_\+start} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+void \hyperlink{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\item 
+void \hyperlink{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gaa49b2cf44bcb02d656598a17e5ae1c52}\label{group__wickr__transport__ctx_gaa49b2cf44bcb02d656598a17e5ae1c52}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+copy@{wickr\+\_\+transport\+\_\+ctx\+\_\+copy}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+copy@{wickr\+\_\+transport\+\_\+ctx\+\_\+copy}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+copy()}{wickr\_transport\_ctx\_copy()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Copy a transport context
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport context holding a deep copy of properties from \textquotesingle{}ctx\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga4731758cf20b71d4469c74904bf662c0}\label{group__wickr__transport__ctx_ga4731758cf20b71d4469c74904bf662c0}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+create@{wickr\+\_\+transport\+\_\+ctx\+\_\+create}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+create@{wickr\+\_\+transport\+\_\+ctx\+\_\+create}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+create()}{wickr\_transport\_ctx\_create()}}
+{\footnotesize\ttfamily \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+create (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}]{engine,  }\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{local\+\_\+identity,  }\item[{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$}]{remote\+\_\+identity,  }\item[{uint32\+\_\+t}]{evo\+\_\+count,  }\item[{\hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks\+\_\+t}}]{callbacks,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Create a transport context from components
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & a crypto engine to be used for the underlying signature, and cipher operations \\
+\hline
+{\em local\+\_\+identity} & the node information of the person creating the transport context. This should include private signature keys \\
+\hline
+{\em remote\+\_\+identity} & the node information of the endpoint \textquotesingle{}local\+\_\+identity\textquotesingle{} is connecting too. This field is O\+P\+T\+I\+O\+N\+AL. If this field is set, the signature keys provided inside this property will be pinned, and the \textquotesingle{}on\+\_\+identity\+\_\+verify\textquotesingle{} callback will not be called during connection. The remote\+\_\+identity passed in here does not need to contain an \textquotesingle{}ephemeral\+\_\+keypair\textquotesingle{} property, because it will be provided by the remote party during connection, and verified by the node / root signature keys inside the identity \\
+\hline
+{\em evo\+\_\+count} & the evolution packet count to be passed to the creation of underlying \textquotesingle{}wickr\+\_\+stream\+\_\+ctx\+\_\+t\textquotesingle{} that are created by this transport internally, see \textquotesingle{}wickr\+\_\+stream\+\_\+ctx\+\_\+t\textquotesingle{} for more information \\
+\hline
+{\em callbacks} & a set of function pointers the \textquotesingle{}wickr\+\_\+transport\+\_\+ctx\+\_\+t\textquotesingle{} will use to pass data, state change information, and identity verification prompts up to the user for processing. This is the I/O of the transport\+\_\+ctx \\
+\hline
+{\em user} & a pointer to be held and passed to all callbacks \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport context owning the properties passed in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gabe547b01f4f02efea3f518d7445a71ee}\label{group__wickr__transport__ctx_gabe547b01f4f02efea3f518d7445a71ee}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+destroy@{wickr\+\_\+transport\+\_\+ctx\+\_\+destroy}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+destroy@{wickr\+\_\+transport\+\_\+ctx\+\_\+destroy}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+destroy()}{wickr\_transport\_ctx\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Destroy a transport context
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & a pointer to the transport context to destroy. All properties of \textquotesingle{}$\ast$ctx\textquotesingle{} will also be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}\label{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer()}{wickr\_transport\_ctx\_process\_rx\_buffer()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Process a buffer that was received from the remote via a transport layer. This may include handshake data or encrypted content
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the context to process the buffer with \\
+\hline
+{\em buffer} & the buffer to be processed by by \textquotesingle{}ctx\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}\label{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer()}{wickr\_transport\_ctx\_process\_tx\_buffer()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Process a buffer that should be sent to the remote party
+
+N\+O\+TE\+: This function requires the transport context to be in A\+C\+T\+I\+VE status, attempting to process a tx buffer in any other state will cause the transport to enter the error status. When the buffer has completed processing the encrypted payload will be passed back via the wickr\+\_\+transport\+\_\+tx\+\_\+func callback.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the context to process the buffer with \\
+\hline
+{\em buffer} & the buffer to be encrypted and sent over the transport \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}\label{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+start@{wickr\+\_\+transport\+\_\+ctx\+\_\+start}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+start@{wickr\+\_\+transport\+\_\+ctx\+\_\+start}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+start()}{wickr\_transport\_ctx\_start()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+start (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Start the transport 3 way handshake to establish stream cipher keys and begin secure communication. This function can also be used to reestablish a new set of cipher keys if a handshake had previously been completed.
+
+When handshake data is generated, the \textquotesingle{}wickr\+\_\+transport\+\_\+tx\+\_\+func\textquotesingle{} callback will be fired so that it can be forwarded via the proper communication channel. Handshake responses can be passed back into the transport context via the \textquotesingle{}wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer\textquotesingle{} function. The \textquotesingle{}on\+\_\+state\textquotesingle{} callback of the transport will be fired to indicate the various stages of the handshake reaching completion, or an error occuring. User data may be passed into the \textquotesingle{}wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer\textquotesingle{} function after the transport status reaches \textquotesingle{}T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+T\+I\+VE\textquotesingle{}. If \textquotesingle{}remote\+\_\+identity\textquotesingle{} was not set during creation, and thus no remote key information is pinned, the \textquotesingle{}on\+\_\+identity\+\_\+verify\textquotesingle{} callback will be called for the application to verify the integrity of the remote\textquotesingle{}s identity via cached information, or whatever other means it has.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport to start the handshake on \\
+\hline
+\end{DoxyParams}

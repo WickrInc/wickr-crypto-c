@@ -31,10 +31,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+/**
+ @addtogroup wickr_ephemeral_keypair
+ */
 
 /**
- 
- @defgroup wickr_ephemeral_keypair wickr_ephemeral_keypair_t
  
  @ingroup wickr_ephemeral_keypair
  
@@ -53,7 +55,7 @@ extern "C" {
  @var wickr_ephemeral_keypair::identifier
  identifier to associate with this key pair so it can be cataloged and later recalled when used
  @var wickr_ephemeral_keypair::ec_key
- underlying elliptical curve key pair to use
+ underlying Elliptic curve key pair to use
  @var wickr_ephemeral_keypair::signature
  a signature of the 'ec_key' public component
  */
@@ -72,7 +74,7 @@ typedef struct wickr_ephemeral_keypair wickr_ephemeral_keypair_t;
  Create an Ephemeral Keypair from components
 
  @param identifier the numerical identifier of the keypair
- @param ec_key an Elliptical Curve public keypair
+ @param ec_key an Elliptic Curve public keypair
  @param signature a signature of the public key material in 'ec_key' by the owner of this key
  @return a newly allocated Ephemeral Keypair, owning the properties that were passed in
  */
@@ -97,10 +99,10 @@ wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_copy(const wickr_ephemeral_ke
  
  This method will use the 'default_curve' property of the crypto engine provided as the curve for the resulting keypair
 
- @param engine crypto engine supporting random Elliptical Curve generation, and ECDSA signatures
+ @param engine crypto engine supporting random Elliptic Curve generation, and ECDSA signatures
  @param identifier the identifier to assign to the generated output keypair
  @param identity the identity to sign the generated output key pair with
- @return a newly generated random Elliptical Curve key pair with identifier 'identifier' and a signature using the 'sig_key' property of the identity provided as the signing key
+ @return a newly generated random Elliptic Curve key pair with identifier 'identifier' and a signature using the 'sig_key' property of the identity provided as the signing key
  */
 wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_generate_identity(const wickr_crypto_engine_t *engine, uint64_t identifier, const wickr_identity_t *identity);
 
@@ -126,6 +128,29 @@ bool wickr_ephemeral_keypair_verify_owner(const wickr_ephemeral_keypair_t *keypa
  @param keypair the key pair to make public
  */
 void wickr_ephemeral_keypair_make_public(const wickr_ephemeral_keypair_t *keypair);
+    
+/**
+ 
+ @ingroup wickr_ephemeral_keypair
+ 
+ Serialize an ephemeral keypair to bytes
+ 
+ @param keypair the ephemeral keypair to serialize
+ @return a buffer containing a serialized representation of 'keypair' or null if serialization fails
+ */
+wickr_buffer_t *wickr_ephemeral_keypair_serialize(const wickr_ephemeral_keypair_t *keypair);
+
+/**
+ 
+ @ingroup wickr_ephemeral_keypair
+ 
+ Create an ephemeral keypair from a buffer that was created with 'wickr_ephemeral_keypair_serialize'
+ 
+ @param buffer the buffer that contains a serialized representation of an identity chain
+ @param engine the crypto engine to use to import the key components of the ephemeral keypair
+ @return deserialized ephemeral keypair or null if the deserialization fails
+ */
+wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
 
 /**
  

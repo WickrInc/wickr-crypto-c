@@ -4,6 +4,7 @@
 #include "crypto_engine.h"
 #include "identity.h"
 #include "node.h"
+#include "node_priv.h"
 
 DESCRIBE(node_tests, "node.c")
 {
@@ -25,7 +26,6 @@ DESCRIBE(node_tests, "node.c")
     {
         SHOULD_BE_NULL(wickr_node_create(NULL, NULL, NULL));
         SHOULD_BE_NULL(wickr_node_create(test_dev_id, NULL, NULL));
-        SHOULD_BE_NULL(wickr_node_create(test_dev_id, test_id_chain, NULL));
         SHOULD_BE_NULL(wickr_node_create(NULL, test_id_chain, NULL));
         SHOULD_BE_NULL(wickr_node_create(NULL, NULL, test_keypair));
         SHOULD_BE_NULL(wickr_node_create(NULL, test_id_chain, test_keypair));
@@ -59,6 +59,7 @@ DESCRIBE(node_tests, "node.c")
     }
     END_IT
     
+    
     IT("should be able to validate it's signing chain")
     {
         SHOULD_BE_TRUE(wickr_node_verify_signature_chain(node, &engine));
@@ -72,6 +73,15 @@ DESCRIBE(node_tests, "node.c")
         wickr_node_t *copy_node = wickr_node_copy(node);
         copy_node->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
         
+        SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        wickr_node_destroy(&copy_node);
+    }
+    END_IT
+    
+    IT("should fail validation if it doesn't have a keypair")
+    {
+        wickr_node_t *copy_node = wickr_node_copy(node);
+        wickr_ephemeral_keypair_destroy(&copy_node->ephemeral_keypair);
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
         wickr_node_destroy(&copy_node);
     }
@@ -159,7 +169,45 @@ DESCRIBE(node_tests, "node.c")
     }
     END_IT
     
+    IT("can be seralized / deserialized")
+    {
+        wickr_buffer_t *serialized = wickr_node_serialize(node);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_node_t *deserialized = wickr_node_create_from_buffer(serialized, &engine);
+        SHOULD_NOT_BE_NULL(deserialized);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->dev_id, deserialized->dev_id, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->ephemeral_keypair->ec_key->pub_data, deserialized->ephemeral_keypair->ec_key->pub_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->node->identifier, deserialized->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->root->identifier, deserialized->id_chain->root->identifier, NULL));
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_node_destroy(&deserialized);
+    }
+    END_IT
+    
+    IT("can be serialized / deserialized without an active ephemeral keypair")
+    {
+        wickr_ephemeral_keypair_destroy(&node->ephemeral_keypair);
+        
+        wickr_buffer_t *serialized = wickr_node_serialize(node);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_node_t *deserialized = wickr_node_create_from_buffer(serialized, &engine);
+        SHOULD_NOT_BE_NULL(deserialized);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->dev_id, deserialized->dev_id, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->node->identifier, deserialized->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->root->identifier, deserialized->id_chain->root->identifier, NULL));
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_node_destroy(&deserialized);
+    }
+    END_IT
+    
     wickr_node_destroy(&node);
+    SHOULD_BE_NULL(node);
     
 }
 END_DESCRIBE

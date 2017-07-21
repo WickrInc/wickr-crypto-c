@@ -32,7 +32,10 @@
 typedef enum { STREAM_DIRECTION_ENCODE, STREAM_DIRECTION_DECODE } wickr_stream_direction;
 
 /**
- @defgroup wickr_stream wickr_stream
+ @addtogroup wickr_stream wickr_stream
+ */
+
+/**
  @ingroup wickr_stream
  @struct wickr_stream_key
  
@@ -57,6 +60,7 @@ typedef struct wickr_stream_key wickr_stream_key_t;
 
 /**
  @ingroup wickr_stream
+ 
  @struct wickr_stream_ctx
  
  @brief A context that is used for encrypting or decrypting a sequenced stream of data packets
@@ -104,7 +108,6 @@ typedef struct wickr_stream_ctx wickr_stream_ctx_t;
 wickr_stream_key_t *wickr_stream_key_create(wickr_cipher_key_t *cipher_key, wickr_buffer_t *evolution_key, uint32_t packets_per_evolution);
 
 /**
- 
  @ingroup wickr_stream
  
  Generate a random stream key
@@ -127,6 +130,8 @@ wickr_stream_key_t *wickr_stream_key_create_rand(const wickr_crypto_engine_t eng
 wickr_stream_key_t *wickr_stream_key_copy(const wickr_stream_key_t *stream_key);
 
 /**
+ @ingroup wickr_stream
+ 
  Serialize a stream key
 
  @param key the key to serialize
@@ -135,6 +140,8 @@ wickr_stream_key_t *wickr_stream_key_copy(const wickr_stream_key_t *stream_key);
 wickr_buffer_t *wickr_stream_key_serialize(const wickr_stream_key_t *key);
 
 /**
+ @ingroup wickr_stream
+ 
  Create a stream key from a serialized buffer
 
  @param buffer the buffer to parse into a stream key
@@ -153,6 +160,8 @@ wickr_stream_key_t *wickr_stream_key_create_from_buffer(const wickr_buffer_t *bu
 void wickr_stream_key_destroy(wickr_stream_key_t **stream_key);
 
 /**
+ @ingroup wickr_stream
+ 
  Create a stream context
 
  @param engine see wickr_stream_ctx documentation
@@ -163,7 +172,9 @@ void wickr_stream_key_destroy(wickr_stream_key_t **stream_key);
 wickr_stream_ctx_t *wickr_stream_ctx_create(const wickr_crypto_engine_t engine, wickr_stream_key_t *stream_key, wickr_stream_direction direction);
 
 /**
- Copy a stream key
+ @ingroup wickr_stream
+ 
+ Copy a stream context
 
  @param ctx the stream context to copy
  @return a newly allocated stream context holding a deep copy of properties from 'ctx'
@@ -171,6 +182,8 @@ wickr_stream_ctx_t *wickr_stream_ctx_create(const wickr_crypto_engine_t engine, 
 wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx);
 
 /**
+ @ingroup wickr_stream
+ 
  Encode a packet
 
  @param ctx context to use for encoding
@@ -182,6 +195,8 @@ wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx);
 wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wickr_buffer_t *data, const wickr_buffer_t *aad, uint64_t seq_num);
 
 /**
+ @ingroup wickr_stream
+ 
  Encode a packet
  
  @param ctx context to use for decoding
@@ -193,6 +208,8 @@ wickr_cipher_result_t *wickr_stream_ctx_encode(wickr_stream_ctx_t *ctx, const wi
 wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cipher_result_t *data, const wickr_buffer_t *aad, uint64_t seq_num);
 
 /**
+ @ingroup wickr_stream
+ 
  Destroy a stream context
 
  @param ctx a pointer to the stream context to destroy. All properties of '*ctx' will also be destroyed

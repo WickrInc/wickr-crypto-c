@@ -47,7 +47,10 @@ extern "C" {
  ***************************************/
 
 /**
- @defgroup wickr_ctx wickr_ctx_t
+ @addtogroup wickr_ctx
+ */
+    
+/**
  @ingroup wickr_ctx
  @struct wickr_ctx
  
@@ -77,10 +80,7 @@ struct wickr_ctx {
 
 typedef struct wickr_ctx wickr_ctx_t;
 
-/* The default version of packets to use for encoding. Currently this is set to v3 instead of the max supported version of v4.
-   Older clients will be deprecated some time after the v4 protocol update, which will allow for the default version to increment to v4
-*/
-#define DEFAULT_PKT_ENC_VERSION 3
+#define DEFAULT_PKT_ENC_VERSION 4
     
 /**
  @ingroup wickr_ctx

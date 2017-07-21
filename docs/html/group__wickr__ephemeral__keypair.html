@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wickr-crypto-c: wickr_ephemeral_keypair_t</title>
+<title>wickr-crypto-c: Wickr_ephemeral_keypair</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,12 +59,19 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_ephemeral_keypair_t</div>  </div>
+<div class="title">Wickr_ephemeral_keypair</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a key pair used for message key exchanges within the Wickr Messaging Protocol.  <a href="structwickr__ephemeral__keypair.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gab956214203938b4b02b8f30666eaec3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ephemeral__keypair.html#gab956214203938b4b02b8f30666eaec3b">wickr_ephemeral_keypair_create</a> (uint64_t identifier, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *ec_key, <a class="el" href="structwickr__ecdsa__result.html">wickr_ecdsa_result_t</a> *signature)</td></tr>
@@ -77,6 +84,10 @@ Functions</h2></td></tr>
 <tr class="separator:gadc17110d4c7fa65a9456fae516bf2e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2e2f8db184aa2972ef5423e9c03988e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ephemeral__keypair.html#ga2e2f8db184aa2972ef5423e9c03988e8">wickr_ephemeral_keypair_make_public</a> (const <a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *keypair)</td></tr>
 <tr class="separator:ga2e2f8db184aa2972ef5423e9c03988e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c994a08f270cc84088263d48a4b3636"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ephemeral__keypair.html#ga1c994a08f270cc84088263d48a4b3636">wickr_ephemeral_keypair_serialize</a> (const <a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *keypair)</td></tr>
+<tr class="separator:ga1c994a08f270cc84088263d48a4b3636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ecd3769c68ba5bfbc95a225c1021ed0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ephemeral__keypair.html#ga7ecd3769c68ba5bfbc95a225c1021ed0">wickr_ephemeral_keypair_create_from_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine)</td></tr>
+<tr class="separator:ga7ecd3769c68ba5bfbc95a225c1021ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab77107c0b1a0d145c606817eeecec63d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ephemeral__keypair.html#gab77107c0b1a0d145c606817eeecec63d">wickr_ephemeral_keypair_destroy</a> (<a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> **keypair)</td></tr>
 <tr class="separator:gab77107c0b1a0d145c606817eeecec63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -143,12 +154,49 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">identifier</td><td>the numerical identifier of the keypair </td></tr>
-    <tr><td class="paramname">ec_key</td><td>an Elliptical Curve public keypair </td></tr>
+    <tr><td class="paramname">ec_key</td><td>an Elliptic Curve public keypair </td></tr>
     <tr><td class="paramname">signature</td><td>a signature of the public key material in 'ec_key' by the owner of this key </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a newly allocated Ephemeral Keypair, owning the properties that were passed in </dd></dl>
+
+</div>
+</div>
+<a id="ga7ecd3769c68ba5bfbc95a225c1021ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7ecd3769c68ba5bfbc95a225c1021ed0">&#9670;&nbsp;</a></span>wickr_ephemeral_keypair_create_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a>* wickr_ephemeral_keypair_create_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
+          <td class="paramname"><em>engine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create an ephemeral keypair from a buffer that was created with 'wickr_ephemeral_keypair_serialize'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the buffer that contains a serialized representation of an identity chain </td></tr>
+    <tr><td class="paramname">engine</td><td>the crypto engine to use to import the key components of the ephemeral keypair </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>deserialized ephemeral keypair or null if the deserialization fails </dd></dl>
 
 </div>
 </div>
@@ -212,13 +260,13 @@ Functions</h2></td></tr>
 <p>This method will use the 'default_curve' property of the crypto engine provided as the curve for the resulting keypair</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">engine</td><td>crypto engine supporting random Elliptical Curve generation, and ECDSA signatures </td></tr>
+    <tr><td class="paramname">engine</td><td>crypto engine supporting random Elliptic Curve generation, and ECDSA signatures </td></tr>
     <tr><td class="paramname">identifier</td><td>the identifier to assign to the generated output keypair </td></tr>
     <tr><td class="paramname">identity</td><td>the identity to sign the generated output key pair with </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly generated random Elliptical Curve key pair with identifier 'identifier' and a signature using the 'sig_key' property of the identity provided as the signing key </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a newly generated random Elliptic Curve key pair with identifier 'identifier' and a signature using the 'sig_key' property of the identity provided as the signing key </dd></dl>
 
 </div>
 </div>
@@ -244,6 +292,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga1c994a08f270cc84088263d48a4b3636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1c994a08f270cc84088263d48a4b3636">&#9670;&nbsp;</a></span>wickr_ephemeral_keypair_serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_ephemeral_keypair_serialize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__ephemeral__keypair.html">wickr_ephemeral_keypair_t</a> *&#160;</td>
+          <td class="paramname"><em>keypair</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize an ephemeral keypair to bytes</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keypair</td><td>the ephemeral keypair to serialize </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a buffer containing a serialized representation of 'keypair' or null if serialization fails </dd></dl>
 
 </div>
 </div>

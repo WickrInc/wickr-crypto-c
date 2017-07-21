@@ -31,7 +31,7 @@ extern "C" {
 #endif
     
 
-/**  @defgroup openssl_file_encryption File Encryption With OpenSSL */
+/**  @addtogroup openssl_file_encryption File Encryption With OpenSSL */
 
 /**
  @ingroup openssl_file_encryption
