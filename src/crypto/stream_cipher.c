@@ -2,6 +2,7 @@
 #include "stream_cipher.h"
 #include "memory.h"
 #include "stream.pb-c.h"
+#include "stream_cipher_priv.h"
 
 wickr_stream_key_t *wickr_stream_key_create(wickr_cipher_key_t *cipher_key, wickr_buffer_t *evolution_key, uint32_t packets_per_evolution)
 {
@@ -84,33 +85,23 @@ wickr_buffer_t *wickr_stream_key_serialize(const wickr_stream_key_t *key)
         return NULL;
     }
     
-    wickr_buffer_t *key_buffer = wickr_cipher_key_serialize(key->cipher_key);
+    Wickr__Proto__StreamKey *proto_key = wickr_stream_key_to_proto(key);
     
-    if (!key_buffer) {
+    if (!key) {
         return NULL;
     }
     
-    Wickr__Proto__StreamKey serialized = WICKR__PROTO__STREAM_KEY__INIT;
-    serialized.cipher_key.data = key_buffer->bytes;
-    serialized.cipher_key.len = key_buffer->length;
-    serialized.evolution_key.data = key->evolution_key->bytes;
-    serialized.evolution_key.len = key->evolution_key->length;
-    serialized.packets_per_evo = key->packets_per_evolution;
-    serialized.has_cipher_key = true;
-    serialized.has_evolution_key = true;
-    serialized.has_packets_per_evo = true;
-    
-    size_t length = wickr__proto__stream_key__get_packed_size(&serialized);
+    size_t length = wickr__proto__stream_key__get_packed_size(proto_key);
     
     wickr_buffer_t *buffer = wickr_buffer_create_empty(length);
     
     if (!buffer) {
-        wickr_buffer_destroy(&key_buffer);
+        wickr_stream_key_proto_free(proto_key);
         return NULL;
     }
     
-    wickr__proto__stream_key__pack(&serialized, buffer->bytes);
-    wickr_buffer_destroy(&key_buffer);
+    wickr__proto__stream_key__pack(proto_key, buffer->bytes);
+    wickr_stream_key_proto_free(proto_key);
     
     return buffer;
 }
@@ -123,41 +114,12 @@ wickr_stream_key_t *wickr_stream_key_create_from_buffer(const wickr_buffer_t *bu
     
     Wickr__Proto__StreamKey *proto_key = wickr__proto__stream_key__unpack(NULL, buffer->length, buffer->bytes);
     
-    if (!proto_key || !proto_key->has_cipher_key || !proto_key->has_evolution_key || !proto_key->has_packets_per_evo) {
+    if (!proto_key) {
         return NULL;
     }
     
-    wickr_buffer_t *key_buffer = wickr_buffer_create(proto_key->cipher_key.data, proto_key->cipher_key.len);
-    
-    if (!key_buffer) {
-        wickr__proto__stream_key__free_unpacked(proto_key, NULL);
-        return NULL;
-    }
-    
-    wickr_cipher_key_t *cipher_key = wickr_cipher_key_from_buffer(key_buffer);
-    wickr_buffer_destroy(&key_buffer);
-    
-    if (!cipher_key) {
-        wickr__proto__stream_key__free_unpacked(proto_key, NULL);
-        return NULL;
-    }
-    
-    wickr_buffer_t *evo_key = wickr_buffer_create(proto_key->evolution_key.data, proto_key->evolution_key.len);
-    
-    if (!evo_key) {
-        wickr__proto__stream_key__free_unpacked(proto_key, NULL);
-        wickr_cipher_key_destroy(&cipher_key);
-        return NULL;
-    }
-    
-    wickr_stream_key_t *stream_key = wickr_stream_key_create(cipher_key, evo_key, proto_key->packets_per_evo);
+    wickr_stream_key_t *stream_key = wickr_stream_key_create_from_proto(proto_key);
     wickr__proto__stream_key__free_unpacked(proto_key, NULL);
-
-    if (!stream_key) {
-        wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&evo_key);
-        return NULL;
-    }
     
     return stream_key;
 }
