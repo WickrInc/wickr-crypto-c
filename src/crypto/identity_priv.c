@@ -33,6 +33,11 @@ Wickr__Proto__Identity *wickr_identity_to_proto(const wickr_identity_t *identity
     }
     
     Wickr__Proto__Identity *proto = wickr_alloc_zero(sizeof(Wickr__Proto__Identity));
+    
+    if (!proto) {
+        return NULL;
+    }
+    
     wickr__proto__identity__init(proto);
     
     proto->has_type = true;
@@ -143,13 +148,14 @@ Wickr__Proto__IdentityChain *wickr_identity_chain_to_proto(const wickr_identity_
     }
     
     Wickr__Proto__IdentityChain *proto_chain = wickr_alloc_zero(sizeof(Wickr__Proto__IdentityChain));
-    wickr__proto__identity_chain__init(proto_chain);
     
     if (!proto_chain) {
         wickr_identity_proto_free(root);
         wickr_identity_proto_free(node);
         return NULL;
     }
+    
+    wickr__proto__identity_chain__init(proto_chain);
     
     proto_chain->node = node;
     proto_chain->root = root;

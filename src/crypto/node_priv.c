@@ -37,6 +37,12 @@ Wickr__Proto__Node *wickr_node_to_proto(const wickr_node_t *node)
     }
     
     Wickr__Proto__Node *proto_node = wickr_alloc_zero(sizeof(Wickr__Proto__Node));
+    
+    if (!proto_node) {
+        wickr_ephemeral_keypair_proto_free(ephemeral_keypair);
+        return NULL;
+    }
+    
     wickr__proto__node__init(proto_node);
     
     proto_node->has_devid = true;
