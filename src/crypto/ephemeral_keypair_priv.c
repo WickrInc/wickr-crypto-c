@@ -24,6 +24,11 @@ Wickr__Proto__EphemeralKeypair *wickr_ephemeral_keypair_to_proto(const wickr_eph
     }
     
     Wickr__Proto__EphemeralKeypair *proto_keypair = wickr_alloc_zero(sizeof(Wickr__Proto__EphemeralKeypair));
+    
+    if (!proto_keypair) {
+        return NULL;
+    }
+    
     wickr__proto__ephemeral_keypair__init(proto_keypair);
     
     proto_keypair->has_ec_key = true;
