@@ -1,7 +1,7 @@
 
 #include "stream_cipher_priv.h"
 #include "memory.h"
-#include <strings.h>
+#include <string.h>
 
 void wickr_stream_key_proto_free(Wickr__Proto__StreamKey *proto_key)
 {
