@@ -33,6 +33,11 @@ message Handshake {
     }
 }
 
+message StreamInfo {
+    optional StreamKey key = 1;
+    optional bytes user_data = 2;
+}
+
 message StreamKey {
     optional bytes cipher_key = 1;
     optional bytes evolution_key = 2;
