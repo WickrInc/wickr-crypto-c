@@ -155,6 +155,7 @@ void wickr_stream_key_destroy(wickr_stream_key_t **stream_key)
     
     wickr_cipher_key_destroy(&(*stream_key)->cipher_key);
     wickr_buffer_destroy_zero(&(*stream_key)->evolution_key);
+    wickr_buffer_destroy(&(*stream_key)->user_data);
     
     wickr_free(*stream_key);
     *stream_key = NULL;

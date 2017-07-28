@@ -15,7 +15,6 @@
 #include "test_transport.h"
 #include "test_identity.h"
 #include "test_ephemeral_keypair.h"
-#include "test_stream_info.h"
 
 #include "cspec_output_unit.h"
 
@@ -38,7 +37,6 @@ void run_primitive_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(wickr_packet_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_result), output);
-    CSpec_Run(DESCRIPTION(wickr_stream_info), output);
 }
 
 void run_crypto_engine_tests(CSpecOutputStruct *output)

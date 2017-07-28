@@ -1,6 +1,6 @@
 
 #include "test_stream_cipher.h"
-#include "stream_cipher.h"
+#include "stream_ctx.h"
 #include "test_util.h"
 
 static bool __wickr_stream_key_is_equal(wickr_stream_key_t *k1, wickr_stream_key_t *k2)
@@ -39,10 +39,49 @@ DESCRIBE(wickr_stream_key, "stream cipher key")
         SHOULD_BE_NULL(wickr_stream_key_create(cipher_key, evo_key, 0));
         SHOULD_BE_NULL(wickr_stream_key_create(cipher_key, evo_key, PACKET_PER_EVO_MIN - 1));
         SHOULD_BE_NULL(wickr_stream_key_create(cipher_key, evo_key, PACKET_PER_EVO_MAX + 1));
-
         
-        wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&evo_key);
+        wickr_stream_key_t *test_key = wickr_stream_key_create(cipher_key, evo_key, PACKET_PER_EVO_DEFAULT);
+        SHOULD_NOT_BE_NULL(test_key);
+        SHOULD_EQUAL(test_key->cipher_key, cipher_key);
+        SHOULD_EQUAL(test_key->evolution_key, evo_key);
+        SHOULD_EQUAL(test_key->packets_per_evolution, PACKET_PER_EVO_DEFAULT);
+        
+        wickr_stream_key_destroy(&test_key);
+    }
+    END_IT
+    
+    IT("requires a cipher key and evolution key (user data)")
+    {
+        wickr_cipher_key_t *cipher_key = engine.wickr_crypto_engine_cipher_key_random(CIPHER_AES256_GCM);
+        wickr_buffer_t *evo_key = engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.key_len);
+        
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(NULL, NULL, 0, NULL));
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(NULL, evo_key, 32, NULL));
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(cipher_key, NULL, 32, NULL));
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(cipher_key, evo_key, 0, NULL));
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(cipher_key, evo_key, PACKET_PER_EVO_MIN - 1, NULL));
+        SHOULD_BE_NULL(wickr_stream_key_create_user_data(cipher_key, evo_key, PACKET_PER_EVO_MAX + 1, NULL));
+        
+        wickr_cipher_key_t *cipher_key_copy = wickr_cipher_key_copy(cipher_key);
+        wickr_buffer_t *evo_copy = wickr_buffer_copy(evo_key);
+        wickr_buffer_t *test_user_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        wickr_stream_key_t *test_key = wickr_stream_key_create_user_data(cipher_key, evo_key, PACKET_PER_EVO_DEFAULT, NULL);
+        SHOULD_NOT_BE_NULL(test_key);
+        SHOULD_EQUAL(test_key->cipher_key, cipher_key);
+        SHOULD_EQUAL(test_key->evolution_key, evo_key);
+        SHOULD_EQUAL(test_key->packets_per_evolution, PACKET_PER_EVO_DEFAULT);
+        
+        wickr_stream_key_destroy(&test_key);
+        
+        wickr_stream_key_t *test_key_2 = wickr_stream_key_create_user_data(cipher_key_copy, evo_copy, PACKET_PER_EVO_DEFAULT, test_user_data);
+        SHOULD_NOT_BE_NULL(test_key_2);
+        SHOULD_EQUAL(test_key_2->cipher_key, cipher_key_copy);
+        SHOULD_EQUAL(test_key_2->evolution_key, evo_copy);
+        SHOULD_EQUAL(test_key_2->packets_per_evolution, PACKET_PER_EVO_DEFAULT);
+        SHOULD_EQUAL(test_key_2->user_data, test_user_data);
+        
+        wickr_stream_key_destroy(&test_key_2);
     }
     END_IT
     
