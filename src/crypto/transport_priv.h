@@ -23,7 +23,7 @@
 #define transport_priv_h
 
 #include "transport_ctx.h"
-#include "stream_cipher.h"
+#include "stream_ctx.h"
 #include "stream.pb-c.h"
 
 typedef enum { TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT } wickr_transport_payload_type;

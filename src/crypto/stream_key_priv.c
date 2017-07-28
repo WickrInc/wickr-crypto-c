@@ -1,5 +1,5 @@
 
-#include "stream_cipher_priv.h"
+#include "stream_key_priv.h"
 #include "memory.h"
 #include <string.h>
 
@@ -47,6 +47,13 @@ Wickr__Proto__StreamKey *wickr_stream_key_to_proto(const wickr_stream_key_t *key
 
     proto->evolution_key.data = key->evolution_key->bytes;
     proto->evolution_key.len = key->evolution_key->length;
+    
+    if (key->user_data) {
+        proto->has_user_data = true;
+        proto->user_data.data = key->user_data->bytes;
+        proto->user_data.len = key->user_data->length;
+    }
+    
     proto->packets_per_evo = key->packets_per_evolution;
     proto->has_cipher_key = true;
     proto->has_evolution_key = true;
@@ -81,7 +88,19 @@ wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__Strea
         return NULL;
     }
     
-    wickr_stream_key_t *stream_key = wickr_stream_key_create(cipher_key, evo_key, proto->packets_per_evo);
+    wickr_buffer_t *user_data = NULL;
+    
+    if (proto->has_user_data) {
+        user_data = wickr_buffer_create(proto->evolution_key.data, proto->evolution_key.len);
+        
+        if (!user_data) {
+            wickr_cipher_key_destroy(&cipher_key);
+            wickr_buffer_destroy(&evo_key);
+            return NULL;
+        }
+    }
+    
+    wickr_stream_key_t *stream_key = wickr_stream_key_create_user_data(cipher_key, evo_key, proto->packets_per_evo, user_data);
     
     if (!stream_key) {
         wickr_cipher_key_destroy(&cipher_key);

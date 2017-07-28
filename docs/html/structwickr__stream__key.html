@@ -61,14 +61,14 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_stream_key Struct Reference<div class="ingroups"><a class="el" href="group__wickr__stream.html">wickr_stream</a></div></div>  </div>
+<div class="title">wickr_stream_key Struct Reference<div class="ingroups"><a class="el" href="group__wickr__stream__key.html">wickr_stream_key</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>A data structure representing the stream encoding / decoding key material A stream key holds information about the key material used for cipher operations as well as it's next evolution key and the number of packets this key should be used to encode or decode before evolution takes place.  
  <a href="structwickr__stream__key.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="stream__cipher_8h_source.html">stream_cipher.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="stream__key_8h_source.html">stream_key.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -76,6 +76,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3d957a51193dda882cb89ced2ceeb91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7210bd67e61cb4c38733a237dae95d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__stream__key.html#ae7210bd67e61cb4c38733a237dae95d9">evolution_key</a></td></tr>
 <tr class="separator:ae7210bd67e61cb4c38733a237dae95d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e59da9f7fbb0b3e1332a20252d1cc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__stream__key.html#a51e59da9f7fbb0b3e1332a20252d1cc6">user_data</a></td></tr>
+<tr class="separator:a51e59da9f7fbb0b3e1332a20252d1cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78777e4c64048b6dae38f8772744194e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__stream__key.html#a78777e4c64048b6dae38f8772744194e">packets_per_evolution</a></td></tr>
 <tr class="separator:a78777e4c64048b6dae38f8772744194e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -127,8 +129,23 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a51e59da9f7fbb0b3e1332a20252d1cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e59da9f7fbb0b3e1332a20252d1cc6">&#9670;&nbsp;</a></span>user_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_stream_key::user_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>user provided data to assoiciate with the key </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/crypto/<a class="el" href="stream__cipher_8h_source.html">stream_cipher.h</a></li>
+<li>src/crypto/<a class="el" href="stream__key_8h_source.html">stream_key.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

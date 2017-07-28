@@ -74,49 +74,6 @@ void   wickr__proto__handshake__free_unpacked
   assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   wickr__proto__stream_info__init
-                     (Wickr__Proto__StreamInfo         *message)
-{
-  static Wickr__Proto__StreamInfo init_value = WICKR__PROTO__STREAM_INFO__INIT;
-  *message = init_value;
-}
-size_t wickr__proto__stream_info__get_packed_size
-                     (const Wickr__Proto__StreamInfo *message)
-{
-  assert(message->base.descriptor == &wickr__proto__stream_info__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t wickr__proto__stream_info__pack
-                     (const Wickr__Proto__StreamInfo *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &wickr__proto__stream_info__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t wickr__proto__stream_info__pack_to_buffer
-                     (const Wickr__Proto__StreamInfo *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &wickr__proto__stream_info__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Wickr__Proto__StreamInfo *
-       wickr__proto__stream_info__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Wickr__Proto__StreamInfo *)
-     protobuf_c_message_unpack (&wickr__proto__stream_info__descriptor,
-                                allocator, len, data);
-}
-void   wickr__proto__stream_info__free_unpacked
-                     (Wickr__Proto__StreamInfo *message,
-                      ProtobufCAllocator *allocator)
-{
-  assert(message->base.descriptor == &wickr__proto__stream_info__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 void   wickr__proto__stream_key__init
                      (Wickr__Proto__StreamKey         *message)
 {
@@ -415,58 +372,7 @@ const ProtobufCMessageDescriptor wickr__proto__handshake__descriptor =
   (ProtobufCMessageInit) wickr__proto__handshake__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__stream_info__field_descriptors[2] =
-{
-  {
-    "key",
-    1,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__StreamInfo, key),
-    &wickr__proto__stream_key__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "user_data",
-    2,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Wickr__Proto__StreamInfo, has_user_data),
-    offsetof(Wickr__Proto__StreamInfo, user_data),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned wickr__proto__stream_info__field_indices_by_name[] = {
-  0,   /* field[0] = key */
-  1,   /* field[1] = user_data */
-};
-static const ProtobufCIntRange wickr__proto__stream_info__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
-const ProtobufCMessageDescriptor wickr__proto__stream_info__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.StreamInfo",
-  "StreamInfo",
-  "Wickr__Proto__StreamInfo",
-  "wickr.proto",
-  sizeof(Wickr__Proto__StreamInfo),
-  2,
-  wickr__proto__stream_info__field_descriptors,
-  wickr__proto__stream_info__field_indices_by_name,
-  1,  wickr__proto__stream_info__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__stream_info__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor wickr__proto__stream_key__field_descriptors[3] =
+static const ProtobufCFieldDescriptor wickr__proto__stream_key__field_descriptors[4] =
 {
   {
     "cipher_key",
@@ -504,16 +410,29 @@ static const ProtobufCFieldDescriptor wickr__proto__stream_key__field_descriptor
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "user_data",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__StreamKey, has_user_data),
+    offsetof(Wickr__Proto__StreamKey, user_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned wickr__proto__stream_key__field_indices_by_name[] = {
   0,   /* field[0] = cipher_key */
   1,   /* field[1] = evolution_key */
   2,   /* field[2] = packets_per_evo */
+  3,   /* field[3] = user_data */
 };
 static const ProtobufCIntRange wickr__proto__stream_key__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor wickr__proto__stream_key__descriptor =
 {
@@ -523,7 +442,7 @@ const ProtobufCMessageDescriptor wickr__proto__stream_key__descriptor =
   "Wickr__Proto__StreamKey",
   "wickr.proto",
   sizeof(Wickr__Proto__StreamKey),
-  3,
+  4,
   wickr__proto__stream_key__field_descriptors,
   wickr__proto__stream_key__field_indices_by_name,
   1,  wickr__proto__stream_key__number_ranges,

@@ -27,7 +27,6 @@ typedef struct _Wickr__Proto__Handshake__Seed Wickr__Proto__Handshake__Seed;
 typedef struct _Wickr__Proto__Handshake__KeyExchange Wickr__Proto__Handshake__KeyExchange;
 typedef struct _Wickr__Proto__Handshake__Response Wickr__Proto__Handshake__Response;
 typedef struct _Wickr__Proto__Handshake__Finish Wickr__Proto__Handshake__Finish;
-typedef struct _Wickr__Proto__StreamInfo Wickr__Proto__StreamInfo;
 typedef struct _Wickr__Proto__StreamKey Wickr__Proto__StreamKey;
 
 
@@ -103,18 +102,6 @@ struct  _Wickr__Proto__Handshake
     , 0, WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET, {0} }
 
 
-struct  _Wickr__Proto__StreamInfo
-{
-  ProtobufCMessage base;
-  Wickr__Proto__StreamKey *key;
-  protobuf_c_boolean has_user_data;
-  ProtobufCBinaryData user_data;
-};
-#define WICKR__PROTO__STREAM_INFO__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&wickr__proto__stream_info__descriptor) \
-    , NULL, 0,{0,NULL} }
-
-
 struct  _Wickr__Proto__StreamKey
 {
   ProtobufCMessage base;
@@ -124,10 +111,12 @@ struct  _Wickr__Proto__StreamKey
   ProtobufCBinaryData evolution_key;
   protobuf_c_boolean has_packets_per_evo;
   uint32_t packets_per_evo;
+  protobuf_c_boolean has_user_data;
+  ProtobufCBinaryData user_data;
 };
 #define WICKR__PROTO__STREAM_KEY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&wickr__proto__stream_key__descriptor) \
-    , 0,{0,NULL}, 0,{0,NULL}, 0,0 }
+    , 0,{0,NULL}, 0,{0,NULL}, 0,0, 0,{0,NULL} }
 
 
 /* Wickr__Proto__Handshake__Seed methods */
@@ -160,25 +149,6 @@ Wickr__Proto__Handshake *
                       const uint8_t       *data);
 void   wickr__proto__handshake__free_unpacked
                      (Wickr__Proto__Handshake *message,
-                      ProtobufCAllocator *allocator);
-/* Wickr__Proto__StreamInfo methods */
-void   wickr__proto__stream_info__init
-                     (Wickr__Proto__StreamInfo         *message);
-size_t wickr__proto__stream_info__get_packed_size
-                     (const Wickr__Proto__StreamInfo   *message);
-size_t wickr__proto__stream_info__pack
-                     (const Wickr__Proto__StreamInfo   *message,
-                      uint8_t             *out);
-size_t wickr__proto__stream_info__pack_to_buffer
-                     (const Wickr__Proto__StreamInfo   *message,
-                      ProtobufCBuffer     *buffer);
-Wickr__Proto__StreamInfo *
-       wickr__proto__stream_info__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   wickr__proto__stream_info__free_unpacked
-                     (Wickr__Proto__StreamInfo *message,
                       ProtobufCAllocator *allocator);
 /* Wickr__Proto__StreamKey methods */
 void   wickr__proto__stream_key__init
@@ -216,9 +186,6 @@ typedef void (*Wickr__Proto__Handshake__Finish_Closure)
 typedef void (*Wickr__Proto__Handshake_Closure)
                  (const Wickr__Proto__Handshake *message,
                   void *closure_data);
-typedef void (*Wickr__Proto__StreamInfo_Closure)
-                 (const Wickr__Proto__StreamInfo *message,
-                  void *closure_data);
 typedef void (*Wickr__Proto__StreamKey_Closure)
                  (const Wickr__Proto__StreamKey *message,
                   void *closure_data);
@@ -233,7 +200,6 @@ extern const ProtobufCMessageDescriptor wickr__proto__handshake__seed__descripto
 extern const ProtobufCMessageDescriptor wickr__proto__handshake__key_exchange__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__handshake__response__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__handshake__finish__descriptor;
-extern const ProtobufCMessageDescriptor wickr__proto__stream_info__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__stream_key__descriptor;
 
 PROTOBUF_C__END_DECLS

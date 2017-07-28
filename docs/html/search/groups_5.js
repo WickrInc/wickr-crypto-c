@@ -19,5 +19,6 @@ var searchData=
   ['wickr_5fstorage_5fkeys',['Wickr_storage_keys',['../group__wickr__storage__keys.html',1,'']]],
   ['wickr_5fstream',['wickr_stream',['../group__wickr__stream.html',1,'']]],
   ['wickr_5fstream_5fiv',['Wickr_stream_iv',['../group__wickr__stream__iv.html',1,'']]],
+  ['wickr_5fstream_5fkey',['wickr_stream_key',['../group__wickr__stream__key.html',1,'']]],
   ['wickr_5ftransport_5fctx',['Wickr_transport_ctx',['../group__wickr__transport__ctx.html',1,'']]]
 ];
