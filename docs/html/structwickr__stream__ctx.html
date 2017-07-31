@@ -68,7 +68,7 @@ $(function() {
 <p>A context that is used for encrypting or decrypting a sequenced stream of data packets The stream context manages the state of stream operations including key evolution management based on the sequence number of the being encrypted / decrypted. The stream context is assigned a direction, and can only be used for encoding OR decoding of packets, and not both.  
  <a href="structwickr__stream__ctx.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="stream__cipher_8h_source.html">stream_cipher.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="stream__ctx_8h_source.html">stream_ctx.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -128,7 +128,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the iv generator that this stream is using to create iv's </p>
+<p>the iv generator that this stream is using to create IVs </p>
 
 </div>
 </div>
@@ -143,7 +143,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the current stream key that the stream context is using for encryption or decryption depending on directoin the stream key will change over the course of packet encoding due to it's evolutions </p>
+<p>the current stream key that the stream context is using for encryption or decryption depending on direction the stream key will change over the course of packet encoding due to it's evolutions </p>
 
 </div>
 </div>
@@ -163,7 +163,7 @@ Data Fields</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/crypto/<a class="el" href="stream__cipher_8h_source.html">stream_cipher.h</a></li>
+<li>src/crypto/<a class="el" href="stream__ctx_8h_source.html">stream_ctx.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

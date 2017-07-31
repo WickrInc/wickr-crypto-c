@@ -7,7 +7,7 @@ A data structure representing the stream encoding / decoding key material A stre
 
 
 
-{\ttfamily \#include $<$stream\+\_\+cipher.\+h$>$}
+{\ttfamily \#include $<$stream\+\_\+key.\+h$>$}
 
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
@@ -15,6 +15,8 @@ A data structure representing the stream encoding / decoding key material A stre
 \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{structwickr__stream__key_a3d957a51193dda882cb89ced2ceeb91e}{cipher\+\_\+key}
 \item 
 \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__stream__key_ae7210bd67e61cb4c38733a237dae95d9}{evolution\+\_\+key}
+\item 
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__stream__key_a51e59da9f7fbb0b3e1332a20252d1cc6}{user\+\_\+data}
 \item 
 uint32\+\_\+t \hyperlink{structwickr__stream__key_a78777e4c64048b6dae38f8772744194e}{packets\+\_\+per\+\_\+evolution}
 \end{DoxyCompactItemize}
@@ -42,8 +44,14 @@ data to be used to help evolove the key when \textquotesingle{}cipher\+\_\+key\t
 \subsubsection{\texorpdfstring{packets\+\_\+per\+\_\+evolution}{packets\_per\_evolution}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+key\+::packets\+\_\+per\+\_\+evolution}
 
-number of packets this key should be used before it is evoloved using \textquotesingle{}evolution\+\_\+key\textquotesingle{} 
+number of packets this key should be used before it is evoloved using \textquotesingle{}evolution\+\_\+key\textquotesingle{} \mbox{\Hypertarget{structwickr__stream__key_a51e59da9f7fbb0b3e1332a20252d1cc6}\label{structwickr__stream__key_a51e59da9f7fbb0b3e1332a20252d1cc6}} 
+\index{wickr\+\_\+stream\+\_\+key@{wickr\+\_\+stream\+\_\+key}!user\+\_\+data@{user\+\_\+data}}
+\index{user\+\_\+data@{user\+\_\+data}!wickr\+\_\+stream\+\_\+key@{wickr\+\_\+stream\+\_\+key}}
+\subsubsection{\texorpdfstring{user\+\_\+data}{user\_data}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+key\+::user\+\_\+data}
+
+user provided data to assoiciate with the key 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/crypto/stream\+\_\+cipher.\+h\end{DoxyCompactItemize}
+src/crypto/stream\+\_\+key.\+h\end{DoxyCompactItemize}

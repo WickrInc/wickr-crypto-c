@@ -7,7 +7,7 @@ A context that is used for encrypting or decrypting a sequenced stream of data p
 
 
 
-{\ttfamily \#include $<$stream\+\_\+cipher.\+h$>$}
+{\ttfamily \#include $<$stream\+\_\+ctx.\+h$>$}
 
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
@@ -48,13 +48,13 @@ crypto engine to be used for cipher operations, as well as key evolution using H
 \subsubsection{\texorpdfstring{iv\+\_\+factory}{iv\_factory}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+ctx\+::iv\+\_\+factory}
 
-the iv generator that this stream is using to create iv\textquotesingle{}s \mbox{\Hypertarget{structwickr__stream__ctx_a3598b3c0415d13fafab6633f8c00a3c8}\label{structwickr__stream__ctx_a3598b3c0415d13fafab6633f8c00a3c8}} 
+the iv generator that this stream is using to create I\+Vs \mbox{\Hypertarget{structwickr__stream__ctx_a3598b3c0415d13fafab6633f8c00a3c8}\label{structwickr__stream__ctx_a3598b3c0415d13fafab6633f8c00a3c8}} 
 \index{wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}!key@{key}}
 \index{key@{key}!wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}}
 \subsubsection{\texorpdfstring{key}{key}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+ctx\+::key}
 
-the current stream key that the stream context is using for encryption or decryption depending on directoin the stream key will change over the course of packet encoding due to it\textquotesingle{}s evolutions \mbox{\Hypertarget{structwickr__stream__ctx_abf2c6ab54e1663e6a47e310fd68b3b3f}\label{structwickr__stream__ctx_abf2c6ab54e1663e6a47e310fd68b3b3f}} 
+the current stream key that the stream context is using for encryption or decryption depending on direction the stream key will change over the course of packet encoding due to it\textquotesingle{}s evolutions \mbox{\Hypertarget{structwickr__stream__ctx_abf2c6ab54e1663e6a47e310fd68b3b3f}\label{structwickr__stream__ctx_abf2c6ab54e1663e6a47e310fd68b3b3f}} 
 \index{wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}!last\+\_\+seq@{last\+\_\+seq}}
 \index{last\+\_\+seq@{last\+\_\+seq}!wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}}
 \subsubsection{\texorpdfstring{last\+\_\+seq}{last\_seq}}
@@ -64,4 +64,4 @@ the most recent sequence number that successfully encrypted or decrypted a packe
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/crypto/stream\+\_\+cipher.\+h\end{DoxyCompactItemize}
+src/crypto/stream\+\_\+ctx.\+h\end{DoxyCompactItemize}

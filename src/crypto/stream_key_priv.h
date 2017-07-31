@@ -19,16 +19,14 @@
  * ACCESSING AND/OR USING THE CODE ON LICENSEE’S SYSTEM.
  */
 
-#ifndef stream_info_priv_h
-#define stream_info_priv_h
+#ifndef stream_key_priv_h
+#define stream_key_priv_h
 
-#include "stream_info.h"
+#include "stream_key.h"
 #include "stream.pb-c.h"
 
-void wickr_stream_info_proto_free(Wickr__Proto__StreamInfo *proto_info);
+void wickr_stream_key_proto_free(Wickr__Proto__StreamKey *proto_key);
+Wickr__Proto__StreamKey *wickr_stream_key_to_proto(const wickr_stream_key_t *key);
+wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__StreamKey *proto);
 
-Wickr__Proto__StreamInfo *wickr_stream_info_to_proto(const wickr_stream_info_t *info);
-
-wickr_stream_info_t *wickr_stream_info_create_from_proto(const Wickr__Proto__StreamInfo *proto);
-
-#endif /* stream_info_priv_h */
+#endif /* stream_key_priv_h */
