@@ -4,6 +4,7 @@
 #include "transport_priv.h"
 #include "stream_ctx.h"
 #include "externs.h"
+#include <string.h>
 
 /* Test Transports */
 wickr_transport_ctx_t *alice_transport = NULL;
@@ -302,18 +303,22 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_EQUAL(wickr_transport_ctx_get_local_node_ptr(alice_transport), alice_node_1);
         SHOULD_EQUAL(wickr_transport_ctx_get_remote_node_ptr(alice_transport), bob_node_1);
         
-        SHOULD_BE_NULL(wickr_transport_ctx_get_user_ctx(alice_transport));
-        char *test = "test";
+        SHOULD_EQUAL(memcmp(wickr_transport_ctx_get_user_ctx(alice_transport),
+                            test_alice_user_data, strlen(test_alice_user_data)), 0);
         
-        wickr_transport_ctx_set_user_ctx(alice_transport, test);
-        SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(alice_transport), test);
+        wickr_buffer_t *test_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        wickr_transport_ctx_set_user_ctx(alice_transport, test_data);
+        SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(alice_transport), test_data);
         
         wickr_transport_ctx_set_user_ctx(alice_transport, NULL);
+        
+        wickr_buffer_destroy(&test_data);
         
         SHOULD_BE_NULL(wickr_transport_ctx_get_user_ctx(alice_transport));
         
         SHOULD_BE_FALSE(wickr_transport_ctx_set_txstream_user_data(NULL, NULL));
-        SHOULD_BE_FALSE(wickr_transport_ctx_set_txstream_user_data(alice_transport, NULL));
+        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, NULL));
         
         wickr_buffer_t *test_buffer = engine.wickr_crypto_engine_crypto_random(32);
         
@@ -322,6 +327,7 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_NOT_EQUAL(alice_transport->tx_stream_key_udata, test_buffer);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(alice_transport->tx_stream_key_udata, test_buffer, NULL));
         
+        wickr_buffer_destroy(&test_buffer);
     }
     END_IT
     

@@ -134,6 +134,7 @@ void wickr_transport_ctx_destroy(wickr_transport_ctx_t **ctx)
     wickr_node_destroy(&(*ctx)->remote_identity);
     wickr_stream_ctx_destroy(&(*ctx)->tx_stream);
     wickr_stream_ctx_destroy(&(*ctx)->rx_stream);
+    wickr_buffer_destroy(&(*ctx)->tx_stream_key_udata);
     
     wickr_free(*ctx);
     *ctx = NULL;
@@ -310,6 +311,14 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_respond(wickr_t
     wickr_stream_key_t *tx_key = wickr_stream_key_create_rand(ctx->engine, ctx->engine.default_cipher, ctx->evo_count);
     
     if (!tx_key) {
+        wickr_ephemeral_keypair_destroy(&ctx->remote_identity->ephemeral_keypair);
+        return NULL;
+    }
+    
+    tx_key->user_data = wickr_buffer_copy(ctx->tx_stream_key_udata);
+    
+    if (!tx_key->user_data && ctx->tx_stream_key_udata) {
+        wickr_stream_key_destroy(&tx_key);
         wickr_ephemeral_keypair_destroy(&ctx->remote_identity->ephemeral_keypair);
         return NULL;
     }
@@ -883,5 +892,77 @@ void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wic
         ctx->callbacks.rx(ctx, return_buffer, ctx->user);
     }
     
+}
+
+wickr_transport_status wickr_transport_ctx_get_status(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return TRANSPORT_STATUS_NONE;
+    }
+    
+    return ctx->status;
+}
+
+const wickr_buffer_t *wickr_transport_ctx_get_rxstream_user_data(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx || !ctx->rx_stream || !ctx->rx_stream->key) {
+        return NULL;
+    }
+    
+    return ctx->rx_stream->key->user_data;
+}
+
+bool wickr_transport_ctx_set_txstream_user_data(wickr_transport_ctx_t *ctx, const wickr_buffer_t *user_data)
+{
+    if (!ctx) {
+        return false;
+    }
+    
+    wickr_buffer_t *copy_buffer = wickr_buffer_copy(user_data);
+    
+    if (!copy_buffer && user_data) {
+        return false;
+    }
+    
+    wickr_buffer_destroy(&ctx->tx_stream_key_udata);
+    ctx->tx_stream_key_udata = copy_buffer;
+    
+    return true;
+}
+
+const wickr_node_t *wickr_transport_ctx_get_local_node_ptr(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    return ctx->local_identity;
+}
+
+const wickr_node_t *wickr_transport_ctx_get_remote_node_ptr(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    return ctx->remote_identity;
+}
+
+const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    return ctx->user;
+}
+
+void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user)
+{
+    if (!ctx) {
+        return;
+    }
+    
+    ctx->user = user;
 }
 
