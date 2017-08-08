@@ -91,7 +91,7 @@ wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__Strea
     wickr_buffer_t *user_data = NULL;
     
     if (proto->has_user_data) {
-        user_data = wickr_buffer_create(proto->evolution_key.data, proto->evolution_key.len);
+        user_data = wickr_buffer_create(proto->user_data.data, proto->user_data.len);
         
         if (!user_data) {
             wickr_cipher_key_destroy(&cipher_key);

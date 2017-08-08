@@ -24,6 +24,7 @@
 
 #include "crypto_engine.h"
 #include "node.h"
+#include "stream_ctx.h"
 
 /**
  @addtogroup wickr_transport_ctx
@@ -172,5 +173,81 @@ void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wic
  @param buffer the buffer to be processed by by 'ctx'
  */
 void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
+
+
+/* GETTERS AND SETTERS */
+
+/**
+ 
+ @ingroup wickr_transport_ctx
+ 
+ Get the current status of a transport context
+
+ @param ctx the transport context to get the status of
+ @return the current status of 'ctx'
+ */
+wickr_transport_status wickr_transport_ctx_get_status(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the user data associated with the current rx stream's stream key
+
+ @param ctx the transport context to get the rx stream user data of
+ @return the current rx stream key's user data field, or NULL if no data is available
+ */
+const wickr_buffer_t *wickr_transport_ctx_get_rxstream_user_data(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Set the user data to associate with any tx stream keys that are created inside the context
+ This function must be called before wickr_transport_ctx_start() to be effective 
+ 
+ @param ctx the transport context to set the tx stream user data on
+ @param user_data the data to copy into created tx stream keys user data property. The buffer will be copied into 
+ this transport context, so the original buffer can be discarded after this call
+ */
+bool wickr_transport_ctx_set_txstream_user_data(wickr_transport_ctx_t *ctx, const wickr_buffer_t *user_data);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the local node information
+
+ @param ctx the transport context to get the local node information of
+ @return local node information or NULL if no information is available due to the state of the transport context
+ */
+const wickr_node_t *wickr_transport_ctx_get_local_node_ptr(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the remote node information
+ 
+ @param ctx the transport context to get the remote node information of
+ @return remote node information or NULL if no information is available due to the state of the transport context
+ */
+const wickr_node_t *wickr_transport_ctx_get_remote_node_ptr(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the current user context pointer
+
+ @param ctx the context to get the user context pointer of
+ @return the current user context pointer
+ */
+const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Set a user context pointer
+
+ @param ctx the transport context to set the user supplied context info to
+ @param user the pointer for the transport context to hold and be passed back in callbacks
+ */
+void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
 
 #endif /* transport_h */

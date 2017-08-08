@@ -17,6 +17,12 @@ static bool __wickr_stream_key_is_equal(wickr_stream_key_t *k1, wickr_stream_key
         return false;
     }
     
+    if (k1->user_data || k2->user_data) {
+        if (!wickr_buffer_is_equal(k1->user_data, k2->user_data, NULL)) {
+            return false;
+        }
+    }
+    
     if (k1->packets_per_evolution != k2->packets_per_evolution) {
         return false;
     }
@@ -128,6 +134,22 @@ DESCRIBE(wickr_stream_key, "stream cipher key")
         SHOULD_NOT_BE_NULL(serialized);
         
         wickr_stream_key_t *restored = wickr_stream_key_create_from_buffer(serialized);
+        SHOULD_NOT_BE_NULL(restored);
+        
+        SHOULD_BE_TRUE(__wickr_stream_key_is_equal(stream_key, restored));
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_stream_key_destroy(&restored);
+        
+        /* Try again with user data set */
+        stream_key->user_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        SHOULD_NOT_BE_NULL(stream_key->user_data);
+        
+        serialized = wickr_stream_key_serialize(stream_key);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        restored = wickr_stream_key_create_from_buffer(serialized);
         SHOULD_NOT_BE_NULL(restored);
         
         SHOULD_BE_TRUE(__wickr_stream_key_is_equal(stream_key, restored));

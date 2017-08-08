@@ -4,6 +4,7 @@
 #include "transport_priv.h"
 #include "stream_ctx.h"
 #include "externs.h"
+#include <string.h>
 
 /* Test Transports */
 wickr_transport_ctx_t *alice_transport = NULL;
@@ -32,7 +33,8 @@ void wickr_test_transport_tx_alice(const wickr_transport_ctx_t *ctx, const wickr
     last_tx_alice = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_alice_user_data, (const char *)user);
-    
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
+
     wickr_transport_ctx_process_rx_buffer(bob_transport, data);
 }
 
@@ -42,6 +44,7 @@ void wickr_test_transport_tx_alice_no_send(const wickr_transport_ctx_t *ctx, con
     last_tx_alice = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_alice_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 void wickr_test_transport_rx_alice(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
@@ -50,13 +53,16 @@ void wickr_test_transport_rx_alice(const wickr_transport_ctx_t *ctx, const wickr
     last_rx_alice = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_alice_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 void wickr_test_transport_status_alice(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user)
 {
     last_status_alice = status;
     
+    SHOULD_EQUAL(wickr_transport_ctx_get_status(ctx), status);
     SHOULD_EQUAL(test_alice_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 bool wickr_test_transport_verify_remote_alice(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user)
@@ -81,6 +87,7 @@ void wickr_test_transport_tx_bob(const wickr_transport_ctx_t *ctx, const wickr_b
     wickr_transport_ctx_process_rx_buffer(alice_transport, data);
     
     SHOULD_EQUAL(test_bob_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 void wickr_test_transport_tx_bob_no_send(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
@@ -89,6 +96,7 @@ void wickr_test_transport_tx_bob_no_send(const wickr_transport_ctx_t *ctx, const
     last_tx_bob = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_bob_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 void wickr_test_transport_rx_bob(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
@@ -97,13 +105,15 @@ void wickr_test_transport_rx_bob(const wickr_transport_ctx_t *ctx, const wickr_b
     last_rx_bob = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_bob_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 void wickr_test_transport_status_bob(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user)
 {
     last_status_bob = status;
-    
+    SHOULD_EQUAL(wickr_transport_ctx_get_status(ctx), status);
     SHOULD_EQUAL(test_bob_user_data, (const char *)user);
+    SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
 bool wickr_test_transport_verify_remote_bob(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user)
@@ -279,6 +289,45 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_transport->local_identity->id_chain->node->sig_key->pub_data, bob_node_1->id_chain->node->sig_key->pub_data, NULL));
 
+    }
+    END_IT
+    
+    IT("should have getters and setters to certain properties")
+    {
+        SHOULD_BE_NULL(wickr_transport_ctx_get_rxstream_user_data(NULL));
+        SHOULD_BE_NULL(wickr_transport_ctx_get_remote_node_ptr(NULL));
+        SHOULD_BE_NULL(wickr_transport_ctx_get_local_node_ptr(NULL));
+        SHOULD_BE_NULL(wickr_transport_ctx_get_user_ctx(NULL));
+        
+        SHOULD_BE_NULL(wickr_transport_ctx_get_rxstream_user_data(alice_transport));
+        SHOULD_EQUAL(wickr_transport_ctx_get_local_node_ptr(alice_transport), alice_node_1);
+        SHOULD_EQUAL(wickr_transport_ctx_get_remote_node_ptr(alice_transport), bob_node_1);
+        
+        SHOULD_EQUAL(memcmp(wickr_transport_ctx_get_user_ctx(alice_transport),
+                            test_alice_user_data, strlen(test_alice_user_data)), 0);
+        
+        wickr_buffer_t *test_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        wickr_transport_ctx_set_user_ctx(alice_transport, test_data);
+        SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(alice_transport), test_data);
+        
+        wickr_transport_ctx_set_user_ctx(alice_transport, NULL);
+        
+        wickr_buffer_destroy(&test_data);
+        
+        SHOULD_BE_NULL(wickr_transport_ctx_get_user_ctx(alice_transport));
+        
+        SHOULD_BE_FALSE(wickr_transport_ctx_set_txstream_user_data(NULL, NULL));
+        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, NULL));
+        
+        wickr_buffer_t *test_buffer = engine.wickr_crypto_engine_crypto_random(32);
+        
+        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_buffer));
+        
+        SHOULD_NOT_EQUAL(alice_transport->tx_stream_key_udata, test_buffer);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(alice_transport->tx_stream_key_udata, test_buffer, NULL));
+        
+        wickr_buffer_destroy(&test_buffer);
     }
     END_IT
     
@@ -1045,6 +1094,44 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         for (int i = 0; i < 10000; i++) {
             test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
         }
+        
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can pass user data when establishing stream keys")
+    {
+        wickr_buffer_t *test_user_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_user_data));
+        
+        wickr_transport_ctx_start(alice_transport);
+        
+        verify_established_connection();
+        
+        const wickr_buffer_t *test_bobrx_user_data = wickr_transport_ctx_get_rxstream_user_data(bob_transport);
+        
+        SHOULD_NOT_BE_NULL(test_bobrx_user_data);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_user_data, test_bobrx_user_data, NULL));
+        wickr_buffer_destroy(&test_user_data);
+        
+        /* Run it again with different data to confirm it updates */
+        test_user_data = engine.wickr_crypto_engine_crypto_random(32);
+        
+        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_user_data));
+
+        wickr_transport_ctx_start(alice_transport);
+        
+        verify_established_connection();
+        
+        const wickr_buffer_t *test_bobrx_user_data2 = wickr_transport_ctx_get_rxstream_user_data(bob_transport);
+        
+        SHOULD_NOT_BE_NULL(test_bobrx_user_data);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_user_data, test_bobrx_user_data2, NULL));
+        wickr_buffer_destroy(&test_user_data);
         
     }
     END_IT
