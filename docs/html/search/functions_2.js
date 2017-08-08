@@ -203,7 +203,14 @@ var searchData=
   ['wickr_5ftransport_5fctx_5fcopy',['wickr_transport_ctx_copy',['../group__wickr__transport__ctx.html#gaa49b2cf44bcb02d656598a17e5ae1c52',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fcreate',['wickr_transport_ctx_create',['../group__wickr__transport__ctx.html#ga4731758cf20b71d4469c74904bf662c0',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fdestroy',['wickr_transport_ctx_destroy',['../group__wickr__transport__ctx.html#gabe547b01f4f02efea3f518d7445a71ee',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fget_5flocal_5fnode_5fptr',['wickr_transport_ctx_get_local_node_ptr',['../group__wickr__transport__ctx.html#ga7bcb60a2739744e08cce0c18ce7f01ba',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fget_5fremote_5fnode_5fptr',['wickr_transport_ctx_get_remote_node_ptr',['../group__wickr__transport__ctx.html#gad9baf62b25d23b9c6ecd5cec0fc9d6f5',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fget_5frxstream_5fuser_5fdata',['wickr_transport_ctx_get_rxstream_user_data',['../group__wickr__transport__ctx.html#ga3ec320d2e4a4010ffa3f411c1ea1419a',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fget_5fstatus',['wickr_transport_ctx_get_status',['../group__wickr__transport__ctx.html#ga3d3ffde9ec2f9f12ecb6999a048e2437',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fget_5fuser_5fctx',['wickr_transport_ctx_get_user_ctx',['../group__wickr__transport__ctx.html#gaea14ff3de739f7bf4f85516fdefd1ea9',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fprocess_5frx_5fbuffer',['wickr_transport_ctx_process_rx_buffer',['../group__wickr__transport__ctx.html#gad982fd3463a81a667592e18d7bf90822',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fprocess_5ftx_5fbuffer',['wickr_transport_ctx_process_tx_buffer',['../group__wickr__transport__ctx.html#gad9d2f86832cfb9c1948ba679fabbedbc',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fset_5ftxstream_5fuser_5fdata',['wickr_transport_ctx_set_txstream_user_data',['../group__wickr__transport__ctx.html#ga599461036962c38cdb453477288f2b4a',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fset_5fuser_5fctx',['wickr_transport_ctx_set_user_ctx',['../group__wickr__transport__ctx.html#gac1865750950d6ff5ba3850c5f03ab3c9',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fstart',['wickr_transport_ctx_start',['../group__wickr__transport__ctx.html#gaee74761e31d5f0a6fc97e2ccf5ac1e29',1,'transport_ctx.h']]]
 ];

@@ -89,6 +89,20 @@ Functions</h2></td></tr>
 <tr class="separator:gad9d2f86832cfb9c1948ba679fabbedbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad982fd3463a81a667592e18d7bf90822"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gad982fd3463a81a667592e18d7bf90822">wickr_transport_ctx_process_rx_buffer</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer)</td></tr>
 <tr class="separator:gad982fd3463a81a667592e18d7bf90822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d3ffde9ec2f9f12ecb6999a048e2437"><td class="memItemLeft" align="right" valign="top">wickr_transport_status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga3d3ffde9ec2f9f12ecb6999a048e2437">wickr_transport_ctx_get_status</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:ga3d3ffde9ec2f9f12ecb6999a048e2437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ec320d2e4a4010ffa3f411c1ea1419a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga3ec320d2e4a4010ffa3f411c1ea1419a">wickr_transport_ctx_get_rxstream_user_data</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:ga3ec320d2e4a4010ffa3f411c1ea1419a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga599461036962c38cdb453477288f2b4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga599461036962c38cdb453477288f2b4a">wickr_transport_ctx_set_txstream_user_data</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *user_data)</td></tr>
+<tr class="separator:ga599461036962c38cdb453477288f2b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7bcb60a2739744e08cce0c18ce7f01ba"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__node.html">wickr_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga7bcb60a2739744e08cce0c18ce7f01ba">wickr_transport_ctx_get_local_node_ptr</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:ga7bcb60a2739744e08cce0c18ce7f01ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9baf62b25d23b9c6ecd5cec0fc9d6f5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__node.html">wickr_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gad9baf62b25d23b9c6ecd5cec0fc9d6f5">wickr_transport_ctx_get_remote_node_ptr</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:gad9baf62b25d23b9c6ecd5cec0fc9d6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea14ff3de739f7bf4f85516fdefd1ea9"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gaea14ff3de739f7bf4f85516fdefd1ea9">wickr_transport_ctx_get_user_ctx</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:gaea14ff3de739f7bf4f85516fdefd1ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gac1865750950d6ff5ba3850c5f03ab3c9">wickr_transport_ctx_set_user_ctx</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, void *user)</td></tr>
+<tr class="separator:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -208,6 +222,136 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga7bcb60a2739744e08cce0c18ce7f01ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7bcb60a2739744e08cce0c18ce7f01ba">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_local_node_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structwickr__node.html">wickr_node_t</a>* wickr_transport_ctx_get_local_node_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the local node information</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the local node information of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>local node information or NULL if no information is available due to the state of the transport context </dd></dl>
+
+</div>
+</div>
+<a id="gad9baf62b25d23b9c6ecd5cec0fc9d6f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad9baf62b25d23b9c6ecd5cec0fc9d6f5">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_remote_node_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structwickr__node.html">wickr_node_t</a>* wickr_transport_ctx_get_remote_node_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the remote node information</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the remote node information of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>remote node information or NULL if no information is available due to the state of the transport context </dd></dl>
+
+</div>
+</div>
+<a id="ga3ec320d2e4a4010ffa3f411c1ea1419a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ec320d2e4a4010ffa3f411c1ea1419a">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_rxstream_user_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_transport_ctx_get_rxstream_user_data </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the user data associated with the current rx stream's stream key</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the rx stream user data of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current rx stream key's user data field, or NULL if no data is available </dd></dl>
+
+</div>
+</div>
+<a id="ga3d3ffde9ec2f9f12ecb6999a048e2437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d3ffde9ec2f9f12ecb6999a048e2437">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_transport_status wickr_transport_ctx_get_status </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current status of a transport context</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the status of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current status of 'ctx' </dd></dl>
+
+</div>
+</div>
+<a id="gaea14ff3de739f7bf4f85516fdefd1ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaea14ff3de739f7bf4f85516fdefd1ea9">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_user_ctx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* wickr_transport_ctx_get_user_ctx </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current user context pointer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the context to get the user context pointer of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current user context pointer </dd></dl>
+
+</div>
+</div>
 <a id="gad982fd3463a81a667592e18d7bf90822"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad982fd3463a81a667592e18d7bf90822">&#9670;&nbsp;</a></span>wickr_transport_ctx_process_rx_buffer()</h2>
 
@@ -275,6 +419,78 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>the context to process the buffer with </td></tr>
     <tr><td class="paramname">buffer</td><td>the buffer to be encrypted and sent over the transport </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga599461036962c38cdb453477288f2b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga599461036962c38cdb453477288f2b4a">&#9670;&nbsp;</a></span>wickr_transport_ctx_set_txstream_user_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool wickr_transport_ctx_set_txstream_user_data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the user data to associate with any tx stream keys that are created inside the context This function must be called before <a class="el" href="group__wickr__transport__ctx.html#gaee74761e31d5f0a6fc97e2ccf5ac1e29">wickr_transport_ctx_start()</a> to be effective</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to set the tx stream user data on </td></tr>
+    <tr><td class="paramname">user_data</td><td>the data to copy into created tx stream keys user data property. The buffer will be copied into this transport context, so the original buffer can be discarded after this call </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gac1865750950d6ff5ba3850c5f03ab3c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac1865750950d6ff5ba3850c5f03ab3c9">&#9670;&nbsp;</a></span>wickr_transport_ctx_set_user_ctx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wickr_transport_ctx_set_user_ctx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a user context pointer</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to set the user supplied context info to </td></tr>
+    <tr><td class="paramname">user</td><td>the pointer for the transport context to hold and be passed back in callbacks </td></tr>
   </table>
   </dd>
 </dl>
