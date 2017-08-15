@@ -328,6 +328,14 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_BE_TRUE(wickr_buffer_is_equal(alice_transport->tx_stream_key_udata, test_buffer, NULL));
         
         wickr_buffer_destroy(&test_buffer);
+        
+        test_buffer = engine.wickr_crypto_engine_crypto_random(32);
+        
+        wickr_transport_ctx_set_user_psk(alice_transport, test_buffer);
+        SHOULD_NOT_EQUAL(wickr_transport_ctx_get_user_psk(alice_transport), test_buffer);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(wickr_transport_ctx_get_user_psk(alice_transport), test_buffer, NULL));
+        
+        wickr_buffer_destroy(&test_buffer);
     }
     END_IT
     
@@ -1068,6 +1076,59 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     reset_alice_bob();
     
+    IT("will fail a handshake if psk is used and does not match on either side")
+    {
+        wickr_buffer_t *alice_psk = engine.wickr_crypto_engine_crypto_random(32);
+        wickr_buffer_t *bob_psk = engine.wickr_crypto_engine_crypto_random(32);
+        SHOULD_NOT_BE_NULL(alice_psk);
+        SHOULD_NOT_BE_NULL(bob_psk);
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(alice_psk, bob_psk, NULL));
+        
+        wickr_transport_ctx_set_user_psk(alice_transport, alice_psk);
+        wickr_transport_ctx_set_user_psk(bob_transport, bob_psk);
+        wickr_buffer_destroy(&alice_psk);
+        wickr_buffer_destroy(&bob_psk);
+        
+        wickr_transport_ctx_start(alice_transport);
+        SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
+        SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("will fail a handshake if the initiator used a psk and the other party did not")
+    {
+        wickr_buffer_t *alice_psk = engine.wickr_crypto_engine_crypto_random(32);
+        SHOULD_NOT_BE_NULL(alice_psk);
+        
+        wickr_transport_ctx_set_user_psk(alice_transport, alice_psk);
+        wickr_buffer_destroy(&alice_psk);
+        
+        wickr_transport_ctx_start(alice_transport);
+        SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
+        SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("will fail a handshake if the initiator did not use a psk and the other party did")
+    {
+        wickr_buffer_t *bob_psk = engine.wickr_crypto_engine_crypto_random(32);
+        SHOULD_NOT_BE_NULL(bob_psk);
+        
+        wickr_transport_ctx_set_user_psk(bob_transport, bob_psk);
+        wickr_buffer_destroy(&bob_psk);
+        
+        wickr_transport_ctx_start(alice_transport);
+        SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
+        SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
     IT("it can establish a connection via a secure handshake with a pinned remote")
     {
         wickr_transport_ctx_start(alice_transport);
@@ -1133,6 +1194,22 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_BE_TRUE(wickr_buffer_is_equal(test_user_data, test_bobrx_user_data2, NULL));
         wickr_buffer_destroy(&test_user_data);
         
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can use a psk as part of the handshake process")
+    {
+        wickr_buffer_t *psk = engine.wickr_crypto_engine_crypto_random(32);
+        SHOULD_NOT_BE_NULL(psk);
+        
+        wickr_transport_ctx_set_user_psk(alice_transport, psk);
+        wickr_transport_ctx_set_user_psk(bob_transport, psk);
+        wickr_buffer_destroy(&psk);
+        
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
     }
     END_IT
     

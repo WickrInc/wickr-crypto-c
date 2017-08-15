@@ -250,4 +250,26 @@ const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx);
  */
 void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
 
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Set a user PSK to use during key exchange, the psk is entered as a salt into the key exchange
+ preventing users who do not have the PSK from performing a handshake properly
+ see 'wickr_key_exchange_create_with_packet_key' for more information
+ 
+ @param ctx the transport context to set the psk data on
+ @param psk the pre-shared key data to use for key exchanges
+ */
+void wickr_transport_ctx_set_user_psk(wickr_transport_ctx_t *ctx, wickr_buffer_t *psk);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the current user PSK, see 'wickr_transport_ctx_set_user_psk' for more information
+ 
+ @param ctx the transport context to get the psk data from
+ @return the current psk data for 'ctx'
+ */
+const wickr_buffer_t *wickr_transport_ctx_get_user_psk(const wickr_transport_ctx_t *ctx);
+
 #endif /* transport_h */

@@ -135,6 +135,7 @@ void wickr_transport_ctx_destroy(wickr_transport_ctx_t **ctx)
     wickr_stream_ctx_destroy(&(*ctx)->tx_stream);
     wickr_stream_ctx_destroy(&(*ctx)->rx_stream);
     wickr_buffer_destroy(&(*ctx)->tx_stream_key_udata);
+    wickr_buffer_destroy(&(*ctx)->key_exchange_psk);
     
     wickr_free(*ctx);
     *ctx = NULL;
@@ -181,6 +182,7 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_generate_tx_key
                                                                              packet_exchange_key,
                                                                              tx_key_buffer,
                                                                              ctx->engine.default_cipher,
+                                                                             ctx->key_exchange_psk,
                                                                              key_ex_version);
     
     wickr_buffer_destroy_zero(&tx_key_buffer);
@@ -421,7 +423,13 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
         return NULL;
     }
     
-    wickr_buffer_t *rx_key_buffer = wickr_key_exchange_derive_data(&ctx->engine, ctx->remote_identity->id_chain, ctx->local_identity, ec_key, &exchange, key_ex_version);
+    wickr_buffer_t *rx_key_buffer = wickr_key_exchange_derive_data(&ctx->engine,
+                                                                   ctx->remote_identity->id_chain,
+                                                                   ctx->local_identity,
+                                                                   ec_key,
+                                                                   &exchange,
+                                                                   ctx->key_exchange_psk,
+                                                                   key_ex_version);
     
     wickr_ephemeral_keypair_destroy(&ctx->local_identity->ephemeral_keypair);
     wickr_ec_key_destroy(&ec_key);
@@ -436,7 +444,8 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
     return rx_key;
 }
 
-static Wickr__Proto__Handshake *__wickr_transport_ctx_handshake_process_response(wickr_transport_ctx_t *ctx, const wickr_transport_packet_t *return_handshake)
+static Wickr__Proto__Handshake *__wickr_transport_ctx_handshake_process_response(wickr_transport_ctx_t *ctx,
+                                                                                 const wickr_transport_packet_t *return_handshake)
 {
     if (!ctx || !return_handshake) {
         return NULL;
@@ -964,5 +973,30 @@ void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user)
     }
     
     ctx->user = user;
+}
+
+void wickr_transport_ctx_set_user_psk(wickr_transport_ctx_t *ctx, wickr_buffer_t *psk)
+{
+    if (!ctx) {
+        return;
+    }
+    
+    wickr_buffer_t *psk_copy = wickr_buffer_copy(psk);
+    
+    if (psk && !psk_copy) {
+        return;
+    }
+    
+    wickr_buffer_destroy(&ctx->key_exchange_psk);
+    ctx->key_exchange_psk = psk_copy;
+}
+
+const wickr_buffer_t *wickr_transport_ctx_get_user_psk(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    return ctx->key_exchange_psk;
 }
 
