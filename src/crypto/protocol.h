@@ -184,6 +184,7 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id,
  @param receiver the node this key exchange is destined for
  @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver
  @param packet_key the cipher key to use for encrypting the payload of the message that is being created. This is the data we are protecting
+ @param psk optional pre-shared key data to put into the 'salt' field of HKDF
  @param version the version of the packet being generated
  @return a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data
  */
@@ -192,6 +193,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_packet_key(const wickr_cryp
                                                                 const wickr_node_t *receiver,
                                                                 wickr_ec_key_t *packet_exchange_key,
                                                                 const wickr_cipher_key_t *packet_key,
+                                                                const wickr_buffer_t *psk,
                                                                 uint8_t version);
 
 /**
@@ -213,6 +215,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_packet_key(const wickr_cryp
  @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver
  @param data_to_wrap This is the data we are protecting by the output of the key exchange
  @param exchange_cipher the cipher that the exchange should use protect 'data_to_wrap' with
+ @param psk optional pre-shared key data to put into the 'salt' field of HKDF
  @param version the version of the packet being generated
  @return a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data
  */
@@ -222,6 +225,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
                                                           wickr_ec_key_t *packet_exchange_key,
                                                           const wickr_buffer_t *data_to_wrap,
                                                           wickr_cipher_t exchange_cipher,
+                                                          const wickr_buffer_t *psk,
                                                           uint8_t version);
 
 /**
@@ -238,6 +242,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
  @param receiver a node representing the receiver, including an 'ephemeral_keyair' property that has a matching identifier to 'ephemeral_key_id' in the key exchange, and the proper private key materal associated with it
  @param packet_exchange_key the public EC key information that was used for the 'packet_exchange_key' param of 'wickr_key_exchange_create_with_packet_key'
  @param exchange the key exchange to decode into a cipher key
+ @param psk optional pre-shared key data to put into the 'salt' field of HKDF
  @param version the version of the packet being decoded
  @return a cipher key or NULL if provided receiver key is incorrect and a cipher key cannot be decoded
  */
@@ -246,6 +251,7 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
                                                          const wickr_node_t *receiver,
                                                          wickr_ec_key_t *packet_exchange_key,
                                                          const wickr_key_exchange_t *exchange,
+                                                         const wickr_buffer_t *psk,
                                                          uint8_t version);
 
 /**
@@ -260,6 +266,7 @@ wickr_cipher_key_t *wickr_key_exchange_derive_packet_key(const wickr_crypto_engi
  @param receiver a node representing the receiver, including an 'ephemeral_keyair' property that has a matching identifier to 'ephemeral_key_id' in the key exchange, and the proper private key materal associated with it
  @param packet_exchange_key the public EC key information that was used for the 'packet_exchange_key' param of 'wickr_key_exchange_create_with_packet_key'
  @param exchange the key exchange to decode into a cipher key
+ @param psk optional pre-shared key data to put into the 'salt' field of HKDF
  @param version the version of the packet being decoded
  @return buffer or NULL if provided receiver key is incorrect and the wrapped data can't be decoded
  */
@@ -268,6 +275,7 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
                                                const wickr_node_t *receiver,
                                                wickr_ec_key_t *packet_exchange_key,
                                                const wickr_key_exchange_t *exchange,
+                                               const wickr_buffer_t *psk,
                                                uint8_t version);
 
 /**
