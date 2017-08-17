@@ -21,6 +21,24 @@ void \hyperlink{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}
 void \hyperlink{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
 \item 
 void \hyperlink{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\item 
+wickr\+\_\+transport\+\_\+status \hyperlink{group__wickr__transport__ctx_ga3d3ffde9ec2f9f12ecb6999a048e2437}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_ga3ec320d2e4a4010ffa3f411c1ea1419a}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+bool \hyperlink{group__wickr__transport__ctx_ga599461036962c38cdb453477288f2b4a}{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$user\+\_\+data)
+\item 
+const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_ga7bcb60a2739744e08cce0c18ce7f01ba}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_gad9baf62b25d23b9c6ecd5cec0fc9d6f5}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+const void $\ast$ \hyperlink{group__wickr__transport__ctx_gaea14ff3de739f7bf4f85516fdefd1ea9}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
+\item 
+void \hyperlink{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, void $\ast$user)
+\item 
+void \hyperlink{group__wickr__transport__ctx_ga0eaaa828e7130171bf859381757c8d92}{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$psk)
+\item 
+const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_gabd4c671c3f420e804dae16c662bc71c7}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
 \end{DoxyCompactItemize}
 
 
@@ -83,6 +101,102 @@ Destroy a transport context
 {\em ctx} & a pointer to the transport context to destroy. All properties of \textquotesingle{}$\ast$ctx\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga7bcb60a2739744e08cce0c18ce7f01ba}\label{group__wickr__transport__ctx_ga7bcb60a2739744e08cce0c18ce7f01ba}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr()}{wickr\_transport\_ctx\_get\_local\_node\_ptr()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+local\+\_\+node\+\_\+ptr (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the local node information
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the local node information of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+local node information or N\+U\+LL if no information is available due to the state of the transport context 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gad9baf62b25d23b9c6ecd5cec0fc9d6f5}\label{group__wickr__transport__ctx_gad9baf62b25d23b9c6ecd5cec0fc9d6f5}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr()}{wickr\_transport\_ctx\_get\_remote\_node\_ptr()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+remote\+\_\+node\+\_\+ptr (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the remote node information
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the remote node information of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+remote node information or N\+U\+LL if no information is available due to the state of the transport context 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga3ec320d2e4a4010ffa3f411c1ea1419a}\label{group__wickr__transport__ctx_ga3ec320d2e4a4010ffa3f411c1ea1419a}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data()}{wickr\_transport\_ctx\_get\_rxstream\_user\_data()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+rxstream\+\_\+user\+\_\+data (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the user data associated with the current rx stream\textquotesingle{}s stream key
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the rx stream user data of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current rx stream key\textquotesingle{}s user data field, or N\+U\+LL if no data is available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga3d3ffde9ec2f9f12ecb6999a048e2437}\label{group__wickr__transport__ctx_ga3d3ffde9ec2f9f12ecb6999a048e2437}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status()}{wickr\_transport\_ctx\_get\_status()}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+status wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the current status of a transport context
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the status of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current status of \textquotesingle{}ctx\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gaea14ff3de739f7bf4f85516fdefd1ea9}\label{group__wickr__transport__ctx_gaea14ff3de739f7bf4f85516fdefd1ea9}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx()}{wickr\_transport\_ctx\_get\_user\_ctx()}}
+{\footnotesize\ttfamily const void$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the current user context pointer
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the context to get the user context pointer of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current user context pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gabd4c671c3f420e804dae16c662bc71c7}\label{group__wickr__transport__ctx_gabd4c671c3f420e804dae16c662bc71c7}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk()}{wickr\_transport\_ctx\_get\_user\_psk()}}
+{\footnotesize\ttfamily const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+psk (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the current user P\+SK, see \textquotesingle{}wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk\textquotesingle{} for more information
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the psk data from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current psk data for \textquotesingle{}ctx\textquotesingle{} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}\label{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
@@ -113,6 +227,51 @@ N\+O\+TE\+: This function requires the transport context to be in A\+C\+T\+I\+VE
 {\em ctx} & the context to process the buffer with \\
 \hline
 {\em buffer} & the buffer to be encrypted and sent over the transport \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga599461036962c38cdb453477288f2b4a}\label{group__wickr__transport__ctx_ga599461036962c38cdb453477288f2b4a}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data()}{wickr\_transport\_ctx\_set\_txstream\_user\_data()}}
+{\footnotesize\ttfamily bool wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+txstream\+\_\+user\+\_\+data (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+Set the user data to associate with any tx stream keys that are created inside the context This function must be called before \hyperlink{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}{wickr\+\_\+transport\+\_\+ctx\+\_\+start()} to be effective
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to set the tx stream user data on \\
+\hline
+{\em user\+\_\+data} & the data to copy into created tx stream keys user data property. The buffer will be copied into this transport context, so the original buffer can be discarded after this call \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}\label{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx()}{wickr\_transport\_ctx\_set\_user\_ctx()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Set a user context pointer
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to set the user supplied context info to \\
+\hline
+{\em user} & the pointer for the transport context to hold and be passed back in callbacks \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga0eaaa828e7130171bf859381757c8d92}\label{group__wickr__transport__ctx_ga0eaaa828e7130171bf859381757c8d92}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk()}{wickr\_transport\_ctx\_set\_user\_psk()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+psk (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{psk }\end{DoxyParamCaption})}
+
+Set a user P\+SK to use during key exchange, the psk is entered as a salt into the key exchange preventing users who do not have the P\+SK from performing a handshake properly see \textquotesingle{}wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+packet\+\_\+key\textquotesingle{} for more information
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to set the psk data on \\
+\hline
+{\em psk} & the pre-\/shared key data to use for key exchanges \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}\label{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}} 
