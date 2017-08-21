@@ -103,6 +103,10 @@ Functions</h2></td></tr>
 <tr class="separator:gaea14ff3de739f7bf4f85516fdefd1ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gac1865750950d6ff5ba3850c5f03ab3c9">wickr_transport_ctx_set_user_ctx</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, void *user)</td></tr>
 <tr class="separator:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0eaaa828e7130171bf859381757c8d92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga0eaaa828e7130171bf859381757c8d92">wickr_transport_ctx_set_user_psk</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *psk)</td></tr>
+<tr class="separator:ga0eaaa828e7130171bf859381757c8d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd4c671c3f420e804dae16c662bc71c7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gabd4c671c3f420e804dae16c662bc71c7">wickr_transport_ctx_get_user_psk</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:gabd4c671c3f420e804dae16c662bc71c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -352,6 +356,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gabd4c671c3f420e804dae16c662bc71c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabd4c671c3f420e804dae16c662bc71c7">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_user_psk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_transport_ctx_get_user_psk </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current user PSK, see 'wickr_transport_ctx_set_user_psk' for more information</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the psk data from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current psk data for 'ctx' </dd></dl>
+
+</div>
+</div>
 <a id="gad982fd3463a81a667592e18d7bf90822"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad982fd3463a81a667592e18d7bf90822">&#9670;&nbsp;</a></span>wickr_transport_ctx_process_rx_buffer()</h2>
 
@@ -491,6 +521,42 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>the transport context to set the user supplied context info to </td></tr>
     <tr><td class="paramname">user</td><td>the pointer for the transport context to hold and be passed back in callbacks </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga0eaaa828e7130171bf859381757c8d92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0eaaa828e7130171bf859381757c8d92">&#9670;&nbsp;</a></span>wickr_transport_ctx_set_user_psk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wickr_transport_ctx_set_user_psk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>psk</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a user PSK to use during key exchange, the psk is entered as a salt into the key exchange preventing users who do not have the PSK from performing a handshake properly see 'wickr_key_exchange_create_with_packet_key' for more information</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to set the psk data on </td></tr>
+    <tr><td class="paramname">psk</td><td>the pre-shared key data to use for key exchanges </td></tr>
   </table>
   </dd>
 </dl>
