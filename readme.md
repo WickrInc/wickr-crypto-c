@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/jb36tviaypjch87a/branch/master?svg=true)](https://ci.appveyor.com/project/tomleavy/wickr-crypto-c-vsd9i/branch/master)
 
 ## About
-**wickr-crypto-c** is an implementation of the Wickr Secure Messaging Protocol in C, which provides a platform for secure communications on **Wickr Professional**. 
+**wickr-crypto-c** is an implementation of the Wickr Secure Messaging Protocol in C, which provides a platform for secure communications across all Wickr products. 
 
 A white paper describing details of the protocol and its security model can be found [here](https://www.wickr.com/security). A markdown version of the white paper can also be found in the wiki. 
 
