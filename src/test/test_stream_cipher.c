@@ -231,6 +231,7 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
         SHOULD_BE_TRUE(wickr_buffer_is_equal(test_key->evolution_key, ctx->key->evolution_key, NULL));
         SHOULD_EQUAL(STREAM_DIRECTION_ENCODE, ctx->direction);
         SHOULD_EQUAL(0, ctx->last_seq);
+        SHOULD_EQUAL(1, ctx->ref_count);
         
         wickr_stream_ctx_destroy(&ctx);
     }
@@ -328,9 +329,11 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
         
         wickr_stream_ctx_t *enc_copy = wickr_stream_ctx_copy(enc);
         SHOULD_NOT_BE_NULL(enc_copy);
+        SHOULD_EQUAL(enc_copy->ref_count, 1);
         
         wickr_stream_ctx_t *dec_copy = wickr_stream_ctx_copy(dec);
         SHOULD_NOT_BE_NULL(dec_copy);
+        SHOULD_EQUAL(dec_copy->ref_count, 1);
         
         __test_encode_decode_evolution(enc_copy, dec_copy, test_evolution * 3, true);
         __test_encode_decode_evolution(enc, dec, test_evolution * 10, true);
@@ -349,6 +352,32 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
     wickr_stream_ctx_destroy(&dec);
     wickr_stream_key_destroy(&test_key);
     
+    IT("should support reference counting") {
+        
+        wickr_stream_key_t *test_key = wickr_stream_key_create_rand(engine, CIPHER_AES256_GCM, PACKET_PER_EVO_DEFAULT);
+        wickr_stream_ctx_t *ctx = wickr_stream_ctx_create(engine, test_key, STREAM_DIRECTION_ENCODE);
+        SHOULD_NOT_BE_NULL(ctx);
+        
+        SHOULD_BE_FALSE(wickr_stream_ctx_ref_up(NULL));
+        ctx->ref_count = SIZE_MAX;
+        
+        SHOULD_BE_FALSE(wickr_stream_ctx_ref_up(ctx));
+        ctx->ref_count = 1;
+        
+        SHOULD_BE_TRUE(wickr_stream_ctx_ref_up(ctx));
+        SHOULD_EQUAL(ctx->ref_count, 2);
+        
+        wickr_stream_ctx_destroy(&ctx);
+        
+        SHOULD_NOT_BE_NULL(ctx);
+        
+        SHOULD_EQUAL(ctx->ref_count, 1);
+        
+        wickr_stream_ctx_destroy(&ctx);
+        
+        SHOULD_BE_NULL(ctx);
+    }
+    END_IT
 }
 END_DESCRIBE
 

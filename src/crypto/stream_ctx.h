@@ -64,6 +64,7 @@ struct wickr_stream_ctx {
     wickr_stream_iv_t *iv_factory;
     uint64_t last_seq;
     wickr_stream_direction direction;
+    size_t ref_count;
 };
 
 typedef struct wickr_stream_ctx wickr_stream_ctx_t;
@@ -124,5 +125,14 @@ wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cip
  @param ctx a pointer to the stream context to destroy. All properties of '*ctx' will also be destroyed
  */
 void wickr_stream_ctx_destroy(wickr_stream_ctx_t **ctx);
+
+/**
+ @ingroup wickr_stream
+ 
+ Increment the reference count of a stream
+ 
+ @param ctx the context to bump the reference count of
+ */
+bool wickr_stream_ctx_ref_up(wickr_stream_ctx_t *ctx);
 
 #endif /* stream_ctx_h */
