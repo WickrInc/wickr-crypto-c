@@ -57,6 +57,8 @@ typedef enum { STREAM_DIRECTION_ENCODE, STREAM_DIRECTION_DECODE } wickr_stream_d
  the most recent sequence number that successfully encrypted or decrypted a packet
  @var wickr_stream_ctx::direction
  the direction of this stream context. direction can either be encoding or decoding
+ @var wickr_stream_ctx::ref_count
+ current reference count of the stream
  */
 struct wickr_stream_ctx {
     wickr_crypto_engine_t engine;
