@@ -18,6 +18,9 @@ static wickr_buffer_t *last_tx_alice = NULL;
 static wickr_buffer_t *last_rx_alice = NULL;
 static wickr_transport_status last_status_alice = TRANSPORT_STATUS_NONE;
 static wickr_identity_chain_t *verified_identity_alice = NULL;
+static wickr_buffer_t *alice_psk = NULL;
+static wickr_buffer_t *alice_user_data = NULL;
+static wickr_stream_ctx_t *alice_existing_ctx = NULL;
 
 /* Bob */
 const char *test_bob_user_data = "BOB";
@@ -25,6 +28,9 @@ static wickr_buffer_t *last_tx_bob = NULL;
 static wickr_buffer_t *last_rx_bob = NULL;
 static wickr_transport_status last_status_bob = TRANSPORT_STATUS_NONE;
 static wickr_identity_chain_t *verified_identity_bob = NULL;
+static wickr_buffer_t *bob_user_data = NULL;
+static wickr_stream_ctx_t *bob_existing_ctx = NULL;
+static wickr_buffer_t *bob_psk = NULL;
 
 /* Test Callbacks for Alice */
 void wickr_test_transport_tx_alice(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
@@ -134,16 +140,58 @@ bool wickr_test_transport_verify_remote_failure(const wickr_transport_ctx_t *ctx
     return false;
 }
 
+wickr_buffer_t *wickr_test_transport_bob_psk(const wickr_transport_ctx_t *ctx, void *user)
+{
+    return bob_psk;
+}
+
+wickr_buffer_t *wickr_test_transport_alice_psk(const wickr_transport_ctx_t *ctx, void *user)
+{
+    return alice_psk;
+}
+
+wickr_stream_ctx_t *wickr_test_transport_alice_user_data_injection(const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *s_ctx, void *user)
+{
+    s_ctx->key->user_data = wickr_buffer_copy(alice_user_data);
+    return s_ctx;
+}
+
+wickr_stream_ctx_t *wickr_test_transport_bob_user_data_injection(const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *s_ctx, void *user)
+{
+    s_ctx->key->user_data = wickr_buffer_copy(bob_user_data);
+    return s_ctx;
+}
+
+wickr_stream_ctx_t *wickr_test_transport_bob_custom_tx_stream(const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *s_ctx, void *user)
+{
+    wickr_stream_key_t *key = wickr_stream_key_create_rand(ctx->engine, CIPHER_AES256_GCM, PACKET_PER_EVO_DEFAULT);
+    bob_existing_ctx = wickr_stream_ctx_create(ctx->engine, key, STREAM_DIRECTION_ENCODE);
+    return bob_existing_ctx;
+}
+
+wickr_stream_ctx_t *wickr_test_transport_alice_custom_tx_stream(const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *s_ctx, void *user)
+{
+    wickr_stream_key_t *key = wickr_stream_key_create_rand(ctx->engine, CIPHER_AES256_GCM, PACKET_PER_EVO_DEFAULT);
+    alice_existing_ctx = wickr_stream_ctx_create(ctx->engine, key, STREAM_DIRECTION_ENCODE);
+    return alice_existing_ctx;
+}
+
 static wickr_transport_callbacks_t test_callbacks_alice = { wickr_test_transport_tx_alice,
     wickr_test_transport_rx_alice,
     wickr_test_transport_status_alice,
-    wickr_test_transport_verify_remote_alice };
+    wickr_test_transport_verify_remote_alice,
+    NULL,
+    NULL
+};
 
 
 static wickr_transport_callbacks_t test_callbacks_bob = { wickr_test_transport_tx_bob,
     wickr_test_transport_rx_bob,
     wickr_test_transport_status_bob,
-    wickr_test_transport_verify_remote_bob };
+    wickr_test_transport_verify_remote_bob,
+    NULL,
+    NULL
+};
 
 void test_packet_send(wickr_transport_ctx_t *sender_ctx, wickr_buffer_t **last_packet, wickr_buffer_t **expected, int pkt_number)
 {
@@ -200,6 +248,12 @@ void reset_alice_bob()
     wickr_buffer_destroy_zero(&last_tx_bob);
     wickr_buffer_destroy_zero(&last_rx_alice);
     wickr_buffer_destroy_zero(&last_rx_bob);
+    wickr_buffer_destroy(&bob_psk);
+    wickr_buffer_destroy(&alice_psk);
+    wickr_buffer_destroy(&bob_user_data);
+    wickr_buffer_destroy(&alice_user_data);
+    wickr_stream_ctx_destroy(&bob_existing_ctx);
+    wickr_stream_ctx_destroy(&alice_existing_ctx);
 }
 
 void verify_established_connection()
@@ -316,26 +370,6 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         wickr_buffer_destroy(&test_data);
         
         SHOULD_BE_NULL(wickr_transport_ctx_get_user_ctx(alice_transport));
-        
-        SHOULD_BE_FALSE(wickr_transport_ctx_set_txstream_user_data(NULL, NULL));
-        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, NULL));
-        
-        wickr_buffer_t *test_buffer = engine.wickr_crypto_engine_crypto_random(32);
-        
-        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_buffer));
-        
-        SHOULD_NOT_EQUAL(alice_transport->tx_stream_key_udata, test_buffer);
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(alice_transport->tx_stream_key_udata, test_buffer, NULL));
-        
-        wickr_buffer_destroy(&test_buffer);
-        
-        test_buffer = engine.wickr_crypto_engine_crypto_random(32);
-        
-        wickr_transport_ctx_set_user_psk(alice_transport, test_buffer);
-        SHOULD_NOT_EQUAL(wickr_transport_ctx_get_user_psk(alice_transport), test_buffer);
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(wickr_transport_ctx_get_user_psk(alice_transport), test_buffer, NULL));
-        
-        wickr_buffer_destroy(&test_buffer);
     }
     END_IT
     
@@ -591,6 +625,10 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         alice_transport->callbacks.tx = wickr_test_transport_tx_alice_no_send;
         bob_transport->callbacks.tx = wickr_test_transport_tx_bob_no_send;
         
+        alice_transport->tx_stream = wickr_stream_ctx_create(engine,
+                                                             wickr_stream_key_create_rand(engine, CIPHER_AES256_GCM, PACKET_PER_EVO_DEFAULT),
+                                                             STREAM_DIRECTION_ENCODE);
+        
         Wickr__Proto__Handshake__KeyExchange key_exchange_p = WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT;
         key_exchange_p.has_sender_pub = false;
         key_exchange_p.has_exchange_data = false;
@@ -656,7 +694,6 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     {
         wickr_transport_ctx_process_rx_buffer(alice_transport, actual_handshake);
         SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
-        SHOULD_BE_NULL(alice_transport->tx_stream);
         SHOULD_BE_NULL(alice_transport->rx_stream);
     }
     END_IT
@@ -1078,16 +1115,14 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("will fail a handshake if psk is used and does not match on either side")
     {
-        wickr_buffer_t *alice_psk = engine.wickr_crypto_engine_crypto_random(32);
-        wickr_buffer_t *bob_psk = engine.wickr_crypto_engine_crypto_random(32);
-        SHOULD_NOT_BE_NULL(alice_psk);
-        SHOULD_NOT_BE_NULL(bob_psk);
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(alice_psk, bob_psk, NULL));
+        alice_transport->callbacks.on_psk_required = wickr_test_transport_alice_psk;
+        bob_transport->callbacks.on_psk_required = wickr_test_transport_bob_psk;
         
-        wickr_transport_ctx_set_user_psk(alice_transport, alice_psk);
-        wickr_transport_ctx_set_user_psk(bob_transport, bob_psk);
-        wickr_buffer_destroy(&alice_psk);
-        wickr_buffer_destroy(&bob_psk);
+        bob_psk = engine.wickr_crypto_engine_crypto_random(32);
+        alice_psk = engine.wickr_crypto_engine_crypto_random(32);
+        SHOULD_NOT_BE_NULL(bob_psk);
+        SHOULD_NOT_BE_NULL(alice_psk);
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(bob_psk, alice_psk, NULL));
         
         wickr_transport_ctx_start(alice_transport);
         SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
@@ -1099,13 +1134,11 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("will fail a handshake if the initiator used a psk and the other party did not")
     {
-        wickr_buffer_t *alice_psk = engine.wickr_crypto_engine_crypto_random(32);
-        SHOULD_NOT_BE_NULL(alice_psk);
-        
-        wickr_transport_ctx_set_user_psk(alice_transport, alice_psk);
-        wickr_buffer_destroy(&alice_psk);
+        alice_psk = engine.wickr_crypto_engine_crypto_random(32);
+        alice_transport->callbacks.on_psk_required = wickr_test_transport_alice_psk;
         
         wickr_transport_ctx_start(alice_transport);
+        
         SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
         SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
     }
@@ -1115,11 +1148,9 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("will fail a handshake if the initiator did not use a psk and the other party did")
     {
-        wickr_buffer_t *bob_psk = engine.wickr_crypto_engine_crypto_random(32);
+        bob_transport->callbacks.on_psk_required = wickr_test_transport_bob_psk;
+        bob_psk = engine.wickr_crypto_engine_crypto_random(32);
         SHOULD_NOT_BE_NULL(bob_psk);
-        
-        wickr_transport_ctx_set_user_psk(bob_transport, bob_psk);
-        wickr_buffer_destroy(&bob_psk);
         
         wickr_transport_ctx_start(alice_transport);
         SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
@@ -1140,8 +1171,8 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("can transmit secure packets after the handshake is established (pinned remote)")
     {
-        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 1);
-        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 1);
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
     }
     END_IT
     
@@ -1149,11 +1180,11 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     {
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 2);
+            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 4);
         }
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
+            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 3);
         }
         
     }
@@ -1161,39 +1192,39 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     reset_alice_bob();
     
-    IT("can pass user data when establishing stream keys")
+    IT("can pass user data when establishing stream keys (initiator)")
     {
-        wickr_buffer_t *test_user_data = engine.wickr_crypto_engine_crypto_random(32);
-        
-        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_user_data));
+        alice_user_data = engine.wickr_crypto_engine_crypto_random(32);
+        alice_transport->callbacks.on_tx_stream_gen = wickr_test_transport_alice_user_data_injection;
         
         wickr_transport_ctx_start(alice_transport);
         
         verify_established_connection();
         
-        const wickr_buffer_t *test_bobrx_user_data = wickr_transport_ctx_get_rxstream_user_data(bob_transport);
+        const wickr_buffer_t *test_bob_user_data = wickr_transport_ctx_get_rxstream_user_data(bob_transport);
         
-        SHOULD_NOT_BE_NULL(test_bobrx_user_data);
+        SHOULD_NOT_BE_NULL(test_bob_user_data);
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_user_data, test_bobrx_user_data, NULL));
-        wickr_buffer_destroy(&test_user_data);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(alice_user_data, test_bob_user_data, NULL));
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can pass user data when establishing stream keys (receiver)")
+    {
+        bob_user_data = engine.wickr_crypto_engine_crypto_random(32);
+        bob_transport->callbacks.on_tx_stream_gen = wickr_test_transport_bob_user_data_injection;
         
-        /* Run it again with different data to confirm it updates */
-        test_user_data = engine.wickr_crypto_engine_crypto_random(32);
-        
-        SHOULD_BE_TRUE(wickr_transport_ctx_set_txstream_user_data(alice_transport, test_user_data));
-
         wickr_transport_ctx_start(alice_transport);
         
         verify_established_connection();
         
-        const wickr_buffer_t *test_bobrx_user_data2 = wickr_transport_ctx_get_rxstream_user_data(bob_transport);
+        const wickr_buffer_t *test_alicerx_user_data = wickr_transport_ctx_get_rxstream_user_data(alice_transport);
         
-        SHOULD_NOT_BE_NULL(test_bobrx_user_data);
+        SHOULD_NOT_BE_NULL(test_alicerx_user_data);
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_user_data, test_bobrx_user_data2, NULL));
-        wickr_buffer_destroy(&test_user_data);
-        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(bob_user_data, test_alicerx_user_data, NULL));
     }
     END_IT
     
@@ -1201,15 +1232,64 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("can use a psk as part of the handshake process")
     {
-        wickr_buffer_t *psk = engine.wickr_crypto_engine_crypto_random(32);
-        SHOULD_NOT_BE_NULL(psk);
+        bob_psk = engine.wickr_crypto_engine_crypto_random(32);
+        alice_psk = wickr_buffer_copy(bob_psk);
+        SHOULD_NOT_BE_NULL(bob_psk);
+        SHOULD_NOT_BE_NULL(alice_psk);
         
-        wickr_transport_ctx_set_user_psk(alice_transport, psk);
-        wickr_transport_ctx_set_user_psk(bob_transport, psk);
-        wickr_buffer_destroy(&psk);
+        bob_transport->callbacks.on_psk_required = wickr_test_transport_bob_psk;
+        alice_transport->callbacks.on_psk_required = wickr_test_transport_alice_psk;
         
         wickr_transport_ctx_start(alice_transport);
         verify_established_connection();
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can user a user provided tx stream (initiator)") {
+        
+        alice_transport->callbacks.on_tx_stream_gen = wickr_test_transport_alice_custom_tx_stream;
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
+        
+        SHOULD_EQUAL(alice_transport->tx_stream, alice_existing_ctx);
+        
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can user a user provided tx stream (receiver)") {
+        
+        bob_transport->callbacks.on_tx_stream_gen = wickr_test_transport_bob_custom_tx_stream;
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
+        
+        SHOULD_EQUAL(bob_transport->tx_stream, bob_existing_ctx);
+        
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
+    IT("can user a user provided tx stream (both sides)") {
+        
+        bob_transport->callbacks.on_tx_stream_gen = wickr_test_transport_bob_custom_tx_stream;
+        alice_transport->callbacks.on_tx_stream_gen = wickr_test_transport_alice_custom_tx_stream;
+        
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
+        
+        SHOULD_EQUAL(bob_transport->tx_stream, bob_existing_ctx);
+        SHOULD_EQUAL(alice_transport->tx_stream, alice_existing_ctx);
+
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
     }
     END_IT
     
@@ -1237,7 +1317,6 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         wickr_transport_ctx_start(alice_transport);
         SHOULD_EQUAL(last_status_alice, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(last_status_bob, TRANSPORT_STATUS_TX_INIT);
-        SHOULD_BE_NULL(alice_transport->tx_stream);
         SHOULD_BE_NULL(alice_transport->rx_stream);
     }
     END_IT
@@ -1267,8 +1346,8 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("can transmit secure packets after the handshake is established (non pinned remote)")
     {
-        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 1);
-        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 1);
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
     }
     END_IT
     
@@ -1276,11 +1355,11 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     {
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 2);
+            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 4);
         }
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
+            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 3);
         }
          
     }
@@ -1313,8 +1392,8 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("can transmit secure packets after the handshake is established (no pinned remotes)")
     {
-        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 1);
-        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 1);
+        test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, 3);
+        test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, 2);
     }
     END_IT
     
@@ -1322,11 +1401,11 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     {
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 2);
+            test_packet_send(alice_transport, &last_tx_alice, &last_rx_bob, i + 4);
         }
         
         for (int i = 0; i < 10000; i++) {
-            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 2);
+            test_packet_send(bob_transport, &last_tx_bob, &last_rx_alice, i + 3);
         }
         
     }
