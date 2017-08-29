@@ -21,6 +21,8 @@ A context that is used for encrypting or decrypting a sequenced stream of data p
 uint64\+\_\+t \hyperlink{structwickr__stream__ctx_abf2c6ab54e1663e6a47e310fd68b3b3f}{last\+\_\+seq}
 \item 
 wickr\+\_\+stream\+\_\+direction \hyperlink{structwickr__stream__ctx_a34c622c3ca61348321261ee7a9c3ff91}{direction}
+\item 
+size\+\_\+t \hyperlink{structwickr__stream__ctx_aa0e74b2c117666501373a5947d92e8c4}{ref\+\_\+count}
 \end{DoxyCompactItemize}
 
 
@@ -60,7 +62,13 @@ the current stream key that the stream context is using for encryption or decryp
 \subsubsection{\texorpdfstring{last\+\_\+seq}{last\_seq}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+ctx\+::last\+\_\+seq}
 
-the most recent sequence number that successfully encrypted or decrypted a packet 
+the most recent sequence number that successfully encrypted or decrypted a packet \mbox{\Hypertarget{structwickr__stream__ctx_aa0e74b2c117666501373a5947d92e8c4}\label{structwickr__stream__ctx_aa0e74b2c117666501373a5947d92e8c4}} 
+\index{wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}!ref\+\_\+count@{ref\+\_\+count}}
+\index{ref\+\_\+count@{ref\+\_\+count}!wickr\+\_\+stream\+\_\+ctx@{wickr\+\_\+stream\+\_\+ctx}}
+\subsubsection{\texorpdfstring{ref\+\_\+count}{ref\_count}}
+{\footnotesize\ttfamily wickr\+\_\+stream\+\_\+ctx\+::ref\+\_\+count}
+
+current reference count of the stream 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

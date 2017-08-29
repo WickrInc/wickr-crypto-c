@@ -82,6 +82,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:abf2c6ab54e1663e6a47e310fd68b3b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34c622c3ca61348321261ee7a9c3ff91"><td class="memItemLeft" align="right" valign="top">wickr_stream_direction&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__stream__ctx.html#a34c622c3ca61348321261ee7a9c3ff91">direction</a></td></tr>
 <tr class="separator:a34c622c3ca61348321261ee7a9c3ff91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e74b2c117666501373a5947d92e8c4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__stream__ctx.html#aa0e74b2c117666501373a5947d92e8c4">ref_count</a></td></tr>
+<tr class="separator:aa0e74b2c117666501373a5947d92e8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A context that is used for encrypting or decrypting a sequenced stream of data packets The stream context manages the state of stream operations including key evolution management based on the sequence number of the being encrypted / decrypted. The stream context is assigned a direction, and can only be used for encoding OR decoding of packets, and not both. </p>
@@ -159,6 +161,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>the most recent sequence number that successfully encrypted or decrypted a packet </p>
+
+</div>
+</div>
+<a id="aa0e74b2c117666501373a5947d92e8c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e74b2c117666501373a5947d92e8c4">&#9670;&nbsp;</a></span>ref_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_stream_ctx::ref_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>current reference count of the stream </p>
 
 </div>
 </div>

@@ -2,7 +2,9 @@ var searchData=
 [
   ['oldest_5fpacket_5fversion',['OLDEST_PACKET_VERSION',['../group__wickr__protocol.html#gad269883d0b8b26c4fa52da595ef5ddf7',1,'protocol.h']]],
   ['on_5fidentity_5fverify',['on_identity_verify',['../structwickr__transport__callbacks.html#ab1afc16797b1bb30dde87936a97f682e',1,'wickr_transport_callbacks']]],
+  ['on_5fpsk_5frequired',['on_psk_required',['../structwickr__transport__callbacks.html#af01227bfe19f056de55669d79ed7c120',1,'wickr_transport_callbacks']]],
   ['on_5fstate',['on_state',['../structwickr__transport__callbacks.html#afef0716506b88885c57fda652500b3da',1,'wickr_transport_callbacks']]],
+  ['on_5ftx_5fstream_5fgen',['on_tx_stream_gen',['../structwickr__transport__callbacks.html#a1b6ee026d404a5b267e0c680dc9c2337',1,'wickr_transport_callbacks']]],
   ['openssl_5faes256_5fdecrypt',['openssl_aes256_decrypt',['../group__openssl__crypto.html#ga75eaf118b28fb76e75579d0a74517b18',1,'openssl_suite.h']]],
   ['openssl_5faes256_5fencrypt',['openssl_aes256_encrypt',['../group__openssl__crypto.html#gaf51493d43d3572265abba27e2b3fbc54',1,'openssl_suite.h']]],
   ['openssl_5faes256_5ffile_5fdecrypt',['openssl_aes256_file_decrypt',['../group__openssl__file__encryption.html#ga434cf0c2d289c409b3d92d6b0be001c7',1,'openssl_file_suite.h']]],
