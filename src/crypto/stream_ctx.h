@@ -57,6 +57,8 @@ typedef enum { STREAM_DIRECTION_ENCODE, STREAM_DIRECTION_DECODE } wickr_stream_d
  the most recent sequence number that successfully encrypted or decrypted a packet
  @var wickr_stream_ctx::direction
  the direction of this stream context. direction can either be encoding or decoding
+ @var wickr_stream_ctx::ref_count
+ current reference count of the stream
  */
 struct wickr_stream_ctx {
     wickr_crypto_engine_t engine;
@@ -64,6 +66,7 @@ struct wickr_stream_ctx {
     wickr_stream_iv_t *iv_factory;
     uint64_t last_seq;
     wickr_stream_direction direction;
+    size_t ref_count;
 };
 
 typedef struct wickr_stream_ctx wickr_stream_ctx_t;
@@ -124,5 +127,14 @@ wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cip
  @param ctx a pointer to the stream context to destroy. All properties of '*ctx' will also be destroyed
  */
 void wickr_stream_ctx_destroy(wickr_stream_ctx_t **ctx);
+
+/**
+ @ingroup wickr_stream
+ 
+ Increment the reference count of a stream
+ 
+ @param ctx the context to bump the reference count of
+ */
+bool wickr_stream_ctx_ref_up(wickr_stream_ctx_t *ctx);
 
 #endif /* stream_ctx_h */

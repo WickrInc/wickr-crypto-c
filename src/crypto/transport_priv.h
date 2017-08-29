@@ -39,8 +39,6 @@ struct wickr_transport_ctx {
     uint32_t evo_count;
     wickr_transport_callbacks_t callbacks;
     void *user;
-    wickr_buffer_t *tx_stream_key_udata;
-    wickr_buffer_t *key_exchange_psk;
 };
 
 #define CURRENT_HANDSHAKE_VERSION 1

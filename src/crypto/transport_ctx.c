@@ -38,6 +38,53 @@ static void __wickr_transport_ctx_update_status(wickr_transport_ctx_t *ctx, wick
     ctx->callbacks.on_state(ctx, status, ctx->user);
 }
 
+static bool __wickr_transport_ctx_set_tx_stream(wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *tx_stream)
+{
+    if (!ctx || !tx_stream || tx_stream->direction != STREAM_DIRECTION_ENCODE) {
+        return false;
+    }
+    
+    /* Make sure the new stream is picking up with the sequence number of the existing stream if necessary */
+    if (ctx->tx_stream && tx_stream) {
+        tx_stream->last_seq = ctx->tx_stream->last_seq;
+    }
+    
+    wickr_stream_ctx_destroy(&ctx->tx_stream);
+    ctx->tx_stream = tx_stream;
+    
+    return wickr_stream_ctx_ref_up(tx_stream);
+}
+
+static wickr_stream_ctx_t *__wickr_transport_ctx_rand_tx_stream(wickr_transport_ctx_t *ctx, wickr_buffer_t *user_data)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    wickr_stream_key_t *stream_key = wickr_stream_key_create_rand(ctx->engine,
+                                                                  ctx->engine.default_cipher,
+                                                                  PACKET_PER_EVO_DEFAULT);
+    
+    if (!stream_key) {
+        return NULL;
+    }
+    
+    stream_key->user_data = wickr_buffer_copy(user_data);
+    
+    if (!stream_key->user_data && user_data) {
+        wickr_stream_key_destroy(&stream_key);
+        return NULL;
+    }
+    
+    wickr_stream_ctx_t *tx_stream = wickr_stream_ctx_create(ctx->engine, stream_key, STREAM_DIRECTION_ENCODE);
+    
+    if (!tx_stream) {
+        wickr_stream_key_destroy(&stream_key);
+    }
+    
+    return tx_stream;
+}
+
 wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t engine, wickr_node_t *local_identity, wickr_node_t *remote_identity, uint32_t evo_count, wickr_transport_callbacks_t callbacks, void *user)
 {
     if (!local_identity) {
@@ -134,8 +181,6 @@ void wickr_transport_ctx_destroy(wickr_transport_ctx_t **ctx)
     wickr_node_destroy(&(*ctx)->remote_identity);
     wickr_stream_ctx_destroy(&(*ctx)->tx_stream);
     wickr_stream_ctx_destroy(&(*ctx)->rx_stream);
-    wickr_buffer_destroy(&(*ctx)->tx_stream_key_udata);
-    wickr_buffer_destroy(&(*ctx)->key_exchange_psk);
     
     wickr_free(*ctx);
     *ctx = NULL;
@@ -176,13 +221,19 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_generate_tx_key
         return NULL;
     }
     
+    wickr_buffer_t *psk = NULL;
+    
+    if (ctx->callbacks.on_psk_required) {
+        psk = ctx->callbacks.on_psk_required(ctx, ctx->user);
+    }
+    
     wickr_key_exchange_t *key_exchange = wickr_key_exchange_create_with_data(&ctx->engine,
                                                                              ctx->local_identity->id_chain,
                                                                              ctx->remote_identity,
                                                                              packet_exchange_key,
                                                                              tx_key_buffer,
                                                                              ctx->engine.default_cipher,
-                                                                             ctx->key_exchange_psk,
+                                                                             psk,
                                                                              key_ex_version);
     
     wickr_buffer_destroy_zero(&tx_key_buffer);
@@ -252,17 +303,6 @@ static bool __wickr_transport_ctx_update_remote_keypair(wickr_transport_ctx_t *c
     return true;
 }
 
-static void __wickr_transport_ctx_update_tx_stream(wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *tx_stream)
-{
-    /* Make sure the new stream is picking up with the sequence number of the existing stream if necessary */
-    if (ctx->tx_stream && tx_stream) {
-        tx_stream->last_seq = ctx->tx_stream->last_seq;
-    }
-    
-    wickr_stream_ctx_destroy(&ctx->tx_stream);
-    ctx->tx_stream = tx_stream;
-}
-
 static void __wickr_transport_ctx_update_rx_stream(wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *rx_stream)
 {
     /* Make sure the new stream is picking up with the sequence number of the existing stream if necessary */
@@ -274,19 +314,13 @@ static void __wickr_transport_ctx_update_rx_stream(wickr_transport_ctx_t *ctx, w
     ctx->rx_stream = rx_stream;
 }
 
-static bool __wickr_transport_ctx_set_handshake_key(wickr_transport_ctx_t *ctx, const wickr_ec_key_t *handshake_key)
+static bool __wickr_transport_ctx_set_handshake_key(wickr_transport_ctx_t *ctx, wickr_ec_key_t *exchange_key)
 {
-    if (!ctx || !handshake_key) {
+    if (!ctx || !exchange_key) {
         return false;
     }
     
-    wickr_ec_key_t *copy_key = wickr_ec_key_copy(handshake_key);
-    
-    if (!copy_key) {
-        return false;
-    }
-    
-    wickr_ephemeral_keypair_t *ephemeral_key = wickr_ephemeral_keypair_create(0, copy_key, NULL);
+    wickr_ephemeral_keypair_t *ephemeral_key = wickr_ephemeral_keypair_create(0, exchange_key, NULL);
     
     if (!ephemeral_key) {
         return false;
@@ -300,6 +334,46 @@ static bool __wickr_transport_ctx_set_handshake_key(wickr_transport_ctx_t *ctx, 
     return true;
 }
 
+static bool __wickr_transport_ctx_generate_keys(wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return false;
+    }
+    
+    wickr_ec_key_t *exchange_key = ctx->engine.wickr_crypto_engine_ec_rand_key(ctx->engine.default_curve);
+    
+    if (!__wickr_transport_ctx_set_handshake_key(ctx, exchange_key)) {
+        wickr_ec_key_destroy(&exchange_key);
+        return false;
+    }
+    
+    wickr_stream_ctx_t *tx_ctx = __wickr_transport_ctx_rand_tx_stream(ctx, NULL);
+    
+    if (!tx_ctx) {
+        return false;
+    }
+    
+    bool swapped = false;
+    
+    if (ctx->callbacks.on_tx_stream_gen) {
+        wickr_stream_ctx_t *new_ctx = ctx->callbacks.on_tx_stream_gen(ctx, tx_ctx, ctx->user);
+        
+        if (new_ctx != tx_ctx) {
+            swapped = true;
+            wickr_stream_ctx_destroy(&tx_ctx);
+            tx_ctx = new_ctx;
+        }
+    }
+    
+    bool result = __wickr_transport_ctx_set_tx_stream(ctx, tx_ctx);
+    
+    if (!swapped) {
+        wickr_stream_ctx_destroy(&tx_ctx);
+    }
+    
+    return result;
+}
+
 static wickr_transport_packet_t *__wickr_transport_ctx_handshake_respond(wickr_transport_ctx_t *ctx, Wickr__Proto__Handshake__Seed *seed, uint8_t version)
 {
     if (!ctx) {
@@ -307,21 +381,6 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_respond(wickr_t
     }
     
     if (!__wickr_transport_ctx_update_remote_keypair(ctx, seed)) {
-        return NULL;
-    }
-    
-    wickr_stream_key_t *tx_key = wickr_stream_key_create_rand(ctx->engine, ctx->engine.default_cipher, ctx->evo_count);
-    
-    if (!tx_key) {
-        wickr_ephemeral_keypair_destroy(&ctx->remote_identity->ephemeral_keypair);
-        return NULL;
-    }
-    
-    tx_key->user_data = wickr_buffer_copy(ctx->tx_stream_key_udata);
-    
-    if (!tx_key->user_data && ctx->tx_stream_key_udata) {
-        wickr_stream_key_destroy(&tx_key);
-        wickr_ephemeral_keypair_destroy(&ctx->remote_identity->ephemeral_keypair);
         return NULL;
     }
     
@@ -335,45 +394,21 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_respond(wickr_t
     }
     
     if (phase == WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE) {
-        wickr_ec_key_t *key = ctx->engine.wickr_crypto_engine_ec_rand_key(ctx->engine.default_curve);
         
-        if (!key) {
-            wickr_stream_key_destroy(&tx_key);
+        if (!__wickr_transport_ctx_generate_keys(ctx)) {
             return NULL;
         }
         
-        if (!__wickr_transport_ctx_set_handshake_key(ctx, key)) {
-            wickr_stream_key_destroy(&tx_key);
-            return NULL;
-        }
-        wickr_ec_key_destroy(&key);
     }
     
     wickr_transport_packet_t *packet = __wickr_transport_ctx_handshake_generate_tx_key_exchange(ctx,
                                                                         phase,
-                                                                        tx_key,
+                                                                        ctx->tx_stream->key,
                                                                         version);
     
     wickr_ephemeral_keypair_destroy(&ctx->remote_identity->ephemeral_keypair);
     
-    if (!packet) {
-        wickr_stream_key_destroy(&tx_key);
-        return NULL;
-    }
-    
-    
-    wickr_stream_ctx_t *tx_stream = wickr_stream_ctx_create(ctx->engine, tx_key, STREAM_DIRECTION_ENCODE);
-    
-    if (!tx_stream) {
-        wickr_transport_packet_destroy(&packet);
-        wickr_stream_key_destroy(&tx_key);
-        return NULL;
-    }
-    
-    __wickr_transport_ctx_update_tx_stream(ctx, tx_stream);
-    
     return packet;
-
 }
 
 static wickr_transport_packet_t *__wickr_transport_ctx_handshake_seed_respond(wickr_transport_ctx_t *ctx, const wickr_transport_packet_t *handshake)
@@ -409,6 +444,12 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
         return NULL;
     }
     
+    wickr_buffer_t *psk = NULL;
+    
+    if (ctx->callbacks.on_psk_required) {
+        psk = ctx->callbacks.on_psk_required(ctx, ctx->user);
+    }
+    
     wickr_buffer_t key_exchange_buffer = { return_exchange->exchange_data.len, return_exchange->exchange_data.data };
     wickr_buffer_t exchange_key_buffer = { return_exchange->sender_pub.len, return_exchange->sender_pub.data };
     
@@ -428,7 +469,7 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
                                                                    ctx->local_identity,
                                                                    ec_key,
                                                                    &exchange,
-                                                                   ctx->key_exchange_psk,
+                                                                   psk,
                                                                    key_ex_version);
     
     wickr_ephemeral_keypair_destroy(&ctx->local_identity->ephemeral_keypair);
@@ -622,15 +663,7 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
         return;
     }
     
-    wickr_ec_key_t *handshake_key = ctx->engine.wickr_crypto_engine_ec_rand_key(ctx->engine.default_curve);
-    
-    if (!handshake_key) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
-    }
-    
-    bool result = __wickr_transport_ctx_set_handshake_key(ctx, handshake_key);
-    wickr_ec_key_destroy(&handshake_key);
+    bool result = __wickr_transport_ctx_generate_keys(ctx);
     
     if (!result) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
@@ -654,7 +687,6 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
     wickr_node_proto_free(seed.node_info);
     
     if (!handshake_pkt) {
-        wickr_ec_key_destroy(&handshake_key);
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
         return;
     }
@@ -921,24 +953,6 @@ const wickr_buffer_t *wickr_transport_ctx_get_rxstream_user_data(const wickr_tra
     return ctx->rx_stream->key->user_data;
 }
 
-bool wickr_transport_ctx_set_txstream_user_data(wickr_transport_ctx_t *ctx, const wickr_buffer_t *user_data)
-{
-    if (!ctx) {
-        return false;
-    }
-    
-    wickr_buffer_t *copy_buffer = wickr_buffer_copy(user_data);
-    
-    if (!copy_buffer && user_data) {
-        return false;
-    }
-    
-    wickr_buffer_destroy(&ctx->tx_stream_key_udata);
-    ctx->tx_stream_key_udata = copy_buffer;
-    
-    return true;
-}
-
 const wickr_node_t *wickr_transport_ctx_get_local_node_ptr(const wickr_transport_ctx_t *ctx)
 {
     if (!ctx) {
@@ -974,29 +988,3 @@ void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user)
     
     ctx->user = user;
 }
-
-void wickr_transport_ctx_set_user_psk(wickr_transport_ctx_t *ctx, wickr_buffer_t *psk)
-{
-    if (!ctx) {
-        return;
-    }
-    
-    wickr_buffer_t *psk_copy = wickr_buffer_copy(psk);
-    
-    if (psk && !psk_copy) {
-        return;
-    }
-    
-    wickr_buffer_destroy(&ctx->key_exchange_psk);
-    ctx->key_exchange_psk = psk_copy;
-}
-
-const wickr_buffer_t *wickr_transport_ctx_get_user_psk(const wickr_transport_ctx_t *ctx)
-{
-    if (!ctx) {
-        return NULL;
-    }
-    
-    return ctx->key_exchange_psk;
-}
-

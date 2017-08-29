@@ -276,12 +276,7 @@ wickr_transport_packet_t *wickr_transport_packet_create_proto_handshake(const wi
     
     wickr__proto__handshake__pack(handshake, handshake_buffer->bytes);
     
-    uint64_t seq_number = 0;
-    
-    /* If we have a tx_stream, we want to use the next seq number is has available */
-    if (ctx->tx_stream) {
-        seq_number = ctx->tx_stream->last_seq + 1;
-    }
+    uint64_t seq_number = ctx->tx_stream->last_seq + 1;
     
     /* Create a temp packet with no mac so that we can sign it with the next function call */
     wickr_transport_packet_t *handshake_packet = wickr_transport_packet_create(seq_number, TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, handshake_buffer);
@@ -297,10 +292,7 @@ wickr_transport_packet_t *wickr_transport_packet_create_proto_handshake(const wi
         return NULL;
     }
     
-    /* If we have a tx_stream we need to update the seq_number so that we don't have duplicate numbers used */
-    if (ctx->tx_stream) {
-        ctx->tx_stream->last_seq = seq_number;
-    }
+    ctx->tx_stream->last_seq = seq_number;
     
     return handshake_packet;
 }

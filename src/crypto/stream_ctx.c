@@ -31,6 +31,7 @@ wickr_stream_ctx_t *wickr_stream_ctx_create(const wickr_crypto_engine_t engine, 
     stream_cipher->last_seq = 0;
     stream_cipher->direction = direction;
     stream_cipher->iv_factory = iv_factory;
+    stream_cipher->ref_count = 1;
     
     return stream_cipher;
 }
@@ -67,8 +68,29 @@ wickr_stream_ctx_t *wickr_stream_ctx_copy(const wickr_stream_ctx_t *ctx)
     stream_cipher->last_seq = ctx->last_seq;
     stream_cipher->direction = ctx->direction;
     stream_cipher->iv_factory = iv_copy;
+    stream_cipher->ref_count = 1;
     
     return stream_cipher;
+}
+
+bool __wickr_stream_ctx_ref_down(wickr_stream_ctx_t *ctx)
+{
+    if (ctx->ref_count != 0) {
+        ctx->ref_count -= 1;
+    }
+    
+    return ctx->ref_count == 0;
+}
+
+bool wickr_stream_ctx_ref_up(wickr_stream_ctx_t *ctx)
+{
+    if (!ctx || ctx->ref_count == SIZE_MAX) {
+        return false;
+    }
+    
+    ctx->ref_count += 1;
+    
+    return true;
 }
 
 static wickr_stream_key_t *__wickr_stream_key_create_with_evo_buffer(wickr_stream_key_t *old_key, wickr_buffer_t *evo_buffer)
@@ -206,6 +228,10 @@ wickr_buffer_t *wickr_stream_ctx_decode(wickr_stream_ctx_t *ctx, const wickr_cip
 void wickr_stream_ctx_destroy(wickr_stream_ctx_t **ctx)
 {
     if (!ctx || !*ctx) {
+        return;
+    }
+    
+    if (!__wickr_stream_ctx_ref_down(*ctx)) {
         return;
     }
     

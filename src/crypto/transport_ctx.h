@@ -57,7 +57,8 @@ typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const 
 typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
 typedef void (*wickr_transport_state_change_func)(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user);
 typedef bool (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user);
-
+typedef wickr_buffer_t *(*wickr_transport_psk_func) (const wickr_transport_ctx_t *ctx, void *user);
+typedef wickr_stream_ctx_t *(*wickr_transport_tx_stream_func) (const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *tx_stream, void *user);
 /**
  @ingroup wickr_transport_ctx
 
@@ -74,14 +75,18 @@ typedef bool (*wickr_transport_validate_identity_func)(const wickr_transport_ctx
  @var wickr_transport_callbacks::on_identity_verify
  Called when no remote data is provided for pinning, so the identity of the remote
  needs to be verified by the application
- 
- status of the message signature
+ @var wickr_transport_callbacks::on_psk_required
+ Called when the inbound key exchange requires a psk
+ @var wickr_transport_callbacks::on_tx_stream_gen
+ Called when a tx stream is generated for a outbound key exchanges
  */
 struct wickr_transport_callbacks {
     wickr_transport_tx_func tx;
     wickr_transport_rx_func rx;
     wickr_transport_state_change_func on_state;
     wickr_transport_validate_identity_func on_identity_verify;
+    wickr_transport_psk_func on_psk_required;
+    wickr_transport_tx_stream_func on_tx_stream_gen;
 };
 
 typedef struct wickr_transport_callbacks wickr_transport_callbacks_t;
@@ -144,6 +149,10 @@ void wickr_transport_ctx_destroy(wickr_transport_ctx_t **ctx);
  is pinned, the 'on_identity_verify' callback will be called for the application to verify the integrity of the remote's identity via cached information, or
  whatever other means it has.
  
+ Optional callbacks will also be called for when a pre-shared key is required for the key exchange to successfully complete, and
+ when the tx stream is being generated to allow for customization of tx stream key generation and to update the user data field of the
+ tx stream's key
+ 
  @param ctx the transport to start the handshake on
  */
 void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx);
@@ -201,18 +210,6 @@ const wickr_buffer_t *wickr_transport_ctx_get_rxstream_user_data(const wickr_tra
 /**
  @ingroup wickr_transport_ctx
  
- Set the user data to associate with any tx stream keys that are created inside the context
- This function must be called before wickr_transport_ctx_start() to be effective 
- 
- @param ctx the transport context to set the tx stream user data on
- @param user_data the data to copy into created tx stream keys user data property. The buffer will be copied into 
- this transport context, so the original buffer can be discarded after this call
- */
-bool wickr_transport_ctx_set_txstream_user_data(wickr_transport_ctx_t *ctx, const wickr_buffer_t *user_data);
-
-/**
- @ingroup wickr_transport_ctx
- 
  Get the local node information
 
  @param ctx the transport context to get the local node information of
@@ -249,18 +246,6 @@ const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx);
  @param user the pointer for the transport context to hold and be passed back in callbacks
  */
 void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Set a user PSK to use during key exchange, the psk is entered as a salt into the key exchange
- preventing users who do not have the PSK from performing a handshake properly
- see 'wickr_key_exchange_create_with_packet_key' for more information
- 
- @param ctx the transport context to set the psk data on
- @param psk the pre-shared key data to use for key exchanges
- */
-void wickr_transport_ctx_set_user_psk(wickr_transport_ctx_t *ctx, wickr_buffer_t *psk);
 
 /**
  @ingroup wickr_transport_ctx

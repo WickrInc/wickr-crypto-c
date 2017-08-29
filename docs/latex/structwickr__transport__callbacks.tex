@@ -19,6 +19,10 @@ wickr\+\_\+transport\+\_\+rx\+\_\+func \hyperlink{structwickr__transport__callba
 wickr\+\_\+transport\+\_\+state\+\_\+change\+\_\+func \hyperlink{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}{on\+\_\+state}
 \item 
 wickr\+\_\+transport\+\_\+validate\+\_\+identity\+\_\+func \hyperlink{structwickr__transport__callbacks_ab1afc16797b1bb30dde87936a97f682e}{on\+\_\+identity\+\_\+verify}
+\item 
+wickr\+\_\+transport\+\_\+psk\+\_\+func \hyperlink{structwickr__transport__callbacks_af01227bfe19f056de55669d79ed7c120}{on\+\_\+psk\+\_\+required}
+\item 
+wickr\+\_\+transport\+\_\+tx\+\_\+stream\+\_\+func \hyperlink{structwickr__transport__callbacks_a1b6ee026d404a5b267e0c680dc9c2337}{on\+\_\+tx\+\_\+stream\+\_\+gen}
 \end{DoxyCompactItemize}
 
 
@@ -32,15 +36,25 @@ callbacks to notify the user of events within the transport
 \subsubsection{\texorpdfstring{on\+\_\+identity\+\_\+verify}{on\_identity\_verify}}
 {\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+identity\+\_\+verify}
 
-Called when no remote data is provided for pinning, so the identity of the remote needs to be verified by the application
+Called when no remote data is provided for pinning, so the identity of the remote needs to be verified by the application \mbox{\Hypertarget{structwickr__transport__callbacks_af01227bfe19f056de55669d79ed7c120}\label{structwickr__transport__callbacks_af01227bfe19f056de55669d79ed7c120}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!on\+\_\+psk\+\_\+required@{on\+\_\+psk\+\_\+required}}
+\index{on\+\_\+psk\+\_\+required@{on\+\_\+psk\+\_\+required}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{on\+\_\+psk\+\_\+required}{on\_psk\_required}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+psk\+\_\+required}
 
-status of the message signature \mbox{\Hypertarget{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}\label{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}} 
+Called when the inbound key exchange requires a psk \mbox{\Hypertarget{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}\label{structwickr__transport__callbacks_afef0716506b88885c57fda652500b3da}} 
 \index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!on\+\_\+state@{on\+\_\+state}}
 \index{on\+\_\+state@{on\+\_\+state}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
 \subsubsection{\texorpdfstring{on\+\_\+state}{on\_state}}
 {\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+state}
 
-Called whenever the state of the transport context is updated \mbox{\Hypertarget{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}\label{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}} 
+Called whenever the state of the transport context is updated \mbox{\Hypertarget{structwickr__transport__callbacks_a1b6ee026d404a5b267e0c680dc9c2337}\label{structwickr__transport__callbacks_a1b6ee026d404a5b267e0c680dc9c2337}} 
+\index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!on\+\_\+tx\+\_\+stream\+\_\+gen@{on\+\_\+tx\+\_\+stream\+\_\+gen}}
+\index{on\+\_\+tx\+\_\+stream\+\_\+gen@{on\+\_\+tx\+\_\+stream\+\_\+gen}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
+\subsubsection{\texorpdfstring{on\+\_\+tx\+\_\+stream\+\_\+gen}{on\_tx\_stream\_gen}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+callbacks\+::on\+\_\+tx\+\_\+stream\+\_\+gen}
+
+Called when a tx stream is generated for a outbound key exchanges \mbox{\Hypertarget{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}\label{structwickr__transport__callbacks_a5d523402980ac09fdf52aa4824f8e9f7}} 
 \index{wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}!rx@{rx}}
 \index{rx@{rx}!wickr\+\_\+transport\+\_\+callbacks@{wickr\+\_\+transport\+\_\+callbacks}}
 \subsubsection{\texorpdfstring{rx}{rx}}

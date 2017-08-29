@@ -17,6 +17,8 @@ struct \hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx}
 \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__stream_gaa1eb323694f2c1652b51127b0b89138c}{wickr\+\_\+stream\+\_\+ctx\+\_\+decode} (\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, uint64\+\_\+t seq\+\_\+num)
 \item 
 void \hyperlink{group__wickr__stream_ga05260bfce1f50352cad32e0354c28a1d}{wickr\+\_\+stream\+\_\+ctx\+\_\+destroy} (\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t} $\ast$$\ast$ctx)
+\item 
+bool \hyperlink{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}{wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up} (\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t} $\ast$ctx)
 \end{DoxyCompactItemize}
 
 
@@ -117,3 +119,16 @@ Encode a packet
 \begin{DoxyReturn}{Returns}
 a cipher result representing \textquotesingle{}data\textquotesingle{} encrypted with \textquotesingle{}ctx-\/$>$key\textquotesingle{} 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}\label{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}} 
+\index{wickr\+\_\+stream@{wickr\+\_\+stream}!wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up@{wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up}}
+\index{wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up@{wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up}!wickr\+\_\+stream@{wickr\+\_\+stream}}
+\subsubsection{\texorpdfstring{wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up()}{wickr\_stream\_ctx\_ref\_up()}}
+{\footnotesize\ttfamily bool wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Increment the reference count of a stream
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the context to bump the reference count of \\
+\hline
+\end{DoxyParams}
