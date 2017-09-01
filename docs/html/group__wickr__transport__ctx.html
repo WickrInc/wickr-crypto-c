@@ -103,6 +103,10 @@ Functions</h2></td></tr>
 <tr class="separator:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabd4c671c3f420e804dae16c662bc71c7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gabd4c671c3f420e804dae16c662bc71c7">wickr_transport_ctx_get_user_psk</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
 <tr class="separator:gabd4c671c3f420e804dae16c662bc71c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaffad367319e17f62046cde388ccd8802"><td class="memItemLeft" align="right" valign="top">wickr_transport_data_flow&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gaffad367319e17f62046cde388ccd8802">wickr_transport_ctx_get_data_flow_mode</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:gaffad367319e17f62046cde388ccd8802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga338125913ff273beec721b341de639a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga338125913ff273beec721b341de639a3">wickr_transport_ctx_set_data_flow_mode</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, wickr_transport_data_flow flow_mode)</td></tr>
+<tr class="separator:ga338125913ff273beec721b341de639a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -219,6 +223,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="gaffad367319e17f62046cde388ccd8802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaffad367319e17f62046cde388ccd8802">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_data_flow_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the current data flow mode</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the data flow mode of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info </dd></dl>
 
 </div>
 </div>
@@ -448,6 +478,44 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga338125913ff273beec721b341de639a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga338125913ff273beec721b341de639a3">&#9670;&nbsp;</a></span>wickr_transport_ctx_set_data_flow_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wickr_transport_ctx_set_data_flow_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wickr_transport_data_flow&#160;</td>
+          <td class="paramname"><em>flow_mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the the data flow mode. This change will be applied immediatly</p>
+<p>If the mode is READ_ONLY, attempting to write a packet will silently fail If the mode iw WRITE_ONLY, any incoming packets will be silently dropped</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to set the data flow mode of </td></tr>
+    <tr><td class="paramname">flow_mode</td><td>the flow mode you would like to enact </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info </dd></dl>
 
 </div>
 </div>

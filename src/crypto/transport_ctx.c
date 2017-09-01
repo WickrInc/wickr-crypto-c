@@ -108,6 +108,7 @@ wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t en
     ctx->callbacks = callbacks;
     ctx->evo_count = evo_count == 0 ? PACKET_PER_EVO_DEFAULT : evo_count;
     ctx->user = user;
+    ctx->data_flow = TRANSPORT_DATA_FLOW_BIDIRECTIONAL;
     
     return ctx;
 }
@@ -716,6 +717,12 @@ void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wic
         return;
     }
     
+    /* Don't allow sending a packet if the context is in READ_ONLY mode.
+       Currently this is a silent failure */
+    if (ctx->data_flow == TRANSPORT_DATA_FLOW_READ_ONLY) {
+        return;
+    }
+    
     wickr_transport_packet_t *tx_packet = __wickr_transport_ctx_encode_pkt(ctx, buffer);
     
     if (!tx_packet) {
@@ -899,6 +906,13 @@ void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wic
                 }
             }
             else {
+                
+                /* Don't allow processing a non-header packet if the context is in WRITE_ONLY mode.
+                 Currently this is a silent failure */
+                if (ctx->data_flow == TRANSPORT_DATA_FLOW_WRITE_ONLY) {
+                    break;
+                }
+                
                 return_buffer = __wickr_transport_ctx_decode_pkt(ctx, packet);
                 
                 if (!return_buffer) {
@@ -987,4 +1001,18 @@ void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user)
     }
     
     ctx->user = user;
+}
+
+wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode(const wickr_transport_ctx_t *ctx)
+{
+    return ctx->data_flow;
+}
+
+void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx, wickr_transport_data_flow flow_mode)
+{
+    if (!ctx) {
+        return;
+    }
+    
+    ctx->data_flow = flow_mode;
 }

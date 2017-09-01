@@ -1365,6 +1365,40 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     }
     END_IT
     
+    wickr_buffer_destroy(&last_rx_alice);
+    wickr_buffer_destroy(&last_tx_alice);
+    wickr_buffer_destroy(&last_rx_bob);
+    wickr_buffer_destroy(&last_tx_bob);
+    
+    IT("can support different data flow modes")
+    {
+        SHOULD_EQUAL(wickr_transport_ctx_get_data_flow_mode(alice_transport), TRANSPORT_DATA_FLOW_BIDIRECTIONAL);
+        wickr_transport_ctx_set_data_flow_mode(alice_transport, TRANSPORT_DATA_FLOW_READ_ONLY);
+        SHOULD_EQUAL(wickr_transport_ctx_get_data_flow_mode(alice_transport), TRANSPORT_DATA_FLOW_READ_ONLY);
+        
+        wickr_buffer_t *test_buffer = engine.wickr_crypto_engine_crypto_random(32);
+        
+        /* Data should not be sent in read only mode */
+        wickr_transport_ctx_process_tx_buffer(alice_transport, test_buffer);
+        SHOULD_BE_NULL(last_tx_alice);
+        
+        wickr_buffer_destroy(&last_rx_alice);
+        wickr_buffer_destroy(&last_tx_alice);
+        wickr_buffer_destroy(&last_rx_bob);
+        wickr_buffer_destroy(&last_tx_bob);
+        
+        /* Data should not be read in write only mode */
+        wickr_transport_ctx_set_data_flow_mode(alice_transport, TRANSPORT_DATA_FLOW_WRITE_ONLY);
+        SHOULD_EQUAL(wickr_transport_ctx_get_data_flow_mode(alice_transport), TRANSPORT_DATA_FLOW_WRITE_ONLY);
+        
+        wickr_transport_ctx_process_tx_buffer(bob_transport, test_buffer);
+        SHOULD_NOT_BE_NULL(last_tx_bob);
+        SHOULD_BE_NULL(last_rx_alice);
+        
+        wickr_buffer_destroy(&test_buffer);
+    }
+    END_IT
+    
     reset_alice_bob();
     wickr_node_destroy(&bob_transport->remote_identity);
     wickr_node_destroy(&alice_transport->remote_identity);

@@ -52,6 +52,12 @@ typedef enum {
     TRANSPORT_STATUS_ERROR /* Transport has encountered an error, and communication is no longer possible */
 } wickr_transport_status;
 
+typedef enum {
+    TRANSPORT_DATA_FLOW_BIDIRECTIONAL, /* Data flow can happen in both directions */
+    TRANSPORT_DATA_FLOW_READ_ONLY, /* Non handshake packets can only flow in the rx direction */
+    TRANSPORT_DATA_FLOW_WRITE_ONLY /* Non handshake packets can only flow in the tx direction */
+} wickr_transport_data_flow;
+
 /* Function callback to handle sending / receiving / errors via an actual transport, eg socket */
 typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
 typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
@@ -256,5 +262,29 @@ void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
  @return the current psk data for 'ctx'
  */
 const wickr_buffer_t *wickr_transport_ctx_get_user_psk(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the current data flow mode
+ 
+ @param ctx the transport context to get the data flow mode of
+ @return the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info
+ */
+wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Set the the data flow mode. This change will be applied immediatly
+ 
+ If the mode is READ_ONLY, attempting to write a packet will silently fail
+ If the mode iw WRITE_ONLY, any incoming packets will be silently dropped
+ 
+ @param ctx the transport context to set the data flow mode of
+ @param flow_mode the flow mode you would like to enact
+ @return the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info
+ */
+void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx , wickr_transport_data_flow flow_mode);
 
 #endif /* transport_h */

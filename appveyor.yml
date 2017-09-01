@@ -29,4 +29,4 @@ build_script:
   - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CONFIGURATION_TYPES="Release;Debug;MinSizeRel;RelWithDebInfo" -G "Visual Studio 14 2015" ..
   - msbuild Crypto.sln /p:Configuration=Release
   - cd bin/Release
-  - crypto_test.exe
+  - crypto_test.exe --ci
