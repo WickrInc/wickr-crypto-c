@@ -24,4 +24,4 @@ mkdir -p build-win32
 cd build-win32
 
 #cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CONFIGURATION_TYPES=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$cur_path/../localRepo/wickr-crypto/win32 -G "Visual Studio 12 2013" .. > create.log 2>&1
-cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CONFIGURATION_TYPES="Release;Debug;MinSizeRel;RelWithDebInfo" -DCMAKE_INSTALL_PREFIX=$cur_path/../localRepo/wickr-crypto/win32 -G "Visual Studio 12 2013" .. > create.log 2>&1
+cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CONFIGURATION_TYPES="Release;Debug;MinSizeRel;RelWithDebInfo" -DCMAKE_INSTALL_PREFIX=$cur_path/../localRepo/wickr-crypto/win32 -G "Visual Studio 14 2015" .. > create.log 2>&1
