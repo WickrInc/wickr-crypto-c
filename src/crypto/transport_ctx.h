@@ -287,4 +287,24 @@ wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode(const wickr_tra
  */
 void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx , wickr_transport_data_flow flow_mode);
 
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get a pointer to the current set of callbacks for a transport
+ 
+ @param ctx the transport context to get the callbacks of
+ @return a pointer to the current set of callbacks the transport is using
+ */
+const wickr_transport_callbacks_t *wickr_transport_ctx_get_callbacks(const wickr_transport_ctx_t *ctx);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Update the callbacks of a transport after it's creation
+ 
+ @param ctx the transport context to set the callbacks of
+ @param callbacks the callbacks that transport should use after calling this function
+ */
+void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_transport_callbacks_t *callbacks);
+
 #endif /* transport_h */

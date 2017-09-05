@@ -1017,3 +1017,21 @@ void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx, wickr_tr
     
     ctx->data_flow = flow_mode;
 }
+
+const wickr_transport_callbacks_t *wickr_transport_ctx_get_callbacks(const wickr_transport_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    return &ctx->callbacks;
+}
+
+void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_transport_callbacks_t *callbacks)
+{
+    if (!ctx || !callbacks) {
+        return;
+    }
+    
+    ctx->callbacks = *callbacks;
+}

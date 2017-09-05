@@ -373,6 +373,23 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     }
     END_IT
     
+    IT("should be able to get and set callbacks after creations")
+    {
+        SHOULD_BE_NULL(wickr_transport_ctx_get_callbacks(NULL));
+        const wickr_transport_callbacks_t *callbacks = wickr_transport_ctx_get_callbacks(alice_transport);
+        SHOULD_EQUAL(callbacks, &alice_transport->callbacks);
+        
+        wickr_transport_callbacks_t another_callbacks = {1,2,3,4,5,6};
+        wickr_transport_ctx_set_callbacks(alice_transport, &another_callbacks);
+        SHOULD_EQUAL((wickr_transport_tx_func)1, alice_transport->callbacks.tx);
+        SHOULD_EQUAL((wickr_transport_rx_func)2, alice_transport->callbacks.rx);
+        SHOULD_EQUAL((wickr_transport_state_change_func)3, alice_transport->callbacks.on_state);
+        SHOULD_EQUAL((wickr_transport_validate_identity_func)4, alice_transport->callbacks.on_identity_verify);
+        SHOULD_EQUAL((wickr_transport_psk_func)5, alice_transport->callbacks.on_psk_required);
+        SHOULD_EQUAL((wickr_transport_tx_stream_func)6, alice_transport->callbacks.on_tx_stream_gen);
+    }
+    END_IT
+    
     reset_alice_bob();
     
     IT("should not allow you to transmit packets if no handshake has happened")
