@@ -1489,6 +1489,8 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     IT("can be copied")
     {
+        wickr_transport_ctx_set_data_flow_mode(alice_transport, TRANSPORT_DATA_FLOW_WRITE_ONLY);
+        
         wickr_transport_ctx_t *copy = wickr_transport_ctx_copy(alice_transport);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(copy->local_identity->dev_id, alice_transport->local_identity->dev_id, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(copy->remote_identity->dev_id, alice_transport->remote_identity->dev_id, NULL));
@@ -1496,6 +1498,7 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_BE_TRUE(wickr_buffer_is_equal(copy->rx_stream->key->evolution_key, alice_transport->rx_stream->key->evolution_key, NULL));
         SHOULD_EQUAL(copy->status, alice_transport->status);
         SHOULD_EQUAL(copy->evo_count, alice_transport->evo_count);
+        SHOULD_EQUAL(copy->data_flow, alice_transport->data_flow);
         
         wickr_transport_ctx_destroy(&copy);
         

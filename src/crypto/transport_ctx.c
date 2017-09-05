@@ -168,6 +168,7 @@ wickr_transport_ctx_t *wickr_transport_ctx_copy(const wickr_transport_ctx_t *ctx
     copy->callbacks = ctx->callbacks;
     copy->evo_count = ctx->evo_count;
     copy->user = ctx->user;
+    copy->data_flow = ctx->data_flow;
     
     return copy;
 }
