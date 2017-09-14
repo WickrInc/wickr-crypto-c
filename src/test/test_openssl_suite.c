@@ -300,6 +300,16 @@ DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openss
     }
     END_IT
     
+    IT("should fail if required fields are missing")
+    {
+        wickr_cipher_result_t *result = openssl_aes256_encrypt(test_plaintext, NULL, test_key, test_iv);
+        SHOULD_BE_NULL(openssl_aes256_decrypt(NULL, NULL, test_key, true));
+        SHOULD_BE_NULL(openssl_aes256_decrypt(result, NULL, NULL, true));
+        wickr_buffer_destroy(&result->cipher_text);
+        SHOULD_BE_NULL(openssl_aes256_decrypt(result, NULL, test_key, true));
+    }
+    END_IT
+    
     wickr_buffer_destroy(&expected_cipher_text_aad);
     wickr_buffer_destroy(&test_plaintext_aad);
     wickr_buffer_destroy(&test_plaintext);
