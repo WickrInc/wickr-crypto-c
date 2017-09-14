@@ -33,18 +33,32 @@ static wickr_stream_ctx_t *bob_existing_ctx = NULL;
 static wickr_buffer_t *bob_psk = NULL;
 
 /* Test Callbacks for Alice */
-void wickr_test_transport_tx_alice(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
+void wickr_test_transport_tx_alice(const wickr_transport_ctx_t *ctx,
+                                   const wickr_buffer_t *data,
+                                   wickr_transport_payload_type payload_type,
+                                   void *user)
 {
     wickr_buffer_destroy(&last_tx_alice);
     last_tx_alice = (wickr_buffer_t *)data;
     
     SHOULD_EQUAL(test_alice_user_data, (const char *)user);
     SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
+    
+    wickr_buffer_t *decode = wickr_transport_ctx_process_rx_buffer(bob_transport, data);
+    
+    if (payload_type == TRANSPORT_PAYLOAD_TYPE_HANDSHAKE) {
+        SHOULD_BE_NULL(decode);
+    }
+    else {
+        SHOULD_EQUAL(decode, last_rx_bob);
+    }
 
-    wickr_transport_ctx_process_rx_buffer(bob_transport, data);
 }
 
-void wickr_test_transport_tx_alice_no_send(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
+void wickr_test_transport_tx_alice_no_send(const wickr_transport_ctx_t *ctx,
+                                           const wickr_buffer_t *data,
+                                           wickr_transport_payload_type payload_type,
+                                           void *user)
 {
     wickr_buffer_destroy(&last_tx_alice);
     last_tx_alice = (wickr_buffer_t *)data;
@@ -85,7 +99,10 @@ bool wickr_test_transport_verify_remote_alice(const wickr_transport_ctx_t *ctx, 
 }
 
 /* Test callbacks for Bob */
-void wickr_test_transport_tx_bob(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
+void wickr_test_transport_tx_bob(const wickr_transport_ctx_t *ctx,
+                                 const wickr_buffer_t *data,
+                                 wickr_transport_payload_type payload_type,
+                                 void *user)
 {
     wickr_buffer_destroy(&last_tx_bob);
     last_tx_bob = (wickr_buffer_t *)data;
@@ -96,7 +113,10 @@ void wickr_test_transport_tx_bob(const wickr_transport_ctx_t *ctx, const wickr_b
     SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
-void wickr_test_transport_tx_bob_no_send(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user)
+void wickr_test_transport_tx_bob_no_send(const wickr_transport_ctx_t *ctx,
+                                         const wickr_buffer_t *data,
+                                         wickr_transport_payload_type payload_type,
+                                         void *user)
 {
     wickr_buffer_destroy(&last_tx_bob);
     last_tx_bob = (wickr_buffer_t *)data;
@@ -196,7 +216,8 @@ static wickr_transport_callbacks_t test_callbacks_bob = { wickr_test_transport_t
 void test_packet_send(wickr_transport_ctx_t *sender_ctx, wickr_buffer_t **last_packet, wickr_buffer_t **expected, int pkt_number)
 {
     wickr_buffer_t *test_buffer = engine.wickr_crypto_engine_crypto_random(32);
-    wickr_transport_ctx_process_tx_buffer(sender_ctx, test_buffer);
+    wickr_buffer_t *tx_result = wickr_transport_ctx_process_tx_buffer(sender_ctx, test_buffer);
+    SHOULD_EQUAL(tx_result, *last_packet);
     
     /* The tx callback for alice will produce the encrypted packets */
     SHOULD_BE_FALSE(wickr_buffer_is_equal(test_buffer, *last_packet, NULL));

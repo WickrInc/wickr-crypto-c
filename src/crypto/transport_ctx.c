@@ -703,32 +703,33 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
     
     __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_SEEDED);
     
-    ctx->callbacks.tx(ctx, serialized_packet, ctx->user);
+    ctx->callbacks.tx(ctx, serialized_packet, TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, ctx->user);
+    
 }
 
-void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
+wickr_buffer_t *wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
 {
     if (!ctx || !buffer || ctx->status == TRANSPORT_STATUS_ERROR) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     if (ctx->status != TRANSPORT_STATUS_ACTIVE) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     /* Don't allow sending a packet if the context is in READ_ONLY mode.
        Currently this is a silent failure */
     if (ctx->data_flow == TRANSPORT_DATA_FLOW_READ_ONLY) {
-        return;
+        return NULL;
     }
     
     wickr_transport_packet_t *tx_packet = __wickr_transport_ctx_encode_pkt(ctx, buffer);
     
     if (!tx_packet) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     wickr_buffer_t *out_buffer = wickr_transport_packet_serialize(tx_packet);
@@ -736,10 +737,12 @@ void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wic
     
     if (!out_buffer) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
-    ctx->callbacks.tx(ctx, out_buffer, ctx->user);
+    ctx->callbacks.tx(ctx, out_buffer, TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT, ctx->user);
+    
+    return out_buffer;
 }
 
 static bool __wickr_transport_handshake_set_remote_identity(wickr_transport_ctx_t *ctx, wickr_transport_packet_t *pkt)
@@ -814,25 +817,25 @@ static bool __wickr_transport_handshake_set_remote_identity(wickr_transport_ctx_
     return true;
 }
 
-void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
+wickr_buffer_t *wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
 {
     if (!ctx || !buffer || ctx->status == TRANSPORT_STATUS_ERROR) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     wickr_transport_packet_t *packet = wickr_transport_packet_create_from_buffer(buffer);
     
     if (!packet) {
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     if (!ctx->remote_identity) {
         if (!__wickr_transport_handshake_set_remote_identity(ctx, packet)) {
             wickr_transport_packet_destroy(&packet);
             __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            return;
+            return NULL;
         }
     }
     
@@ -851,14 +854,14 @@ void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wic
     if (!valid_mac) {
         wickr_transport_packet_destroy(&packet);
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     /* Make sure the sequence number is always moving forward */
     if (ctx->rx_stream && packet->seq_num <= ctx->rx_stream->last_seq) {
         wickr_transport_packet_destroy(&packet);
         __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return;
+        return NULL;
     }
     
     wickr_transport_packet_t *volley_packet = NULL;
@@ -939,15 +942,18 @@ void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wic
         
         if (!packet_buffer) {
             __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            return;
+            return NULL;
         }
-        ctx->callbacks.tx(ctx, packet_buffer, ctx->user);
+        ctx->callbacks.tx(ctx, packet_buffer, TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, ctx->user);
     }
     
-    if (return_buffer) {
-        ctx->callbacks.rx(ctx, return_buffer, ctx->user);
+    if (!return_buffer) {
+        return NULL;
     }
     
+    ctx->callbacks.rx(ctx, return_buffer, ctx->user);
+    
+    return return_buffer;
 }
 
 wickr_transport_status wickr_transport_ctx_get_status(const wickr_transport_ctx_t *ctx)
