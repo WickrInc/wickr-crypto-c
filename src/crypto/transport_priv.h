@@ -26,7 +26,6 @@
 #include "stream_ctx.h"
 #include "stream.pb-c.h"
 
-typedef enum { TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT } wickr_transport_payload_type;
 typedef enum { TRANSPORT_MAC_TYPE_NONE, TRANSPORT_MAC_TYPE_AUTH_CIPHER, TRANSPORT_MAC_TYPE_EC_P521 } wickr_transport_mac_type;
 
 struct wickr_transport_ctx {

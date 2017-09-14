@@ -58,8 +58,13 @@ typedef enum {
     TRANSPORT_DATA_FLOW_WRITE_ONLY /* Non handshake packets can only flow in the tx direction */
 } wickr_transport_data_flow;
 
+typedef enum {
+    TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, /* Payload is a handshake control packet */
+    TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT /* Payload contains encrypted application data */
+} wickr_transport_payload_type;
+
 /* Function callback to handle sending / receiving / errors via an actual transport, eg socket */
-typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
+typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, wickr_transport_payload_type pkt_type, void *user);
 typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
 typedef void (*wickr_transport_state_change_func)(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user);
 typedef bool (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user);
@@ -175,8 +180,9 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx);
  
  @param ctx the context to process the buffer with
  @param buffer the buffer to be encrypted and sent over the transport
+ @return the decoded tx buffer or NULL if decryption fails. As with all other incoming packets, it will also trigger a rx callback
  */
-void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
+wickr_buffer_t *wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
 
 /**
  
@@ -186,8 +192,9 @@ void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wic
  
  @param ctx the context to process the buffer with
  @param buffer the buffer to be processed by by 'ctx'
+ @return the decoded tx buffer or NULL if decryption fails. As with all other incoming packets, it will also trigger a rx callback
  */
-void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
+wickr_buffer_t *wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
 
 
 /* GETTERS AND SETTERS */
@@ -283,7 +290,6 @@ wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode(const wickr_tra
  
  @param ctx the transport context to set the data flow mode of
  @param flow_mode the flow mode you would like to enact
- @return the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info
  */
 void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx , wickr_transport_data_flow flow_mode);
 
