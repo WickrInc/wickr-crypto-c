@@ -18,9 +18,9 @@ void \hyperlink{group__wickr__transport__ctx_gabe547b01f4f02efea3f518d7445a71ee}
 \item 
 void \hyperlink{group__wickr__transport__ctx_gaee74761e31d5f0a6fc97e2ccf5ac1e29}{wickr\+\_\+transport\+\_\+ctx\+\_\+start} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
 \item 
-void \hyperlink{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_ga60dad2360ba29d8c131093a4e9b69057}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
 \item 
-void \hyperlink{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_gaa0af661e209143c19633e1244ac59db4}{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
 \item 
 wickr\+\_\+transport\+\_\+status \hyperlink{group__wickr__transport__ctx_ga3d3ffde9ec2f9f12ecb6999a048e2437}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+status} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
 \item 
@@ -233,11 +233,11 @@ Get the current user P\+SK, see \textquotesingle{}wickr\+\_\+transport\+\_\+ctx\
 \begin{DoxyReturn}{Returns}
 the current psk data for \textquotesingle{}ctx\textquotesingle{} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}\label{group__wickr__transport__ctx_gad982fd3463a81a667592e18d7bf90822}} 
+\mbox{\Hypertarget{group__wickr__transport__ctx_gaa0af661e209143c19633e1244ac59db4}\label{group__wickr__transport__ctx_gaa0af661e209143c19633e1244ac59db4}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
 \subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer()}{wickr\_transport\_ctx\_process\_rx\_buffer()}}
-{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+rx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Process a buffer that was received from the remote via a transport layer. This may include handshake data or encrypted content
 
@@ -248,11 +248,14 @@ Process a buffer that was received from the remote via a transport layer. This m
 {\em buffer} & the buffer to be processed by by \textquotesingle{}ctx\textquotesingle{} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}\label{group__wickr__transport__ctx_gad9d2f86832cfb9c1948ba679fabbedbc}} 
+\begin{DoxyReturn}{Returns}
+the decoded tx buffer or N\+U\+LL if decryption fails. As with all other incoming packets, it will also trigger a rx callback 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga60dad2360ba29d8c131093a4e9b69057}\label{group__wickr__transport__ctx_ga60dad2360ba29d8c131093a4e9b69057}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer@{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
 \subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer()}{wickr\_transport\_ctx\_process\_tx\_buffer()}}
-{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+transport\+\_\+ctx\+\_\+process\+\_\+tx\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Process a buffer that should be sent to the remote party
 
@@ -265,6 +268,9 @@ N\+O\+TE\+: This function requires the transport context to be in A\+C\+T\+I\+VE
 {\em buffer} & the buffer to be encrypted and sent over the transport \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the decoded tx buffer or N\+U\+LL if decryption fails. As with all other incoming packets, it will also trigger a rx callback 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__ctx_ga9ed375c418ca58c30ca31c8303c71f92}\label{group__wickr__transport__ctx_ga9ed375c418ca58c30ca31c8303c71f92}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+callbacks@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+callbacks}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+callbacks@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+callbacks}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
@@ -297,9 +303,6 @@ If the mode is R\+E\+A\+D\+\_\+\+O\+N\+LY, attempting to write a packet will sil
 {\em flow\+\_\+mode} & the flow mode you would like to enact \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-the current data flow mode for \textquotesingle{}ctx\textquotesingle{}, see \textquotesingle{}wickr\+\_\+transport\+\_\+data\+\_\+flow\textquotesingle{} for more info 
-\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}\label{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx@{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
