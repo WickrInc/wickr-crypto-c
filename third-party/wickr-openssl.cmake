@@ -62,7 +62,7 @@ elseif(APPLE AND IOS)
             URL_HASH
             SHA256=${OSSL_HASH}
             CONFIGURE_COMMAND "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} ./Configure --prefix=${PORTS_PREFIX} iphoneos-cross
-            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make depend && "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
+            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
             INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make install_sw
 
             BUILD_IN_SOURCE 1
@@ -76,7 +76,7 @@ elseif(APPLE AND IOS)
             URL_HASH
             SHA256=${OSSL_HASH}
             CONFIGURE_COMMAND "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} ./Configure --prefix=${PORTS_PREFIX} iphoneos-cross
-            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make depend && "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
+            BUILD_COMMAND     "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make all
             INSTALL_COMMAND   "${PORTS_SCRIPTS}/setenv-ios.sh" ${IOS_ARCH} make install_sw
             BUILD_IN_SOURCE 1
          )
