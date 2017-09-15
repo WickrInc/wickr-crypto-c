@@ -16,7 +16,7 @@ matrix:
       env:
       - OPENSSL="1.1.0"
     - os: osx
-      osx_image: xcode8.2
+      osx_image: xcode9
   exclude:
     - compiler: clang
 
