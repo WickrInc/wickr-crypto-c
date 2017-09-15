@@ -471,7 +471,7 @@ process_error:
 
 wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool only_auth_ciphers)
 {
-    if (!cipher_result || !key) {
+    if (!cipher_result || !cipher_result->cipher_text || !key) {
         return NULL;
     }
     
