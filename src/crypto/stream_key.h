@@ -24,6 +24,10 @@
 
 #include "crypto_engine.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define PACKET_PER_EVO_MIN 64
 #define PACKET_PER_EVO_DEFAULT 512
 #define PACKET_PER_EVO_MAX 32768
@@ -136,5 +140,9 @@ wickr_stream_key_t *wickr_stream_key_create_from_buffer(const wickr_buffer_t *bu
  @param stream_key a pointer to the stream key to destroy. All properties of '*stream_key' will also be destroyed
  */
 void wickr_stream_key_destroy(wickr_stream_key_t **stream_key);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* stream_key_h */

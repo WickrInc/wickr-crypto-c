@@ -26,6 +26,10 @@
 #include "stream_iv.h"
 #include "stream_key.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  @addtogroup wickr_stream wickr_stream
  */
@@ -136,5 +140,9 @@ void wickr_stream_ctx_destroy(wickr_stream_ctx_t **ctx);
  @param ctx the context to bump the reference count of
  */
 bool wickr_stream_ctx_ref_up(wickr_stream_ctx_t *ctx);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* stream_ctx_h */
