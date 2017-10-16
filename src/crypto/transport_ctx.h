@@ -26,6 +26,10 @@
 #include "node.h"
 #include "stream_ctx.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  @addtogroup wickr_transport_ctx
  */
@@ -312,5 +316,9 @@ const wickr_transport_callbacks_t *wickr_transport_ctx_get_callbacks(const wickr
  @param callbacks the callbacks that transport should use after calling this function
  */
 void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_transport_callbacks_t *callbacks);
+    
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* transport_h */

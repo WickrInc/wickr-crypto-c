@@ -24,6 +24,10 @@
 
 #include "crypto_engine.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  @addtogroup wickr_stream_iv
  */
@@ -98,5 +102,9 @@ void wickr_stream_iv_destroy(wickr_stream_iv_t **iv);
  @return an IV of length 'cipher'->iv_len generated using HMAC(gen_count, seed)
  */
 wickr_buffer_t *wickr_stream_iv_generate(wickr_stream_iv_t *iv);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* stream_iv_h */
