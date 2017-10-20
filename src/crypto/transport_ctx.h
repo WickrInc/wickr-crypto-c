@@ -316,6 +316,16 @@ const wickr_transport_callbacks_t *wickr_transport_ctx_get_callbacks(const wickr
  @param callbacks the callbacks that transport should use after calling this function
  */
 void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_transport_callbacks_t *callbacks);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Force the tx stream to perform a tx stream key evolution immediately
+ 
+ @param ctx the transport context evolove the tx stream key of
+ @return true if the key evolution was successful
+ */
+bool wickr_transport_ctx_force_tx_key_evo(wickr_transport_ctx_t *ctx);
     
 #ifdef __cplusplus
 }

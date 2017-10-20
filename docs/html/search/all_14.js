@@ -264,6 +264,7 @@ var searchData=
   ['wickr_5ftransport_5fctx_5fcopy',['wickr_transport_ctx_copy',['../group__wickr__transport__ctx.html#gaa49b2cf44bcb02d656598a17e5ae1c52',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fcreate',['wickr_transport_ctx_create',['../group__wickr__transport__ctx.html#ga4731758cf20b71d4469c74904bf662c0',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fdestroy',['wickr_transport_ctx_destroy',['../group__wickr__transport__ctx.html#gabe547b01f4f02efea3f518d7445a71ee',1,'transport_ctx.h']]],
+  ['wickr_5ftransport_5fctx_5fforce_5ftx_5fkey_5fevo',['wickr_transport_ctx_force_tx_key_evo',['../group__wickr__transport__ctx.html#ga177b8b150fe250cf04f8350be94af7fa',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fget_5fcallbacks',['wickr_transport_ctx_get_callbacks',['../group__wickr__transport__ctx.html#gafc6235ed4ee84ccbdfc3a0a0a617b557',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fget_5fdata_5fflow_5fmode',['wickr_transport_ctx_get_data_flow_mode',['../group__wickr__transport__ctx.html#gaffad367319e17f62046cde388ccd8802',1,'transport_ctx.h']]],
   ['wickr_5ftransport_5fctx_5fget_5flocal_5fnode_5fptr',['wickr_transport_ctx_get_local_node_ptr',['../group__wickr__transport__ctx.html#ga7bcb60a2739744e08cce0c18ce7f01ba',1,'transport_ctx.h']]],

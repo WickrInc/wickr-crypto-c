@@ -43,6 +43,8 @@ void \hyperlink{group__wickr__transport__ctx_ga338125913ff273beec721b341de639a3}
 const \hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks\+\_\+t} $\ast$ \hyperlink{group__wickr__transport__ctx_gafc6235ed4ee84ccbdfc3a0a0a617b557}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+callbacks} (const \hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
 \item 
 void \hyperlink{group__wickr__transport__ctx_ga9ed375c418ca58c30ca31c8303c71f92}{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+callbacks} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx, const \hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks\+\_\+t} $\ast$callbacks)
+\item 
+bool \hyperlink{group__wickr__transport__ctx_ga177b8b150fe250cf04f8350be94af7fa}{wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo} (\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$ctx)
 \end{DoxyCompactItemize}
 
 
@@ -105,6 +107,22 @@ Destroy a transport context
 {\em ctx} & a pointer to the transport context to destroy. All properties of \textquotesingle{}$\ast$ctx\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga177b8b150fe250cf04f8350be94af7fa}\label{group__wickr__transport__ctx_ga177b8b150fe250cf04f8350be94af7fa}} 
+\index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo@{wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo}}
+\index{wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo@{wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo()}{wickr\_transport\_ctx\_force\_tx\_key\_evo()}}
+{\footnotesize\ttfamily bool wickr\+\_\+transport\+\_\+ctx\+\_\+force\+\_\+tx\+\_\+key\+\_\+evo (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Force the tx stream to perform a tx stream key evolution immediately
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context evolove the tx stream key of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key evolution was successful 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gafc6235ed4ee84ccbdfc3a0a0a617b557}\label{group__wickr__transport__ctx_gafc6235ed4ee84ccbdfc3a0a0a617b557}} 
 \index{Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}!wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+callbacks@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+callbacks}}
 \index{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+callbacks@{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+callbacks}!Wickr\+\_\+transport\+\_\+ctx@{Wickr\+\_\+transport\+\_\+ctx}}

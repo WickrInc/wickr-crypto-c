@@ -111,6 +111,8 @@ Functions</h2></td></tr>
 <tr class="separator:gafc6235ed4ee84ccbdfc3a0a0a617b557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9ed375c418ca58c30ca31c8303c71f92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga9ed375c418ca58c30ca31c8303c71f92">wickr_transport_ctx_set_callbacks</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, const <a class="el" href="structwickr__transport__callbacks.html">wickr_transport_callbacks_t</a> *callbacks)</td></tr>
 <tr class="separator:ga9ed375c418ca58c30ca31c8303c71f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga177b8b150fe250cf04f8350be94af7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga177b8b150fe250cf04f8350be94af7fa">wickr_transport_ctx_force_tx_key_evo</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:ga177b8b150fe250cf04f8350be94af7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
@@ -227,6 +229,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga177b8b150fe250cf04f8350be94af7fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga177b8b150fe250cf04f8350be94af7fa">&#9670;&nbsp;</a></span>wickr_transport_ctx_force_tx_key_evo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool wickr_transport_ctx_force_tx_key_evo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Force the tx stream to perform a tx stream key evolution immediately</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context evolove the tx stream key of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the key evolution was successful </dd></dl>
 
 </div>
 </div>

@@ -1802,6 +1802,48 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
     
     reset_alice_bob();
     
+    IT("should allow you to bump the tx stream to the next key evolution")
+    {
+        wickr_transport_ctx_start(alice_transport);
+        verify_established_connection();
+        
+        wickr_transport_ctx_t *backup = wickr_transport_ctx_copy(alice_transport);
+        SHOULD_BE_TRUE(wickr_transport_ctx_force_tx_key_evo(alice_transport));
+        
+        SHOULD_NOT_EQUAL(backup->tx_stream->last_seq, alice_transport->tx_stream->last_seq);
+        
+        // Until another packet is generated the key does not evolove
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(backup->tx_stream->key->cipher_key->key_data, alice_transport->tx_stream->key->cipher_key->key_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(backup->tx_stream->key->evolution_key, alice_transport->tx_stream->key->evolution_key, NULL));
+        
+        wickr_buffer_t *random = engine.wickr_crypto_engine_crypto_random(32);
+        wickr_transport_ctx_process_tx_buffer(alice_transport, random);
+        
+        // A packet was generated so the evolution should be complete
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(backup->tx_stream->key->cipher_key->key_data, alice_transport->tx_stream->key->cipher_key->key_data, NULL));
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(backup->tx_stream->key->evolution_key, alice_transport->tx_stream->key->evolution_key, NULL));
+        
+        // Reset backup and evolove again to confirm incrementing
+        wickr_transport_ctx_destroy(&backup);
+        backup = wickr_transport_ctx_copy(alice_transport);
+        SHOULD_BE_TRUE(wickr_transport_ctx_force_tx_key_evo(alice_transport));
+
+        wickr_transport_ctx_process_tx_buffer(alice_transport, random);
+        wickr_buffer_destroy(&random);
+        
+        SHOULD_NOT_EQUAL(backup->tx_stream->last_seq, alice_transport->tx_stream->last_seq);
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(backup->tx_stream->key->cipher_key->key_data, alice_transport->tx_stream->key->cipher_key->key_data, NULL));
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(backup->tx_stream->key->evolution_key, alice_transport->tx_stream->key->evolution_key, NULL));
+        
+        // Verify edge cases
+        SHOULD_BE_FALSE(wickr_transport_ctx_force_tx_key_evo(NULL));
+        alice_transport->status = TRANSPORT_STATUS_NONE;
+        SHOULD_BE_FALSE(wickr_transport_ctx_force_tx_key_evo(alice_transport));
+    }
+    END_IT
+    
+    reset_alice_bob();
+    
     wickr_transport_ctx_destroy(&alice_transport);
     wickr_transport_ctx_destroy(&bob_transport);
     
