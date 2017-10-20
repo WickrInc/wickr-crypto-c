@@ -1041,3 +1041,15 @@ void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_t
     
     ctx->callbacks = *callbacks;
 }
+
+bool wickr_transport_ctx_force_tx_key_evo(wickr_transport_ctx_t *ctx)
+{
+    if (!ctx || ctx->status != TRANSPORT_STATUS_ACTIVE) {
+        return false;
+    }
+    
+    uint64_t curr_evo = ctx->tx_stream->last_seq / ctx->tx_stream->key->packets_per_evolution;
+    ctx->tx_stream->last_seq = ((curr_evo + 1) * ctx->tx_stream->key->packets_per_evolution) - 1;
+    
+    return true;
+}
