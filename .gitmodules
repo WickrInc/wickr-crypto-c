@@ -1,0 +1,4 @@
+[submodule "third-party/ed448goldilocks-code"]
+	path = third-party/ed448goldilocks-code
+	url = https://git.code.sf.net/p/ed448goldilocks/code
+	ignore = dirty

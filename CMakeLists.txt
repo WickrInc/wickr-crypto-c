@@ -86,6 +86,12 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
         #        <http://msdn.microsoft.com/en-us/library/hsyx7kbz.aspx>
 endif()
 
+# include DECAF library
+find_library(DECAF_LIB NAMES libdecaf.a libdecaf.so PATHS third-party/ed448goldilocks-code/build/lib REQUIRED)
+message("Decaf library: ${DECAF_LIB}")
+include_directories("third-party/ed448goldilocks-code/src/GENERATED/include")
+
+
 add_subdirectory(src)
 
 if (NOT APPLE AND NOT ANDROID AND UNIX)
@@ -97,4 +103,3 @@ endif()
 if (NOT ANDROID)
     add_dependencies(crypto_test wickr_crypto_lib)
 endif()
-

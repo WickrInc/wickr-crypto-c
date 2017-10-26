@@ -11,32 +11,41 @@ WICKR_CRYPTO_LINUX_REL = build-unix/.release
 # This is the location where files are installed
 INSTALL_PREFIX=$(DIR)/../localRepo/wickr-crypto/unix
 
-$(WICKR_CRYPTO_LINUX):
+$(WICKR_CRYPTO_LINUX): ed448_lib
 	mkdir -p $(WICKR_CRYPTO_LINUX)
 
-$(WICKR_CRYPTO_LINUX_DEB): $(WICKR_CRYPTO_LINUX)
+$(WICKR_CRYPTO_LINUX_DEB): $(WICKR_CRYPTO_LINUX) ed448_lib
 	cd $(WICKR_CRYPTO_LINUX); cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER='clang' -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX) -G "Unix Makefiles" ..
 	@date >$(WICKR_CRYPTO_LINUX_DEB)
 
-$(WICKR_CRYPTO_LINUX_REL): $(WICKR_CRYPTO_LINUX)
+$(WICKR_CRYPTO_LINUX_REL): $(WICKR_CRYPTO_LINUX) ed448_lib
 	cd $(WICKR_CRYPTO_LINUX); cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER='clang' -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX) -G "Unix Makefiles" ..
 	@date >$(WICKR_CRYPTO_LINUX_REL)
 
-$(WICKR_CRYPTO_LINUX)/lib/Debug/libwickr_crypto_lib.a: $(WICKR_CRYPTO_LINUX_DEB)
+$(WICKR_CRYPTO_LINUX)/lib/Debug/libwickr_crypto_lib.a: $(WICKR_CRYPTO_LINUX_DEB) ed448_lib
 	cd $(WICKR_CRYPTO_LINUX); cmake --build .
 
-debug: $(WICKR_CRYPTO_LINUX)/lib/Debug/libwickr_crypto_lib.a
+debug: $(WICKR_CRYPTO_LINUX)/lib/Debug/libwickr_crypto_lib.a ed448_lib
 
 $(WICKR_CRYPTO_LINUX)/lib/Release/libwickr_crypto_lib.a: $(WICKR_CRYPTO_LINUX_REL)
 	cd $(WICKR_CRYPTO_LINUX); cmake --build .
 
-release: $(WICKR_CRYPTO_LINUX)/lib/Release/libwickr_crypto_lib.a
+release: $(WICKR_CRYPTO_LINUX)/lib/Release/libwickr_crypto_lib.a ed448_lib
+
+ed448_lib: third-party/ed448goldilocks-code/build/lib/libdecaf.so
+
+third-party/ed448goldilocks-code/build/lib/libdecaf.so:
+
+	make -C third-party/ed448goldilocks-code/ lib
 
 install:
 	cd $(WICKR_CRYPTO_LINUX); cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX) -P cmake_install.cmake
 
-test: $(WICKR_CRYPTO_LINUX)/bin/crypto_test
+test: $(WICKR_CRYPTO_LINUX)/bin/crypto_test ed448_lib
 	$(WICKR_CRYPTO_LINUX)/bin/crypto_test $(CI_FLAGS)
-	
+
+ed448_test: release ed448_lib
+	$(WICKR_CRYPTO_LINUX)/bin/ed448_test $(CI_FLAGS)
+
 clean:
 	rm -rf $(WICKR_CRYPTO_LINUX)

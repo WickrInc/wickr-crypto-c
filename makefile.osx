@@ -10,7 +10,7 @@ WICKR_CRYPTO_OSX_REL = build-osx/.release
 # This is the location where files are installed
 INSTALL_PREFIX=$(DIR)/../localRepo/wickr-crypto/osx
 
-$(WICKR_CRYPTO_OSX):
+$(WICKR_CRYPTO_OSX): ed448_lib
 	mkdir -p build-osx
 
 $(WICKR_CRYPTO_OSX_DEB): $(WICKR_CRYPTO_OSX)
@@ -39,3 +39,13 @@ test.debug: debug $(WICKR_CRYPTO_OSX)/bin/Debug/crypto_test
 
 clean:
 	rm -rf build-osx
+
+ed448_lib: third-party/ed448goldilocks-code/build/lib/libdecaf.so
+
+third-party/ed448goldilocks-code/build/lib/libdecaf.so:
+	make -C third-party/ed448goldilocks-code/ lib
+
+
+
+ed448_test: release ed448_lib
+	$(WICKR_CRYPTO_LINUX)/bin/ed448_test $(CI_FLAGS)
