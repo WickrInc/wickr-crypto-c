@@ -44,6 +44,10 @@ extern "C" {
 #define EDDSA_448_PUBLIC_KEY_LENGTH DECAF_EDDSA_448_PUBLIC_BYTES
 #define EDDSA_448_SIGNATURE_LENGTH DECAF_EDDSA_448_SIGNATURE_BYTES
 
+#define DH_448_PUBLIC_KEY_LENGTH DECAF_X448_PUBLIC_BYTES
+#define DH_448_PRIVATE_KEY_LENGTH DECAF_X448_PRIVATE_BYTES
+#define DH_448_SHARED_SECRET_LENGTH DECAF_X448_PUBLIC_BYTES
+
 
 wickr_buffer_t *ed448_sig_sign(const wickr_ec_key_t *ec_signing_key,
                                const wickr_buffer_t *data_to_sign);
@@ -53,8 +57,12 @@ bool ed448_sig_verify(const wickr_buffer_t *signature,
                       const wickr_ec_key_t *ec_public_key,
                       const wickr_buffer_t *data_to_verify);
 
-wickr_buffer_t *ed448_sig_gen_key(const wickr_buffer_t *private_key_data);
+wickr_buffer_t *ed448_sig_derive_public_key(const wickr_buffer_t *private_key_data);
 
+wickr_buffer_t *ed448_dh_derive_public_key(const wickr_buffer_t *private_key_data);
+
+wickr_buffer_t *ed448_dh_shared_secret(const wickr_ec_key_t *local_key_pair,
+                                       const wickr_ec_key_t *peer_public_key);
 
 #ifdef __cplusplus
 }

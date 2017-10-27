@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-wickr_buffer_t *ed448_sig_gen_key(const wickr_buffer_t *private_key_data)
+wickr_buffer_t *ed448_sig_derive_public_key(const wickr_buffer_t *private_key_data)
 {
     if (!private_key_data || private_key_data->length != EDDSA_448_PRIVATE_KEY_LENGTH)
         return NULL;
@@ -74,4 +74,49 @@ bool ed448_sig_verify(const wickr_buffer_t *signature,
     return (decaf_ed448_verify(signature->bytes, public_data->bytes, data_to_verify->bytes,
             data_to_verify->length, prehashed, context, context_length) == DECAF_SUCCESS);
 
+}
+
+wickr_buffer_t *ed448_dh_derive_public_key(const wickr_buffer_t *private_key_data)
+{
+    if (!private_key_data || private_key_data->length != DH_448_PRIVATE_KEY_LENGTH)
+        return NULL;
+
+    wickr_buffer_t *public_key_data = wickr_buffer_create_empty_zero(DH_448_PUBLIC_KEY_LENGTH);
+
+    if (!public_key_data)
+        return NULL;
+
+    decaf_x448_derive_public_key(public_key_data->bytes, private_key_data->bytes);
+    // This function does not allow for failure
+
+    return public_key_data;  
+}
+
+wickr_buffer_t *ed448_dh_shared_secret(const wickr_ec_key_t *local_key_pair,
+                                       const wickr_ec_key_t *peer_public_key)
+{
+    if (!local_key_pair || !peer_public_key)
+        return NULL;
+
+    wickr_buffer_t *local_private_key_data = local_key_pair->pri_data;
+    wickr_buffer_t *peer_public_key_data = peer_public_key->pub_data;
+
+    if (!local_private_key_data || !peer_public_key_data)
+        return NULL;
+
+    if (local_private_key_data->length != DH_448_PRIVATE_KEY_LENGTH ||
+        peer_public_key_data->length != DH_448_PUBLIC_KEY_LENGTH)
+        return NULL;
+
+    wickr_buffer_t *shared_secret = wickr_buffer_create_empty_zero(DH_448_SHARED_SECRET_LENGTH);
+
+    decaf_error_t result = decaf_x448(shared_secret->bytes, peer_public_key_data->bytes,
+                                      local_private_key_data->bytes);
+    
+    if (result == DECAF_FAILURE) {
+        wickr_buffer_destroy(&shared_secret);
+        return NULL;
+    }
+
+    return shared_secret;
 }
