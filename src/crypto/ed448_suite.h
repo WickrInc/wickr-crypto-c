@@ -25,6 +25,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <decaf/ed448.h>
+
 // TODO(michal): Check which includes we really need
 #include "buffer.h"
 #include "cipher.h"
@@ -38,7 +40,20 @@ extern "C" {
 #endif
 
 
-int test_function(int a, int b);
+#define EDDSA_448_PRIVATE_KEY_LENGTH DECAF_EDDSA_448_PRIVATE_BYTES
+#define EDDSA_448_PUBLIC_KEY_LENGTH DECAF_EDDSA_448_PUBLIC_BYTES
+#define EDDSA_448_SIGNATURE_LENGTH DECAF_EDDSA_448_SIGNATURE_BYTES
+
+
+wickr_buffer_t *ed448_sig_sign(const wickr_ec_key_t *ec_signing_key,
+                               const wickr_buffer_t *data_to_sign);
+
+
+bool ed448_sig_verify(const wickr_buffer_t *signature,
+                      const wickr_ec_key_t *ec_public_key,
+                      const wickr_buffer_t *data_to_verify);
+
+wickr_buffer_t *ed448_sig_gen_key(const wickr_buffer_t *private_key_data);
 
 
 #ifdef __cplusplus

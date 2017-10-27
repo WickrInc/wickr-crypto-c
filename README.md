@@ -6,7 +6,7 @@ INSTRUCTIONS:
 	edit files:
 		src/crypto/ed448_suite.c
 		src/crypto/ed448_suite.h
-		src/our_test/test_main.c
+		src/ed448_test/test_main.c
 	build:
 		LINUX:
 			make -f makefile.linux ed448_test
