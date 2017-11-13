@@ -52,10 +52,10 @@ wickr_buffer_t *ed448_dh_derive_public_key(const wickr_buffer_t *private_key_dat
 
 wickr_buffer_t *ed448_dh_shared_secret(const wickr_ecdh_params_t *params);
 
-wickr_buffer_t *ed448_shake256(const wickr_buffer_t * data, uint16_t output_length);
+wickr_buffer_t *ed448_shake256_raw(const wickr_buffer_t *data, uint16_t output_length);
 
-wickr_buffer_t *ed448_shake256_concat(const wickr_buffer_t ** data, uint16_t num_buffers,
-                                      uint16_t output_length);
+wickr_buffer_t *ed448_shake256(const wickr_buffer_t *data, const wickr_buffer_t *salt,
+                               const wickr_buffer_t *info, uint16_t output_length);
 
 #ifdef __cplusplus
 }

@@ -19,6 +19,7 @@ void print_buffer_hex(const wickr_buffer_t *buffer)
 {
     for (uint32_t i = 0; i < buffer->length; i++)
         printf("%02X", buffer->bytes[i]);
+    printf("\n");
 }
 
 bool test_sig_scheme()
@@ -94,13 +95,17 @@ wickr_buffer_t *dh_from_keys(const wickr_ec_key_t *local_key, const wickr_ec_key
 {
     if (!local_key || !peer_key || !kdf_info)
         return NULL;
+
     wickr_ec_key_t *local_key_cpy = wickr_ec_key_copy(local_key);
     wickr_ec_key_t *peer_key_cpy = wickr_ec_key_copy(peer_key);
+
     if(peer_key_cpy->pri_data)    
         wickr_buffer_destroy(&peer_key_cpy->pri_data);  // Make sure the peer private key is gone;
+
     wickr_kdf_meta_t *kdf_info_cpy = wickr_kdf_meta_copy(kdf_info);
     wickr_ecdh_params_t *params = wickr_ecdh_params_create(local_key_cpy, peer_key_cpy, kdf_info_cpy);
     wickr_buffer_t *result = ed448_dh_shared_secret(params);
+
     wickr_ecdh_params_destroy(&params);
     return result;
 }
@@ -191,18 +196,139 @@ bool test_dh(uint16_t iterations)
     return true;
 }
 
+bool test_shake_result(uint8_t *msg_raw, uint16_t msg_len, uint16_t output_length, uint8_t *answer)
+{        
+    wickr_buffer_t *message = wickr_buffer_create(msg_raw, msg_len);    
+    wickr_buffer_t *output = ed448_shake256_raw(message, output_length);
+
+    if (!output) {
+        printf("Shake computation failed!\n");
+        wickr_buffer_destroy(&message);
+        return false;
+    }
+           
+    wickr_buffer_t *correct_output = wickr_buffer_create(answer, output_length);
+
+    bool equal = wickr_buffer_is_equal(output, correct_output, NULL);
+
+    if (!equal) {
+        printf("Shake failed on test vector %s\n", msg_raw);
+        print_buffer_hex(output);
+        print_buffer_hex(correct_output);
+    }
+    wickr_buffer_destroy(&output);
+    wickr_buffer_destroy(&message);
+    wickr_buffer_destroy(&correct_output);
+    
+    return equal;
+}
+
+bool test_shake_all()
+{
+    bool all_tests_passed = true;
+
+    uint8_t msg_raw1[10] = "helloworld";
+    uint8_t answer1[10] = {0x05,0x99,0xdf,0x85,0x01,0x88,0xc1,0x93,0x3b,0x38};
+    all_tests_passed &= test_shake_result(msg_raw1, 10, 10, answer1);    
+    
+    uint8_t msg_raw2[12] = "some message";
+    uint8_t answer2[7] = {0x62,0xd4,0xef,0xf4,0x78,0xeb,0x34};
+    all_tests_passed &= test_shake_result(msg_raw2, 12, 7, answer2);
+        
+    uint8_t msg_raw3[12] = "   spaces   ";
+    uint8_t answer3[4] = {0x10,0x1a,0x3e,0x3a};
+    all_tests_passed &= test_shake_result(msg_raw3, 12, 4, answer3);
+        
+    uint8_t msg_raw4[1] = "\n";
+    uint8_t answer4[20] = {0x45,0x54,0x46,0x0a,0xd5,0x3f,0x18,0x58,0x1c,0x65,0x39,0x37,0xbe,0x5d,0x7c,0x5f,0x57,0xa5,0xb7,0x11};
+    all_tests_passed &= test_shake_result(msg_raw4, 1, 20, answer4);        
+
+    return all_tests_passed;
+}
+
+bool test_shake_salt(uint8_t *msg_raw, uint16_t msg_len, uint8_t *salt_raw, uint16_t salt_len,
+    uint8_t *info_raw, uint16_t info_len)
+{
+    wickr_buffer_t *msg = wickr_buffer_create(msg_raw, msg_len);
+    wickr_buffer_t *salt = wickr_buffer_create(salt_raw, salt_len);
+    wickr_buffer_t *info = wickr_buffer_create(info_raw, info_len);
+
+    wickr_buffer_t *array[3] = {salt, info, msg};
+    wickr_buffer_t *concat = wickr_buffer_concat_multi(array, 3);
+
+    uint16_t output_length = 64;
+    wickr_buffer_t *answer1 = ed448_shake256_raw(concat, output_length);
+    wickr_buffer_t *answer2 = ed448_shake256(msg, salt, info, output_length);
+
+    bool equal = false;
+    if (answer1 && answer2) {
+        equal = wickr_buffer_is_equal(answer1, answer2, NULL);
+        if (!equal)
+            printf("Salt results not equal!\n");
+    }
+    else
+        printf("Shake call failed!\n");
+
+    wickr_buffer_destroy(&msg);
+    wickr_buffer_destroy(&salt);
+    wickr_buffer_destroy(&info);
+    wickr_buffer_destroy(&concat);
+
+    if (answer1)
+        wickr_buffer_destroy(&answer1);
+    if (answer2)
+        wickr_buffer_destroy(&answer2);
+
+    return equal;
+}
+
+bool test_shake_salt_all()
+{
+    bool all_tests_passed = true;
+
+    uint8_t msg_raw1[5] = "hello";
+    uint8_t salt_raw1[5] = "world";
+    uint8_t info_raw1[1] = "!";
+    all_tests_passed &= test_shake_salt(msg_raw1, 5, salt_raw1, 5, info_raw1, 1);
+    
+    uint8_t msg_raw2[3] = "abc";
+    uint8_t salt_raw2[3] = "def";
+    uint8_t info_raw2[3] = "ghi";
+    all_tests_passed &= test_shake_salt(msg_raw2, 3, salt_raw2, 3, info_raw2, 3);
+    
+    uint8_t msg_raw3[3] = "abc";
+    uint8_t *salt_raw3 = NULL;
+    uint8_t info_raw3[3] = "ghi";
+    all_tests_passed &= test_shake_salt(msg_raw3, 3, salt_raw3, 0, info_raw3, 3);
+    
+    uint8_t msg_raw4[4] = "abcd";
+    uint8_t salt_raw4[3] = "def";
+    uint8_t *info_raw4 = NULL;
+    all_tests_passed &= test_shake_salt(msg_raw4, 4, salt_raw4, 3, info_raw4, 0);
+    
+    uint8_t msg_raw5[1] = "a";
+    uint8_t *salt_raw5 = NULL;
+    uint8_t *info_raw5 = NULL;
+    all_tests_passed &= test_shake_salt(msg_raw5, 1, salt_raw5, 0, info_raw5, 0);
+
+    return all_tests_passed;
+}
+
+bool test_shake()
+{
+    bool all_tests_passed = true;
+    all_tests_passed &= test_shake_salt_all();
+    all_tests_passed &= test_shake_all();
+    return all_tests_passed;
+}
+
 int main(void)
 {
-    uint8_t msg[2] = "aa";
-
-    wickr_buffer_t *some_message = wickr_buffer_create(msg, 2);
-    wickr_buffer_t *output = ed448_shake256(some_message, 10);
-    print_buffer_hex(output);
-    wickr_buffer_destroy(&output);
-    wickr_buffer_destroy(&some_message);
     
     srand(time(0));
     bool all_tests_passed = true;
+    all_tests_passed &= test_shake();
+    printf("Shake256 tested...\n");
     all_tests_passed &= test_sig_scheme();
     printf("Signature scheme tested...\n");
     all_tests_passed &= test_dh(10000);

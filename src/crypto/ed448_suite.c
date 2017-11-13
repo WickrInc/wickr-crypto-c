@@ -156,7 +156,7 @@ wickr_buffer_t *ed448_dh_shared_secret(const wickr_ecdh_params_t *params)
 #define hash_destroy decaf_shake256_destroy
 #define hash_hash    decaf_shake256_hash
 
-wickr_buffer_t *ed448_shake256(const wickr_buffer_t * data, uint16_t output_length)
+wickr_buffer_t *ed448_shake256_raw(const wickr_buffer_t * data, uint16_t output_length)
 {
     if (!data)
         return NULL;
@@ -172,7 +172,7 @@ wickr_buffer_t *ed448_shake256(const wickr_buffer_t * data, uint16_t output_leng
     return result;
 }
 
-wickr_buffer_t *ed448_shake256_concat(const wickr_buffer_t **buffer_array, uint16_t num_buffers,
+wickr_buffer_t *__ed448_shake256_concat(const wickr_buffer_t **buffer_array, uint16_t num_buffers,
     uint16_t output_length)
 {
     if (!buffer_array)
@@ -182,15 +182,24 @@ wickr_buffer_t *ed448_shake256_concat(const wickr_buffer_t **buffer_array, uint1
     hash_init(hash);
 
     for (int i = 0; i < num_buffers; i++) {
-        if(!buffer_array[i]) {
-            hash_destroy(hash);
-            return NULL;
-        }
-        hash_update(hash,buffer_array[i]->bytes,buffer_array[i]->length);
+        if(buffer_array[i])
+            hash_update(hash,buffer_array[i]->bytes,buffer_array[i]->length);
     }
 
     wickr_buffer_t * result = wickr_buffer_create_empty_zero(output_length);    
     hash_final(hash,result->bytes,result->length);
     hash_destroy(hash);
     return result;
+}
+
+wickr_buffer_t *ed448_shake256(const wickr_buffer_t *data, const wickr_buffer_t *salt,
+                               const wickr_buffer_t *info, uint16_t output_length)
+{
+    if (!data)
+        return NULL;
+
+    /*TODO(All) Is this good order?*/
+    wickr_buffer_t *buffer_array[3] = {salt, info, data};
+    return __ed448_shake256_concat(buffer_array, 3, output_length);
+    
 }
