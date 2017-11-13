@@ -175,6 +175,8 @@ wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve)
     switch (curve.identifier) {
         case EC_CURVE_ID_NIST_P521:
             return DIGEST_SHA_512;
+        case EC_CURVE_ID_ED448_GOLDILOCKS:
+            return DIGEST_NONE_ED448;
     }
 }
 

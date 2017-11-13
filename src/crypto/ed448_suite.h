@@ -25,8 +25,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <decaf/ed448.h>
-
 // TODO(michal): Check which includes we really need
 #include "buffer.h"
 #include "cipher.h"
@@ -39,21 +37,12 @@
 extern "C" {
 #endif
 
-
-#define EDDSA_448_PRIVATE_KEY_LENGTH DECAF_EDDSA_448_PRIVATE_BYTES
-#define EDDSA_448_PUBLIC_KEY_LENGTH DECAF_EDDSA_448_PUBLIC_BYTES
-#define EDDSA_448_SIGNATURE_LENGTH DECAF_EDDSA_448_SIGNATURE_BYTES
-
-#define DH_448_PUBLIC_KEY_LENGTH DECAF_X448_PUBLIC_BYTES
-#define DH_448_PRIVATE_KEY_LENGTH DECAF_X448_PRIVATE_BYTES
-#define DH_448_SHARED_SECRET_LENGTH DECAF_X448_PUBLIC_BYTES
+wickr_ecdsa_result_t *ed448_sig_sign(const wickr_ec_key_t *ec_signing_key,
+                               const wickr_buffer_t *data_to_sign,
+                               wickr_digest_t digest_mode);
 
 
-wickr_buffer_t *ed448_sig_sign(const wickr_ec_key_t *ec_signing_key,
-                               const wickr_buffer_t *data_to_sign);
-
-
-bool ed448_sig_verify(const wickr_buffer_t *signature,
+bool ed448_sig_verify(const wickr_ecdsa_result_t *signature,
                       const wickr_ec_key_t *ec_public_key,
                       const wickr_buffer_t *data_to_verify);
 
@@ -61,8 +50,12 @@ wickr_buffer_t *ed448_sig_derive_public_key(const wickr_buffer_t *private_key_da
 
 wickr_buffer_t *ed448_dh_derive_public_key(const wickr_buffer_t *private_key_data);
 
-wickr_buffer_t *ed448_dh_shared_secret(const wickr_ec_key_t *local_key_pair,
-                                       const wickr_ec_key_t *peer_public_key);
+wickr_buffer_t *ed448_dh_shared_secret(const wickr_ecdh_params_t *params);
+
+wickr_buffer_t *ed448_shake256(const wickr_buffer_t * data, uint16_t output_length);
+
+wickr_buffer_t *ed448_shake256_concat(const wickr_buffer_t ** data, uint16_t num_buffers,
+                                      uint16_t output_length);
 
 #ifdef __cplusplus
 }
