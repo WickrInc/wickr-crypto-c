@@ -1,35 +1,81 @@
 language: c
 
-os: linux
-compiler: clang
-
 matrix:
   include:
     - os: linux
       dist: trusty
       sudo: required
+      compiler: clang
       env:
       - OPENSSL="1.0.2"
+      - TESTS=true
     - os: linux
       dist: trusty
       sudo: required
+      compiler: clang
       env:
       - OPENSSL="1.1.0"
+      - TESTS=true
+    - os: linux
+      dist: trusty
+      sudo: required
+      compiler: clang
+      env:
+      - OPENSSL="BUILD"
+      - TESTS=true
     - os: osx
       osx_image: xcode9
+      env:
+      - TESTS=true
+    - os: osx
+      osx_image: xcode9
+      env:
+      - IOS=true
+    - os: linux 
+      dist: trusty
+      sudo: required
+      env:
+      - ANDROID="armeabi-v7a"
+    - os: linux 
+      dist: trusty
+      sudo: required
+      env:
+      - ANDROID="armeabi"
+    - os: linux 
+      dist: trusty
+      sudo: required
+      env:
+      - ANDROID="x86"
   exclude:
     - compiler: clang
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:george-edison55/cmake-3.x -y; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo add-apt-repository ppa:0k53d-karl-f830m/openssl -y; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -q; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo apt-get install openssl -y; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install cmake -y; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget -O $HOME/cmake.tar https://cmake.org/files/v3.9/cmake-3.9.6-Linux-x86_64.tar.gz; mkdir $HOME/cmake; tar -xf $HOME/cmake.tar -C $HOME/cmake; ls $HOME/cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
+  - if [[ ! -z "${ANDROID}" ]]; then wget -O $HOME/ndk.zip https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip; unzip $HOME/ndk.zip -d $HOME/ndk >/dev/null; fi
 
 script:
- - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make -f makefile.linux release; fi
- - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CI_FLAGS='--ci'; make -f makefile.linux test; fi
- - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make -f makefile.osx release; fi
- - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CI_FLAGS='--ci'; make -f makefile.osx test.release; fi
+ - mkdir build;
+ - cd build;
+ - |
+   if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+       if [[ ! -z "${ANDROID}" ]]; then
+            $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-Android.cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DCMAKE_ANDROID_NDK=$HOME/ndk/android-ndk-r14b -DCMAKE_ANDROID_ARCH_ABI=${ANDROID} ../
+       else
+            $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release ../
+       fi
+   fi 
+ - |
+   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+       if [[ ! -z "${IOS}" ]]; then 
+           cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
+       else
+           cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
+       fi
+   fi
+ - make
+ - if [[ ! -z ${TESTS} ]]; then env CTEST_OUTPUT_ON_FAILURE=1 make test; fi

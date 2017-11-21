@@ -1,37 +1,18 @@
-# Bootstrap support for building required dependencies automatically
+add_subdirectory(crypt_blowfish)
+add_subdirectory(libscrypt)
+add_subdirectory(openssl)
 
-cmake_minimum_required(VERSION 2.8.11)
+set(PC_SOURCES protobuf-c/protobuf-c/protobuf-c.c protobuf-c/protobuf-c/protobuf-c.h)
 
-# parallel builds...
-set(NPROC 1)
-if(APPLE)
-    execute_process(COMMAND sysctl -n hw.ncpu OUTPUT_VARIABLE NPROC)
-elseif(UNIX)
-    execute_process(COMMAND nproc OUTPUT_VARIABLE NPROC)
-endif()
-string(REGEX REPLACE "\n$" "" NPROC "${NPROC}")
+add_library(protobuf-c ${PC_SOURCES})
 
-if (NOT APPLE AND NOT ANDROID AND UNIX)
-    find_package(PkgConfig REQUIRED)
-    pkg_search_module(OPENSSL REQUIRED openssl)
-    if( OPENSSL_FOUND )
-        include_directories(${OPENSSL_INCLUDE_DIRS})
-        message("Using OpenSSL ${OPENSSL_VERSION}")
-        message("OpenSSL Root: ${OPENSSL_ROOT_DIR}")
-        message("OpenSSL Include: ${OPENSSL_INCLUDE_DIR}")
-        message("OpenSSL libraries: ${OPENSSL_LIBRARIES}")
-    else()
-        message(STATUS "Cannot find OpenSSL package!")
-    endif()
-else()
-    include(wickr-openssl.cmake)
-endif()
+install(TARGETS protobuf-c EXPORT ProtobufCConfig
+    ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-add_subdirectory(bcrypt)
-add_subdirectory(scrypt)
-add_subdirectory(protobuf-c)
+install(EXPORT ProtobufCConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
-if (NOT APPLE AND NOT ANDROID AND UNIX)
-else()
-    add_dependencies(scrypt wickr-openssl)
-endif()
+install(FILES protobuf-c/protobuf-c/protobuf-c.h DESTINATION include/protobuf-c)
+
+export(TARGETS protobuf-c FILE ProtobufCConfig.cmake)
