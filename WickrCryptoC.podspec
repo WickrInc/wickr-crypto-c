@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "8.0"
@@ -90,12 +90,12 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src/crypto/*.{h,c}", "build-fat/include/**/*.h", "build-fat/lib/libbcrypt.a" "build-fat/lib/libscrypt.a" "build-fat/lib/libprotobuf-c.a"
+  s.source_files  = "src/crypto/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.a", "output_fat/lib/libscrypt.a", "output_fat/lib/libprotobuf-c.a"
   # s.exclude_files = "Classes/Exclude"
-  s.preserve_paths = "build-fat/include/**/*.h", "build-fat/lib/*.a"
+  s.preserve_paths = "output_fat/include/**/*.h", "output_fat/lib/*.a"
 
   #s.public_header_files = "src/crypto/*.h"
-  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/*_priv", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "build-fat/include/**/*.h"
+  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/*_priv", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "output_fat/include/**/*.h"
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the
@@ -132,6 +132,6 @@ Pod::Spec.new do |s|
 
   # s.requires_arc = true
 
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/build-fat/lib -lcrypto', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/build-fat/include' }
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
     
 end
