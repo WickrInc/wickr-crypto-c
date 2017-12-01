@@ -5,6 +5,8 @@ WICKR_CRYPTO_LINUX = build-unix
 WICKR_CRYPTO_LINUX_DEB = build-unix/.debug
 WICKR_CRYPTO_LINUX_REL = build-unix/.release
 
+CI_FLAGS = --ci
+
 #################################################################
 # Please change these as is appropriate for your environment
 #
@@ -41,7 +43,7 @@ third-party/ed448goldilocks-code/build/lib/libdecaf.so:
 install:
 	cd $(WICKR_CRYPTO_LINUX); cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_PREFIX) -P cmake_install.cmake
 
-test: $(WICKR_CRYPTO_LINUX)/bin/crypto_test ed448_lib
+test: $(WICKR_CRYPTO_LINUX)/bin/crypto_test release ed448_lib
 	$(WICKR_CRYPTO_LINUX)/bin/crypto_test $(CI_FLAGS)
 
 ed448_test: release ed448_lib

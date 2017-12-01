@@ -36,8 +36,10 @@ endforeach()
 target_include_directories(crypto_test PUBLIC . cspec cspec/inc)
 
 add_dependencies(crypto_test wickr_crypto_lib)
+add_dependencies(crypto_test ${DECAF_LIB})
 
 target_link_libraries(crypto_test wickr_crypto_lib)
+target_link_libraries(crypto_test ${DECAF_LIB})
 
 if (NOT APPLE AND UNIX)
     message("OpenSSL include dir: ${OPENSSL_INCLUDE_DIR}")

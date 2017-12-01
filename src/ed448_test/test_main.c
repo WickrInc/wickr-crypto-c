@@ -22,12 +22,14 @@ void print_buffer_hex(const wickr_buffer_t *buffer)
     printf("\n");
 }
 
+
+
 bool test_sig_scheme()
 {
     bool all_tests_passed = true;
     uint8_t message_length = 100;
     wickr_ec_curve_t curve = EC_CURVE_ED448_GOLDILOCKS;
-    wickr_digest_t digest_mode = DIGEST_NONE_ED448;
+    wickr_digest_t digest_mode = wickr_digest_matching_curve(curve);
 
     for (uint16_t j = 0; j < 100; j++) {
 
