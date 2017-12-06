@@ -1,13 +1,14 @@
 
 #include "kdf.h"
 #include "libscrypt.h"
-#include "bcrypt.h"
+#include "crypt_blowfish.h"
 #include "memory.h"
 #include "openssl_suite.h"
 #include "ow-crypt.h"
 #include "openssl_suite.h"
 
 #include <string.h>
+
 
 #define BCRYPT_SALT_BYTE_LEN 16
 
@@ -266,7 +267,7 @@ static wickr_buffer_t *__bcrypt_generate_hash(const wickr_kdf_meta_t *meta, cons
     salt_header_buffer.bytes = (uint8_t *)salt_header;
     salt_header_buffer.length = strlen(salt_header);
     
-    wickr_buffer_t *salt_buffer = wickr_buffer_create_empty_zero(BCRYPT_HASHSIZE);
+    wickr_buffer_t *salt_buffer = wickr_buffer_create_empty_zero(BCRYPT_HASH_SIZE);
     
     if (!salt_buffer) {
         return NULL;
@@ -289,10 +290,10 @@ static wickr_buffer_t *__bcrypt_generate_hash(const wickr_kdf_meta_t *meta, cons
         return NULL;
     }
     
-    char out[BCRYPT_HASHSIZE];
-    memset(&out, 0, BCRYPT_HASHSIZE);
+    char out[BCRYPT_HASH_SIZE];
+    memset(&out, 0, BCRYPT_HASH_SIZE);
     
-    if (0 != bcrypt_hashpw((char *)passphrase_final->bytes, (char *)salt_buffer->bytes, out)) {
+    if (!crypt_rn((char *)passphrase_final->bytes, (char *)salt_buffer->bytes, out, BCRYPT_HASH_SIZE)) {
         wickr_buffer_destroy(&passphrase_final);
         wickr_buffer_destroy(&salt_buffer);
         return NULL;

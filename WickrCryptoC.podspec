@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoC"
-  s.version      = "1.6.1"
+  s.version      = "1.7.0"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "8.0"
@@ -90,12 +90,12 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src/crypto/*.{h,c}", "build-ios/Release/fat/include/**/*.h", "build-ios/Release/fat/lib/*.a"
+  s.source_files  = "src/crypto/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.a", "output_fat/lib/libscrypt.a", "output_fat/lib/libprotobuf-c.a"
   # s.exclude_files = "Classes/Exclude"
-  s.preserve_paths = "build-ios/Release/fat/include/**/*.h", "build-ios/Release/fat/lib/*.a"
+  s.preserve_paths = "output_fat/include/**/*.h", "output_fat/lib/*.a"
 
   #s.public_header_files = "src/crypto/*.h"
-  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/*_priv", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "build-ios/Release/fat/include/**/*.h"
+  s.private_header_files = "src/crypto/*.pb-c.h", "src/crypto/*_priv", "src/crypto/openssl_*suite.h", "src/crypto/protobuf_util.h", "output_fat/include/**/*.h"
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  A list of resources included with the Pod. These are copied into the
@@ -122,15 +122,7 @@ Pod::Spec.new do |s|
   # s.library   = "iconv"
     s.module_map = "src/crypto/wickr_crypto_c.modulemap" 
   s.prepare_command = <<-CMD
-    pwd
-    make -f makefile.ios release
-    cd build-ios/Release
-    mkdir fat
-    cd fat
-    mkdir lib
-    mkdir include
-    lipo -create ../arm64/third-party/lib/libcrypto.a ../armv7/third-party/lib/libcrypto.a ../i386/third-party/lib/libcrypto.a ../x86_64/third-party/lib/libcrypto.a -output lib/libcrypto.a
-    cp -R ../arm64/third-party/include/openssl include/openssl
+        ./build-ios-fat.sh
   CMD
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -140,9 +132,6 @@ Pod::Spec.new do |s|
 
   # s.requires_arc = true
 
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/build-ios/Release/fat/lib -lcrypto', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/build-ios/Release/fat/include' }
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
     
-  s.dependency "libbcrypt", "~>1.3.0"
-  s.dependency "libscrypt", "~>1.21"
-  s.dependency "protobuf-c", "~>1.2.1"
 end

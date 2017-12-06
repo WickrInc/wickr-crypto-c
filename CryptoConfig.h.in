@@ -1,3 +1,0 @@
-// the configured options and settings for Crypto
-#define Crypto_VERSION_MAJOR @Crypto_VERSION_MAJOR@
-#define Crypto_VERSION_MINOR @Crypto_VERSION_MINOR@

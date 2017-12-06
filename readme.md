@@ -87,198 +87,172 @@ A state machine to help with the encryption of continuous streams of data. This 
 
 # Steps to build and test
 
-There are makefiles included in the repository for each of the target operating systems:
-* makefile.osx to build the macOS targets
-* makefile.win32 to build the Windows 32bit targets
-* makefile.linux to build the Linux targets
-* makefile.android to build the Android targets
-
-Each of the makefiles will contain the following targets:
-* release: used to build the release version
-* debug: used to build the debug version
-* clean: used to remove the build directories and files
-* test.release: used to run the unit test program from the release build
-* test.debug: used to run the unit test program from the debug build
-
-Some of the makefiles contain the _install_ target which is used to copy the built files to a target directory. This target directory is configurable.
-
-All of the makefiles have an option to run unit tests against the crypto library, except for the Android makefile.
-
-The following subsections will describe the build process for each of the target operating systems.
+The library is built with CMake on all platforms. Currently iOS, Android, Windows, macOS, and Linux are supported. See platform specific instructions and CMake options below for more information
 
 ## macOS
 
-### macOS Build Instructions
-The makefile.osx make file contains an option to copy the built libraries and include files to a target directory.  You will need to modify the INSTALL_PREFIX value in the makefile.osx file to identify where you want to files to be copied to. The files will be copied at the end of the build.
+### macOS Requirements
 
-To build the release version do the following:
+- CMake 3.1 or higher
+- xcode 9.0
+- xcode command line tools
+- OpenSSL >= 1.0.2 development package from homebrew (optional)
 
-```
-make -f makefile.osx
-```
+### macOS CMake Configuration
 
-or
-```
-make -f makefile.osx release
-```
-
-To build the debug version do the following:
+The macOS build can be configured follows:
 
 ```
-make -f makefile.osx debug
+mkdir build
+cd build
+cmake -DBUILD_OPENSSL=true -DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION ../
 ```
 
-To clean up the build directory and files do the following:
-
-```
-make -f makefile.osx clean
-```
-
-To run the included unit tests, you will need to specify whether to run the debug or release version.  To run the release version do the following:
-
-```
-make -f makefile.osx test.release
-```
-
-To run the debug version do the following:
-
-```
-make -f makefile.osx test.debug
-```
+If a development version of OpenSSL => 1.0.2 is on the system, the BUILD_OPENSSL option can be eliminated in favor of OPENSSL_ROOT_DIR
 
 ## Windows
 
 ### Windows Requirements
-* You will need to have an installation of NASM (http://www.nasm.us/doc/nasmdoc1.html)
-* Microsoft Visual Studio version 2013 is the current version that is used, but this can be easily changed to use another version if desired. Change the makefile.win32 make file to use a different version.
 
-### Windows Build Instructions
-The makefile.win32 make file contains an option to copy the built libraries and include files to a target directory.  You will need to modify the INSTALL_PREFIX value in the makefile.win32 file to identify where you want to files to be copied to. The files will be copied at the end of the build.
+- CMake 3.1 or higher
+- You will need to have an installation of NASM (http://www.nasm.us/doc/nasmdoc1.html)
+- Microsoft Visual Studio version 2015 is the current CMake Generator that is officially supported, although other windows CMake generators may also work
 
-To build the release version do the following:
+### Windows CMake Configuration
 
-```
-make -f makefile.win32
-```
-
-or
-```
-make -f makefile.win32 release
-```
-
-To build the debug version do the following:
+The windows build can be configured using the MSVC generator as follows
 
 ```
-make -f makefile.win32 debug
+mkdir build
+cd build
+cmake -DBUILD_OPENSSL=true -DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION -G "Visual Studio 14 2015" ..
 ```
 
-To clean up the build directory and files do the following:
+### Building, Installing, and Testing (Windows)
+
+The windows build can't be generated with the standard `make` command documented below. Instead it relies on the Visual Studio commands directly as follows:
 
 ```
-make -f makefile.win32 clean
+msbuild WickrCryptoC.sln /p:Configuration=Release
 ```
 
-To run the included unit tests, you will need to specify whether to run the debug or release version.  To run the release version do the following:
+To run tests call the following from the build directory
 
 ```
-make -f makefile.win32 test.release
+ctest
 ```
 
-To run the debug version do the following:
+To install the library to the configured install prefix
 
 ```
-make -f makefile.win32 test.debug
+msbuild INSTALL.vcxproj /p:Configuration=Release
 ```
 
 ## Linux
 
 ### Linux Requirements
-* OpenSSL libraries must be installed.
 
-### Linux Build Instructions
-Linux does not have a _test.release_ and _test.debug_ target in the makefile.linux.  Only the _test_ target is supported, it will run the unit test binary associated with the last build done (release or debug).
+- CMake 3.1 or higher
+- Clang
+- OpenSSL => 1.0.2 (Optional)
 
-The makefile.linux make file contains an option to copy the built libraries and include files to a target directory.  You will need to modify the INSTALL_PREFIX value in the makefile.linux file to identify where you want to files to be copied to.
+### Linux CMake Configuration
 
-To build the release version do the following:
-
-```
-make -f makefile.linux
-```
-
-or
-```
-make -f makefile.linux release
-```
-
-To build the debug version do the following:
+The linux build can be configured using the standard CMake flow with a few options
 
 ```
-make -f makefile.linux debug
+mkdir build
+cd build
+cmake -DBUILD_OPENSSL=true \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION ../
 ```
 
-
-To clean up the build directory and files do the following:
-
-```
-make -f makefile.linux clean
-```
-
-To run the included unit tests do the following:
-
-```
-make -f makefile.linux test
-```
-
-To copy the build library files and any associated include files to the INSTALL_PREFIX location do the following:
-```
-make -f makefile.linux install
-```
+If a development version of OpenSSL => 1.0.2 is on the system, the BUILD_OPENSSL option can be eliminated
 
 ## Android
-The current version does not contain unit testing code that works in an Android environment.
 
-Currently, the makefile.android make file is setup to build the armeabi-va7, armeabi and x86 API versions.  If you want to build other API's then modify the makefile.android file appropriately.
+Currently, the CMake project has been tested on armeabi-v7a, armeabi and x86 ABIs. Running tests for Android is currently not directly supported by CMake, although the test target can be compiled and uploaded to a device via ADB manually
 
 ### Android Requirements
-In order to build Android you will need to have a version of the Android NDK on you build system.  We have been testing with version r13 of the Android NDK.
 
-### Android Build Instructions
-Currently the Android build will only build the release version.
+- CMake 3.9 or higher
+- Android NDK (r14b is recomended)
 
-There are several values that you will need to modify before using the makefile.android file.
-* The location of the Android NDK
-* The Android API level you are targeting
-* The installation directory to copy include and lib files to (optional)
+### Android CMake Configuration
 
-The default location of the NDK is defined in the makefile.android file.  You will need to modify the ANDROID_NDK value in the makefile.android file to point to the location of where you have installed the NDK. 
+The default Android API level is 18 as defined in the Toolchain-Android.cmake file in the root directory. Modifying this is currently not recomended
 
-The default Android API level is defined in the makefile.android file.  You will need to modify the ANDROID_NATIVE_API_LEVEL value in the makefile.android file to identify the Android API level you intend to target.
-
-The makefile.android make file contains an option to copy the build lib and include files to a target directory.  You will need to modify the INSTALL_PREFIX value in the makefile.android file to identify where you want to files to be copied to.
-
-To Build the release version do the following:
+To configure CMake for building the Android NDK target you can do the following:
 
 ```
-make -f makefile.android
+mkdir build
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-Android.cmake \
+-DCMAKE_ANDROID_NDK=USER_NDK_LOCATION \
+-DBUILD_OPENSSL=true \
+-DCMAKE_ANDROID_ARCH_ABI=OUTPUT_ARCH_AB \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION ../
 ```
 
-or
+## iOS
+
+A provided toolchain can support simulator and device builds for iOS > 9.0 as fat libraries. x86 + x86_64 fat libraries are generated for the simulator and armv7, armv7s, and arm64 fat libraries are created for the device
+
+### iOS Requirements
+
+- CMake 3.1 or higher
+- XCode 8.0 or higher
+- XCode command line tools
+
+### iOS CMake Configuration
+
+To configure CMake for building the iOS SDK target you can do the following:
 
 ```
-make -f makefile.android release
+cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
+-DBUILD_OPENSSL=true \
+-DCMAKE_BUILD_TYPE=Release \
+-DIOS_PLATFORM=OS|SIMULATOR \
+-DIOS_DEPLOYMENT_TARGET=8.0 \
+-DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION ../
 ```
 
-To clean up the build directory and files do the following:
+## CMake Options
+
+| CMake Option | Description | Target | 
+| ------------ | ----------- | ------ |
+| BUILD_OPENSSL | Tells CMake to build OpenSSL 1.0.2l as part of the build process | All |
+| OPENSSL_ROOT_DIR | Tells CMake to look for prebuilt OpenSSL development files at a specified location | All |
+| CMAKE_BUILD_TYPE | Release or Debug build | All |
+| CMAKE_INSTALL_PREFIX | The location to install headers and built libraries when `make install` is called | All |
+| CMAKE_TOOLCHAIN_FILE | Tells CMake to target the Android NDK cross compile toolchain | Android / iOS |
+| CMAKE_ANDROID_ARCH_ABI | The ABI to target for this build. Supported values are armeabi, armeabi-v7a, x86 | Android |
+| CMAKE_ANDROID_NDK | The location of the root directory of an NDK installation | Android |
+| IOS_PLATFORM | Set to OS for armv7,armv7s,arm64 builds or SIMULATOR for x86,x86_64 builds | iOS |
+| IOS_DEPLOYMENT_TARGET | The minimum target for the iOS build (9.0+ Recomended) | iOS |
+
+## Building, Installing, and Testing
+
+__Note:__ For windows builds see the windows section
+
+To build the library
+```
+make
+```
+
+To install the library to the configured install prefix
+```
+make install
+``` 
+
+To run the bundled test target (macOS, Windows, Linux)
 
 ```
-make -f makefile.android clean
+make test
 ```
 
-To copy the build library files and any associated include files to the INSTALL_PREFIX location do the following:
-```
-make -f makefile.android install
-```
 # Legal
 
 ## License
@@ -294,4 +268,3 @@ THE CODE IS MADE AVAILABLE "AS-IS" AND WITHOUT ANY EXPRESS OR IMPLIED GUARANTEES
 This distribution includes cryptographic software. The country in which you currently reside may have restrictions on the import, possession, use, and/or re-export to another country, of encryption software. BEFORE using any encryption software, please check your country's laws, regulations and policies concerning the import, possession, use, and re-export of encryption software, to see if this is permitted. See http://www.wassenaar.org/ for more information.
 
 The U.S. Government Department of Commerce, Bureau of Industry and Security (BIS), has classified this software as Export Commodity Control Number (ECCN) 5D002.C.1, which includes information security software using or performing cryptographic functions with asymmetric algorithms. The form and manner of this distribution makes it eligible for export under the License Exception ENC Technology Software Unrestricted (TSU) exception (see the BIS Export Administration Regulations, Section 740.13) for both object code and source code.
-

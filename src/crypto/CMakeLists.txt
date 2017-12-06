@@ -1,71 +1,33 @@
-message("In crypto")
+set(THIRD_PARTY "${CMAKE_SOURCE_DIR}/third-party")
 
-use_c99()
+file(GLOB Sources *.c *.h)
 
-file(GLOB_RECURSE CryptoSources *.c)
+include_directories("${THIRD_PARTY}/protobuf-c/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
 
-file(GLOB_RECURSE CryptoHeaders *.h)
-file(GLOB_RECURSE ProtoBufs *.proto)
+add_library(wickrcrypto ${Sources})
 
-add_library(wickr_crypto_lib STATIC ${CryptoSources} ${CryptoHeaders} ${ProtoBufs})
+add_dependencies(wickrcrypto bcrypt scrypt protobuf-c)
 
-foreach(FILE ${CryptoSources} ${CryptoHeaders} ${ProtoBufs}) 
-    # Get the directory of the source file
-    if (CMAKE_VERSION VERSION_LESS "3.0")
-        get_filename_component(PARENT_DIR "${FILE}" PATH)
-    else()
-        get_filename_component(PARENT_DIR "${FILE}" DIRECTORY)
-    endif()
+if (BUILD_OPENSSL)
+    add_dependencies(wickrcrypto openssl)
+endif (BUILD_OPENSSL)
 
-    # Remove common directory prefix to make the group
-    string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}" "" GROUP "${PARENT_DIR}")
+target_link_libraries(wickrcrypto bcrypt scrypt protobuf-c ${OPENSSL_CRYPTO_LIBRARY})
 
-    # Make sure we are using windows slashes
-    string(REPLACE "/" "\\" GROUP "${GROUP}")
+install(TARGETS wickrcrypto EXPORT WickrCryptoConfig
+    ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-    set(GROUP "${GROUP}")
+install(EXPORT WickrCryptoConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
-    source_group("${GROUP}" FILES "${FILE}")
+file(GLOB Headers *.h)
+file(GLOB PrivateHeaders *priv.h)
+file(GLOB ProtoHeaders *pb-c.h)
 
-    if (${FILE} MATCHES "\\.h$")
-        INSTALL(FILES ${FILE} DESTINATION "include/${GROUP}")
-    endif()
-endforeach()
+list(REMOVE_ITEM Headers ${PrivateHeaders})
+list(REMOVE_ITEM Headers ${ProtoHeaders})
 
-link_directories(${CMAKE_BINARY_DIR}/third-party/lib)
+install(FILES ${Headers} DESTINATION include/wickrcrypto)
 
-
-if(WIN32)
-    if(PORTS_ARCH MATCHES "x86_64")
-        target_link_libraries(wickr_crypto_lib libeay64)
-    else()
-        target_link_libraries(wickr_crypto_lib libeay32)
-    endif()
-endif()
-
-# Many Unix platforms have openssl as a default system library, Apple doesnt.
-
-if(APPLE)
-    target_link_libraries(wickr_crypto_lib crypto)
-elseif (ANDROID)
-    target_link_libraries(wickr_crypto_lib crypto)
-    target_link_libraries(wickr_crypto_lib protobuf)
-    target_link_libraries(wickr_crypto_lib protobuf-c)
-    target_link_libraries(wickr_crypto_lib protobuf-lite)
-    target_link_libraries(wickr_crypto_lib protoc)
-elseif (UNIX)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC"  )
-endif()
-
-target_link_libraries(wickr_crypto_lib bcrypt)
-target_link_libraries(wickr_crypto_lib scrypt)
-
-# include the protobuf libraries
-
-target_link_libraries(wickr_crypto_lib protobuf-c)
-
-INSTALL(TARGETS wickr_crypto_lib DESTINATION "lib/${CMAKE_BUILD_TYPE}" CONFIGURATIONS Release Debug)
-if (NOT APPLE AND NOT ANDROID AND UNIX)
-else()
-    INSTALL(DIRECTORY "${CMAKE_BINARY_DIR}/third-party/include/" DESTINATION "include")
-endif()
+export(TARGETS wickrcrypto FILE WickrCryptoConfig.cmake)
