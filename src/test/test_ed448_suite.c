@@ -85,8 +85,6 @@ DESCRIBE(ed448_signature_scheme, "ed448_suite: ed448_sig_sign ed448_sig_verify")
 
     IT("Signature verifies precisely on right pubkey")
     {
-        
-
         for (uint16_t i = 0; i < 1000; i++) {
             wickr_ec_key_t *local_key = sig_random_key_pair();
             wickr_buffer_t *message = openssl_crypto_random(message_length);
@@ -99,7 +97,6 @@ DESCRIBE(ed448_signature_scheme, "ed448_suite: ed448_sig_sign ed448_sig_verify")
 
 }
 END_DESCRIBE
-
 
 DESCRIBE(ed448_sig_derive_public_key, "ed448_suite: ed448_sig_derive_public_key")
 {
@@ -130,7 +127,7 @@ wickr_buffer_t *dh_from_keys(const wickr_ec_key_t *local_key, const wickr_ec_key
     wickr_ec_key_t *peer_key_cpy = wickr_ec_key_copy(peer_key);
 
     if(peer_key_cpy->pri_data)    
-        wickr_buffer_destroy(&peer_key_cpy->pri_data);  // Make sure the peer private key is gone;
+        wickr_buffer_destroy(&peer_key_cpy->pri_data);  // Make sure the peer private key is gone
 
     wickr_kdf_meta_t *kdf_info_cpy = wickr_kdf_meta_copy(kdf_info);
     wickr_ecdh_params_t *params = wickr_ecdh_params_create(local_key_cpy, peer_key_cpy, kdf_info_cpy);

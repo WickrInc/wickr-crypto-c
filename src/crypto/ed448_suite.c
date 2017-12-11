@@ -2,8 +2,8 @@
 #include <decaf/ed448.h>
 #include <decaf/shake.h>
 
-
 #include "ed448_suite.h"
+#include "digest.h"
 #include <stdio.h>
 
 #define hash_ctx_t   decaf_shake256_ctx_t
@@ -262,7 +262,6 @@ wickr_buffer_t *ed448_shake256(const wickr_buffer_t *data, const wickr_buffer_t 
     if (!data)
         return NULL;
 
-    /*TODO(All) Is this good order?*/
     const wickr_buffer_t *buffer_array[3] = {salt, info, data};
     return __ed448_shake256_concat(buffer_array, 3, output_length);
     

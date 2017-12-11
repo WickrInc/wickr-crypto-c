@@ -1,7 +1,6 @@
 include_directories("crypto")
 
 add_subdirectory(crypto)
-add_subdirectory(ed448_test)
 
 if (NOT ANDROID)
     add_subdirectory(test)

@@ -70,8 +70,6 @@ struct wickr_ec_curve {
 };
 
 typedef struct wickr_ec_curve wickr_ec_curve_t;
-//TODO(Tom): Decide if key lengths should be part of the struct
-
 
 static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE };
 static const wickr_ec_curve_t EC_CURVE_ED448_GOLDILOCKS = { EC_CURVE_ID_ED448_GOLDILOCKS, EDDSA_448_SIGNATURE_LENGTH };

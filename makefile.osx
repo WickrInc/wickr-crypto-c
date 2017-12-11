@@ -44,8 +44,3 @@ ed448_lib: third-party/ed448goldilocks-code/build/lib/libdecaf.so
 
 third-party/ed448goldilocks-code/build/lib/libdecaf.so:
 	make -C third-party/ed448goldilocks-code/ lib
-
-
-
-ed448_test: release ed448_lib
-	$(WICKR_CRYPTO_LINUX)/bin/ed448_test $(CI_FLAGS)
