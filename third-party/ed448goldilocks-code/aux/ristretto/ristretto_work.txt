@@ -1,0 +1,15 @@
+Have (1-ydbl)/(1+ydbl)
+  = (y^2-1)/(ax^2-1)
+
+Have (y^2-1)*(ax^2-1) = (a-d) x^2 y^2
+
+==> (1-ydbl)/(1+ydbl) has same parity as a-d
+
+No points at infinity => d nonsqr, ad nonsqr -> a sqr.
+
+Point of order 8: ax^2=y^2
+    2y^2 = 1+day^4
+    product of roots = 1/ad = nonsquare, so one will be square (if no point at infty)
+    b^2-4ac = 4(1-ad) -> 1-ad square iff point of order 8 exists
+
+    If a^2 = 1, then 1-ad = a(a-d)

@@ -1,0 +1,453 @@
+October 13, 2017:
+    OK, back to preparations for 1.0, today with major changes.
+    
+    Another group (Isis Lovecruft and Henry de Valence) implemented
+    Decaf for Ed25519, whereas this code was implemented for IsoEd25519.
+    
+    These curves are isogenous, but not exactly the same, so the
+    encodings all came out differently.
+     
+    To harmonize these two so that there is only one implementation
+    for Ed25519, we've hammered out a compromise implementation called
+    Ristretto.  This is different from the old Decaf encoding in two
+    major ways:
+        * It checks the sign of x on Ed25519 instead of IsoEd25519.
+        * It considers a number "negative" if its low bit is set,
+          instead of its high bit.
+    
+    To avoid extra branches in the code, Ed448Goldilocks is also
+    getting these changes to match Ristretto.
+    
+    The C++ class is also renamed to Ristretto, but IsoEd25519 is a
+    synonym for that class.
+    
+    We might need to check the high bit again instead of low bit if
+    E-521 is ever implemented, but I'll special case it then.
+
+April 22, 2017:
+    Remove STROBE in preparation for 1.0 release.  STROBE has its own
+    repo now at https://strobe.sourceforge.io.  I might re-integrate
+    it into Decaf once I have produced a version that matches the
+    STROBE v1 spec, but it's just confusing to keep v0.2 in here.
+    
+    Change x{25519,448}_generate_key to _derive_public_key.
+
+January 15, 2016:
+    Lots of changes since the last entry in HISTORY.TXT.
+    
+    Pushing eventually toward a 1.0 release, at least for the curves
+    themselves (i.e. not for STROBE), still a fair amount of stuff to
+    do.
+    
+    I have pretty much all the functions I want implemented, except
+    that maybe there should be a compatibility mode for whatever CFRG
+    decides the real life format should be.
+    
+    The library now supports multiple curves at once.  A decaffeinated
+    curve isogenous to Curve25519 is now supported, but not especially
+    fast.  This is all still a little rough around the edges.  To make
+    it work in a sane way, most of the headers are generated using
+    Python templates.  Probably those should be turned back into .h
+    files for syntax hilighting purposes; the code generation system
+    in general needs quite a tuneup.
+    
+    The plus side is that this reduces the source code size, especially
+    for supporting many curves over many fields.
+    
+    Currently the code only kind of halfway works on ARM, and not as
+    fast as it used to (on NEON anyway), by maybe 15-20%.  I'm
+    investigating why.  It's about as fast as it used to be on x86,
+    maybe a hair slower.
+    
+    Montgomery ladder is currently out.  Putting it back in might help
+    pin down the ARM NEON performance regression.
+
+    The BAT is currently broken.
+    
+    Tracking at 55 TODO items, about half of which are important-ish.
+    Source code size is currently 12.8k wc-lines, including tests and
+    old fields (p480 and p521).  I'm still trying to get that down, but
+    with things like 600 lines of NEON f_impl.c, that's not an easy task.
+
+April 23, 2015:
+    Removed the original Goldilocks code; Decaf now stands on its own.
+    This cuts the source code approximately in half, to a still-large
+    13.7k wc-lines.  (Most of these lines are in the arch-specific
+    field implementations.)
+    
+    Note that the decaf_crypto routines are not intended to set
+    standards.  They should be secure, but they're intended more as
+    examples of how the core ECC library could be used.
+    
+    The SHAKE stuff is also mostly an experiment, particularly the
+    STROBE protocol/mode stuff.  This is all fine, because the ECC
+    library itself is the core, and doesn't require the SHAKE stuff.
+    (Except for the C++ header, which should probably also be factored
+    so that it doesn't need the SHAKE stuff.)
+    
+    I've started work on making a Decaf BAT, but not done yet.
+    
+    I haven't ripped out all old multi-field code, because I intend
+    to add support for other fields eventually.  Maybe properly this
+    time, instead of with a million compile flags like the original.
+
+March 23, 2015:
+    I've been fleshing out Decaf, and hopefully the API is somewhere
+    near final.  I will probably move a few things around and add a
+    scalar inversion command (for AugPAKE and such).
+    
+    I've built a "decaf_fast" implementation which is about as fast as
+    Goldilocks, except that verification still isn't as fast, because
+    it needs a precomputed wNAF table which I haven't implemented yet.
+    Precomputation is noticeably faster than in Goldilocks; while
+    neither is especially optimized, the extended point format works
+    slightly better for that purpose.
+    
+    While optimizing decaf_fast I also found a minor perf problem in
+    the constant time lookup code, so that's fixed (I hope?) and
+    everything is faster at least on my test machine.
+    
+    At some point soon-ish, I'd like to start removing the base
+    Goldilocks code from this branch.  That will require porting more
+    of the tests.  I might make a C++ header for Decaf, which would
+    definitely simplify testing.
+
+March 1, 2015:
+    While by no means complete or stable, I've done most of the ground
+    work to implement the "Decaf" point encoding.  This point encoding
+    essentially divides the cofactor by 4, turning Goldilocks (or
+    Ridinghood or E-521) into a prime-order group.  Furthermore, like
+    the Goldilocks encoding, this encoding avoids incompleteness in
+    the twisted Edwards formulas with a=-1 by sticking to the order-2q
+    subgroup.
+
+    Because the group is prime order, and because the "isogeny strategy"
+    is not needed, the decaf API can be very simple.  I'm still working
+    on exactly what it should be though.  The goal is to have a single-
+    file (or a few files) for a "ref" version, which is designed for
+    auditability.  The ref version won't be quite so simple as TweetNaCl,
+    but nearly so simple and much better commented.  Then there can also
+    be an optimized version, perhaps per-platform, which is as fast as
+    the original Goldilocks code but hopefully still simpler.
+
+    I'm experimenting with SHAKE as the hash function here.  Possibly I
+    will also add Keyak as an encryption primitive, so that everything
+    can be based on Keccak-f, but I'm open to suggestions.  For example,
+    if there's a way to make BLAKE2 as simple and useful as SHAKE
+    (including in oversized curves like E-521), then the extra speed
+    would certainly be welcome.
+
+October 27, 2014:
+    Added more support for >512-bit primes.  Changed shared secret
+    to not overflow the buffer in this case.  Changed hashing to
+    SHA512-PRNG; this doesn't change the behavior in the case that
+    only one block is required.
+
+    E-521 appears to be working.  Needs more testing, and maybe some
+    careful analysis since the carry-handling bounds are awfully tight
+    under the current analysis (the "< 5<<57" that it #if0 asserts is
+    not actually tight enough under the current analysis; need
+    it to be < (1+epsilon) << 59).
+    
+    So you actually do need to reduce often, at least in the x86_64_r12
+    version.
+    
+    p521/arch_ref64: simple and relatively slow impl.  Like
+    p448/arch_ref64, this arch reduces after every add or sub.
+    
+    p521/arch_x86_64_r12: aggressive, fast implementation.  This impl
+    stores 521 bits not in 9 limbs, but 12!  Limbs 3,7,11 are 0, and
+    are there only for vector alignment.  (TODO: remove those limbs
+    from precomputed tables, so that we don't have to look them up!).
+    The carry handling on this build is very tight, and probably could
+    stand more analysis.  This is why I have the careful balancing of
+    "hexad" and "nonad" multiplies in its Chung-Hasan mul routine.
+    
+    (TODO: reconsider whether this is even worthwhile on machines
+    without AVX2.)
+    
+    The 'r12 build is a work in progress, and currently only works on
+    clang (because it rearranges vectors in the timesW function).
+    
+    Timings for the fast, aggressive arch on Haswell:
+        mul:    146cy
+        sqr:    111cy
+        invert: 62kcy
+        
+        keygen: 270kcy
+        ecdh:   803kcy
+        sign:   283kcy
+        verif:  907kcy
+        
+    Same rules as other Goldi benchmarks.  Turbo off, HT off,
+    timing-channel protected (no dataflow from secrets to branches,
+    memory lookups or known vt instructions), compressed points.
+    
+
+October 23, 2014:
+    Pushing through changes for curve flexibility.  First up is
+    Ed480-Ridinghood, because it has the same number of words.  Next
+    is E-521.
+    
+    Experimental support for Ed480-Ridinghood.  To use, compile with
+        make ... FIELD=p480 -XCFLAGS=-DGOLDI_FIELD_BITS=480
+    
+    I still need to figure out what to do about the fact that the library
+    is called "goldilocks", but in will soon support curves that are not
+    ed448-goldilocks, at least experimentally.
+        
+    Currently the whole system's header "goldilocks.h" doesn't have
+    a simpler way to override field size, but it does work (as a hack)
+    with -DGOLDI_FIELD_BITS=...
+    
+    There is no support yet for coexistence of multiple fields in one
+    library.  The field routines will have unique names, but scalarmul*
+    won't, and the top-level goldilocks routines have fixed names.
+    
+    Current timings on Haswell:
+        Goldilocks: 178kcy keygen, 536kcy ecdh
+        Ridinghood: 193kcy keygen, 617kcy ecdh
+    
+    Note that Ridinghood ECDH does worse than 480/448.  This is at least
+    in part because I haven't calculated the overflow handling limits yet
+    in ec_point.h (this is a disadvantage of dropping the automated
+    tool for generating that file).  So I'm reducing much more often
+    than I need to.  (There's a really loud TODO in ec_point.h for that.)
+    
+    Also, I haven't tested the limits on these reductions in a while, so
+    it could be that there are actual (security-critical) bugs in this
+    area, at least for p448.  Now that there's field flexibility, it's
+    probably a good idea to make a field impl with extra words to check
+    this.
+    
+    Furthermore, field_mulw_scc will perform differently on these two
+    curves based on whether the curve constant is positive or negative.
+    I should probably go optimize the "hot" routines like montgomery_step
+    to have separate cases for positive and negative.
+
+September 29, 2014:
+    Yesterday I put in some more architecture detection, but it should
+    really be based on the arch directory, because what's in there really
+    was a terrible hack.  So I've changed it to use $arch/arch_config.h
+    to get WORD_BITS.
+    
+    I've tweaked the eBAT construction code to rename the architectures
+    using test/batarch.map.  Maybe I should also rename them internally,
+    but not yet.
+    
+    I added some new TODO.txt items.  Some folks have been asking for a
+    more factored library, instead of this combined arithmetic, curve code,
+    encodings and protocol all-in-one jumble.  Likewise the hash and RNG
+    should be flexible.
+    
+    I've also been meaning to put more work in on SPAKE2EE, which would
+    also mean finalizing the Elligator code.
+
+September 18, 2014:
+    Begin work on a "ref" implementation.  Currently this is just the
+    arch_ref64 architecture.  The ref implementation always weak_reduces
+    after arithmetic, and doesn't use vectors or other hackery.  Currently
+    it still must declare field elements as vector aligned, though,
+    other code outside the arch directory can be vectorized.
+
+    Change goldilocks.c to use field_eq instead of calling deep into field
+    apis.
+
+September 6, 2014:
+    Pull in minor changes from David Leon Gil and Nicholas Wilson, with
+    some adjustments.  I hope the adjustments don't break their compiles.
+
+    `make bat` now makes a bat which passes supercop-fastbuild, though
+    the benchmarks are rather different from `make bench`.  I need to track
+    down why.
+
+August 4, 2014:
+    Experiments and bug fixes.
+
+    Add really_memset = memset_s (except not because I'm setting -std=c99),
+    thanks David Leon Gil.  I think I put it in the right places.
+
+    Try to work around what I think is a compiler bug in GCC -O3 on non-AVX
+    platforms.  I can't seem to work around it as -Os, so I'm just flagging
+    a warning (-Werror makes it an error) for now.  Will take more
+    investigation.  Thanks Samuel Neves.
+
+    Added an experimental (not ready yet!) ARM NEON implementation in
+    arch_neon_experimental.  This implementation seems to work, but needs
+    more testing.  It is currently asm-heavy and not GCC clean.  I am
+    planning to have a flag for it to use intrinsics instead of asm;
+    currently the intrinsics are commented out.  On clang this does ECDH
+    in 1850kcy on my BeagleBone Black, comparable to Curve41417.  Once this
+    is ready, I will probably move it to arch_neon proper, since arch_neon
+    isn't particularly tuned.
+
+July 11, 2014:
+    This is mostly a cleanup release.
+
+    Added CRANDOM_MIGHT_IS_MUST config flag (default: 1).  When set, this
+    causes crandom to assume that all features in the target arch will
+    be available, instead of detecting them.  This makes sense because
+    the rest of the Goldilocks code is not (yet?) able to detect features.
+    Also, I'd like to submit this to SUPERCOP eventually, and SUPERCOP won't
+    pass -DMUST_HAVE_XXX on the command line the way the Makefile here did.
+    
+    Flag EXPERIMENT_CRANDOM_BUFFER_CUTOFF_BYTES to disable the crandom
+    output buffer.  This buffer improves performance (very marginally at
+    Goldilocks sizes), but can cause problems with forking and VM
+    snapshotting.  By default, the buffer is now disabled.
+    
+    I've slightly tweaked the Elligator implementation (which is still
+    unused) to make it easier to invert.  This makes anything using Elligator
+    (i.e. nothing) incompatible with previous releases.
+    
+    I've been factoring "magic" constants such as curve orders, window sizes,
+    etc into a few headers, to reduce the effort to port the code to other
+    primes, curves, etc.  For example, I could test the Microsoft curves, and
+    something like:
+        x^2 + y^2 = 1 +- 5382[45] x^2 y^2 mod 2^480-2^240-1
+    ("Goldeneye"? "Ridinghood"?) might be a reasonable thing to try for
+    64-bit CPUs.
+    
+    In a similar vein, most of the internal code has been changed to say
+    "field" instead of p448, so that a future version of magic.h can decide
+    which field header to include.
+    
+    You can now `make bat` to create an eBAT in build/ed448-goldilocks.  This
+    is only minimally tested, though, because SUPERCOP doesn't work on my
+    machine and I'm too lazy to reverse engineer it.  It sets a new macro,
+    SUPERCOP_WONT_LET_ME_OPEN_FILES, which causes goldilocks_init() to fall
+    back to something horribly insecure if crandom_init_from_file raises
+    EMFILE.
+    
+    Slightly improved documentation.
+    
+    Removed some old commented-out code; restored the /* C-style */ comment
+    discipline.
+    
+    The AMD-64 version should now be GCC clean, at least for reasonably
+    recent GCC (tested on OS X.9.3, Haswell, gcc-4.9).
+    
+    History no longer says "2104".
+
+May 3, 2014:
+    Minor changes to internal routines mean that this version is not
+    compatible with the previous one.
+
+    Added ARM NEON code.
+    
+    Added the ability to precompute multiples of a partner's public key.  This
+    takes slightly longer than a signature verification, but reduces future
+    verifications with the precomputed key by ~63% and ECDH by ~70%.
+    
+        goldilocks_precompute_public_key
+        goldilocks_destroy_precomputed_public_key
+        goldilocks_verify_precomputed
+        goldilocks_shared_secret_precomputed
+    
+    The precomputation feature are is protected by a macro
+        GOLDI_IMPLEMENT_PRECOMPUTED_KEYS
+    which can be #defined to 0 to compile these functions out.  Unlike most
+    of Goldilocks' functions, goldilocks_precompute_public_key uses malloc()
+    (and goldilocks_destroy_precomputed_public_key uses free()).
+    
+    Changed private keys to be derived from just the symmetric part.  This
+    means that you can compress them to 32 bytes for cold storage, or derive
+    keypairs from crypto secrets from other systems.
+        goldilocks_derive_private_key
+        goldilocks_underive_private_key
+        goldilocks_private_to_public
+    
+    Fixed a number of bugs related to vector alignment on Sandy Bridge, which
+    has AVX but uses SSE2 alignment (because it doesn't have AVX2).  Maybe I
+    should just switch it to use AVX2 alignment?
+    
+    Beginning to factor out curve-specific magic, so as to build other curves
+    with the Goldilocks framework.  That would enable fair tests against eg
+    E-521, Ed25519 etc.  Still would be a lot of work.
+    
+    More thorough testing of arithmetic.  Now uses GMP for testing framework,
+    but not in the actual library.
+    
+    Added some high-level tests for the whole library, including some (bs)
+    negative testing.  Obviously, effective negative testing is a very difficult
+    proposition in a crypto library.
+
+March 29, 2014:
+    Added a test directory with various tests.  Currently testing SHA512 Monte
+    Carlo, compatibility of the different scalarmul functions, and some
+    identities on EC point ops.  Began moving these tests out of benchmarker.
+    
+    Added scan-build support.
+    
+    Improved some internal interfaces.  Made a structure for Barrett primes
+    instead of passing parameters individually.  Moved some field operations
+    to places that make more sense, eg Barrett serialize and deserialize.  The
+    deserialize operation now checks that its argument is in [0,q).
+    
+    Added more documentation.
+    
+    Changed the names of a bunch of functions.  Still not entirely consistent,
+    but getting more so.
+    
+    Some minor speed improvements.  For example, multiply is now a couple cycles
+    faster.
+    
+    Added a hackish attempt at thread-safety and initialization sanity checking
+    in the Goldilocks top-level routines.
+    
+    Fixed some vector alignment bugs.  Compiling with -O0 should now work.
+    
+    Slightly simplified recode_wnaf.
+
+    Add a config.h file for future configuration.  EXPERIMENT flags moved here.
+    
+    I've decided against major changes to SHA512 for the moment.  They add speed
+    but also significantly bloat the code, which is going to hurt L1 cache
+    performance.  Perhaps we should link to OpenSSL if a faster SHA512 is desired.
+    
+    Reorganize the source tree into src, test; factor arch stuff into src/arch_*.
+    
+    Make most of the code 32-bit clean.  There's now a 32-bit generic and 32-bit
+    vectorless ARM version.  No NEON version yet because I don't have a test
+    machine (could use my phone in a pinch I guess?).  The 32-bit version still
+    isn't heavily optimized, but on ARM it's using a nicely reworked signed/phi-adic
+    multiplier.  The squaring is also based on this, but could really stand some
+    improvement.
+    
+    When passed an even exponent (or extra doubles), the Montgomery ladder should
+    now be accept points if and only if they lie on the curve.  This needs
+    additional testing, but it passes the zero bit exponent test.
+    
+    On 32-bit, use 8x4x14 instead of 5x5x18 table organization.  Probably there's
+    a better heuristic.
+
+March 5, 2014:
+    First revision.
+    
+    Private keys are now longer.  They now store a copy of the public key, and
+    a secret symmetric key for signing purposes.
+    
+    Signatures are now supported, though like everything else in this library,
+    their format is not stable.  They use a deterministic Schnorr mode,
+    similar to EdDSA.  Precomputed low-latency signing is not supported (yet?).
+    The hash function is SHA-512.
+    
+    The deterministic hashing mode needs to be changed to HMAC (TODO!).  It's
+    currently envelope-MAC.
+    
+    Probably in the future there will be a distinction between ECDH key and
+    signing keys (and possibly also MQV keys etc).
+    
+    Began renaming internal functions.  Removing p448_ prefixes from EC point
+    operations.  Trying to put the verb first.  For example,
+    "p448_isogeny_un_to_tw" is now called "twist_and_double".
+    
+    Began documenting with Doxygen.  Use "make doc" to make a very incomplete
+    documentation directory.
+    
+    There have been many other internal changes.
+
+Feb 21, 2014:
+    Initial import and benchmarking scripts.
+    
+    Keygen and ECDH are implemented, but there's no hash function.
