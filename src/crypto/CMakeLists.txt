@@ -1,4 +1,4 @@
-set(THIRD_PARTY "${CMAKE_SOURCE_DIR}/third-party")
+set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third-party")
 
 file(GLOB Sources *.c *.h)
 
