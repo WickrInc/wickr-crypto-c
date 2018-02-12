@@ -10,7 +10,7 @@
 void   wickr__proto__node__init
                      (Wickr__Proto__Node         *message)
 {
-  static Wickr__Proto__Node init_value = WICKR__PROTO__NODE__INIT;
+  static const Wickr__Proto__Node init_value = WICKR__PROTO__NODE__INIT;
   *message = init_value;
 }
 size_t wickr__proto__node__get_packed_size
@@ -47,6 +47,8 @@ void   wickr__proto__node__free_unpacked
                      (Wickr__Proto__Node *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__node__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

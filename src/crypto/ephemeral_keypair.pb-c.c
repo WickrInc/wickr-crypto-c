@@ -10,7 +10,7 @@
 void   wickr__proto__ephemeral_keypair__init
                      (Wickr__Proto__EphemeralKeypair         *message)
 {
-  static Wickr__Proto__EphemeralKeypair init_value = WICKR__PROTO__EPHEMERAL_KEYPAIR__INIT;
+  static const Wickr__Proto__EphemeralKeypair init_value = WICKR__PROTO__EPHEMERAL_KEYPAIR__INIT;
   *message = init_value;
 }
 size_t wickr__proto__ephemeral_keypair__get_packed_size
@@ -47,6 +47,8 @@ void   wickr__proto__ephemeral_keypair__free_unpacked
                      (Wickr__Proto__EphemeralKeypair *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__ephemeral_keypair__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

@@ -10,7 +10,7 @@
 void   wickr__proto__root_keys__init
                      (Wickr__Proto__RootKeys         *message)
 {
-  static Wickr__Proto__RootKeys init_value = WICKR__PROTO__ROOT_KEYS__INIT;
+  static const Wickr__Proto__RootKeys init_value = WICKR__PROTO__ROOT_KEYS__INIT;
   *message = init_value;
 }
 size_t wickr__proto__root_keys__get_packed_size
@@ -47,13 +47,15 @@ void   wickr__proto__root_keys__free_unpacked
                      (Wickr__Proto__RootKeys *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__root_keys__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__storage_keys__init
                      (Wickr__Proto__StorageKeys         *message)
 {
-  static Wickr__Proto__StorageKeys init_value = WICKR__PROTO__STORAGE_KEYS__INIT;
+  static const Wickr__Proto__StorageKeys init_value = WICKR__PROTO__STORAGE_KEYS__INIT;
   *message = init_value;
 }
 size_t wickr__proto__storage_keys__get_packed_size
@@ -90,6 +92,8 @@ void   wickr__proto__storage_keys__free_unpacked
                      (Wickr__Proto__StorageKeys *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__storage_keys__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

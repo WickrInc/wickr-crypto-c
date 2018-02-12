@@ -10,7 +10,7 @@
 void   wickr__proto__identity__init
                      (Wickr__Proto__Identity         *message)
 {
-  static Wickr__Proto__Identity init_value = WICKR__PROTO__IDENTITY__INIT;
+  static const Wickr__Proto__Identity init_value = WICKR__PROTO__IDENTITY__INIT;
   *message = init_value;
 }
 size_t wickr__proto__identity__get_packed_size
@@ -47,13 +47,15 @@ void   wickr__proto__identity__free_unpacked
                      (Wickr__Proto__Identity *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__identity__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__identity_chain__init
                      (Wickr__Proto__IdentityChain         *message)
 {
-  static Wickr__Proto__IdentityChain init_value = WICKR__PROTO__IDENTITY_CHAIN__INIT;
+  static const Wickr__Proto__IdentityChain init_value = WICKR__PROTO__IDENTITY_CHAIN__INIT;
   *message = init_value;
 }
 size_t wickr__proto__identity_chain__get_packed_size
@@ -90,6 +92,8 @@ void   wickr__proto__identity_chain__free_unpacked
                      (Wickr__Proto__IdentityChain *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__identity_chain__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

@@ -11,7 +11,7 @@ add_executable(crypto_test ${TestSources} ${TestHeaders})
 set(CRYPTO_DIR "${PROJECT_SOURCE_DIR}/src/crypto")
 set(THIRD_PARTY_DIR "${PROJECT_SOURCE_DIR}/third-party")
 
-include_directories(${CRYPTO_DIR} ${THIRD_PARTY_DIR}/protobuf-c/protobuf-c)
+include_directories(${CRYPTO_DIR} ${THIRD_PARTY_DIR}/protobuf-c)
 
 target_link_libraries(crypto_test cspec wickrcrypto)
 

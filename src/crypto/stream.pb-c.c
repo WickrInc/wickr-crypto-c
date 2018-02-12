@@ -10,31 +10,31 @@
 void   wickr__proto__handshake__seed__init
                      (Wickr__Proto__Handshake__Seed         *message)
 {
-  static Wickr__Proto__Handshake__Seed init_value = WICKR__PROTO__HANDSHAKE__SEED__INIT;
+  static const Wickr__Proto__Handshake__Seed init_value = WICKR__PROTO__HANDSHAKE__SEED__INIT;
   *message = init_value;
 }
 void   wickr__proto__handshake__key_exchange__init
                      (Wickr__Proto__Handshake__KeyExchange         *message)
 {
-  static Wickr__Proto__Handshake__KeyExchange init_value = WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT;
+  static const Wickr__Proto__Handshake__KeyExchange init_value = WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT;
   *message = init_value;
 }
 void   wickr__proto__handshake__response__init
                      (Wickr__Proto__Handshake__Response         *message)
 {
-  static Wickr__Proto__Handshake__Response init_value = WICKR__PROTO__HANDSHAKE__RESPONSE__INIT;
+  static const Wickr__Proto__Handshake__Response init_value = WICKR__PROTO__HANDSHAKE__RESPONSE__INIT;
   *message = init_value;
 }
 void   wickr__proto__handshake__finish__init
                      (Wickr__Proto__Handshake__Finish         *message)
 {
-  static Wickr__Proto__Handshake__Finish init_value = WICKR__PROTO__HANDSHAKE__FINISH__INIT;
+  static const Wickr__Proto__Handshake__Finish init_value = WICKR__PROTO__HANDSHAKE__FINISH__INIT;
   *message = init_value;
 }
 void   wickr__proto__handshake__init
                      (Wickr__Proto__Handshake         *message)
 {
-  static Wickr__Proto__Handshake init_value = WICKR__PROTO__HANDSHAKE__INIT;
+  static const Wickr__Proto__Handshake init_value = WICKR__PROTO__HANDSHAKE__INIT;
   *message = init_value;
 }
 size_t wickr__proto__handshake__get_packed_size
@@ -71,13 +71,15 @@ void   wickr__proto__handshake__free_unpacked
                      (Wickr__Proto__Handshake *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__stream_key__init
                      (Wickr__Proto__StreamKey         *message)
 {
-  static Wickr__Proto__StreamKey init_value = WICKR__PROTO__STREAM_KEY__INIT;
+  static const Wickr__Proto__StreamKey init_value = WICKR__PROTO__STREAM_KEY__INIT;
   *message = init_value;
 }
 size_t wickr__proto__stream_key__get_packed_size
@@ -114,6 +116,8 @@ void   wickr__proto__stream_key__free_unpacked
                      (Wickr__Proto__StreamKey *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__stream_key__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

@@ -10,13 +10,13 @@
 void   wickr__proto__header__key_exchange__init
                      (Wickr__Proto__Header__KeyExchange         *message)
 {
-  static Wickr__Proto__Header__KeyExchange init_value = WICKR__PROTO__HEADER__KEY_EXCHANGE__INIT;
+  static const Wickr__Proto__Header__KeyExchange init_value = WICKR__PROTO__HEADER__KEY_EXCHANGE__INIT;
   *message = init_value;
 }
 void   wickr__proto__header__init
                      (Wickr__Proto__Header         *message)
 {
-  static Wickr__Proto__Header init_value = WICKR__PROTO__HEADER__INIT;
+  static const Wickr__Proto__Header init_value = WICKR__PROTO__HEADER__INIT;
   *message = init_value;
 }
 size_t wickr__proto__header__get_packed_size
@@ -53,13 +53,15 @@ void   wickr__proto__header__free_unpacked
                      (Wickr__Proto__Header *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__header__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__packet__init
                      (Wickr__Proto__Packet         *message)
 {
-  static Wickr__Proto__Packet init_value = WICKR__PROTO__PACKET__INIT;
+  static const Wickr__Proto__Packet init_value = WICKR__PROTO__PACKET__INIT;
   *message = init_value;
 }
 size_t wickr__proto__packet__get_packed_size
@@ -96,25 +98,27 @@ void   wickr__proto__packet__free_unpacked
                      (Wickr__Proto__Packet *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__packet__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__payload__meta__ephemerality__init
                      (Wickr__Proto__Payload__Meta__Ephemerality         *message)
 {
-  static Wickr__Proto__Payload__Meta__Ephemerality init_value = WICKR__PROTO__PAYLOAD__META__EPHEMERALITY__INIT;
+  static const Wickr__Proto__Payload__Meta__Ephemerality init_value = WICKR__PROTO__PAYLOAD__META__EPHEMERALITY__INIT;
   *message = init_value;
 }
 void   wickr__proto__payload__meta__init
                      (Wickr__Proto__Payload__Meta         *message)
 {
-  static Wickr__Proto__Payload__Meta init_value = WICKR__PROTO__PAYLOAD__META__INIT;
+  static const Wickr__Proto__Payload__Meta init_value = WICKR__PROTO__PAYLOAD__META__INIT;
   *message = init_value;
 }
 void   wickr__proto__payload__init
                      (Wickr__Proto__Payload         *message)
 {
-  static Wickr__Proto__Payload init_value = WICKR__PROTO__PAYLOAD__INIT;
+  static const Wickr__Proto__Payload init_value = WICKR__PROTO__PAYLOAD__INIT;
   *message = init_value;
 }
 size_t wickr__proto__payload__get_packed_size
@@ -151,6 +155,8 @@ void   wickr__proto__payload__free_unpacked
                      (Wickr__Proto__Payload *message,
                       ProtobufCAllocator *allocator)
 {
+  if(!message)
+    return;
   assert(message->base.descriptor == &wickr__proto__payload__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }

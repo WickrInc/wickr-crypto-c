@@ -2,7 +2,7 @@ set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third-party")
 
 file(GLOB Sources *.c *.h)
 
-include_directories("${THIRD_PARTY}/protobuf-c/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
+include_directories("${THIRD_PARTY}/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
 
 add_library(wickrcrypto ${Sources})
 
