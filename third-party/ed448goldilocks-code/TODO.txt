@@ -1,0 +1,36 @@
+Important work items for Ed448-Goldilocks / decaf:
+
+* Test signed 32-bit NEON implementation to avoid bias/reduce after subtract
+
+* Documentation: write high-level API docs, and internal docs to help
+  other implementors.
+    * Pretty good progress on Doxygenating the code.
+
+* Documentation: write a spec or add to Watson's
+
+* Cleanup: unify intrinsics code
+    * Generate asm intrinsics with a script?
+
+* Testing:
+    * More testing.  Testing, testing and testing.
+    * Test corner cases better.
+
+* Safety:
+    * Decide what to do about RNG failures
+        * abort
+        * return error and zeroize [ THIS ]
+        * return error but continue if RNG is kind of mostly OK
+
+* Portability: test and make clean with other compilers
+    * Using a fair amount of __attribute__ code.
+    * Should work for GCC now.
+    * Autoconf
+
+* Portability: try to make the vector code as portable as possible
+    * Currently using clang ext_vector_length.
+    * I can't get a simple for-loop to autovectorize :-/
+    * SAGE tool?
+
+* More curves?  E-521 at least?  Ed41417?
+
+* Submit Decaf to SUPERCOP

@@ -1,6 +1,7 @@
 add_subdirectory(crypt_blowfish)
 add_subdirectory(libscrypt)
 add_subdirectory(openssl)
+add_subdirectory(ed448goldilocks-code)
 
 set(PC_SOURCES protobuf-c/protobuf-c/protobuf-c.c protobuf-c/protobuf-c/protobuf-c.h)
 

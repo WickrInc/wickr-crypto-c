@@ -29,8 +29,9 @@
 extern "C" {
 #endif
 
-typedef enum { DIGEST_SHA2 } wickr_digest_type;
-typedef enum { DIGEST_ID_SHA256 = 1, DIGEST_ID_SHA384, DIGEST_ID_SHA512 } wickr_digest_id;
+
+typedef enum { DIGEST_SHA2, DIGEST_SHAKE} wickr_digest_type;
+typedef enum { DIGEST_ID_SHA256 = 1, DIGEST_ID_SHA384, DIGEST_ID_SHA512, DIGEST_ID_SHAKE256} wickr_digest_id;
 
 /**
  @addtogroup wickr_digest
@@ -62,10 +63,13 @@ typedef struct wickr_digest wickr_digest_t;
 #define SHA256_DIGEST_SIZE 32
 #define SHA384_DIGEST_SIZE 48
 #define SHA512_DIGEST_SIZE 64
+
+#define SHAKE256_ED448_DIGEST_SIZE 64 
     
 static const wickr_digest_t DIGEST_SHA_256 = { DIGEST_SHA2, DIGEST_ID_SHA256, SHA256_DIGEST_SIZE };
 static const wickr_digest_t DIGEST_SHA_384 = { DIGEST_SHA2, DIGEST_ID_SHA384, SHA384_DIGEST_SIZE };
 static const wickr_digest_t DIGEST_SHA_512 = { DIGEST_SHA2, DIGEST_ID_SHA512, SHA512_DIGEST_SIZE };
+static const wickr_digest_t DIGEST_SHAKE_256_ED448 = { DIGEST_SHAKE, DIGEST_ID_SHAKE256, SHAKE256_ED448_DIGEST_SIZE };
 
 /**
  

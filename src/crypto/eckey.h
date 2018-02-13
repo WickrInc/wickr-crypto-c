@@ -37,7 +37,15 @@ extern "C" {
  */
 #define P521_SIGNATURE_MAX_SIZE 143
 
-typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
+
+/**
+ ED448 Goldilocks has fixed signature size 114 bytes and fixed private/public key sizes.
+*/
+#define EDDSA_448_PRIVATE_KEY_LENGTH 57
+#define EDDSA_448_PUBLIC_KEY_LENGTH 57
+#define EDDSA_448_SIGNATURE_LENGTH 114
+
+typedef enum { EC_CURVE_ID_NIST_P521, EC_CURVE_ID_ED448_GOLDILOCKS } wickr_ec_curve_id;
 
 /**
  @addtogroup wickr_ec_curve wickr_ec_curve_t
@@ -64,6 +72,7 @@ struct wickr_ec_curve {
 typedef struct wickr_ec_curve wickr_ec_curve_t;
 
 static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE };
+static const wickr_ec_curve_t EC_CURVE_ED448_GOLDILOCKS = { EC_CURVE_ID_ED448_GOLDILOCKS, EDDSA_448_SIGNATURE_LENGTH };
 
 /**
  

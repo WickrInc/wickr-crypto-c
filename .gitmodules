@@ -1,3 +1,6 @@
+[submodule "test/cspec"]
+	path = test/cspec
+	url = https://github.com/arnaudbrejeon/cspec
 [submodule "third-party/crypt_blowfish"]
 	path = third-party/crypt_blowfish
 	url = https://github.com/tomleavy/crypt_blowfish.git
@@ -7,6 +10,7 @@
 [submodule "third-party/protobuf-c"]
 	path = third-party/protobuf-c
 	url = https://github.com/protobuf-c/protobuf-c.git
-[submodule "test/cspec"]
-	path = test/cspec
-	url = https://github.com/arnaudbrejeon/cspec
+[submodule "third-party/ed448goldilocks-code"]
+	path = third-party/ed448goldilocks-code
+	url = https://git.code.sf.net/p/ed448goldilocks/code
+	ignore = dirty

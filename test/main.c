@@ -15,6 +15,7 @@
 #include "test_transport.h"
 #include "test_identity.h"
 #include "test_ephemeral_keypair.h"
+#include "test_ed448_suite.h"
 
 #include "cspec_output_unit.h"
 
@@ -90,6 +91,16 @@ void run_kdf_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(wickr_crypto_engine_kdf), output);
 }
 
+void run_ed448_tests(CSpecOutputStruct *output)
+{
+    CSpec_Run(DESCRIPTION(ed448_signature_scheme), output);
+    CSpec_Run(DESCRIPTION(ed448_sig_derive_public_key), output);
+    CSpec_Run(DESCRIPTION(ed448_dh_derive_public_key), output);
+    CSpec_Run(DESCRIPTION(ed448_dh_shared_secret), output);
+    CSpec_Run(DESCRIPTION(ed448_shake256_raw), output);
+    CSpec_Run(DESCRIPTION(ed448_shake256), output);
+}
+
 int main(int argc, char *argv[])
 {
     bool CI_MODE = false;
@@ -101,7 +112,7 @@ int main(int argc, char *argv[])
     }
     
     CSpecOutputStruct* output = CI_MODE ? CSpec_NewOutputUnit() : CSpec_NewOutputVerbose();
-
+    
     run_primitive_tests(output);
     run_crypto_engine_tests(output);
     run_stream_tests(output);
@@ -109,6 +120,7 @@ int main(int argc, char *argv[])
     run_messaging_protocol_tests(output);
     run_context_api_tests(output);
     run_kdf_tests(output);
+    run_ed448_tests(output);
     
     return output->failed;
 }

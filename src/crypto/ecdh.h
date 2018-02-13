@@ -30,7 +30,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
+
+/* Key lengths for ED448 Goldilocks curve */
+#define DH_448_PUBLIC_KEY_LENGTH 56
+#define DH_448_PRIVATE_KEY_LENGTH 56
+#define DH_448_SHARED_SECRET_LENGTH 56
+
 /**
  @addtogroup wickr_ecdh_params
  */
