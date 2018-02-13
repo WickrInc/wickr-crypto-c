@@ -1,10 +1,11 @@
 set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third-party")
 
+file(GLOB ProtobufSources ${CMAKE_CURRENT_SOURCE_DIR}/../protobuf/gen/*.c ${CMAKE_CURRENT_SOURCE_DIR}/../protobuf/gen/*.h)
 file(GLOB Sources *.c *.h)
 
 include_directories("${THIRD_PARTY}/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
 
-add_library(wickrcrypto ${Sources})
+add_library(wickrcrypto ${Sources} ${ProtobufSources})
 
 add_dependencies(wickrcrypto bcrypt scrypt protobuf-c)
 
@@ -23,10 +24,8 @@ install(EXPORT WickrCryptoConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
 file(GLOB Headers *.h)
 file(GLOB PrivateHeaders *priv.h)
-file(GLOB ProtoHeaders *pb-c.h)
 
 list(REMOVE_ITEM Headers ${PrivateHeaders})
-list(REMOVE_ITEM Headers ${ProtoHeaders})
 
 install(FILES ${Headers} DESTINATION include/wickrcrypto)
 
