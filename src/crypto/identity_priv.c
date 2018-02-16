@@ -1,8 +1,9 @@
 
 #include "identity_priv.h"
-#include "protobuf_util.h"
 #include <string.h>
 #include "memory.h"
+#include "buffer_priv.h"
+#include "eckey_priv.h"
 
 void wickr_identity_proto_free(Wickr__Proto__Identity *proto)
 {

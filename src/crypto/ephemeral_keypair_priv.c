@@ -1,7 +1,8 @@
 
 #include "ephemeral_keypair_priv.h"
+#include "eckey_priv.h"
+#include "ecdsa_priv.h"
 #include "memory.h"
-#include "protobuf_util.h"
 #include <string.h>
 
 void wickr_ephemeral_keypair_proto_free(Wickr__Proto__EphemeralKeypair *proto_keypair)

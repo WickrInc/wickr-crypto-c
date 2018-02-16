@@ -19,12 +19,11 @@
  * ACCESSING AND/OR USING THE CODE ON LICENSEE’S SYSTEM.
  */
 
-#ifndef protobuf_util_h
-#define protobuf_util_h
+#ifndef eckey_priv_h
+#define eckey_priv_h
 
-#include <stdio.h>
-#include "cipher.h"
-#include "storage.pb-c.h"
+#include <protobuf-c/protobuf-c.h>
+#include "eckey.h"
 #include "crypto_engine.h"
 
 #ifdef __cplusplus
@@ -32,23 +31,8 @@ extern "C" {
 #endif
 
 /**
- @addtogroup protobuf_utils protobuf utilities
- */
-    
-/**
  
- @ingroup protobuf_utils
- 
- Create a cipher key from protocol buffers binary data object
-
- @param buffer the protocol buffers binary data object to create the cipher key with
- @return a cipher key created from serialized bytes within 'buffer' or NULL if parsing buffer fails
- */
-wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer);
-
-/**
- 
- @ingroup protobuf_utils
+ @ingroup wickr_ec_curve
  
  Create an EC Key from protocol buffers binary data object
 
@@ -57,32 +41,12 @@ wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer)
  @param is_private are the bytes in buffer a private or public key
  @return an EC key created from serialized bytes within 'buffer' or NULL if parsing buffer fails
  */
-    wickr_ec_key_t *wickr_ec_key_from_protobytes(ProtobufCBinaryData buffer, const wickr_crypto_engine_t *engine, bool is_private);
-    
-/**
- 
- @ingroup protobuf_utils
- 
- Create an ECDSA result from protocol buffers binary data object
- 
- @param buffer the protocol buffers binary data object to create the ecdsa result with
- @return an ecdsa result created from serialized bytes within 'buffer' or NULL if parsing buffer fails
- */
-wickr_ecdsa_result_t *wickr_ecdsa_result_from_protobytes(ProtobufCBinaryData buffer);
-
-/**
- 
- @ingroup protobuf_utils
- 
- Create a wickr buffer from a protocol buffer binary data structure
- 
- @param buffer the protocol buffer binary data to create the wickr_buffer from
- @return a wickr_buffer containing the contents of 'buffer' or NULL
- */
-wickr_buffer_t *wickr_buffer_from_protobytes(ProtobufCBinaryData buffer);
+wickr_ec_key_t *wickr_ec_key_from_protobytes(ProtobufCBinaryData buffer,
+                                             const wickr_crypto_engine_t *engine,
+                                             bool is_private);
     
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* protobuf_util_h */
+#endif /* eckey_priv_h */

@@ -1,7 +1,8 @@
 
 #include "storage.h"
 #include "memory.h"
-#include "protobuf_util.h"
+#include "storage.pb-c.h"
+#include "cipher_priv.h"
 
 #define CURRENT_STORAGE_KEY_VERSION 1
 

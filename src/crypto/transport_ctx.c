@@ -9,7 +9,6 @@
 #include "transport_ctx.h"
 #include "memory.h"
 #include "stream.pb-c.h"
-#include "protobuf_util.h"
 #include "stream_ctx.h"
 #include "protocol.h"
 #include "transport_priv.h"
