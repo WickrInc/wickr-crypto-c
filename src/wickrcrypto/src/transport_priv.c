@@ -6,7 +6,7 @@
 //
 //
 
-#include "transport_priv.h"
+#include "private/transport_priv.h"
 #include "memory.h"
 
 wickr_transport_packet_t *wickr_transport_packet_create(uint64_t seq_num,

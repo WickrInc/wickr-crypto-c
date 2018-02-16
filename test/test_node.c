@@ -4,7 +4,7 @@
 #include "crypto_engine.h"
 #include "identity.h"
 #include "node.h"
-#include "node_priv.h"
+#include "private/node_priv.h"
 
 DESCRIBE(node_tests, "node.c")
 {

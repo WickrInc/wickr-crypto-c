@@ -1,5 +1,5 @@
 
-#include "cipher_priv.h"
+#include "private/cipher_priv.h"
 
 wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer)
 {

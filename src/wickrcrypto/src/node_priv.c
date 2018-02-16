@@ -1,10 +1,11 @@
 
-#include "node_priv.h"
-#include "identity_priv.h"
-#include "ephemeral_keypair_priv.h"
-#include "identity_priv.h"
+#include "private/node_priv.h"
+#include "private/identity_priv.h"
+#include "private/ephemeral_keypair_priv.h"
+#include "private/identity_priv.h"
+#include "private/buffer_priv.h"
+
 #include "memory.h"
-#include "buffer_priv.h"
 
 void wickr_node_proto_free(Wickr__Proto__Node *proto_node)
 {

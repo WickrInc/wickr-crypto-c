@@ -1,6 +1,6 @@
 
 #include "ephemeral_keypair.h"
-#include "ephemeral_keypair_priv.h"
+#include "private/ephemeral_keypair_priv.h"
 #include "memory.h"
 
 wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create(uint64_t identifier, wickr_ec_key_t *ec_key, wickr_ecdsa_result_t *signature)

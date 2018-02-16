@@ -6,7 +6,7 @@
 //
 //
 
-#include "stream_key_priv.h"
+#include "private/stream_key_priv.h"
 #include "memory.h"
 
 wickr_stream_key_t *wickr_stream_key_create(wickr_cipher_key_t *cipher_key, wickr_buffer_t *evolution_key, uint32_t packets_per_evolution)

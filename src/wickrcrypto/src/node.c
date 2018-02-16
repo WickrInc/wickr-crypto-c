@@ -1,6 +1,6 @@
 
 #include "node.h"
-#include "node_priv.h"
+#include "private/node_priv.h"
 #include "memory.h"
 
 #define NODE_ARRAY_TYPE_ID 1

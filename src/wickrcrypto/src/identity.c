@@ -1,6 +1,6 @@
 
 #include "identity.h"
-#include "identity_priv.h"
+#include "private/identity_priv.h"
 #include "memory.h"
 
 wickr_identity_t *wickr_identity_create(wickr_identity_type type, wickr_buffer_t *identifier, wickr_ec_key_t *sig_key, wickr_ecdsa_result_t *signature)

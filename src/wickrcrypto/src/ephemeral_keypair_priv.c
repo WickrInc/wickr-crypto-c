@@ -1,7 +1,7 @@
 
-#include "ephemeral_keypair_priv.h"
-#include "eckey_priv.h"
-#include "ecdsa_priv.h"
+#include "private/ephemeral_keypair_priv.h"
+#include "private/eckey_priv.h"
+#include "private/ecdsa_priv.h"
 #include "memory.h"
 #include <string.h>
 

@@ -2,7 +2,7 @@
 #include "stream_ctx.h"
 #include "memory.h"
 #include "stream.pb-c.h"
-#include "stream_key_priv.h"
+#include "private/stream_key_priv.h"
 
 wickr_stream_ctx_t *wickr_stream_ctx_create(const wickr_crypto_engine_t engine, wickr_stream_key_t *stream_key, wickr_stream_direction direction)
 {

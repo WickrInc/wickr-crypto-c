@@ -1,5 +1,5 @@
 
-#include "stream_key_priv.h"
+#include "private/stream_key_priv.h"
 #include "memory.h"
 #include <string.h>
 

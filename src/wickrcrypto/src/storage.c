@@ -2,7 +2,7 @@
 #include "storage.h"
 #include "memory.h"
 #include "storage.pb-c.h"
-#include "cipher_priv.h"
+#include "private/cipher_priv.h"
 
 #define CURRENT_STORAGE_KEY_VERSION 1
 

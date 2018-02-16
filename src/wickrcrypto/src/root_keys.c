@@ -2,8 +2,8 @@
 #include "root_keys.h"
 #include "memory.h"
 #include "storage.pb-c.h"
-#include "cipher_priv.h"
-#include "eckey_priv.h"
+#include "private/cipher_priv.h"
+#include "private/eckey_priv.h"
 
 #define CURRENT_ROOT_KEY_VERSION 1
 

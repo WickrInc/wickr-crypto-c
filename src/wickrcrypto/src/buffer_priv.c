@@ -1,5 +1,5 @@
 
-#include "buffer_priv.h"
+#include "private/buffer_priv.h"
 
 wickr_buffer_t *wickr_buffer_from_protobytes(ProtobufCBinaryData buffer)
 {

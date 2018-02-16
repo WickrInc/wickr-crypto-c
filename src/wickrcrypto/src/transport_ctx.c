@@ -11,10 +11,10 @@
 #include "stream.pb-c.h"
 #include "stream_ctx.h"
 #include "protocol.h"
-#include "transport_priv.h"
-#include "node_priv.h"
-#include "identity_priv.h"
-#include "ephemeral_keypair_priv.h"
+#include "private/transport_priv.h"
+#include "private/node_priv.h"
+#include "private/identity_priv.h"
+#include "private/ephemeral_keypair_priv.h"
 
 static uint8_t __wickr_handshake_version_to_key_exchange(uint8_t handshake_version)
 {

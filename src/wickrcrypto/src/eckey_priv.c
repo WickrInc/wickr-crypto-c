@@ -1,5 +1,5 @@
 
-#include "eckey_priv.h"
+#include "private/eckey_priv.h"
 
 wickr_ec_key_t *wickr_ec_key_from_protobytes(ProtobufCBinaryData buffer, const wickr_crypto_engine_t *engine, bool is_private)
 {
