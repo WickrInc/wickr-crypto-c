@@ -3,61 +3,61 @@
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine}
-\begin{DoxyCompactList}\small\item\em Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h} and \hyperlink{kdf_8h_source}{kdf.\+h}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine}}
+\begin{DoxyCompactList}\small\item\em Interface to a set of cryptographic operations used throughout the library. Currently the default implementation of this can be found along with documentation in \mbox{\hyperlink{openssl__suite_8h_source}{openssl\+\_\+suite.\+h}} and \mbox{\hyperlink{kdf_8h_source}{kdf.\+h}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga74d5cea6c7d1d6e67b1be476fbaf6235}{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default} ()
+const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} \mbox{\hyperlink{group__wickr__crypto__engine_ga74d5cea6c7d1d6e67b1be476fbaf6235}{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default}} ()
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__crypto__engine_ga5709d94cd09ef0fb47d1a5f59232f115}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$value, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga5709d94cd09ef0fb47d1a5f59232f115}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, \mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}} algo, \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$value, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__crypto__engine_gab60480270e80ba34aa44385633037983}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$input\+\_\+buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gab60480270e80ba34aa44385633037983}{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$input\+\_\+buffer, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
 \item 
-\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}{wickr\+\_\+digest\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} \mbox{\hyperlink{group__wickr__crypto__engine_ga18c21501a41c97f2ba79a9366343cdcf}{wickr\+\_\+digest\+\_\+matching\+\_\+cipher}} (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)
 \item 
-\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga6cdd263ddccd0b28a85ed61889805e60}{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}} \mbox{\hyperlink{group__wickr__crypto__engine_ga6cdd263ddccd0b28a85ed61889805e60}{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher}} (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)
 \item 
-\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} \hyperlink{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}{wickr\+\_\+digest\+\_\+matching\+\_\+curve} (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
+\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} \mbox{\hyperlink{group__wickr__crypto__engine_ga0a708e5e46c40eae5eaeb581f6a1aed2}{wickr\+\_\+digest\+\_\+matching\+\_\+curve}} (\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}} curve)
 \item 
-\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} \hyperlink{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} \mbox{\hyperlink{group__wickr__crypto__engine_gaf44e3be9066727bf83034d3593dc74e2}{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher}} (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random} )(size\+\_\+t len)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gae12855853c05caa473e748a62611d307}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}} )(size\+\_\+t len)
 \item 
-\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random} )(\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)
+\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gabc120effc5248a491b18138f9b74b526}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}} )(\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)
+\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gaf7be0d0ca0d9e7a0c5c3b1ec0fd0918e}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$plaintext, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$aad, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$iv)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga459ef821cc40edb5e3c9ce1d571ddc00}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt} )(const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga459ef821cc40edb5e3c9ce1d571ddc00}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}} )(const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$cipher\+\_\+result, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$aad, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)
 \item 
-bool($\ast$ \hyperlink{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
+bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}} )(const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)
 \item 
-bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file} )(const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)
+bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga361b843efc839e30f90ce24c15b1dd27}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}} )(const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga42dfc5b4df166616d962ee4c792ceaf4}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$salt, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file} )(F\+I\+LE $\ast$in\+\_\+file, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga298d2dea6722151c11e04458d3924823}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}} )(F\+I\+LE $\ast$in\+\_\+file, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} mode)
 \item 
-\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key} )(\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)
+\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gad16b229b7d16cf00d3983c277ee3b88b}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}} )(\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}} curve)
 \item 
-\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)
+\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga87a069bbd3cdf509946e4ca0ca008f8f}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, bool is\+\_\+private)
 \item 
-\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign} )(const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gac5a36d2a53e06a75a2b818e6a5cc96a1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}} )(const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+signing\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+sign, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)
 \item 
-bool($\ast$ \hyperlink{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify} )(const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature, const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+public\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+verify)
+bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}} )(const \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+public\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+verify)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key} )(const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}} )(const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$params)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)
 \item 
-bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify} )(const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$expected)
+bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga00c52a816403192af5b21d952265d0b6}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} mode, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$expected)
 \item 
-\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen} )(\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\mbox{\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga5ab29968c993423df83c9f1a3d7e685d}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}} )(\mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}} algo, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
 \item 
-\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t} $\ast$($\ast$ \hyperlink{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta} )(const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)
+\mbox{\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga640cbc86ca36c4deb2c197de89dce7d1}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}} )(const \mbox{\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t}} $\ast$existing\+\_\+meta, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
 \end{DoxyCompactItemize}
 
 
@@ -69,7 +69,7 @@ bool($\ast$ \hyperlink{group__wickr__crypto__engine_ga00c52a816403192af5b21d9522
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default@{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default@{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default()}{wickr\_crypto\_engine\_get\_default()}}
-{\footnotesize\ttfamily const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} wickr\+\_\+crypto\+\_\+engine\+\_\+get\+\_\+default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Wickr default crypto engine
 
@@ -80,7 +80,7 @@ an engine containing default crypto primitive implementations (currently impleme
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher()}{wickr\_crypto\_engine\_kdf\_cipher()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}}]{algo,  }\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{value,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{\mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}}}]{algo,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{value,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Encrypt a buffer with a K\+DF + C\+I\+P\+H\+ER
 
@@ -113,7 +113,7 @@ a buffer serialized in the following format\+:
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher@{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher()}{wickr\_crypto\_engine\_kdf\_decipher()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{input\+\_\+buffer,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+decipher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{input\+\_\+buffer,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -131,7 +131,7 @@ the original buffer protected by \textquotesingle{}wickr\+\_\+crypto\+\_\+engine
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+digest\+\_\+matching\+\_\+cipher@{wickr\+\_\+digest\+\_\+matching\+\_\+cipher}}
 \index{wickr\+\_\+digest\+\_\+matching\+\_\+cipher@{wickr\+\_\+digest\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+digest\+\_\+matching\+\_\+cipher()}{wickr\_digest\_matching\_cipher()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} wickr\+\_\+digest\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} wickr\+\_\+digest\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher }\end{DoxyParamCaption})}
 
 Get the matching digest type for a function based on size
 
@@ -151,7 +151,7 @@ a digest that has an output which is the same size as the length of the cipher\t
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+digest\+\_\+matching\+\_\+curve@{wickr\+\_\+digest\+\_\+matching\+\_\+curve}}
 \index{wickr\+\_\+digest\+\_\+matching\+\_\+curve@{wickr\+\_\+digest\+\_\+matching\+\_\+curve}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+digest\+\_\+matching\+\_\+curve()}{wickr\_digest\_matching\_curve()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} wickr\+\_\+digest\+\_\+matching\+\_\+curve (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} wickr\+\_\+digest\+\_\+matching\+\_\+curve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}}]{curve }\end{DoxyParamCaption})}
 
 Get the matching digest for a curve, this is to be used for signature operations using this curve
 
@@ -167,7 +167,7 @@ the digest to use for signature operations using \textquotesingle{}curve\textquo
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher@{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher}}
 \index{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher@{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher()}{wickr\_exchange\_cipher\_matching\_cipher()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} wickr\+\_\+exchange\+\_\+cipher\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher }\end{DoxyParamCaption})}
 
 Get the matching exchange cipher given a message packet cipher
 
@@ -185,7 +185,7 @@ the exchange cipher matching \textquotesingle{}cipher\textquotesingle{}
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher}}
 \index{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher()}{wickr\_key\_exchange\_kdf\_matching\_cipher()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}} wickr\+\_\+key\+\_\+exchange\+\_\+kdf\+\_\+matching\+\_\+cipher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher }\end{DoxyParamCaption})}
 
 Get the matching message key exchange kdf for a cipher
 
@@ -206,7 +206,7 @@ a kdf that has an output which is the same size as the length of the cipher\text
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt}{wickr\_crypto\_engine\_cipher\_decrypt}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt) (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$cipher\+\_\+result, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+decrypt) (const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$cipher\+\_\+result, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$aad, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, bool only\+\_\+auth\+\_\+ciphers)}
 
 Decrypt a cipher\+\_\+result
 
@@ -228,7 +228,7 @@ a buffer containing decrypted bytes. If the A\+ES mode is authenticated, N\+U\+L
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt}{wickr\_crypto\_engine\_cipher\_encrypt}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$plaintext, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$aad, const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+encrypt) (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$plaintext, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$aad, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$iv)}
 
 Encrypt a buffer
 
@@ -252,7 +252,7 @@ a cipher result containing encrypted bytes, or N\+U\+LL if the cipher mode fails
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random}{wickr\_crypto\_engine\_cipher\_key\_random}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random) (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+cipher\+\_\+key\+\_\+random) (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)}
 
 Generate a secure random cipher key for a particular cipher
 
@@ -268,7 +268,7 @@ a cipher key containing key material generated by a secure random function or N\
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random@{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random}{wickr\_crypto\_engine\_crypto\_random}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random) (size\+\_\+t len)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+crypto\+\_\+random) (size\+\_\+t len)}
 
 Generate secure random bytes
 
@@ -284,7 +284,7 @@ a buffer containing \textquotesingle{}len\textquotesingle{} secure random bytes 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file}{wickr\_crypto\_engine\_decrypt\_file}}
-{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file) (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+decrypt\+\_\+file) (const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path, bool only\+\_\+auth\+\_\+ciphers)}
 
 Decrypt a file
 
@@ -306,7 +306,7 @@ true if the decryption operation succeeds, and \textquotesingle{}out\+\_\+file\t
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+digest@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+digest@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+digest}{wickr\_crypto\_engine\_digest}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$salt, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest) (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$salt, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)}
 
 Calculate a hash of a buffer using an optional salt value
 
@@ -326,7 +326,7 @@ a buffer containing the derived hash or N\+U\+LL if the hashing operation fails
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file}{wickr\_crypto\_engine\_digest\_file}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file) (F\+I\+LE $\ast$in\+\_\+file, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+digest\+\_\+file) (F\+I\+LE $\ast$in\+\_\+file, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} mode)}
 
 Calculate the hash of a file
 
@@ -344,7 +344,7 @@ a buffer containing the output of the chosen mode of the contents of in\+\_\+fil
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import}{wickr\_crypto\_engine\_ec\_key\_import}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, bool is\+\_\+private)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+key\+\_\+import) (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, bool is\+\_\+private)}
 
 Import an Elliptic Curve key from a buffer
 
@@ -362,7 +362,7 @@ an Elliptic Curve key pair parsed from buffer or N\+U\+LL if buffer does not con
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key}{wickr\_crypto\_engine\_ec\_rand\_key}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key) (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+rand\+\_\+key) (\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}} curve)}
 
 Generate a random Elliptic Curve keypair
 
@@ -378,7 +378,7 @@ a random Elliptic Curve key pair or N\+U\+LL if the random generation fails
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign}{wickr\_crypto\_engine\_ec\_sign}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign) (const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+signing\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+sign, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+sign) (const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+signing\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+sign, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)}
 
 Sign data using an Elliptic Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
 
@@ -398,7 +398,7 @@ an ecdsa result containing the output of E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}{wickr\_crypto\_engine\_ec\_verify}}
-{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify) (const \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature, const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ec\+\_\+public\+\_\+key, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data\+\_\+to\+\_\+verify)}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify) (const \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+public\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+verify)}
 
 Verify E\+C\+D\+SA signatures
 
@@ -418,7 +418,7 @@ true if \textquotesingle{}signature\textquotesingle{} can be verified by \textqu
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}{wickr\_crypto\_engine\_ecdh\_gen\_key}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key) (const \hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t} $\ast$params)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key) (const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$params)}
 
 Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters and a K\+DF
 
@@ -434,7 +434,7 @@ a buffer containing the expanded shared secret or N\+U\+LL if the key exchange c
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}{wickr\_crypto\_engine\_encrypt\_file}}
-{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file) (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file) (const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, const char $\ast$source\+File\+Path, const char $\ast$destination\+File\+Path)}
 
 Encrypt a file
 
@@ -454,7 +454,7 @@ true if encryption succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}{wickr\_crypto\_engine\_hmac\_create}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} digest\+\_\+mode)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create) (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)}
 
 Generate an H\+M\+AC
 
@@ -474,7 +474,7 @@ a buffer containing the H\+M\+AC of \textquotesingle{}data\textquotesingle{} wit
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify}{wickr\_crypto\_engine\_hmac\_verify}}
-{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify) (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$hmac\+\_\+key, const \hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t} mode, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$expected)}
+{\footnotesize\ttfamily bool($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+verify) (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, const \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} mode, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$expected)}
 
 Verify an H\+M\+AC against an expected result
 
@@ -496,7 +496,7 @@ true if \textquotesingle{}expected\textquotesingle{} is equal to the H\+M\+AC of
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+kdf\+\_\+gen@{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}}
 \index{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen@{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+kdf\+\_\+gen}{wickr\_crypto\_kdf\_gen}}
-{\footnotesize\ttfamily \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen) (\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t} algo, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+gen) (\mbox{\hyperlink{structwickr__kdf__algo}{wickr\+\_\+kdf\+\_\+algo\+\_\+t}} algo, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)}
 
 Execute a K\+DF function given an input buffer
 
@@ -514,7 +514,7 @@ the output of the K\+DF function, including the generated random salt that was u
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+kdf\+\_\+meta@{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}}
 \index{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta@{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
 \subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+kdf\+\_\+meta}{wickr\_crypto\_kdf\_meta}}
-{\footnotesize\ttfamily \hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta) (const \hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t} $\ast$existing\+\_\+meta, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$passphrase)}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__kdf__result}{wickr\+\_\+kdf\+\_\+result\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+kdf\+\_\+meta) (const \mbox{\hyperlink{structwickr__kdf__meta}{wickr\+\_\+kdf\+\_\+meta\+\_\+t}} $\ast$existing\+\_\+meta, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)}
 
 Execute a K\+DF function given an input buffer and specified parameters
 

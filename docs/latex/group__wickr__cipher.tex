@@ -3,38 +3,38 @@
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structwickr__cipher}{wickr\+\_\+cipher}
+struct \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher}}
 \begin{DoxyCompactList}\small\item\em Represents a cipher that can be used in the crypto\+\_\+engine. This meta object holds parameters for the cipher algorithms and maintains an identifier that can be used to look up the desired parameters for an algorithm. \end{DoxyCompactList}\item 
-struct \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result}
+struct \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result}}
 \item 
-struct \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key}
+struct \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key}}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-const \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga2b7a8bc33e1fd5af61763398ea9a4013}{wickr\+\_\+cipher\+\_\+find} (uint8\+\_\+t cipher\+\_\+id)
+const \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_ga2b7a8bc33e1fd5af61763398ea9a4013}{wickr\+\_\+cipher\+\_\+find}} (uint8\+\_\+t cipher\+\_\+id)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga234b60967d0b3ef0088ca3ac30755dde}{wickr\+\_\+cipher\+\_\+result\+\_\+create} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$iv, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$cipher\+\_\+text, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$auth\+\_\+tag)
+\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_ga234b60967d0b3ef0088ca3ac30755dde}{wickr\+\_\+cipher\+\_\+result\+\_\+create}} (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$iv, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$cipher\+\_\+text, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$auth\+\_\+tag)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_gace82050fcc8b7932df9a9e8109a2fc1d}{wickr\+\_\+cipher\+\_\+result\+\_\+copy} (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$result)
+\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_gace82050fcc8b7932df9a9e8109a2fc1d}{wickr\+\_\+cipher\+\_\+result\+\_\+copy}} (const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$result)
 \item 
-void \hyperlink{group__wickr__cipher_gad5d22ca53abc4397d88040f0f8003021}{wickr\+\_\+cipher\+\_\+result\+\_\+destroy} (\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$$\ast$result)
+void \mbox{\hyperlink{group__wickr__cipher_gad5d22ca53abc4397d88040f0f8003021}{wickr\+\_\+cipher\+\_\+result\+\_\+destroy}} (\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$$\ast$result)
 \item 
-bool \hyperlink{group__wickr__cipher_ga3f1b679c199987148952816b6fc4c009}{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid} (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$result)
+bool \mbox{\hyperlink{group__wickr__cipher_ga3f1b679c199987148952816b6fc4c009}{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid}} (const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$result)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_gacda386115dc52f83a0518f8ac0dad6a2}{wickr\+\_\+cipher\+\_\+result\+\_\+serialize} (const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$result)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_gacda386115dc52f83a0518f8ac0dad6a2}{wickr\+\_\+cipher\+\_\+result\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$result)
 \item 
-\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_gad42314812c457855c3799632494c91a7}{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_gad42314812c457855c3799632494c91a7}{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
 \item 
-\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga73e2a916ba0ff19517e30a65a68390f0}{wickr\+\_\+cipher\+\_\+key\+\_\+create} (\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t} cipher, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$key\+\_\+data)
+\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_ga73e2a916ba0ff19517e30a65a68390f0}{wickr\+\_\+cipher\+\_\+key\+\_\+create}} (\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$key\+\_\+data)
 \item 
-\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_gaa473bc83f82d6353aa6f4cb4e36bf4f0}{wickr\+\_\+cipher\+\_\+key\+\_\+copy} (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key)
+\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_gaa473bc83f82d6353aa6f4cb4e36bf4f0}{wickr\+\_\+cipher\+\_\+key\+\_\+copy}} (const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key)
 \item 
-void \hyperlink{group__wickr__cipher_ga45790b3023ccb261c03346b069aca763}{wickr\+\_\+cipher\+\_\+key\+\_\+destroy} (\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$$\ast$key)
+void \mbox{\hyperlink{group__wickr__cipher_ga45790b3023ccb261c03346b069aca763}{wickr\+\_\+cipher\+\_\+key\+\_\+destroy}} (\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$$\ast$key)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga8716aebf03497c379d5ff81fe32cde32}{wickr\+\_\+cipher\+\_\+key\+\_\+serialize} (const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$key)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_ga8716aebf03497c379d5ff81fe32cde32}{wickr\+\_\+cipher\+\_\+key\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key)
 \item 
-\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__cipher_ga1c073b87f2141cf35a1d91ba10f9e5ba}{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer)
+\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__cipher_ga1c073b87f2141cf35a1d91ba10f9e5ba}{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
 \end{DoxyCompactItemize}
 
 
@@ -46,7 +46,7 @@ void \hyperlink{group__wickr__cipher_ga45790b3023ccb261c03346b069aca763}{wickr\+
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+find@{wickr\+\_\+cipher\+\_\+find}}
 \index{wickr\+\_\+cipher\+\_\+find@{wickr\+\_\+cipher\+\_\+find}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+find()}{wickr\_cipher\_find()}}
-{\footnotesize\ttfamily const \hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+find (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cipher\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+find (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cipher\+\_\+id }\end{DoxyParamCaption})}
 
 Find a supported cipher by identifier. When cipher results are serialized they contain the identifier of the cipher that was used to create them as the first byte
 
@@ -62,7 +62,7 @@ a cipher with identifier \textquotesingle{}cipher\+\_\+id\textquotesingle{}. N\+
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+key\+\_\+copy@{wickr\+\_\+cipher\+\_\+key\+\_\+copy}}
 \index{wickr\+\_\+cipher\+\_\+key\+\_\+copy@{wickr\+\_\+cipher\+\_\+key\+\_\+copy}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+copy()}{wickr\_cipher\_key\_copy()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key }\end{DoxyParamCaption})}
 
 Copy a cipher key
 
@@ -78,7 +78,7 @@ a newly allocated cipher key holding a deep copy of the properties of \textquote
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+key\+\_\+create@{wickr\+\_\+cipher\+\_\+key\+\_\+create}}
 \index{wickr\+\_\+cipher\+\_\+key\+\_\+create@{wickr\+\_\+cipher\+\_\+key\+\_\+create}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+create()}{wickr\_cipher\_key\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{key\+\_\+data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{key\+\_\+data }\end{DoxyParamCaption})}
 
 Create a key from components
 
@@ -96,7 +96,7 @@ a newly allocated cipher key that takes ownership over \textquotesingle{}key\+\_
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+key\+\_\+destroy@{wickr\+\_\+cipher\+\_\+key\+\_\+destroy}}
 \index{wickr\+\_\+cipher\+\_\+key\+\_\+destroy@{wickr\+\_\+cipher\+\_\+key\+\_\+destroy}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+destroy()}{wickr\_cipher\_key\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+cipher\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void wickr\+\_\+cipher\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
 
 Destroy a cipher key
 
@@ -109,7 +109,7 @@ Destroy a cipher key
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer@{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer}}
 \index{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer@{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer()}{wickr\_cipher\_key\_from\_buffer()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Create a cipher key from serialized bytes
 
@@ -125,7 +125,7 @@ cipher key parsed from \textquotesingle{}buffer\textquotesingle{}. This function
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+key\+\_\+serialize@{wickr\+\_\+cipher\+\_\+key\+\_\+serialize}}
 \index{wickr\+\_\+cipher\+\_\+key\+\_\+serialize@{wickr\+\_\+cipher\+\_\+key\+\_\+serialize}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+key\+\_\+serialize()}{wickr\_cipher\_key\_serialize()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t} $\ast$}]{key }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+key\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key }\end{DoxyParamCaption})}
 
 Serialize a cipher key
 
@@ -141,7 +141,7 @@ a newly allocated buffer containing properties of \textquotesingle{}key\textquot
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+copy@{wickr\+\_\+cipher\+\_\+result\+\_\+copy}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+copy@{wickr\+\_\+cipher\+\_\+result\+\_\+copy}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+copy()}{wickr\_cipher\_result\_copy()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{result }\end{DoxyParamCaption})}
 
 Copy a cipher result
 
@@ -157,7 +157,7 @@ A newly allocated cipher\+\_\+result that contains deep copies of all the proper
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+create@{wickr\+\_\+cipher\+\_\+result\+\_\+create}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+create@{wickr\+\_\+cipher\+\_\+result\+\_\+create}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+create()}{wickr\_cipher\_result\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}]{cipher,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{iv,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{cipher\+\_\+text,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{auth\+\_\+tag }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{iv,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{cipher\+\_\+text,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{auth\+\_\+tag }\end{DoxyParamCaption})}
 
 Construct a cipher result from individual components.
 
@@ -179,7 +179,7 @@ A newly allocated cipher result that takes ownership of the passed inputs, or N\
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+destroy@{wickr\+\_\+cipher\+\_\+result\+\_\+destroy}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+destroy@{wickr\+\_\+cipher\+\_\+result\+\_\+destroy}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+destroy()}{wickr\_cipher\_result\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+cipher\+\_\+result\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$$\ast$}]{result }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void wickr\+\_\+cipher\+\_\+result\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$$\ast$}]{result }\end{DoxyParamCaption})}
 
 Destroy a cipher result
 
@@ -192,7 +192,7 @@ Destroy a cipher result
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer@{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer@{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer()}{wickr\_cipher\_result\_from\_buffer()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Create a cipher result from a serialized cipher result buffer
 
@@ -208,7 +208,7 @@ cipher result parsed from \textquotesingle{}buffer\textquotesingle{}. This funct
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid@{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid@{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid()}{wickr\_cipher\_result\_is\_valid()}}
-{\footnotesize\ttfamily bool wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool wickr\+\_\+cipher\+\_\+result\+\_\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{result }\end{DoxyParamCaption})}
 
 Determine if a cipher result is formed correctly
 
@@ -224,7 +224,7 @@ true if result is structured correctly, false if a required field is missing
 \index{wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}!wickr\+\_\+cipher\+\_\+result\+\_\+serialize@{wickr\+\_\+cipher\+\_\+result\+\_\+serialize}}
 \index{wickr\+\_\+cipher\+\_\+result\+\_\+serialize@{wickr\+\_\+cipher\+\_\+result\+\_\+serialize}!wickr\+\_\+cipher\+\_\+t@{wickr\+\_\+cipher\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+cipher\+\_\+result\+\_\+serialize()}{wickr\_cipher\_result\_serialize()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t} $\ast$}]{result }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+cipher\+\_\+result\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{result }\end{DoxyParamCaption})}
 
 Serialize a cipher result
 

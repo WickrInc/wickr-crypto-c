@@ -3,19 +3,19 @@
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structwickr__identity}{wickr\+\_\+identity}
+struct \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity}}
 \begin{DoxyCompactList}\small\item\em A signing identity on the Wickr system. \end{DoxyCompactList}\item 
-struct \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}
+struct \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}}
 \begin{DoxyCompactList}\small\item\em Represents a root -\/$>$ node relationship as well as it\textquotesingle{}s signature status. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{group__wickr__identity_ga43bd60836203349a1c745d0d29bf7706}{I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN}~32
+\#define \mbox{\hyperlink{group__wickr__identity_ga43bd60836203349a1c745d0d29bf7706}{I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN}}~32
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status} \{ {\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
+enum \mbox{\hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}} \{ {\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
 {\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+V\+A\+L\+ID}, 
 {\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+ID}
  \}
@@ -23,27 +23,27 @@ enum \hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga75bfef275a250a32784231e8c042913b}{wickr\+\_\+identity\+\_\+create} (wickr\+\_\+identity\+\_\+type type, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$identifier, \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$sig\+\_\+key, \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$signature)
+\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga75bfef275a250a32784231e8c042913b}{wickr\+\_\+identity\+\_\+create}} (wickr\+\_\+identity\+\_\+type type, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$identifier, \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$sig\+\_\+key, \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature)
 \item 
-\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga32097764e57e70d85a2e1277146495c9}{wickr\+\_\+identity\+\_\+sign} (const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$identity, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$data)
+\mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga32097764e57e70d85a2e1277146495c9}{wickr\+\_\+identity\+\_\+sign}} (const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$identity, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data)
 \item 
-\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_gae820c1efc090fef6a8d27dd700316023}{wickr\+\_\+node\+\_\+identity\+\_\+gen} (const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine, const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$root\+\_\+identity)
+\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_gae820c1efc090fef6a8d27dd700316023}{wickr\+\_\+node\+\_\+identity\+\_\+gen}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$root\+\_\+identity)
 \item 
-\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga14d1fb3ddd1dbd7797eb9b628eef99fe}{wickr\+\_\+identity\+\_\+copy} (const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$source)
+\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga14d1fb3ddd1dbd7797eb9b628eef99fe}{wickr\+\_\+identity\+\_\+copy}} (const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$source)
 \item 
-void \hyperlink{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}{wickr\+\_\+identity\+\_\+destroy} (\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$$\ast$identity)
+void \mbox{\hyperlink{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}{wickr\+\_\+identity\+\_\+destroy}} (\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$$\ast$identity)
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}{wickr\+\_\+identity\+\_\+serialize} (const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$identity)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}{wickr\+\_\+identity\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$identity)
 \item 
-\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer} (const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$buffer, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine)
 \item 
-\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_ga79551385194ba6b044b676ce5c7400e6}{wickr\+\_\+identity\+\_\+chain\+\_\+create} (\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$root, \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$node)
+\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga79551385194ba6b044b676ce5c7400e6}{wickr\+\_\+identity\+\_\+chain\+\_\+create}} (\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$root, \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$node)
 \item 
-\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}{wickr\+\_\+identity\+\_\+chain\+\_\+copy} (const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$source)
+\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}{wickr\+\_\+identity\+\_\+chain\+\_\+copy}} (const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$source)
 \item 
-bool \hyperlink{group__wickr__identity_ga12f5b33c4947b6a2ca3df3bdaacafa10}{wickr\+\_\+identity\+\_\+chain\+\_\+validate} (const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$chain, const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$engine)
+bool \mbox{\hyperlink{group__wickr__identity_ga12f5b33c4947b6a2ca3df3bdaacafa10}{wickr\+\_\+identity\+\_\+chain\+\_\+validate}} (const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$chain, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine)
 \item 
-void \hyperlink{group__wickr__identity_gadbddf6d49fddb2df103486970b3d564b}{wickr\+\_\+identity\+\_\+chain\+\_\+destroy} (\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$$\ast$chain)
+void \mbox{\hyperlink{group__wickr__identity_gadbddf6d49fddb2df103486970b3d564b}{wickr\+\_\+identity\+\_\+chain\+\_\+destroy}} (\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$$\ast$chain)
 \end{DoxyCompactItemize}
 
 
@@ -64,7 +64,7 @@ Identifiers should be 32 bytes on the Wickr system, this requirement could drop 
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+chain\+\_\+status@{wickr\+\_\+identity\+\_\+chain\+\_\+status}}
 \index{wickr\+\_\+identity\+\_\+chain\+\_\+status@{wickr\+\_\+identity\+\_\+chain\+\_\+status}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+chain\+\_\+status}{wickr\_identity\_chain\_status}}
-{\footnotesize\ttfamily enum \hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}}}
 
 Identity chain status
 
@@ -75,7 +75,7 @@ U\+N\+K\+N\+O\+WN -\/ Signature validation has never been attempted on the chain
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+chain\+\_\+copy@{wickr\+\_\+identity\+\_\+chain\+\_\+copy}}
 \index{wickr\+\_\+identity\+\_\+chain\+\_\+copy@{wickr\+\_\+identity\+\_\+chain\+\_\+copy}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+chain\+\_\+copy()}{wickr\_identity\_chain\_copy()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+chain\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+chain\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an identity chain
 
@@ -91,15 +91,15 @@ a newly allocated identity chain holding a deep copy of the properties of \textq
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+chain\+\_\+create@{wickr\+\_\+identity\+\_\+chain\+\_\+create}}
 \index{wickr\+\_\+identity\+\_\+chain\+\_\+create@{wickr\+\_\+identity\+\_\+chain\+\_\+create}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+chain\+\_\+create()}{wickr\_identity\_chain\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+chain\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{root,  }\item[{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{node }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+chain\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{node }\end{DoxyParamCaption})}
 
 Create an identity chain from components
 
 
 \begin{DoxyParams}{Parameters}
-{\em root} & see \textquotesingle{}\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}\textquotesingle{} property documentation \\
+{\em root} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}}\textquotesingle{} property documentation \\
 \hline
-{\em node} & see \textquotesingle{}\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}\textquotesingle{} property documentation \\
+{\em node} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}}\textquotesingle{} property documentation \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -109,7 +109,7 @@ a newly allocated identity chain that takes ownership of the passed inputs
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+chain\+\_\+destroy@{wickr\+\_\+identity\+\_\+chain\+\_\+destroy}}
 \index{wickr\+\_\+identity\+\_\+chain\+\_\+destroy@{wickr\+\_\+identity\+\_\+chain\+\_\+destroy}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+chain\+\_\+destroy()}{wickr\_identity\_chain\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+identity\+\_\+chain\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$$\ast$}]{chain }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void wickr\+\_\+identity\+\_\+chain\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$$\ast$}]{chain }\end{DoxyParamCaption})}
 
 Destroy an identity chain
 
@@ -122,7 +122,7 @@ Destroy an identity chain
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+chain\+\_\+validate@{wickr\+\_\+identity\+\_\+chain\+\_\+validate}}
 \index{wickr\+\_\+identity\+\_\+chain\+\_\+validate@{wickr\+\_\+identity\+\_\+chain\+\_\+validate}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+chain\+\_\+validate()}{wickr\_identity\_chain\_validate()}}
-{\footnotesize\ttfamily bool wickr\+\_\+identity\+\_\+chain\+\_\+validate (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$}]{chain,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool wickr\+\_\+identity\+\_\+chain\+\_\+validate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{chain,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine }\end{DoxyParamCaption})}
 
 Verify the validity of an identity chain
 
@@ -140,7 +140,7 @@ true if the \textquotesingle{}signature\textquotesingle{} of the \textquotesingl
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+copy@{wickr\+\_\+identity\+\_\+copy}}
 \index{wickr\+\_\+identity\+\_\+copy@{wickr\+\_\+identity\+\_\+copy}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+copy()}{wickr\_identity\_copy()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an identity
 
@@ -156,19 +156,19 @@ a newly allocated identity holding a deep copy of the properties of \textquotesi
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+create@{wickr\+\_\+identity\+\_\+create}}
 \index{wickr\+\_\+identity\+\_\+create@{wickr\+\_\+identity\+\_\+create}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+create()}{wickr\_identity\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+create (\begin{DoxyParamCaption}\item[{wickr\+\_\+identity\+\_\+type}]{type,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{identifier,  }\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{sig\+\_\+key,  }\item[{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t} $\ast$}]{signature }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+create (\begin{DoxyParamCaption}\item[{wickr\+\_\+identity\+\_\+type}]{type,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier,  }\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{sig\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$}]{signature }\end{DoxyParamCaption})}
 
 Create an identity from components
 
 
 \begin{DoxyParams}{Parameters}
-{\em type} & see \textquotesingle{}\hyperlink{structwickr__identity}{wickr\+\_\+identity}\textquotesingle{} property documentation \\
+{\em type} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity}}\textquotesingle{} property documentation \\
 \hline
-{\em identifier} & see \textquotesingle{}\hyperlink{structwickr__identity}{wickr\+\_\+identity}\textquotesingle{} property documentation \\
+{\em identifier} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity}}\textquotesingle{} property documentation \\
 \hline
-{\em sig\+\_\+key} & see \textquotesingle{}\hyperlink{structwickr__identity}{wickr\+\_\+identity}\textquotesingle{} property documentation \\
+{\em sig\+\_\+key} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity}}\textquotesingle{} property documentation \\
 \hline
-{\em signature} & see \textquotesingle{}\hyperlink{structwickr__identity}{wickr\+\_\+identity}\textquotesingle{} property documentation \\
+{\em signature} & see \textquotesingle{}\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity}}\textquotesingle{} property documentation \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -178,7 +178,7 @@ a newly allocated identity that takes ownership of the passed inputs
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}}
 \index{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer()}{wickr\_identity\_create\_from\_buffer()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{buffer,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine }\end{DoxyParamCaption})}
 
 Create an identity from a buffer that was created with \textquotesingle{}wickr\+\_\+identity\+\_\+serialize\textquotesingle{}
 
@@ -196,7 +196,7 @@ deserialized identity or null if the deserialization fails
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+destroy@{wickr\+\_\+identity\+\_\+destroy}}
 \index{wickr\+\_\+identity\+\_\+destroy@{wickr\+\_\+identity\+\_\+destroy}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+destroy()}{wickr\_identity\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+identity\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$$\ast$}]{identity }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void wickr\+\_\+identity\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$$\ast$}]{identity }\end{DoxyParamCaption})}
 
 Destroy an identity
 
@@ -209,7 +209,7 @@ Destroy an identity
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}}
 \index{wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+serialize()}{wickr\_identity\_serialize()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{identity }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{identity }\end{DoxyParamCaption})}
 
 Serialize an identity to bytes
 
@@ -225,7 +225,7 @@ a buffer containing a serialized representation of \textquotesingle{}identity\te
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+sign@{wickr\+\_\+identity\+\_\+sign}}
 \index{wickr\+\_\+identity\+\_\+sign@{wickr\+\_\+identity\+\_\+sign}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+sign()}{wickr\_identity\_sign()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}$\ast$ wickr\+\_\+identity\+\_\+sign (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{identity,  }\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+sign (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{identity,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data }\end{DoxyParamCaption})}
 
 Sign provided data using an identity signing key
 
@@ -245,7 +245,7 @@ an E\+C\+D\+SA result containing a signature of \textquotesingle{}data\textquote
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+node\+\_\+identity\+\_\+gen@{wickr\+\_\+node\+\_\+identity\+\_\+gen}}
 \index{wickr\+\_\+node\+\_\+identity\+\_\+gen@{wickr\+\_\+node\+\_\+identity\+\_\+gen}!wickr\+\_\+identity@{wickr\+\_\+identity}}
 \subsubsection{\texorpdfstring{wickr\+\_\+node\+\_\+identity\+\_\+gen()}{wickr\_node\_identity\_gen()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}$\ast$ wickr\+\_\+node\+\_\+identity\+\_\+gen (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t} $\ast$}]{engine,  }\item[{const \hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t} $\ast$}]{root\+\_\+identity }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+identity\+\_\+gen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{root\+\_\+identity }\end{DoxyParamCaption})}
 
 Generate a new random node identity, given a root identity
 

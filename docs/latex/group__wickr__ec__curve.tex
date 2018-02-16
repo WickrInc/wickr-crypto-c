@@ -3,20 +3,20 @@
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve}
+struct \mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve}}
 \begin{DoxyCompactList}\small\item\em Metadata about curve types to help with key generation, and signatures. \end{DoxyCompactList}\item 
-struct \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}
+struct \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}
 \begin{DoxyCompactList}\small\item\em Representation of public and private Elliptic Curve Keypair information as buffers. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__ec__curve_ga912f46bc12a39f57d8d1b87a639f7cdf}{wickr\+\_\+ec\+\_\+key\+\_\+create} (\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} curve, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$pub\+\_\+data, \hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$pri\+\_\+data)
+\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ec__curve_ga912f46bc12a39f57d8d1b87a639f7cdf}{wickr\+\_\+ec\+\_\+key\+\_\+create}} (\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}} curve, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$pub\+\_\+data, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$pri\+\_\+data)
 \item 
-\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$ \hyperlink{group__wickr__ec__curve_gaf12eff11d78b2ce9ff32710406d58d4f}{wickr\+\_\+ec\+\_\+key\+\_\+copy} (const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$source)
+\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ec__curve_gaf12eff11d78b2ce9ff32710406d58d4f}{wickr\+\_\+ec\+\_\+key\+\_\+copy}} (const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$source)
 \item 
-void \hyperlink{group__wickr__ec__curve_gac18ac86b270f540bf5a55ad271ab0568}{wickr\+\_\+ec\+\_\+key\+\_\+destroy} (\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$$\ast$key)
+void \mbox{\hyperlink{group__wickr__ec__curve_gac18ac86b270f540bf5a55ad271ab0568}{wickr\+\_\+ec\+\_\+key\+\_\+destroy}} (\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$$\ast$key)
 \item 
-const \hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} $\ast$ \hyperlink{group__wickr__ec__curve_ga35d0968431b69993b7a6e3351d503d72}{wickr\+\_\+ec\+\_\+curve\+\_\+find} (uint8\+\_\+t identifier)
+const \mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ec__curve_ga35d0968431b69993b7a6e3351d503d72}{wickr\+\_\+ec\+\_\+curve\+\_\+find}} (uint8\+\_\+t identifier)
 \end{DoxyCompactItemize}
 
 
@@ -28,7 +28,7 @@ const \hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t} $\ast$
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}!wickr\+\_\+ec\+\_\+curve\+\_\+find@{wickr\+\_\+ec\+\_\+curve\+\_\+find}}
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+find@{wickr\+\_\+ec\+\_\+curve\+\_\+find}!wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+curve\+\_\+find()}{wickr\_ec\_curve\_find()}}
-{\footnotesize\ttfamily const \hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+curve\+\_\+find (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{identifier }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}$\ast$ wickr\+\_\+ec\+\_\+curve\+\_\+find (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{identifier }\end{DoxyParamCaption})}
 
 Find an EC key by numerical identifier
 
@@ -44,7 +44,7 @@ the requested curve information, or N\+U\+LL if no matching information can be f
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}!wickr\+\_\+ec\+\_\+key\+\_\+copy@{wickr\+\_\+ec\+\_\+key\+\_\+copy}}
 \index{wickr\+\_\+ec\+\_\+key\+\_\+copy@{wickr\+\_\+ec\+\_\+key\+\_\+copy}!wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+copy()}{wickr\_ec\_key\_copy()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$}]{source }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an EC Key
 
@@ -60,7 +60,7 @@ a newly allocated EC key holding a deep copy of the properties of \textquotesing
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}!wickr\+\_\+ec\+\_\+key\+\_\+create@{wickr\+\_\+ec\+\_\+key\+\_\+create}}
 \index{wickr\+\_\+ec\+\_\+key\+\_\+create@{wickr\+\_\+ec\+\_\+key\+\_\+create}!wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+create()}{wickr\_ec\_key\_create()}}
-{\footnotesize\ttfamily \hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}]{curve,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{pub\+\_\+data,  }\item[{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$}]{pri\+\_\+data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+ec\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}}]{curve,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{pub\+\_\+data,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{pri\+\_\+data }\end{DoxyParamCaption})}
 
 Create an Elliptic Curve Keypair from components
 
@@ -68,11 +68,11 @@ N\+O\+TE\+: This function does not have the capability to generate key pair info
 
 
 \begin{DoxyParams}{Parameters}
-{\em curve} & see \textquotesingle{}\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}\textquotesingle{} property documentation \\
+{\em curve} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation \\
 \hline
-{\em pub\+\_\+data} & see \textquotesingle{}\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}\textquotesingle{} property documentation \\
+{\em pub\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation \\
 \hline
-{\em pri\+\_\+data} & see \textquotesingle{}\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}\textquotesingle{} property documentation. May be N\+U\+LL to represent a public key \\
+{\em pri\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation. May be N\+U\+LL to represent a public key \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -82,7 +82,7 @@ a newly allocated elliptic curve key representing either a public or private key
 \index{wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}!wickr\+\_\+ec\+\_\+key\+\_\+destroy@{wickr\+\_\+ec\+\_\+key\+\_\+destroy}}
 \index{wickr\+\_\+ec\+\_\+key\+\_\+destroy@{wickr\+\_\+ec\+\_\+key\+\_\+destroy}!wickr\+\_\+ec\+\_\+curve\+\_\+t@{wickr\+\_\+ec\+\_\+curve\+\_\+t}}
 \subsubsection{\texorpdfstring{wickr\+\_\+ec\+\_\+key\+\_\+destroy()}{wickr\_ec\_key\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+ec\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t} $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void wickr\+\_\+ec\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
 
 Destroy an EC Key
 
