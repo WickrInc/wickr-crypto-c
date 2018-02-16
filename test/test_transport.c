@@ -1,7 +1,7 @@
 
 #include "test_transport.h"
 #include "transport_ctx.h"
-#include "transport_priv.h"
+#include "private/transport_priv.h"
 #include "stream_ctx.h"
 #include "externs.h"
 #include <string.h>

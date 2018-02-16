@@ -1,3 +1,3 @@
-include_directories("crypto")
+include_directories("wickrcrypto")
 
-add_subdirectory(crypto)
+add_subdirectory(wickrcrypto)
