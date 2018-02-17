@@ -2,8 +2,8 @@ if (BUILD_OPENSSL)
 
     include(ExternalProject)
 
-    set(OSSL_VERSION "1.0.2l")
-    set(OSSL_HASH "ce07195b659e75f4e1db43552860070061f156a98bb37b672b101ba6e3ddf30c")
+    set(OSSL_VERSION "1.0.2n")
+    set(OSSL_HASH "370babb75f278c39e0c50e8c4e7493bc0f18db6867478341a832a982fd15a8fe")
     set(OSSL_URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz")
     set(OSSL_OPTIONS shared no-ssl2 no-ssl3 no-comp enable-ec_nistp_64_gcc_128 --openssldir=${CMAKE_CURRENT_BINARY_DIR})
 
