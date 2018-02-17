@@ -12,18 +12,18 @@ Represents a message destination at a point in time.
 \subsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t} $\ast$ \hyperlink{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}{dev\+\_\+id}
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}{dev\+\_\+id}}
 \item 
-\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t} $\ast$ \hyperlink{structwickr__node_a3a5100ed26ae534e2070623713aacfde}{id\+\_\+chain}
+\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a3a5100ed26ae534e2070623713aacfde}{id\+\_\+chain}}
 \item 
-\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t} $\ast$ \hyperlink{structwickr__node_a628b61eed5cb17b831ff687143393b93}{ephemeral\+\_\+keypair}
+\mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a628b61eed5cb17b831ff687143393b93}{ephemeral\+\_\+keypair}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Represents a message destination at a point in time. 
 
-A particular root identity may be associated with many different node identities, each of which are bound to their root identity (see \textquotesingle{}\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}\textquotesingle{} documentation). The node identity is also associated with a device identifier (see \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{} in \textquotesingle{}\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}\textquotesingle{}) representing the environment the node is executing in. On each send to a particular node, the ephemeral\+\_\+keypair can be rotated by replacing it with another ephemeral\+\_\+keypair in the node\textquotesingle{}s pool. The chain of signatures in this node must be verifiable, as it will be checked for validity during message composition via a call to \textquotesingle{}wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain\textquotesingle{} 
+A particular root identity may be associated with many different node identities, each of which are bound to their root identity (see \textquotesingle{}\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}}\textquotesingle{} documentation). The node identity is also associated with a device identifier (see \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{} in \textquotesingle{}\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}}\textquotesingle{}) representing the environment the node is executing in. On each send to a particular node, the ephemeral\+\_\+keypair can be rotated by replacing it with another ephemeral\+\_\+keypair in the node\textquotesingle{}s pool. The chain of signatures in this node must be verifiable, as it will be checked for validity during message composition via a call to \textquotesingle{}wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain\textquotesingle{} 
 
 \subsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}\label{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}} 
@@ -32,7 +32,7 @@ A particular root identity may be associated with many different node identities
 \subsubsection{\texorpdfstring{dev\+\_\+id}{dev\_id}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::dev\+\_\+id}
 
-msg\+\_\+proto\+\_\+id of the \textquotesingle{}\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}\textquotesingle{} struct in the executing environment of the node \mbox{\Hypertarget{structwickr__node_a628b61eed5cb17b831ff687143393b93}\label{structwickr__node_a628b61eed5cb17b831ff687143393b93}} 
+msg\+\_\+proto\+\_\+id of the \textquotesingle{}\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}}\textquotesingle{} struct in the executing environment of the node \mbox{\Hypertarget{structwickr__node_a628b61eed5cb17b831ff687143393b93}\label{structwickr__node_a628b61eed5cb17b831ff687143393b93}} 
 \index{wickr\+\_\+node@{wickr\+\_\+node}!ephemeral\+\_\+keypair@{ephemeral\+\_\+keypair}}
 \index{ephemeral\+\_\+keypair@{ephemeral\+\_\+keypair}!wickr\+\_\+node@{wickr\+\_\+node}}
 \subsubsection{\texorpdfstring{ephemeral\+\_\+keypair}{ephemeral\_keypair}}
@@ -48,4 +48,4 @@ the current identity chain of the node, representing its root-\/$>$node relation
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/crypto/node.\+h\end{DoxyCompactItemize}
+src/wickrcrypto/include/wickrcrypto/node.\+h\end{DoxyCompactItemize}
