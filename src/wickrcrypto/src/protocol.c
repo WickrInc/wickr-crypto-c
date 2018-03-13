@@ -2,11 +2,11 @@
 #include "protocol.h"
 #include "memory.h"
 #include "message.pb-c.h"
+
 #include <string.h>
 
 #define MAX_META_ID UINT8_MAX
 #define PACKET_META_SIZE 2
-#define EXCHANGE_ARRAY_TYPE_ID 2
 
 wickr_packet_meta_t *wickr_packet_meta_create(wickr_ephemeral_info_t ephemerality_settings, wickr_buffer_t *channel_tag, uint16_t content_type)
 {
@@ -52,20 +52,6 @@ void wickr_packet_meta_destroy(wickr_packet_meta_t **meta)
     wickr_buffer_destroy(&(*meta)->channel_tag);
     wickr_free(*meta);
     *meta = NULL;
-}
-
-wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id, uint64_t ephemeral_key_id, wickr_buffer_t *exchange_data)
-{
-    if (!node_id || !exchange_data) {
-        return NULL;
-    }
-    
-    wickr_key_exchange_t *new_exchange = wickr_alloc_zero(sizeof(wickr_key_exchange_t));
-    new_exchange->node_id = node_id;
-    new_exchange->ephemeral_key_id = ephemeral_key_id;
-    new_exchange->exchange_data = exchange_data;
-    
-    return new_exchange;
 }
 
 wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_engine_t *engine,
@@ -310,295 +296,15 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
     return packet_key_buffer;
 }
 
-wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source)
+wickr_cipher_result_t *wickr_key_exchange_set_encrypt(const wickr_key_exchange_set_t *exchange_set,
+                                                   const wickr_crypto_engine_t *engine,
+                                                   const wickr_cipher_key_t *header_key)
 {
-    if (!source) {
+    if (!exchange_set || !engine || !header_key) {
         return NULL;
     }
     
-    wickr_buffer_t *exchange_data_copy = wickr_buffer_copy(source->exchange_data);
-    
-    if (!exchange_data_copy) {
-        return NULL;
-    }
-    
-    wickr_buffer_t *node_id_copy = wickr_buffer_copy(source->node_id);
-    
-    if (!node_id_copy) {
-        wickr_buffer_destroy(&exchange_data_copy);
-        return NULL;
-    }
-    
-    wickr_key_exchange_t *copy = wickr_key_exchange_create(node_id_copy, source->ephemeral_key_id, exchange_data_copy);
-    
-    if (!copy) {
-        wickr_buffer_destroy(&exchange_data_copy);
-        wickr_buffer_destroy(&node_id_copy);
-    }
-    
-    return copy;
-}
-
-void wickr_key_exchange_destroy(wickr_key_exchange_t **exchange)
-{
-    if (!exchange || !*exchange) {
-        return;
-    }
-    
-    wickr_buffer_destroy(&(*exchange)->exchange_data);
-    wickr_buffer_destroy(&(*exchange)->node_id);
-    wickr_free(*exchange);
-    *exchange = NULL;
-}
-
-wickr_packet_header_t *wickr_packet_header_create(wickr_ec_key_t *sender_pub, wickr_exchange_array_t *exchanges)
-{
-    if (!sender_pub || !exchanges) {
-        return NULL;
-    }
-    
-    wickr_packet_header_t *new_set = wickr_alloc_zero(sizeof(wickr_packet_header_t));
-    
-    if (!new_set) {
-        return NULL;
-    }
-    
-    new_set->sender_pub = sender_pub;
-    new_set->exchanges = exchanges;
-    
-    return new_set;
-}
-
-wickr_key_exchange_t *wickr_packet_header_find(const wickr_packet_header_t *header, const wickr_buffer_t *node_id)
-{
-    if (!header || !node_id) {
-        return NULL;
-    }
-    
-    for (int i = 0; i < wickr_array_get_item_count(header->exchanges); i++) {
-        wickr_key_exchange_t *one_exchange = wickr_exchange_array_fetch_item(header->exchanges, i);
-        if (wickr_buffer_is_equal(node_id, one_exchange->node_id, NULL)) {
-            return wickr_key_exchange_copy(one_exchange);
-        }
-    }
-    
-    return NULL;
-}
-
-wickr_packet_header_t *wickr_packet_header_copy(const wickr_packet_header_t *source)
-{
-    if (!source) {
-        return NULL;
-    }
-    
-    wickr_ec_key_t *sender_pub = wickr_ec_key_copy(source->sender_pub);
-    
-    if (!sender_pub) {
-        return NULL;
-    }
-    
-    wickr_exchange_array_t *exchanges = wickr_exchange_array_copy(source->exchanges);
-    
-    if (!exchanges) {
-        wickr_ec_key_destroy(&sender_pub);
-        return NULL;
-    }
-    
-    wickr_packet_header_t *copy = wickr_packet_header_create(sender_pub, exchanges);
-    
-    if (!copy) {
-        wickr_ec_key_destroy(&sender_pub);
-        wickr_array_destroy(&exchanges, true);
-    }
-    
-    return copy;
-}
-
-void wickr_packet_header_destroy(wickr_packet_header_t **header)
-{
-    if (!header || !*header) {
-        return;
-    }
-    
-    wickr_ec_key_destroy(&(*header)->sender_pub);
-    wickr_array_destroy(&(*header)->exchanges, true);
-    wickr_free(*header);
-    *header = NULL;
-}
-
-static wickr_buffer_t *__wickr_packet_header_serialize(const wickr_packet_header_t *header)
-{
-    if (!header) {
-        return NULL;
-    }
-    
-    uint32_t num_exchanges = wickr_array_get_item_count(header->exchanges);
-    
-    Wickr__Proto__Header__KeyExchange **exchanges;
-    exchanges = wickr_alloc_zero(sizeof(Wickr__Proto__Header__KeyExchange *) * num_exchanges);
-
-    Wickr__Proto__Header proto_header = WICKR__PROTO__HEADER__INIT;
-    proto_header.sender_pub.data = header->sender_pub->pub_data->bytes;
-    proto_header.sender_pub.len = header->sender_pub->pub_data->length;
-    
-    
-    for (int i = 0; i < num_exchanges; i++) {
-        wickr_key_exchange_t *one_exchange = wickr_array_fetch_item(header->exchanges, i, false);
-        
-        exchanges[i] = wickr_alloc_zero(sizeof(Wickr__Proto__Header__KeyExchange));
-        wickr__proto__header__key_exchange__init(exchanges[i]);
-        
-        exchanges[i]->exchange_data.data = one_exchange->exchange_data->bytes;
-        exchanges[i]->exchange_data.len = one_exchange->exchange_data->length;
-        exchanges[i]->key_id = one_exchange->ephemeral_key_id;
-        exchanges[i]->node_id.data = one_exchange->node_id->bytes;
-        exchanges[i]->node_id.len = one_exchange->node_id->length;
-    }
-
-    proto_header.n_exchanges = num_exchanges;
-    proto_header.exchanges = exchanges;
-    
-    size_t required_size = wickr__proto__header__get_packed_size(&proto_header);
-    
-    wickr_buffer_t *serialized_buffer = wickr_buffer_create_empty(required_size);
-    if (!serialized_buffer) {
-        for (int i = 0; i < num_exchanges; i++) {
-            wickr_free(exchanges[i]);
-        }
-        wickr_free(proto_header.exchanges);
-        return NULL;
-    }
-    
-    wickr__proto__header__pack(&proto_header, serialized_buffer->bytes);
-    
-    for (int i = 0; i < num_exchanges; i++) {
-        wickr_free(exchanges[i]);
-    }
-    
-    wickr_free(proto_header.exchanges);
-
-    return serialized_buffer;
-}
-
-wickr_exchange_array_t *wickr_exchange_array_new(uint32_t exchange_count)
-{
-    return wickr_array_new(exchange_count, EXCHANGE_ARRAY_TYPE_ID, (wickr_array_copy_func)wickr_key_exchange_copy,
-                           (wickr_array_destroy_func)wickr_key_exchange_destroy);
-}
-
-bool wickr_exchange_array_set_item(wickr_exchange_array_t *array, uint32_t index, wickr_key_exchange_t *exchange)
-{
-    return wickr_array_set_item(array, index, exchange, false);
-}
-
-wickr_key_exchange_t *wickr_exchange_array_fetch_item(wickr_exchange_array_t *array, uint32_t index)
-{
-    return wickr_array_fetch_item(array, index, false);
-}
-
-wickr_array_t *wickr_exchange_array_copy(wickr_exchange_array_t *array)
-{
-    return wickr_array_copy(array, true);
-}
-
-void wickr_exchange_array_destroy(wickr_exchange_array_t **array)
-{
-    if (!array || !*array) {
-        return;
-    }
-    
-    wickr_array_destroy(array, true);
-}
-
-static wickr_packet_header_t *__wickr_packet_header_deserialize(wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
-{
-    if (!buffer) {
-        return NULL;
-    }
-    
-    Wickr__Proto__Header *proto_header = wickr__proto__header__unpack(NULL, buffer->length, buffer->bytes);
-    
-    if (!proto_header || proto_header->n_exchanges == 0 || proto_header->n_exchanges > INT32_MAX) {
-        return NULL;
-    }
-    
-    wickr_exchange_array_t *exchanges = wickr_exchange_array_new((uint32_t)proto_header->n_exchanges);
-    
-    if (!exchanges) {
-        wickr__proto__header__free_unpacked(proto_header, NULL);
-        return NULL;
-    }
-    
-    for (int i = 0; i < proto_header->n_exchanges; i++) {
-        
-        Wickr__Proto__Header__KeyExchange *one_proto_exchange = proto_header->exchanges[i];
-        
-        wickr_buffer_t *one_exchange_data = wickr_buffer_create(one_proto_exchange->exchange_data.data, one_proto_exchange->exchange_data.len);
-        
-        if (!one_exchange_data) {
-            wickr__proto__header__free_unpacked(proto_header, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        wickr_buffer_t *one_id_data = wickr_buffer_create(one_proto_exchange->node_id.data, one_proto_exchange->node_id.len);
-        
-        if (!one_id_data) {
-            wickr_buffer_destroy(&one_exchange_data);
-            wickr__proto__header__free_unpacked(proto_header, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create(one_id_data, one_proto_exchange->key_id, one_exchange_data);
-        
-        if (!one_exchange) {
-            wickr_buffer_destroy(&one_exchange_data);
-            wickr_buffer_destroy(&one_id_data);
-            wickr__proto__header__free_unpacked(proto_header, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        if (!wickr_exchange_array_set_item(exchanges, i, one_exchange)) {
-            wickr_key_exchange_destroy(&one_exchange);
-            wickr_exchange_array_destroy(&exchanges);
-            wickr__proto__header__free_unpacked(proto_header, NULL);
-            return NULL;
-        }
-        
-    }
-    
-    wickr_buffer_t temp_ec_key_buffer;
-    temp_ec_key_buffer.bytes = proto_header->sender_pub.data;
-    temp_ec_key_buffer.length = proto_header->sender_pub.len;
-    
-    wickr_ec_key_t *sender_ec_key = engine->wickr_crypto_engine_ec_key_import(&temp_ec_key_buffer, false);
-    wickr__proto__header__free_unpacked(proto_header, NULL);
-
-    if (!sender_ec_key) {
-        wickr_exchange_array_destroy(&exchanges);
-        return NULL;
-    }
-    
-    wickr_packet_header_t *exchange_set = wickr_packet_header_create(sender_ec_key, exchanges);
-    
-    if (!exchange_set) {
-        wickr_ec_key_destroy(&sender_ec_key);
-        wickr_exchange_array_destroy(&exchanges);
-        return NULL;
-    }
-    
-    return exchange_set;
-}
-
-wickr_cipher_result_t *wickr_packet_header_encrypt(const wickr_packet_header_t *header, const wickr_crypto_engine_t *engine, const wickr_cipher_key_t *header_key)
-{
-    if (!header || !engine || !header_key) {
-        return NULL;
-    }
-    
-    wickr_buffer_t *serialized_exchange = __wickr_packet_header_serialize(header);
+    wickr_buffer_t *serialized_exchange = wickr_key_exchange_set_serialize(exchange_set);
     
     if (!serialized_exchange) {
         return NULL;
@@ -610,7 +316,9 @@ wickr_cipher_result_t *wickr_packet_header_encrypt(const wickr_packet_header_t *
     return cipher_result;
 }
 
-wickr_packet_header_t *wickr_packet_header_create_from_cipher(const wickr_crypto_engine_t *engine, const wickr_cipher_result_t *cipher_result, const wickr_cipher_key_t *header_key)
+wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_cipher(const wickr_crypto_engine_t *engine,
+                                                                 const wickr_cipher_result_t *cipher_result,
+                                                                 const wickr_cipher_key_t *header_key)
 {
     if (!engine || !cipher_result || !header_key) {
         return NULL;
@@ -622,7 +330,7 @@ wickr_packet_header_t *wickr_packet_header_create_from_cipher(const wickr_crypto
         return NULL;
     }
     
-    wickr_packet_header_t *deserialized_exchange = __wickr_packet_header_deserialize(decrypted_exchange, engine);
+    wickr_key_exchange_set_t *deserialized_exchange = wickr_key_exchange_set_create_from_buffer(engine, decrypted_exchange);
     wickr_buffer_destroy(&decrypted_exchange);
     
     return deserialized_exchange;
@@ -1036,7 +744,11 @@ void wickr_packet_destroy(wickr_packet_t **packet)
     *packet = NULL;
 }
 
-static wickr_parse_result_t *__wickr_parse_result_create(wickr_packet_header_t *header, wickr_key_exchange_t *key_exchange, wickr_cipher_result_t *enc_payload, wickr_packet_signature_status sig_status, wickr_decode_error error)
+static wickr_parse_result_t *__wickr_parse_result_create(wickr_key_exchange_set_t *key_exchange_set,
+                                                         wickr_key_exchange_t *key_exchange,
+                                                         wickr_cipher_result_t *enc_payload,
+                                                         wickr_packet_signature_status sig_status,
+                                                         wickr_decode_error error)
 {
     wickr_parse_result_t *new_result = wickr_alloc_zero(sizeof(wickr_parse_result_t));
     
@@ -1046,7 +758,7 @@ static wickr_parse_result_t *__wickr_parse_result_create(wickr_packet_header_t *
     
     new_result->err = error;
     new_result->signature_status = sig_status;
-    new_result->header = header;
+    new_result->key_exchange_set = key_exchange_set;
     new_result->enc_payload = enc_payload;
     new_result->key_exchange = key_exchange;
     
@@ -1058,7 +770,7 @@ wickr_parse_result_t *wickr_parse_result_create_failure(wickr_packet_signature_s
     return __wickr_parse_result_create(NULL, NULL, NULL, signature_status, error);
 }
 
-wickr_parse_result_t *wickr_parse_result_create_success(wickr_packet_header_t *header, wickr_key_exchange_t *key_exchange, wickr_cipher_result_t *enc_payload)
+wickr_parse_result_t *wickr_parse_result_create_success(wickr_key_exchange_set_t *header, wickr_key_exchange_t *key_exchange, wickr_cipher_result_t *enc_payload)
 {
     return __wickr_parse_result_create(header, key_exchange, enc_payload, PACKET_SIGNATURE_VALID, E_SUCCESS);
 }
@@ -1069,14 +781,14 @@ wickr_parse_result_t *wickr_parse_result_copy(const wickr_parse_result_t *source
         return NULL;
     }
     
-    wickr_packet_header_t *header_copy = wickr_packet_header_copy(source->header);
+    wickr_key_exchange_set_t *header_copy = wickr_key_exchange_set_copy(source->key_exchange_set);
     wickr_cipher_result_t *enc_payload_copy = wickr_cipher_result_copy(source->enc_payload);
     wickr_key_exchange_t *key_exchange_copy = wickr_key_exchange_copy(source->key_exchange);
     
     wickr_parse_result_t *copy = __wickr_parse_result_create(header_copy, key_exchange_copy, enc_payload_copy, source->signature_status, source->err);
     
     if (!copy) {
-        wickr_packet_header_destroy(&header_copy);
+        wickr_key_exchange_set_destroy(&header_copy);
         wickr_cipher_result_destroy(&enc_payload_copy);
         wickr_key_exchange_destroy(&key_exchange_copy);
     }
@@ -1090,7 +802,7 @@ void wickr_parse_result_destroy(wickr_parse_result_t **result)
         return;
     }
     
-    wickr_packet_header_destroy(&(*result)->header);
+    wickr_key_exchange_set_destroy(&(*result)->key_exchange_set);
     wickr_cipher_result_destroy(&(*result)->enc_payload);
     wickr_key_exchange_destroy(&(*result)->key_exchange);
     wickr_free(*result);
@@ -1214,11 +926,11 @@ wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t 
         
     }
     
-    wickr_packet_header_t packet_header;
+    wickr_key_exchange_set_t packet_header;
     packet_header.exchanges = exchange_array;
     packet_header.sender_pub = exchange_key;
     
-    wickr_cipher_result_t *enc_header = wickr_packet_header_encrypt(&packet_header, engine, header_key);
+    wickr_cipher_result_t *enc_header = wickr_key_exchange_set_encrypt(&packet_header, engine, header_key);
     wickr_exchange_array_destroy(&exchange_array);
     
     if (!enc_header) {
@@ -1280,7 +992,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     
     wickr_cipher_key_t *header_key = header_keygen_func(*engine, header_cipher_result->cipher, sender_signing_identity);
     
-    wickr_packet_header_t *header = wickr_packet_header_create_from_cipher(engine, header_cipher_result, header_key);
+    wickr_key_exchange_set_t *header = wickr_key_exchange_set_create_from_cipher(engine, header_cipher_result, header_key);
     
     wickr_cipher_key_destroy(&header_key);
     wickr_cipher_result_destroy(&header_cipher_result);
@@ -1295,10 +1007,10 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     wickr_key_exchange_t *key_exchange = NULL;
     
     if (receiver_node_id) {
-        key_exchange = wickr_packet_header_find(header, receiver_node_id);
+        key_exchange = wickr_key_exchange_set_find(header, receiver_node_id);
         
         if (!key_exchange) {
-            wickr_packet_header_destroy(&header);
+            wickr_key_exchange_set_destroy(&header);
             wickr__proto__packet__free_unpacked(proto_packet, NULL);
             return wickr_parse_result_create_failure(PACKET_SIGNATURE_VALID, ERROR_NODE_NOT_FOUND);
         }
@@ -1312,7 +1024,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     
     if (!payload_result) {
         wickr_key_exchange_destroy(&key_exchange);
-        wickr_packet_header_destroy(&header);
+        wickr_key_exchange_set_destroy(&header);
         return wickr_parse_result_create_failure(PACKET_SIGNATURE_VALID, ERROR_CORRUPT_PACKET);
     }
     
@@ -1320,7 +1032,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     
     if (!final_result) {
         wickr_key_exchange_destroy(&key_exchange);
-        wickr_packet_header_destroy(&header);
+        wickr_key_exchange_set_destroy(&header);
         wickr_cipher_result_destroy(&payload_result);
     }
     
@@ -1348,13 +1060,22 @@ wickr_decode_result_t *wickr_decode_result_from_parse_result(const wickr_packet_
     receiver_node.ephemeral_keypair = &receiver_key;
     receiver_node.id_chain = receiver_signing_identity;
     
-    wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(engine, sender_signing_identity, &receiver_node, parse_result->header->sender_pub, parse_result->key_exchange, NULL, packet->version);
+    wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(engine,
+                                                                          sender_signing_identity,
+                                                                          &receiver_node,
+                                                                          parse_result->key_exchange_set->sender_pub,
+                                                                          parse_result->key_exchange,
+                                                                          NULL,
+                                                                          packet->version);
     
     if (!cipher_key) {
         return wickr_decode_result_create_failure(ERROR_KEY_EXCHANGE_FAILED);
     }
     
-    wickr_payload_t *payload = wickr_payload_create_from_cipher(engine, parse_result->enc_payload, cipher_key);
+    wickr_payload_t *payload = wickr_payload_create_from_cipher(engine,
+                                                                parse_result->enc_payload,
+                                                                cipher_key);
+    
     
     if (!payload) {
         wickr_cipher_key_destroy(&cipher_key);

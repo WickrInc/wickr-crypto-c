@@ -15,8 +15,6 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 
-typedef struct _Wickr__Proto__Header Wickr__Proto__Header;
-typedef struct _Wickr__Proto__Header__KeyExchange Wickr__Proto__Header__KeyExchange;
 typedef struct _Wickr__Proto__Packet Wickr__Proto__Packet;
 typedef struct _Wickr__Proto__Payload Wickr__Proto__Payload;
 typedef struct _Wickr__Proto__Payload__Meta Wickr__Proto__Payload__Meta;
@@ -27,30 +25,6 @@ typedef struct _Wickr__Proto__Payload__Meta__Ephemerality Wickr__Proto__Payload_
 
 
 /* --- messages --- */
-
-struct  _Wickr__Proto__Header__KeyExchange
-{
-  ProtobufCMessage base;
-  ProtobufCBinaryData node_id;
-  uint64_t key_id;
-  ProtobufCBinaryData exchange_data;
-};
-#define WICKR__PROTO__HEADER__KEY_EXCHANGE__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&wickr__proto__header__key_exchange__descriptor) \
-    , {0,NULL}, 0, {0,NULL} }
-
-
-struct  _Wickr__Proto__Header
-{
-  ProtobufCMessage base;
-  ProtobufCBinaryData sender_pub;
-  size_t n_exchanges;
-  Wickr__Proto__Header__KeyExchange **exchanges;
-};
-#define WICKR__PROTO__HEADER__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&wickr__proto__header__descriptor) \
-    , {0,NULL}, 0,NULL }
-
 
 struct  _Wickr__Proto__Packet
 {
@@ -100,28 +74,6 @@ struct  _Wickr__Proto__Payload
     , NULL, {0,NULL} }
 
 
-/* Wickr__Proto__Header__KeyExchange methods */
-void   wickr__proto__header__key_exchange__init
-                     (Wickr__Proto__Header__KeyExchange         *message);
-/* Wickr__Proto__Header methods */
-void   wickr__proto__header__init
-                     (Wickr__Proto__Header         *message);
-size_t wickr__proto__header__get_packed_size
-                     (const Wickr__Proto__Header   *message);
-size_t wickr__proto__header__pack
-                     (const Wickr__Proto__Header   *message,
-                      uint8_t             *out);
-size_t wickr__proto__header__pack_to_buffer
-                     (const Wickr__Proto__Header   *message,
-                      ProtobufCBuffer     *buffer);
-Wickr__Proto__Header *
-       wickr__proto__header__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   wickr__proto__header__free_unpacked
-                     (Wickr__Proto__Header *message,
-                      ProtobufCAllocator *allocator);
 /* Wickr__Proto__Packet methods */
 void   wickr__proto__packet__init
                      (Wickr__Proto__Packet         *message);
@@ -168,12 +120,6 @@ void   wickr__proto__payload__free_unpacked
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
-typedef void (*Wickr__Proto__Header__KeyExchange_Closure)
-                 (const Wickr__Proto__Header__KeyExchange *message,
-                  void *closure_data);
-typedef void (*Wickr__Proto__Header_Closure)
-                 (const Wickr__Proto__Header *message,
-                  void *closure_data);
 typedef void (*Wickr__Proto__Packet_Closure)
                  (const Wickr__Proto__Packet *message,
                   void *closure_data);
@@ -192,8 +138,6 @@ typedef void (*Wickr__Proto__Payload_Closure)
 
 /* --- descriptors --- */
 
-extern const ProtobufCMessageDescriptor wickr__proto__header__descriptor;
-extern const ProtobufCMessageDescriptor wickr__proto__header__key_exchange__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__packet__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__payload__descriptor;
 extern const ProtobufCMessageDescriptor wickr__proto__payload__meta__descriptor;

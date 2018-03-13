@@ -36,6 +36,7 @@
 #include "kdf.h"
 #include "memory.h"
 #include "node.h"
+#include "key_exchange.h"
 #include "protocol.h"
 #include "root_keys.h"
 #include "storage.h"

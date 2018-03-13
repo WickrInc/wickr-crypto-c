@@ -10,118 +10,25 @@
 #include <string.h>
 #include <stdio.h>
 
-// Packet Meta Testing
-DESCRIBE(wickr_packet_meta, "protocol: wickr_packet_meta")
+DESCRIBE(wickr_protocol_key_exchanges, "protocol: wickr_key_exchange")
 {
-    wickr_ephemeral_info_t ephemeral = { 3600, 3600 };
-    char *channelTag = "THIS IS A CHANNEL TAG";
-    wickr_buffer_t *channelTagBfr = wickr_buffer_create((uint8_t*)channelTag, strlen(channelTag));
-    wickr_packet_meta_t *packetMeta = wickr_packet_meta_create(ephemeral, channelTagBfr, 6001);
-
-    IT( "Packet Meta should not be NULL" )
-    {
-        SHOULD_NOT_BE_NULL(packetMeta)
-    }
-    END_IT
-    
-    if (packetMeta != NULL) {
-        IT( "Copy Packet Meta should compare to be equal")
-        {
-            wickr_packet_meta_t *copiedPacketMeta = wickr_packet_meta_copy(packetMeta);
-            SHOULD_NOT_BE_NULL(copiedPacketMeta)
-            if (copiedPacketMeta != NULL) {
-                SHOULD_EQUAL(packetMeta->content_type, copiedPacketMeta->content_type)
-                SHOULD_EQUAL(packetMeta->channel_tag->length, copiedPacketMeta->channel_tag->length)
-                if (packetMeta->channel_tag->length == copiedPacketMeta->channel_tag->length) {
-                    SHOULD_EQUAL(memcmp(packetMeta->channel_tag->bytes, copiedPacketMeta->channel_tag->bytes, packetMeta->channel_tag->length), 0)
-                }
-                wickr_packet_meta_destroy(&copiedPacketMeta);
-                SHOULD_BE_NULL(copiedPacketMeta)
-            }
-            wickr_packet_meta_destroy(&packetMeta);
-            SHOULD_BE_NULL(packetMeta)
-        }
-        END_IT
-    }
-}
-END_DESCRIBE
-
-static void testKeyExchange(wickr_key_exchange_t **keyExchange)
-{
-    IT( "Copy Key Exchange should compare to be equal")
-    {
-        wickr_key_exchange_t *copiedKeyExchange = wickr_key_exchange_copy(*keyExchange);
-        SHOULD_NOT_BE_NULL(copiedKeyExchange)
-        if (copiedKeyExchange != NULL) {
-            SHOULD_EQUAL((*keyExchange)->ephemeral_key_id, copiedKeyExchange->ephemeral_key_id)
-            SHOULD_EQUAL((*keyExchange)->node_id->length, copiedKeyExchange->node_id->length)
-            if ((*keyExchange)->node_id->length == copiedKeyExchange->node_id->length) {
-                SHOULD_EQUAL(memcmp((*keyExchange)->node_id->bytes,
-                                    copiedKeyExchange->node_id->bytes,
-                                    (*keyExchange)->node_id->length), 0)
-            }
-            SHOULD_EQUAL((*keyExchange)->exchange_data->length, copiedKeyExchange->exchange_data->length)
-            if ((*keyExchange)->exchange_data->length == copiedKeyExchange->exchange_data->length) {
-                SHOULD_EQUAL(memcmp((*keyExchange)->exchange_data->bytes,
-                                    copiedKeyExchange->exchange_data->bytes,
-                                    (*keyExchange)->exchange_data->length), 0)
-            }
-            wickr_key_exchange_destroy(&copiedKeyExchange);
-            SHOULD_BE_NULL(copiedKeyExchange)
-        }
-        
-    }
-    END_IT
-}
-
-// Key Exchange Testing
-DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
-{
+    /* Test setup */
     initTest();
-
-    uint64_t ephemeralKeyId = 1234567890;
     
-    wickr_buffer_t *nodeIDBfr = engine.wickr_crypto_engine_crypto_random(32);
-    wickr_buffer_t *exchangeDataBfr = engine.wickr_crypto_engine_crypto_random(128);
-    wickr_key_exchange_t *keyExchange = wickr_key_exchange_create(nodeIDBfr, ephemeralKeyId, exchangeDataBfr);
-    
-    IT( "wickr_key_exchange_create should not return NULL" )
-    {
-        SHOULD_NOT_BE_NULL(keyExchange)
-    }
-    END_IT
-    
-    if (keyExchange != NULL) {
-        testKeyExchange(&keyExchange);
-        wickr_key_exchange_destroy(&keyExchange);
-    }
+    wickr_key_exchange_t *key_exchange = NULL;
     
     wickr_cipher_key_t *pktKey = engine.wickr_crypto_engine_cipher_key_random(CIPHER_AES256_CTR);
     wickr_identity_chain_t *sender_identity = createIdentityChain("Alice");
     wickr_ec_key_t *exchange_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
     wickr_node_t *receiver = createUserNode("Bob", engine.wickr_crypto_engine_crypto_random(32));
     
-    keyExchange = wickr_key_exchange_create_with_packet_key(&engine,
-                                                            sender_identity,
-                                                            receiver,
-                                                            exchange_key,
-                                                            pktKey,
-                                                            NULL,
-                                                            CURRENT_PACKET_VERSION);
-    
-    
-    IT( "Create Key Exchange From Components should not return NULL")
-    {
-        SHOULD_NOT_BE_NULL(keyExchange)
-    }
-    END_IT
-    
-    if (keyExchange != NULL) {
-        testKeyExchange(&keyExchange);
-        wickr_key_exchange_destroy(&keyExchange);
+    if (key_exchange != NULL) {
+        wickr_key_exchange_destroy(&key_exchange);
     }
     
-    IT("should work with valid older version exchanges")
+    /* Positive tests */
+    
+    IT("key exchanges should encode / decode a packet key properly given the proper keys")
     {
         for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
             
@@ -160,6 +67,110 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
         for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
             
             wickr_buffer_t *psk = engine.wickr_crypto_engine_crypto_random(32);
+            wickr_key_exchange_t *exchange =  wickr_key_exchange_create_with_packet_key(&engine,
+                                                                                        sender_identity,
+                                                                                        receiver,
+                                                                                        exchange_key,
+                                                                                        pktKey,
+                                                                                        psk,
+                                                                                        i);
+            
+            wickr_cipher_key_t *key = wickr_key_exchange_derive_packet_key(&engine,
+                                                       sender_identity,
+                                                       receiver,
+                                                       exchange_key,
+                                                       exchange,
+                                                       psk,
+                                                       i);
+            
+            SHOULD_BE_TRUE(wickr_buffer_is_equal(key->key_data, pktKey->key_data, NULL));
+            SHOULD_EQUAL(key->cipher.cipher_id, pktKey->cipher.cipher_id);
+            SHOULD_EQUAL(key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
+            SHOULD_EQUAL(key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
+            SHOULD_EQUAL(key->cipher.key_len, pktKey->cipher.key_len);
+            SHOULD_EQUAL(key->cipher.iv_len, pktKey->cipher.iv_len);
+            
+            wickr_cipher_key_destroy(&key);
+            wickr_key_exchange_destroy(&exchange);
+            wickr_buffer_destroy(&psk);
+        }
+        
+    }
+    END_IT
+    
+    IT("can operate on raw bytes in the same way it operates on packet keys")
+    {
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            
+            /* Generate a random psk, and serialize the test key into bytes */
+            wickr_buffer_t *psk = engine.wickr_crypto_engine_crypto_random(32);
+            wickr_buffer_t *key_bytes = wickr_cipher_key_serialize(pktKey);
+            SHOULD_NOT_BE_NULL(key_bytes);
+            
+            /* Generate a key exchange using key as raw data */
+            wickr_key_exchange_t *exchange = wickr_key_exchange_create_with_data(&engine,
+                                                sender_identity,
+                                                receiver,
+                                                exchange_key,
+                                                key_bytes,
+                                                CIPHER_AES256_CTR,
+                                                psk,
+                                                i);
+            
+            
+            /* Derive the key bytes using the key exchange function */
+            wickr_buffer_t *decoded_bytes = wickr_key_exchange_derive_data(&engine,
+                                                                           sender_identity,
+                                                                           receiver,
+                                                                           exchange_key,
+                                                                           exchange,
+                                                                           psk,
+                                                                           i);
+            
+            SHOULD_NOT_BE_NULL(decoded_bytes);
+            SHOULD_BE_TRUE(wickr_buffer_is_equal(decoded_bytes, key_bytes, NULL));
+            
+            /* Run the key exchange derive again, this time asking for a key back */
+            wickr_cipher_key_t *key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                           sender_identity,
+                                                                           receiver,
+                                                                           exchange_key,
+                                                                           exchange,
+                                                                           psk,
+                                                                           i);
+            
+            SHOULD_NOT_BE_NULL(key);
+            
+            /* Verify that the key derived is the same as the key that was originally serialized in the raw data mode */
+            wickr_buffer_t *key_serialized = wickr_cipher_key_serialize(key);
+            SHOULD_NOT_BE_NULL(key_serialized);
+            SHOULD_BE_TRUE(wickr_buffer_is_equal(key_serialized, decoded_bytes, NULL));
+            
+            /* Verify that the key derived is equal to the original key */
+            SHOULD_BE_TRUE(wickr_buffer_is_equal(key->key_data, pktKey->key_data, NULL));
+            SHOULD_EQUAL(key->cipher.cipher_id, pktKey->cipher.cipher_id);
+            SHOULD_EQUAL(key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
+            SHOULD_EQUAL(key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
+            SHOULD_EQUAL(key->cipher.key_len, pktKey->cipher.key_len);
+            SHOULD_EQUAL(key->cipher.iv_len, pktKey->cipher.iv_len);
+            
+            /* Cleanup */
+            wickr_buffer_destroy(&key_bytes);
+            wickr_buffer_destroy(&decoded_bytes);
+            wickr_buffer_destroy(&key_serialized);
+            wickr_cipher_key_destroy(&key);
+            wickr_key_exchange_destroy(&exchange);
+            wickr_buffer_destroy(&psk);
+        }
+    }
+    END_IT
+    
+    /* Negative Tests */
+    
+    IT("should fail if the optional pre-shared key is incorrect")
+    {
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_buffer_t *psk = engine.wickr_crypto_engine_crypto_random(32);
             wickr_buffer_t *incorrect_psk = engine.wickr_crypto_engine_crypto_random(32);
             
             wickr_key_exchange_t *exchange =  wickr_key_exchange_create_with_packet_key(&engine,
@@ -179,7 +190,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
                                                                            i);
             
             SHOULD_BE_FALSE(wickr_buffer_is_equal(key ? key->key_data : NULL, pktKey->key_data, NULL));
-
+            
             wickr_cipher_key_destroy(&key);
             
             key = wickr_key_exchange_derive_packet_key(&engine,
@@ -191,165 +202,128 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
                                                        i);
             
             wickr_cipher_key_destroy(&key);
-
+            
             SHOULD_BE_FALSE(wickr_buffer_is_equal(key ? key->key_data : NULL, pktKey->key_data, NULL));
-            
-            key = wickr_key_exchange_derive_packet_key(&engine,
-                                                       sender_identity,
-                                                       receiver,
-                                                       exchange_key,
-                                                       exchange,
-                                                       psk,
-                                                       i);
-            
-            SHOULD_BE_TRUE(wickr_buffer_is_equal(key->key_data, pktKey->key_data, NULL));
-            SHOULD_EQUAL(key->cipher.cipher_id, pktKey->cipher.cipher_id);
-            SHOULD_EQUAL(key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
-            SHOULD_EQUAL(key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
-            SHOULD_EQUAL(key->cipher.key_len, pktKey->cipher.key_len);
-            SHOULD_EQUAL(key->cipher.iv_len, pktKey->cipher.iv_len);
-            
-            wickr_cipher_key_destroy(&key);
+            wickr_buffer_destroy(&psk);
             wickr_key_exchange_destroy(&exchange);
             wickr_buffer_destroy(&incorrect_psk);
-            wickr_buffer_destroy(&psk);
         }
         
     }
     END_IT
     
-    IT("should be able to derive a packet key from an existing exchange")
-    {
-        keyExchange =  wickr_key_exchange_create_with_packet_key(&engine,
-                                                                 sender_identity,
-                                                                 receiver,
-                                                                 exchange_key,
-                                                                 pktKey,
-                                                                 NULL,
-                                                                 CURRENT_PACKET_VERSION);
-
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_identity,
-                                                                              receiver,
-                                                                              exchange_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-        
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(cipher_key->key_data, pktKey->key_data, NULL));
-        SHOULD_EQUAL(cipher_key->cipher.cipher_id, pktKey->cipher.cipher_id);
-        SHOULD_EQUAL(cipher_key->cipher.is_authenticated, pktKey->cipher.is_authenticated);
-        SHOULD_EQUAL(cipher_key->cipher.auth_tag_len, pktKey->cipher.auth_tag_len);
-        SHOULD_EQUAL(cipher_key->cipher.key_len, pktKey->cipher.key_len);
-        SHOULD_EQUAL(cipher_key->cipher.iv_len, pktKey->cipher.iv_len);
-        wickr_cipher_key_destroy(&cipher_key);
-    }
-    END_IT
-    
     IT("should fail to derive a packet key given an incorrect dev id")
     {
-        wickr_buffer_t *incorrect_dev_id = engine.wickr_crypto_engine_crypto_random(32);
-        
-        wickr_node_t *receiver_copy = wickr_node_copy(receiver);
-        wickr_buffer_destroy_zero(&receiver_copy->dev_id);
-        receiver_copy->dev_id = incorrect_dev_id;
-        
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_identity,
-                                                                              receiver_copy,
-                                                                              exchange_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-        
-        wickr_node_destroy(&receiver_copy);
-        
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_buffer_t *incorrect_dev_id = engine.wickr_crypto_engine_crypto_random(32);
+            
+            wickr_node_t *receiver_copy = wickr_node_copy(receiver);
+            wickr_buffer_destroy_zero(&receiver_copy->dev_id);
+            receiver_copy->dev_id = incorrect_dev_id;
+            
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                                  sender_identity,
+                                                                                  receiver_copy,
+                                                                                  exchange_key,
+                                                                                  key_exchange,
+                                                                                  NULL,
+                                                                                  i);
+            
+            wickr_node_destroy(&receiver_copy);
+            
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        }
     }
     END_IT
     
     IT("should fail to derive a packet key given an incorrect local key")
     {
-        wickr_ec_key_t *incorrect_local_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
-        
-        wickr_node_t *receiver_copy = wickr_node_copy(receiver);
-        wickr_ec_key_destroy(&receiver_copy->ephemeral_keypair->ec_key);
-        receiver_copy->ephemeral_keypair->ec_key = incorrect_local_key;
-        
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_identity,
-                                                                              receiver_copy,
-                                                                              exchange_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-
-        wickr_node_destroy(&receiver_copy);
-        
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
-        
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_ec_key_t *incorrect_local_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
+            
+            wickr_node_t *receiver_copy = wickr_node_copy(receiver);
+            wickr_ec_key_destroy(&receiver_copy->ephemeral_keypair->ec_key);
+            receiver_copy->ephemeral_keypair->ec_key = incorrect_local_key;
+            
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                                  sender_identity,
+                                                                                  receiver_copy,
+                                                                                  exchange_key,
+                                                                                  key_exchange,
+                                                                                  NULL,
+                                                                                  i);
+            
+            wickr_node_destroy(&receiver_copy);
+            
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        }
     }
     END_IT
     
     IT("should fail to derive a packet key given an incorrect remote key")
     {
-        wickr_ec_key_t *incorrect_remote_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
-        wickr_buffer_destroy_zero(&incorrect_remote_key->pri_data);
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_identity,
-                                                                              receiver,
-                                                                              incorrect_remote_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-        wickr_ec_key_destroy(&incorrect_remote_key);
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_ec_key_t *incorrect_remote_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
+            wickr_buffer_destroy_zero(&incorrect_remote_key->pri_data);
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                                  sender_identity,
+                                                                                  receiver,
+                                                                                  incorrect_remote_key,
+                                                                                  key_exchange,
+                                                                                  NULL,
+                                                                                  i);
+            wickr_ec_key_destroy(&incorrect_remote_key);
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        }
     }
     END_IT
     
     IT("should fail to derive a packet key given an incorrect local root signing key")
     {
-        wickr_ec_key_t *incorrect_local_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
-        
-        wickr_node_t *receiver_copy = wickr_node_copy(receiver);
-        wickr_ec_key_destroy(&receiver_copy->id_chain->root->sig_key);
-        receiver_copy->id_chain->root->sig_key = incorrect_local_key;
-        
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_identity,
-                                                                              receiver_copy,
-                                                                              exchange_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-        
-        wickr_node_destroy(&receiver_copy);
-        
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
-        
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_ec_key_t *incorrect_local_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
+            
+            wickr_node_t *receiver_copy = wickr_node_copy(receiver);
+            wickr_ec_key_destroy(&receiver_copy->id_chain->root->sig_key);
+            receiver_copy->id_chain->root->sig_key = incorrect_local_key;
+            
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                                  sender_identity,
+                                                                                  receiver_copy,
+                                                                                  exchange_key,
+                                                                                  key_exchange,
+                                                                                  NULL,
+                                                                                  i);
+            
+            wickr_node_destroy(&receiver_copy);
+            
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+        }
     }
     END_IT
     
     IT("should fail to derive a packet key given an incorrect remote root signing key")
     {
-        wickr_ec_key_t *incorrect_remote_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
-        wickr_buffer_destroy_zero(&incorrect_remote_key->pri_data);
-        
-        wickr_identity_chain_t *sender_copy = wickr_identity_chain_copy(sender_identity);
-        wickr_ec_key_destroy(&sender_copy->root->sig_key);
-        sender_copy->root->sig_key = incorrect_remote_key;
-        
-        wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
-                                                                              sender_copy,
-                                                                              receiver,
-                                                                              exchange_key,
-                                                                              keyExchange,
-                                                                              NULL,
-                                                                              CURRENT_PACKET_VERSION);
-        wickr_identity_chain_destroy(&sender_copy);
-        
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
-        wickr_cipher_key_destroy(&cipher_key);
+        for (uint8_t i = OLDEST_PACKET_VERSION; i <= CURRENT_PACKET_VERSION; i++) {
+            wickr_ec_key_t *incorrect_remote_key = engine.wickr_crypto_engine_ec_rand_key(engine.default_curve);
+            wickr_buffer_destroy_zero(&incorrect_remote_key->pri_data);
+            
+            wickr_identity_chain_t *sender_copy = wickr_identity_chain_copy(sender_identity);
+            wickr_ec_key_destroy(&sender_copy->root->sig_key);
+            sender_copy->root->sig_key = incorrect_remote_key;
+            
+            wickr_cipher_key_t *cipher_key = wickr_key_exchange_derive_packet_key(&engine,
+                                                                                  sender_copy,
+                                                                                  receiver,
+                                                                                  exchange_key,
+                                                                                  key_exchange,
+                                                                                  NULL,
+                                                                                  i);
+            wickr_identity_chain_destroy(&sender_copy);
+            
+            SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
+            wickr_cipher_key_destroy(&cipher_key);
+        }
     }
     END_IT
     
@@ -360,7 +334,7 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
                                                                                   sender_identity,
                                                                                   receiver,
                                                                                   exchange_key,
-                                                                                  keyExchange,
+                                                                                  key_exchange,
                                                                                   NULL,
                                                                                   i);
             SHOULD_BE_FALSE(wickr_buffer_is_equal(cipher_key ? cipher_key->key_data : NULL, pktKey->key_data, NULL));
@@ -368,11 +342,8 @@ DESCRIBE(wickr_key_exchange, "protocol: wickr_key_exchange")
     }
     END_IT
     
-    
     wickr_cipher_key_destroy(&pktKey);
-    wickr_key_exchange_destroy(&keyExchange);
-    SHOULD_BE_NULL(keyExchange)
-    
+    wickr_key_exchange_destroy(&key_exchange);
     wickr_identity_chain_destroy(&sender_identity);
     wickr_ec_key_destroy(&exchange_key);
     wickr_node_destroy(&receiver);
@@ -387,152 +358,6 @@ createNodeID(char *baseString, int count)
     sprintf(nodeID, "%s %d", baseString, count);
     return wickr_buffer_create((uint8_t*)nodeID, strlen(nodeID));
 }
-
-wickr_exchange_array_t *
-createRandomExchangeArray(uint32_t count, char *nodeBaseStr)
-{
-    wickr_exchange_array_t *exchArray;
-    bool wickr_array_set_item_succeded = true;
-    
-    IT( "wickr_exchange_arraynew should return array" ) {
-        SHOULD_NOT_BE_NULL(exchArray = wickr_exchange_array_new(count))
-    } END_IT
-    
-    if (exchArray != NULL) {
-        for (int i=0; i<count; i++) {
-            uint64_t ephemeralKeyId = 1000000 + i;
-            wickr_buffer_t *nodeIDBfr = createNodeID(nodeBaseStr, i);
-            wickr_buffer_t *exchangeDataBfr = engine.wickr_crypto_engine_crypto_random(128);
-            
-            // Create the key exchange
-            wickr_key_exchange_t *keyExchange = wickr_key_exchange_create(nodeIDBfr, ephemeralKeyId, exchangeDataBfr);
-            if (!wickr_array_set_item(exchArray, i, keyExchange, false)) {
-                wickr_array_set_item_succeded = false;
-            }
-        }
-        
-        IT( "wickr_exchange_array set item should return true!") {
-            SHOULD_BE_TRUE(wickr_array_set_item_succeded)
-        } END_IT
-    }
-    
-    return exchArray;
-}
-
-// Exchange Array Testing
-DESCRIBE(wickr_exchange_array, "protocol: wickr_exchange_array")
-{
-    wickr_exchange_array_t *exchanges;
-    
-    int count = 8;
-    for (int i=0; i<8; i++) {
-        exchanges = createRandomExchangeArray(count, "NODEID: exchange_array:");
-        if (exchanges != NULL) {
-            wickr_exchange_array_destroy(&exchanges);
-            IT("wickr_exchange_array_destroy should clear local pointer") {
-                SHOULD_BE_NULL(exchanges)
-            } END_IT
-        }
-        count >>= 1;
-    }
-}
-END_DESCRIBE
-
-wickr_packet_header_t *
-createPacketHeader(int exchCount, char *nodeIDBaseString)
-{
-    wickr_exchange_array_t *exchanges = createRandomExchangeArray(exchCount, nodeIDBaseString);
-    wickr_ec_key_t *senderPub = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
-    
-    wickr_packet_header_t *pktHdr = wickr_packet_header_create(senderPub, exchanges);
-    return pktHdr;
-}
-
-// Packet Header Testing
-DESCRIBE(wickr_packet_header, "protocol: wickr_packet_header")
-{
-    initTest();
-    
-    int exchCount = 30;
-    char *nodeIDString = "NODEID: packet_header: CreateTest:";
-    wickr_packet_header_t *pktHdr = createPacketHeader(exchCount, nodeIDString);
-    
-    IT( "wickr_packet_header_create should not return NULL" )
-    {
-        SHOULD_NOT_BE_NULL(pktHdr)
-    }
-    END_IT
-    
-    // Test wickr_packet_header_find
-    bool wickr_packet_header_find_succeeded = true;
-    for (int i=0; i<exchCount; i++) {
-        wickr_buffer_t *nodeIDBfr = createNodeID(nodeIDString, i);
-        
-        wickr_key_exchange_t *foundKeyExchange = wickr_packet_header_find(pktHdr, nodeIDBfr);
-        wickr_buffer_destroy(&nodeIDBfr);
-        
-        if (! foundKeyExchange) {
-            wickr_packet_header_find_succeeded = false;
-        }
-        wickr_key_exchange_destroy(&foundKeyExchange);
-    }
-    IT("wickr_packet_header_find() should return valid Key Exchange") {
-        SHOULD_BE_TRUE(wickr_packet_header_find_succeeded)
-    } END_IT
-    
-    // Test wickr_packet_header_copy
-    if (pktHdr != NULL) {
-        wickr_packet_header_t *pktHdrCopy = wickr_packet_header_copy(pktHdr);
-        
-        IT("wickr_packet_header_copy() should return valid Packet Header") {
-            SHOULD_NOT_BE_NULL(pktHdrCopy)
-            if (pktHdrCopy != NULL) {
-                SHOULD_NOT_EQUAL(pktHdr, pktHdrCopy)
-                SHOULD_NOT_EQUAL(pktHdr->exchanges, pktHdrCopy->exchanges)
-                SHOULD_NOT_EQUAL(pktHdr->sender_pub, pktHdrCopy->sender_pub)
-                
-                //Compare the contents of the sender_pub
-                if (pktHdr->sender_pub != NULL) {
-                    SHOULD_EQUAL(memcmp(&pktHdr->sender_pub->curve,
-                                        &pktHdrCopy->sender_pub->curve,
-                                        sizeof(pktHdr->sender_pub->curve)), 0)
-                    //Compare the contents of the public data
-                    
-                    SHOULD_BE_TRUE(wickr_buffer_is_equal(pktHdr->sender_pub->pub_data, pktHdrCopy->sender_pub->pub_data, NULL));
-                    
-                }
-            }
-        } END_IT
-        
-        // Test the destroy of the pkt header
-        if (pktHdrCopy != NULL) {
-            IT("wickr_packet_header_destroy() should clean up memory") {
-                wickr_packet_header_destroy(&pktHdrCopy);
-                
-                SHOULD_BE_NULL(pktHdrCopy)
-            } END_IT
-        }
-        
-    }
-    
-    // Test wickr_packet_header_serialize
-    if (pktHdr != NULL) {
-        IT("wickr_packet_header_encrypt() should not return NULL") {
-            wickr_cipher_key_t *hdrKey = engine.wickr_crypto_engine_cipher_key_random(CIPHER_AES256_GCM);
-            wickr_cipher_result_t *result;
-            
-            SHOULD_NOT_BE_NULL(result = wickr_packet_header_encrypt(pktHdr, &engine, hdrKey))
-            wickr_cipher_result_destroy(&result);
-            wickr_cipher_key_destroy(&hdrKey);
-            
-        } END_IT
-    }
-    
-    wickr_packet_header_destroy(&pktHdr);
-    SHOULD_BE_NULL(pktHdr);
-
-}
-END_DESCRIBE
 
 static wickr_cipher_key_t *__gen_test_header_key(const wickr_crypto_engine_t engine, wickr_cipher_t cipher, const wickr_identity_chain_t *id_chain)
 {
@@ -693,7 +518,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         SHOULD_EQUAL(parse_result->err, ERROR_NODE_NOT_FOUND);
         SHOULD_EQUAL(parse_result->signature_status, PACKET_SIGNATURE_VALID);
         SHOULD_BE_NULL(parse_result->enc_payload);
-        SHOULD_BE_NULL(parse_result->header);
+        SHOULD_BE_NULL(parse_result->key_exchange_set);
         SHOULD_BE_NULL(parse_result->key_exchange);
         
         wickr_parse_result_t *copy_result = wickr_parse_result_copy(parse_result);
@@ -713,7 +538,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         SHOULD_EQUAL(parse_result->err, ERROR_MAC_INVALID);
         SHOULD_EQUAL(parse_result->signature_status, PACKET_SIGNATURE_INVALID);
         SHOULD_BE_NULL(parse_result->enc_payload);
-        SHOULD_BE_NULL(parse_result->header);
+        SHOULD_BE_NULL(parse_result->key_exchange_set);
         SHOULD_BE_NULL(parse_result->key_exchange);
         wickr_parse_result_destroy(&parse_result);
     }
@@ -727,7 +552,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         SHOULD_EQUAL(parse_result->err, ERROR_CORRUPT_PACKET);
         SHOULD_EQUAL(parse_result->signature_status, PACKET_SIGNATURE_VALID);
         SHOULD_BE_NULL(parse_result->enc_payload);
-        SHOULD_BE_NULL(parse_result->header);
+        SHOULD_BE_NULL(parse_result->key_exchange_set);
         SHOULD_BE_NULL(parse_result->key_exchange);
         wickr_cipher_key_destroy(&rand_key);
         wickr_parse_result_destroy(&parse_result);
@@ -743,7 +568,7 @@ DESCRIBE(wickr_packet_create_from_components, "protocol: wickr_packet_create_fro
         SHOULD_EQUAL(parse_result->err, E_SUCCESS);
         SHOULD_EQUAL(parse_result->signature_status, PACKET_SIGNATURE_VALID);
         SHOULD_NOT_BE_NULL(parse_result->enc_payload);
-        SHOULD_NOT_BE_NULL(parse_result->header);
+        SHOULD_NOT_BE_NULL(parse_result->key_exchange_set);
         SHOULD_NOT_BE_NULL(parse_result->key_exchange);
         
         wickr_parse_result_t *copy_result = wickr_parse_result_copy(parse_result);

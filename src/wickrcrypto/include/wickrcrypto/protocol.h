@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include "node.h"
 #include "ecdh.h"
+#include "key_exchange.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -134,40 +135,6 @@ wickr_packet_meta_t *wickr_packet_meta_copy(const wickr_packet_meta_t *source);
 void wickr_packet_meta_destroy(wickr_packet_meta_t **meta);
 
 /**
- @ingroup wickr_protocol
- @struct wickr_key_exchange
- @brief Node-bound public key exchange data to put in a message header
- @var wickr_key_exchange::node_id
- the identifier of the node this key exchange is addressed to
- @var wickr_key_exchange::ephemeral_key_id
- the identifier of the 'wickr_ephemeral_key' owned by 'node_id' that was used to create the 'exchange_data'
- @var wickr_key_exchange::exchange_data
- computed key exchange data destined for 'node_id'
- */
-struct wickr_key_exchange {
-    wickr_buffer_t *node_id;
-    uint64_t ephemeral_key_id;
-    wickr_buffer_t *exchange_data;
-};
-
-typedef struct wickr_key_exchange wickr_key_exchange_t;
-
-/**
- 
- @ingroup wickr_protocol
- 
- Create a key exchange from properties
-
- @param node_id see 'wickr_key_exchange' property documentation property documentation
- @param ephemeral_key_id see 'wickr_key_exchange' property documentation property documentation
- @param exchange_data see 'wickr_key_exchange' property documentation property documentation
- @return a newly allocated packet metadata set owning the properties passed in
- */
-wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id,
-                                                uint64_t ephemeral_key_id,
-                                                wickr_buffer_t *exchange_data);
-
-/**
  
  @ingroup wickr_protocol
  
@@ -182,7 +149,7 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *node_id,
  @param engine a crypto engine supporting ECDH key exchanges
  @param sender the identity chain of the sender
  @param receiver the node this key exchange is destined for
- @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver
+ @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver
  @param packet_key the cipher key to use for encrypting the payload of the message that is being created. This is the data we are protecting
  @param psk optional pre-shared key data to put into the 'salt' field of HKDF
  @param version the version of the packet being generated
@@ -212,7 +179,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_packet_key(const wickr_cryp
  @param engine a crypto engine supporting ECDH key exchanges
  @param sender the identity chain of the sender
  @param receiver the node this key exchange is destined for
- @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver
+ @param packet_exchange_key an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver
  @param data_to_wrap This is the data we are protecting by the output of the key exchange
  @param exchange_cipher the cipher that the exchange should use protect 'data_to_wrap' with
  @param psk optional pre-shared key data to put into the 'salt' field of HKDF
@@ -279,175 +246,39 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
                                                uint8_t version);
 
 /**
- 
  @ingroup wickr_protocol
  
- Copy a key exchange
+ Serialize-Then-Encrypt a packet key exchange set
  
- @param source the key exchange to copy
- @return a newly allocated node holding a deep copy of the properties of 'source'
- */
-wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Destroy a key exchange
- 
- @param exchange a pointer to the key exchange to destroy. All properties of '*exchange' will also be destroyed
- */
-void wickr_key_exchange_destroy(wickr_key_exchange_t **exchange);
-
-typedef wickr_array_t wickr_exchange_array_t;
-
-/**
- 
- @ingroup wickr_protocol
- 
- Allocate a new key exchange array
-
- @param exchange_count the number of exchanges the array should hold
- @return a newly allocated wickr_array for key exchange objects
- */
-wickr_exchange_array_t *wickr_exchange_array_new(uint32_t exchange_count);
-
-/**
- @ingroup wickr_protocol
- 
- Set an item in a key exchange array
-
- NOTE: Calling this function does not make a copy of 'exchange', the array simply takes ownership of it
- 
- @param array the array to set 'exchange' into
- @param index the location in 'array' to set exchange
- @param exchange the exchange to set at position 'index' in 'array'
- @return true if setting succeeds, false if the index is out of bounds
- */
-bool wickr_exchange_array_set_item(wickr_exchange_array_t *array, uint32_t index, wickr_key_exchange_t *exchange);
-
-/**
- @ingroup wickr_protocol
- 
- Fetch a key exchange from an exchange array
- 
- NOTE: Calling this function does not make a copy of the exchange being returned, the array still owns it
-
- @param array the array to fetch 'index' from
- @param index the index to fetch from 'array'
- @return a key exchange representing 'index' from the array
- */
-wickr_key_exchange_t *wickr_exchange_array_fetch_item(wickr_exchange_array_t *array, uint32_t index);
-
-/**
- @ingroup wickr_protocol
-
- @param array the array to copy
- @return a newly allocated key exchange array that contains deep copies of the items from 'array'
- */
-wickr_array_t *wickr_exchange_array_copy(wickr_exchange_array_t *array);
-
-/**
- @ingroup wickr_protocol
-
- @param array a pointer to the array to destroy, all items of '*array' are also destroyed
- */
-void wickr_exchange_array_destroy(wickr_exchange_array_t **array);
-
-/**
- @ingroup wickr_protocol
- @struct wickr_packet_header
- @brief The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information.
- 
- @var wickr_packet_header::sender_pub
- the public EC key that the sender used to derive the key exchanges contained within 'exchanges'
- @var wickr_packet_header::exchanges
- an array of key exchanges, one for each node that will be receiving this message
- */
-struct wickr_packet_header {
-    wickr_ec_key_t *sender_pub;
-    wickr_exchange_array_t *exchanges;
-};
-
-typedef struct wickr_packet_header wickr_packet_header_t;
-
-/**
- @ingroup wickr_protocol
- 
- Create a packet header from components
-
- @param sender_pub see 'wickr_packet_header' property documentation property documentation
- @param exchanges see 'wickr_packet_header' property documentation property documentation
- @return a newly allocated packet header owning the properties passed in
- */
-wickr_packet_header_t *wickr_packet_header_create(wickr_ec_key_t *sender_pub, wickr_exchange_array_t *exchanges);
-
-/**
- @ingroup wickr_protocol
- 
- Find a particular entry in the exchange list of a packet header
-
- @param header the header to search
- @param node_id the node identifier of the exchange to find
- @return the key exchange for 'node_id' or NULL if it cannot be found
- */
-wickr_key_exchange_t *wickr_packet_header_find(const wickr_packet_header_t *header, const wickr_buffer_t *node_id);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Copy a packet header
- 
- @param source the packet header to copy
- @return a newly allocated packet header holding a deep copy of the properties of 'source'
- */
-wickr_packet_header_t *wickr_packet_header_copy(const wickr_packet_header_t *source);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Destroy a packet header
- 
- @param header a pointer to the packet header to destroy. All properties of '*header' will also be destroyed
- */
-void wickr_packet_header_destroy(wickr_packet_header_t **header);
-
-/**
- @ingroup wickr_protocol
- 
- Serialize-Then-Encrypt a packet header
- 
- Packet headers are serialized using protocol buffers (message.pb-c.h)
+ The packet key exchange set is serialized using protocol buffers (message.pb-c.h)
  
  NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
 
 
- @param header the header to encrypt
+ @param exchange_set the key_exchange_set to encrypt
  @param engine a crypto engine capable of encryption using header_key
- @param header_key the key to encrypt the header with
- @return an encrypted header
+ @param header_key the key to encrypt the key exchange set with
+ @return an encrypted key exchange set
  */
-wickr_cipher_result_t *wickr_packet_header_encrypt(const wickr_packet_header_t *header,
-                                                   const wickr_crypto_engine_t *engine,
-                                                   const wickr_cipher_key_t *header_key);
+wickr_cipher_result_t *wickr_key_exchange_set_encrypt(const wickr_key_exchange_set_t *exchange_set,
+                                                      const wickr_crypto_engine_t *engine,
+                                                      const wickr_cipher_key_t *header_key);
 
 /**
  @ingroup wickr_protocol
  
- Decrypt-Then-Deserialize a packet header
+ Decrypt-Then-Deserialize a packet key exchange set
  
  NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
 
  @param engine a crypto engine capable of decryption using header_key
- @param cipher_result an encrypted packet header
+ @param cipher_result an encrypted key exchange set
  @param header_key the key to use for decryption
- @return a decrypted packet header or NULL if the decryption key is incorrect
+ @return a decrypted key exchange set or NULL if the decryption key is incorrect
  */
-wickr_packet_header_t *wickr_packet_header_create_from_cipher(const wickr_crypto_engine_t *engine,
-                                                              const wickr_cipher_result_t *cipher_result,
-                                                              const wickr_cipher_key_t *header_key);
+wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_cipher(const wickr_crypto_engine_t *engine,
+                                                                    const wickr_cipher_result_t *cipher_result,
+                                                                    const wickr_cipher_key_t *header_key);
 
 /**
  @ingroup wickr_protocol
@@ -539,7 +370,7 @@ wickr_payload_t *wickr_payload_create_from_cipher(const wickr_crypto_engine_t *e
  @var wickr_packet::version
  the protocol version of the packet
  @var wickr_packet::content
- the content of the packet including the serialized header, and payload
+ the content of the packet including the serialized key exchange set, and payload
  @var wickr_packet::signature
  the ECDSA signature of 'content'
  */
@@ -614,8 +445,8 @@ void wickr_packet_destroy(wickr_packet_t **packet);
  status of the parse operation
  @var wickr_parse_result::signature_status
  status of the message signature
- @var wickr_parse_result::header
- parsed header content of the message after decrypting it with the header key
+ @var wickr_parse_result::key_exchange_set
+ parsed key exchange set for the message after decrypting it with the header key
  @var wickr_parse_result::key_exchange
  if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key_exchange will be NULL
  @var wickr_parse_result::enc_payload
@@ -624,7 +455,7 @@ void wickr_packet_destroy(wickr_packet_t **packet);
 struct wickr_parse_result {
     wickr_decode_error err;
     wickr_packet_signature_status signature_status;
-    wickr_packet_header_t *header;
+    wickr_key_exchange_set_t *key_exchange_set;
     wickr_key_exchange_t *key_exchange;
     wickr_cipher_result_t *enc_payload;
 };
@@ -648,12 +479,12 @@ wickr_parse_result_t *wickr_parse_result_create_failure(wickr_packet_signature_s
  
  Create a positive parse result
 
- @param header the parsed header information
+ @param key_exchange_set the parsed public key exchange set for all recipients
  @param key_exchange discovered key exchange for a particular requested node, or NULL if no node was specified
  @param enc_payload the encrypted payload parsed from the message
  @return a parse result containing the provided information and non-error codes for 'signature_status' and 'err'
  */
-wickr_parse_result_t *wickr_parse_result_create_success(wickr_packet_header_t *header,
+wickr_parse_result_t *wickr_parse_result_create_success(wickr_key_exchange_set_t *key_exchange_set,
                                                         wickr_key_exchange_t *key_exchange,
                                                         wickr_cipher_result_t *enc_payload);
 
@@ -750,14 +581,14 @@ void wickr_decode_result_destroy(wickr_decode_result_t **result);
  NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
 
  @param engine a crypto engine capable of ECDH and signing operations using exchange_key, and cipher operations using payload_key
- @param header_key the key to encrypt the header of the message with
+ @param header_key the key to encrypt the key exchange set of the message with
  @param payload_key the key to encrypt the payload of the message with
- @param exchange_key the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet header
+ @param exchange_key the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet key exchange set
  @param payload the plaintext payload to encrypt and bundle into the packet
  @param recipients the array of nodes that the
  @param sender_signing_identity the identity chain belonging to the creator of the packet
  @param version the version of the protocol encoding to use for this packet
- @return a 'sender_signing_identity' signed packet containing encrypted payload 'payload, and header containing key exchanges for 'recipients'
+ @return a 'sender_signing_identity' signed packet containing encrypted payload 'payload, and key exchange set for 'recipients'
  */
 wickr_packet_t *wickr_packet_create_from_components(const wickr_crypto_engine_t *engine,
                                                     const wickr_cipher_key_t *header_key,
@@ -781,7 +612,7 @@ typedef wickr_cipher_key_t *(*wickr_header_keygen_func)(const wickr_crypto_engin
 
  @param engine a crypto engine
  @param packet the packet to parse
- @param receiver_node_id node_id of the recipient. If set, parsing will fail if a node_id labeled key exchange is not found in the decoded header's key exchange list. If not set, the resulting parse result will contain NULL for the key exchange and simply return all other properties
+ @param receiver_node_id node_id of the recipient. If set, parsing will fail if a node_id labeled key exchange is not found in the key exchange list. If not set, the resulting parse result will contain NULL for the key exchange and simply return all other properties
  @param header_keygen_func a function that can generate a header key for this packet
  @param sender_signing_identity the sender of the packet
  @return a parse result containing a successful or unsuccessful error and signature status
