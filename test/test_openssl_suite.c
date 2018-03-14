@@ -307,6 +307,7 @@ DESCRIBE(openssl_cipher_gcm, "openssl_suite: openssl_aes256_encrypt(gcm), openss
         SHOULD_BE_NULL(openssl_aes256_decrypt(result, NULL, NULL, true));
         wickr_buffer_destroy(&result->cipher_text);
         SHOULD_BE_NULL(openssl_aes256_decrypt(result, NULL, test_key, true));
+        wickr_cipher_result_destroy(&result);
     }
     END_IT
     
