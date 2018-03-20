@@ -1,17 +1,6 @@
 syntax = "proto2";
 package wickr.proto;
 
-message header {
-    message key_exchange {
-        required bytes node_id = 1;
-        required uint64 key_id = 2;
-        required bytes exchange_data = 3;
-    }
-    
-    required bytes sender_pub = 1;
-    repeated key_exchange exchanges = 2;
-}
-
 message packet {
     required bytes enc_header = 1;
     required bytes enc_payload = 2;

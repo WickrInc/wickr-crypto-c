@@ -455,8 +455,8 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
     wickr_buffer_t exchange_key_buffer = { return_exchange->sender_pub.len, return_exchange->sender_pub.data };
     
     wickr_key_exchange_t exchange;
-    exchange.ephemeral_key_id = 0;
-    exchange.node_id = ctx->local_identity->id_chain->node->identifier;
+    exchange.key_id = 0;
+    exchange.exchange_id = ctx->local_identity->id_chain->node->identifier;
     exchange.exchange_data = &key_exchange_buffer;
     
     wickr_ec_key_t *ec_key = ctx->engine.wickr_crypto_engine_ec_key_import(&exchange_key_buffer, false);

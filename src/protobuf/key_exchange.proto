@@ -1,0 +1,13 @@
+syntax = "proto2";
+package wickr.proto;
+
+message key_exchange_set {
+    message exchange {
+        required bytes identifier = 1;
+        required uint64 key_id = 2;
+        required bytes exchange_data = 3;
+    }
+
+    required bytes sender_pub = 1;
+    repeated exchange exchanges = 2;
+}

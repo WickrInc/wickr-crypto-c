@@ -1839,6 +1839,8 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         SHOULD_BE_FALSE(wickr_transport_ctx_force_tx_key_evo(NULL));
         alice_transport->status = TRANSPORT_STATUS_NONE;
         SHOULD_BE_FALSE(wickr_transport_ctx_force_tx_key_evo(alice_transport));
+        
+        wickr_transport_ctx_destroy(&backup);
     }
     END_IT
     

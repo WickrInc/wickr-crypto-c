@@ -309,7 +309,7 @@ void __test_packet_decode(wickr_ctx_t *ctxUser1,
         SHOULD_NOT_BE_NULL(inPacket->packet->signature);
         SHOULD_EQUAL(inPacket->packet->version, ctxUser1->pkt_enc_version);
         SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
-        SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange_set);
         SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
         
         wickr_decode_result_t *decodeResult;
@@ -446,7 +446,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
             SHOULD_NOT_BE_NULL(inPacket->packet->signature);
             SHOULD_EQUAL(inPacket->packet->version, DEFAULT_PKT_ENC_VERSION);
             SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
-            SHOULD_NOT_BE_NULL(inPacket->parse_result->header);
+            SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange_set);
             SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
             
             wickr_decode_result_t *decode_result = wickr_ctx_decode_packet(ctxUser2, inPacket, nodeUser2->ephemeral_keypair->ec_key);

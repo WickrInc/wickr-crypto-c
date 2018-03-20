@@ -15,6 +15,8 @@
 #include "test_transport.h"
 #include "test_identity.h"
 #include "test_ephemeral_keypair.h"
+#include "test_packet_meta.h"
+#include "test_key_exchange.h"
 
 #include "cspec_output_unit.h"
 
@@ -34,9 +36,11 @@ void run_primitive_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(getDataFromBase64), output);
     CSpec_Run(DESCRIPTION(getHexStringFromData), output);
     CSpec_Run(DESCRIPTION(getDataFromHexString), output);
-    CSpec_Run(DESCRIPTION(wickr_packet_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_result), output);
+    CSpec_Run(DESCRIPTION(packet_meta), output);
+    CSpec_Run(DESCRIPTION(key_exchange), output);
+    CSpec_Run(DESCRIPTION(key_exchange_set), output);
 }
 
 void run_crypto_engine_tests(CSpecOutputStruct *output)
@@ -71,9 +75,7 @@ void run_transport_tests(CSpecOutputStruct *output)
 
 void run_messaging_protocol_tests(CSpecOutputStruct *output)
 {
-    CSpec_Run(DESCRIPTION(wickr_key_exchange), output);
-    CSpec_Run(DESCRIPTION(wickr_exchange_array), output);
-    CSpec_Run(DESCRIPTION(wickr_packet_header), output);
+    CSpec_Run(DESCRIPTION(wickr_protocol_key_exchanges), output);
     CSpec_Run(DESCRIPTION(wickr_packet_create_from_components), output);
 }
 
