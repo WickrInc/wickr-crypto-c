@@ -5,7 +5,7 @@ var searchData=
   ['scrypt_5f2_5f17_5fcost',['SCRYPT_2_17_COST',['../group__wickr__kdf.html#ga5e8df13eb2cd5cc1e09f377675ddc50f',1,'kdf.h']]],
   ['seed',['seed',['../structwickr__stream__iv.html#a221017bc41b4cc36bf31f13a0c299db1',1,'wickr_stream_iv']]],
   ['sender',['sender',['../structwickr__ctx__packet.html#ac57d2b0f48fc3dad5b72d408e30b7b8b',1,'wickr_ctx_packet']]],
-  ['sender_5fpub',['sender_pub',['../structwickr__packet__header.html#aa32926d47dd2639030523593bfefc998',1,'wickr_packet_header']]],
+  ['sender_5fpub',['sender_pub',['../structwickr__key__exchange__set.html#ac0b304b3014b3c7bfe181526c2f3fc37',1,'wickr_key_exchange_set']]],
   ['sig_5fdata',['sig_data',['../structwickr__ecdsa__result.html#ada32a17d9f713f84142fc6a338ebcc48',1,'wickr_ecdsa_result']]],
   ['sig_5fkey',['sig_key',['../structwickr__identity.html#a788a08ac03576cb76d9b2eaf81a7af3e',1,'wickr_identity']]],
   ['signature',['signature',['../structwickr__ephemeral__keypair.html#aea420be2397d798a560fa973be86228c',1,'wickr_ephemeral_keypair::signature()'],['../structwickr__identity.html#afb6bd9f5f9707be10fb273ce8d0b5928',1,'wickr_identity::signature()'],['../structwickr__packet.html#a8b5e9a4eed6f133ffedd1aa9178b5567',1,'wickr_packet::signature()']]],

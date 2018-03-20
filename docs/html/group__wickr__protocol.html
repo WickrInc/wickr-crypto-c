@@ -78,12 +78,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__packet__meta.html">wickr_packet_meta</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">control metadata found in the encrypted payload of a packet  <a href="structwickr__packet__meta.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node-bound public key exchange data to put in a message header.  <a href="structwickr__key__exchange.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__packet__header.html">wickr_packet_header</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information.  <a href="structwickr__packet__header.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__payload.html">wickr_payload</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The encrypted body content of a Wickr packet.  <a href="structwickr__payload.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,38 +106,14 @@ Functions</h2></td></tr>
 <tr class="separator:ga1bb5a0f2a49069679b174b3e6521fe9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad165ad670da761478cf5f8f91223c1d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gad165ad670da761478cf5f8f91223c1d3">wickr_packet_meta_destroy</a> (<a class="el" href="structwickr__packet__meta.html">wickr_packet_meta_t</a> **meta)</td></tr>
 <tr class="separator:gad165ad670da761478cf5f8f91223c1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2823b3430070b0db9ef1f40d3a804ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gac2823b3430070b0db9ef1f40d3a804ea">wickr_key_exchange_create</a> (<a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *node_id, uint64_t ephemeral_key_id, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *exchange_data)</td></tr>
-<tr class="separator:gac2823b3430070b0db9ef1f40d3a804ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac21e7b7fda1612923d83e7e75166209c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gac21e7b7fda1612923d83e7e75166209c">wickr_key_exchange_create_with_packet_key</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender, const <a class="el" href="structwickr__node.html">wickr_node_t</a> *receiver, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *packet_exchange_key, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *packet_key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *psk, uint8_t version)</td></tr>
 <tr class="separator:gac21e7b7fda1612923d83e7e75166209c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2b967bbdd161d8e37d19c4ab9621771b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga2b967bbdd161d8e37d19c4ab9621771b">wickr_key_exchange_create_with_data</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *sender, const <a class="el" href="structwickr__node.html">wickr_node_t</a> *receiver, <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *packet_exchange_key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data_to_wrap, <a class="el" href="structwickr__cipher.html">wickr_cipher_t</a> exchange_cipher, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *psk, uint8_t version)</td></tr>
 <tr class="separator:ga2b967bbdd161d8e37d19c4ab9621771b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2235a7c168e3806aa1a71b5a5c8dee48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga2235a7c168e3806aa1a71b5a5c8dee48">wickr_key_exchange_copy</a> (const <a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *source)</td></tr>
-<tr class="separator:ga2235a7c168e3806aa1a71b5a5c8dee48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54b6481f8f4b61fb949bec17d47cd3de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga54b6481f8f4b61fb949bec17d47cd3de">wickr_key_exchange_destroy</a> (<a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> **exchange)</td></tr>
-<tr class="separator:ga54b6481f8f4b61fb949bec17d47cd3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga907d700b76b748f80796b4404c7172c2"><td class="memItemLeft" align="right" valign="top">wickr_exchange_array_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga907d700b76b748f80796b4404c7172c2">wickr_exchange_array_new</a> (uint32_t exchange_count)</td></tr>
-<tr class="separator:ga907d700b76b748f80796b4404c7172c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad3c6687c07ae5e66efcbc55da0febd85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gad3c6687c07ae5e66efcbc55da0febd85">wickr_exchange_array_set_item</a> (wickr_exchange_array_t *array, uint32_t index, <a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *exchange)</td></tr>
-<tr class="separator:gad3c6687c07ae5e66efcbc55da0febd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga333510c3c7eeb8e33f94495de6bb122d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga333510c3c7eeb8e33f94495de6bb122d">wickr_exchange_array_fetch_item</a> (wickr_exchange_array_t *array, uint32_t index)</td></tr>
-<tr class="separator:ga333510c3c7eeb8e33f94495de6bb122d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd04405337871aa3bcd550a051d778e1"><td class="memItemLeft" align="right" valign="top">wickr_array_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gacd04405337871aa3bcd550a051d778e1">wickr_exchange_array_copy</a> (wickr_exchange_array_t *array)</td></tr>
-<tr class="separator:gacd04405337871aa3bcd550a051d778e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc1e5f5836bc09c1d6b8d6203d02a0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gadc1e5f5836bc09c1d6b8d6203d02a0eb">wickr_exchange_array_destroy</a> (wickr_exchange_array_t **array)</td></tr>
-<tr class="separator:gadc1e5f5836bc09c1d6b8d6203d02a0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ad519d1b5dc3960c426db9a556404e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga8ad519d1b5dc3960c426db9a556404e1">wickr_packet_header_create</a> (<a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *sender_pub, wickr_exchange_array_t *exchanges)</td></tr>
-<tr class="separator:ga8ad519d1b5dc3960c426db9a556404e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac9fab2b713e40a607735bcce0befee96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gac9fab2b713e40a607735bcce0befee96">wickr_packet_header_find</a> (const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *header, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *node_id)</td></tr>
-<tr class="separator:gac9fab2b713e40a607735bcce0befee96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ffb8763c9ebf2ad7322d507d117d7ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga5ffb8763c9ebf2ad7322d507d117d7ba">wickr_packet_header_copy</a> (const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *source)</td></tr>
-<tr class="separator:ga5ffb8763c9ebf2ad7322d507d117d7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacb41cb9ad58871f01d8660e3ab115f4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gacb41cb9ad58871f01d8660e3ab115f4e">wickr_packet_header_destroy</a> (<a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> **header)</td></tr>
-<tr class="separator:gacb41cb9ad58871f01d8660e3ab115f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3495440a494c33a38ce4154b400e9809"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga3495440a494c33a38ce4154b400e9809">wickr_packet_header_encrypt</a> (const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *header, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key)</td></tr>
-<tr class="separator:ga3495440a494c33a38ce4154b400e9809"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga53ff33471ac0c4c7e3feedfcce520639"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga53ff33471ac0c4c7e3feedfcce520639">wickr_packet_header_create_from_cipher</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key)</td></tr>
-<tr class="separator:ga53ff33471ac0c4c7e3feedfcce520639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae67dccec73422de186348b3552f9c17b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gae67dccec73422de186348b3552f9c17b">wickr_key_exchange_set_encrypt</a> (const <a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *exchange_set, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key)</td></tr>
+<tr class="separator:gae67dccec73422de186348b3552f9c17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga398eef2370517ab8b12d35a2d2475c4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga398eef2370517ab8b12d35a2d2475c4e">wickr_key_exchange_set_create_from_cipher</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine, const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *cipher_result, const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *header_key)</td></tr>
+<tr class="separator:ga398eef2370517ab8b12d35a2d2475c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad7d51d39a8477d87557536ff42399186"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__payload.html">wickr_payload_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gad7d51d39a8477d87557536ff42399186">wickr_payload_create</a> (<a class="el" href="structwickr__packet__meta.html">wickr_packet_meta_t</a> *meta, <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *body)</td></tr>
 <tr class="separator:gad7d51d39a8477d87557536ff42399186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga96e1b0eabf307d112985946cbe2f6969"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__payload.html">wickr_payload_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga96e1b0eabf307d112985946cbe2f6969">wickr_payload_copy</a> (const <a class="el" href="structwickr__payload.html">wickr_payload_t</a> *source)</td></tr>
@@ -166,8 +136,8 @@ Functions</h2></td></tr>
 <tr class="separator:gab15d7556ad2806aa823ec2d3e3bf5a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2673bcfeae2f8d693e523809bb6bb30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gac2673bcfeae2f8d693e523809bb6bb30">wickr_parse_result_create_failure</a> (wickr_packet_signature_status signature_status, wickr_decode_error error)</td></tr>
 <tr class="separator:gac2673bcfeae2f8d693e523809bb6bb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae9d6837e2cea5b64993c124e671bd25f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#gae9d6837e2cea5b64993c124e671bd25f">wickr_parse_result_create_success</a> (<a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *header, <a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *key_exchange, <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *enc_payload)</td></tr>
-<tr class="separator:gae9d6837e2cea5b64993c124e671bd25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7bd98225a92620e1aa5940cf59fdbedf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga7bd98225a92620e1aa5940cf59fdbedf">wickr_parse_result_create_success</a> (<a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *key_exchange_set, <a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *key_exchange, <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *enc_payload)</td></tr>
+<tr class="separator:ga7bd98225a92620e1aa5940cf59fdbedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1671066ddc19b38ed05d4460d5a96706"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga1671066ddc19b38ed05d4460d5a96706">wickr_parse_result_copy</a> (const <a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> *source)</td></tr>
 <tr class="separator:ga1671066ddc19b38ed05d4460d5a96706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga706d39419c8991f417f37f556cee8df9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__protocol.html#ga706d39419c8991f417f37f556cee8df9">wickr_parse_result_destroy</a> (<a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a> **result)</td></tr>
@@ -408,234 +378,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gacd04405337871aa3bcd550a051d778e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacd04405337871aa3bcd550a051d778e1">&#9670;&nbsp;</a></span>wickr_exchange_array_copy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_array_t* wickr_exchange_array_copy </td>
-          <td>(</td>
-          <td class="paramtype">wickr_exchange_array_t *&#160;</td>
-          <td class="paramname"><em>array</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">array</td><td>the array to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated key exchange array that contains deep copies of the items from 'array' </dd></dl>
-
-</div>
-</div>
-<a id="gadc1e5f5836bc09c1d6b8d6203d02a0eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadc1e5f5836bc09c1d6b8d6203d02a0eb">&#9670;&nbsp;</a></span>wickr_exchange_array_destroy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void wickr_exchange_array_destroy </td>
-          <td>(</td>
-          <td class="paramtype">wickr_exchange_array_t **&#160;</td>
-          <td class="paramname"><em>array</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">array</td><td>a pointer to the array to destroy, all items of '*array' are also destroyed </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ga333510c3c7eeb8e33f94495de6bb122d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga333510c3c7eeb8e33f94495de6bb122d">&#9670;&nbsp;</a></span>wickr_exchange_array_fetch_item()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a>* wickr_exchange_array_fetch_item </td>
-          <td>(</td>
-          <td class="paramtype">wickr_exchange_array_t *&#160;</td>
-          <td class="paramname"><em>array</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Fetch a key exchange from an exchange array</p>
-<p>NOTE: Calling this function does not make a copy of the exchange being returned, the array still owns it</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">array</td><td>the array to fetch 'index' from </td></tr>
-    <tr><td class="paramname">index</td><td>the index to fetch from 'array' </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a key exchange representing 'index' from the array </dd></dl>
-
-</div>
-</div>
-<a id="ga907d700b76b748f80796b4404c7172c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga907d700b76b748f80796b4404c7172c2">&#9670;&nbsp;</a></span>wickr_exchange_array_new()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_exchange_array_t* wickr_exchange_array_new </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>exchange_count</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Allocate a new key exchange array</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">exchange_count</td><td>the number of exchanges the array should hold </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated wickr_array for key exchange objects </dd></dl>
-
-</div>
-</div>
-<a id="gad3c6687c07ae5e66efcbc55da0febd85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad3c6687c07ae5e66efcbc55da0febd85">&#9670;&nbsp;</a></span>wickr_exchange_array_set_item()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool wickr_exchange_array_set_item </td>
-          <td>(</td>
-          <td class="paramtype">wickr_exchange_array_t *&#160;</td>
-          <td class="paramname"><em>array</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td>
-          <td class="paramname"><em>exchange</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set an item in a key exchange array</p>
-<p>NOTE: Calling this function does not make a copy of 'exchange', the array simply takes ownership of it</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">array</td><td>the array to set 'exchange' into </td></tr>
-    <tr><td class="paramname">index</td><td>the location in 'array' to set exchange </td></tr>
-    <tr><td class="paramname">exchange</td><td>the exchange to set at position 'index' in 'array' </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if setting succeeds, false if the index is out of bounds </dd></dl>
-
-</div>
-</div>
-<a id="ga2235a7c168e3806aa1a71b5a5c8dee48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2235a7c168e3806aa1a71b5a5c8dee48">&#9670;&nbsp;</a></span>wickr_key_exchange_copy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a>* wickr_key_exchange_copy </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td>
-          <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Copy a key exchange</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>the key exchange to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated node holding a deep copy of the properties of 'source' </dd></dl>
-
-</div>
-</div>
-<a id="gac2823b3430070b0db9ef1f40d3a804ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac2823b3430070b0db9ef1f40d3a804ea">&#9670;&nbsp;</a></span>wickr_key_exchange_create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a>* wickr_key_exchange_create </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
-          <td class="paramname"><em>node_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>ephemeral_key_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
-          <td class="paramname"><em>exchange_data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Create a key exchange from properties</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">node_id</td><td>see '<a class="el" href="structwickr__key__exchange.html" title="Node-bound public key exchange data to put in a message header. ">wickr_key_exchange</a>' property documentation property documentation </td></tr>
-    <tr><td class="paramname">ephemeral_key_id</td><td>see '<a class="el" href="structwickr__key__exchange.html" title="Node-bound public key exchange data to put in a message header. ">wickr_key_exchange</a>' property documentation property documentation </td></tr>
-    <tr><td class="paramname">exchange_data</td><td>see '<a class="el" href="structwickr__key__exchange.html" title="Node-bound public key exchange data to put in a message header. ">wickr_key_exchange</a>' property documentation property documentation </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated packet metadata set owning the properties passed in </dd></dl>
-
-</div>
-</div>
 <a id="ga2b967bbdd161d8e37d19c4ab9621771b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga2b967bbdd161d8e37d19c4ab9621771b">&#9670;&nbsp;</a></span>wickr_key_exchange_create_with_data()</h2>
 
@@ -705,7 +447,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">engine</td><td>a crypto engine supporting ECDH key exchanges </td></tr>
     <tr><td class="paramname">sender</td><td>the identity chain of the sender </td></tr>
     <tr><td class="paramname">receiver</td><td>the node this key exchange is destined for </td></tr>
-    <tr><td class="paramname">packet_exchange_key</td><td>an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver </td></tr>
+    <tr><td class="paramname">packet_exchange_key</td><td>an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver </td></tr>
     <tr><td class="paramname">data_to_wrap</td><td>This is the data we are protecting by the output of the key exchange </td></tr>
     <tr><td class="paramname">exchange_cipher</td><td>the cipher that the exchange should use protect 'data_to_wrap' with </td></tr>
     <tr><td class="paramname">psk</td><td>optional pre-shared key data to put into the 'salt' field of HKDF </td></tr>
@@ -780,7 +522,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">engine</td><td>a crypto engine supporting ECDH key exchanges </td></tr>
     <tr><td class="paramname">sender</td><td>the identity chain of the sender </td></tr>
     <tr><td class="paramname">receiver</td><td>the node this key exchange is destined for </td></tr>
-    <tr><td class="paramname">packet_exchange_key</td><td>an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver </td></tr>
+    <tr><td class="paramname">packet_exchange_key</td><td>an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver </td></tr>
     <tr><td class="paramname">packet_key</td><td>the cipher key to use for encrypting the payload of the message that is being created. This is the data we are protecting </td></tr>
     <tr><td class="paramname">psk</td><td>optional pre-shared key data to put into the 'salt' field of HKDF </td></tr>
     <tr><td class="paramname">version</td><td>the version of the packet being generated </td></tr>
@@ -791,28 +533,94 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga54b6481f8f4b61fb949bec17d47cd3de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga54b6481f8f4b61fb949bec17d47cd3de">&#9670;&nbsp;</a></span>wickr_key_exchange_destroy()</h2>
+<a id="ga398eef2370517ab8b12d35a2d2475c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga398eef2370517ab8b12d35a2d2475c4e">&#9670;&nbsp;</a></span>wickr_key_exchange_set_create_from_cipher()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void wickr_key_exchange_destroy </td>
+          <td class="memname"><a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a>* wickr_key_exchange_set_create_from_cipher </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> **&#160;</td>
-          <td class="paramname"><em>exchange</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
+          <td class="paramname"><em>engine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td>
+          <td class="paramname"><em>cipher_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td>
+          <td class="paramname"><em>header_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destroy a key exchange</p>
+<p>Decrypt-Then-Deserialize a packet key exchange set</p>
+<p>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the '<a class="el" href="structwickr__ctx.html" title="Wickr encryption context for high level management of sending / receiving packets using the Wickr pro...">wickr_ctx</a>' API instead since it is a higher level and safer set of functions</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">exchange</td><td>a pointer to the key exchange to destroy. All properties of '*exchange' will also be destroyed </td></tr>
+    <tr><td class="paramname">engine</td><td>a crypto engine capable of decryption using header_key </td></tr>
+    <tr><td class="paramname">cipher_result</td><td>an encrypted key exchange set </td></tr>
+    <tr><td class="paramname">header_key</td><td>the key to use for decryption </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>a decrypted key exchange set or NULL if the decryption key is incorrect </dd></dl>
+
+</div>
+</div>
+<a id="gae67dccec73422de186348b3552f9c17b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae67dccec73422de186348b3552f9c17b">&#9670;&nbsp;</a></span>wickr_key_exchange_set_encrypt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a>* wickr_key_exchange_set_encrypt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *&#160;</td>
+          <td class="paramname"><em>exchange_set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
+          <td class="paramname"><em>engine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td>
+          <td class="paramname"><em>header_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize-Then-Encrypt a packet key exchange set</p>
+<p>The packet key exchange set is serialized using protocol buffers (message.pb-c.h)</p>
+<p>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the '<a class="el" href="structwickr__ctx.html" title="Wickr encryption context for high level management of sending / receiving packets using the Wickr pro...">wickr_ctx</a>' API instead since it is a higher level and safer set of functions</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exchange_set</td><td>the key_exchange_set to encrypt </td></tr>
+    <tr><td class="paramname">engine</td><td>a crypto engine capable of encryption using header_key </td></tr>
+    <tr><td class="paramname">header_key</td><td>the key to encrypt the key exchange set with </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an encrypted key exchange set </dd></dl>
 
 </div>
 </div>
@@ -979,9 +787,9 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">engine</td><td>a crypto engine capable of ECDH and signing operations using exchange_key, and cipher operations using payload_key </td></tr>
-    <tr><td class="paramname">header_key</td><td>the key to encrypt the header of the message with </td></tr>
+    <tr><td class="paramname">header_key</td><td>the key to encrypt the key exchange set of the message with </td></tr>
     <tr><td class="paramname">payload_key</td><td>the key to encrypt the payload of the message with </td></tr>
-    <tr><td class="paramname">exchange_key</td><td>the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet header </td></tr>
+    <tr><td class="paramname">exchange_key</td><td>the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet key exchange set </td></tr>
     <tr><td class="paramname">payload</td><td>the plaintext payload to encrypt and bundle into the packet </td></tr>
     <tr><td class="paramname">recipients</td><td>the array of nodes that the </td></tr>
     <tr><td class="paramname">sender_signing_identity</td><td>the identity chain belonging to the creator of the packet </td></tr>
@@ -989,7 +797,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a 'sender_signing_identity' signed packet containing encrypted payload 'payload, and header containing key exchanges for 'recipients' </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a 'sender_signing_identity' signed packet containing encrypted payload 'payload, and key exchange set for 'recipients' </dd></dl>
 
 </div>
 </div>
@@ -1015,222 +823,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="ga5ffb8763c9ebf2ad7322d507d117d7ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5ffb8763c9ebf2ad7322d507d117d7ba">&#9670;&nbsp;</a></span>wickr_packet_header_copy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a>* wickr_packet_header_copy </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td>
-          <td class="paramname"><em>source</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Copy a packet header</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>the packet header to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated packet header holding a deep copy of the properties of 'source' </dd></dl>
-
-</div>
-</div>
-<a id="ga8ad519d1b5dc3960c426db9a556404e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8ad519d1b5dc3960c426db9a556404e1">&#9670;&nbsp;</a></span>wickr_packet_header_create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a>* wickr_packet_header_create </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td>
-          <td class="paramname"><em>sender_pub</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">wickr_exchange_array_t *&#160;</td>
-          <td class="paramname"><em>exchanges</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Create a packet header from components</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sender_pub</td><td>see '<a class="el" href="structwickr__packet__header.html" title="The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet bod...">wickr_packet_header</a>' property documentation property documentation </td></tr>
-    <tr><td class="paramname">exchanges</td><td>see '<a class="el" href="structwickr__packet__header.html" title="The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet bod...">wickr_packet_header</a>' property documentation property documentation </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a newly allocated packet header owning the properties passed in </dd></dl>
-
-</div>
-</div>
-<a id="ga53ff33471ac0c4c7e3feedfcce520639"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga53ff33471ac0c4c7e3feedfcce520639">&#9670;&nbsp;</a></span>wickr_packet_header_create_from_cipher()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a>* wickr_packet_header_create_from_cipher </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
-          <td class="paramname"><em>engine</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td>
-          <td class="paramname"><em>cipher_result</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td>
-          <td class="paramname"><em>header_key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Decrypt-Then-Deserialize a packet header</p>
-<p>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the '<a class="el" href="structwickr__ctx.html" title="Wickr encryption context for high level management of sending / receiving packets using the Wickr pro...">wickr_ctx</a>' API instead since it is a higher level and safer set of functions</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">engine</td><td>a crypto engine capable of decryption using header_key </td></tr>
-    <tr><td class="paramname">cipher_result</td><td>an encrypted packet header </td></tr>
-    <tr><td class="paramname">header_key</td><td>the key to use for decryption </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a decrypted packet header or NULL if the decryption key is incorrect </dd></dl>
-
-</div>
-</div>
-<a id="gacb41cb9ad58871f01d8660e3ab115f4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacb41cb9ad58871f01d8660e3ab115f4e">&#9670;&nbsp;</a></span>wickr_packet_header_destroy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void wickr_packet_header_destroy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> **&#160;</td>
-          <td class="paramname"><em>header</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Destroy a packet header</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">header</td><td>a pointer to the packet header to destroy. All properties of '*header' will also be destroyed </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ga3495440a494c33a38ce4154b400e9809"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3495440a494c33a38ce4154b400e9809">&#9670;&nbsp;</a></span>wickr_packet_header_encrypt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a>* wickr_packet_header_encrypt </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *&#160;</td>
-          <td class="paramname"><em>engine</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structwickr__cipher__key.html">wickr_cipher_key_t</a> *&#160;</td>
-          <td class="paramname"><em>header_key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Serialize-Then-Encrypt a packet header</p>
-<p>Packet headers are serialized using protocol buffers (message.pb-c.h)</p>
-<p>NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the '<a class="el" href="structwickr__ctx.html" title="Wickr encryption context for high level management of sending / receiving packets using the Wickr pro...">wickr_ctx</a>' API instead since it is a higher level and safer set of functions</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">header</td><td>the header to encrypt </td></tr>
-    <tr><td class="paramname">engine</td><td>a crypto engine capable of encryption using header_key </td></tr>
-    <tr><td class="paramname">header_key</td><td>the key to encrypt the header with </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an encrypted header </dd></dl>
-
-</div>
-</div>
-<a id="gac9fab2b713e40a607735bcce0befee96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac9fab2b713e40a607735bcce0befee96">&#9670;&nbsp;</a></span>wickr_packet_header_find()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a>* wickr_packet_header_find </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
-          <td class="paramname"><em>node_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Find a particular entry in the exchange list of a packet header</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">header</td><td>the header to search </td></tr>
-    <tr><td class="paramname">node_id</td><td>the node identifier of the exchange to find </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the key exchange for 'node_id' or NULL if it cannot be found </dd></dl>
 
 </div>
 </div>
@@ -1418,8 +1010,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae9d6837e2cea5b64993c124e671bd25f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae9d6837e2cea5b64993c124e671bd25f">&#9670;&nbsp;</a></span>wickr_parse_result_create_success()</h2>
+<a id="ga7bd98225a92620e1aa5940cf59fdbedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7bd98225a92620e1aa5940cf59fdbedf">&#9670;&nbsp;</a></span>wickr_parse_result_create_success()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1427,8 +1019,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structwickr__parse__result.html">wickr_parse_result_t</a>* wickr_parse_result_create_success </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
+          <td class="paramtype"><a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *&#160;</td>
+          <td class="paramname"><em>key_exchange_set</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1452,7 +1044,7 @@ Functions</h2></td></tr>
 <p>Create a positive parse result</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">header</td><td>the parsed header information </td></tr>
+    <tr><td class="paramname">key_exchange_set</td><td>the parsed public key exchange set for all recipients </td></tr>
     <tr><td class="paramname">key_exchange</td><td>discovered key exchange for a particular requested node, or NULL if no node was specified </td></tr>
     <tr><td class="paramname">enc_payload</td><td>the encrypted payload parsed from the message </td></tr>
   </table>
@@ -1537,7 +1129,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">engine</td><td>a crypto engine </td></tr>
     <tr><td class="paramname">packet</td><td>the packet to parse </td></tr>
-    <tr><td class="paramname">receiver_node_id</td><td>node_id of the recipient. If set, parsing will fail if a node_id labeled key exchange is not found in the decoded header's key exchange list. If not set, the resulting parse result will contain NULL for the key exchange and simply return all other properties </td></tr>
+    <tr><td class="paramname">receiver_node_id</td><td>node_id of the recipient. If set, parsing will fail if a node_id labeled key exchange is not found in the key exchange list. If not set, the resulting parse result will contain NULL for the key exchange and simply return all other properties </td></tr>
     <tr><td class="paramname">header_keygen_func</td><td>a function that can generate a header key for this packet </td></tr>
     <tr><td class="paramname">sender_signing_identity</td><td>the sender of the packet </td></tr>
   </table>

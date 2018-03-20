@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wickr-crypto-c: wickr_key_exchange Struct Reference</title>
+<title>wickr-crypto-c: wickr_key_exchange_set Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,55 +64,52 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_key_exchange Struct Reference<div class="ingroups"><a class="el" href="group__wickr__key__exchange.html">Key Exchange</a></div></div>  </div>
+<div class="title">wickr_key_exchange_set Struct Reference<div class="ingroups"><a class="el" href="group__wickr__key__exchange__set.html">Key Exchange Set</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_data'.  
- <a href="structwickr__key__exchange.html#details">More...</a></p>
+<p>A collection of key exchanges for a set of recipients. The data protected inside 'exchange_data' for each recipient is derived by each recipient node using their individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information.  
+ <a href="structwickr__key__exchange__set.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="key__exchange_8h_source.html">key_exchange.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a744e71ef6676c78643646adf1693a4e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#a744e71ef6676c78643646adf1693a4e5">exchange_id</a></td></tr>
-<tr class="separator:a744e71ef6676c78643646adf1693a4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a109d595a115ac08ca570545f3751686b"><td class="memItemLeft" align="right" valign="top"><a id="a109d595a115ac08ca570545f3751686b"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>key_id</b></td></tr>
-<tr class="separator:a109d595a115ac08ca570545f3751686b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be89562df814a32b19cd57c49037691"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#a6be89562df814a32b19cd57c49037691">exchange_data</a></td></tr>
-<tr class="separator:a6be89562df814a32b19cd57c49037691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b304b3014b3c7bfe181526c2f3fc37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange__set.html#ac0b304b3014b3c7bfe181526c2f3fc37">sender_pub</a></td></tr>
+<tr class="separator:ac0b304b3014b3c7bfe181526c2f3fc37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e848df6178f2e384e56bfd1f9b6d3b4"><td class="memItemLeft" align="right" valign="top">wickr_exchange_array_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange__set.html#a7e848df6178f2e384e56bfd1f9b6d3b4">exchanges</a></td></tr>
+<tr class="separator:a7e848df6178f2e384e56bfd1f9b6d3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_data'. </p>
+<div class="textblock"><p>A collection of key exchanges for a set of recipients. The data protected inside 'exchange_data' for each recipient is derived by each recipient node using their individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a6be89562df814a32b19cd57c49037691"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6be89562df814a32b19cd57c49037691">&#9670;&nbsp;</a></span>exchange_data</h2>
+<a id="a7e848df6178f2e384e56bfd1f9b6d3b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e848df6178f2e384e56bfd1f9b6d3b4">&#9670;&nbsp;</a></span>exchanges</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wickr_key_exchange::exchange_data</td>
+          <td class="memname">wickr_key_exchange_set::exchanges</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>ciphered shared secret + KDF protected data </p>
+<p>an array of key exchanges, one for each recipient that will be receiving this message </p>
 
 </div>
 </div>
-<a id="a744e71ef6676c78643646adf1693a4e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a744e71ef6676c78643646adf1693a4e5">&#9670;&nbsp;</a></span>exchange_id</h2>
+<a id="ac0b304b3014b3c7bfe181526c2f3fc37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b304b3014b3c7bfe181526c2f3fc37">&#9670;&nbsp;</a></span>sender_pub</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wickr_key_exchange::exchange_id</td>
+          <td class="memname">wickr_key_exchange_set::sender_pub</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>a unique identifier to be assoiciated with the exchange to aid a recipient in finding a particular exchange within an exchange set </p>
+<p>the public EC key that the sender used to derive the key exchanges contained within 'exchanges' </p>
 
 </div>
 </div>
