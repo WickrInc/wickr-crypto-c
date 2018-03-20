@@ -1,0 +1,127 @@
+\hypertarget{group__wickr__key__exchange__set}{}\section{Key Exchange Set}
+\label{group__wickr__key__exchange__set}\index{Key Exchange Set@{Key Exchange Set}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set}}
+\begin{DoxyCompactList}\small\item\em A collection of key exchanges for a set of recipients. The data protected inside \textquotesingle{}exchange\+\_\+data\textquotesingle{} for each recipient is derived by each recipient node using their individualized key exchange. See Wickr white paper \textquotesingle{}Prepare Packet Header\textquotesingle{} section for more information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__key__exchange__set_ga9d247f82fda4d9ad7cb6784cd591c90e}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create}} (\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$sender\+\_\+pub, wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$exchanges)
+\item 
+\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__key__exchange__set_gae071583943c5c6abe8acc4bcfba032ba}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find}} (const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$exchange\+\_\+set, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$identifier)
+\item 
+\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__key__exchange__set_ga102baafda8804a97acc5e2a5bc6f7dba}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy}} (const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$source)
+\item 
+void \mbox{\hyperlink{group__wickr__key__exchange__set_gadaff24901ec60f83216c03c13bff3e2f}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy}} (\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$$\ast$exchange\+\_\+set)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__key__exchange__set_gaf31dcf7493d3eccd4b31b0ff2a79f536}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$exchange\+\_\+set)
+\item 
+\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__key__exchange__set_gaec93a83e2f00a707caf371b340591324}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_ga102baafda8804a97acc5e2a5bc6f7dba}\label{group__wickr__key__exchange__set_ga102baafda8804a97acc5e2a5bc6f7dba}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy()}{wickr\_key\_exchange\_set\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
+
+Copy a key exchange set
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & the key exchange set to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated key exchange set holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_ga9d247f82fda4d9ad7cb6784cd591c90e}\label{group__wickr__key__exchange__set_ga9d247f82fda4d9ad7cb6784cd591c90e}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create()}{wickr\_key\_exchange\_set\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{sender\+\_\+pub,  }\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$}]{exchanges }\end{DoxyParamCaption})}
+
+Create a key exchange set from components
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender\+\_\+pub} & see \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set}}\textquotesingle{} property documentation property documentation \\
+\hline
+{\em exchanges} & see \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set}}\textquotesingle{} property documentation property documentation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated key exchange set owning the properties passed in 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_gaec93a83e2f00a707caf371b340591324}\label{group__wickr__key__exchange__set_gaec93a83e2f00a707caf371b340591324}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer()}{wickr\_key\_exchange\_set\_create\_from\_buffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Create a key exchange set from bytes
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & a crypto engine to use for importing key information within the exchange set \\
+\hline
+{\em buffer} & the buffer containing a serialized representation of a \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set}}\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a key exchange set built from the bytes of \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if deserialization fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_gadaff24901ec60f83216c03c13bff3e2f}\label{group__wickr__key__exchange__set_gadaff24901ec60f83216c03c13bff3e2f}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy()}{wickr\_key\_exchange\_set\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$$\ast$}]{exchange\+\_\+set }\end{DoxyParamCaption})}
+
+Destroy a key exchange set
+
+
+\begin{DoxyParams}{Parameters}
+{\em exchange\+\_\+set} & a pointer to the key exchange set to destroy. All properties of \textquotesingle{}$\ast$exchange\+\_\+set\textquotesingle{} will also be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_gae071583943c5c6abe8acc4bcfba032ba}\label{group__wickr__key__exchange__set_gae071583943c5c6abe8acc4bcfba032ba}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find()}{wickr\_key\_exchange\_set\_find()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$}]{exchange\+\_\+set,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
+
+Find a particular exchange in the exchange set
+
+
+\begin{DoxyParams}{Parameters}
+{\em exchange\+\_\+set} & the exchange set to search \\
+\hline
+{\em identifier} & the identifier of the exchange to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the key exchange for \textquotesingle{}identifier\textquotesingle{} or N\+U\+LL if it cannot be found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__key__exchange__set_gaf31dcf7493d3eccd4b31b0ff2a79f536}\label{group__wickr__key__exchange__set_gaf31dcf7493d3eccd4b31b0ff2a79f536}} 
+\index{Key Exchange Set@{Key Exchange Set}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize}!Key Exchange Set@{Key Exchange Set}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize()}{wickr\_key\_exchange\_set\_serialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$}]{exchange\+\_\+set }\end{DoxyParamCaption})}
+
+Serialize a key exchange set using protocol buffers
+
+
+\begin{DoxyParams}{Parameters}
+{\em exchange\+\_\+set} & the exchange set to serialize into bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bytes representing \textquotesingle{}exchange\+\_\+set\textquotesingle{} with protocol buffers or N\+U\+LL if serialization fails 
+\end{DoxyReturn}

@@ -79,8 +79,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a69a3ee332921b4fdbc0e07dbfa74a8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a989166b5471898853f03b9e9c58f69c0"><td class="memItemLeft" align="right" valign="top">wickr_packet_signature_status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__parse__result.html#a989166b5471898853f03b9e9c58f69c0">signature_status</a></td></tr>
 <tr class="separator:a989166b5471898853f03b9e9c58f69c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf549d7cbae0f227d5aa60c3c5bb12d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__packet__header.html">wickr_packet_header_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__parse__result.html#acf549d7cbae0f227d5aa60c3c5bb12d3">header</a></td></tr>
-<tr class="separator:acf549d7cbae0f227d5aa60c3c5bb12d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa35f9328b675b02426fd190ffcd45402"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange__set.html">wickr_key_exchange_set_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__parse__result.html#aa35f9328b675b02426fd190ffcd45402">key_exchange_set</a></td></tr>
+<tr class="separator:aa35f9328b675b02426fd190ffcd45402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab33e5d00121c229280bbee814ca7ef5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__key__exchange.html">wickr_key_exchange_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__parse__result.html#ab33e5d00121c229280bbee814ca7ef5a">key_exchange</a></td></tr>
 <tr class="separator:ab33e5d00121c229280bbee814ca7ef5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a584d3b94e032f09188ee4006c067c180"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__parse__result.html#a584d3b94e032f09188ee4006c067c180">enc_payload</a></td></tr>
@@ -119,21 +119,6 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="acf549d7cbae0f227d5aa60c3c5bb12d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf549d7cbae0f227d5aa60c3c5bb12d3">&#9670;&nbsp;</a></span>header</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">wickr_parse_result::header</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>parsed header content of the message after decrypting it with the header key </p>
-
-</div>
-</div>
 <a id="ab33e5d00121c229280bbee814ca7ef5a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab33e5d00121c229280bbee814ca7ef5a">&#9670;&nbsp;</a></span>key_exchange</h2>
 
@@ -146,6 +131,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key_exchange will be NULL </p>
+
+</div>
+</div>
+<a id="aa35f9328b675b02426fd190ffcd45402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa35f9328b675b02426fd190ffcd45402">&#9670;&nbsp;</a></span>key_exchange_set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_parse_result::key_exchange_set</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>parsed key exchange set for the message after decrypting it with the header key </p>
 
 </div>
 </div>

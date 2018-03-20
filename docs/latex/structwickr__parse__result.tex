@@ -16,7 +16,7 @@ wickr\+\_\+decode\+\_\+error \mbox{\hyperlink{structwickr__parse__result_a69a3ee
 \item 
 wickr\+\_\+packet\+\_\+signature\+\_\+status \mbox{\hyperlink{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}{signature\+\_\+status}}
 \item 
-\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__parse__result_acf549d7cbae0f227d5aa60c3c5bb12d3}{header}}
+\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__parse__result_aa35f9328b675b02426fd190ffcd45402}{key\+\_\+exchange\+\_\+set}}
 \item 
 \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}{key\+\_\+exchange}}
 \item 
@@ -40,19 +40,19 @@ the encrypted payload of the message, to decrypt the payload you must call \text
 \subsubsection{\texorpdfstring{err}{err}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::err}
 
-status of the parse operation \mbox{\Hypertarget{structwickr__parse__result_acf549d7cbae0f227d5aa60c3c5bb12d3}\label{structwickr__parse__result_acf549d7cbae0f227d5aa60c3c5bb12d3}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!header@{header}}
-\index{header@{header}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
-\subsubsection{\texorpdfstring{header}{header}}
-{\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::header}
-
-parsed header content of the message after decrypting it with the header key \mbox{\Hypertarget{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}\label{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}} 
+status of the parse operation \mbox{\Hypertarget{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}\label{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}} 
 \index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!key\+\_\+exchange@{key\+\_\+exchange}}
 \index{key\+\_\+exchange@{key\+\_\+exchange}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
 \subsubsection{\texorpdfstring{key\+\_\+exchange}{key\_exchange}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::key\+\_\+exchange}
 
-if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key\+\_\+exchange will be N\+U\+LL \mbox{\Hypertarget{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}\label{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}} 
+if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key\+\_\+exchange will be N\+U\+LL \mbox{\Hypertarget{structwickr__parse__result_aa35f9328b675b02426fd190ffcd45402}\label{structwickr__parse__result_aa35f9328b675b02426fd190ffcd45402}} 
+\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!key\+\_\+exchange\+\_\+set@{key\+\_\+exchange\+\_\+set}}
+\index{key\+\_\+exchange\+\_\+set@{key\+\_\+exchange\+\_\+set}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
+\subsubsection{\texorpdfstring{key\+\_\+exchange\+\_\+set}{key\_exchange\_set}}
+{\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::key\+\_\+exchange\+\_\+set}
+
+parsed key exchange set for the message after decrypting it with the header key \mbox{\Hypertarget{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}\label{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}} 
 \index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!signature\+\_\+status@{signature\+\_\+status}}
 \index{signature\+\_\+status@{signature\+\_\+status}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
 \subsubsection{\texorpdfstring{signature\+\_\+status}{signature\_status}}

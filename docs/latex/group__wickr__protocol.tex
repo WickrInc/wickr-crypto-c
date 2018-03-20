@@ -7,10 +7,6 @@ struct \mbox{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+
 \begin{DoxyCompactList}\small\item\em Message destruction control metadata. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta}}
 \begin{DoxyCompactList}\small\item\em control metadata found in the encrypted payload of a packet \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange}}
-\begin{DoxyCompactList}\small\item\em Node-\/bound public key exchange data to put in a message header. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header}}
-\begin{DoxyCompactList}\small\item\em The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper \textquotesingle{}Prepare Packet Header\textquotesingle{} section for more information. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload}}
 \begin{DoxyCompactList}\small\item\em The encrypted body content of a Wickr packet. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__packet}{wickr\+\_\+packet}}
@@ -35,37 +31,13 @@ struct \mbox{\hyperlink{structwickr__decode__result}{wickr\+\_\+decode\+\_\+resu
 \item 
 void \mbox{\hyperlink{group__wickr__protocol_gad165ad670da761478cf5f8f91223c1d3}{wickr\+\_\+packet\+\_\+meta\+\_\+destroy}} (\mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$$\ast$meta)
 \item 
-\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gac2823b3430070b0db9ef1f40d3a804ea}{wickr\+\_\+key\+\_\+exchange\+\_\+create}} (\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$node\+\_\+id, uint64\+\_\+t ephemeral\+\_\+key\+\_\+id, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$exchange\+\_\+data)
-\item 
 \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gac21e7b7fda1612923d83e7e75166209c}{wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+packet\+\_\+key}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$sender, const \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$receiver, \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$packet\+\_\+exchange\+\_\+key, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$packet\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$psk, uint8\+\_\+t version)
 \item 
 \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga2b967bbdd161d8e37d19c4ab9621771b}{wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$sender, const \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$receiver, \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$packet\+\_\+exchange\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+wrap, \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} exchange\+\_\+cipher, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$psk, uint8\+\_\+t version)
 \item 
-\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga2235a7c168e3806aa1a71b5a5c8dee48}{wickr\+\_\+key\+\_\+exchange\+\_\+copy}} (const \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$source)
+\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gae67dccec73422de186348b3552f9c17b}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt}} (const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$exchange\+\_\+set, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$header\+\_\+key)
 \item 
-void \mbox{\hyperlink{group__wickr__protocol_ga54b6481f8f4b61fb949bec17d47cd3de}{wickr\+\_\+key\+\_\+exchange\+\_\+destroy}} (\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$$\ast$exchange)
-\item 
-wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga907d700b76b748f80796b4404c7172c2}{wickr\+\_\+exchange\+\_\+array\+\_\+new}} (uint32\+\_\+t exchange\+\_\+count)
-\item 
-bool \mbox{\hyperlink{group__wickr__protocol_gad3c6687c07ae5e66efcbc55da0febd85}{wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item}} (wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$array, uint32\+\_\+t index, \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$exchange)
-\item 
-\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga333510c3c7eeb8e33f94495de6bb122d}{wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item}} (wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$array, uint32\+\_\+t index)
-\item 
-wickr\+\_\+array\+\_\+t $\ast$ \mbox{\hyperlink{group__wickr__protocol_gacd04405337871aa3bcd550a051d778e1}{wickr\+\_\+exchange\+\_\+array\+\_\+copy}} (wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$array)
-\item 
-void \mbox{\hyperlink{group__wickr__protocol_gadc1e5f5836bc09c1d6b8d6203d02a0eb}{wickr\+\_\+exchange\+\_\+array\+\_\+destroy}} (wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$$\ast$array)
-\item 
-\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga8ad519d1b5dc3960c426db9a556404e1}{wickr\+\_\+packet\+\_\+header\+\_\+create}} (\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$sender\+\_\+pub, wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$exchanges)
-\item 
-\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gac9fab2b713e40a607735bcce0befee96}{wickr\+\_\+packet\+\_\+header\+\_\+find}} (const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$header, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$node\+\_\+id)
-\item 
-\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga5ffb8763c9ebf2ad7322d507d117d7ba}{wickr\+\_\+packet\+\_\+header\+\_\+copy}} (const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$source)
-\item 
-void \mbox{\hyperlink{group__wickr__protocol_gacb41cb9ad58871f01d8660e3ab115f4e}{wickr\+\_\+packet\+\_\+header\+\_\+destroy}} (\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$$\ast$header)
-\item 
-\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga3495440a494c33a38ce4154b400e9809}{wickr\+\_\+packet\+\_\+header\+\_\+encrypt}} (const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$header, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$header\+\_\+key)
-\item 
-\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga53ff33471ac0c4c7e3feedfcce520639}{wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$cipher\+\_\+result, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$header\+\_\+key)
+\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga398eef2370517ab8b12d35a2d2475c4e}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$cipher\+\_\+result, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$header\+\_\+key)
 \item 
 \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gad7d51d39a8477d87557536ff42399186}{wickr\+\_\+payload\+\_\+create}} (\mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$body)
 \item 
@@ -89,7 +61,7 @@ void \mbox{\hyperlink{group__wickr__protocol_gab15d7556ad2806aa823ec2d3e3bf5a46}
 \item 
 \mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gac2673bcfeae2f8d693e523809bb6bb30}{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+failure}} (wickr\+\_\+packet\+\_\+signature\+\_\+status signature\+\_\+status, wickr\+\_\+decode\+\_\+error error)
 \item 
-\mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_gae9d6837e2cea5b64993c124e671bd25f}{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success}} (\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$header, \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$key\+\_\+exchange, \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$enc\+\_\+payload)
+\mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga7bd98225a92620e1aa5940cf59fdbedf}{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success}} (\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$key\+\_\+exchange\+\_\+set, \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$key\+\_\+exchange, \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$enc\+\_\+payload)
 \item 
 \mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__protocol_ga1671066ddc19b38ed05d4460d5a96706}{wickr\+\_\+parse\+\_\+result\+\_\+copy}} (const \mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$source)
 \item 
@@ -225,125 +197,6 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \begin{DoxyReturn}{Returns}
 a decode result containing decrypted packet information if decode succeeded 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gacd04405337871aa3bcd550a051d778e1}\label{group__wickr__protocol_gacd04405337871aa3bcd550a051d778e1}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+exchange\+\_\+array\+\_\+copy@{wickr\+\_\+exchange\+\_\+array\+\_\+copy}}
-\index{wickr\+\_\+exchange\+\_\+array\+\_\+copy@{wickr\+\_\+exchange\+\_\+array\+\_\+copy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+array\+\_\+copy()}{wickr\_exchange\_array\_copy()}}
-{\footnotesize\ttfamily wickr\+\_\+array\+\_\+t$\ast$ wickr\+\_\+exchange\+\_\+array\+\_\+copy (\begin{DoxyParamCaption}\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$}]{array }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & the array to copy \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated key exchange array that contains deep copies of the items from \textquotesingle{}array\textquotesingle{} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gadc1e5f5836bc09c1d6b8d6203d02a0eb}\label{group__wickr__protocol_gadc1e5f5836bc09c1d6b8d6203d02a0eb}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+exchange\+\_\+array\+\_\+destroy@{wickr\+\_\+exchange\+\_\+array\+\_\+destroy}}
-\index{wickr\+\_\+exchange\+\_\+array\+\_\+destroy@{wickr\+\_\+exchange\+\_\+array\+\_\+destroy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+array\+\_\+destroy()}{wickr\_exchange\_array\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+exchange\+\_\+array\+\_\+destroy (\begin{DoxyParamCaption}\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$$\ast$}]{array }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & a pointer to the array to destroy, all items of \textquotesingle{}$\ast$array\textquotesingle{} are also destroyed \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{group__wickr__protocol_ga333510c3c7eeb8e33f94495de6bb122d}\label{group__wickr__protocol_ga333510c3c7eeb8e33f94495de6bb122d}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item}}
-\index{wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item@{wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item()}{wickr\_exchange\_array\_fetch\_item()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+exchange\+\_\+array\+\_\+fetch\+\_\+item (\begin{DoxyParamCaption}\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index }\end{DoxyParamCaption})}
-
-Fetch a key exchange from an exchange array
-
-N\+O\+TE\+: Calling this function does not make a copy of the exchange being returned, the array still owns it
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & the array to fetch \textquotesingle{}index\textquotesingle{} from \\
-\hline
-{\em index} & the index to fetch from \textquotesingle{}array\textquotesingle{} \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a key exchange representing \textquotesingle{}index\textquotesingle{} from the array 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_ga907d700b76b748f80796b4404c7172c2}\label{group__wickr__protocol_ga907d700b76b748f80796b4404c7172c2}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+exchange\+\_\+array\+\_\+new@{wickr\+\_\+exchange\+\_\+array\+\_\+new}}
-\index{wickr\+\_\+exchange\+\_\+array\+\_\+new@{wickr\+\_\+exchange\+\_\+array\+\_\+new}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+array\+\_\+new()}{wickr\_exchange\_array\_new()}}
-{\footnotesize\ttfamily wickr\+\_\+exchange\+\_\+array\+\_\+t$\ast$ wickr\+\_\+exchange\+\_\+array\+\_\+new (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{exchange\+\_\+count }\end{DoxyParamCaption})}
-
-Allocate a new key exchange array
-
-
-\begin{DoxyParams}{Parameters}
-{\em exchange\+\_\+count} & the number of exchanges the array should hold \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated wickr\+\_\+array for key exchange objects 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gad3c6687c07ae5e66efcbc55da0febd85}\label{group__wickr__protocol_gad3c6687c07ae5e66efcbc55da0febd85}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item}}
-\index{wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item@{wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item()}{wickr\_exchange\_array\_set\_item()}}
-{\footnotesize\ttfamily bool wickr\+\_\+exchange\+\_\+array\+\_\+set\+\_\+item (\begin{DoxyParamCaption}\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index,  }\item[{\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$}]{exchange }\end{DoxyParamCaption})}
-
-Set an item in a key exchange array
-
-N\+O\+TE\+: Calling this function does not make a copy of \textquotesingle{}exchange\textquotesingle{}, the array simply takes ownership of it
-
-
-\begin{DoxyParams}{Parameters}
-{\em array} & the array to set \textquotesingle{}exchange\textquotesingle{} into \\
-\hline
-{\em index} & the location in \textquotesingle{}array\textquotesingle{} to set exchange \\
-\hline
-{\em exchange} & the exchange to set at position \textquotesingle{}index\textquotesingle{} in \textquotesingle{}array\textquotesingle{} \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if setting succeeds, false if the index is out of bounds 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_ga2235a7c168e3806aa1a71b5a5c8dee48}\label{group__wickr__protocol_ga2235a7c168e3806aa1a71b5a5c8dee48}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+copy@{wickr\+\_\+key\+\_\+exchange\+\_\+copy}}
-\index{wickr\+\_\+key\+\_\+exchange\+\_\+copy@{wickr\+\_\+key\+\_\+exchange\+\_\+copy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+copy()}{wickr\_key\_exchange\_copy()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
-
-Copy a key exchange
-
-
-\begin{DoxyParams}{Parameters}
-{\em source} & the key exchange to copy \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated node holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gac2823b3430070b0db9ef1f40d3a804ea}\label{group__wickr__protocol_gac2823b3430070b0db9ef1f40d3a804ea}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+create@{wickr\+\_\+key\+\_\+exchange\+\_\+create}}
-\index{wickr\+\_\+key\+\_\+exchange\+\_\+create@{wickr\+\_\+key\+\_\+exchange\+\_\+create}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+create()}{wickr\_key\_exchange\_create()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{node\+\_\+id,  }\item[{uint64\+\_\+t}]{ephemeral\+\_\+key\+\_\+id,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{exchange\+\_\+data }\end{DoxyParamCaption})}
-
-Create a key exchange from properties
-
-
-\begin{DoxyParams}{Parameters}
-{\em node\+\_\+id} & see \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange}}\textquotesingle{} property documentation property documentation \\
-\hline
-{\em ephemeral\+\_\+key\+\_\+id} & see \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange}}\textquotesingle{} property documentation property documentation \\
-\hline
-{\em exchange\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange}}\textquotesingle{} property documentation property documentation \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated packet metadata set owning the properties passed in 
-\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga2b967bbdd161d8e37d19c4ab9621771b}\label{group__wickr__protocol_ga2b967bbdd161d8e37d19c4ab9621771b}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data@{wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data}}
 \index{wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data@{wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data}!Wickr Protocol@{Wickr Protocol}}
@@ -364,7 +217,7 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \hline
 {\em receiver} & the node this key exchange is destined for \\
 \hline
-{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver \\
+{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
 \hline
 {\em data\+\_\+to\+\_\+wrap} & This is the data we are protecting by the output of the key exchange \\
 \hline
@@ -398,7 +251,7 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \hline
 {\em receiver} & the node this key exchange is destined for \\
 \hline
-{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message header to the receiver \\
+{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
 \hline
 {\em packet\+\_\+key} & the cipher key to use for encrypting the payload of the message that is being created. This is the data we are protecting \\
 \hline
@@ -410,19 +263,52 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \begin{DoxyReturn}{Returns}
 a newly allocated key exchange object holding public metadata about this exchange and the computed exchange data 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_ga54b6481f8f4b61fb949bec17d47cd3de}\label{group__wickr__protocol_ga54b6481f8f4b61fb949bec17d47cd3de}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+destroy@{wickr\+\_\+key\+\_\+exchange\+\_\+destroy}}
-\index{wickr\+\_\+key\+\_\+exchange\+\_\+destroy@{wickr\+\_\+key\+\_\+exchange\+\_\+destroy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+destroy()}{wickr\_key\_exchange\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+key\+\_\+exchange\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$$\ast$}]{exchange }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{group__wickr__protocol_ga398eef2370517ab8b12d35a2d2475c4e}\label{group__wickr__protocol_ga398eef2370517ab8b12d35a2d2475c4e}} 
+\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher}!Wickr Protocol@{Wickr Protocol}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher()}{wickr\_key\_exchange\_set\_create\_from\_cipher()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+create\+\_\+from\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{cipher\+\_\+result,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{header\+\_\+key }\end{DoxyParamCaption})}
 
-Destroy a key exchange
+Decrypt-\/\+Then-\/\+Deserialize a packet key exchange set
+
+N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
-{\em exchange} & a pointer to the key exchange to destroy. All properties of \textquotesingle{}$\ast$exchange\textquotesingle{} will also be destroyed \\
+{\em engine} & a crypto engine capable of decryption using header\+\_\+key \\
+\hline
+{\em cipher\+\_\+result} & an encrypted key exchange set \\
+\hline
+{\em header\+\_\+key} & the key to use for decryption \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a decrypted key exchange set or N\+U\+LL if the decryption key is incorrect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__protocol_gae67dccec73422de186348b3552f9c17b}\label{group__wickr__protocol_gae67dccec73422de186348b3552f9c17b}} 
+\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt}}
+\index{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt@{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt}!Wickr Protocol@{Wickr Protocol}}
+\subsubsection{\texorpdfstring{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt()}{wickr\_key\_exchange\_set\_encrypt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$}]{exchange\+\_\+set,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{header\+\_\+key }\end{DoxyParamCaption})}
+
+Serialize-\/\+Then-\/\+Encrypt a packet key exchange set
+
+The packet key exchange set is serialized using protocol buffers (message.\+pb-\/c.\+h)
+
+N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+
+
+\begin{DoxyParams}{Parameters}
+{\em exchange\+\_\+set} & the key\+\_\+exchange\+\_\+set to encrypt \\
+\hline
+{\em engine} & a crypto engine capable of encryption using header\+\_\+key \\
+\hline
+{\em header\+\_\+key} & the key to encrypt the key exchange set with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an encrypted key exchange set 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga0c95ad86819bacf98c11115d748039db}\label{group__wickr__protocol_ga0c95ad86819bacf98c11115d748039db}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+copy@{wickr\+\_\+packet\+\_\+copy}}
 \index{wickr\+\_\+packet\+\_\+copy@{wickr\+\_\+packet\+\_\+copy}!Wickr Protocol@{Wickr Protocol}}
@@ -491,11 +377,11 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \begin{DoxyParams}{Parameters}
 {\em engine} & a crypto engine capable of E\+C\+DH and signing operations using exchange\+\_\+key, and cipher operations using payload\+\_\+key \\
 \hline
-{\em header\+\_\+key} & the key to encrypt the header of the message with \\
+{\em header\+\_\+key} & the key to encrypt the key exchange set of the message with \\
 \hline
 {\em payload\+\_\+key} & the key to encrypt the payload of the message with \\
 \hline
-{\em exchange\+\_\+key} & the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet header \\
+{\em exchange\+\_\+key} & the key to use as the local key exchange keypair, the public side of this key will wind up in the resulting packet key exchange set \\
 \hline
 {\em payload} & the plaintext payload to encrypt and bundle into the packet \\
 \hline
@@ -507,7 +393,7 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a \textquotesingle{}sender\+\_\+signing\+\_\+identity\textquotesingle{} signed packet containing encrypted payload \textquotesingle{}payload, and header containing key exchanges for \textquotesingle{}recipients\textquotesingle{} 
+a \textquotesingle{}sender\+\_\+signing\+\_\+identity\textquotesingle{} signed packet containing encrypted payload \textquotesingle{}payload, and key exchange set for \textquotesingle{}recipients\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_gab15d7556ad2806aa823ec2d3e3bf5a46}\label{group__wickr__protocol_gab15d7556ad2806aa823ec2d3e3bf5a46}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+destroy@{wickr\+\_\+packet\+\_\+destroy}}
@@ -522,117 +408,6 @@ Destroy a packet
 {\em packet} & a pointer to the packet to destroy. All properties of \textquotesingle{}$\ast$packet\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{group__wickr__protocol_ga5ffb8763c9ebf2ad7322d507d117d7ba}\label{group__wickr__protocol_ga5ffb8763c9ebf2ad7322d507d117d7ba}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+copy@{wickr\+\_\+packet\+\_\+header\+\_\+copy}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+copy@{wickr\+\_\+packet\+\_\+header\+\_\+copy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+copy()}{wickr\_packet\_header\_copy()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+header\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
-
-Copy a packet header
-
-
-\begin{DoxyParams}{Parameters}
-{\em source} & the packet header to copy \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated packet header holding a deep copy of the properties of \textquotesingle{}source\textquotesingle{} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_ga8ad519d1b5dc3960c426db9a556404e1}\label{group__wickr__protocol_ga8ad519d1b5dc3960c426db9a556404e1}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+create@{wickr\+\_\+packet\+\_\+header\+\_\+create}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+create@{wickr\+\_\+packet\+\_\+header\+\_\+create}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+create()}{wickr\_packet\_header\_create()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+header\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{sender\+\_\+pub,  }\item[{wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$}]{exchanges }\end{DoxyParamCaption})}
-
-Create a packet header from components
-
-
-\begin{DoxyParams}{Parameters}
-{\em sender\+\_\+pub} & see \textquotesingle{}\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header}}\textquotesingle{} property documentation property documentation \\
-\hline
-{\em exchanges} & see \textquotesingle{}\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header}}\textquotesingle{} property documentation property documentation \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a newly allocated packet header owning the properties passed in 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_ga53ff33471ac0c4c7e3feedfcce520639}\label{group__wickr__protocol_ga53ff33471ac0c4c7e3feedfcce520639}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher@{wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher@{wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher()}{wickr\_packet\_header\_create\_from\_cipher()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+header\+\_\+create\+\_\+from\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{cipher\+\_\+result,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{header\+\_\+key }\end{DoxyParamCaption})}
-
-Decrypt-\/\+Then-\/\+Deserialize a packet header
-
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
-
-
-\begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine capable of decryption using header\+\_\+key \\
-\hline
-{\em cipher\+\_\+result} & an encrypted packet header \\
-\hline
-{\em header\+\_\+key} & the key to use for decryption \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a decrypted packet header or N\+U\+LL if the decryption key is incorrect 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gacb41cb9ad58871f01d8660e3ab115f4e}\label{group__wickr__protocol_gacb41cb9ad58871f01d8660e3ab115f4e}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+destroy@{wickr\+\_\+packet\+\_\+header\+\_\+destroy}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+destroy@{wickr\+\_\+packet\+\_\+header\+\_\+destroy}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+destroy()}{wickr\_packet\_header\_destroy()}}
-{\footnotesize\ttfamily void wickr\+\_\+packet\+\_\+header\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$$\ast$}]{header }\end{DoxyParamCaption})}
-
-Destroy a packet header
-
-
-\begin{DoxyParams}{Parameters}
-{\em header} & a pointer to the packet header to destroy. All properties of \textquotesingle{}$\ast$header\textquotesingle{} will also be destroyed \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{group__wickr__protocol_ga3495440a494c33a38ce4154b400e9809}\label{group__wickr__protocol_ga3495440a494c33a38ce4154b400e9809}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+encrypt@{wickr\+\_\+packet\+\_\+header\+\_\+encrypt}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+encrypt@{wickr\+\_\+packet\+\_\+header\+\_\+encrypt}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+encrypt()}{wickr\_packet\_header\_encrypt()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+header\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$}]{header,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{header\+\_\+key }\end{DoxyParamCaption})}
-
-Serialize-\/\+Then-\/\+Encrypt a packet header
-
-Packet headers are serialized using protocol buffers (message.\+pb-\/c.\+h)
-
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
-
-
-\begin{DoxyParams}{Parameters}
-{\em header} & the header to encrypt \\
-\hline
-{\em engine} & a crypto engine capable of encryption using header\+\_\+key \\
-\hline
-{\em header\+\_\+key} & the key to encrypt the header with \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-an encrypted header 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gac9fab2b713e40a607735bcce0befee96}\label{group__wickr__protocol_gac9fab2b713e40a607735bcce0befee96}} 
-\index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+header\+\_\+find@{wickr\+\_\+packet\+\_\+header\+\_\+find}}
-\index{wickr\+\_\+packet\+\_\+header\+\_\+find@{wickr\+\_\+packet\+\_\+header\+\_\+find}!Wickr Protocol@{Wickr Protocol}}
-\subsubsection{\texorpdfstring{wickr\+\_\+packet\+\_\+header\+\_\+find()}{wickr\_packet\_header\_find()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+header\+\_\+find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$}]{header,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{node\+\_\+id }\end{DoxyParamCaption})}
-
-Find a particular entry in the exchange list of a packet header
-
-
-\begin{DoxyParams}{Parameters}
-{\em header} & the header to search \\
-\hline
-{\em node\+\_\+id} & the node identifier of the exchange to find \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-the key exchange for \textquotesingle{}node\+\_\+id\textquotesingle{} or N\+U\+LL if it cannot be found 
-\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga1bb5a0f2a49069679b174b3e6521fe9b}\label{group__wickr__protocol_ga1bb5a0f2a49069679b174b3e6521fe9b}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+packet\+\_\+meta\+\_\+copy@{wickr\+\_\+packet\+\_\+meta\+\_\+copy}}
 \index{wickr\+\_\+packet\+\_\+meta\+\_\+copy@{wickr\+\_\+packet\+\_\+meta\+\_\+copy}!Wickr Protocol@{Wickr Protocol}}
@@ -732,17 +507,17 @@ Create a negative parse result due to a failure
 \begin{DoxyReturn}{Returns}
 a parse result containing the provided status information and N\+U\+LL properties 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__protocol_gae9d6837e2cea5b64993c124e671bd25f}\label{group__wickr__protocol_gae9d6837e2cea5b64993c124e671bd25f}} 
+\mbox{\Hypertarget{group__wickr__protocol_ga7bd98225a92620e1aa5940cf59fdbedf}\label{group__wickr__protocol_ga7bd98225a92620e1aa5940cf59fdbedf}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success@{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success}}
 \index{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success@{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success}!Wickr Protocol@{Wickr Protocol}}
 \subsubsection{\texorpdfstring{wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success()}{wickr\_parse\_result\_create\_success()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__packet__header}{wickr\+\_\+packet\+\_\+header\+\_\+t}} $\ast$}]{header,  }\item[{\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$}]{key\+\_\+exchange,  }\item[{\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{enc\+\_\+payload }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+parse\+\_\+result\+\_\+create\+\_\+success (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__key__exchange__set}{wickr\+\_\+key\+\_\+exchange\+\_\+set\+\_\+t}} $\ast$}]{key\+\_\+exchange\+\_\+set,  }\item[{\mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}} $\ast$}]{key\+\_\+exchange,  }\item[{\mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{enc\+\_\+payload }\end{DoxyParamCaption})}
 
 Create a positive parse result
 
 
 \begin{DoxyParams}{Parameters}
-{\em header} & the parsed header information \\
+{\em key\+\_\+exchange\+\_\+set} & the parsed public key exchange set for all recipients \\
 \hline
 {\em key\+\_\+exchange} & discovered key exchange for a particular requested node, or N\+U\+LL if no node was specified \\
 \hline
@@ -783,7 +558,7 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \hline
 {\em packet} & the packet to parse \\
 \hline
-{\em receiver\+\_\+node\+\_\+id} & node\+\_\+id of the recipient. If set, parsing will fail if a node\+\_\+id labeled key exchange is not found in the decoded header\textquotesingle{}s key exchange list. If not set, the resulting parse result will contain N\+U\+LL for the key exchange and simply return all other properties \\
+{\em receiver\+\_\+node\+\_\+id} & node\+\_\+id of the recipient. If set, parsing will fail if a node\+\_\+id labeled key exchange is not found in the key exchange list. If not set, the resulting parse result will contain N\+U\+LL for the key exchange and simply return all other properties \\
 \hline
 {\em header\+\_\+keygen\+\_\+func} & a function that can generate a header key for this packet \\
 \hline
