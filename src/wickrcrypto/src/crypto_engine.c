@@ -22,7 +22,7 @@ const wickr_crypto_engine_t wickr_crypto_engine_get_default()
         openssl_ec_key_import,
         openssl_ec_sign,
         openssl_ec_verify,
-        openssl_ecdh_gen_key,
+        openssl_gen_shared_secret,
         openssl_hmac_create,
         openssl_hmac_verify,
         wickr_perform_kdf,

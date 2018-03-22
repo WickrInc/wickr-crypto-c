@@ -24,7 +24,6 @@
 
 #include <stdlib.h>
 #include "node.h"
-#include "ecdh.h"
 #include "key_exchange.h"
 
 #ifdef __cplusplus

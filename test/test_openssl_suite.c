@@ -597,61 +597,17 @@ DESCRIBE(openssl_hmac, "openssl_suite: openssl_hmac_create, openssl_hmac_verify"
 }
 END_DESCRIBE
 
-void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wickr_digest_t digest, wickr_buffer_t *expected_shared_secret, wickr_buffer_t *expected_kdf_output)
+void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wickr_buffer_t *expected_shared_secret)
 {
     SHOULD_NOT_BE_NULL(peer_test_key);
     wickr_buffer_destroy(&peer_test_key->pri_data);
     
-    const wickr_kdf_algo_t *algo = wickr_hkdf_algo_for_digest(digest);
-    SHOULD_NOT_BE_NULL(algo);
-    
-    wickr_kdf_meta_t *kdf_info = wickr_kdf_meta_create(*algo, hex_char_to_buffer("f00d"), hex_char_to_buffer("bar"));
-    SHOULD_NOT_BE_NULL(kdf_info);
-    
-    wickr_ecdh_params_t *test_params = wickr_ecdh_params_create(local_test_key, peer_test_key, kdf_info);
-    
-    SHOULD_BE_TRUE(wickr_ecdh_params_are_valid(test_params));
-    
-    SHOULD_NOT_BE_NULL(test_params);
-    
-    wickr_ecdh_params_t *copy_params = wickr_ecdh_params_copy(test_params);
-    
-    SHOULD_NOT_BE_NULL(copy_params);
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_info->salt, test_params->kdf_info->salt, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->kdf_info->info, test_params->kdf_info->info, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->local_key->pri_data, test_params->local_key->pri_data, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->local_key->pub_data, test_params->local_key->pub_data, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_params->peer_key->pub_data, test_params->peer_key->pub_data, NULL));
-    SHOULD_EQUAL(copy_params->local_key->curve.identifier, test_params->local_key->curve.identifier);
-    SHOULD_EQUAL(copy_params->peer_key->curve.identifier, test_params->peer_key->curve.identifier);
-    SHOULD_EQUAL(copy_params->kdf_info->algo.algo_id, test_params->kdf_info->algo.algo_id);
-    
-    SHOULD_BE_TRUE(wickr_ecdh_params_are_valid(copy_params));
-
-    wickr_buffer_destroy(&copy_params->local_key->pri_data);
-    
-    SHOULD_BE_FALSE(wickr_ecdh_params_are_valid(copy_params))
-    
-    wickr_ecdh_params_destroy(&copy_params);
-    SHOULD_BE_NULL(copy_params);
-    
-    /* The expected output is the expected shared secret as input to a KDF function that performs
-     a digest using a provided salt */
-    wickr_buffer_t *expected_output = openssl_hkdf(expected_shared_secret, test_params->kdf_info->salt, test_params->kdf_info->info, digest);
-    
-    SHOULD_NOT_BE_NULL(expected_output);
-    
-    wickr_buffer_t *output = openssl_ecdh_gen_key(test_params);
-    SHOULD_EQUAL(expected_output->length, digest.size);
-    
-    
+    wickr_buffer_t *output = openssl_gen_shared_secret(local_test_key, peer_test_key);
     SHOULD_NOT_BE_NULL(output);
     
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_output, output, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_shared_secret, output, NULL));
     
-    wickr_buffer_destroy(&expected_output);
     wickr_buffer_destroy(&output);
-    wickr_ecdh_params_destroy(&test_params);
 }
 
 DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
@@ -670,71 +626,33 @@ DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")
     
     SHOULD_NOT_BE_NULL(expected_shared_secret);
     
-    wickr_buffer_t *expected_256_output = hex_char_to_buffer("95640c1817115db83b9d9a2f56c29fcca8a05cc787a95a9055e9b1b6a03a8478");
-    wickr_buffer_t *expected_384_output = hex_char_to_buffer("54b8bab40639df5561bc53fdd31ec56ad0e4e5b6dadd89e3d4e70f373ce647dfabefe51a9ee9be10a25e772e3758ff2e");
-    wickr_buffer_t *expected_512_output = hex_char_to_buffer("fe4178413af02bbbb11f93fd8cbc65b71faa6ff9f33ef49c0da49c33bc73277b0578813f5c3a54e9909ac5dc803dad2a01da3aec371c67b683638d9f7ee0b247");
-    
-    IT("should make a proper 256bit shared secret (A is local)")
+    IT("should make a proper shared secret (A is local)")
     {
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret, expected_256_output);
+        test_ecdh(local_test_key, peer_test_key, expected_shared_secret);
+        
+        wickr_ec_key_destroy(&local_test_key);
+        wickr_ec_key_destroy(&peer_test_key);
     }
     END_IT
     
-    IT("should make a proper 256bit shared secret (B is local)")
+    IT("should make a proper shared secret (B is local)")
     {
         wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
         wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_256, expected_shared_secret, expected_256_output);
-    }
-    END_IT
-    
-    IT("should make a proper 384bit shared secret (A is local)")
-    {
-        wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
-        wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
+        test_ecdh(local_test_key, peer_test_key, expected_shared_secret);
         
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret, expected_384_output);
+        wickr_ec_key_destroy(&local_test_key);
+        wickr_ec_key_destroy(&peer_test_key);
     }
     END_IT
     
-    IT("should make a proper 384bit shared secret (B is local)")
-    {
-        wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
-        wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
-        
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_384, expected_shared_secret, expected_384_output);
-    }
-    END_IT
-    
-    IT("should make a proper 512bit shared secret (A is local)")
-    {
-        wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dA);
-        wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dB);
-        
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret, expected_512_output);
-    }
-    END_IT
-    
-    IT("should make a proper 512bit shared secret (B is local)")
-    {
-        wickr_ec_key_t *local_test_key = wickr_ec_key_copy(dB);
-        wickr_ec_key_t *peer_test_key = wickr_ec_key_copy(dA);
-        
-        test_ecdh(local_test_key, peer_test_key, DIGEST_SHA_512, expected_shared_secret, expected_512_output);
-    }
-    END_IT
-    
-    wickr_buffer_destroy(&expected_256_output);
-    wickr_buffer_destroy(&expected_384_output);
-    wickr_buffer_destroy(&expected_512_output);
     wickr_ec_key_destroy(&dA);
     wickr_ec_key_destroy(&dB);
     wickr_buffer_destroy(&expected_shared_secret);
-    
 }
 END_DESCRIBE
 

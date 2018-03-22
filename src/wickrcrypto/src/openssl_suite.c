@@ -911,22 +911,25 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature, const wickr_ec_key
     return result == 1 ? true : false;
 }
 
-wickr_buffer_t *openssl_ecdh_gen_key(const wickr_ecdh_params_t *params)
+wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer)
 {
-    if (!params || !wickr_ecdh_params_are_valid(params)) {
+    if (!local || !peer) {
+        return NULL;
+    }
+    
+    if (!peer->pub_data || !local->pri_data || !local->pub_data) {
         return NULL;
     }
     
     /* Convert your local private key to EVP format */
-    EVP_PKEY *local_key = __openssl_evp_private_key_from_buffer(params->local_key->pri_data);
+    EVP_PKEY *local_key = __openssl_evp_private_key_from_buffer(local->pri_data);
     
     if (!local_key) {
         return NULL;
     }
     
     /* Convert the peer's public key to EVP format */
-    EVP_PKEY *peer_key = __openssl_evp_public_key_from_buffer(params->peer_key->pub_data);
-    
+    EVP_PKEY *peer_key = __openssl_evp_public_key_from_buffer(peer->pub_data);
     
     if (!peer_key) {
         EVP_PKEY_free(local_key);
@@ -986,22 +989,11 @@ wickr_buffer_t *openssl_ecdh_gen_key(const wickr_ecdh_params_t *params)
         return NULL;
     }
     
-    /* Run the ECDH shared secret through HKDF with the provided salt and info from the ECDH params */
-    wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(params->kdf_info, shared_secret_buffer);
-
     EVP_PKEY_free(local_key);
     EVP_PKEY_free(peer_key);
     EVP_PKEY_CTX_free(ctx);
-    wickr_buffer_destroy_zero(&shared_secret_buffer);
     
-    if (!kdf_result) {
-        return NULL;
-    }
-    
-    wickr_buffer_t *final_buffer = wickr_buffer_copy(kdf_result->hash);
-    wickr_kdf_result_destroy(&kdf_result);
-    
-    return final_buffer;
+    return shared_secret_buffer;
 }
 
 wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)
