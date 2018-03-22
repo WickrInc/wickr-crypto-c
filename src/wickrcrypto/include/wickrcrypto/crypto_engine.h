@@ -27,7 +27,6 @@
 #include "digest.h"
 #include "eckey.h"
 #include "ecdsa.h"
-#include "ecdh.h"
 #include "kdf.h"
 
 #include <stdlib.h>
@@ -222,12 +221,13 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
-     Generate a shared secret given Elliptic Curve Diffie-Hellman parameters and a KDF
+     Generate a shared secret given Elliptic Curve Diffie-Hellman parameters
      
-     @param params the parameters to use for the ECDH and KDF algorithms
-     @return a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed
+     @param local the local elliptic curve private key
+     @param peer the remote elliptic curve public key
+     @return a buffer containing the shared secret computed with 'local' private key and 'peer' public key
      */
-    wickr_buffer_t *(*wickr_crypto_engine_ecdh_gen_key)(const wickr_ecdh_params_t *params);
+    wickr_buffer_t *(*wickr_crypto_engine_gen_shared_secret)(const wickr_ec_key_t *local, const wickr_ec_key_t *peer);
     
     /**
      @ingroup wickr_crypto_engine
@@ -316,7 +316,11 @@ const wickr_crypto_engine_t wickr_crypto_engine_get_default();
  @return a buffer serialized in the following format:
     
  */
-wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engine, wickr_kdf_algo_t algo, wickr_cipher_t cipher, const wickr_buffer_t *value, const wickr_buffer_t *passphrase);
+wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engine,
+                                               wickr_kdf_algo_t algo,
+                                               wickr_cipher_t cipher,
+                                               const wickr_buffer_t *value,
+                                               const wickr_buffer_t *passphrase);
 
 /**
  @ingroup wickr_crypto_engine
@@ -326,7 +330,9 @@ wickr_buffer_t *wickr_crypto_engine_kdf_cipher(const wickr_crypto_engine_t *engi
  @param passphrase the passphrase for the kdf + cipher operation
  @return the original buffer protected by 'wickr_crypto_engine_kdf_cipher' or NULL if the KDF + cipher function fails due to an incorrect passphrase
  */
-wickr_buffer_t *wickr_crypto_engine_kdf_decipher(const wickr_crypto_engine_t *engine, const wickr_buffer_t *input_buffer, const wickr_buffer_t *passphrase);
+wickr_buffer_t *wickr_crypto_engine_kdf_decipher(const wickr_crypto_engine_t *engine,
+                                                 const wickr_buffer_t *input_buffer,
+                                                 const wickr_buffer_t *passphrase);
 
 /**
  @ingroup wickr_crypto_engine

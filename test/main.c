@@ -17,6 +17,7 @@
 #include "test_ephemeral_keypair.h"
 #include "test_packet_meta.h"
 #include "test_key_exchange.h"
+#include "test_ecdh_cipher.h"
 
 #include "cspec_output_unit.h"
 
@@ -68,6 +69,12 @@ void run_stream_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(wickr_stream_cipher), output);
 }
 
+void run_ecdh_cipher_tests(CSpecOutputStruct *output)
+{
+    CSpec_Run(DESCRIPTION(wickr_ecdh_cipher), output);
+    CSpec_Run(DESCRIPTION(wickr_ecdh_cipher_e2e_test), output);
+}
+
 void run_transport_tests(CSpecOutputStruct *output)
 {
     CSpec_Run(DESCRIPTION(wickr_transport_ctx), output);
@@ -106,6 +113,7 @@ int main(int argc, char *argv[])
 
     run_primitive_tests(output);
     run_crypto_engine_tests(output);
+    run_ecdh_cipher_tests(output);
     run_stream_tests(output);
     run_transport_tests(output);
     run_messaging_protocol_tests(output);

@@ -29,7 +29,6 @@
 #include "crypto_engine.h"
 #include "ecdsa.h"
 #include "eckey.h"
-#include "ecdh.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -165,12 +164,13 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature,
  @ingroup openssl_crypto
  
  Generate a shared secret given Elliptic Curve Diffie-Hellman parameters
- This function internally uses 'openssl_hkdf' to extract and expand the output of the ECDH function using 'params' for options
 
- @param params the parameters to use for the ECDH and HKDF algorithms
- @return a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed
+ @param local the local elliptic curve private key
+ @param peer the remote elliptic curve public key
+ @return a buffer containing the shared secret computed with 'local' private key and 'peer' public key
  */
-wickr_buffer_t *openssl_ecdh_gen_key(const wickr_ecdh_params_t *params);
+wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer);
+
 
 /**
  @ingroup openssl_crypto
