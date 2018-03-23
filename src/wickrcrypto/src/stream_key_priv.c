@@ -1,7 +1,7 @@
 
 #include "private/stream_key_priv.h"
 #include "memory.h"
-#include <string.h>
+#include "private/buffer_priv.h"
 
 void wickr_stream_key_proto_free(Wickr__Proto__StreamKey *proto_key)
 {
@@ -33,15 +33,10 @@ Wickr__Proto__StreamKey *wickr_stream_key_to_proto(const wickr_stream_key_t *key
         return NULL;
     }
     
-    proto->cipher_key.data = wickr_alloc_zero(key_buffer->length);
-    
-    if (!proto->cipher_key.data) {
+    if (!wickr_buffer_to_protobytes(&proto->cipher_key, key_buffer)) {
         wickr_buffer_destroy(&key_buffer);
         return NULL;
     }
-    
-    proto->cipher_key.len = key_buffer->length;
-    memcpy(proto->cipher_key.data, key_buffer->bytes, key_buffer->length);
     
     wickr_buffer_destroy(&key_buffer);
 

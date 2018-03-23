@@ -4,7 +4,6 @@
 #include "key_exchange.pb-c.h"
 #include "private/buffer_priv.h"
 #include "private/eckey_priv.h"
-#include <string.h>
 
 #define EXCHANGE_ARRAY_TYPE_ID 2
 
@@ -72,7 +71,6 @@ static void __wickr_key_exchange_proto_free(Wickr__Proto__KeyExchangeSet__Exchan
     }
     
     wickr_free(exchange->exchange_data.data);
-    wickr_free(exchange->identifier.data);
     wickr_free(exchange);
 }
 
@@ -98,28 +96,16 @@ static Wickr__Proto__KeyExchangeSet__Exchange *__wickr_key_exchange_to_proto(con
         return NULL;
     }
     
-    proto_exchange->exchange_data.len = exchange_data->length;
-    proto_exchange->exchange_data.data = wickr_alloc(exchange_data->length);
-    
-    if (!proto_exchange->exchange_data.data) {
+    if (!wickr_buffer_to_protobytes(&proto_exchange->exchange_data, exchange_data)) {
         wickr_free(proto_exchange);
         wickr_buffer_destroy(&exchange_data);
         return NULL;
     }
     
-    memcpy(proto_exchange->exchange_data.data, exchange_data->bytes, exchange_data->length);
     wickr_buffer_destroy(&exchange_data);
     
+    proto_exchange->identifier.data = exchange->exchange_id->bytes;
     proto_exchange->identifier.len = exchange->exchange_id->length;
-    proto_exchange->identifier.data = wickr_alloc(exchange->exchange_id->length);
-    
-    if (!proto_exchange->identifier.data) {
-        wickr_free(proto_exchange->exchange_data.data);
-        wickr_free(proto_exchange);
-        return NULL;
-    }
-    
-    memcpy(proto_exchange->identifier.data, exchange->exchange_id->bytes, exchange->exchange_id->length);
     
     return proto_exchange;
 }
@@ -285,7 +271,6 @@ static void __wickr_key_exchange_set_proto_free(Wickr__Proto__KeyExchangeSet *pr
     }
     
     __wickr_key_exchange_proto_array_destroy(proto_exchange_set->exchanges, proto_exchange_set->n_exchanges);
-    wickr_free(proto_exchange_set->sender_pub.data);
     wickr_free(proto_exchange_set);
 }
 
@@ -383,18 +368,8 @@ static Wickr__Proto__KeyExchangeSet *__wickr_key_exchange_set_to_proto(const wic
     
     exchange_set_proto->n_exchanges = num_exchanges;
     exchange_set_proto->exchanges = exchanges;
-    
-    exchange_set_proto->sender_pub.data = wickr_alloc(exchange_set->sender_pub->pub_data->length);
+    exchange_set_proto->sender_pub.data = exchange_set->sender_pub->pub_data->bytes;
     exchange_set_proto->sender_pub.len = exchange_set->sender_pub->pub_data->length;
-    
-    if (!exchange_set_proto->sender_pub.data) {
-        __wickr_key_exchange_proto_array_destroy(exchanges, num_exchanges);
-        return NULL;
-    }
-    
-    memcpy(exchange_set_proto->sender_pub.data,
-           exchange_set->sender_pub->pub_data->bytes,
-           exchange_set->sender_pub->pub_data->length);
     
     return exchange_set_proto;
 }

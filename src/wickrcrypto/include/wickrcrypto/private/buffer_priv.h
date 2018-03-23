@@ -40,6 +40,17 @@ extern "C" {
  */
 wickr_buffer_t *wickr_buffer_from_protobytes(ProtobufCBinaryData buffer);
     
+/**
+ @ingroup wickr_buffer
+
+ Fill a protobuf binary data object with bytes from a wickr_buffer
+ 
+ @param proto_bin pointer to the protobuf binary data to fill with bytes from 'buffer'
+ @param buffer the buffer to copy into 'proto_bin'
+ @return true if copy into 'proto_bin' is successful
+ */
+bool wickr_buffer_to_protobytes(ProtobufCBinaryData *proto_bin, const wickr_buffer_t *buffer);
+    
 #ifdef __cplusplus
 }
 #endif

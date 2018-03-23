@@ -1,6 +1,5 @@
 
 #include "private/identity_priv.h"
-#include <string.h>
 #include "memory.h"
 #include "private/buffer_priv.h"
 #include "private/eckey_priv.h"
@@ -61,19 +60,14 @@ Wickr__Proto__Identity *wickr_identity_to_proto(const wickr_identity_t *identity
             wickr_identity_proto_free(proto);
             return NULL;
         }
-        
-        proto->signature.data = wickr_alloc_zero(signature_buffer->length);
-        
-        if (!proto->signature.data) {
+                
+        if (!wickr_buffer_to_protobytes(&proto->signature, signature_buffer)) {
             wickr_buffer_destroy(&signature_buffer);
             wickr_identity_proto_free(proto);
             return NULL;
         }
         
-        proto->signature.len = signature_buffer->length;
         proto->has_signature = true;
-        
-        memcpy(proto->signature.data, signature_buffer->bytes, signature_buffer->length);
         wickr_buffer_destroy(&signature_buffer);
     }
     
