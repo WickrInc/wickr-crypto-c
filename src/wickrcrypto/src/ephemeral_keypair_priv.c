@@ -2,8 +2,8 @@
 #include "private/ephemeral_keypair_priv.h"
 #include "private/eckey_priv.h"
 #include "private/ecdsa_priv.h"
+#include "private/buffer_priv.h"
 #include "memory.h"
-#include <string.h>
 
 void wickr_ephemeral_keypair_proto_free(Wickr__Proto__EphemeralKeypair *proto_keypair)
 {
@@ -49,16 +49,13 @@ Wickr__Proto__EphemeralKeypair *wickr_ephemeral_keypair_to_proto(const wickr_eph
         }
         
         proto_keypair->has_key_signature = true;
-        proto_keypair->key_signature.data = wickr_alloc(signature_buffer->length);
-        proto_keypair->key_signature.len = signature_buffer->length;
         
-        if (!proto_keypair->key_signature.data) {
+        if (!wickr_buffer_to_protobytes(&proto_keypair->key_signature, signature_buffer)) {
             wickr_buffer_destroy(&signature_buffer);
             wickr_ephemeral_keypair_proto_free(proto_keypair);
             return NULL;
         }
         
-        memcpy(proto_keypair->key_signature.data, signature_buffer->bytes, signature_buffer->length);
         wickr_buffer_destroy(&signature_buffer);
         
     }
