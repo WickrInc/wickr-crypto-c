@@ -5,7 +5,9 @@
 static void test_exchange_equality(wickr_key_exchange_t *ex_a, wickr_key_exchange_t *ex_b)
 {
     SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_id, ex_b->exchange_id, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_data, ex_b->exchange_data, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->cipher_text, ex_b->exchange_ciphertext->cipher_text, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->iv, ex_b->exchange_ciphertext->iv, NULL));
+    SHOULD_EQUAL(ex_a->exchange_ciphertext->cipher.cipher_id, ex_a->exchange_ciphertext->cipher.cipher_id);
     SHOULD_EQUAL(ex_a->key_id, ex_b->key_id);
 }
 
@@ -29,7 +31,12 @@ static wickr_key_exchange_t *generate_random_exchange()
 {
     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
     wickr_buffer_t *test_identifier = engine.wickr_crypto_engine_crypto_random(32);
-    wickr_buffer_t *test_exchange_data = engine.wickr_crypto_engine_crypto_random(32);
+    
+    wickr_cipher_result_t *test_exchange_data = wickr_cipher_result_create(CIPHER_AES256_GCM,
+                                                                           engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.iv_len),
+                                                                           engine.wickr_crypto_engine_crypto_random(32),
+                                                                           engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.auth_tag_len));
+    
     uint64_t test_key_id = rand() % (UINT64_MAX - 1) + 1;
     
     return wickr_key_exchange_create(test_identifier, test_key_id, test_exchange_data);
@@ -40,7 +47,10 @@ DESCRIBE(key_exchange, "key exchange")
     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
 
     wickr_buffer_t *test_identifier = engine.wickr_crypto_engine_crypto_random(32);
-    wickr_buffer_t *test_exchange_data = engine.wickr_crypto_engine_crypto_random(32);
+    wickr_cipher_result_t *test_exchange_data = wickr_cipher_result_create(CIPHER_AES256_GCM,
+                                                                           engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.iv_len),
+                                                                           engine.wickr_crypto_engine_crypto_random(32),
+                                                                           engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.auth_tag_len));
     uint64_t test_key_id = 10000;
     
     wickr_key_exchange_t *test_exchange = NULL;
@@ -55,7 +65,7 @@ DESCRIBE(key_exchange, "key exchange")
         SHOULD_NOT_BE_NULL(test_exchange);
         
         SHOULD_EQUAL(test_identifier, test_exchange->exchange_id);
-        SHOULD_EQUAL(test_exchange_data, test_exchange->exchange_data);
+        SHOULD_EQUAL(test_exchange_data, test_exchange->exchange_ciphertext);
         SHOULD_EQUAL(test_key_id, test_exchange->key_id);
     }
     END_IT

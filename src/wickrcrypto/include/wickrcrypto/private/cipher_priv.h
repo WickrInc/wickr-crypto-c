@@ -40,6 +40,16 @@ extern "C" {
  */
 wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer);
 
+/**
+ 
+ @ingroup wickr_cipher
+ 
+ Create a cipher result from protocol buffers binary data object
+ 
+ @param buffer the protocol buffers binary data object to create the cipher result with
+ @return a cipher result created from serialized bytes within 'buffer' or NULL if parsing buffer fails
+ */
+wickr_cipher_result_t *wickr_cipher_result_from_protobytes(ProtobufCBinaryData buffer);
     
 #ifdef __cplusplus
 }
