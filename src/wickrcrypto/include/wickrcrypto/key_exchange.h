@@ -39,20 +39,20 @@ extern "C" {
  @struct wickr_key_exchange
  @brief Public key exchange protected data. After a shared secret is generated using a public key with
  identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange
- and the ciphertext is stored in 'exchange_data'
+ and the ciphertext is stored in 'exchange_ciphertext'
  @var wickr_key_exchange::exchange_id
  a unique identifier to be assoiciated with the exchange to aid a recipient in finding a particular
  exchange within an exchange set
  @var wickr_key_exchange::key_id the identifier of the recipient's public key was used to compute
- the key protecting 'exchange_data'. This aids a recipient in finding the particular private key they
- need to use to unlock 'exchange_data' upon receipt
- @var wickr_key_exchange::exchange_data
+ the key protecting 'exchange_ciphertext'. This aids a recipient in finding the particular private key they
+ need to use to unlock 'exchange_ciphertext' upon receipt
+ @var wickr_key_exchange::exchange_ciphertext
  ciphered shared secret + KDF protected data
  */
 struct wickr_key_exchange {
     wickr_buffer_t *exchange_id;
     uint64_t key_id;
-    wickr_buffer_t *exchange_data;
+    wickr_cipher_result_t *exchange_ciphertext;
 };
 
 typedef struct wickr_key_exchange wickr_key_exchange_t;
@@ -65,12 +65,12 @@ typedef struct wickr_key_exchange wickr_key_exchange_t;
  
  @param exchange_id see 'wickr_key_exchange' property documentation property documentation
  @param key_id see 'wickr_key_exchange' property documentation property documentation
- @param exchange_data see 'wickr_key_exchange' property documentation property documentation
+ @param exchange_ciphertext see 'wickr_key_exchange' property documentation property documentation
  @return a newly allocated packet metadata set owning the properties passed in
  */
 wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *exchange_id,
                                                 uint64_t key_id,
-                                                wickr_buffer_t *exchange_data);
+                                                wickr_cipher_result_t *exchange_ciphertext);
     
 
 /**
@@ -156,7 +156,7 @@ void wickr_exchange_array_destroy(wickr_exchange_array_t **array);
 /**
  @ingroup wickr_key_exchange_set
  @struct wickr_key_exchange_set
- @brief A collection of key exchanges for a set of recipients. The data protected inside 'exchange_data'
+ @brief A collection of key exchanges for a set of recipients. The data protected inside 'exchange_ciphertext'
  for each recipient is derived by each recipient node using their individualized key exchange.
  See Wickr white paper 'Prepare Packet Header' section for more information.
  

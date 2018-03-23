@@ -249,8 +249,16 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_generate_tx_key
     key_exchange_p.sender_pub.data = packet_exchange_key->pub_data->bytes;
     key_exchange_p.sender_pub.len = packet_exchange_key->pub_data->length;
     key_exchange_p.has_exchange_data = true;
-    key_exchange_p.exchange_data.data = key_exchange->exchange_data->bytes;
-    key_exchange_p.exchange_data.len = key_exchange->exchange_data->length;
+    
+    wickr_buffer_t *key_exchange_data = wickr_cipher_result_serialize(key_exchange->exchange_ciphertext);
+    
+    if (!key_exchange_data) {
+        wickr_ec_key_destroy(&packet_exchange_key);
+        return NULL;
+    }
+    
+    key_exchange_p.exchange_data.data = key_exchange_data->bytes;
+    key_exchange_p.exchange_data.len = key_exchange_data->length;
     
     Wickr__Proto__Handshake__Response response = WICKR__PROTO__HANDSHAKE__RESPONSE__INIT;
     response.key_exchange = &key_exchange_p;
@@ -263,6 +271,7 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_generate_tx_key
         
         if (!seed.node_info) {
             wickr_ec_key_destroy(&packet_exchange_key);
+            wickr_buffer_destroy(&key_exchange_data);
             wickr_key_exchange_destroy(&key_exchange);
             return NULL;
         }
@@ -280,7 +289,8 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_generate_tx_key
     wickr_node_proto_free(seed.node_info);
     wickr_ec_key_destroy(&packet_exchange_key);
     wickr_key_exchange_destroy(&key_exchange);
-    
+    wickr_buffer_destroy(&key_exchange_data);
+
     if (!packet) {
         return NULL;
     }
@@ -457,7 +467,11 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
     wickr_key_exchange_t exchange;
     exchange.key_id = 0;
     exchange.exchange_id = ctx->local_identity->id_chain->node->identifier;
-    exchange.exchange_data = &key_exchange_buffer;
+    exchange.exchange_ciphertext = wickr_cipher_result_from_buffer(&key_exchange_buffer);
+    
+    if (!exchange.exchange_ciphertext || !exchange.exchange_ciphertext->cipher.is_authenticated) {
+        return NULL;
+    }
     
     wickr_ec_key_t *ec_key = ctx->engine.wickr_crypto_engine_ec_key_import(&exchange_key_buffer, false);
     
@@ -473,6 +487,7 @@ static wickr_stream_key_t *__wickr_transport_ctx_handshake_decode_rx_key(const w
                                                                    psk,
                                                                    key_ex_version);
     
+    wickr_cipher_result_destroy(&exchange.exchange_ciphertext);
     wickr_ephemeral_keypair_destroy(&ctx->local_identity->ephemeral_keypair);
     wickr_ec_key_destroy(&ec_key);
     

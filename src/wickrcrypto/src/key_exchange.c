@@ -2,21 +2,24 @@
 #include "key_exchange.h"
 #include "memory.h"
 #include "key_exchange.pb-c.h"
+#include "private/buffer_priv.h"
+#include "private/eckey_priv.h"
+#include <string.h>
 
 #define EXCHANGE_ARRAY_TYPE_ID 2
 
 wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *exchange_id,
                                                 uint64_t key_id,
-                                                wickr_buffer_t *exchange_data)
+                                                wickr_cipher_result_t *exchange_ciphertext)
 {
-    if (!exchange_id || !exchange_data) {
+    if (!exchange_id || !exchange_ciphertext) {
         return NULL;
     }
     
     wickr_key_exchange_t *new_exchange = wickr_alloc_zero(sizeof(wickr_key_exchange_t));
     new_exchange->exchange_id = exchange_id;
     new_exchange->key_id = key_id;
-    new_exchange->exchange_data = exchange_data;
+    new_exchange->exchange_ciphertext = exchange_ciphertext;
     
     return new_exchange;
 }
@@ -27,23 +30,23 @@ wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source
         return NULL;
     }
     
-    wickr_buffer_t *exchange_data_copy = wickr_buffer_copy(source->exchange_data);
+    wickr_cipher_result_t *exchange_ciphertext_copy = wickr_cipher_result_copy(source->exchange_ciphertext);
     
-    if (!exchange_data_copy) {
+    if (!exchange_ciphertext_copy) {
         return NULL;
     }
     
     wickr_buffer_t *exchange_id_copy = wickr_buffer_copy(source->exchange_id);
     
     if (!exchange_id_copy) {
-        wickr_buffer_destroy(&exchange_data_copy);
+        wickr_cipher_result_destroy(&exchange_ciphertext_copy);
         return NULL;
     }
     
-    wickr_key_exchange_t *copy = wickr_key_exchange_create(exchange_id_copy, source->key_id, exchange_data_copy);
+    wickr_key_exchange_t *copy = wickr_key_exchange_create(exchange_id_copy, source->key_id, exchange_ciphertext_copy);
     
     if (!copy) {
-        wickr_buffer_destroy(&exchange_data_copy);
+        wickr_cipher_result_destroy(&exchange_ciphertext_copy);
         wickr_buffer_destroy(&exchange_id_copy);
     }
     
@@ -56,10 +59,102 @@ void wickr_key_exchange_destroy(wickr_key_exchange_t **exchange)
         return;
     }
     
-    wickr_buffer_destroy(&(*exchange)->exchange_data);
+    wickr_cipher_result_destroy(&(*exchange)->exchange_ciphertext);
     wickr_buffer_destroy(&(*exchange)->exchange_id);
     wickr_free(*exchange);
     *exchange = NULL;
+}
+
+static void __wickr_key_exchange_proto_free(Wickr__Proto__KeyExchangeSet__Exchange *exchange)
+{
+    if (!exchange) {
+        return;
+    }
+    
+    wickr_free(exchange->exchange_data.data);
+    wickr_free(exchange->identifier.data);
+    wickr_free(exchange);
+}
+
+static Wickr__Proto__KeyExchangeSet__Exchange *__wickr_key_exchange_to_proto(const wickr_key_exchange_t *exchange)
+{
+    if (!exchange) {
+        return NULL;
+    }
+    
+    Wickr__Proto__KeyExchangeSet__Exchange *proto_exchange = wickr_alloc_zero(sizeof(Wickr__Proto__KeyExchangeSet__Exchange));
+    
+    if (!proto_exchange) {
+        return NULL;
+    }
+    
+    wickr__proto__key_exchange_set__exchange__init(proto_exchange);
+    proto_exchange->key_id = exchange->key_id;
+    
+    wickr_buffer_t *exchange_data = wickr_cipher_result_serialize(exchange->exchange_ciphertext);
+    
+    if (!exchange_data) {
+        wickr_free(proto_exchange);
+        return NULL;
+    }
+    
+    proto_exchange->exchange_data.len = exchange_data->length;
+    proto_exchange->exchange_data.data = wickr_alloc(exchange_data->length);
+    
+    if (!proto_exchange->exchange_data.data) {
+        wickr_free(proto_exchange);
+        wickr_buffer_destroy(&exchange_data);
+        return NULL;
+    }
+    
+    memcpy(proto_exchange->exchange_data.data, exchange_data->bytes, exchange_data->length);
+    wickr_buffer_destroy(&exchange_data);
+    
+    proto_exchange->identifier.len = exchange->exchange_id->length;
+    proto_exchange->identifier.data = wickr_alloc(exchange->exchange_id->length);
+    
+    if (!proto_exchange->identifier.data) {
+        wickr_free(proto_exchange->exchange_data.data);
+        wickr_free(proto_exchange);
+        return NULL;
+    }
+    
+    memcpy(proto_exchange->identifier.data, exchange->exchange_id->bytes, exchange->exchange_id->length);
+    
+    return proto_exchange;
+}
+
+static wickr_key_exchange_t *__wickr_key_exchange_create_with_proto(const Wickr__Proto__KeyExchangeSet__Exchange *exchange_proto)
+{
+    if (!exchange_proto || !exchange_proto->exchange_data.data || !exchange_proto->identifier.data) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *exchange_bytes = wickr_buffer_from_protobytes(exchange_proto->exchange_data);
+    wickr_cipher_result_t *cipher_result = wickr_cipher_result_from_buffer(exchange_bytes);
+    wickr_buffer_destroy(&exchange_bytes);
+    
+    if (!cipher_result) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *identifier_bytes = wickr_buffer_from_protobytes(exchange_proto->identifier);
+    
+    if (!identifier_bytes) {
+        wickr_cipher_result_destroy(&cipher_result);
+        return NULL;
+    }
+    
+    
+    wickr_key_exchange_t *exchange = wickr_key_exchange_create(identifier_bytes, exchange_proto->key_id, cipher_result);
+    
+    if (!exchange) {
+        wickr_buffer_destroy(&identifier_bytes);
+        wickr_cipher_result_destroy(&cipher_result);
+        return NULL;
+    }
+    
+    return exchange;
 }
 
 wickr_exchange_array_t *wickr_exchange_array_new(uint32_t exchange_count)
@@ -170,7 +265,83 @@ void wickr_key_exchange_set_destroy(wickr_key_exchange_set_t **header)
     *header = NULL;
 }
 
-wickr_buffer_t *wickr_key_exchange_set_serialize(const wickr_key_exchange_set_t *exchange_set)
+static void __wickr_key_exchange_proto_array_destroy(Wickr__Proto__KeyExchangeSet__Exchange **exchanges, uint32_t num_exchanges)
+{
+    if (!exchanges) {
+        return;
+    }
+    
+    for (int i = 0; i < num_exchanges; i++) {
+        __wickr_key_exchange_proto_free(exchanges[i]);
+    }
+    
+    wickr_free(exchanges);
+}
+
+static void __wickr_key_exchange_set_proto_free(Wickr__Proto__KeyExchangeSet *proto_exchange_set)
+{
+    if (!proto_exchange_set) {
+        return;
+    }
+    
+    __wickr_key_exchange_proto_array_destroy(proto_exchange_set->exchanges, proto_exchange_set->n_exchanges);
+    wickr_free(proto_exchange_set->sender_pub.data);
+    wickr_free(proto_exchange_set);
+}
+
+static wickr_key_exchange_set_t *__wickr_key_exchange_set_create_with_proto(const Wickr__Proto__KeyExchangeSet *exchange_set_proto,
+                                                                            const wickr_crypto_engine_t *engine)
+{
+    if (!exchange_set_proto ||
+        !exchange_set_proto->exchanges ||
+        exchange_set_proto->n_exchanges == 0 ||
+        exchange_set_proto->n_exchanges > INT32_MAX ||
+        !exchange_set_proto->sender_pub.data) {
+        return NULL;
+    }
+    
+    wickr_exchange_array_t *exchanges = wickr_exchange_array_new((uint32_t)exchange_set_proto->n_exchanges);
+    
+    if (!exchanges) {
+        return NULL;
+    }
+    
+    for (uint32_t i = 0; i < exchange_set_proto->n_exchanges; i++) {
+        
+        Wickr__Proto__KeyExchangeSet__Exchange *one_proto_exchange = exchange_set_proto->exchanges[i];
+        wickr_key_exchange_t *one_exchange = __wickr_key_exchange_create_with_proto(one_proto_exchange);
+        
+        if (!one_exchange) {
+            wickr_exchange_array_destroy(&exchanges);
+            return NULL;
+        }
+        
+        if (!wickr_exchange_array_set_item(exchanges, i, one_exchange)) {
+            wickr_key_exchange_destroy(&one_exchange);
+            wickr_exchange_array_destroy(&exchanges);
+            return NULL;
+        }
+        
+    }
+    
+    wickr_ec_key_t *pubkey = wickr_ec_key_from_protobytes(exchange_set_proto->sender_pub, engine, false);
+    
+    if (!pubkey) {
+        wickr_exchange_array_destroy(&exchanges);
+        return NULL;
+    }
+    
+    wickr_key_exchange_set_t *exchange_set = wickr_key_exchange_set_create(pubkey, exchanges);
+    
+    if (!exchange_set) {
+        wickr_exchange_array_destroy(&exchanges);
+        wickr_ec_key_destroy(&pubkey);
+    }
+    
+    return exchange_set;
+}
+
+static Wickr__Proto__KeyExchangeSet *__wickr_key_exchange_set_to_proto(const wickr_key_exchange_set_t *exchange_set)
 {
     if (!exchange_set) {
         return NULL;
@@ -181,44 +352,76 @@ wickr_buffer_t *wickr_key_exchange_set_serialize(const wickr_key_exchange_set_t 
     Wickr__Proto__KeyExchangeSet__Exchange **exchanges;
     exchanges = wickr_alloc_zero(sizeof(Wickr__Proto__KeyExchangeSet__Exchange *) * num_exchanges);
     
-    Wickr__Proto__KeyExchangeSet proto_exchange_set = WICKR__PROTO__KEY_EXCHANGE_SET__INIT;
-    proto_exchange_set.sender_pub.data = exchange_set->sender_pub->pub_data->bytes;
-    proto_exchange_set.sender_pub.len = exchange_set->sender_pub->pub_data->length;
-    
-    
-    for (int i = 0; i < num_exchanges; i++) {
-        wickr_key_exchange_t *one_exchange = wickr_array_fetch_item(exchange_set->exchanges, i, false);
-        
-        exchanges[i] = wickr_alloc_zero(sizeof(Wickr__Proto__KeyExchangeSet__Exchange));
-        wickr__proto__key_exchange_set__exchange__init(exchanges[i]);
-        
-        exchanges[i]->exchange_data.data = one_exchange->exchange_data->bytes;
-        exchanges[i]->exchange_data.len = one_exchange->exchange_data->length;
-        exchanges[i]->key_id = one_exchange->key_id;
-        exchanges[i]->identifier.data = one_exchange->exchange_id->bytes;
-        exchanges[i]->identifier.len = one_exchange->exchange_id->length;
-    }
-    
-    proto_exchange_set.n_exchanges = num_exchanges;
-    proto_exchange_set.exchanges = exchanges;
-    size_t required_size = wickr__proto__key_exchange_set__get_packed_size(&proto_exchange_set);
-    
-    wickr_buffer_t *serialized_buffer = wickr_buffer_create_empty(required_size);
-    if (!serialized_buffer) {
-        for (int i = 0; i < num_exchanges; i++) {
-            wickr_free(exchanges[i]);
-        }
-        wickr_free(proto_exchange_set.exchanges);
+    if (!exchanges) {
         return NULL;
     }
     
-    wickr__proto__key_exchange_set__pack(&proto_exchange_set, serialized_buffer->bytes);
-    
-    for (int i = 0; i < num_exchanges; i++) {
-        wickr_free(exchanges[i]);
+    for (uint32_t i = 0; i < num_exchanges; i++) {
+        wickr_key_exchange_t *one_exchange = wickr_array_fetch_item(exchange_set->exchanges, i, false);
+        
+        if (!one_exchange) {
+            __wickr_key_exchange_proto_array_destroy(exchanges, num_exchanges);
+            return NULL;
+        }
+        
+        exchanges[i] = __wickr_key_exchange_to_proto(one_exchange);
+        
+        if (!exchanges[i]) {
+            __wickr_key_exchange_proto_array_destroy(exchanges, num_exchanges);
+            return NULL;
+        }
     }
     
-    wickr_free(proto_exchange_set.exchanges);
+    Wickr__Proto__KeyExchangeSet *exchange_set_proto = wickr_alloc_zero(sizeof(Wickr__Proto__KeyExchangeSet));
+    
+    if (!exchange_set_proto) {
+        __wickr_key_exchange_proto_array_destroy(exchanges, num_exchanges);
+        return NULL;
+    }
+    
+    wickr__proto__key_exchange_set__init(exchange_set_proto);
+    
+    exchange_set_proto->n_exchanges = num_exchanges;
+    exchange_set_proto->exchanges = exchanges;
+    
+    exchange_set_proto->sender_pub.data = wickr_alloc(exchange_set->sender_pub->pub_data->length);
+    exchange_set_proto->sender_pub.len = exchange_set->sender_pub->pub_data->length;
+    
+    if (!exchange_set_proto->sender_pub.data) {
+        __wickr_key_exchange_proto_array_destroy(exchanges, num_exchanges);
+        return NULL;
+    }
+    
+    memcpy(exchange_set_proto->sender_pub.data,
+           exchange_set->sender_pub->pub_data->bytes,
+           exchange_set->sender_pub->pub_data->length);
+    
+    return exchange_set_proto;
+}
+
+wickr_buffer_t *wickr_key_exchange_set_serialize(const wickr_key_exchange_set_t *exchange_set)
+{
+    if (!exchange_set) {
+        return NULL;
+    }
+    
+    Wickr__Proto__KeyExchangeSet *proto_exchange_set = __wickr_key_exchange_set_to_proto(exchange_set);
+    
+    if (!proto_exchange_set) {
+        return NULL;
+    }
+    
+    size_t required_size = wickr__proto__key_exchange_set__get_packed_size(proto_exchange_set);
+    
+    wickr_buffer_t *serialized_buffer = wickr_buffer_create_empty(required_size);
+    
+    if (!serialized_buffer) {
+        __wickr_key_exchange_set_proto_free(proto_exchange_set);
+        return NULL;
+    }
+    
+    wickr__proto__key_exchange_set__pack(proto_exchange_set, serialized_buffer->bytes);
+    __wickr_key_exchange_set_proto_free(proto_exchange_set);
     
     return serialized_buffer;
 }
@@ -234,82 +437,12 @@ wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_buffer(const wickr_
                                                                                               buffer->length,
                                                                                               buffer->bytes);
     
-    if (!proto_exchange_set ||
-        proto_exchange_set->n_exchanges == 0 ||
-        proto_exchange_set->n_exchanges > INT32_MAX) {
+    if (!proto_exchange_set) {
         return NULL;
     }
     
-    wickr_exchange_array_t *exchanges = wickr_exchange_array_new((uint32_t)proto_exchange_set->n_exchanges);
-    
-    if (!exchanges) {
-        wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-        return NULL;
-    }
-    
-    for (int i = 0; i < proto_exchange_set->n_exchanges; i++) {
-        
-        Wickr__Proto__KeyExchangeSet__Exchange *one_proto_exchange = proto_exchange_set->exchanges[i];
-        
-        wickr_buffer_t *one_exchange_data = wickr_buffer_create(one_proto_exchange->exchange_data.data,
-                                                                one_proto_exchange->exchange_data.len);
-        
-        if (!one_exchange_data) {
-            wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        wickr_buffer_t *one_id_data = wickr_buffer_create(one_proto_exchange->identifier.data,
-                                                          one_proto_exchange->identifier.len);
-        
-        if (!one_id_data) {
-            wickr_buffer_destroy(&one_exchange_data);
-            wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        wickr_key_exchange_t *one_exchange = wickr_key_exchange_create(one_id_data,
-                                                                       one_proto_exchange->key_id,
-                                                                       one_exchange_data);
-        
-        if (!one_exchange) {
-            wickr_buffer_destroy(&one_exchange_data);
-            wickr_buffer_destroy(&one_id_data);
-            wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-            wickr_exchange_array_destroy(&exchanges);
-            return NULL;
-        }
-        
-        if (!wickr_exchange_array_set_item(exchanges, i, one_exchange)) {
-            wickr_key_exchange_destroy(&one_exchange);
-            wickr_exchange_array_destroy(&exchanges);
-            wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-            return NULL;
-        }
-        
-    }
-    
-    wickr_buffer_t temp_ec_key_buffer;
-    temp_ec_key_buffer.bytes = proto_exchange_set->sender_pub.data;
-    temp_ec_key_buffer.length = proto_exchange_set->sender_pub.len;
-    
-    wickr_ec_key_t *sender_ec_key = engine->wickr_crypto_engine_ec_key_import(&temp_ec_key_buffer, false);
+    wickr_key_exchange_set_t *exchange_set = __wickr_key_exchange_set_create_with_proto(proto_exchange_set, engine);
     wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
-    
-    if (!sender_ec_key) {
-        wickr_exchange_array_destroy(&exchanges);
-        return NULL;
-    }
-    
-    wickr_key_exchange_set_t *exchange_set = wickr_key_exchange_set_create(sender_ec_key, exchanges);
-    
-    if (!exchange_set) {
-        wickr_ec_key_destroy(&sender_ec_key);
-        wickr_exchange_array_destroy(&exchanges);
-        return NULL;
-    }
     
     return exchange_set;
 }
