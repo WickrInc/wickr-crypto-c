@@ -15,13 +15,25 @@ const wickr_cipher_t *wickr_cipher_find(uint8_t cipher_id) {
 
 wickr_cipher_result_t *wickr_cipher_result_create(wickr_cipher_t cipher, wickr_buffer_t *iv, wickr_buffer_t *cipher_text, wickr_buffer_t *auth_tag)
 {
-    // We will allow an empty cipher_text for now, this is due to handling of files
-    if (!iv) {
+    /* The IV is required and must be the same length */
+    if (!iv || iv->length != cipher.iv_len) {
+        return NULL;
+    }
+    
+    /* The auth tag is a required field if the cipher is authenticated */
+    if (cipher.is_authenticated && !auth_tag) {
+        return NULL;
+    }
+    
+    /* Make sure auth tag is the correct length */
+    if (auth_tag && auth_tag->length != cipher.auth_tag_len) {
         return NULL;
     }
     
     wickr_cipher_result_t *new_result = wickr_alloc_zero(sizeof(wickr_cipher_result_t));
     new_result->cipher = cipher;
+    
+    
     new_result->iv = iv;
     new_result->cipher_text = cipher_text;
     new_result->auth_tag = auth_tag;
