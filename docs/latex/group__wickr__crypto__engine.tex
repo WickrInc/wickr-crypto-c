@@ -49,7 +49,7 @@ bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga361b843efc839e30f90c
 \item 
 bool($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gae541acc6433f6f5ffe84382ccd5e4f97}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ec\+\_\+verify}} )(const \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+public\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+verify)
 \item 
-\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}} )(const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$params)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_gab624f62e1d434c5b8222eabd656feb48}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret}} )(const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$local, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$peer)
 \item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$($\ast$ \mbox{\hyperlink{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}{wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}} )(const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} digest\+\_\+mode)
 \item 
@@ -414,22 +414,6 @@ Verify E\+C\+D\+SA signatures
 \begin{DoxyReturn}{Returns}
 true if \textquotesingle{}signature\textquotesingle{} can be verified by \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}\label{group__wickr__crypto__engine_ga94bdc8d3b88ac04b9defe663afa48e78}} 
-\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}}
-\index{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key@{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
-\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key}{wickr\_crypto\_engine\_ecdh\_gen\_key}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+ecdh\+\_\+gen\+\_\+key) (const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$params)}
-
-Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters and a K\+DF
-
-
-\begin{DoxyParams}{Parameters}
-{\em params} & the parameters to use for the E\+C\+DH and K\+DF algorithms \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a buffer containing the expanded shared secret or N\+U\+LL if the key exchange cannot be computed 
-\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}\label{group__wickr__crypto__engine_gaa77b1bc373d92d9db9d801bcc4a4d29c}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}}
 \index{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file@{wickr\+\_\+crypto\+\_\+engine\+\_\+encrypt\+\_\+file}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
@@ -449,6 +433,24 @@ Encrypt a file
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if encryption succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__crypto__engine_gab624f62e1d434c5b8222eabd656feb48}\label{group__wickr__crypto__engine_gab624f62e1d434c5b8222eabd656feb48}} 
+\index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret@{wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret}}
+\index{wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret@{wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret}!Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}}
+\subsubsection{\texorpdfstring{wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret}{wickr\_crypto\_engine\_gen\_shared\_secret}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$($\ast$ wickr\+\_\+crypto\+\_\+engine\+::wickr\+\_\+crypto\+\_\+engine\+\_\+gen\+\_\+shared\+\_\+secret) (const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$local, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$peer)}
+
+Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters
+
+
+\begin{DoxyParams}{Parameters}
+{\em local} & the local elliptic curve private key \\
+\hline
+{\em peer} & the remote elliptic curve public key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the shared secret computed with \textquotesingle{}local\textquotesingle{} private key and \textquotesingle{}peer\textquotesingle{} public key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}\label{group__wickr__crypto__engine_ga782e0e8786ecf8a55c8ae2aea2f178aa}} 
 \index{Wickr\+\_\+crypto\+\_\+engine@{Wickr\+\_\+crypto\+\_\+engine}!wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create@{wickr\+\_\+crypto\+\_\+engine\+\_\+hmac\+\_\+create}}

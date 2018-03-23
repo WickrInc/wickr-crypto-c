@@ -21,7 +21,7 @@
 \item 
 bool \mbox{\hyperlink{group__openssl__crypto_ga1e2b3f17c67e97360b616d0d673767f7}{openssl\+\_\+ec\+\_\+verify}} (const \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+public\+\_\+key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data\+\_\+to\+\_\+verify)
 \item 
-\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__openssl__crypto_gaa9e626d984efe7fed046d5f62c6c24a4}{openssl\+\_\+ecdh\+\_\+gen\+\_\+key}} (const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$params)
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__openssl__crypto_gac18a3e234621caaabf695715fb22d950}{openssl\+\_\+gen\+\_\+shared\+\_\+secret}} (const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$local, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$peer)
 \item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__openssl__crypto_gaeb4574976214a17eb79bbc3d76f573a6}{openssl\+\_\+hmac\+\_\+create}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$hmac\+\_\+key, \mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}} mode)
 \item 
@@ -217,22 +217,6 @@ Verify E\+C\+D\+SA signatures
 \begin{DoxyReturn}{Returns}
 true if \textquotesingle{}signature\textquotesingle{} can be verified by \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__openssl__crypto_gaa9e626d984efe7fed046d5f62c6c24a4}\label{group__openssl__crypto_gaa9e626d984efe7fed046d5f62c6c24a4}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ecdh\+\_\+gen\+\_\+key@{openssl\+\_\+ecdh\+\_\+gen\+\_\+key}}
-\index{openssl\+\_\+ecdh\+\_\+gen\+\_\+key@{openssl\+\_\+ecdh\+\_\+gen\+\_\+key}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+ecdh\+\_\+gen\+\_\+key()}{openssl\_ecdh\_gen\_key()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+ecdh\+\_\+gen\+\_\+key (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ecdh__params}{wickr\+\_\+ecdh\+\_\+params\+\_\+t}} $\ast$}]{params }\end{DoxyParamCaption})}
-
-Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters This function internally uses \textquotesingle{}openssl\+\_\+hkdf\textquotesingle{} to extract and expand the output of the E\+C\+DH function using \textquotesingle{}params\textquotesingle{} for options
-
-
-\begin{DoxyParams}{Parameters}
-{\em params} & the parameters to use for the E\+C\+DH and H\+K\+DF algorithms \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a buffer containing the expanded shared secret or N\+U\+LL if the key exchange cannot be computed 
-\end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}\label{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}}
 \index{openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
@@ -252,6 +236,24 @@ Encrypt a file with A\+E\+S256
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if encryption succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__openssl__crypto_gac18a3e234621caaabf695715fb22d950}\label{group__openssl__crypto_gac18a3e234621caaabf695715fb22d950}} 
+\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+gen\+\_\+shared\+\_\+secret@{openssl\+\_\+gen\+\_\+shared\+\_\+secret}}
+\index{openssl\+\_\+gen\+\_\+shared\+\_\+secret@{openssl\+\_\+gen\+\_\+shared\+\_\+secret}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\+\_\+gen\+\_\+shared\+\_\+secret()}{openssl\_gen\_shared\_secret()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+gen\+\_\+shared\+\_\+secret (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{local,  }\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{peer }\end{DoxyParamCaption})}
+
+Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters
+
+
+\begin{DoxyParams}{Parameters}
+{\em local} & the local elliptic curve private key \\
+\hline
+{\em peer} & the remote elliptic curve public key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer containing the shared secret computed with \textquotesingle{}local\textquotesingle{} private key and \textquotesingle{}peer\textquotesingle{} public key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga788a03002d8c6048401cf0bbc2d48c7a}\label{group__openssl__crypto_ga788a03002d8c6048401cf0bbc2d48c7a}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+hkdf@{openssl\+\_\+hkdf}}

@@ -1,0 +1,49 @@
+\hypertarget{structwickr__ecdh__cipher__ctx}{}\section{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx Struct Reference}
+\label{structwickr__ecdh__cipher__ctx}\index{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}}
+
+
+A cipher context designed to modularize the E\+C\+D\+H\+\_\+\+H\+K\+D\+F\+\_\+\+A\+E\+S256 workflow.  
+
+
+
+
+{\ttfamily \#include $<$ecdh\+\_\+cipher\+\_\+ctx.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} \mbox{\hyperlink{structwickr__ecdh__cipher__ctx_a4d953a0c8d6302db63f2fce624e6ffc2}{engine}}
+\item 
+\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__ecdh__cipher__ctx_ad9389a9efc31ac0516d9aebeb1ac6301}{local\+\_\+key}}
+\item 
+\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} \mbox{\hyperlink{structwickr__ecdh__cipher__ctx_a15e7d01b0e07501b572c11bde1c2e56e}{cipher}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A cipher context designed to modularize the E\+C\+D\+H\+\_\+\+H\+K\+D\+F\+\_\+\+A\+E\+S256 workflow. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__ecdh__cipher__ctx_a15e7d01b0e07501b572c11bde1c2e56e}\label{structwickr__ecdh__cipher__ctx_a15e7d01b0e07501b572c11bde1c2e56e}} 
+\index{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}!cipher@{cipher}}
+\index{cipher@{cipher}!wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}}
+\subsubsection{\texorpdfstring{cipher}{cipher}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx\+::cipher}
+
+the cipher key type that the kdf output will be casted into \mbox{\Hypertarget{structwickr__ecdh__cipher__ctx_a4d953a0c8d6302db63f2fce624e6ffc2}\label{structwickr__ecdh__cipher__ctx_a4d953a0c8d6302db63f2fce624e6ffc2}} 
+\index{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}!engine@{engine}}
+\index{engine@{engine}!wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}}
+\subsubsection{\texorpdfstring{engine}{engine}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx\+::engine}
+
+the crypto engine that will supply the E\+C\+DH, K\+DF, and cipher operations \mbox{\Hypertarget{structwickr__ecdh__cipher__ctx_ad9389a9efc31ac0516d9aebeb1ac6301}\label{structwickr__ecdh__cipher__ctx_ad9389a9efc31ac0516d9aebeb1ac6301}} 
+\index{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}!local\+\_\+key@{local\+\_\+key}}
+\index{local\+\_\+key@{local\+\_\+key}!wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx@{wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx}}
+\subsubsection{\texorpdfstring{local\+\_\+key}{local\_key}}
+{\footnotesize\ttfamily wickr\+\_\+ecdh\+\_\+cipher\+\_\+ctx\+::local\+\_\+key}
+
+the private ec key that will be used for the E\+C\+DH operation 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/wickrcrypto/include/wickrcrypto/ecdh\+\_\+cipher\+\_\+ctx.\+h\end{DoxyCompactItemize}

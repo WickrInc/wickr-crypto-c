@@ -43,7 +43,8 @@ extern "C" {
  @var wickr_key_exchange::exchange_id
  a unique identifier to be assoiciated with the exchange to aid a recipient in finding a particular
  exchange within an exchange set
- @var wickr_key_exchange::key_id the identifier of the recipient's public key was used to compute
+ @var wickr_key_exchange::key_id
+ the identifier of the recipient's public key was used to compute
  the key protecting 'exchange_ciphertext'. This aids a recipient in finding the particular private key they
  need to use to unlock 'exchange_ciphertext' upon receipt
  @var wickr_key_exchange::exchange_ciphertext

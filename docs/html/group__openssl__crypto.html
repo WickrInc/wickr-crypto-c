@@ -88,8 +88,8 @@ Functions</h2></td></tr>
 <tr class="separator:gab32cef5c789ee1992afae98a81b65823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1e2b3f17c67e97360b616d0d673767f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#ga1e2b3f17c67e97360b616d0d673767f7">openssl_ec_verify</a> (const <a class="el" href="structwickr__ecdsa__result.html">wickr_ecdsa_result_t</a> *signature, const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *ec_public_key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data_to_verify)</td></tr>
 <tr class="separator:ga1e2b3f17c67e97360b616d0d673767f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9e626d984efe7fed046d5f62c6c24a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gaa9e626d984efe7fed046d5f62c6c24a4">openssl_ecdh_gen_key</a> (const <a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *params)</td></tr>
-<tr class="separator:gaa9e626d984efe7fed046d5f62c6c24a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac18a3e234621caaabf695715fb22d950"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gac18a3e234621caaabf695715fb22d950">openssl_gen_shared_secret</a> (const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local, const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer)</td></tr>
+<tr class="separator:gac18a3e234621caaabf695715fb22d950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaeb4574976214a17eb79bbc3d76f573a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gaeb4574976214a17eb79bbc3d76f573a6">openssl_hmac_create</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *hmac_key, <a class="el" href="structwickr__digest.html">wickr_digest_t</a> mode)</td></tr>
 <tr class="separator:gaeb4574976214a17eb79bbc3d76f573a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafbde176ef6f2b99ff9dab58ad69a9a74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__openssl__crypto.html#gafbde176ef6f2b99ff9dab58ad69a9a74">openssl_hmac_verify</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *hmac_key, <a class="el" href="structwickr__digest.html">wickr_digest_t</a> mode, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *expected)</td></tr>
@@ -463,32 +463,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa9e626d984efe7fed046d5f62c6c24a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa9e626d984efe7fed046d5f62c6c24a4">&#9670;&nbsp;</a></span>openssl_ecdh_gen_key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* openssl_ecdh_gen_key </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *&#160;</td>
-          <td class="paramname"><em>params</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generate a shared secret given Elliptic Curve Diffie-Hellman parameters This function internally uses 'openssl_hkdf' to extract and expand the output of the ECDH function using 'params' for options</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">params</td><td>the parameters to use for the ECDH and HKDF algorithms </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed </dd></dl>
-
-</div>
-</div>
 <a id="ga178fa1f33ad2767c27411c3ebcdd3ca0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga178fa1f33ad2767c27411c3ebcdd3ca0">&#9670;&nbsp;</a></span>openssl_encrypt_file()</h2>
 
@@ -530,6 +504,43 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if encryption succeeds, and 'out_file' can be written </dd></dl>
+
+</div>
+</div>
+<a id="gac18a3e234621caaabf695715fb22d950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac18a3e234621caaabf695715fb22d950">&#9670;&nbsp;</a></span>openssl_gen_shared_secret()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* openssl_gen_shared_secret </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td>
+          <td class="paramname"><em>local</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td>
+          <td class="paramname"><em>peer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generate a shared secret given Elliptic Curve Diffie-Hellman parameters</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local</td><td>the local elliptic curve private key </td></tr>
+    <tr><td class="paramname">peer</td><td>the remote elliptic curve public key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a buffer containing the shared secret computed with 'local' private key and 'peer' public key </dd></dl>
 
 </div>
 </div>

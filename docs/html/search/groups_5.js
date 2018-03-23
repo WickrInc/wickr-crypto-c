@@ -8,7 +8,6 @@ var searchData=
   ['wickr_5fdev_5finfo',['Wickr_dev_info',['../group__wickr__dev__info.html',1,'']]],
   ['wickr_5fdigest',['Wickr_digest',['../group__wickr__digest.html',1,'']]],
   ['wickr_5fec_5fcurve_5ft',['wickr_ec_curve_t',['../group__wickr__ec__curve.html',1,'']]],
-  ['wickr_5fecdh_5fparams',['Wickr_ecdh_params',['../group__wickr__ecdh__params.html',1,'']]],
   ['wickr_5fecdsa_5fresult',['Wickr_ecdsa_result',['../group__wickr__ecdsa__result.html',1,'']]],
   ['wickr_5fephemeral_5fkeypair',['Wickr_ephemeral_keypair',['../group__wickr__ephemeral__keypair.html',1,'']]],
   ['wickr_5fidentity',['wickr_identity',['../group__wickr__identity.html',1,'']]],

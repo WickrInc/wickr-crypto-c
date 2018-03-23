@@ -68,7 +68,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_data'.  
+<p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_ciphertext'.  
  <a href="structwickr__key__exchange.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="key__exchange_8h_source.html">key_exchange.h</a>&gt;</code></p>
@@ -77,23 +77,22 @@ $(function() {
 Data Fields</h2></td></tr>
 <tr class="memitem:a744e71ef6676c78643646adf1693a4e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#a744e71ef6676c78643646adf1693a4e5">exchange_id</a></td></tr>
 <tr class="separator:a744e71ef6676c78643646adf1693a4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a109d595a115ac08ca570545f3751686b"><td class="memItemLeft" align="right" valign="top"><a id="a109d595a115ac08ca570545f3751686b"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>key_id</b></td></tr>
-<tr class="separator:a109d595a115ac08ca570545f3751686b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be89562df814a32b19cd57c49037691"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#a6be89562df814a32b19cd57c49037691">exchange_data</a></td></tr>
-<tr class="separator:a6be89562df814a32b19cd57c49037691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0c1dbc866c150ffc275546b7e91e2d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#abc0c1dbc866c150ffc275546b7e91e2d">key_id</a></td></tr>
+<tr class="separator:abc0c1dbc866c150ffc275546b7e91e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8399c32f60a1efef3d92f6844db4b54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher__result.html">wickr_cipher_result_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__key__exchange.html#ab8399c32f60a1efef3d92f6844db4b54">exchange_ciphertext</a></td></tr>
+<tr class="separator:ab8399c32f60a1efef3d92f6844db4b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_data'. </p>
+<div class="textblock"><p>Public key exchange protected data. After a shared secret is generated using a public key with identifier 'key_id', and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in 'exchange_ciphertext'. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a6be89562df814a32b19cd57c49037691"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6be89562df814a32b19cd57c49037691">&#9670;&nbsp;</a></span>exchange_data</h2>
+<a id="ab8399c32f60a1efef3d92f6844db4b54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8399c32f60a1efef3d92f6844db4b54">&#9670;&nbsp;</a></span>exchange_ciphertext</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wickr_key_exchange::exchange_data</td>
+          <td class="memname">wickr_key_exchange::exchange_ciphertext</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -113,6 +112,21 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>key_id</b></td></
       </table>
 </div><div class="memdoc">
 <p>a unique identifier to be assoiciated with the exchange to aid a recipient in finding a particular exchange within an exchange set </p>
+
+</div>
+</div>
+<a id="abc0c1dbc866c150ffc275546b7e91e2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc0c1dbc866c150ffc275546b7e91e2d">&#9670;&nbsp;</a></span>key_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_key_exchange::key_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the identifier of the recipient's public key was used to compute the key protecting 'exchange_ciphertext'. This aids a recipient in finding the particular private key they need to use to unlock 'exchange_ciphertext' upon receipt </p>
 
 </div>
 </div>
