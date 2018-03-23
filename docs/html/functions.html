@@ -99,6 +99,7 @@ $(function() {
 <li>cipher
 : <a class="el" href="structwickr__cipher__key.html#a6506e1a07f7bc2c5ceeb0ca5ce81385b">wickr_cipher_key</a>
 , <a class="el" href="structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9">wickr_cipher_result</a>
+, <a class="el" href="structwickr__ecdh__cipher__ctx.html#a15e7d01b0e07501b572c11bde1c2e56e">wickr_ecdh_cipher_ctx</a>
 , <a class="el" href="structwickr__stream__iv.html#a86379d83e28b96d4852ac047482713d1">wickr_stream_iv</a>
 </li>
 <li>cipher_id
@@ -172,6 +173,7 @@ $(function() {
 </li>
 <li>engine
 : <a class="el" href="structwickr__ctx.html#a244c238ad74f2dbcddc280822d1fb93f">wickr_ctx</a>
+, <a class="el" href="structwickr__ecdh__cipher__ctx.html#a4d953a0c8d6302db63f2fce624e6ffc2">wickr_ecdh_cipher_ctx</a>
 , <a class="el" href="structwickr__stream__ctx.html#a14ef322bbeec579ded7f35c5aeb0d3fa">wickr_stream_ctx</a>
 , <a class="el" href="structwickr__stream__iv.html#a8c597718ade583db19204df7bfed7e85">wickr_stream_iv</a>
 </li>
@@ -188,8 +190,8 @@ $(function() {
 <li>evolution_key
 : <a class="el" href="structwickr__stream__key.html#ae7210bd67e61cb4c38733a237dae95d9">wickr_stream_key</a>
 </li>
-<li>exchange_data
-: <a class="el" href="structwickr__key__exchange.html#a6be89562df814a32b19cd57c49037691">wickr_key_exchange</a>
+<li>exchange_ciphertext
+: <a class="el" href="structwickr__key__exchange.html#ab8399c32f60a1efef3d92f6844db4b54">wickr_key_exchange</a>
 </li>
 <li>exchange_id
 : <a class="el" href="structwickr__key__exchange.html#a744e71ef6676c78643646adf1693a4e5">wickr_key_exchange</a>
@@ -246,9 +248,6 @@ $(function() {
 <li>kdf_id
 : <a class="el" href="structwickr__kdf__algo.html#a0cf9976901115634ddbb6193b6e326ba">wickr_kdf_algo</a>
 </li>
-<li>kdf_info
-: <a class="el" href="structwickr__ecdh__params.html#a0259f327ae0bdcc9e44b1d43a1216cac">wickr_ecdh_params</a>
-</li>
 <li>key
 : <a class="el" href="structwickr__stream__ctx.html#a3598b3c0415d13fafab6633f8c00a3c8">wickr_stream_ctx</a>
 </li>
@@ -260,6 +259,9 @@ $(function() {
 </li>
 <li>key_exchange_set
 : <a class="el" href="structwickr__parse__result.html#aa35f9328b675b02426fd190ffcd45402">wickr_parse_result</a>
+</li>
+<li>key_id
+: <a class="el" href="structwickr__key__exchange.html#abc0c1dbc866c150ffc275546b7e91e2d">wickr_key_exchange</a>
 </li>
 <li>key_len
 : <a class="el" href="structwickr__cipher.html#aec5724cc59d20ae5d7cbb73684b53457">wickr_cipher</a>
@@ -278,7 +280,7 @@ $(function() {
 : <a class="el" href="structwickr__storage__keys.html#a544b35d7a75bd6076f6c34537e49ef6b">wickr_storage_keys</a>
 </li>
 <li>local_key
-: <a class="el" href="structwickr__ecdh__params.html#aab5a55e6a516ab8268ef6739ae1422cd">wickr_ecdh_params</a>
+: <a class="el" href="structwickr__ecdh__cipher__ctx.html#ad9389a9efc31ac0516d9aebeb1ac6301">wickr_ecdh_cipher_ctx</a>
 </li>
 </ul>
 
@@ -344,9 +346,6 @@ $(function() {
 </li>
 <li>payload_key
 : <a class="el" href="structwickr__decode__result.html#aed31d598b49bf696f286d673246d8b31">wickr_decode_result</a>
-</li>
-<li>peer_key
-: <a class="el" href="structwickr__ecdh__params.html#ab17d6191b23fa7fd1befd03b2eee4ba9">wickr_ecdh_params</a>
 </li>
 <li>pkt_enc_version
 : <a class="el" href="structwickr__ctx.html#ad43117fbe3f70681f0ab982b06c6cd75">wickr_ctx</a>
@@ -498,11 +497,11 @@ $(function() {
 <li>wickr_crypto_engine_ec_verify
 : <a class="el" href="group__wickr__crypto__engine.html#gae541acc6433f6f5ffe84382ccd5e4f97">wickr_crypto_engine</a>
 </li>
-<li>wickr_crypto_engine_ecdh_gen_key
-: <a class="el" href="group__wickr__crypto__engine.html#ga94bdc8d3b88ac04b9defe663afa48e78">wickr_crypto_engine</a>
-</li>
 <li>wickr_crypto_engine_encrypt_file
 : <a class="el" href="group__wickr__crypto__engine.html#gaa77b1bc373d92d9db9d801bcc4a4d29c">wickr_crypto_engine</a>
+</li>
+<li>wickr_crypto_engine_gen_shared_secret
+: <a class="el" href="group__wickr__crypto__engine.html#gab624f62e1d434c5b8222eabd656feb48">wickr_crypto_engine</a>
 </li>
 <li>wickr_crypto_engine_hmac_create
 : <a class="el" href="group__wickr__crypto__engine.html#ga782e0e8786ecf8a55c8ae2aea2f178aa">wickr_crypto_engine</a>

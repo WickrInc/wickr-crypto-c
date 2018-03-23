@@ -119,8 +119,8 @@ Variables</h2></td></tr>
 <tr class="separator:gac5a36d2a53e06a75a2b818e6a5cc96a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae541acc6433f6f5ffe84382ccd5e4f97"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gae541acc6433f6f5ffe84382ccd5e4f97">wickr_crypto_engine::wickr_crypto_engine_ec_verify</a> )(const <a class="el" href="structwickr__ecdsa__result.html">wickr_ecdsa_result_t</a> *signature, const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *ec_public_key, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data_to_verify)</td></tr>
 <tr class="separator:gae541acc6433f6f5ffe84382ccd5e4f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94bdc8d3b88ac04b9defe663afa48e78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga94bdc8d3b88ac04b9defe663afa48e78">wickr_crypto_engine::wickr_crypto_engine_ecdh_gen_key</a> )(const <a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *params)</td></tr>
-<tr class="separator:ga94bdc8d3b88ac04b9defe663afa48e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab624f62e1d434c5b8222eabd656feb48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#gab624f62e1d434c5b8222eabd656feb48">wickr_crypto_engine::wickr_crypto_engine_gen_shared_secret</a> )(const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local, const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer)</td></tr>
+<tr class="separator:gab624f62e1d434c5b8222eabd656feb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga782e0e8786ecf8a55c8ae2aea2f178aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga782e0e8786ecf8a55c8ae2aea2f178aa">wickr_crypto_engine::wickr_crypto_engine_hmac_create</a> )(const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *hmac_key, <a class="el" href="structwickr__digest.html">wickr_digest_t</a> digest_mode)</td></tr>
 <tr class="separator:ga782e0e8786ecf8a55c8ae2aea2f178aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga00c52a816403192af5b21d952265d0b6"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__crypto__engine.html#ga00c52a816403192af5b21d952265d0b6">wickr_crypto_engine::wickr_crypto_engine_hmac_verify</a> )(const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *data, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *hmac_key, const <a class="el" href="structwickr__digest.html">wickr_digest_t</a> mode, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *expected)</td></tr>
@@ -627,28 +627,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ga94bdc8d3b88ac04b9defe663afa48e78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga94bdc8d3b88ac04b9defe663afa48e78">&#9670;&nbsp;</a></span>wickr_crypto_engine_ecdh_gen_key</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_ecdh_gen_key) (const <a class="el" href="structwickr__ecdh__params.html">wickr_ecdh_params_t</a> *params)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generate a shared secret given Elliptic Curve Diffie-Hellman parameters and a KDF</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">params</td><td>the parameters to use for the ECDH and KDF algorithms </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a buffer containing the expanded shared secret or NULL if the key exchange cannot be computed </dd></dl>
-
-</div>
-</div>
 <a id="gaa77b1bc373d92d9db9d801bcc4a4d29c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa77b1bc373d92d9db9d801bcc4a4d29c">&#9670;&nbsp;</a></span>wickr_crypto_engine_encrypt_file</h2>
 
@@ -670,6 +648,29 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if encryption succeeds, and 'out_file' can be written </dd></dl>
+
+</div>
+</div>
+<a id="gab624f62e1d434c5b8222eabd656feb48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab624f62e1d434c5b8222eabd656feb48">&#9670;&nbsp;</a></span>wickr_crypto_engine_gen_shared_secret</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>*(* wickr_crypto_engine::wickr_crypto_engine_gen_shared_secret) (const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *local, const <a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *peer)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generate a shared secret given Elliptic Curve Diffie-Hellman parameters</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local</td><td>the local elliptic curve private key </td></tr>
+    <tr><td class="paramname">peer</td><td>the remote elliptic curve public key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a buffer containing the shared secret computed with 'local' private key and 'peer' public key </dd></dl>
 
 </div>
 </div>

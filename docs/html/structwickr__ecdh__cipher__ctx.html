@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wickr-crypto-c: wickr_packet_header Struct Reference</title>
+<title>wickr-crypto-c: wickr_ecdh_cipher_ctx Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,57 +64,74 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wickr_packet_header Struct Reference<div class="ingroups"><a class="el" href="group__wickr__protocol.html">Wickr Protocol</a></div></div>  </div>
+<div class="title">wickr_ecdh_cipher_ctx Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information.  
- <a href="structwickr__packet__header.html#details">More...</a></p>
+<p>A cipher context designed to modularize the ECDH_HKDF_AES256 workflow.  
+ <a href="structwickr__ecdh__cipher__ctx.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="protocol_8h_source.html">protocol.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="ecdh__cipher__ctx_8h_source.html">ecdh_cipher_ctx.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:aa32926d47dd2639030523593bfefc998"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__packet__header.html#aa32926d47dd2639030523593bfefc998">sender_pub</a></td></tr>
-<tr class="separator:aa32926d47dd2639030523593bfefc998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49af3b4865a9deee0e60883134ebbb83"><td class="memItemLeft" align="right" valign="top">wickr_exchange_array_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__packet__header.html#a49af3b4865a9deee0e60883134ebbb83">exchanges</a></td></tr>
-<tr class="separator:a49af3b4865a9deee0e60883134ebbb83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d953a0c8d6302db63f2fce624e6ffc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__cipher__ctx.html#a4d953a0c8d6302db63f2fce624e6ffc2">engine</a></td></tr>
+<tr class="separator:a4d953a0c8d6302db63f2fce624e6ffc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9389a9efc31ac0516d9aebeb1ac6301"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ec__key.html">wickr_ec_key_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__cipher__ctx.html#ad9389a9efc31ac0516d9aebeb1ac6301">local_key</a></td></tr>
+<tr class="separator:ad9389a9efc31ac0516d9aebeb1ac6301"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e7d01b0e07501b572c11bde1c2e56e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__cipher.html">wickr_cipher_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__ecdh__cipher__ctx.html#a15e7d01b0e07501b572c11bde1c2e56e">cipher</a></td></tr>
+<tr class="separator:a15e7d01b0e07501b572c11bde1c2e56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The public header of Wickr Packets. Packets can be sent to multiple nodes, the key for the packet body is derived by each recipient node using an individualized key exchange. See Wickr white paper 'Prepare Packet Header' section for more information. </p>
+<div class="textblock"><p>A cipher context designed to modularize the ECDH_HKDF_AES256 workflow. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="a49af3b4865a9deee0e60883134ebbb83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49af3b4865a9deee0e60883134ebbb83">&#9670;&nbsp;</a></span>exchanges</h2>
+<a id="a15e7d01b0e07501b572c11bde1c2e56e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e7d01b0e07501b572c11bde1c2e56e">&#9670;&nbsp;</a></span>cipher</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wickr_packet_header::exchanges</td>
+          <td class="memname">wickr_ecdh_cipher_ctx::cipher</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>an array of key exchanges, one for each node that will be receiving this message </p>
+<p>the cipher key type that the kdf output will be casted into </p>
 
 </div>
 </div>
-<a id="aa32926d47dd2639030523593bfefc998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa32926d47dd2639030523593bfefc998">&#9670;&nbsp;</a></span>sender_pub</h2>
+<a id="a4d953a0c8d6302db63f2fce624e6ffc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d953a0c8d6302db63f2fce624e6ffc2">&#9670;&nbsp;</a></span>engine</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">wickr_packet_header::sender_pub</td>
+          <td class="memname">wickr_ecdh_cipher_ctx::engine</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>the public EC key that the sender used to derive the key exchanges contained within 'exchanges' </p>
+<p>the crypto engine that will supply the ECDH, KDF, and cipher operations </p>
+
+</div>
+</div>
+<a id="ad9389a9efc31ac0516d9aebeb1ac6301"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9389a9efc31ac0516d9aebeb1ac6301">&#9670;&nbsp;</a></span>local_key</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wickr_ecdh_cipher_ctx::local_key</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the private ec key that will be used for the ECDH operation </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/wickrcrypto/include/wickrcrypto/<a class="el" href="protocol_8h_source.html">protocol.h</a></li>
+<li>src/wickrcrypto/include/wickrcrypto/<a class="el" href="ecdh__cipher__ctx_8h_source.html">ecdh_cipher_ctx.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
