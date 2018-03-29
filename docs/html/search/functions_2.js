@@ -122,7 +122,6 @@ var searchData=
   ['wickr_5fkey_5fexchange_5fcreate_5fwith_5fdata',['wickr_key_exchange_create_with_data',['../group__wickr__protocol.html#ga2b967bbdd161d8e37d19c4ab9621771b',1,'protocol.h']]],
   ['wickr_5fkey_5fexchange_5fcreate_5fwith_5fpacket_5fkey',['wickr_key_exchange_create_with_packet_key',['../group__wickr__protocol.html#gac21e7b7fda1612923d83e7e75166209c',1,'protocol.h']]],
   ['wickr_5fkey_5fexchange_5fdestroy',['wickr_key_exchange_destroy',['../group__wickr__key__exchange.html#ga54b6481f8f4b61fb949bec17d47cd3de',1,'key_exchange.h']]],
-  ['wickr_5fkey_5fexchange_5fkdf_5fmatching_5fcipher',['wickr_key_exchange_kdf_matching_cipher',['../group__wickr__crypto__engine.html#ga6cdd263ddccd0b28a85ed61889805e60',1,'crypto_engine.h']]],
   ['wickr_5fkey_5fexchange_5fset_5fcopy',['wickr_key_exchange_set_copy',['../group__wickr__key__exchange__set.html#ga102baafda8804a97acc5e2a5bc6f7dba',1,'key_exchange.h']]],
   ['wickr_5fkey_5fexchange_5fset_5fcreate',['wickr_key_exchange_set_create',['../group__wickr__key__exchange__set.html#ga9d247f82fda4d9ad7cb6784cd591c90e',1,'key_exchange.h']]],
   ['wickr_5fkey_5fexchange_5fset_5fcreate_5ffrom_5fbuffer',['wickr_key_exchange_set_create_from_buffer',['../group__wickr__key__exchange__set.html#gaec93a83e2f00a707caf371b340591324',1,'key_exchange.h']]],
