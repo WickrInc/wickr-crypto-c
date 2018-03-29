@@ -86,6 +86,17 @@ static wickr_cipher_key_t *__wickr_ecdh_cipher_ctx_gen_cipher_key(const wickr_ec
     if (kdf_params->algo.algo_id != KDF_HMAC_SHA2) {
         return NULL;
     }
+
+	wickr_kdf_meta_t kdf_meta = {
+		.algo = kdf_params->algo,
+		.salt = kdf_params->salt,
+		.info = kdf_params->info
+	};
+
+	/* Truncate the HKDF output to the desired cipher length if necessary */
+	if (kdf_params->algo.output_size != ctx->cipher.key_len) {
+		kdf_meta.algo.output_size = ctx->cipher.key_len;
+	}
     
     /* Generate the ECDH shared secret */
     wickr_buffer_t *shared_secret = ctx->engine.wickr_crypto_engine_gen_shared_secret(ctx->local_key, remote_pub);
@@ -95,7 +106,7 @@ static wickr_cipher_key_t *__wickr_ecdh_cipher_ctx_gen_cipher_key(const wickr_ec
     }
     
     /* Run the ECDH shared secret through HKDF with the provided salt and info from the ECDH params */
-    wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(kdf_params, shared_secret);
+    wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(&kdf_meta, shared_secret);
     
     if (!kdf_result) {
         wickr_buffer_destroy_zero(&shared_secret);
