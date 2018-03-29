@@ -97,7 +97,7 @@ static wickr_kdf_meta_t *__wickr_key_exchange_get_kdf_meta(const wickr_identity_
             algo = KDF_HKDF_SHA256;
             break;
         case 4:
-            algo = wickr_key_exchange_kdf_matching_cipher(exchange_cipher);
+            algo = KDF_HKDF_SHA512;
             break;
         default:
             return NULL;
