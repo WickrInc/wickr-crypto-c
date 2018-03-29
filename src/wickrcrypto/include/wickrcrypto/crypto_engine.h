@@ -351,19 +351,6 @@ wickr_digest_t wickr_digest_matching_cipher(wickr_cipher_t cipher);
 
 /**
  @ingroup wickr_crypto_engine
- 
- 
- Get the matching message key exchange kdf for a cipher
- 
- NOTE: Currently all ciphers return HKDF with SHA512 as a digest
- 
- @param cipher the cipher to find the matching kdf for
- @return a kdf that has an output which is the same size as the length of the cipher's key
- */
-wickr_kdf_algo_t wickr_key_exchange_kdf_matching_cipher(wickr_cipher_t cipher);
-
-/**
- @ingroup wickr_crypto_engine
 
  Get the matching digest for a curve, this is to be used for signature operations using this curve
  

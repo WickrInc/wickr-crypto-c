@@ -72,7 +72,8 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
     SHOULD_NOT_BE_NULL(test_kdf_meta);
     
     wickr_cipher_key_t *expected_key = wickr_cipher_key_create(CIPHER_AES256_GCM, hex_char_to_buffer("95640c1817115db83b9d9a2f56c29fcca8a05cc787a95a9055e9b1b6a03a8478"));
-                                                               
+	wickr_cipher_key_t *expected_large_key = wickr_cipher_key_create(CIPHER_AES256_GCM, hex_char_to_buffer("fe4178413af02bbbb11f93fd8cbc65b71faa6ff9f33ef49c0da49c33bc73277b"));
+
     SHOULD_NOT_BE_NULL(expected_key);
     
     wickr_cipher_result_t *test_cipher_result = NULL;
@@ -97,6 +98,28 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
         wickr_buffer_destroy(&test_decode);
     }
     END_IT
+
+	IT("can use a KDF with a larger output than the desired cipher key length")
+	{
+		wickr_kdf_meta_t *test_kdf_meta_large = wickr_kdf_meta_create(KDF_HKDF_SHA512, 
+			hex_char_to_buffer("f00d"),
+			hex_char_to_buffer("bar"));
+		SHOULD_NOT_BE_NULL(test_kdf_meta_large);
+
+		wickr_cipher_result_t *large_cipher_result = wickr_ecdh_cipher_ctx_cipher(test_ctx, test_plaintext, dB, test_kdf_meta_large);
+		SHOULD_NOT_BE_NULL(large_cipher_result);
+
+		/* The bytes that are output should be decodable with the expected key bytes
+		the expected key bytes were pre-computed to be the shared secret of dA pub + dA pri + dB pub
+		passed through HKDF with SHA512 with salt of hex bytes f00d and info bytes bar truncated to 32 bytes */
+		wickr_buffer_t *test_decode = test_engine.wickr_crypto_engine_cipher_decrypt(large_cipher_result, NULL, expected_large_key, NULL);
+		SHOULD_BE_TRUE(wickr_buffer_is_equal(test_decode, test_plaintext, NULL));
+
+		wickr_buffer_destroy(&test_decode);
+		wickr_kdf_meta_destroy(&test_kdf_meta_large);
+		wickr_cipher_result_destroy(&large_cipher_result);
+	}
+	END_IT
     
     IT("should fail to decipher if parameters are missing")
     {
@@ -170,6 +193,7 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
     wickr_kdf_meta_destroy(&test_kdf_meta);
     wickr_buffer_destroy(&test_plaintext);
     wickr_cipher_key_destroy(&expected_key);
+	wickr_cipher_key_destroy(&expected_large_key);
     wickr_ecdh_cipher_ctx_destroy(&test_ctx);
     SHOULD_BE_NULL(test_ctx);
 }

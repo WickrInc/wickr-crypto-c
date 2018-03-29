@@ -1,0 +1,96 @@
+
+#include "test_protocol_version.h"
+#include "externs.h"
+#include "protocol.h"
+#include "util.h"
+#include "memory.h"
+
+void test_packet_decode(const wickr_ctx_t *receiver_ctx,
+                        const wickr_buffer_t *buffer,
+                        const wickr_identity_chain_t *sender_identity,
+                        wickr_ec_key_t *receiver_decode_key,
+                        const wickr_buffer_t *expected_payload,
+                        const wickr_buffer_t *expected_tag)
+{
+    wickr_ctx_packet_t *packet = wickr_ctx_parse_packet(receiver_ctx, buffer, sender_identity);
+    wickr_decode_result_t *decoded = wickr_ctx_decode_packet(receiver_ctx, packet, receiver_decode_key);
+    
+    SHOULD_NOT_BE_NULL(decoded);
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(decoded->decrypted_payload->body, expected_payload, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(decoded->decrypted_payload->meta->channel_tag, expected_tag, NULL));
+    SHOULD_EQUAL(decoded->decrypted_payload->meta->content_type, 3000);
+    SHOULD_EQUAL(decoded->decrypted_payload->meta->ephemerality_settings.bor, 3600);
+    SHOULD_EQUAL(decoded->decrypted_payload->meta->ephemerality_settings.ttl, 64000);
+    SHOULD_EQUAL(decoded->err, E_SUCCESS);
+    SHOULD_EQUAL(packet->parse_result->err, E_SUCCESS);
+    
+    wickr_ctx_packet_destroy(&packet);
+    wickr_decode_result_destroy(&decoded);
+}
+
+DESCRIBE(protocol_support_regression_tests, "protocol regression tests")
+{
+    
+    wickr_buffer_t *expected_payload = wickr_buffer_create((uint8_t *)"Hello World!", 12);
+    wickr_buffer_t *expected_tag = hex_char_to_buffer("e37f2c1ec15d42efdfe4c28533e73ff6448ea9c662bbc9f4b790a879efeaebc8cde56e1eff414a929b8f5d96f62bbe70c052c7bdd9c089f00830693f7afe8cb8");
+    
+    wickr_buffer_t *recipient_priv_key_buffer = hex_char_to_buffer("3081dc020101044201177f7caaceab7f6969a3c61cdded169c2e36f31a41f42a2ff56aa772d13de07d0884ae52df5b20423f7f7fe4bf063be822c08049541f8513f6cec30963117c8313a00706052b81040023a18189038186000401f87e65277ec642bcc050e16287383b11af68edd7fd186babb332c68f8e6e59088df59eb1571d47f73c48958930203bf88e3f2d17f05009563c8e7d387b95bfe5ff005aaeb940897212a5c86abcac169b78764965e777858e9650994038010b0b840d291bb715d6ca7d8d7b49bf04249684d1f396e7b54a647ec8fe5ad49d72625613cb");
+        
+    wickr_buffer_t *recipient_dev_id_buffer = hex_char_to_buffer("71bfc1f282efbb62a3cc10ab9624aaf38c994497d041d49dd3c7ac7a1dc9b27b");
+    
+    wickr_buffer_t *sender_identity_buffer = hex_char_to_buffer("0aad010a202b0499e6d4497c73628e520b53891f6c45a5204c3991cf62bcc0bc80f6d5a85a1286010004004bad262daedac9c758fa8588566404dc015cac46aa3f9b7173bf7c2f0057f143374019bef68558806f61ba528266e0f74f8c39c4067e993e85dabfd4f831a9bee3012830a171c31d17e0a1dcfacd4140fa79fcb595d2abb5b5f8b83ee2973f820fae8ad91904a3910962034927afa4ff47046a5d6a1799641598625faf44d0dfd09557200012bf020a20cc1ac9d7ef6e409b411af29c857563707c53f3af387cc2014375c9f0115cb8491286010004003f4b5a8d05f2ac69c44f6a942e65521259718635cb11c4991c837f5de3f00597ea70f4e54b4ad149f35ea8ac7dbbf792e275472a155c50deae772169782f4c52b901aa09346ba9a6a038439437631bfaf39d08d6badf399342d0459b014c8f523c9e549841790c5ede1784c3254af79186af39d5e170b6fb5c5793ca2321615fcdc10b1a8f010303000000308187024134adbf911bb954b8b3b7860a444694f37d61ddbf62c444c549e19dd3b9d1f57d8993c0ecc6c67afb7e1f3f49239e7452f63c7864603da035107918b945530c351a024200d47f20568062e6ddcacbb20a0fe937a055c684edf5d1680338857bbe84c90e25bb8600c045cee67f25ec116d6b1a9d0f4564d827c0d13b6d7f8567647ea81dd4042001");
+    
+    wickr_buffer_t *receiver_identity_buffer = hex_char_to_buffer("0aad010a209c086a3c38c26e9592598399cb41cc66847b4372aa9d65b2b58609e53106bbb51286010004018d92f6952cb913811202a8b97d04f82ddbc1132b64f2aa78f7fd02967e1e6f8518d302d4d420681bfcbf91a4e157b2541f9fd414bf899334fdd477e74a0e686f2a01c1ffcffe653779533e6eef7ee2491fda5f012214c191496227dc30c62434914c0793ccd23a8f7111506e7ffa567fbb99816ded367894b014384baa7d4b837056d2200012bf020a20fd25bcb981fe56c70e0edc30224df6523a7af3374c58a9813da1682298aa1e26128601000400750581783fa8771874e93e0c8fd86bcd29605d493160d21eb6a0a675a35b10d6d71fbe2d86b78fbf112a042c7e98119e095afaa21468632499bbc4382af47e4d66006cb52c16d27d8cd841c988225e8431544ca7aee6b466378ee9546eb2b2417eff01859a79e1062c60081f690482af908234b2a7675386b0d424bb67ced18a4339841a8f010303000000308187024201080f29b53b982081a898fdc694f96f5f0ad66fd765cdb2c180f33410b787ce5ba51349857be8698839261262cec73a4046b20fe110bbdfc9bd806478bb8f42fe1d0241284f1a259c1491f64611347add29f22ac51c081c43c9467bcb0b95415d797529d08633c1b0980f1e40d8a018dce6fa3a7eb31c7e1a7dd9c7ac708295956c5de3a92001");
+    
+    wickr_buffer_t *v4_msg_buffer = hex_char_to_buffer("04000ada0200c3a2f4993c22ce6c77add87d7545187272a1b87919a93cb611b8cd49cee06b30af9f473a21161f51b34887ceb0a7427bbae884a3d6df91205e28f7ae0c2e7e02b7aeeffb134e8f0d3e3b6f84eef577de900104715d75d4427ba7720a300f5416ad8482cfd6659a2123950c017003b41a2d028bd52f427d5f5f22bf99817e93802c86da23ae91c52d434a9a6355c941b356d7721284dd88d1b6bcd3bebb2f0e40c7087bce91989143271e12e3d7a1821c971f2f95024c33c11b0770b04fc857f0e4c7864dac1fe8024cb403f367982c4e4cdc00e453c6c7d682857d9067797f9413e3b3708bd0a6213e2015312e58cfd10ce2b29b5358ca482ada2f5e4f4960ad515b013101b30f96dd4ab5a859bbcf1b9448b7eb89daa36b43624066955de9a6850b756d15b171a1ad25ad09759f596efe871a14277b81a488c7af6b5d0a2a6017e207ff775844dc29f5e14c5b5f18116f71ba00b7e363d4c6127b007b1a8c9d759f3d7a3556753fdab74f6e402a15a3a12fb20ed6b40538f833ead97e3fe06cb86bda101777982b1069e663a7decf1b6db298b292140c3d22011567c49cdb6e1df64559deb3a67130fb8ea4e78846d919db9cc3b1ff41a1e3cc9570df360ef2a6b7e462e3c88531e9311949916ba251f9491bc2bdae0303000000308187024201b323cd7c48e0ba13f143e484fecbb686856a4292fd6b16e624d668ffa498664b9c70b820c85fa5131e5795787ba9a69e498bb883aec584876135fc991836b671ce024176cb3888044a072f9610b763106bc241f652a42cce1998877d553484f85f9bd60d90e31dbb24bc7474e3b3610193150e2cf78adee90d36fbc245d191fb43be5b85");
+    
+    wickr_buffer_t *v3_msg_buffer = hex_char_to_buffer("03000ada020062576eddbc78a678af969a7b609127770d606ead8f2379dc0ae8bd65ff3f9d18e247c94f1cd85790146c236e3267dc021be0d229a2b34820a132d655293b68bfeb98b5c0844e47f92587a2a67546cd60ae39dbf6218f66b10adf56ffde81ff5e8da37d79a1031e8961ec86a06eacacf7b877dfa1194c3187833145f3bfc6e3006be7a50f2fcdd27e0e6106c65d3da871e287b46b58a29887c62de008ac4a12de0019c3e85d5af8456253ae71ce964ee8c1bb896acaabe34a02f9a1c1c2474a5bc707307aeddea5e122196e29f67e4f789f4f2a60f992ce0bba1aa9a02b0af6a2fc3d3dc3c92db3094e5fa9b86455e3c17ee241a9d35e057b0d2993c03991b85fa7179ebe490e0e599420994cbbfdba9a45e44c7d6420cb2d491b48cae097a614d4edcb69d16139359517ca1573645f88379aeea56b04286737f4d6523f52541f5025478b64c77159ffabaec4ae8e6e01fe35c936d2a28d6514127b00b5568b40ef4e1d67e7e6b8acccb0436e9d3a80cd5009f93ce6ad6fba518d18da7bbfdea5404d532a653efcf0054694a111eaab798f17c755e99c504e0434edb9e2a7b2de6e22fff651ffc3dc18d009f9627b3aef348c00015ed2223b7a7d37c0d6ea10e94343e180be9585fbbbcfed6c886c33d8a5580d19f6430303000000308187024160be77d0c74fd3afab990f8edf7b6c470bc272e54239f03e780c959b2940a7a30eb902e3f48278ad0545cf1f848b284627f45235eb4f6a2e0b07ded00621e5cd14024200859bcdd7712a49f15842605aa0b2c89e986c9dd4d613edc7676115649cc08d7a9d10655e025b50869b93542b206cb5aeb652e6845666850065c3351943c802320a");
+    
+    wickr_buffer_t *v2_msg_buffer = hex_char_to_buffer("02000ada02006e9af2fc0fd524e3c2328bdc0872bdc636335ff0b7460b6ccbbf56c61717a96193ccf12146695c0d5f4ab739bedfd665c20e4cf1f92801f74a0558c870e1b56319cb80472ada146c9b6fb2185c82b68ae0f1ea016f366bd477abd07979c3c2ca7b48e5f6a4ee4bc8e8d5184cc7554278a359dd91c159de7816dd61ad319ef81b59007d64e2edce8d167da6d220c0765a1f79690f8d5e7046119f544890ccb3b3d00e2e300a83c09da1d1f422e1e698c606bbcd2a6b7994382f402c169d1dbd0c0e97e7a64d5327aaabaad589099f9760f3314348b46feac51d1c9b34fe420763634bcd4e33b2c915c8ecb3abc2b7e2ac8e579eb4bad0bfa7158b9b574ee304500ae1010931f6318b98fddd0126d9892fabaea1a677ea220988496b3c31b50d5811525f31bf00a4273dc3c1d2139daa80145ee61649486f0636761c3155d2fbe5718c4b7c5aeef6f8f0fecb15f2052790102b5d57b4a8303e94127b000e8f68233f69dfd37f06152de5db7c257bae14579d0fff76dd588107aa8322a4add95b84b58f5c47d15f1a575634c73db40bd6a26e3c18522c0eb5cad64e8adc5637ab6118b38cfa27d86e564015a8f30e1d9130f4f9e508f7b720234ae4ba5072edab2e136a1f1e3d54b5389369bdd12ca07981587325ad2cd50303000000308187024200d598427d2036770e9f0c1351ee13875de53652e1b4d87f1dc4468fd75f9ad972a892d1e1bbf3c5ec29617e12332c4db13626abda3cd7b20273186e2033137210e10241028758e5bf935c917237ee7197e975ab51a6dfe1fdc44d4fe03745ceff2eb95c484a72712e6de671f1afe685521153259ce0e61461b9fc6e97a9f0a3d52f732899");
+    
+    const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+
+    wickr_identity_chain_t *sender_identity = wickr_identity_chain_create_from_buffer(sender_identity_buffer, &engine);
+    wickr_buffer_destroy(&sender_identity_buffer);
+    
+    wickr_identity_chain_t *recipient_identity = wickr_identity_chain_create_from_buffer(receiver_identity_buffer, &engine);
+    wickr_buffer_destroy(&receiver_identity_buffer);
+    
+    wickr_ec_key_t *receiver_decode_key = engine.wickr_crypto_engine_ec_key_import(recipient_priv_key_buffer, true);
+    wickr_buffer_destroy(&recipient_priv_key_buffer);
+    
+    wickr_storage_keys_t *storage_keys_empty = wickr_alloc_zero(sizeof(wickr_storage_keys_t));
+    wickr_dev_info_t *dev_info = wickr_alloc_zero(sizeof(wickr_dev_info_t));
+    dev_info->msg_proto_id = recipient_dev_id_buffer;
+    
+    
+    wickr_ctx_t *receiver_ctx = wickr_ctx_create(engine, dev_info, recipient_identity, storage_keys_empty);
+    
+    IT("should be able to decode version 4 packets from a prior library version")
+    {
+        test_packet_decode(receiver_ctx, v4_msg_buffer, sender_identity, receiver_decode_key, expected_payload, expected_tag);
+    }
+    END_IT
+    
+    IT("should be able to decode version 3 packets from a prior library version")
+    {
+        test_packet_decode(receiver_ctx, v3_msg_buffer, sender_identity, receiver_decode_key, expected_payload, expected_tag);
+    }
+    END_IT
+    
+    IT("should be able to decode version 2 packets from a prior library version")
+    {
+        test_packet_decode(receiver_ctx, v2_msg_buffer, sender_identity, receiver_decode_key, expected_payload, expected_tag);
+    }
+    END_IT
+    
+    wickr_ec_key_destroy(&receiver_decode_key);
+    wickr_ctx_destroy(&receiver_ctx);
+    wickr_identity_chain_destroy(&sender_identity);
+    wickr_buffer_destroy(&expected_tag);
+    wickr_buffer_destroy(&expected_payload);
+    wickr_buffer_destroy(&v4_msg_buffer);
+    wickr_buffer_destroy(&v3_msg_buffer);
+    wickr_buffer_destroy(&v2_msg_buffer);
+}
+END_DESCRIBE

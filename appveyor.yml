@@ -23,4 +23,5 @@ build_script:
   - cd build
   - cmake -DBUILD_OPENSSL=true -G "Visual Studio 14 2015" ..
   - msbuild WickrCryptoC.sln /p:Configuration=Release
-  - ctest
+  - cd test\Release
+  - crypto_test.exe --ci

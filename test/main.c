@@ -18,6 +18,7 @@
 #include "test_packet_meta.h"
 #include "test_key_exchange.h"
 #include "test_ecdh_cipher.h"
+#include "test_protocol_version.h"
 
 #include "cspec_output_unit.h"
 
@@ -84,6 +85,7 @@ void run_messaging_protocol_tests(CSpecOutputStruct *output)
 {
     CSpec_Run(DESCRIPTION(wickr_protocol_key_exchanges), output);
     CSpec_Run(DESCRIPTION(wickr_packet_create_from_components), output);
+    CSpec_Run(DESCRIPTION(protocol_support_regression_tests), output);
 }
 
 void run_context_api_tests(CSpecOutputStruct *output)
