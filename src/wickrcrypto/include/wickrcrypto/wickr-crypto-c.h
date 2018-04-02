@@ -28,7 +28,7 @@
 #include "crypto_engine.h"
 #include "devinfo.h"
 #include "digest.h"
-#include "ecdh.h"
+#include "ecdh_cipher_ctx.h"
 #include "ecdsa.h"
 #include "eckey.h"
 #include "ephemeral_keypair.h"
