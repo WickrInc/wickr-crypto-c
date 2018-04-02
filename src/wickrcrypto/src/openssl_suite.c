@@ -541,8 +541,8 @@ wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_resul
     
     /* Update the AAD if needed */
     
-    if (aad) {
-        if (1 != EVP_DecryptUpdate(ctx, NULL, &temp_length, aad->bytes, aad->length)) {
+    if (aad && aad->length <= INT_MAX) {
+        if (1 != EVP_DecryptUpdate(ctx, NULL, &temp_length, aad->bytes, (int)aad->length)) {
             goto process_error;
         }
     }
