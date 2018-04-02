@@ -231,7 +231,9 @@ static wickr_buffer_t *__bcrypt_generate_salt(int workfactor, int salt_size)
         return NULL;
     }
     
-    if (!crypt_gensalt_rn("$2y$", workfactor, (const char *)rand_bytes->bytes, rand_bytes->length, (char *)salt_buffer->bytes, salt_buffer->length)) {
+    if (!crypt_gensalt_rn("$2y$", workfactor, (const char *)rand_bytes->bytes,
+                          (unsigned long)rand_bytes->length,
+                          (char *)salt_buffer->bytes, salt_buffer->length)) {
         wickr_buffer_destroy(&rand_bytes);
         wickr_buffer_destroy(&salt_buffer);
         return NULL;

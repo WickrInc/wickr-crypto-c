@@ -251,13 +251,14 @@ void wickr_key_exchange_set_destroy(wickr_key_exchange_set_t **header)
     *header = NULL;
 }
 
-static void __wickr_key_exchange_proto_array_destroy(Wickr__Proto__KeyExchangeSet__Exchange **exchanges, uint32_t num_exchanges)
+static void __wickr_key_exchange_proto_array_destroy(Wickr__Proto__KeyExchangeSet__Exchange **exchanges,
+                                                     size_t num_exchanges)
 {
     if (!exchanges) {
         return;
     }
     
-    for (int i = 0; i < num_exchanges; i++) {
+    for (size_t i = 0; i < num_exchanges; i++) {
         __wickr_key_exchange_proto_free(exchanges[i]);
     }
     
