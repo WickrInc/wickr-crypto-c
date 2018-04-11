@@ -66,7 +66,7 @@ script:
        if [[ ! -z "${ANDROID}" ]]; then
             $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-Android.cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DCMAKE_ANDROID_NDK=$HOME/ndk/android-ndk-r14b -DCMAKE_ANDROID_ARCH_ABI=${ANDROID} ../
        else
-            $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release ../
+            $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true ../
        fi
    fi 
  - |
@@ -74,7 +74,7 @@ script:
        if [[ ! -z "${IOS}" ]]; then 
            cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
        else
-           cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
+           cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true ../
        fi
    fi
  - make

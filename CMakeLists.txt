@@ -15,11 +15,15 @@ endif()
 
 add_subdirectory(third-party) 
 
+option(DEPS_ONLY "only build dependencies" false)
+
 if(NOT DEPS_ONLY)
     add_subdirectory(src)
 endif()
 
-if(NOT IOS AND NOT ANDROID)
+option(BUILD_TESTS "build tests" false)
+
+if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
