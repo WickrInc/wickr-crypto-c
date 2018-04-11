@@ -1,13 +1,12 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.10.0)
 
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.10")
 set(OPENSSL_OSX_DEPLOYMENT_TARGET ${CMAKE_OSX_DEPLOYMENT_TARGET} CACHE INTERNAL "")
 set(CMAKE_C_STANDARD 99)
 
 project(WickrCryptoC)
 
 if(IOS)
-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=9.0")
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_TARGET}")
 endif()
 
 add_subdirectory(third-party) 
