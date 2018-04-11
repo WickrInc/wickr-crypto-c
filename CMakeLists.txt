@@ -5,6 +5,10 @@ set(CMAKE_C_STANDARD 99)
 
 project(WickrCryptoC)
 
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 8)
+set(VERSION_PATCH 2)
+
 if(IOS)
     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_TARGET}")
 endif()
