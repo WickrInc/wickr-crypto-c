@@ -5,7 +5,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
     -DIOS_PLATFORM=OS \
-    -DIOS_DEPLOYMENT_TARGET=8.0 \
+    -DIOS_DEPLOYMENT_TARGET=9.0 \
+    -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_device ../
 make
 make install
@@ -16,7 +17,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
     -DIOS_PLATFORM=SIMULATOR \
-    -DIOS_DEPLOYMENT_TARGET=8.0 \
+    -DIOS_DEPLOYMENT_TARGET=9.0 \
+    -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_sim ../
 make
 make install
