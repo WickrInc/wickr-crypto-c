@@ -99,6 +99,20 @@ DESCRIBE(wickr_ctx_generate, "wickr_ctx: test generation")
         wickr_ctx_gen_result_t *with_recovery_result = NULL;
         
         SHOULD_NOT_BE_NULL(with_recovery_result = wickr_ctx_gen_with_recovery(engine, devInfo, recovery, result->recovery_key, rand_id))
+        
+        /* Verify that the new context has all the same values as the old one */
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_recovery_result->root_keys->node_storage_root->key_data,
+                                             result->root_keys->node_storage_root->key_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_recovery_result->root_keys->remote_storage_root->key_data,
+                                             result->root_keys->remote_storage_root->key_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_recovery_result->root_keys->node_signature_root->pri_data,
+                                             result->root_keys->node_signature_root->pri_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_recovery_result->recovery_key->key_data,
+                                             result->recovery_key->key_data, NULL));
+        
         if (result != NULL) {
             wickr_ctx_gen_result_t *copyResult;
             
@@ -145,6 +159,20 @@ DESCRIBE(wickr_ctx_generate, "wickr_ctx: test generation")
         wickr_ctx_gen_result_t *with_passphrase_result = NULL;
         
         SHOULD_NOT_BE_NULL(with_passphrase_result = wickr_ctx_gen_with_passphrase(engine, devInfo, exportedEscrowKey, passPhraseBfr, recovery, rand_id))
+        
+        /* Verify that the new context has all the same values as the old one */
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_passphrase_result->root_keys->node_storage_root->key_data,
+                                             result->root_keys->node_storage_root->key_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_passphrase_result->root_keys->remote_storage_root->key_data,
+                                             result->root_keys->remote_storage_root->key_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_passphrase_result->root_keys->node_signature_root->pri_data,
+                                             result->root_keys->node_signature_root->pri_data,
+                                             NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(with_passphrase_result->recovery_key->key_data,
+                                             result->recovery_key->key_data, NULL));
+        
         if (result != NULL) {
             wickr_ctx_gen_result_t *copyResult;
             
