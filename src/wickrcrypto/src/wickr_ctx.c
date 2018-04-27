@@ -162,11 +162,23 @@ wickr_ctx_gen_result_t *wickr_ctx_gen_with_recovery(const wickr_crypto_engine_t 
     wickr_ctx_gen_result_t *gen_result = wickr_ctx_gen_with_root_keys(engine, dev_info, root_keys, identifier);
     wickr_root_keys_destroy(&root_keys);
     
+    /* Swap out the randomly assigned recovery key with the one that was specified */
+    wickr_cipher_key_destroy(&gen_result->recovery_key);
+    gen_result->recovery_key = wickr_cipher_key_copy(recovery_key);
+    
+    if (!gen_result->recovery_key) {
+        wickr_ctx_gen_result_destroy(&gen_result);
+        return NULL;
+    }
+    
     return gen_result;
 }
 
 /* Makes a new context using existing root keys for signing */
-wickr_ctx_gen_result_t *wickr_ctx_gen_with_root_keys(const wickr_crypto_engine_t engine, wickr_dev_info_t *dev_info, wickr_root_keys_t *root_keys, wickr_buffer_t *identifier)
+wickr_ctx_gen_result_t *wickr_ctx_gen_with_root_keys(const wickr_crypto_engine_t engine,
+                                                     wickr_dev_info_t *dev_info,
+                                                     wickr_root_keys_t *root_keys,
+                                                     wickr_buffer_t *identifier)
 {
     if (!dev_info || !root_keys || !identifier) {
         return NULL;
