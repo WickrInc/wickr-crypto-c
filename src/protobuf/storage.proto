@@ -1,6 +1,8 @@
 syntax = "proto2";
 package wickr.proto;
 
+import "identity.proto";
+
 message root_keys {
   required uint32 version = 1;
   optional bytes node_storage_root = 2;
@@ -12,4 +14,9 @@ message storage_keys {
   required uint32 version = 1;
   optional bytes local_storage = 2;
   optional bytes remote_storage = 3;
+}
+
+message ctx {
+  optional storage_keys storage = 1;
+  optional IdentityChain id_chain = 2; 
 }
