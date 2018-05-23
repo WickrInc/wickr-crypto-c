@@ -305,6 +305,32 @@ wickr_ctx_t *wickr_ctx_copy(const wickr_ctx_t *ctx);
  @param ctx a pointer to the context to destroy. All properties of '*ctx' will also be destroyed
  */
 void wickr_ctx_destroy(wickr_ctx_t **ctx);
+    
+/**
+ 
+ @ingroup wickr_ctx
+ 
+ Serialize a context
+ 
+ @param ctx the context to serialize to bytes
+ @return bytes representing a combination of hte storage keys and id chain from 'ctx'
+ */
+wickr_buffer_t *wickr_ctx_serialize(const wickr_ctx_t *ctx);
+    
+/**
+ 
+ @ingroup wickr_ctx
+ 
+ Recreate a context from a serizlied representation
+ 
+ @param engine a crypto engine to support context operations
+ @param dev_info the device information the context should be bound to
+ @param buffer data created with 'wickr_ctx_serialize'
+ @return a context restored from 'buffer' or NULL if parsing fails
+ */
+wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
+                                          wickr_dev_info_t *dev_info,
+                                          wickr_buffer_t *buffer);
 
 /**
  @ingroup wickr_ctx

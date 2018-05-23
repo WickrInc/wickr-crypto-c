@@ -1,6 +1,8 @@
 
 #include "wickr_ctx.h"
 #include "memory.h"
+#include "private/identity_priv.h"
+#include "private/storage_priv.h"
 
 static wickr_ctx_gen_result_t *__wickr_ctx_gen_result_create(wickr_ctx_t *ctx, wickr_cipher_key_t *recovery_key, wickr_root_keys_t *root_keys)
 {
@@ -466,6 +468,126 @@ void wickr_ctx_destroy(wickr_ctx_t **ctx)
     
     wickr_free(*ctx);
     *ctx = NULL;
+}
+
+static void __wickr_ctx_proto_free(Wickr__Proto__Ctx *ctx_proto)
+{
+    if (!ctx_proto) {
+        return;
+    }
+    
+    wickr_identity_chain_proto_free(ctx_proto->id_chain);
+    wickr_storage_keys_proto_free(ctx_proto->storage);
+    wickr_free(ctx_proto);
+}
+
+static Wickr__Proto__Ctx *__wickr_ctx_to_proto(const wickr_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    Wickr__Proto__IdentityChain *id_chain_proto = wickr_identity_chain_to_proto(ctx->id_chain);
+    
+    if (!id_chain_proto) {
+        return NULL;
+    }
+    
+    Wickr__Proto__StorageKeys *storage_keys_proto = wickr_storage_keys_to_proto(ctx->storage_keys);
+    
+    if (!storage_keys_proto) {
+        wickr_identity_chain_proto_free(id_chain_proto);
+        return NULL;
+    }
+    
+    Wickr__Proto__Ctx *ctx_proto = wickr_alloc_zero(sizeof(Wickr__Proto__Ctx));
+    
+    if (!ctx_proto) {
+        wickr_identity_chain_proto_free(id_chain_proto);
+        wickr_storage_keys_proto_free(storage_keys_proto);
+        return NULL;
+    }
+    
+    wickr__proto__ctx__init(ctx_proto);
+    ctx_proto->id_chain = id_chain_proto;
+    ctx_proto->storage = storage_keys_proto;
+    
+    return ctx_proto;
+}
+
+static wickr_ctx_t *__wickr_ctx_create_from_proto(const wickr_crypto_engine_t engine,
+                                                  wickr_dev_info_t *dev_info,
+                                                  const Wickr__Proto__Ctx *ctx_proto)
+{
+    if (!ctx_proto || !ctx_proto->id_chain || !ctx_proto->storage || !dev_info) {
+        return NULL;
+    }
+    
+    wickr_identity_chain_t *id_chain = wickr_identity_chain_create_from_proto(ctx_proto->id_chain,
+                                                                              &engine);
+    
+    if (!id_chain) {
+        return NULL;
+    }
+    
+    wickr_storage_keys_t *storage_keys = wickr_storage_keys_create_from_proto(ctx_proto->storage);
+    
+    if (!storage_keys) {
+        wickr_identity_chain_destroy(&id_chain);
+        return NULL;
+    }
+    
+    wickr_ctx_t *ctx = wickr_ctx_create(engine, dev_info, id_chain, storage_keys);
+    
+    if (!ctx) {
+        wickr_identity_chain_destroy(&id_chain);
+        wickr_storage_keys_destroy(&storage_keys);
+    }
+    
+    return ctx;
+}
+
+wickr_buffer_t *wickr_ctx_serialize(const wickr_ctx_t *ctx)
+{
+    if (!ctx) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Ctx *ctx_proto = __wickr_ctx_to_proto(ctx);
+    
+    if (!ctx_proto) {
+        return NULL;
+    }
+    
+    size_t packed_size = wickr__proto__ctx__get_packed_size(ctx_proto);
+    wickr_buffer_t *serialized_data = wickr_buffer_create_empty_zero(packed_size);
+    
+    if (!serialized_data) {
+        __wickr_ctx_proto_free(ctx_proto);
+        return NULL;
+    }
+    
+    wickr__proto__ctx__pack(ctx_proto, serialized_data->bytes);
+    __wickr_ctx_proto_free(ctx_proto);
+    
+    return serialized_data;
+}
+
+wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
+                                          wickr_dev_info_t *dev_info,
+                                          wickr_buffer_t *buffer)
+{
+    if (!dev_info || !buffer) {
+        return NULL;
+    }
+    
+    Wickr__Proto__Ctx *ctx_proto = wickr__proto__ctx__unpack(NULL, buffer->length,
+                                                             buffer->bytes);
+    
+    wickr_ctx_t *ctx = __wickr_ctx_create_from_proto(engine, dev_info, ctx_proto);
+    wickr__proto__ctx__free_unpacked(ctx_proto, NULL);
+    
+    return ctx;
 }
 
 /* Exports storage keys for a context using a password + KDF function */
