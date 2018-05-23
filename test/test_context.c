@@ -240,6 +240,33 @@ DESCRIBE(wickr_ctx_functions, "wickr_ctx: general functions")
 
     wickr_ctx_t *ctx = ctx_res->ctx;
     
+    IT("can be serialized and deserialized")
+    {
+        wickr_buffer_t *serialized = wickr_ctx_serialize(ctx);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        wickr_ctx_t *deserialized = wickr_ctx_create_from_buffer(engine,
+                                                                 wickr_dev_info_copy(devInfo),
+                                                                 serialized);
+        SHOULD_NOT_BE_NULL(deserialized);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->id_chain->node->identifier,
+                                             ctx->id_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->id_chain->root->identifier,
+                                             ctx->id_chain->root->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->packet_header_key->key_data,
+                                             ctx->packet_header_key->key_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->storage_keys->local->key_data,
+                                             ctx->storage_keys->local->key_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->storage_keys->remote->key_data,
+                                             ctx->storage_keys->remote->key_data, NULL));
+        SHOULD_EQUAL(deserialized->pkt_enc_version, ctx->pkt_enc_version);
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_ctx_destroy(&deserialized);
+    }
+    END_IT
+    
     IT("should be able to export storage keys with a passphrase")
     {
         wickr_buffer_t *rand_pass = engine.wickr_crypto_engine_crypto_random(IDENTIFIER_LEN);
@@ -516,4 +543,3 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
 
 }
 END_DESCRIBE
-

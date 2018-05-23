@@ -97,6 +97,51 @@ void   wickr__proto__storage_keys__free_unpacked
   assert(message->base.descriptor == &wickr__proto__storage_keys__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   wickr__proto__ctx__init
+                     (Wickr__Proto__Ctx         *message)
+{
+  static const Wickr__Proto__Ctx init_value = WICKR__PROTO__CTX__INIT;
+  *message = init_value;
+}
+size_t wickr__proto__ctx__get_packed_size
+                     (const Wickr__Proto__Ctx *message)
+{
+  assert(message->base.descriptor == &wickr__proto__ctx__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t wickr__proto__ctx__pack
+                     (const Wickr__Proto__Ctx *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &wickr__proto__ctx__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t wickr__proto__ctx__pack_to_buffer
+                     (const Wickr__Proto__Ctx *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &wickr__proto__ctx__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Wickr__Proto__Ctx *
+       wickr__proto__ctx__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Wickr__Proto__Ctx *)
+     protobuf_c_message_unpack (&wickr__proto__ctx__descriptor,
+                                allocator, len, data);
+}
+void   wickr__proto__ctx__free_unpacked
+                     (Wickr__Proto__Ctx *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &wickr__proto__ctx__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor wickr__proto__root_keys__field_descriptors[4] =
 {
   {
@@ -236,5 +281,56 @@ const ProtobufCMessageDescriptor wickr__proto__storage_keys__descriptor =
   wickr__proto__storage_keys__field_indices_by_name,
   1,  wickr__proto__storage_keys__number_ranges,
   (ProtobufCMessageInit) wickr__proto__storage_keys__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor wickr__proto__ctx__field_descriptors[2] =
+{
+  {
+    "storage",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Wickr__Proto__Ctx, storage),
+    &wickr__proto__storage_keys__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "id_chain",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Wickr__Proto__Ctx, id_chain),
+    &wickr__proto__identity_chain__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned wickr__proto__ctx__field_indices_by_name[] = {
+  1,   /* field[1] = id_chain */
+  0,   /* field[0] = storage */
+};
+static const ProtobufCIntRange wickr__proto__ctx__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor wickr__proto__ctx__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "wickr.proto.ctx",
+  "Ctx",
+  "Wickr__Proto__Ctx",
+  "wickr.proto",
+  sizeof(Wickr__Proto__Ctx),
+  2,
+  wickr__proto__ctx__field_descriptors,
+  wickr__proto__ctx__field_indices_by_name,
+  1,  wickr__proto__ctx__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__ctx__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
