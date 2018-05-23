@@ -51,6 +51,32 @@ wickr_cipher_key_t *wickr_cipher_key_from_protobytes(ProtobufCBinaryData buffer)
  */
 wickr_cipher_result_t *wickr_cipher_result_from_protobytes(ProtobufCBinaryData buffer);
     
+/**
+ 
+ @ingroup wickr_cipher
+ 
+ Serialize a cipher key to a Protobuf data object
+ 
+ @param proto_bin a pointer to the protobuf binary data to fill
+ @param cipher_key the cipher key to serialize into 'proto_bin'
+ @return true if 'proto_bin' can be filled and false if 'cipher_key' fails serialization
+ 
+ */
+bool wickr_cipher_key_to_protobytes(ProtobufCBinaryData *proto_bin, const wickr_cipher_key_t *cipher_key);
+
+/**
+ 
+ @ingroup wickr_cipher
+ 
+ Serialize a cipher key to a Protobuf data object
+ 
+ @param proto_bin a pointer to the protobuf binary data to fill
+ @param cipher_result the cipher result to serialize into 'proto_bin'
+ @return true if 'proto_bin' can be filled and false if 'cipher_result' fails serialization
+ 
+ */
+bool wickr_cipher_result_to_protobytes(ProtobufCBinaryData *proto_bin, const wickr_cipher_result_t *cipher_result);
+    
 #ifdef __cplusplus
 }
 #endif

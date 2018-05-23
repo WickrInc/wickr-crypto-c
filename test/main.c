@@ -19,6 +19,7 @@
 #include "test_key_exchange.h"
 #include "test_ecdh_cipher.h"
 #include "test_protocol_version.h"
+#include "test_storage_keys.h"
 
 #include "cspec_output_unit.h"
 
@@ -43,6 +44,7 @@ void run_primitive_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(packet_meta), output);
     CSpec_Run(DESCRIPTION(key_exchange), output);
     CSpec_Run(DESCRIPTION(key_exchange_set), output);
+    CSpec_Run(DESCRIPTION(wickr_storage_keys), output);
 }
 
 void run_crypto_engine_tests(CSpecOutputStruct *output)
