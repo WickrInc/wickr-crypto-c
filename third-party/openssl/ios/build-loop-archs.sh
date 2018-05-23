@@ -31,108 +31,61 @@ if [ ! -d "${DEVELOPER}" ]; then
   exit 1
 fi
 
+# Determine relevant SDK version
+SDKVERSION=${IOS_SDKVERSION}
+
 for ARCH in ${ARCHS}
 do
-  # Determine relevant SDK version
-  if [[ "$ARCH" == tv* ]]; then
-    SDKVERSION=${TVOS_SDKVERSION}
-  else
-    SDKVERSION=${IOS_SDKVERSION}
-  fi
 
-  # Determine platform, override arch for tvOS builds
-  if [[ "${ARCH}" == "i386" || "${ARCH}" == "x86_64" ]]; then
+  # Determine platform
+
+  if [[ "${ARCH}" == "i386" ]]; then
     PLATFORM="iPhoneSimulator"
-  elif [ "${ARCH}" == "tv_x86_64" ]; then
-    ARCH="x86_64"
-    PLATFORM="AppleTVSimulator"
-  elif [ "${ARCH}" == "tv_arm64" ]; then
-    ARCH="arm64"
-    PLATFORM="AppleTVOS"
-  else
+    TARGET="iphoneos-cross"
+    ARCH_FLAG="-arch i386"
+  elif [[ "${ARCH}" == "x86_64" ]]; then
+    PLATFORM="iPhoneSimulator"
+    TARGET="iphoneos-cross"
+    ARCH_FLAG="-arch x86_64"
+  elif [[ "${ARCH}" == armv7 ]]; then
+    TARGET="ios-cross"
     PLATFORM="iPhoneOS"
+    ARCH_FLAG=""
+  else
+    TARGET="ios64-cross"
+    PLATFORM="iPhoneOS"
+    ARCH_FLAG=""
   fi
 
   # Set env vars for Configure
   export CROSS_TOP="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer"
   export CROSS_SDK="${PLATFORM}${SDKVERSION}.sdk"
-  export BUILD_TOOLS="${DEVELOPER}"
-  export CC="${BUILD_TOOLS}/usr/bin/gcc -arch ${ARCH}"
+  export CC=clang
+  export PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:$PATH"
 
   # Prepare TARGETDIR
   echo "Building to target directory: ${TARGETDIR}"
   mkdir -p ${TARGETDIR}/${ARCH}
   
-  # Add optional enable-ec_nistp_64_gcc_128 configure option for 64 bit builds
   LOCAL_CONFIG_OPTIONS="${CONFIG_OPTIONS}"
-  if [ "${CONFIG_ENABLE_EC_NISTP_64_GCC_128}" == "true" ]; then
-    case "${ARCH}" in
-      *64*)
-        LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} enable-ec_nistp_64_gcc_128"
-      ;;
-    esac
+ 
+  # Only relevant for 64 bit builds
+  if [[ "${CONFIG_ENABLE_EC_NISTP_64_GCC_128}" == "true" && "${ARCH}" == *64  ]]; then
+    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} enable-ec_nistp_64_gcc_128"
   fi
 
-  case "${ARCH}" in
-    *armv7*)
-      if [ -z "${APPLIED_PATCH}" ]; then
-          patch -p3 < "${SOURCEDIR}/armv7-frame-pointer-xcode9.patch" Configure
-          APPLIED_PATCH=true
-      fi
-    ;;
-    *arm64*)
-      if [ ! -z ${APPLIED_PATCH} ]; then
-          patch -R < "${SOURCEDIR}/armv7-frame-pointer-xcode9.patch" Configure
-          APPLIED_PATCH=""
-      fi
-    ;;
-  esac
-
-
-  # Embed bitcode for SDK >= 9
-  if [ "${CONFIG_DISABLE_BITCODE}" != "true" ]; then
-    if [[ "${SDKVERSION}" == 9.* || "${SDKVERSION}" == [0-9][0-9].* ]]; then
-      LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} -fembed-bitcode"
-    fi
-  fi
-
-  # Add platform specific config options
-  if [[ "${PLATFORM}" == AppleTV* ]]; then
-    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} -DHAVE_FORK=0 -mtvos-version-min=${TVOS_MIN_SDK_VERSION}"
-    echo "  Patching Configure..."
-    LC_ALL=C sed -i -- 's/D\_REENTRANT\:iOS/D\_REENTRANT\:tvOS/' "./Configure"
-  else
-    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} -miphoneos-version-min=${IOS_MIN_SDK_VERSION}"
-  fi
-
-  # Add --openssldir option
-  LOCAL_CONFIG_OPTIONS="--openssldir=${TARGETDIR}/${ARCH} ${LOCAL_CONFIG_OPTIONS}"
-
-  # Determine configure target
-  if [ "${ARCH}" == "x86_64" ]; then
-    LOCAL_CONFIG_OPTIONS="darwin64-x86_64-cc no-asm ${LOCAL_CONFIG_OPTIONS}"
-  else
-    LOCAL_CONFIG_OPTIONS="iphoneos-cross ${LOCAL_CONFIG_OPTIONS}"
-  fi
+  # Add --prefix option
+  LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} no-async no-shared -fembed-bitcode -miphoneos-version-min=${IOS_MIN_SDK_VERSION} --prefix=${TARGETDIR}/${ARCH}"
 
   # Run Configure
-  ./Configure ${LOCAL_CONFIG_OPTIONS}
-
-  # Only required for Darwin64 builds (-isysroot is automatically added by iphoneos-cross target)
-  if [ "${ARCH}" == "x86_64" ]; then
-    echo "  Patching Makefile..."
-    sed -ie "s!^CFLAG=!CFLAG=-isysroot ${CROSS_TOP}/SDKs/${CROSS_SDK} !" "Makefile"
-  fi
-
-  # Run make depend if relevant
-  if [[ ! -z "${CONFIG_OPTIONS}" ]]; then
-    echo "  Make depend...\c"
-    make depend
+  if [ -z "${ARCH_FLAG}" ]; then
+    ./Configure ${TARGET} ${LOCAL_CONFIG_OPTIONS}
+  else 
+    ./Configure ${TARGET} ${LOCAL_CONFIG_OPTIONS} "${ARCH_FLAG}"
   fi
 
   # Run make
-  BUILD_THREADS=$(sysctl hw.ncpu | awk '{print $2}')
-  make -j ${BUILD_THREADS}
+  make -j $(sysctl hw.ncpu | awk '{print $2}')
 
   # Run make install
   set -e

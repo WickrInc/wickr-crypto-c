@@ -1522,6 +1522,14 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
     if (info && info->length > 1024) {
         return NULL;
     }
+
+    if (salt && salt->length > INT_MAX) {
+        return NULL;
+    }
+
+    if (input_key_material->length > INT_MAX) {
+        return NULL;
+    }
     
     const EVP_MD *openssl_digest = __openssl_get_digest_mode(hash_mode);
     
@@ -1564,20 +1572,20 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
         return NULL;
     }
     
-    if (1 != EVP_PKEY_CTX_set1_hkdf_key(pctx, input_key_material->bytes, input_key_material->length)) {
+    if (1 != EVP_PKEY_CTX_set1_hkdf_key(pctx, input_key_material->bytes, (int)input_key_material->length)) {
         EVP_PKEY_CTX_free(pctx);
         return NULL;
     }
     
     if (salt) {
-        if (1 != EVP_PKEY_CTX_set1_hkdf_salt(pctx, salt->bytes, salt->length)) {
+        if (1 != EVP_PKEY_CTX_set1_hkdf_salt(pctx, salt->bytes, (int)salt->length)) {
             EVP_PKEY_CTX_free(pctx);
             return NULL;
         }
     }
     
     if (info) {
-        if (1 != EVP_PKEY_CTX_add1_hkdf_info(pctx, info->bytes, info->length)) {
+        if (1 != EVP_PKEY_CTX_add1_hkdf_info(pctx, info->bytes, (int)info->length)) {
             EVP_PKEY_CTX_free(pctx);
             return NULL;
         }
