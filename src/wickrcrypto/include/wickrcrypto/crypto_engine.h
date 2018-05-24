@@ -295,7 +295,7 @@ typedef struct wickr_crypto_engine wickr_crypto_engine_t;
  
  @return an engine containing default crypto primitive implementations (currently implemented with OpenSSL 1.0.2, libscrypt, libbcrypt)
  */
-const wickr_crypto_engine_t wickr_crypto_engine_get_default();
+const wickr_crypto_engine_t wickr_crypto_engine_get_default(void);
 
 /**
  @ingroup wickr_crypto_engine

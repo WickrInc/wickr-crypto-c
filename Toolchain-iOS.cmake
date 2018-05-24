@@ -110,7 +110,7 @@ set(IOS_PLATFORM ${IOS_PLATFORM} CACHE STRING
 # from the specified IOS_PLATFORM name.
 if (IOS_PLATFORM STREQUAL "OS")
   set(XCODE_IOS_PLATFORM iphoneos)
-  set(IOS_ARCH armv7 armv7s arm64)
+  set(IOS_ARCH arm64 armv7)
 elseif (IOS_PLATFORM STREQUAL "SIMULATOR")
   set(XCODE_IOS_PLATFORM iphonesimulator)
   set(IOS_ARCH i386 x86_64)
@@ -134,7 +134,7 @@ endif()
 # Specify minimum version of deployment target.
 if (NOT DEFINED IOS_DEPLOYMENT_TARGET)
   # Unless specified, SDK version 8.0 is used by default as minimum target version.
-  set(IOS_DEPLOYMENT_TARGET "8.0"
+  set(IOS_DEPLOYMENT_TARGET "9.0"
       CACHE STRING "Minimum iOS version to build for." )
   message(STATUS "Using the default min-version since IOS_DEPLOYMENT_TARGET not provided!")
 endif()
