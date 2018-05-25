@@ -10,3 +10,4 @@ CTestTestfile.cmake
 .DS_Store
 build*/
 wickr-crypto-c.podspec
+node_modules/

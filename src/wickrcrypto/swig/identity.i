@@ -1,0 +1,93 @@
+%module identity
+
+%include engine.i
+%include <stdint.i>
+
+%{
+#include <wickrcrypto/identity.h>
+%}
+
+#if defined(SWIGJAVA)
+%typemap(javaout) SWIGTYPE *sig_key, SWIGTYPE *signature, SWIGTYPE *root, SWIGTYPE *node {
+	long cPtr = $jnicall;
+    return (cPtr == 0) ? null : new $javaclassname(cPtr, $owner, this);
+}
+#endif
+
+%immutable;
+
+%ignore wickr_identity_create;
+%ignore wickr_identity_sign;
+%ignore wickr_node_identity_gen;
+%ignore wickr_identity_copy;
+%ignore wickr_identity_destroy;
+%ignore wickr_identity_chain_create;
+%ignore wickr_identity_chain_copy;
+%ignore wickr_identity_chain_validate;
+%ignore wickr_identity_chain_destroy;
+
+%include "wickrcrypto/identity.h"
+
+%extend struct wickr_identity {
+
+ ~wickr_identity() {
+   wickr_identity_destroy(&$self);
+ }
+
+ %newobject from_values;
+ %newobject sign_data;
+ %newobject gen_node;
+
+ wickr_ecdsa_result_t *sign_data(const wickr_buffer_t *data) {
+ 	wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+ 	return wickr_identity_sign($self, &engine, data);
+ }
+
+ wickr_identity_t *gen_node() {
+ 	wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+ 	return wickr_node_identity_gen(&engine, $self);
+ }
+
+ static wickr_identity_t *from_values(wickr_identity_type type, wickr_buffer_t *identifier, wickr_ec_key_t *sig_key, wickr_ecdsa_result_t *signature) {
+ 	wickr_ec_key_t *key_copy = wickr_ec_key_copy(sig_key);
+ 	wickr_ecdsa_result_t *sig_copy = wickr_ecdsa_result_copy(signature);
+   	wickr_identity_t *identity = wickr_identity_create(type, identifier, key_copy, sig_copy);
+   	if (!identity) {
+   		wickr_ec_key_destroy(&key_copy);
+   		wickr_ecdsa_result_destroy(&sig_copy);
+   	}
+   	return identity;
+ }
+ 
+
+};
+
+%extend struct wickr_identity_chain {
+
+ ~wickr_identity_chain() {
+   wickr_identity_chain_destroy(&$self);
+ }
+
+ %newobject from_identities;
+
+ static wickr_identity_chain_t *from_identities(wickr_identity_t *root, wickr_identity_t *node) {
+ 	wickr_identity_t *root_copy = wickr_identity_copy(root);
+ 	wickr_identity_t *node_copy = wickr_identity_copy(node);
+
+ 	wickr_identity_chain_t *id_chain = wickr_identity_chain_create(root_copy, node_copy);
+
+ 	if (!id_chain) {
+ 		wickr_identity_destroy(&root_copy);
+ 		wickr_identity_destroy(&node_copy);
+ 	}
+
+ 	return id_chain;
+ }
+
+ bool is_valid() {
+ 	wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+ 	return wickr_identity_chain_validate($self, &engine);
+ }
+ 
+
+};
