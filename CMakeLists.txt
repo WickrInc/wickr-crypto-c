@@ -19,6 +19,16 @@ if(IOS_DEPLOYMENT_TARGET)
     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_TARGET}")
 endif()
 
+option(BUILD_OPENSSL "Force building OpenSSL" false)
+
+if (WIN32 OR APPLE OR ANDROID)
+    set(OPENSSL_AUTO_BUILD_DEFAULT TRUE)
+else ()
+    set(OPENSSL_AUTO_BUILD_DEFAULT FALSE)
+endif ()
+
+option(OPENSSL_AUTO_BUILD "Automatically build OpenSSL if not found" ${OPENSSL_AUTO_BUILD_DEFAULT})
+
 add_subdirectory(third-party) 
 
 option(DEPS_ONLY "only build dependencies" false)
