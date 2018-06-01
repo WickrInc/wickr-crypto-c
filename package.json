@@ -11,7 +11,7 @@
         "mocha": "5.1.x"
     },
     "description": "A node.js wrapper around the wickr-crypto-c library",
-    "version": "1.9.0-beta.2",
+    "version": "1.9.0",
     "main": "build_node/src/wickrcrypto/swig/node/wickrcrypto.node",
     "scripts": {
         "install": "node-pre-gyp install 2> /dev/null || ./node_install.sh",
