@@ -27,3 +27,11 @@ file(GLOB Headers include/wickrcrypto/*.h)
 install(FILES ${Headers} DESTINATION include/wickrcrypto)
 
 export(TARGETS wickrcrypto FILE WickrCryptoConfig.cmake)
+
+# SWIG OPTIONS
+
+option(BUILD_NODE "Build Node SWIG module" OFF)
+
+if (BUILD_NODE)
+    add_subdirectory(swig)
+endif ()

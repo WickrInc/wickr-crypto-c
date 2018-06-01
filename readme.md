@@ -42,7 +42,7 @@ A struct that represents a set of cryptographic functions that the library can u
 
 #### [OpenSSL Crypto Suite](src/crypto/openssl_suite.h)
 
-The current default implementation of crypto engine is based primarily off the EVP interface from OpenSSL 1.0.2
+The current default implementation of crypto engine is based primarily off the EVP interface from OpenSSL 1.1.0
 
 ##### Supported Algorithms
 
@@ -215,7 +215,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
 -DBUILD_OPENSSL=true \
 -DCMAKE_BUILD_TYPE=Release \
 -DIOS_PLATFORM=OS|SIMULATOR \
--DIOS_DEPLOYMENT_TARGET=8.0 \
+-DIOS_DEPLOYMENT_TARGET=9.0 \
 -DCMAKE_INSTALL_PREFIX=USER_INSTALL_LOCATION ../
 ```
 
@@ -223,7 +223,8 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
 
 | CMake Option | Description | Target | 
 | ------------ | ----------- | ------ |
-| BUILD_OPENSSL | Tells CMake to build OpenSSL 1.0.2l as part of the build process | All |
+| BUILD_OPENSSL | Tells CMake to build OpenSSL 1.1.0 as part of the build process | All |
+| OPENSSL_AUTO_BUILD | Tells CMake to build OpenSSL if it fails to automatically find it in the target system. Overridden by BUILD_OPENSSL. TRUE by default on macOS, iOS, Android and Windows, FALSE by default on other systems | All |
 | OPENSSL_ROOT_DIR | Tells CMake to look for prebuilt OpenSSL development files at a specified location | All |
 | CMAKE_BUILD_TYPE | Release or Debug build | All |
 | CMAKE_INSTALL_PREFIX | The location to install headers and built libraries when `make install` is called | All |

@@ -1,4 +1,4 @@
-if (BUILD_OPENSSL)
+macro(build_openssl)
 
     include(ExternalProject)
     include(ProcessorCount)
@@ -78,16 +78,25 @@ if (BUILD_OPENSSL)
 
     install(FILES ${OPENSSL_INCLUDE_DIR}/openssl DESTINATION include)
     install(FILES ${OPENSSL_CRYPTO_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endmacro()
 
-else (BUILD_OPENSSL)
+# if the BUILD_OPENSSL flag supplied by the user don't look for libs
+# otherwise try to detect libraries, and if necessary
+if (BUILD_OPENSSL)
+    build_openssl()
+else ()
 
     include(FindOpenSSL)
 
-    if (!OPENSSL_FOUND)
-        Message(FATAL_ERROR "OpenSSL was not found")
-    endif (!OPENSSL_FOUND)
+    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
+        if (OPENSSL_AUTO_BUILD)
+            build_openssl()
+        else (OPENSSL_AUTO_BUILD)
+            Message(FATAL_ERROR "OpenSSL was not found")
+        endif ()
+    endif ()
 
-endif (BUILD_OPENSSL)
+endif ()
 
 Message("Using OpenSSL: ${OPENSSL_ROOT_DIR}")
 Message("OpenSSL include: ${OPENSSL_INCLUDE_DIR}")
