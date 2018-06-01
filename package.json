@@ -1,13 +1,12 @@
 {
     "name": "wickrcrypto",
     "dependencies": {
-        "node-pre-gyp": "^0.6.39"
+        "node-pre-gyp": "^0.10.0"
     },
     "bundledDependencies": [
         "node-pre-gyp"
     ],
     "devDependencies": {
-        "aws-sdk": "^2.248.1",
         "expect.js": "0.3.1",
         "mocha": "5.1.x"
     },
