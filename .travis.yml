@@ -67,7 +67,18 @@ matrix:
       osx_image: xcode9
       env:
       - NODE=true
-
+    - os: linux
+      sudo: required
+      jdk: oraclejdk8
+      env:
+      - JAVA=true
+      - TESTS=true
+    - os: osx
+      sudo: required
+      jdk: oraclejdk8
+      env:
+      - JAVA=true
+      - TESTS=true
   exclude:
     - compiler: clang
 
@@ -79,7 +90,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
   - if [[ ! -z "${ANDROID}" ]]; then wget -O $HOME/ndk.zip https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip; unzip $HOME/ndk.zip -d $HOME/ndk >/dev/null; fi
-  - if [[ "${NODE}" == "true" ]]; then git clone https://github.com/meetnow/swig.git; cd swig; git checkout -t origin/js-v8-52; ./autogen.sh; ./configure; make && sudo make install; cd ../; fi
+  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/meetnow/swig.git; cd swig; git checkout -t origin/js-v8-52; ./autogen.sh; ./configure; make && sudo make install; cd ../; fi
 
 script:
  - mkdir build;
@@ -94,6 +105,8 @@ script:
             npm test
             export PATH=`pwd`/node_modules/.bin/:$PATH
             if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
+       elif [[ ! -z "${JAVA}" ]]; then
+            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_JAVA=true ../
        else
             $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true ../
        fi
@@ -108,6 +121,8 @@ script:
            npm test
            export PATH=`pwd`/node_modules/.bin/:$PATH
            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
+       elif [[ ! -z "${JAVA}" ]]; then
+           cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_OPENSSL=true -DBUILD_JAVA=true ../
        else
            cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true ../
        fi
