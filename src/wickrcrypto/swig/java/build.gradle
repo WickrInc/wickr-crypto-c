@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.3'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.1"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+def versionNumber = "1.9.1"
+def fileName = "WickrCrypto-${versionNumber}.aar"
+
+android {
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.aar')) {
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = "com.wickr.crypto"
+            version = versionNumber
+            artifactId project.getName()
+            artifact("build/outputs/aar/${fileName}")
+        }
+    }
+}
+
+artifactory {
+    contextUrl = System.getenv("ARTIFACTORY_URL")
+    publish {
+        repository {
+            // The Artifactory repository key to publish to
+            repoKey = 'libs-release-local'
+            username = System.getenv("ARTIFACTORY_USER")
+            password = System.getenv("ARTIFACTORY_PASS")
+        }
+        defaults {
+            // Tell the Artifactory Plugin which artifacts should be published to Artifactory.
+            publications('aar')
+            properties = ['qa.level': 'basic', 'dev.team': 'core']
+        }
+    }
+}

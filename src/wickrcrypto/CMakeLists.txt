@@ -31,7 +31,8 @@ export(TARGETS wickrcrypto FILE WickrCryptoConfig.cmake)
 # SWIG OPTIONS
 
 option(BUILD_NODE "Build Node SWIG module" OFF)
+option(BUILD_JAVA "Build Java SWIG module" OFF)
 
-if (BUILD_NODE)
+if (BUILD_NODE OR BUILD_JAVA)
     add_subdirectory(swig)
 endif ()

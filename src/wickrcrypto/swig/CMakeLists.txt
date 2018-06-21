@@ -16,3 +16,7 @@ endmacro()
 if(BUILD_NODE)
     add_subdirectory(node)
 endif()
+
+if(BUILD_JAVA)
+    add_subdirectory(java)
+endif()
