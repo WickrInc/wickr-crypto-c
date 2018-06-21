@@ -78,6 +78,20 @@ add_jar(wickrcryptojava
 get_target_property(_jarFile wickrcryptojava JAR_FILE)
 add_dependencies(wickrcryptojava wickrcryptoswig)
 
+if (ANDROID)
+    set(ANDROID_INSTALL_PATH ${CMAKE_INSTALL_PREFIX}/android)
+    install(FILES ${JAVA_SOURCES} DESTINATION ${ANDROID_INSTALL_PATH}/src/main/java)
+    install(FILES $<TARGET_FILE:wickrcryptoswig> DESTINATION ${ANDROID_INSTALL_PATH}/src/main/jniLibs/${CMAKE_ANDROID_ARCH_ABI})
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/build.gradle DESTINATION ${ANDROID_INSTALL_PATH})
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/settings.gradle DESTINATION ${ANDROID_INSTALL_PATH})
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gradlew DESTINATION ${ANDROID_INSTALL_PATH})
+    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/gradle DESTINATION ${ANDROID_INSTALL_PATH})
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml DESTINATION ${ANDROID_INSTALL_PATH}/src/main)
+else ()
+    install(FILES ${JAVA_SOURCES} DESTINATION ${CMAKE_INSTALL_PREFIX}/java)
+    install(FILES $<TARGET_FILE:wickrcryptoswig> DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif ()
+
 if (BUILD_TESTS)
 
     set(JAVA_TEST_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/junit-4.12.jar:${CMAKE_CURRENT_SOURCE_DIR}/hamcrest-core-1.3.jar)

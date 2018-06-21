@@ -1,0 +1,1 @@
+set(JNI_INCLUDE_DIRS ${JAVA_HOME}/include)
