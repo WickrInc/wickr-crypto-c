@@ -29,11 +29,11 @@ matrix:
       - OPENSSL="BUILD"
       - TESTS=true
     - os: osx
-      osx_image: xcode9
+      osx_image: xcode9.4
       env:
       - TESTS=true
     - os: osx
-      osx_image: xcode9
+      osx_image: xcode9.4
       env:
       - IOS=true
     - os: linux 
@@ -64,7 +64,7 @@ matrix:
       node_js:
         - "node"
         - "lts/*" 
-      osx_image: xcode9
+      osx_image: xcode9.4
       env:
       - NODE=true
     - os: linux
@@ -76,6 +76,7 @@ matrix:
     - os: osx
       sudo: required
       jdk: oraclejdk8
+      osx_image: xcode9.4
       env:
       - JAVA=true
       - TESTS=true
@@ -104,7 +105,7 @@ script:
             npm install
             npm test
             export PATH=`pwd`/node_modules/.bin/:$PATH
-            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
+            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
        elif [[ ! -z "${JAVA}" ]]; then
             cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_JAVA=true ../
        else
@@ -120,7 +121,7 @@ script:
            npm install
            npm test
            export PATH=`pwd`/node_modules/.bin/:$PATH
-           if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
+           if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
        elif [[ ! -z "${JAVA}" ]]; then
            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_OPENSSL=true -DBUILD_JAVA=true ../
        else
