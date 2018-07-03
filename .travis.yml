@@ -102,7 +102,7 @@ script:
             $HOME/cmake/cmake-3.9.6-Linux-x86_64/bin/cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-Android.cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DCMAKE_ANDROID_NDK=$HOME/ndk/android-ndk-r14b -DCMAKE_ANDROID_ARCH_ABI=${ANDROID} ../
        elif [[ ! -z "${NODE}" ]]; then
             cd ..
-            npm install
+            npm install --build-from-source
             npm test
             export PATH=`pwd`/node_modules/.bin/:$PATH
             if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
@@ -118,7 +118,7 @@ script:
            cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
        elif [[ ! -z "${NODE}" ]]; then
            cd ..
-           npm install
+           npm install --build-from-source
            npm test
            export PATH=`pwd`/node_modules/.bin/:$PATH
            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
