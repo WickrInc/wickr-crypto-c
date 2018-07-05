@@ -154,6 +154,7 @@ describe ("Context Tests", function() {
 
         var nodes = wickrcrypto.WickrArray.allocateNode(1)
         nodes.setNode(0,receiverNode)
+        expect(nodes.getItemCount()).to.eql(1)
 
         //Encode the message for a set of node receivers
         var encodeResult = ctx.encodePacket(payload, nodes)

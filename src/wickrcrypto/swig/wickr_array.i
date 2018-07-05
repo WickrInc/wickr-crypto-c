@@ -22,6 +22,8 @@ struct wickr_array {};
 
 %extend struct wickr_array {
     
+    uint32_t get_item_count();
+
     ~wickr_array() {
         wickr_array_destroy(&$self, true);
     }
