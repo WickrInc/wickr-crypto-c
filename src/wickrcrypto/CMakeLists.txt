@@ -5,6 +5,12 @@ file(GLOB Sources src/*.c include/wickrcrypto/*.h include/wickrcrypto/private/*.
 
 include_directories("include/wickrcrypto" "../protobuf/gen" "${THIRD_PARTY}/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
 
+# Enable FIPS if needed
+if (${FIPS})
+    message(STATUS "Enabling FIPS")
+    add_definitions(-DFIPS)
+endif ()
+
 add_library(wickrcrypto ${Sources} ${ProtobufSources})
 
 add_dependencies(wickrcrypto bcrypt scrypt protobuf-c)

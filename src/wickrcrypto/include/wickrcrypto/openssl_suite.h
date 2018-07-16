@@ -261,6 +261,24 @@ bool openssl_decrypt_file(FILE *in_file,
                           FILE *out_file,
                           bool only_auth_ciphers);
 
+/**
+ @ingroup openssl_crypto
+
+ Enable FIPS mode
+
+ @return true if openssl fips enable is allowed
+*/
+bool openssl_enable_fips_mode(void);
+
+/**
+ @ingroup openssl_crypto
+
+ Determine if FIPS mode is available
+
+ @return true if openssl fips mode is available
+*/
+bool openssl_is_fips_supported();
+
 /* Functions to assist with testing */
 wickr_ec_key_t *openssl_ec_key_import_test_key(wickr_ec_curve_t curve, const char *priv_hex);
 

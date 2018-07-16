@@ -18,8 +18,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'maven-publish'
 
-def versionNumber = "1.9.2"
-def fileName = "WickrCrypto-${versionNumber}.aar"
+def projectName = project.getName()
+def fileName = "${projectName}-${versionNumber}.aar"
 
 android {
 

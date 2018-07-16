@@ -226,6 +226,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
 | BUILD_OPENSSL | Tells CMake to build OpenSSL 1.1.0 as part of the build process | All |
 | OPENSSL_AUTO_BUILD | Tells CMake to build OpenSSL if it fails to automatically find it in the target system. Overridden by BUILD_OPENSSL. TRUE by default on macOS, iOS, Android and Windows, FALSE by default on other systems | All |
 | OPENSSL_ROOT_DIR | Tells CMake to look for prebuilt OpenSSL development files at a specified location | All |
+| FIPS | Tells CMake to build OpenSSL in FIPS mode. This will force BUILD_OPENSSL to true | All |
 | CMAKE_BUILD_TYPE | Release or Debug build | All |
 | CMAKE_INSTALL_PREFIX | The location to install headers and built libraries when `make install` is called | All |
 | CMAKE_TOOLCHAIN_FILE | Tells CMake to target the Android NDK cross compile toolchain | Android / iOS |

@@ -17,6 +17,11 @@ include_directories(${JNI_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/../../includ
 set(CMAKE_SWIG_FLAGS -package ${PACKAGE_NAME} ${CMAKE_SWIG_FLAGS})
 
 # Configure the swig target for java
+if (FIPS)
+    set(_ORIGINAL_C_COMPILER ${CMAKE_C_COMPILER})
+    set(CMAKE_C_COMPILER ${OPENSSL_FIPSLD_COMPILER} CACHE LOCAL "" FORCE)
+endif ()
+
 setup_swig_library("java" "")
 
 # Build JAR File
@@ -71,11 +76,12 @@ set(JAVA_SOURCES
 
 add_jar(wickrcryptojava
     SOURCES ${JAVA_SOURCES}
-    VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+    VERSION "${VERSION_STRING}"
     ENTRY_POINT ${ENTRY_POINT}
 )
 
 get_target_property(_jarFile wickrcryptojava JAR_FILE)
+
 add_dependencies(wickrcryptojava wickrcryptoswig)
 
 if (ANDROID)
@@ -83,7 +89,14 @@ if (ANDROID)
     install(FILES ${JAVA_SOURCES} DESTINATION ${ANDROID_INSTALL_PATH}/src/main/java)
     install(FILES $<TARGET_FILE:wickrcryptoswig> DESTINATION ${ANDROID_INSTALL_PATH}/src/main/jniLibs/${CMAKE_ANDROID_ARCH_ABI})
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/build.gradle DESTINATION ${ANDROID_INSTALL_PATH})
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/settings.gradle DESTINATION ${ANDROID_INSTALL_PATH})
+
+    if (FIPS)
+        file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle "rootProject.name = \"wickrcrypto-fips\"\ngradle.ext.versionNumber = \"${VERSION_STRING}\"")
+    else () 
+        file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle "rootProject.name = \"wickrcrypto\"\ngradle.ext.versionNumber = \"${VERSION_STRING}\"")
+    endif ()
+
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle DESTINATION ${ANDROID_INSTALL_PATH})
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gradlew DESTINATION ${ANDROID_INSTALL_PATH})
     install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/gradle DESTINATION ${ANDROID_INSTALL_PATH})
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml DESTINATION ${ANDROID_INSTALL_PATH}/src/main)
