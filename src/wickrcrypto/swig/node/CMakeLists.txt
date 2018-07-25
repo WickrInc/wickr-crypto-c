@@ -30,3 +30,5 @@ if (BUILD_TESTS)
     )
     
 endif ()
+
+install(FILES $<TARGET_FILE:wickrcryptoswig> DESTINATION ${CMAKE_INSTALL_LIBDIR})

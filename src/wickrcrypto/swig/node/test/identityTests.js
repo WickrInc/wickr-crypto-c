@@ -1,7 +1,7 @@
 'use strict'
 
 var expect = require('expect.js')
-var wickrcrypto = require('../../../../../build_node/src/wickrcrypto/swig/node/lib/wickrcrypto')
+var wickrcrypto = require('../../../../../node/lib/wickrcrypto')
 
 function generateTestNode(identity) {
 
