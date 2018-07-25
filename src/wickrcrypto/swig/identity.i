@@ -21,10 +21,14 @@
 %ignore wickr_node_identity_gen;
 %ignore wickr_identity_copy;
 %ignore wickr_identity_destroy;
+%ignore wickr_identity_create_from_buffer;
+%ignore wickr_identity_serialize;
 %ignore wickr_identity_chain_create;
 %ignore wickr_identity_chain_copy;
 %ignore wickr_identity_chain_validate;
 %ignore wickr_identity_chain_destroy;
+%ignore wickr_identity_chain_serialize;
+%ignore wickr_identity_chain_create_from_buffer;
 
 %include "wickrcrypto/identity.h"
 
@@ -37,6 +41,14 @@
  %newobject from_values;
  %newobject sign_data;
  %newobject gen_node;
+ %newobject from_buffer;
+
+ static wickr_identity_t *from_buffer(const wickr_buffer_t *data) {
+     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+     return wickr_identity_create_from_buffer(data, &engine);
+ }
+
+ wickr_buffer_t *serialize();
 
  wickr_ecdsa_result_t *sign_data(const wickr_buffer_t *data) {
  	wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
@@ -69,6 +81,14 @@
  }
 
  %newobject from_identities;
+ %newobject from_buffer;
+
+ static wickr_identity_chain_t *from_buffer(const wickr_buffer_t *data) {
+     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+     return wickr_identity_chain_create_from_buffer(data, &engine);
+ }
+
+ wickr_buffer_t *serialize();
 
  static wickr_identity_chain_t *from_identities(wickr_identity_t *root, wickr_identity_t *node) {
  	wickr_identity_t *root_copy = wickr_identity_copy(root);

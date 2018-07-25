@@ -195,4 +195,21 @@ public class ContextTests
 		assertEquals(decoded.getErr(), DecodeError.E_SUCCESS);
 		assertArrayEquals(decoded.getDecryptedPayload().getBody(), message);
 	}
+
+	@Test
+	public void testContextSerialization() {
+
+		//Serialize and deserialize the context
+		byte[] serializedContext = ctx.serialize();
+		assertNotNull(serializedContext);
+		assertTrue(serializedContext.length > 0);
+
+		Context restoredContext = Context.fromBuffer(devinfo, serializedContext);
+		assertNotNull(restoredContext);
+
+		//Test some properties to ensure proper wrapping, this is heavily tested in the wickr-crypto-c library tests
+		assertArrayEquals(restoredContext.getDevInfo().getMsgProtoId(), devinfo.getMsgProtoId());
+		assertArrayEquals(restoredContext.getIdChain().getRoot().getIdentifier(), identifier);
+
+	}
 }
