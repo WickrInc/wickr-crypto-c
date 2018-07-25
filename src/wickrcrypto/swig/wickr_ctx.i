@@ -46,6 +46,8 @@
 %ignore wickr_ctx_parse_packet;
 %ignore wickr_ctx_parse_packet_no_decode;
 %ignore wickr_ctx_decode_packet;
+%ignore wickr_ctx_serialize;
+%ignore wickr_ctx_create_from_buffer;
 %ignore wickr_packet_meta_create;
 %ignore wickr_packet_meta_copy;
 %ignore wickr_packet_meta_destroy;
@@ -159,6 +161,7 @@
     %newobject parse_packet_no_decode;
     %newobject parse_packet;
     %newobject decode_packet;
+    %newobject from_buffer;
 
 	wickr_buffer_t *export_storage_keys(const wickr_buffer_t *passphrase);
 
@@ -166,6 +169,18 @@
 		const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
 		return wickr_ctx_import_storage_keys(engine, exported, passphrase);
 	}
+
+    static wickr_ctx_t *from_buffer(wickr_dev_info_t *dev_info, const wickr_buffer_t *buffer) {
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_dev_info_t *dev_info_copy = wickr_dev_info_copy(dev_info);
+        wickr_ctx_t *ctx = wickr_ctx_create_from_buffer(engine, dev_info_copy, buffer);
+        if (!ctx) {
+            wickr_dev_info_destroy(&dev_info_copy);
+        }
+        return ctx;
+    }
+
+    wickr_buffer_t *serialize();
 
 #if defined(SWIGPHP)
 	%newobject from_ctx;

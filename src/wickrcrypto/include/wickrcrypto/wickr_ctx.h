@@ -330,7 +330,7 @@ wickr_buffer_t *wickr_ctx_serialize(const wickr_ctx_t *ctx);
  */
 wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
                                           wickr_dev_info_t *dev_info,
-                                          wickr_buffer_t *buffer);
+                                          const wickr_buffer_t *buffer);
 
 /**
  @ingroup wickr_ctx

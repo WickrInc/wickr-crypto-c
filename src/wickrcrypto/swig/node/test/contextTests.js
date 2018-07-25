@@ -180,4 +180,19 @@ describe ("Context Tests", function() {
 
     })
 
+    it("can be serialized and deserialized", function() {
+
+        //Serialize and deserialize the context
+        var serializedContext = ctx.serialize()
+        expect(serializedContext).to.be.a("object")
+
+        var restoredContext = wickrcrypto.Context.fromBuffer(devinfo, serializedContext)
+        expect(restoredContext).to.be.a("object")
+
+        //Test some properties to ensure proper wrapping, this is heavily tested in the wickr-crypto-c library tests
+        expect(restoredContext.devInfo.msgProtoId).to.eql(devinfo.msgProtoId)
+        expect(restoredContext.idChain.root.identifier).to.eql(identifier)
+
+    })
+
 })
