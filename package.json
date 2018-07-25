@@ -13,14 +13,14 @@
     },
     "description": "A node.js wrapper around the wickr-crypto-c library",
     "version": "1.9.2",
-    "main": "build_node/src/wickrcrypto/swig/node/wickrcrypto.node",
+    "main": "node/lib/wickrcrypto.node",
     "scripts": {
         "install": "node-pre-gyp --target_platform=$(uname -r) install 2> /dev/null || ./node_install.sh",
         "test": "./node_modules/.bin/mocha src/wickrcrypto/swig/node/test"
     },
     "binary": {
-        "module_name": "wickrcrypto",
-        "module_path": "./build_node/src/wickrcrypto/swig/node/lib",
+        "module_name": "lib/wickrcrypto",
+        "module_path": "./node",
         "host": "https://wickr-crypto-c.s3.amazonaws.com/wickr-crypto-c"
     },
     "engines": {
