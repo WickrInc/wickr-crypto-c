@@ -19,8 +19,8 @@
         "test": "./node_modules/.bin/mocha src/wickrcrypto/swig/node/test"
     },
     "binary": {
-        "module_name": "wickrcrypto",
-        "module_path": "./node/lib",
+        "module_name": "lib/wickrcrypto",
+        "module_path": "./node",
         "host": "https://wickr-crypto-c.s3.amazonaws.com/wickr-crypto-c"
     },
     "engines": {
