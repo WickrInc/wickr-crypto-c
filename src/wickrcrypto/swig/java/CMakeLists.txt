@@ -103,6 +103,7 @@ if (ANDROID)
 else ()
     install(FILES ${JAVA_SOURCES} DESTINATION ${CMAKE_INSTALL_PREFIX}/java)
     install(FILES $<TARGET_FILE:wickrcryptoswig> DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    install(FILES ${_jarFile} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 endif ()
 
 if (BUILD_TESTS)
