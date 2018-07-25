@@ -90,8 +90,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src/**/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.a", "output_fat/lib/libscrypt.a", "output_fat/lib/libprotobuf-c.a"
-  s.preserve_paths = "src/**/*.{h,c}", "output_fat/**/*"
+  s.source_files  = "src/**/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.a", "output_fat/lib/libscrypt.a", "output_fat/lib/libprotobuf-c.a", "build_device/third-party/openssl/1.0.2-fips/lib/fips_premain.c"
+  s.preserve_paths = "src/**/*.{h,c}", "output_fat/**/*", "build_device/**/*"
   s.private_header_files = "src/protobuf/gen/*.h", "src/wickrcrypto/include/wickrcrypto/private/*.h", "src/wickrcrypto/include/wickrcrypto/openssl_*suite.h", "output_fat/include/**/*.h"
   
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -118,7 +118,9 @@ Pod::Spec.new do |s|
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
-    s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap" 
+  s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap"
+  s.script_phase = { :name => 'Openssl Fips Incore', :script => 'if [ ! -f ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho ]; then exit 0; fi; ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho --debug -dylib "$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH"' } 
+
   s.prepare_command = <<-CMD
         ./build-ios-fat.sh
   CMD
@@ -130,6 +132,6 @@ Pod::Spec.new do |s|
 
   # s.requires_arc = true
 
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
+  s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DNO_FIPS', 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
     
 end

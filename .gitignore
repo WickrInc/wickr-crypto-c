@@ -9,5 +9,5 @@ install_manifest.txt
 CTestTestfile.cmake
 .DS_Store
 build*/
-wickr-crypto-c.podspec
 node_modules/
+pod_deploy/

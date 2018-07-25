@@ -1,3 +1,7 @@
+if [ -z ${FIPS} ]; then
+    FIPS=false
+fi
+
 git submodule update --init --recursive
 mkdir build_device
 cd build_device
@@ -5,6 +9,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
     -DIOS_PLATFORM=OS \
+    -DFIPS=${FIPS} \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_device ../
 make
@@ -16,6 +21,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
     -DIOS_PLATFORM=SIMULATOR \
+    -DFIPS=${FIPS} \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_sim ../
 make
@@ -29,3 +35,8 @@ lipo -create output_device/lib/libprotobuf-c.a output_sim/lib/libprotobuf-c.a -o
 lipo -create output_device/lib/libcrypto.a output_sim/lib/libcrypto.a -output output_fat/lib/libcrypto.a 
 lipo -create output_device/lib/libscrypt.a output_sim/lib/libscrypt.a -output output_fat/lib/libscrypt.a
 lipo -create output_device/lib/libbcrypt.a output_sim/lib/libbcrypt.a -output output_fat/lib/libbcrypt.a
+
+if [ ${FIPS} == true ]; then
+    mkdir -p output_fat/bin
+    cp build_device/third-party/openssl/1.0.2-fips/openssl_fips-prefix/src/openssl_fips/iOS/incore_macho output_fat/bin/incore_macho
+fi

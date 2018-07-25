@@ -3,9 +3,18 @@
 #include "memory.h"
 #include "openssl_suite.h"
 #include "openssl_file_suite.h"
+#include <stdio.h>
 
 const wickr_crypto_engine_t wickr_crypto_engine_get_default()
 {
+
+/* If fips mode is enabled, kill the library if fips can't be enabled */
+#ifdef FIPS
+    if (!openssl_enable_fips_mode()) {
+        abort();
+    }
+#endif
+
     wickr_crypto_engine_t default_engine =
     {
         EC_CURVE_NIST_P521,
