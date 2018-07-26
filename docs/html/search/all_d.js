@@ -17,11 +17,13 @@ var searchData=
   ['openssl_5fec_5frand_5fkey',['openssl_ec_rand_key',['../group__openssl__crypto.html#ga75a01a740d558bfcc0f10920266cd9d5',1,'openssl_suite.h']]],
   ['openssl_5fec_5fsign',['openssl_ec_sign',['../group__openssl__crypto.html#gab32cef5c789ee1992afae98a81b65823',1,'openssl_suite.h']]],
   ['openssl_5fec_5fverify',['openssl_ec_verify',['../group__openssl__crypto.html#ga1e2b3f17c67e97360b616d0d673767f7',1,'openssl_suite.h']]],
+  ['openssl_5fenable_5ffips_5fmode',['openssl_enable_fips_mode',['../group__openssl__crypto.html#ga04773a29991559a4004c23cc4e8badd7',1,'openssl_suite.h']]],
   ['openssl_5fencrypt_5ffile',['openssl_encrypt_file',['../group__openssl__crypto.html#ga178fa1f33ad2767c27411c3ebcdd3ca0',1,'openssl_suite.h']]],
   ['openssl_5fgen_5fshared_5fsecret',['openssl_gen_shared_secret',['../group__openssl__crypto.html#gac18a3e234621caaabf695715fb22d950',1,'openssl_suite.h']]],
   ['openssl_5fhkdf',['openssl_hkdf',['../group__openssl__crypto.html#ga788a03002d8c6048401cf0bbc2d48c7a',1,'openssl_suite.h']]],
   ['openssl_5fhmac_5fcreate',['openssl_hmac_create',['../group__openssl__crypto.html#gaeb4574976214a17eb79bbc3d76f573a6',1,'openssl_suite.h']]],
   ['openssl_5fhmac_5fverify',['openssl_hmac_verify',['../group__openssl__crypto.html#gafbde176ef6f2b99ff9dab58ad69a9a74',1,'openssl_suite.h']]],
+  ['openssl_5fis_5ffips_5fsupported',['openssl_is_fips_supported',['../group__openssl__crypto.html#gaed92eb2b892df254af6099cd472b027a',1,'openssl_suite.h']]],
   ['openssl_5fsha2',['openssl_sha2',['../group__openssl__crypto.html#ga19991a9b00d0c383c64935fa2acecda7',1,'openssl_suite.h']]],
   ['openssl_5fsha2_5ffile',['openssl_sha2_file',['../group__openssl__crypto.html#ga12da75115315fbf7394f4791a2eb815c',1,'openssl_suite.h']]],
   ['output_5fsize',['output_size',['../structwickr__kdf__algo.html#a75e5396b3c53817c6799dbf3107e36d6',1,'wickr_kdf_algo']]]

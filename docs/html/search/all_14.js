@@ -62,7 +62,7 @@ var searchData=
   ['wickr_5fctx_5fcipher_5fremote',['wickr_ctx_cipher_remote',['../group__wickr__ctx.html#ga0b985fb2cd05fb482b5ed175dfd650a0',1,'wickr_ctx.h']]],
   ['wickr_5fctx_5fcopy',['wickr_ctx_copy',['../group__wickr__ctx.html#gaaa74a32619fb3b382fbeeeddc425a910',1,'wickr_ctx.h']]],
   ['wickr_5fctx_5fcreate',['wickr_ctx_create',['../group__wickr__ctx.html#ga085975d71519bf5729a7cf264a5f7876',1,'wickr_ctx.h']]],
-  ['wickr_5fctx_5fcreate_5ffrom_5fbuffer',['wickr_ctx_create_from_buffer',['../group__wickr__ctx.html#ga2337386d6879ae7bcce33c9d6617b35b',1,'wickr_ctx.h']]],
+  ['wickr_5fctx_5fcreate_5ffrom_5fbuffer',['wickr_ctx_create_from_buffer',['../group__wickr__ctx.html#gaf80d28fc692d102996cdaf05cfdc4c7c',1,'wickr_ctx.h']]],
   ['wickr_5fctx_5fdecipher_5fremote',['wickr_ctx_decipher_remote',['../group__wickr__ctx.html#gacc1038d3690ba4860b74f13239c65600',1,'wickr_ctx.h']]],
   ['wickr_5fctx_5fdestroy',['wickr_ctx_destroy',['../group__wickr__ctx.html#gaadfdef183c86992efc33b0d730c90327',1,'wickr_ctx.h']]],
   ['wickr_5fctx_5fencode',['wickr_ctx_encode',['../structwickr__ctx__encode.html',1,'']]],
