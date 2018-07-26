@@ -34,6 +34,10 @@ bool \mbox{\hyperlink{group__openssl__crypto_gafbde176ef6f2b99ff9dab58ad69a9a74}
 bool \mbox{\hyperlink{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}{openssl\+\_\+encrypt\+\_\+file}} (F\+I\+LE $\ast$in\+\_\+file, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, F\+I\+LE $\ast$out\+\_\+file)
 \item 
 bool \mbox{\hyperlink{group__openssl__crypto_gaf1faa509e06c188acfbdf43e2197c61a}{openssl\+\_\+decrypt\+\_\+file}} (F\+I\+LE $\ast$in\+\_\+file, const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$key, F\+I\+LE $\ast$out\+\_\+file, bool only\+\_\+auth\+\_\+ciphers)
+\item 
+bool \mbox{\hyperlink{group__openssl__crypto_ga04773a29991559a4004c23cc4e8badd7}{openssl\+\_\+enable\+\_\+fips\+\_\+mode}} (void)
+\item 
+bool \mbox{\hyperlink{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}{openssl\+\_\+is\+\_\+fips\+\_\+supported}} ()
 \end{DoxyCompactItemize}
 
 
@@ -217,6 +221,17 @@ Verify E\+C\+D\+SA signatures
 \begin{DoxyReturn}{Returns}
 true if \textquotesingle{}signature\textquotesingle{} can be verified by \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__openssl__crypto_ga04773a29991559a4004c23cc4e8badd7}\label{group__openssl__crypto_ga04773a29991559a4004c23cc4e8badd7}} 
+\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+enable\+\_\+fips\+\_\+mode@{openssl\+\_\+enable\+\_\+fips\+\_\+mode}}
+\index{openssl\+\_\+enable\+\_\+fips\+\_\+mode@{openssl\+\_\+enable\+\_\+fips\+\_\+mode}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\+\_\+enable\+\_\+fips\+\_\+mode()}{openssl\_enable\_fips\_mode()}}
+{\footnotesize\ttfamily bool openssl\+\_\+enable\+\_\+fips\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Enable F\+I\+PS mode
+
+\begin{DoxyReturn}{Returns}
+true if openssl fips enable is allowed 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}\label{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}}
 \index{openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
@@ -318,6 +333,17 @@ Verify an H\+M\+AC against an expected result
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if \textquotesingle{}expected\textquotesingle{} is equal to the H\+M\+AC of \textquotesingle{}data\textquotesingle{} and \textquotesingle{}hmac\+\_\+key\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}\label{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}} 
+\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+is\+\_\+fips\+\_\+supported@{openssl\+\_\+is\+\_\+fips\+\_\+supported}}
+\index{openssl\+\_\+is\+\_\+fips\+\_\+supported@{openssl\+\_\+is\+\_\+fips\+\_\+supported}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\+\_\+is\+\_\+fips\+\_\+supported()}{openssl\_is\_fips\_supported()}}
+{\footnotesize\ttfamily bool openssl\+\_\+is\+\_\+fips\+\_\+supported (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determine if F\+I\+PS mode is available
+
+\begin{DoxyReturn}{Returns}
+true if openssl fips mode is available 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga19991a9b00d0c383c64935fa2acecda7}\label{group__openssl__crypto_ga19991a9b00d0c383c64935fa2acecda7}} 
 \index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+sha2@{openssl\+\_\+sha2}}
