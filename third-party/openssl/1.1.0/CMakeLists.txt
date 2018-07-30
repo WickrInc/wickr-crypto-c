@@ -86,20 +86,7 @@ macro(build_openssl)
 
 endmacro()
 
-# if the BUILD_OPENSSL flag supplied by the user don't look for libs
-# otherwise try to detect libraries, and if necessary
+# if the BUILD_OPENSSL flag supplied by the user run the build
 if (BUILD_OPENSSL)
     build_openssl()
-else ()
-
-    include(FindOpenSSL)
-
-    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
-        if (OPENSSL_AUTO_BUILD)
-            build_openssl()
-        else (OPENSSL_AUTO_BUILD)
-            Message(FATAL_ERROR "OpenSSL was not found")
-        endif ()
-    endif ()
-
 endif ()

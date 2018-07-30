@@ -169,13 +169,15 @@ macro(build_openssl)
 
 endmacro()
 
-# FIPS Setup
-if (FIPS)
-    build_fips_module()
-endif ()
+if (BUILD_OPENSSL)
+    # FIPS Setup
+    if (FIPS)
+        build_fips_module()
+    endif ()
 
-# Build OpenSSL in FIPS mode
-build_openssl()
+    # Build OpenSSL
+    build_openssl()
+endif ()
 
 
 
