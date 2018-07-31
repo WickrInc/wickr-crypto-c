@@ -13,6 +13,18 @@ if (OPENSSL_102 AND NOT BUILD_OPENSSL)
     set(BUILD_OPENSSL true)
 endif ()
 
+if (NOT BUILD_OPENSSL)
+    include(FindOpenSSL)
+
+    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
+        if (OPENSSL_AUTO_BUILD)
+            set(BUILD_OPENSSL TRUE)
+        else ()
+            Message(FATAL_ERROR "OpenSSL was not found")
+        endif ()
+    endif ()
+endif ()
+
 if (OPENSSL_102)
     add_subdirectory(1.0.2-fips)
 else ()

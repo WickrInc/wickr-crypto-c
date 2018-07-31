@@ -73,6 +73,7 @@ macro(build_openssl)
             set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" CACHE INTERNAL "")
         else ()
             set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.dylib" CACHE INTERNAL "")
+            set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.1.1.dylib" CACHE INTERNAL "")
         endif ()
     elseif(WIN32)
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.lib" CACHE INTERNAL "")
@@ -80,26 +81,13 @@ macro(build_openssl)
     elseif(ANDROID)
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" CACHE INTERNAL "")
     elseif(UNIX)
-        set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so.1.1" CACHE INTERNAL "")
-        set(OPENSSL_CRYPTO_SHARED ${OPENSSL_CRYPTO_LIBRARY} CACHE INTERNAL "")
+        set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so" CACHE INTERNAL "")
+        set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so.1.1" CACHE INTERNAL "")
     endif()
 
 endmacro()
 
-# if the BUILD_OPENSSL flag supplied by the user don't look for libs
-# otherwise try to detect libraries, and if necessary
+# if the BUILD_OPENSSL flag supplied by the user run the build
 if (BUILD_OPENSSL)
     build_openssl()
-else ()
-
-    include(FindOpenSSL)
-
-    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
-        if (OPENSSL_AUTO_BUILD)
-            build_openssl()
-        else (OPENSSL_AUTO_BUILD)
-            Message(FATAL_ERROR "OpenSSL was not found")
-        endif ()
-    endif ()
-
 endif ()
