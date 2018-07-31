@@ -7,6 +7,5 @@ make install
 cd ..
 
 if [ ! -d lib ] && [ -d lib64 ]; then
-    mkdir lib && cd lib
-    ln -s ../lib64/wickrcrypto.node wickrcrypto.node
+    ln -s ../lib64 lib
 fi
