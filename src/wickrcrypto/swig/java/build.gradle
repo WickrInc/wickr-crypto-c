@@ -19,7 +19,7 @@ apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'maven-publish'
 
 def projectName = project.getName()
-def fileName = "${projectName}-${versionNumber}.aar"
+def fileName = "${projectName}-${gradle.versionNumber}.aar"
 
 android {
 
@@ -53,7 +53,7 @@ publishing {
     publications {
         aar(MavenPublication) {
             groupId = "com.wickr.crypto"
-            version = versionNumber
+            version = gradle.versionNumber
             artifactId project.getName()
             artifact("build/outputs/aar/${fileName}")
         }
