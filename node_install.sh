@@ -7,5 +7,5 @@ make install
 cd ..
 
 if [ ! -d lib ] && [ -d lib64 ]; then
-    ln -s ../lib64 lib
+    ln -s lib64 lib
 fi
