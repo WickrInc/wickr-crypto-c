@@ -149,7 +149,7 @@ script:
             npm install --build-from-source
             npm test
             export PATH=`pwd`/node_modules/.bin/:$PATH
-            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
+            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform='ubuntu_trusty' package publish; fi
        elif [[ ! -z "${JAVA}" ]]; then
             cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_JAVA=true ../
        else
@@ -165,7 +165,7 @@ script:
            npm install --build-from-source
            npm test
            export PATH=`pwd`/node_modules/.bin/:$PATH
-           if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform=$(uname -r) package publish; fi
+           if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
        elif [[ ! -z "${JAVA}" ]]; then
            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_OPENSSL=true -DBUILD_JAVA=true ../
        else
