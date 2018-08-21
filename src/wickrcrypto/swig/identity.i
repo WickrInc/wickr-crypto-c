@@ -12,6 +12,12 @@
 	long cPtr = $jnicall;
     return (cPtr == 0) ? null : new $javaclassname(cPtr, $owner, this);
 }
+#elif defined(SWIGJAVASCRIPT)
+%typemap(ret) SWIGTYPE *sig_key, SWIGTYPE *signature, SWIGTYPE *root, SWIGTYPE *node {
+  if (jsresult->ToObject()->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("parent"), info.Holder()).IsNothing()) {
+    SWIG_exception_fail(SWIG_ERROR, "Could not set parent object for getter");
+  }
+}
 #endif
 
 %immutable;
