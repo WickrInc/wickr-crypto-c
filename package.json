@@ -15,7 +15,7 @@
     "version": "1.10.2",
     "main": "node/lib/wickrcrypto.node",
     "scripts": {
-        "install": "node-pre-gyp --target_platform=$(uname -r) install 2> /dev/null || ./node_install.sh",
+        "install": "node-pre-gyp install 2> /dev/null || ./node_install.sh",
         "test": "./node_modules/.bin/mocha src/wickrcrypto/swig/node/test"
     },
     "binary": {
