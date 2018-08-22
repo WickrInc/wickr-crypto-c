@@ -16,6 +16,7 @@ describe ("Context Tests", function() {
         var testGeneration = wickrcrypto.ContextGenResult.genNew(devinfo, identifier)
         expect(testGeneration).to.be.a("object")
         ctx = testGeneration.ctx
+        expect(ctx.idChain.root.signature).to.eql(testGeneration.ctx.idChain.root.signature)
         expect(ctx).to.be.a("object")
     })
 
