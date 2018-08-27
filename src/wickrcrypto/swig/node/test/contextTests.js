@@ -196,4 +196,20 @@ describe ("Context Tests", function() {
 
     })
 
+    it("can be exported and imported", function() {
+
+        var password = Buffer.from('password')
+        //Serialize and deserialize the context
+        var exportedContext = ctx.exportPassphrase(password)
+        expect(exportedContext).to.be.a("object")
+
+        var restoredContext = wickrcrypto.Context.importFromBuffer(devinfo, exportedContext, password)
+        expect(restoredContext).to.be.a("object")
+
+        //Test some properties to ensure proper wrapping, this is heavily tested in the wickr-crypto-c library tests
+        expect(restoredContext.devInfo.msgProtoId).to.eql(devinfo.msgProtoId)
+        expect(restoredContext.idChain.root.identifier).to.eql(identifier)
+
+    })
+
 })

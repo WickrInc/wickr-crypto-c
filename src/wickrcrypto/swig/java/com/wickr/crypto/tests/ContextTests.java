@@ -212,4 +212,22 @@ public class ContextTests
 		assertArrayEquals(restoredContext.getIdChain().getRoot().getIdentifier(), identifier);
 
 	}
+
+	@Test
+	public void testContextExport() throws UnsupportedEncodingException {
+
+		byte[] password = "password".getBytes("UTF8");
+		//Serialize and deserialize the context
+		byte[] exportedContext = ctx.exportPassphrase(password);
+		assertNotNull(exportedContext);
+		assertTrue(exportedContext.length > 0);
+
+		Context restoredContext = Context.importFromBuffer(devinfo, exportedContext, password);
+		assertNotNull(restoredContext);
+
+		//Test some properties to ensure proper wrapping, this is heavily tested in the wickr-crypto-c library tests
+		assertArrayEquals(restoredContext.getDevInfo().getMsgProtoId(), devinfo.getMsgProtoId());
+		assertArrayEquals(restoredContext.getIdChain().getRoot().getIdentifier(), identifier);
+
+	}
 }
