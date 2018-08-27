@@ -44,6 +44,10 @@ void \mbox{\hyperlink{group__wickr__ctx_gaadfdef183c86992efc33b0d730c90327}{wick
 \item 
 \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_gaf80d28fc692d102996cdaf05cfdc4c7c}{wickr\+\_\+ctx\+\_\+create\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, \mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$dev\+\_\+info, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
 \item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_ga56c41d96d28a8a25336147248361dcb6}{wickr\+\_\+ctx\+\_\+export}} (const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$ctx, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
+\item 
+\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_ga361e58c9f810505a7085cd91c1165391}{wickr\+\_\+ctx\+\_\+import}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, \mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$dev\+\_\+info, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$exported, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
+\item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_ga67e64bed3fc0a8ee550c0fc24d44c787}{wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys}} (const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$ctx, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
 \item 
 \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_gae344e5202193c4b92ee2686529285fe5}{wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$exported, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$passphrase)
@@ -269,6 +273,22 @@ N\+O\+TE\+: the result of this function should be kept in a local cache to allow
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 an ephemeral key pair containing the private and public components, signed by the ctx node signing identity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ctx_ga56c41d96d28a8a25336147248361dcb6}\label{group__wickr__ctx_ga56c41d96d28a8a25336147248361dcb6}} 
+\index{Wickr\+\_\+ctx@{Wickr\+\_\+ctx}!wickr\+\_\+ctx\+\_\+export@{wickr\+\_\+ctx\+\_\+export}}
+\index{wickr\+\_\+ctx\+\_\+export@{wickr\+\_\+ctx\+\_\+export}!Wickr\+\_\+ctx@{Wickr\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ctx\+\_\+export()}{wickr\_ctx\_export()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+
+Serialize and encrypt a context with a passphrase
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the context to serialize and encrypt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bytes representing an scrypt encrypted context 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_ga67e64bed3fc0a8ee550c0fc24d44c787}\label{group__wickr__ctx_ga67e64bed3fc0a8ee550c0fc24d44c787}} 
 \index{Wickr\+\_\+ctx@{Wickr\+\_\+ctx}!wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys@{wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys}}
@@ -503,6 +523,25 @@ This function is used to provision a new node identity onto the system given an 
 \begin{DoxyReturn}{Returns}
 a generation result containing an existing root identity represented by \textquotesingle{}identifier\textquotesingle{} and a node identity signed by the existing root 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__ctx_ga361e58c9f810505a7085cd91c1165391}\label{group__wickr__ctx_ga361e58c9f810505a7085cd91c1165391}} 
+\index{Wickr\+\_\+ctx@{Wickr\+\_\+ctx}!wickr\+\_\+ctx\+\_\+import@{wickr\+\_\+ctx\+\_\+import}}
+\index{wickr\+\_\+ctx\+\_\+import@{wickr\+\_\+ctx\+\_\+import}!Wickr\+\_\+ctx@{Wickr\+\_\+ctx}}
+\subsubsection{\texorpdfstring{wickr\+\_\+ctx\+\_\+import()}{wickr\_ctx\_import()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+import (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{exported,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
+
+Import a ctx exported by \textquotesingle{}wickr\+\_\+ctx\+\_\+export\textquotesingle{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & the crypto engine to use for decryption and the resulting context \\
+\hline
+{\em dev\+\_\+info} & the device information the context should be bound to \\
+\hline
+{\em exported} & the result of the call to \textquotesingle{}wickr\+\_\+ctx\+\_\+export\textquotesingle{} \\
+\hline
+{\em passphase} & the passphrase used to export the context \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{group__wickr__ctx_gae344e5202193c4b92ee2686529285fe5}\label{group__wickr__ctx_gae344e5202193c4b92ee2686529285fe5}} 
 \index{Wickr\+\_\+ctx@{Wickr\+\_\+ctx}!wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys@{wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys}}
 \index{wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys@{wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys}!Wickr\+\_\+ctx@{Wickr\+\_\+ctx}}
@@ -590,5 +629,5 @@ Serialize a context
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-bytes representing a combination of hte storage keys and id chain from \textquotesingle{}ctx\textquotesingle{} 
+bytes representing a combination of the storage keys and id chain from \textquotesingle{}ctx\textquotesingle{} 
 \end{DoxyReturn}

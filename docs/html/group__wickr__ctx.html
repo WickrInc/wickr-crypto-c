@@ -116,6 +116,10 @@ Functions</h2></td></tr>
 <tr class="separator:gafe05cea0e43f65663a2b084efeedcde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf80d28fc692d102996cdaf05cfdc4c7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ctx.html">wickr_ctx_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ctx.html#gaf80d28fc692d102996cdaf05cfdc4c7c">wickr_ctx_create_from_buffer</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> engine, <a class="el" href="structwickr__dev__info.html">wickr_dev_info_t</a> *dev_info, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer)</td></tr>
 <tr class="separator:gaf80d28fc692d102996cdaf05cfdc4c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga56c41d96d28a8a25336147248361dcb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ctx.html#ga56c41d96d28a8a25336147248361dcb6">wickr_ctx_export</a> (const <a class="el" href="structwickr__ctx.html">wickr_ctx_t</a> *ctx, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *passphrase)</td></tr>
+<tr class="separator:ga56c41d96d28a8a25336147248361dcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga361e58c9f810505a7085cd91c1165391"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__ctx.html">wickr_ctx_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ctx.html#ga361e58c9f810505a7085cd91c1165391">wickr_ctx_import</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> engine, <a class="el" href="structwickr__dev__info.html">wickr_dev_info_t</a> *dev_info, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *exported, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *passphrase)</td></tr>
+<tr class="separator:ga361e58c9f810505a7085cd91c1165391"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga67e64bed3fc0a8ee550c0fc24d44c787"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ctx.html#ga67e64bed3fc0a8ee550c0fc24d44c787">wickr_ctx_export_storage_keys</a> (const <a class="el" href="structwickr__ctx.html">wickr_ctx_t</a> *ctx, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *passphrase)</td></tr>
 <tr class="separator:ga67e64bed3fc0a8ee550c0fc24d44c787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae344e5202193c4b92ee2686529285fe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__storage__keys.html">wickr_storage_keys_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__ctx.html#gae344e5202193c4b92ee2686529285fe5">wickr_ctx_import_storage_keys</a> (const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> engine, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *exported, const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *passphrase)</td></tr>
@@ -541,6 +545,42 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an ephemeral key pair containing the private and public components, signed by the ctx node signing identity </dd></dl>
+
+</div>
+</div>
+<a id="ga56c41d96d28a8a25336147248361dcb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga56c41d96d28a8a25336147248361dcb6">&#9670;&nbsp;</a></span>wickr_ctx_export()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__buffer.html">wickr_buffer_t</a>* wickr_ctx_export </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__ctx.html">wickr_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>passphrase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize and encrypt a context with a passphrase</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the context to serialize and encrypt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bytes representing an scrypt encrypted context </dd></dl>
 
 </div>
 </div>
@@ -1017,6 +1057,56 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga361e58c9f810505a7085cd91c1165391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga361e58c9f810505a7085cd91c1165391">&#9670;&nbsp;</a></span>wickr_ctx_import()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__ctx.html">wickr_ctx_t</a>* wickr_ctx_import </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a>&#160;</td>
+          <td class="paramname"><em>engine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwickr__dev__info.html">wickr_dev_info_t</a> *&#160;</td>
+          <td class="paramname"><em>dev_info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>exported</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>passphrase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Import a ctx exported by 'wickr_ctx_export'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">engine</td><td>the crypto engine to use for decryption and the resulting context </td></tr>
+    <tr><td class="paramname">dev_info</td><td>the device information the context should be bound to </td></tr>
+    <tr><td class="paramname">exported</td><td>the result of the call to 'wickr_ctx_export' </td></tr>
+    <tr><td class="paramname">passphase</td><td>the passphrase used to export the context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="gae344e5202193c4b92ee2686529285fe5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae344e5202193c4b92ee2686529285fe5">&#9670;&nbsp;</a></span>wickr_ctx_import_storage_keys()</h2>
 
@@ -1196,7 +1286,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>bytes representing a combination of hte storage keys and id chain from 'ctx' </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>bytes representing a combination of the storage keys and id chain from 'ctx' </dd></dl>
 
 </div>
 </div>
