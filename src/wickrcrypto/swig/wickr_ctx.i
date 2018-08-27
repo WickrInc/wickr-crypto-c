@@ -53,6 +53,8 @@
 %ignore wickr_ctx_parse_packet_no_decode;
 %ignore wickr_ctx_decode_packet;
 %ignore wickr_ctx_serialize;
+%ignore wickr_ctx_export;
+%ignore wickr_ctx_import;
 %ignore wickr_ctx_create_from_buffer;
 %ignore wickr_packet_meta_create;
 %ignore wickr_packet_meta_copy;
@@ -168,6 +170,8 @@
     %newobject parse_packet;
     %newobject decode_packet;
     %newobject from_buffer;
+    %newobject export;
+    %newobject import_from_buffer;
 
 	wickr_buffer_t *export_storage_keys(const wickr_buffer_t *passphrase);
 
@@ -212,6 +216,24 @@
 
 		return ctx;
 	}
+
+    static wickr_ctx_t *import_from_buffer(wickr_dev_info_t *dev_info, const wickr_buffer_t *exported, const wickr_buffer_t *passphrase)
+    {
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        wickr_dev_info_t *dev_copy = wickr_dev_info_copy(dev_info);
+
+        wickr_ctx_t *ctx = wickr_ctx_import(engine, dev_copy, exported, passphrase);
+
+        if (!ctx) {
+            wickr_dev_info_destroy(&dev_copy);
+        }
+
+        return ctx;
+    }
+
+    wickr_buffer_t *export_passphrase(const wickr_buffer_t *passphrase) {
+        return wickr_ctx_export($self, passphrase);
+    }
 
 	wickr_cipher_result_t *cipher_local(const wickr_buffer_t *plaintext);
 	wickr_buffer_t *decipher_local(const wickr_cipher_result_t *cipher_text);

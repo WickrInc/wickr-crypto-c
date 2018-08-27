@@ -125,7 +125,8 @@ const ProtobufCEnumDescriptor wickr__proto__identity__type__descriptor =
   wickr__proto__identity__type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__identity__field_descriptors[4] =
+static const protobuf_c_boolean wickr__proto__identity__is_private__default_value = 0;
+static const ProtobufCFieldDescriptor wickr__proto__identity__field_descriptors[5] =
 {
   {
     "identifier",
@@ -175,9 +176,22 @@ static const ProtobufCFieldDescriptor wickr__proto__identity__field_descriptors[
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "is_private",
+    5,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BOOL,
+    offsetof(Wickr__Proto__Identity, has_is_private),
+    offsetof(Wickr__Proto__Identity, is_private),
+    NULL,
+    &wickr__proto__identity__is_private__default_value,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned wickr__proto__identity__field_indices_by_name[] = {
   0,   /* field[0] = identifier */
+  4,   /* field[4] = is_private */
   1,   /* field[1] = sig_key */
   2,   /* field[2] = signature */
   3,   /* field[3] = type */
@@ -185,7 +199,7 @@ static const unsigned wickr__proto__identity__field_indices_by_name[] = {
 static const ProtobufCIntRange wickr__proto__identity__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor wickr__proto__identity__descriptor =
 {
@@ -195,7 +209,7 @@ const ProtobufCMessageDescriptor wickr__proto__identity__descriptor =
   "Wickr__Proto__Identity",
   "wickr.proto",
   sizeof(Wickr__Proto__Identity),
-  4,
+  5,
   wickr__proto__identity__field_descriptors,
   wickr__proto__identity__field_indices_by_name,
   1,  wickr__proto__identity__number_ranges,

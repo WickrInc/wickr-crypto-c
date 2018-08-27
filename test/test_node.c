@@ -179,6 +179,9 @@ DESCRIBE(node_tests, "node.c")
         SHOULD_NOT_BE_NULL(deserialized);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(node->dev_id, deserialized->dev_id, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(node->ephemeral_keypair->ec_key->pub_data, deserialized->ephemeral_keypair->ec_key->pub_data, NULL));
+        SHOULD_BE_NULL(deserialized->ephemeral_keypair->ec_key->pri_data);
+        SHOULD_BE_NULL(deserialized->id_chain->root->sig_key->pri_data);
+        SHOULD_BE_NULL(deserialized->id_chain->node->sig_key->pri_data);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->node->identifier, deserialized->id_chain->node->identifier, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(node->id_chain->root->identifier, deserialized->id_chain->root->identifier, NULL));
         

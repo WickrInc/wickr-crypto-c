@@ -487,7 +487,7 @@ static Wickr__Proto__Ctx *__wickr_ctx_to_proto(const wickr_ctx_t *ctx)
         return NULL;
     }
     
-    Wickr__Proto__IdentityChain *id_chain_proto = wickr_identity_chain_to_proto(ctx->id_chain);
+    Wickr__Proto__IdentityChain *id_chain_proto = wickr_identity_chain_to_private_proto(ctx->id_chain);
     
     if (!id_chain_proto) {
         return NULL;
@@ -586,6 +586,45 @@ wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
     
     wickr_ctx_t *ctx = __wickr_ctx_create_from_proto(engine, dev_info, ctx_proto);
     wickr__proto__ctx__free_unpacked(ctx_proto, NULL);
+    
+    return ctx;
+}
+
+wickr_buffer_t *wickr_ctx_export(const wickr_ctx_t *ctx, const wickr_buffer_t *passphrase)
+{
+    if (!ctx || !passphrase) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *serialized_ctx = wickr_ctx_serialize(ctx);
+    
+    if (!serialized_ctx) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *protected = wickr_crypto_engine_kdf_cipher(&ctx->engine, KDF_SCRYPT_2_17, ctx->engine.default_cipher, serialized_ctx, passphrase);
+    wickr_buffer_destroy_zero(&serialized_ctx);
+    
+    return protected;
+}
+
+wickr_ctx_t *wickr_ctx_import(const wickr_crypto_engine_t engine,
+                              wickr_dev_info_t *dev_info,
+                              const wickr_buffer_t *exported,
+                              const wickr_buffer_t *passphrase)
+{
+    if (!dev_info || !exported || !passphrase) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *decoded_ctx = wickr_crypto_engine_kdf_decipher(&engine, exported, passphrase);
+    
+    if (!decoded_ctx) {
+        return NULL;
+    }
+    
+    wickr_ctx_t *ctx = wickr_ctx_create_from_buffer(engine, dev_info, decoded_ctx);
+    wickr_buffer_destroy(&decoded_ctx);
     
     return ctx;
 }

@@ -30,6 +30,8 @@ void wickr_identity_chain_proto_free(Wickr__Proto__IdentityChain *proto);
 
 Wickr__Proto__Identity *wickr_identity_to_proto(const wickr_identity_t *identity);
 
+Wickr__Proto__Identity *wickr_identity_to_private_proto(const wickr_identity_t *identity);
+
 wickr_identity_t *wickr_identity_create_from_proto(const Wickr__Proto__Identity *proto_identity,
                                                    const wickr_crypto_engine_t *engine);
 
@@ -38,5 +40,7 @@ wickr_identity_chain_t *wickr_identity_chain_create_from_proto(const Wickr__Prot
                                                           const wickr_crypto_engine_t *engine);
 
 Wickr__Proto__IdentityChain *wickr_identity_chain_to_proto(const wickr_identity_chain_t *chain);
+
+Wickr__Proto__IdentityChain *wickr_identity_chain_to_private_proto(const wickr_identity_chain_t *chain);
 
 #endif /* identity_priv_h */

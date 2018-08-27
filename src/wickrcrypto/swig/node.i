@@ -32,6 +32,8 @@
 %ignore wickr_node_array_fetch_item;
 %ignore wickr_node_array_copy;
 %ignore wickr_node_array_destroy;
+%ignore wickr_node_serialize;
+%ignore wickr_node_from_buffer;
 
 %include "wickrcrypto/node.h"
 
@@ -42,6 +44,7 @@
 	}
 
 	%newobject from_values;
+  %newobject serialize;
 
  	static wickr_node_t *from_values(wickr_buffer_t *dev_id, wickr_identity_chain_t *id_chain, wickr_ephemeral_keypair_t *ephemeral_keypair) {
  		wickr_identity_chain_t *id_chain_copy = wickr_identity_chain_copy(id_chain);
@@ -56,6 +59,11 @@
  		return node;
  	}
 
+  static wickr_node_t *from_buffer(const wickr_buffer_t *buffer) {
+    const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+    return wickr_node_create_from_buffer(buffer, &engine);
+  }
+
  	bool set_keypair(wickr_ephemeral_keypair_t *new_keypair) {
  		return wickr_node_rotate_keypair($self, new_keypair, true);
  	}
@@ -64,6 +72,8 @@
  		wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
  		return wickr_node_verify_signature_chain($self, &engine);
  	}
+
+  wickr_buffer_t *serialize();
 
 };
 

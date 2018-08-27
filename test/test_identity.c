@@ -89,6 +89,8 @@ DESCRIBE(identity, "identity tests")
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(identity->identifier, test_identity->identifier, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(identity->sig_key->pub_data, test_identity->sig_key->pub_data, NULL));
+        SHOULD_BE_NULL(identity->sig_key->pri_data);
+        
         SHOULD_EQUAL(identity->type, test_identity->type);
         
         wickr_buffer_destroy(&serialized);
@@ -155,11 +157,13 @@ DESCRIBE(identity_chain, "identity chain tests")
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->root->identifier, test_chain->root->identifier, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->root->sig_key->pub_data, test_chain->root->sig_key->pub_data, NULL));
+        SHOULD_BE_NULL(deserialized->root->sig_key->pri_data);
         SHOULD_EQUAL(deserialized->root->type, test_chain->root->type);
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->identifier, test_chain->node->identifier, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->sig_key->pub_data, test_chain->node->sig_key->pub_data, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->signature->sig_data, test_chain->node->signature->sig_data, NULL));
+        SHOULD_BE_NULL(deserialized->node->sig_key->pri_data);
         SHOULD_EQUAL(deserialized->node->type, test_chain->node->type);
         
         wickr_buffer_destroy(&serialized);

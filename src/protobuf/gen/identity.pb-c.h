@@ -40,10 +40,12 @@ struct  _Wickr__Proto__Identity
   ProtobufCBinaryData signature;
   protobuf_c_boolean has_type;
   Wickr__Proto__Identity__Type type;
+  protobuf_c_boolean has_is_private;
+  protobuf_c_boolean is_private;
 };
 #define WICKR__PROTO__IDENTITY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&wickr__proto__identity__descriptor) \
-    , 0, {0,NULL}, 0, {0,NULL}, 0, {0,NULL}, 0, WICKR__PROTO__IDENTITY__TYPE__IDENTITY_TYPE_ROOT }
+    , 0, {0,NULL}, 0, {0,NULL}, 0, {0,NULL}, 0, WICKR__PROTO__IDENTITY__TYPE__IDENTITY_TYPE_ROOT, 0, 0 }
 
 
 struct  _Wickr__Proto__IdentityChain
