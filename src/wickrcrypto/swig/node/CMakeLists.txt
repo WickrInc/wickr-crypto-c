@@ -14,6 +14,17 @@ set_target_properties(wickrcryptoswig PROPERTIES OUTPUT_NAME wickrcrypto)
 set_target_properties(wickrcryptoswig PROPERTIES SUFFIX .node)
 target_compile_options(wickrcryptoswig PRIVATE -DBUILDING_NODE_EXTENSION)
 
+if (APPLE AND NOT IOS)
+    add_custom_command(
+        TARGET wickrcryptoswig 
+        POST_BUILD 
+        COMMAND install_name_tool -id "@rpath/wickrcrypto.node" $<TARGET_FILE:wickrcryptoswig>
+        COMMAND install_name_tool -change "${OPENSSL_CRYPTO_SHARED}" "@rpath/libcrypto.1.1.dylib" $<TARGET_FILE:wickrcryptoswig>
+        COMMAND install_name_tool -add_rpath "@loader_path" $<TARGET_FILE:wickrcryptoswig>
+        COMMAND install_name_tool -id "@rpath/libcrypto.1.1.dylib" ${OPENSSL_CRYPTO_SHARED}
+    )
+endif ()
+
 set(CMAKE_SHARED_LINKER_FLAGS ${NODEJS_LINK_FLAGS} ${CMAKE_SHARED_LINKER_FLAGS})
 
 # Make the node module output to it's own folder
