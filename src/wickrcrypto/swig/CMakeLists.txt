@@ -21,6 +21,10 @@ if(BUILD_JAVA)
     add_subdirectory(java)
 endif()
 
+if(BUILD_PHP)
+    add_subdirectory(php)
+endif()
+
 # Install the SWIG files so dependencies can utilize them
 file(GLOB SwigFiles *.i)
 install(FILES ${SwigFiles} DESTINATION share/wickrcrypto/swig)
