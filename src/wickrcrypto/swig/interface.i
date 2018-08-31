@@ -92,6 +92,8 @@
 #endif
 
 %include engine.i
+
+#if !defined(SWIGPHP)
 %include dev_info.i
 %include storage_keys.i
 %include identity.i
@@ -100,5 +102,5 @@
 %include node.i
 %include key_exchange.i
 %include ecdh_cipher.i
-%include engine.i
 %include wickr_ctx.i
+#endif
