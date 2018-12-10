@@ -1,6 +1,6 @@
 
 option(FIPS "Build OpenSSL in fips mode" OFF)
-option(OPENSSL_102 "Use OpenSSL 1.0.2 instead of OpenSSL 1.1.0" OFF)
+option(OPENSSL_102 "Use OpenSSL 1.0.2 instead of OpenSSL 1.1.1" OFF)
 
 # FIPS is only supported on OPENSSL 1.0.2
 if (FIPS)
@@ -28,7 +28,7 @@ endif ()
 if (OPENSSL_102)
     add_subdirectory(1.0.2-fips)
 else ()
-    add_subdirectory(1.1.0)
+    add_subdirectory(1.1.1)
 endif ()
 
 Message(STATUS "Using OpenSSL: ${OPENSSL_ROOT_DIR}")
