@@ -37,6 +37,7 @@ fi
 #####################################################################
 
 export ANDROID_NDK_ROOT="${ANDROID_NDK_ROOT}"
+export ANDROID_NDK="${ANDROID_NDK_ROOT}"
 
 # Error checking
 # ANDROID_NDK_ROOT should always be set by the user (even when not running this script)
