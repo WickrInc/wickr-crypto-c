@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_20conversion_20utilities',['Data Conversion Utilities',['../group__data__conversion__utilities.html',1,'']]]
+  ['base32',['base32',['../group__base32.html',1,'']]]
 ];

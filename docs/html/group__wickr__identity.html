@@ -109,6 +109,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga79ca0713d0b90873e584379f26cbd051"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga378e5b6ddabfe2c6ae7dbd5bdc43278e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga378e5b6ddabfe2c6ae7dbd5bdc43278e">wickr_identity_create_from_buffer</a> (const <a class="el" href="structwickr__buffer.html">wickr_buffer_t</a> *buffer, const <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> *engine)</td></tr>
 <tr class="separator:ga378e5b6ddabfe2c6ae7dbd5bdc43278e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d9053bf0a7ea47c599891dce21d426a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__fingerprint.html">wickr_fingerprint_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga4d9053bf0a7ea47c599891dce21d426a">wickr_identity_get_fingerprint</a> (const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *identity, <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> engine)</td></tr>
+<tr class="separator:ga4d9053bf0a7ea47c599891dce21d426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8ac0f348981ec55ecbf365d6834a3c28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__fingerprint.html">wickr_fingerprint_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga8ac0f348981ec55ecbf365d6834a3c28">wickr_identity_get_bilateral_fingerprint</a> (const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *identity, const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *remote_identity, <a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a> engine)</td></tr>
+<tr class="separator:ga8ac0f348981ec55ecbf365d6834a3c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga79551385194ba6b044b676ce5c7400e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#ga79551385194ba6b044b676ce5c7400e6">wickr_identity_chain_create</a> (<a class="el" href="structwickr__identity.html">wickr_identity_t</a> *root, <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *node)</td></tr>
 <tr class="separator:ga79551385194ba6b044b676ce5c7400e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9d708d340abcd0b54d87434b71d2d9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__identity.html#gac9d708d340abcd0b54d87434b71d2d9e">wickr_identity_chain_copy</a> (const <a class="el" href="structwickr__identity__chain.html">wickr_identity_chain_t</a> *source)</td></tr>
@@ -414,6 +418,87 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga8ac0f348981ec55ecbf365d6834a3c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8ac0f348981ec55ecbf365d6834a3c28">&#9670;&nbsp;</a></span>wickr_identity_get_bilateral_fingerprint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__fingerprint.html">wickr_fingerprint_t</a>* wickr_identity_get_bilateral_fingerprint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td>
+          <td class="paramname"><em>identity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td>
+          <td class="paramname"><em>remote_identity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a>&#160;</td>
+          <td class="paramname"><em>engine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A fingerprint that is unique between identity and remote_identity</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identity</td><td>the identity to get a bilateral fingerprint of </td></tr>
+    <tr><td class="paramname">remote_identity</td><td>the other party included in the fingerprint </td></tr>
+    <tr><td class="paramname">engine</td><td>engine the crypto engine to use for underlying hash operations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a bilateral fingerprint of (identity,remote_identity) or (remote_identity,identity) calculated using SHA512(fingerprint(identity) || fingerprint(remote_identity)). </dd></dl>
+
+</div>
+</div>
+<a id="ga4d9053bf0a7ea47c599891dce21d426a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d9053bf0a7ea47c599891dce21d426a">&#9670;&nbsp;</a></span>wickr_identity_get_fingerprint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structwickr__fingerprint.html">wickr_fingerprint_t</a>* wickr_identity_get_fingerprint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__identity.html">wickr_identity_t</a> *&#160;</td>
+          <td class="paramname"><em>identity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structwickr__crypto__engine.html">wickr_crypto_engine_t</a>&#160;</td>
+          <td class="paramname"><em>engine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A unique fingerprint representing the identifier and public signing key of this identity. See '<a class="el" href="fingerprint_8h_source.html">fingerprint.h</a>'</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identity</td><td>the identity to get a unique fingerprint of </td></tr>
+    <tr><td class="paramname">engine</td><td>the crypto engine to use for underlying hash operations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a unique fingerprint currently calculated as SHA512(identifier || sig_pub-&gt;pub_data) </dd></dl>
 
 </div>
 </div>

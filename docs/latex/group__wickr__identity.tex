@@ -37,6 +37,10 @@ void \mbox{\hyperlink{group__wickr__identity_ga9e4a0f3736d52836c9a9fc61794c8ddd}
 \item 
 \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga378e5b6ddabfe2c6ae7dbd5bdc43278e}{wickr\+\_\+identity\+\_\+create\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine)
 \item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga4d9053bf0a7ea47c599891dce21d426a}{wickr\+\_\+identity\+\_\+get\+\_\+fingerprint}} (const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$identity, \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine)
+\item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga8ac0f348981ec55ecbf365d6834a3c28}{wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint}} (const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$identity, const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$remote\+\_\+identity, \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine)
+\item 
 \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_ga79551385194ba6b044b676ce5c7400e6}{wickr\+\_\+identity\+\_\+chain\+\_\+create}} (\mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$root, \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$node)
 \item 
 \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}{wickr\+\_\+identity\+\_\+chain\+\_\+copy}} (const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$source)
@@ -205,6 +209,44 @@ Destroy an identity
 {\em identity} & a pointer to the identity to destroy. All properties of \textquotesingle{}$\ast$identity\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__identity_ga8ac0f348981ec55ecbf365d6834a3c28}\label{group__wickr__identity_ga8ac0f348981ec55ecbf365d6834a3c28}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint@{wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint}}
+\index{wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint@{wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint()}{wickr\_identity\_get\_bilateral\_fingerprint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+get\+\_\+bilateral\+\_\+fingerprint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{identity,  }\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{remote\+\_\+identity,  }\item[{\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine }\end{DoxyParamCaption})}
+
+A fingerprint that is unique between identity and remote\+\_\+identity
+
+
+\begin{DoxyParams}{Parameters}
+{\em identity} & the identity to get a bilateral fingerprint of \\
+\hline
+{\em remote\+\_\+identity} & the other party included in the fingerprint \\
+\hline
+{\em engine} & engine the crypto engine to use for underlying hash operations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bilateral fingerprint of (identity,remote\+\_\+identity) or (remote\+\_\+identity,identity) calculated using S\+H\+A512(fingerprint(identity) $\vert$$\vert$ fingerprint(remote\+\_\+identity)). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__identity_ga4d9053bf0a7ea47c599891dce21d426a}\label{group__wickr__identity_ga4d9053bf0a7ea47c599891dce21d426a}} 
+\index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+get\+\_\+fingerprint@{wickr\+\_\+identity\+\_\+get\+\_\+fingerprint}}
+\index{wickr\+\_\+identity\+\_\+get\+\_\+fingerprint@{wickr\+\_\+identity\+\_\+get\+\_\+fingerprint}!wickr\+\_\+identity@{wickr\+\_\+identity}}
+\subsubsection{\texorpdfstring{wickr\+\_\+identity\+\_\+get\+\_\+fingerprint()}{wickr\_identity\_get\_fingerprint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+identity\+\_\+get\+\_\+fingerprint (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{identity,  }\item[{\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine }\end{DoxyParamCaption})}
+
+A unique fingerprint representing the identifier and public signing key of this identity. See \textquotesingle{}\mbox{\hyperlink{fingerprint_8h_source}{fingerprint.\+h}}\textquotesingle{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em identity} & the identity to get a unique fingerprint of \\
+\hline
+{\em engine} & the crypto engine to use for underlying hash operations \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a unique fingerprint currently calculated as S\+H\+A512(identifier $\vert$$\vert$ sig\+\_\+pub-\/$>$pub\+\_\+data) 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}\label{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}} 
 \index{wickr\+\_\+identity@{wickr\+\_\+identity}!wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}}
 \index{wickr\+\_\+identity\+\_\+serialize@{wickr\+\_\+identity\+\_\+serialize}!wickr\+\_\+identity@{wickr\+\_\+identity}}

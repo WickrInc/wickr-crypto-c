@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['getbase64fromdata',['getBase64FromData',['../group__data__conversion__utilities.html#gae495c13035861b3410a4c19123e6cbde',1,'util.h']]],
-  ['getdatafrombase64',['getDataFromBase64',['../group__data__conversion__utilities.html#ga5441647c0e13fec49a4ef4b97513a515',1,'util.h']]],
-  ['getdatafromhexstring',['getDataFromHexString',['../group__data__conversion__utilities.html#ga1ca57ec73a4daf858c3721569ab7feeb',1,'util.h']]],
-  ['gethexstringfromdata',['getHexStringFromData',['../group__data__conversion__utilities.html#ga436efe786b59b2c46ad39a29255f2ecf',1,'util.h']]]
+  ['base32_5fdecode',['base32_decode',['../group__base32.html#ga2ef9e4c1b2b030599d1e3199254af7c3',1,'b32.h']]],
+  ['base32_5fencode',['base32_encode',['../group__base32.html#ga343c12edab05fb3b98a18474e20487c6',1,'b32.h']]]
 ];
