@@ -1,6 +1,7 @@
 %module identity
 
 %include engine.i
+%include fingerprint.i
 %include <stdint.i>
 
 %{
@@ -35,6 +36,8 @@
 %ignore wickr_identity_chain_destroy;
 %ignore wickr_identity_chain_serialize;
 %ignore wickr_identity_chain_create_from_buffer;
+%ignore wickr_identity_get_fingerprint;
+%ignore wickr_identity_get_bilateral_fingerprint;
 
 %include "wickrcrypto/identity.h"
 
@@ -48,6 +51,9 @@
  %newobject sign_data;
  %newobject gen_node;
  %newobject from_buffer;
+ %newobject get_fingerprint;
+ %newobject get_bilateral_fingerprint;
+ %newobject serialize;
 
  static wickr_identity_t *from_buffer(const wickr_buffer_t *data) {
      const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
@@ -76,6 +82,16 @@
    	}
    	return identity;
  }
+
+ wickr_fingerprint_t *fingerprint() {
+   wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+   return wickr_identity_get_fingerprint($self, engine);
+ }
+
+ wickr_fingerprint_t *bilateral_fingerprint(const wickr_identity_t *remote_identity) {
+   wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+   return wickr_identity_get_bilateral_fingerprint($self, remote_identity, engine);
+ }
  
 
 };
@@ -88,6 +104,7 @@
 
  %newobject from_identities;
  %newobject from_buffer;
+ %newobject serialize;
 
  static wickr_identity_chain_t *from_buffer(const wickr_buffer_t *data) {
      const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();

@@ -80,6 +80,34 @@ public class IdentityTests
 	}
 
 	@Test
+	public void testFingerprints() throws UnsupportedEncodingException {
+
+		// Create a second identity
+		byte[] identifier2 = CryptoEngine.digest("wickr2".getBytes("UTF8"), null, Digest.sha256());
+        ECKey sigKey2 = CryptoEngine.randEcKey(ECCurve.p521());
+        Identity identity2 = Identity.fromValues(IdentityType.IDENTITY_TYPE_ROOT, identifier2, sigKey2, null);
+
+		//Create a fingerprint from the test identity
+		Fingerprint fingerprint = testIdentity.fingerprint();
+		Fingerprint fingerprintId2 = identity2.fingerprint();
+
+		assertNotNull(fingerprint);
+		assertEquals(fingerprint.getData().length, 64);
+
+		// Verify fingerprints are unique per identity
+		assertThat(fingerprint.getData(), not(equalTo(fingerprintId2.getData())));
+
+		//Create a bilateral fingerprint from the test identity
+		
+        Fingerprint bilateralFingerprint = testIdentity.bilateralFingerprint(identity2);
+        assertNotNull(bilateralFingerprint);
+        assertThat(bilateralFingerprint.getData(), not(equalTo(fingerprintId2.getData())));
+        assertThat(bilateralFingerprint.getData(), not(equalTo(fingerprint.getData())));
+		assertEquals(bilateralFingerprint.getData().length, 64);
+
+	}
+
+	@Test
 	public void testChainSerialization() {
 
 		// Serialize and deserialize an identity chain

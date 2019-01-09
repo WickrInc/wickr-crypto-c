@@ -46,11 +46,13 @@
 %rename(ContextDecodeResult) wickr_decode_result;
 %rename(ContextGenResult) wickr_ctx_gen_result;
 %rename(EphemeralInfo) wickr_ephemeral_info;
+%rename(Fingerprint) wickr_fingerprint;
 
 %rename(DigestType) wickr_digest_type;
 %rename(IdentityChainStatus) wickr_identity_chain_status;
 %rename(IdentityType) wickr_identity_type;
 %rename(PacketSignatureStatus) wickr_packet_signature_status;
+%rename(FingerprintOutputType) wickr_fingerprint_output;
 
 %rename (DecodeError) wickr_decode_error;
 %rename (CipherID) wickr_cipher_id;
