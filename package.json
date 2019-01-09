@@ -12,7 +12,7 @@
         "aws-sdk": "^2.249.1"
     },
     "description": "A node.js wrapper around the wickr-crypto-c library",
-    "version": "1.10.6",
+    "version": "1.11.0",
     "main": "node/lib/wickrcrypto.node",
     "scripts": {
         "install": "node-pre-gyp install 2> /dev/null || ./node_install.sh",
