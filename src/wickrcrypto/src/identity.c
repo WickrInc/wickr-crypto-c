@@ -160,6 +160,55 @@ wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer
     return return_identity;
 }
 
+wickr_fingerprint_t *wickr_identity_get_fingerprint(const wickr_identity_t *identity,
+                                                    wickr_crypto_engine_t engine)
+{
+    if (!identity) {
+        return NULL;
+    }
+    
+    return wickr_fingerprint_gen(engine, identity->sig_key,
+                                 identity->identifier, WICKR_FINGERPRINT_TYPE_SHA512);
+}
+
+wickr_fingerprint_t *wickr_identity_get_bilateral_fingerprint(const wickr_identity_t *identity,
+                                                              const wickr_identity_t *remote_identity,
+                                                              wickr_crypto_engine_t engine)
+{
+    if (!identity || !remote_identity) {
+        return NULL;
+    }
+    
+    wickr_fingerprint_t *local_fingerprint = wickr_fingerprint_gen(engine,
+                                                                   identity->sig_key,
+                                                                   identity->identifier,
+                                                                   WICKR_FINGERPRINT_TYPE_SHA512);
+    
+    if (!local_fingerprint) {
+        return NULL;
+    }
+    
+    wickr_fingerprint_t *remote_fingerprint = wickr_fingerprint_gen(engine,
+                                                                    remote_identity->sig_key,
+                                                                    remote_identity->identifier,
+                                                                    WICKR_FINGERPRINT_TYPE_SHA512);
+    
+    if (!remote_fingerprint) {
+        wickr_fingerprint_destroy(&local_fingerprint);
+        return NULL;
+    }
+    
+    wickr_fingerprint_t *merged_fingerprint = wickr_fingerprint_gen_bilateral(engine,
+                                                                              local_fingerprint,
+                                                                              remote_fingerprint,
+                                                                              WICKR_FINGERPRINT_TYPE_SHA512);
+    
+    wickr_fingerprint_destroy(&remote_fingerprint);
+    wickr_fingerprint_destroy(&local_fingerprint);
+    
+    return merged_fingerprint;
+}
+
 wickr_identity_chain_t *wickr_identity_chain_create(wickr_identity_t *root, wickr_identity_t *node)
 {
     if (!root || !node) {
