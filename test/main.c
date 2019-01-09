@@ -21,6 +21,7 @@
 #include "test_protocol_version.h"
 #include "test_storage_keys.h"
 #include "test_b32.h"
+#include "test_fingerprint.h"
 
 #include "cspec_output_unit.h"
 
@@ -30,6 +31,9 @@ void run_primitive_tests(CSpecOutputStruct *output)
 {
     CSpec_Run(DESCRIPTION(wickr_buffer_tests), output);
     CSpec_Run(DESCRIPTION(node_tests), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint_generation), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint_bilateral_generation), output);
     CSpec_Run(DESCRIPTION(identity), output);
     CSpec_Run(DESCRIPTION(identity_chain), output);
     CSpec_Run(DESCRIPTION(ephemeral_keypair), output);
