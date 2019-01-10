@@ -182,7 +182,11 @@ static wickr_buffer_t *__wickr_fingerprint_encode_for_output_mode(const wickr_fi
     wickr_buffer_t *encoded_fingerprint_data = enc_func(fingerprint->data);
     
     if (output_mode == FINGERPRINT_OUTPUT_SHORT) {
-        encoded_fingerprint_data->length = encoded_fingerprint_data->length / 2;
+        size_t short_length = encoded_fingerprint_data->length / 2;
+        
+        /* Replace the byte at index short_length with a null byte to make sure string encoding is proper */
+        encoded_fingerprint_data->bytes[short_length] = '\0';
+        encoded_fingerprint_data->length = short_length;
     }
         
     return encoded_fingerprint_data;
