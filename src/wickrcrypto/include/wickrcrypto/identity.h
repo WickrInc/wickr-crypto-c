@@ -28,6 +28,7 @@
 #include "ecdsa.h"
 #include "crypto_engine.h"
 #include "root_keys.h"
+#include "fingerprint.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -184,6 +185,8 @@ void wickr_identity_destroy(wickr_identity_t **identity);
  @return a buffer containing a serialized representation of 'identity' or null if serialization fails
  */
 wickr_buffer_t *wickr_identity_serialize(const wickr_identity_t *identity);
+    
+
 
 /**
  
@@ -196,6 +199,37 @@ wickr_buffer_t *wickr_identity_serialize(const wickr_identity_t *identity);
  @return deserialized identity or null if the deserialization fails
  */
 wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine);
+
+/**
+ 
+ @ingroup wickr_identity
+ 
+ A unique fingerprint representing the identifier and public signing key of this identity. See 'fingerprint.h'
+ 
+ @param identity the identity to get a unique fingerprint of
+ @param engine the crypto engine to use for underlying hash operations
+ @return a unique fingerprint currently calculated as SHA512(identifier || sig_pub->pub_data)
+ */
+wickr_fingerprint_t *wickr_identity_get_fingerprint(const wickr_identity_t *identity,
+                                                    wickr_crypto_engine_t engine);
+
+
+/**
+ 
+ @ingroup wickr_identity
+ 
+ A fingerprint that is unique between identity and remote_identity
+ 
+ @param identity the identity to get a bilateral fingerprint of
+ @param remote_identity the other party included in the fingerprint
+ @param engine engine the crypto engine to use for underlying hash operations
+ @return a bilateral fingerprint of (identity,remote_identity) or (remote_identity,identity)
+ calculated using SHA512(fingerprint(identity) || fingerprint(remote_identity)).
+*/
+ 
+wickr_fingerprint_t *wickr_identity_get_bilateral_fingerprint(const wickr_identity_t *identity,
+                                                              const wickr_identity_t *remote_identity,
+                                                              wickr_crypto_engine_t engine);
     
 /**
  

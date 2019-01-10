@@ -20,6 +20,8 @@
 #include "test_ecdh_cipher.h"
 #include "test_protocol_version.h"
 #include "test_storage_keys.h"
+#include "test_b32.h"
+#include "test_fingerprint.h"
 
 #include "cspec_output_unit.h"
 
@@ -29,6 +31,9 @@ void run_primitive_tests(CSpecOutputStruct *output)
 {
     CSpec_Run(DESCRIPTION(wickr_buffer_tests), output);
     CSpec_Run(DESCRIPTION(node_tests), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint_generation), output);
+    CSpec_Run(DESCRIPTION(wickr_fingerprint_bilateral_generation), output);
     CSpec_Run(DESCRIPTION(identity), output);
     CSpec_Run(DESCRIPTION(identity_chain), output);
     CSpec_Run(DESCRIPTION(ephemeral_keypair), output);
@@ -39,6 +44,7 @@ void run_primitive_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(getDataFromBase64), output);
     CSpec_Run(DESCRIPTION(getHexStringFromData), output);
     CSpec_Run(DESCRIPTION(getDataFromHexString), output);
+    CSpec_Run(DESCRIPTION(base32_encode), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_meta), output);
     CSpec_Run(DESCRIPTION(wickr_kdf_result), output);
     CSpec_Run(DESCRIPTION(packet_meta), output);
