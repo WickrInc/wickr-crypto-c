@@ -17,7 +17,7 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_create(wickr_crypto_engin
         return NULL;
     }
     
-    wickr_fingerprint_t *fingerprint = wickr_fingerprint_create(fingerprint_data);
+    wickr_fingerprint_t *fingerprint = wickr_fingerprint_create(WICKR_FINGERPRINT_TYPE_SHA512, fingerprint_data);
     
     if (!fingerprint) {
         wickr_buffer_destroy(&fingerprint_data);
@@ -50,7 +50,7 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_combine(wickr_crypto_engi
         return NULL;
     }
     
-    if (f1->data->length != f2->data->length) {
+    if (f1->data->length != f2->data->length || f1->type != f2->type) {
         return NULL;
     }
     
@@ -119,7 +119,7 @@ wickr_fingerprint_t *wickr_fingerprint_gen_bilateral(wickr_crypto_engine_t engin
     }
 }
 
-wickr_fingerprint_t *wickr_fingerprint_create(wickr_buffer_t *data)
+wickr_fingerprint_t *wickr_fingerprint_create(wickr_fingerprint_type type, wickr_buffer_t *data)
 {
     if (!data) {
         return NULL;
@@ -132,6 +132,7 @@ wickr_fingerprint_t *wickr_fingerprint_create(wickr_buffer_t *data)
     }
     
     fingerprint->data = data;
+    fingerprint->type = type;
     
     return fingerprint;
 }
@@ -148,7 +149,7 @@ wickr_fingerprint_t *wickr_fingerprint_copy(const wickr_fingerprint_t *fingerpri
         return NULL;
     }
     
-    wickr_fingerprint_t *copy = wickr_fingerprint_create(data_copy);
+    wickr_fingerprint_t *copy = wickr_fingerprint_create(fingerprint->type, data_copy);
     
     if (!copy) {
         wickr_buffer_destroy(&data_copy);
