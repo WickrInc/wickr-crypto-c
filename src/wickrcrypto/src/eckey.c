@@ -1,6 +1,7 @@
 
 #include "eckey.h"
 #include "memory.h"
+#include "string.h"
 
 wickr_ec_key_t *wickr_ec_key_create(wickr_ec_curve_t curve, wickr_buffer_t *pub_data, wickr_buffer_t *pri_data)
 {
@@ -40,6 +41,30 @@ wickr_ec_key_t *wickr_ec_key_copy(const wickr_ec_key_t *source)
     }
     
     return wickr_ec_key_create(source->curve, pub_key_copy, pri_key_copy);
+}
+
+wickr_buffer_t *wickr_ec_key_get_pubdata_fixed_len(const wickr_ec_key_t *key)
+{
+    /* If no adjustments are necessary, just return a new copy of the pub key data as is */
+    if (key->pub_data->length == key->curve.max_pub_size) {
+        return wickr_buffer_copy(key->pub_data);
+    }
+    
+    /* Verify that we don't have a corrupt key with a length greater than the maximum */
+    if (!key || key->pub_data->length > key->curve.max_pub_size) {
+        return NULL;
+    }
+    
+    /* Make a 0 filled buffer of the max size and copy in the key data we have to the beginning */
+    wickr_buffer_t *fixed_buffer = wickr_buffer_create_empty_zero(key->curve.max_pub_size);
+    
+    if (!fixed_buffer) {
+        return NULL;
+    }
+    
+    memcpy(fixed_buffer->bytes, key->pub_data->bytes, key->pub_data->length);
+    
+    return fixed_buffer;
 }
 
 const wickr_ec_curve_t *wickr_ec_curve_find(uint8_t identifier)
