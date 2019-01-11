@@ -27,14 +27,14 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_create(wickr_crypto_engin
 }
 
 static wickr_fingerprint_t *__wickr_fingerprint_sha512_encode(wickr_crypto_engine_t engine,
-                                                              const wickr_ec_key_t *key,
+                                                              const wickr_buffer_t *pub_key_data,
                                                               const wickr_buffer_t *identifier)
 {
-    if (!key || !identifier) {
+    if (!pub_key_data || !identifier) {
         return NULL;
     }
     
-    wickr_buffer_t *concat_buffer = wickr_buffer_concat(identifier, key->pub_data);
+    wickr_buffer_t *concat_buffer = wickr_buffer_concat(identifier, pub_key_data);
     
     wickr_fingerprint_t *fingerprint = __wickr_fingerprint_sha512_create(engine, concat_buffer);
     wickr_buffer_destroy(&concat_buffer);
@@ -90,12 +90,20 @@ wickr_fingerprint_t *wickr_fingerprint_gen(wickr_crypto_engine_t engine,
                                            const wickr_buffer_t *identifier,
                                            wickr_fingerprint_type type)
 {
-    switch (type) {
-        case WICKR_FINGERPRINT_TYPE_SHA512:
-            return __wickr_fingerprint_sha512_encode(engine, key, identifier);
-        default:
-            return NULL;
+    if (!key || !identifier || type != WICKR_FINGERPRINT_TYPE_SHA512) {
+        return NULL;
     }
+    
+    wickr_buffer_t *fixed_pub_data = wickr_ec_key_get_pubdata_fixed_len(key);
+    
+    if (!fixed_pub_data) {
+        return NULL;
+    }
+    
+    wickr_fingerprint_t *encoded_fingerprint = __wickr_fingerprint_sha512_encode(engine, fixed_pub_data, identifier);
+    wickr_buffer_destroy(&fixed_pub_data);
+    
+    return encoded_fingerprint;
 }
 
 wickr_fingerprint_t *wickr_fingerprint_gen_bilateral(wickr_crypto_engine_t engine,

@@ -22,6 +22,7 @@
 #include "test_storage_keys.h"
 #include "test_b32.h"
 #include "test_fingerprint.h"
+#include "test_ec_key.h"
 
 #include "cspec_output_unit.h"
 
@@ -39,6 +40,7 @@ void run_primitive_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(ephemeral_keypair), output);
     CSpec_Run(DESCRIPTION(an_array_of_items), output);
     CSpec_Run(DESCRIPTION(a_zero_length_array), output);
+    CSpec_Run(DESCRIPTION(wickr_ec_key), output);
     CSpec_Run(DESCRIPTION(cipher_result), output);
     CSpec_Run(DESCRIPTION(getBase64FromData), output);
     CSpec_Run(DESCRIPTION(getDataFromBase64), output);

@@ -36,6 +36,12 @@ extern "C" {
  (curve id (4bits) + digest id (4bits) + padding size(1byte))
  */
 #define P521_SIGNATURE_MAX_SIZE 143
+    
+/**
+ Maximum length of a pub key buffer for P521
+ (1 byte Wickr Meta || 1 byte OpenSSL Meta || 66 bytes X || 66 bytes Y)
+ */
+#define P521_PUB_KEY_MAX_SIZE 134
 
 typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
 
@@ -59,11 +65,12 @@ typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
 struct wickr_ec_curve {
     wickr_ec_curve_id identifier;
     uint8_t signature_size;
+    uint8_t max_pub_size;
 };
 
 typedef struct wickr_ec_curve wickr_ec_curve_t;
 
-static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE };
+static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE, P521_PUB_KEY_MAX_SIZE };
 
 /**
  
@@ -123,6 +130,18 @@ wickr_ec_key_t *wickr_ec_key_copy(const wickr_ec_key_t *source);
  @param key a pointer to the key to destroy. All properties of '*key' will also be destroyed
  */
 void wickr_ec_key_destroy(wickr_ec_key_t **key);
+    
+/**
+ 
+ @ingroup wickr_ec_key
+ 
+ Get a fixed length representation of the public key data
+ NOTE: This is for protection in the future, OpenSSL pub keys are currently encoded to already be fixed length
+ 
+ @param key the key pair to get fixed length pub_data for
+ @return a buffer representating a garenteed fixed length version of 'key->pub_data'
+*/
+wickr_buffer_t *wickr_ec_key_get_pubdata_fixed_len(const wickr_ec_key_t *key);
 
 /**
  
