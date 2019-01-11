@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['key_20exchange',['Key Exchange',['../group__wickr__key__exchange.html',1,'']]],
-  ['key_20exchange_20set',['Key Exchange Set',['../group__wickr__key__exchange__set.html',1,'']]]
+  ['file_20encryption_20with_20openssl',['File Encryption With OpenSSL',['../group__openssl__file__encryption.html',1,'']]]
 ];

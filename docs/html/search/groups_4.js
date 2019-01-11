@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openssl_20crypto_20engine',['OpenSSL Crypto Engine',['../group__openssl__crypto.html',1,'']]]
+  ['memory_20management_20functions',['memory management functions',['../group__memory__functions.html',1,'']]]
 ];

@@ -18,6 +18,7 @@ var searchData=
   ['wickr_5fecdsa_5fresult',['wickr_ecdsa_result',['../structwickr__ecdsa__result.html',1,'']]],
   ['wickr_5fephemeral_5finfo',['wickr_ephemeral_info',['../structwickr__ephemeral__info.html',1,'']]],
   ['wickr_5fephemeral_5fkeypair',['wickr_ephemeral_keypair',['../structwickr__ephemeral__keypair.html',1,'']]],
+  ['wickr_5ffingerprint',['wickr_fingerprint',['../structwickr__fingerprint.html',1,'']]],
   ['wickr_5fidentity',['wickr_identity',['../structwickr__identity.html',1,'']]],
   ['wickr_5fidentity_5fchain',['wickr_identity_chain',['../structwickr__identity__chain.html',1,'']]],
   ['wickr_5fkdf_5falgo',['wickr_kdf_algo',['../structwickr__kdf__algo.html',1,'']]],

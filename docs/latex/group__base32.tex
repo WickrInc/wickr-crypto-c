@@ -1,0 +1,47 @@
+\hypertarget{group__base32}{}\section{base32}
+\label{group__base32}\index{base32@{base32}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__base32_ga343c12edab05fb3b98a18474e20487c6}{base32\+\_\+encode}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__base32_ga2ef9e4c1b2b030599d1e3199254af7c3}{base32\+\_\+decode}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__base32_ga2ef9e4c1b2b030599d1e3199254af7c3}\label{group__base32_ga2ef9e4c1b2b030599d1e3199254af7c3}} 
+\index{base32@{base32}!base32\+\_\+decode@{base32\+\_\+decode}}
+\index{base32\+\_\+decode@{base32\+\_\+decode}!base32@{base32}}
+\subsubsection{\texorpdfstring{base32\+\_\+decode()}{base32\_decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ base32\+\_\+decode (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Decode base32 data to a binary representation
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & buffer containing a base32 string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+decoded binary data representation of \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if \textquotesingle{}buffer\textquotesingle{} contains invalid base32 data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__base32_ga343c12edab05fb3b98a18474e20487c6}\label{group__base32_ga343c12edab05fb3b98a18474e20487c6}} 
+\index{base32@{base32}!base32\+\_\+encode@{base32\+\_\+encode}}
+\index{base32\+\_\+encode@{base32\+\_\+encode}!base32@{base32}}
+\subsubsection{\texorpdfstring{base32\+\_\+encode()}{base32\_encode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ base32\+\_\+encode (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Encode data in base32 (Crockford\textquotesingle{}s) encoding
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to encode in base32 format \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a buffer representing \textquotesingle{}buffer\textquotesingle{} in base32 format. The length field will represent the string length even though the contents are null terminated 
+\end{DoxyReturn}

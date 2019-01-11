@@ -60,6 +60,7 @@ DESCRIBE(wickr_fingerprint, "fingerprints")
     {
         wickr_buffer_t *expected_hex = getHexStringFromData(test_fingerprint->data);
         __test_fingerprint_encoding(test_fingerprint, expected_hex, wickr_fingerprint_get_hex);
+        wickr_buffer_destroy(&expected_hex);
     }
     END_IT
     
@@ -67,6 +68,7 @@ DESCRIBE(wickr_fingerprint, "fingerprints")
     {
         wickr_buffer_t *expected_b32 = base32_encode(test_fingerprint->data);
         __test_fingerprint_encoding(test_fingerprint, expected_b32, wickr_fingerprint_get_b32);
+        wickr_buffer_destroy(&expected_b32);
     }
     END_IT
     
@@ -159,6 +161,7 @@ DESCRIBE(wickr_fingerprint_generation, "unilateral fingerprint")
     
     wickr_buffer_destroy(&test_identifier);
     wickr_ec_key_destroy(&test_key);
+    wickr_fingerprint_destroy(&test_fingerprint);
     
 }
 END_DESCRIBE

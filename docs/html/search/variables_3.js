@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['data',['data',['../structwickr__fingerprint.html#a56e7c92e7c9ab8a8c0d6f6f7960eef74',1,'wickr_fingerprint']]],
   ['decrypted_5fpayload',['decrypted_payload',['../structwickr__decode__result.html#a0c6e2140859e7d8ad113f1e7ebd95ad4',1,'wickr_decode_result']]],
   ['default_5fcipher',['default_cipher',['../structwickr__crypto__engine.html#a307f7d46b55b1e0a93ce9d9489ba8fc5',1,'wickr_crypto_engine']]],
   ['default_5fcurve',['default_curve',['../structwickr__crypto__engine.html#a2145e35235dc5c5c944f33ea3d2963bd',1,'wickr_crypto_engine']]],

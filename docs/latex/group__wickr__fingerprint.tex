@@ -1,0 +1,184 @@
+\hypertarget{group__wickr__fingerprint}{}\section{wickr\+\_\+fingerprint}
+\label{group__wickr__fingerprint}\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint}}
+\begin{DoxyCompactList}\small\item\em A fingerprint representation of a combination of signature keys / identifiers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}} \{ {\bfseries F\+I\+N\+G\+E\+R\+P\+R\+I\+N\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+S\+H\+O\+RT}, 
+{\bfseries F\+I\+N\+G\+E\+R\+P\+R\+I\+N\+T\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+O\+NG}
+ \}
+\item 
+enum \mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}} \{ {\bfseries W\+I\+C\+K\+R\+\_\+\+F\+I\+N\+G\+E\+R\+P\+R\+I\+N\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+H\+A512}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_gac4791ddf5ea675508dd6627ebf33c62e}{wickr\+\_\+fingerprint\+\_\+gen}} (\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$key, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$identifier, \mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}} type)
+\item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_gae26d5c57687ae01678495b4e3962963d}{wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral}} (\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$local, const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$remote, \mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}} type)
+\item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_ga6041cfce95478334c8e046ad88c3d166}{wickr\+\_\+fingerprint\+\_\+create}} (\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$data)
+\item 
+\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_gac2497b535d0864b0fcc91004a979a313}{wickr\+\_\+fingerprint\+\_\+copy}} (const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$fingerprint)
+\item 
+void \mbox{\hyperlink{group__wickr__fingerprint_ga7d3600525872a1d587b2774db7b8b12a}{wickr\+\_\+fingerprint\+\_\+destroy}} (\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$$\ast$fingerprint)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_ga7d50dd168023042163c1952b53af468b}{wickr\+\_\+fingerprint\+\_\+get\+\_\+b32}} (const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$fingerprint, \mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}} output\+\_\+mode)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__fingerprint_ga50608413a9168b144e06d7537a789df1}{wickr\+\_\+fingerprint\+\_\+get\+\_\+hex}} (const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$fingerprint, \mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}} output\+\_\+mode)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}\label{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+output@{wickr\+\_\+fingerprint\+\_\+output}}
+\index{wickr\+\_\+fingerprint\+\_\+output@{wickr\+\_\+fingerprint\+\_\+output}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+output}{wickr\_fingerprint\_output}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}}}
+
+Fingerprint output format
+
+S\+H\+O\+RT -\/ Output a fingerprint that is 1/2 length of the full representation L\+O\+NG -\/ Output a fingerprint that is encoded to be full length \mbox{\Hypertarget{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}\label{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+type@{wickr\+\_\+fingerprint\+\_\+type}}
+\index{wickr\+\_\+fingerprint\+\_\+type@{wickr\+\_\+fingerprint\+\_\+type}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+type}{wickr\_fingerprint\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}}}
+
+Fingerprint Encoding Type
+
+S\+H\+A512 -\/ Calculated by taking a S\+H\+A512 of the inputs concatenated together 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__fingerprint_gac2497b535d0864b0fcc91004a979a313}\label{group__wickr__fingerprint_gac2497b535d0864b0fcc91004a979a313}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+copy@{wickr\+\_\+fingerprint\+\_\+copy}}
+\index{wickr\+\_\+fingerprint\+\_\+copy@{wickr\+\_\+fingerprint\+\_\+copy}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+copy()}{wickr\_fingerprint\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$}]{fingerprint }\end{DoxyParamCaption})}
+
+Copy a \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fingerprint} & the fingerprint to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a copy of \textquotesingle{}fingerprint\textquotesingle{} that contains a deep copy of \textquotesingle{}data\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__fingerprint_ga6041cfce95478334c8e046ad88c3d166}\label{group__wickr__fingerprint_ga6041cfce95478334c8e046ad88c3d166}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+create@{wickr\+\_\+fingerprint\+\_\+create}}
+\index{wickr\+\_\+fingerprint\+\_\+create@{wickr\+\_\+fingerprint\+\_\+create}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+create()}{wickr\_fingerprint\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data }\end{DoxyParamCaption})}
+
+Create a new \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint}} struct
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint}}\textquotesingle{} property documentation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated fingerprint that takes ownership of the passed inputs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__fingerprint_ga7d3600525872a1d587b2774db7b8b12a}\label{group__wickr__fingerprint_ga7d3600525872a1d587b2774db7b8b12a}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+destroy@{wickr\+\_\+fingerprint\+\_\+destroy}}
+\index{wickr\+\_\+fingerprint\+\_\+destroy@{wickr\+\_\+fingerprint\+\_\+destroy}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+destroy()}{wickr\_fingerprint\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+fingerprint\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$$\ast$}]{fingerprint }\end{DoxyParamCaption})}
+
+Destroy a \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fingerprint} & the fingerprint to destroy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__fingerprint_gac4791ddf5ea675508dd6627ebf33c62e}\label{group__wickr__fingerprint_gac4791ddf5ea675508dd6627ebf33c62e}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+gen@{wickr\+\_\+fingerprint\+\_\+gen}}
+\index{wickr\+\_\+fingerprint\+\_\+gen@{wickr\+\_\+fingerprint\+\_\+gen}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+gen()}{wickr\_fingerprint\_gen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+gen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{key,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier,  }\item[{\mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}}}]{type }\end{DoxyParamCaption})}
+
+Generate a fingerprint based on a signing key / fixed user identifier
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & the crypto engine to use for underlying hash operations \\
+\hline
+{\em key} & the key to include in the resulting fingerprint \\
+\hline
+{\em identifier} & a fixed user identifier to use in the resulting fingerprint \\
+\hline
+{\em type} & the type of fingerprint algorithm to use when processing key/identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique fingerprint representing the combination of key/identifier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__fingerprint_gae26d5c57687ae01678495b4e3962963d}\label{group__wickr__fingerprint_gae26d5c57687ae01678495b4e3962963d}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral@{wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral}}
+\index{wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral@{wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral()}{wickr\_fingerprint\_gen\_bilateral()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+gen\+\_\+bilateral (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$}]{local,  }\item[{const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$}]{remote,  }\item[{\mbox{\hyperlink{group__wickr__fingerprint_ga09d6f8936a6d1fbacb13c643c2e81810}{wickr\+\_\+fingerprint\+\_\+type}}}]{type }\end{DoxyParamCaption})}
+
+Generate a bilateral fingerprint by combining two existing fingerprints made with \textquotesingle{}wickr\+\_\+fingerprint\+\_\+gen\textquotesingle{}. Fingerprints created by this function are identical if local/remote input values are swapped, as they are sorted internally before computation begins
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & the crypto engine to use for underlying hash operations \\
+\hline
+{\em local} & the first existing fingerprint to include in the bilateral fingerprint \\
+\hline
+{\em remote} & the second existing fingerprint to include in the bilateral fingerprint \\
+\hline
+{\em type} & the type of fingerprint algorithm to use when processing local/remote \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique fingerprint representing the combination of local/remote 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__fingerprint_ga7d50dd168023042163c1952b53af468b}\label{group__wickr__fingerprint_ga7d50dd168023042163c1952b53af468b}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+get\+\_\+b32@{wickr\+\_\+fingerprint\+\_\+get\+\_\+b32}}
+\index{wickr\+\_\+fingerprint\+\_\+get\+\_\+b32@{wickr\+\_\+fingerprint\+\_\+get\+\_\+b32}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+get\+\_\+b32()}{wickr\_fingerprint\_get\_b32()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+get\+\_\+b32 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$}]{fingerprint,  }\item[{\mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}}}]{output\+\_\+mode }\end{DoxyParamCaption})}
+
+Get a base32 representation of a fingerprint
+
+
+\begin{DoxyParams}{Parameters}
+{\em fingerprint} & the fingerprint to get the base32 representation of \\
+\hline
+{\em output\+\_\+mode} & the output mode of the base32 representation (short/long) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string buffer containing a base32 representation of \textquotesingle{}fingerprint\textquotesingle{} that is null terminatied 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__fingerprint_ga50608413a9168b144e06d7537a789df1}\label{group__wickr__fingerprint_ga50608413a9168b144e06d7537a789df1}} 
+\index{wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}!wickr\+\_\+fingerprint\+\_\+get\+\_\+hex@{wickr\+\_\+fingerprint\+\_\+get\+\_\+hex}}
+\index{wickr\+\_\+fingerprint\+\_\+get\+\_\+hex@{wickr\+\_\+fingerprint\+\_\+get\+\_\+hex}!wickr\+\_\+fingerprint@{wickr\+\_\+fingerprint}}
+\subsubsection{\texorpdfstring{wickr\+\_\+fingerprint\+\_\+get\+\_\+hex()}{wickr\_fingerprint\_get\_hex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+fingerprint\+\_\+get\+\_\+hex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__fingerprint}{wickr\+\_\+fingerprint\+\_\+t}} $\ast$}]{fingerprint,  }\item[{\mbox{\hyperlink{group__wickr__fingerprint_gafaac3f13daae0b97e91f3fb744f4c9e2}{wickr\+\_\+fingerprint\+\_\+output}}}]{output\+\_\+mode }\end{DoxyParamCaption})}
+
+Get a hex representation of a fingerprint
+
+
+\begin{DoxyParams}{Parameters}
+{\em fingerprint} & the fingerprint to get the hex representation of \\
+\hline
+{\em output\+\_\+mode} & the output mode of the base32 representation (short/long) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string buffer containing a hex representation of \textquotesingle{}fingerprint\textquotesingle{} that is null terminatied 
+\end{DoxyReturn}
