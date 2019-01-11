@@ -53,6 +53,7 @@
 %rename(IdentityType) wickr_identity_type;
 %rename(PacketSignatureStatus) wickr_packet_signature_status;
 %rename(FingerprintOutputType) wickr_fingerprint_output;
+%rename(FingerprintType) wickr_fingerprint_type;
 
 %rename (DecodeError) wickr_decode_error;
 %rename (CipherID) wickr_cipher_id;
