@@ -48,24 +48,7 @@ typedef enum {
     FINGERPRINT_OUTPUT_SHORT,
     FINGERPRINT_OUTPUT_LONG
 } wickr_fingerprint_output;
-
-/**
- 
- @ingroup wickr_fingerprint
- 
- @struct wickr_fingerprint
- 
- @brief A fingerprint representation of a combination of signature keys / identifiers
- @var wickr_fingerprint::data
- a raw data representation of the fingerprint
-
- */
-struct wickr_fingerprint {
-    wickr_buffer_t *data;
-};
-
-typedef struct wickr_fingerprint wickr_fingerprint_t;
-
+    
 /**
  
  @ingroup wickr_fingerprint
@@ -77,6 +60,24 @@ typedef struct wickr_fingerprint wickr_fingerprint_t;
  */
 typedef enum { WICKR_FINGERPRINT_TYPE_SHA512 } wickr_fingerprint_type;
 
+/**
+ 
+ @ingroup wickr_fingerprint
+ 
+ @struct wickr_fingerprint
+ 
+ @brief A fingerprint representation of a combination of signature keys / identifiers
+ @var wickr_fingerprint::type
+ type the type of fingerprint algorithm to use when processing key/identifier
+ @var wickr_fingerprint::data
+ a raw data representation of the fingerprint
+ */
+struct wickr_fingerprint {
+    wickr_fingerprint_type type;
+    wickr_buffer_t *data;
+};
+
+typedef struct wickr_fingerprint wickr_fingerprint_t;
 
 /**
  
@@ -120,10 +121,11 @@ wickr_fingerprint_t *wickr_fingerprint_gen_bilateral(wickr_crypto_engine_t engin
  
  Create a new wickr_fingerprint struct
 
+ @param type see 'wickr_fingerprint' property documentation
  @param data see 'wickr_fingerprint' property documentation
  @return a newly allocated fingerprint that takes ownership of the passed inputs
  */
-wickr_fingerprint_t *wickr_fingerprint_create(wickr_buffer_t *data);
+wickr_fingerprint_t *wickr_fingerprint_create(wickr_fingerprint_type type, wickr_buffer_t *data);
 
     
 /**

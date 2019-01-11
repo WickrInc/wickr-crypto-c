@@ -35,11 +35,12 @@ DESCRIBE(wickr_fingerprint, "fingerprints")
     wickr_buffer_t *rnd_data = test_engine.wickr_crypto_engine_crypto_random(32);
     SHOULD_NOT_BE_NULL(rnd_data);
     
-    wickr_fingerprint_t *test_fingerprint = wickr_fingerprint_create(rnd_data);
+    wickr_fingerprint_t *test_fingerprint = wickr_fingerprint_create(WICKR_FINGERPRINT_TYPE_SHA512, rnd_data);
     
     IT("can be created with raw fingerprint data")
     {
-        SHOULD_BE_NULL(wickr_fingerprint_create(NULL));
+        SHOULD_EQUAL(test_fingerprint->type, WICKR_FINGERPRINT_TYPE_SHA512);
+        SHOULD_BE_NULL(wickr_fingerprint_create(WICKR_FINGERPRINT_TYPE_SHA512, NULL));
         SHOULD_NOT_BE_NULL(test_fingerprint);
         SHOULD_EQUAL(test_fingerprint->data, rnd_data);
     }
@@ -49,6 +50,7 @@ DESCRIBE(wickr_fingerprint, "fingerprints")
     {
         wickr_fingerprint_t *copy = wickr_fingerprint_copy(test_fingerprint);
         SHOULD_NOT_BE_NULL(copy);
+        SHOULD_EQUAL(test_fingerprint->type, copy->type);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(test_fingerprint->data, copy->data, NULL));
         wickr_fingerprint_destroy(&copy);
     }
@@ -237,6 +239,28 @@ DESCRIBE(wickr_fingerprint_bilateral_generation, "bilateral fingerprint")
         
         wickr_fingerprint_destroy(&test_fingerprint_c);
         wickr_fingerprint_destroy(&test_bilateral_ac);
+    }
+    END_IT
+    
+    IT("should fail to generate a fingerprint if the input fingerprints are not of the same type")
+    {
+        wickr_fingerprint_t *test_fingerprint_c = __wickr_fingerprint_gen_random(test_engine);
+        test_fingerprint_c->type = 1;
+        
+        SHOULD_BE_NULL(wickr_fingerprint_gen_bilateral(test_engine,
+                                                       test_fingerprint_a,
+                                                       test_fingerprint_c,
+                                                       WICKR_FINGERPRINT_TYPE_SHA512));
+        
+        test_fingerprint_c->type = WICKR_FINGERPRINT_TYPE_SHA512;
+        test_fingerprint_c->data->length--;
+        
+        SHOULD_BE_NULL(wickr_fingerprint_gen_bilateral(test_engine,
+                                                       test_fingerprint_a,
+                                                       test_fingerprint_c,
+                                                       WICKR_FINGERPRINT_TYPE_SHA512));
+        
+        wickr_fingerprint_destroy(&test_fingerprint_c);
     }
     END_IT
     
