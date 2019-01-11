@@ -17,7 +17,7 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_create(wickr_crypto_engin
         return NULL;
     }
     
-    wickr_fingerprint_t *fingerprint = wickr_fingerprint_create(fingerprint_data);
+    wickr_fingerprint_t *fingerprint = wickr_fingerprint_create(WICKR_FINGERPRINT_TYPE_SHA512, fingerprint_data);
     
     if (!fingerprint) {
         wickr_buffer_destroy(&fingerprint_data);
@@ -27,14 +27,14 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_create(wickr_crypto_engin
 }
 
 static wickr_fingerprint_t *__wickr_fingerprint_sha512_encode(wickr_crypto_engine_t engine,
-                                                              const wickr_ec_key_t *key,
+                                                              const wickr_buffer_t *pub_key_data,
                                                               const wickr_buffer_t *identifier)
 {
-    if (!key || !identifier) {
+    if (!pub_key_data || !identifier) {
         return NULL;
     }
     
-    wickr_buffer_t *concat_buffer = wickr_buffer_concat(identifier, key->pub_data);
+    wickr_buffer_t *concat_buffer = wickr_buffer_concat(identifier, pub_key_data);
     
     wickr_fingerprint_t *fingerprint = __wickr_fingerprint_sha512_create(engine, concat_buffer);
     wickr_buffer_destroy(&concat_buffer);
@@ -50,7 +50,7 @@ static wickr_fingerprint_t *__wickr_fingerprint_sha512_combine(wickr_crypto_engi
         return NULL;
     }
     
-    if (f1->data->length != f2->data->length) {
+    if (f1->data->length != f2->data->length || f1->type != f2->type) {
         return NULL;
     }
     
@@ -90,12 +90,20 @@ wickr_fingerprint_t *wickr_fingerprint_gen(wickr_crypto_engine_t engine,
                                            const wickr_buffer_t *identifier,
                                            wickr_fingerprint_type type)
 {
-    switch (type) {
-        case WICKR_FINGERPRINT_TYPE_SHA512:
-            return __wickr_fingerprint_sha512_encode(engine, key, identifier);
-        default:
-            return NULL;
+    if (!key || !identifier || type != WICKR_FINGERPRINT_TYPE_SHA512) {
+        return NULL;
     }
+    
+    wickr_buffer_t *fixed_pub_data = wickr_ec_key_get_pubdata_fixed_len(key);
+    
+    if (!fixed_pub_data) {
+        return NULL;
+    }
+    
+    wickr_fingerprint_t *encoded_fingerprint = __wickr_fingerprint_sha512_encode(engine, fixed_pub_data, identifier);
+    wickr_buffer_destroy(&fixed_pub_data);
+    
+    return encoded_fingerprint;
 }
 
 wickr_fingerprint_t *wickr_fingerprint_gen_bilateral(wickr_crypto_engine_t engine,
@@ -111,7 +119,7 @@ wickr_fingerprint_t *wickr_fingerprint_gen_bilateral(wickr_crypto_engine_t engin
     }
 }
 
-wickr_fingerprint_t *wickr_fingerprint_create(wickr_buffer_t *data)
+wickr_fingerprint_t *wickr_fingerprint_create(wickr_fingerprint_type type, wickr_buffer_t *data)
 {
     if (!data) {
         return NULL;
@@ -124,6 +132,7 @@ wickr_fingerprint_t *wickr_fingerprint_create(wickr_buffer_t *data)
     }
     
     fingerprint->data = data;
+    fingerprint->type = type;
     
     return fingerprint;
 }
@@ -140,7 +149,7 @@ wickr_fingerprint_t *wickr_fingerprint_copy(const wickr_fingerprint_t *fingerpri
         return NULL;
     }
     
-    wickr_fingerprint_t *copy = wickr_fingerprint_create(data_copy);
+    wickr_fingerprint_t *copy = wickr_fingerprint_create(fingerprint->type, data_copy);
     
     if (!copy) {
         wickr_buffer_destroy(&data_copy);
@@ -173,7 +182,11 @@ static wickr_buffer_t *__wickr_fingerprint_encode_for_output_mode(const wickr_fi
     wickr_buffer_t *encoded_fingerprint_data = enc_func(fingerprint->data);
     
     if (output_mode == FINGERPRINT_OUTPUT_SHORT) {
-        encoded_fingerprint_data->length = encoded_fingerprint_data->length / 2;
+        size_t short_length = encoded_fingerprint_data->length / 2;
+        
+        /* Replace the byte at index short_length with a null byte to make sure string encoding is proper */
+        encoded_fingerprint_data->bytes[short_length] = '\0';
+        encoded_fingerprint_data->length = short_length;
     }
         
     return encoded_fingerprint_data;
