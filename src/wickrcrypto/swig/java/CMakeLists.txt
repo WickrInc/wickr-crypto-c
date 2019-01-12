@@ -50,6 +50,8 @@ set(JAVA_SOURCES
     ${CMAKE_SWIG_OUTDIR}/EphemeralInfo.java 
     ${CMAKE_SWIG_OUTDIR}/EphemeralKeypair.java
     ${CMAKE_SWIG_OUTDIR}/Fingerprint.java 
+    ${CMAKE_SWIG_OUTDIR}/FingerprintOutputType.java
+    ${CMAKE_SWIG_OUTDIR}/FingerprintType.java
     ${CMAKE_SWIG_OUTDIR}/Identity.java
     ${CMAKE_SWIG_OUTDIR}/IdentityChain.java
     ${CMAKE_SWIG_OUTDIR}/IdentityChainStatus.java
