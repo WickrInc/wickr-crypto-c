@@ -6,7 +6,7 @@
 static bool __validate_buffer_range(const wickr_buffer_t *buffer, size_t start, size_t len)
 {
     if (!buffer) {
-        return NULL;
+        return false;
     }
     
     if (start >= MAX_BUFFER_SIZE || len >= MAX_BUFFER_SIZE || len == 0) {
@@ -168,7 +168,7 @@ wickr_buffer_t *wickr_buffer_concat_multi(wickr_buffer_t **buffers, uint8_t n_bu
 bool wickr_buffer_modify_section(const wickr_buffer_t *buffer, const uint8_t *bytes, size_t start, size_t len)
 {
     if (!buffer || !bytes) {
-        return NULL;
+        return false;
     }
     
     if (!__validate_buffer_range(buffer, start, len)) {

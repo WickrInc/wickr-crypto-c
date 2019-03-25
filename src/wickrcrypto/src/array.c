@@ -81,7 +81,7 @@ bool wickr_array_set_item(wickr_array_t *array, uint32_t index, void *item, bool
     }
     
     if (!__wickr_array_index_in_bounds(array, index)) {
-        return NULL;
+        return false;
     }
     
     void *item_to_write = copy ? array->item_copy_func(item) : item;

@@ -205,7 +205,7 @@ bool wickr_transport_packet_sign(wickr_transport_packet_t *pkt, const wickr_cryp
             pkt->mac_type = TRANSPORT_MAC_TYPE_EC_P521;
             break;
         default:
-            return NULL;
+            return false;
     }
     
     wickr_buffer_t *data_to_sign = wickr_transport_packet_serialize(pkt);
