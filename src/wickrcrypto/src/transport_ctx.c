@@ -581,7 +581,7 @@ static wickr_transport_packet_t *__wickr_transport_ctx_handshake_process_return(
 static bool __wickr_transport_ctx_handshake_finish(wickr_transport_ctx_t *ctx, const wickr_transport_packet_t *finish_handshake)
 {
     if (!ctx || !finish_handshake) {
-        return NULL;
+        return false;
     }
     
     Wickr__Proto__Handshake *handshake_data = __wickr_transport_ctx_handshake_process_response(ctx, finish_handshake);

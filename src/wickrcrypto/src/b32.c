@@ -81,7 +81,7 @@ static bool __base32_decode_unmap(unsigned char* inout32, size_t inout32_len, co
         /* Fail if the character can't be mapped to the proper alphabet */
         unsigned char mapped_char = rmap[(int)inout32[i]];
         if ((int)mapped_char == 255) {
-            return NULL;
+            return false;
         }
         inout32[i] = mapped_char;
     }
