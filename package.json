@@ -1,15 +1,15 @@
 {
     "name": "wickrcrypto",
     "dependencies": {
-        "node-pre-gyp": "^0.10.0"
+        "node-pre-gyp": "^0.10.3"
     },
     "bundledDependencies": [
         "node-pre-gyp"
     ],
     "devDependencies": {
+        "aws-sdk": "^2.427.0",
         "expect.js": "0.3.1",
-        "mocha": "5.1.x",
-        "aws-sdk": "^2.249.1"
+        "mocha": "5.1.x"
     },
     "description": "A node.js wrapper around the wickr-crypto-c library",
     "version": "1.11.0",
