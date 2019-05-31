@@ -70,7 +70,7 @@ matrix:
       sudo: required
       env:
       - FIPS=FALSE
-      - ANDROID="armeabi"
+      - ANDROID="arm64-v8a"
     - os: linux 
       dist: trusty
       sudo: required
@@ -81,20 +81,8 @@ matrix:
       dist: trusty
       sudo: required
       env:
-      - FIPS=TRUE
-      - ANDROID="armeabi-v7a"
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
-      - FIPS=TRUE
-      - ANDROID="armeabi"
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
-      - FIPS=TRUE
-      - ANDROID="x86"
+      - FIPS=FALSE
+      - ANDROID="x86_64"
     - os: linux
       dist: trusty
       sudo: required
@@ -133,8 +121,8 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo apt-get install openssl -y; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
-  - if [[ ! -z "${ANDROID}" ]]; then wget -O $HOME/ndk.zip https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip; unzip $HOME/ndk.zip -d $HOME/ndk >/dev/null; fi
-  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/meetnow/swig.git; cd swig; git checkout -t origin/js-v8-52; ./autogen.sh; ./configure; make && sudo make install; cd ../; fi
+  - if [[ ! -z "${ANDROID}" ]]; then wget -O $HOME/ndk.zip https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip; unzip $HOME/ndk.zip -d $HOME/ndk >/dev/null; fi
+  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/swig/swig.git; cd swig; git checkout -t origin/rel-4.0.0; ./autogen.sh; ./configure; make && sudo make install; cd ../; fi
 
 script:
  - mkdir build;
@@ -142,7 +130,8 @@ script:
  - |
    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
        if [[ ! -z "${ANDROID}" ]]; then
-            cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-Android.cmake -DFIPS=${FIPS} -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DCMAKE_ANDROID_NDK=$HOME/ndk/android-ndk-r14b -DCMAKE_ANDROID_ARCH_ABI=${ANDROID} ../
+            export ANDROID_NDK_HOME=$HOME/ndk/android-ndk-r19c
+            cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DANDROID_NATIVE_API_LEVEL=21  -DANDROID_ABI=${ANDROID} ../
        elif [[ ! -z "${NODE}" ]]; then
             cd ..
             npm install --build-from-source

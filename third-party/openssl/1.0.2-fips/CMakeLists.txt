@@ -1,6 +1,11 @@
 include(ExternalProject)
 
 macro(setup_android_env)
+
+    if((${CMAKE_ANDROID_ARCH} MATCHES "arm64") OR (${CMAKE_ANDROID_ARCH} MATCHES x86_64))
+        message(FATAL_ERROR "FIPS Android builds do not support 64bit architectures, please use NDK r16 to build 32bit")
+    endif()
+
     if(${CMAKE_ANDROID_ARCH} MATCHES "arm")
         set(_ANDROID_EABI "_ANDROID_EABI=arm-linux-androideabi-${CMAKE_ANDROID_NDK_TOOLCHAIN_VERSION}")
     else()
@@ -65,8 +70,8 @@ macro(build_openssl)
         set(MAKE_OPS "-j${N}")
     endif ()
 
-    set(OSSL_VERSION "1.0.2o")
-    set(OSSL_HASH "ec3f5c9714ba0fd45cb4e087301eb1336c317e0d20b575a125050470e8089e4d")
+    set(OSSL_VERSION "1.0.2s")
+    set(OSSL_HASH "cabd5c9492825ce5bd23f3c3aeed6a97f8142f606d893df216411f07d1abab96")
     set(OSSL_URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz")
 
     if (FIPS)
