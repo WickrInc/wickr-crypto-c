@@ -1,24 +1,17 @@
 
-if [ -z ${FIPS} ]; then
-    FIPS=false
-fi
-
-echo $1
-
 mkdir -p build_android/output_fat && cd build_android
 
 # Build all the native modules
-for ARCH in armeabi armeabi-v7a x86
+for ARCH in armeabi-v7a arm64-v8a x86 x86_64 
 do
     mkdir build_android_${ARCH}
     cd build_android_${ARCH}
 
-    cmake -DCMAKE_TOOLCHAIN_FILE=../../Toolchain-Android.cmake \
+    cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
     -DBUILD_OPENSSL=true \
-    -DCMAKE_ANDROID_NDK=${ANDROID_NDK} \
+    -DANDROID_NATIVE_API_LEVEL=21 \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_ANDROID_ARCH_ABI=${ARCH} \
-    -DFIPS=${FIPS} \
+    -DANDROID_ABI=${ARCH} \
     -DCMAKE_INSTALL_PREFIX=../output_fat \
     -DBUILD_JAVA=ON ../../
 
