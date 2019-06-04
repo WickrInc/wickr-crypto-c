@@ -34,22 +34,32 @@ typedef struct AESFileOperation {
 #if defined(_WIN32)
 wchar_t *GetWC(const char *c)
 {
-	const size_t cSize = strlen(c) + 1;
-	wchar_t* wc = (wchar_t *)wickr_alloc(sizeof(wchar_t) * cSize);
-	mbstowcs(wc, c, cSize);
+    const size_t cSize = mbstowcs(NULL, c, 0) + 1;
+    wchar_t* wc = (wchar_t *)wickr_alloc_zero(sizeof(wchar_t) * cSize);
+    size_t copiedSize = mbstowcs(wc, c, cSize);
 
-	return wc;
+    if (copiedSize == (size_t)(-1)) {
+        wickr_free(wc);
+        return NULL;
+    }
+
+    return wc;
 }
 
-FILE *windowsOpenFile(char *fname, wchar_t *openOpts)
+errno_t windowsOpenFile(FILE **fileHandle, char *fname, wchar_t *openOpts)
 {
-	FILE *fileHandle = NULL;
 
-	// Need to convert the char string to a wide character string
-	wchar_t *wSrc = GetWC(fname);
-	fileHandle = _wfopen(wSrc, openOpts);
-	wickr_free(wSrc);
-	return fileHandle;
+    // Need to convert the char string to a wide character string
+    wchar_t *wSrc = GetWC(fname);
+    
+    if (!wSrc) {
+        return -1;
+    }
+
+    errno_t error = _wfopen_s(fileHandle, wSrc, openOpts);
+    wickr_free(wSrc);
+
+    return error;
 }
 
 #endif
@@ -69,7 +79,9 @@ static AESFileOperation *createFileOperation(const char *source, const char *des
     
     // Open the Source file for reading
 #if defined(_WIN32)
-	sourceHandle = windowsOpenFile(source, L"rb");
+	if (windowsOpenFile(&sourceHandle, source, L"rb") != 0 || !sourceHandle) {
+        return NULL;
+    }
 #elif defined(__ANDROID__)
     sourceHandle = fopen(source, "rb");
 #else
@@ -87,10 +99,9 @@ static AESFileOperation *createFileOperation(const char *source, const char *des
     sprintf(tempPath, "%s.temp", destination);
 
 #if defined(_WIN32)
-    destinationHandle = windowsOpenFile(tempPath, L"wb");
-	if (! destinationHandle) {
+    if (windowsOpenFile(&destinationHandle, tempPath, L"wb") != 0 || !destinationHandle) {
         goto process_error;
-	}
+    }
 #elif defined(__ANDROID__)
     destinationHandle = fopen(tempPath, "wb");
     if (! destinationHandle) {

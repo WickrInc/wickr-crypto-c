@@ -21,7 +21,7 @@ DESCRIBE(encodePlainFile, "openssl_file_suite: encodePlainFile")
     // Open the file for writing
     FILE *sourceHandle = NULL;
 #if defined(_WIN32)
-    sourceHandle = windowsOpenFile(testPlaintextFileName, L"wb");
+    windowsOpenFile(&sourceHandle, testPlaintextFileName, L"wb");
 #elif defined(__ANDROID__)
     sourceHandle = fopen(testPlaintextFileName, "wb");
 #else
@@ -96,7 +96,7 @@ DESCRIBE(decodeCipherFile, "openssl_file_suite: decodeCipherFile")
     // Open the file for writing
     FILE *sourceHandle = NULL;
     #if defined(_WIN32)
-    sourceHandle = windowsOpenFile(testPlaintextFileName, L"wb");
+    windowsOpenFile(&sourceHandle, testPlaintextFileName, L"wb");
     #elif defined(__ANDROID__)
     sourceHandle = fopen(testPlaintextFileName, "wb");
     #else
