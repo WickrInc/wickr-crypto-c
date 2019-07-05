@@ -33,7 +33,6 @@ set(JAVA_SOURCES
     ${CMAKE_SWIG_OUTDIR}/CipherResult.java
     ${CMAKE_SWIG_OUTDIR}/Context.java
     ${CMAKE_SWIG_OUTDIR}/ContextDecodeResult.java
-    ${CMAKE_SWIG_OUTDIR}/ContextEncodeResult.java
     ${CMAKE_SWIG_OUTDIR}/ContextGenResult.java
     ${CMAKE_SWIG_OUTDIR}/ContextParseResult.java
     ${CMAKE_SWIG_OUTDIR}/CryptoEngine.java
@@ -47,6 +46,7 @@ set(JAVA_SOURCES
     ${CMAKE_SWIG_OUTDIR}/ECDHCipherContext.java
     ${CMAKE_SWIG_OUTDIR}/ECDSAResult.java
     ${CMAKE_SWIG_OUTDIR}/ECKey.java
+    ${CMAKE_SWIG_OUTDIR}/EncoderResult.java
     ${CMAKE_SWIG_OUTDIR}/EphemeralInfo.java 
     ${CMAKE_SWIG_OUTDIR}/EphemeralKeypair.java
     ${CMAKE_SWIG_OUTDIR}/Fingerprint.java 

@@ -64,6 +64,8 @@
 
 %rename (ECDHCipherContext) wickr_ecdh_cipher_ctx;
 
+%rename (EncoderResult) wickr_encoder_result;
+
 %rename("%(lowercamelcase)s", %$isfunction) "";
 %rename("%(lowercamelcase)s", %$ismember) "";
 

@@ -3,6 +3,7 @@
 #include "externs.h"
 #include "crypto_engine.h"
 #include "wickr_ctx.h"
+#include "encoder_result.h"
 
 #include <string.h>
 
@@ -372,14 +373,17 @@ END_DESCRIBE
 void __test_packet_decode(wickr_ctx_t *ctxUser1,
                           wickr_ctx_t *ctxUser2,
                           wickr_node_t *nodeUser2,
-                          wickr_ctx_encode_t *encodePkt,
+                          wickr_encoder_result_t *encodePkt,
                           wickr_buffer_t *bodyData,
                           wickr_buffer_t *channelTag,
                           uint64_t contentType,
                           wickr_ephemeral_info_t ephemeralData)
 {
     wickr_ctx_packet_t *inPacket = NULL;
-    SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet(ctxUser2, encodePkt->encoded_packet, ctxUser1->id_chain))
+    
+    wickr_buffer_t *packet_buffer = wickr_packet_serialize(encodePkt->packet);
+    
+    SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet(ctxUser2, packet_buffer, ctxUser1->id_chain))
     
     if (inPacket != NULL) {
         
@@ -408,6 +412,8 @@ void __test_packet_decode(wickr_ctx_t *ctxUser1,
         wickr_decode_result_destroy(&decodeResult);
         wickr_ctx_packet_destroy(&inPacket);
     }
+    
+     wickr_buffer_destroy(&packet_buffer);
 }
 
 DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
@@ -449,7 +455,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     wickr_buffer_t *bodyData = wickr_buffer_create((uint8_t*)body, strlen(body));
     wickr_payload_t *payload = wickr_payload_create(metaData, bodyData);
 
-    wickr_ctx_encode_t *encodePkt = NULL;
+    wickr_encoder_result_t *encodePkt = NULL;
     
     IT("should encode packets")
     {
@@ -463,7 +469,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
         wickr_node_t *first_recipient = wickr_node_array_fetch_item(recipients, 0);
         first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
         
-        wickr_ctx_encode_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients);
+        wickr_encoder_result_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients);
         SHOULD_BE_NULL(bad_packet);
         first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
     }
@@ -481,7 +487,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
         first_recipient->ephemeral_keypair->signature = wickr_identity_sign(first_recipient->id_chain->node, &engine, random_data);
         wickr_buffer_destroy(&random_data);
         
-        wickr_ctx_encode_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients_copy);
+        wickr_encoder_result_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients_copy);
         SHOULD_BE_NULL(bad_packet);
         
         /* Force a valid identity chain state, make sure it still fails */
@@ -506,7 +512,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
         first_recipient->id_chain->node->signature = wickr_identity_sign(first_recipient->id_chain->node, &engine, random_data);
         wickr_buffer_destroy(&random_data);
         
-        wickr_ctx_encode_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients_copy);
+        wickr_encoder_result_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients_copy);
         SHOULD_BE_NULL(bad_packet);
         
         wickr_array_destroy(&recipients_copy, true);
@@ -517,9 +523,11 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     {
         wickr_ctx_packet_t *inPacket = NULL;
         
+        wickr_buffer_t *packet_buffer = wickr_packet_serialize(encodePkt->packet);
+        
         if (encodePkt != NULL) {
             
-            SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet_no_decode(ctxUser2, encodePkt->encoded_packet, ctxUser1->id_chain));
+            SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_parse_packet_no_decode(ctxUser2, packet_buffer, ctxUser1->id_chain));
             SHOULD_BE_NULL(inPacket->parse_result->key_exchange);
             SHOULD_EQUAL(inPacket->parse_result->err, E_SUCCESS);
             SHOULD_NOT_BE_NULL(inPacket->packet);
@@ -539,13 +547,14 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
         }
         
         wickr_ctx_packet_destroy(&inPacket);
+        wickr_buffer_destroy(&packet_buffer);
     }
     END_IT
 
     IT("should parse packets for decoding")
     {
         __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
-        wickr_ctx_encode_destroy(&encodePkt);
+        wickr_encoder_result_destroy(&encodePkt);
     }
     END_IT
     
@@ -555,7 +564,7 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
             ctxUser1->pkt_enc_version = i;
             SHOULD_NOT_BE_NULL(encodePkt = wickr_ctx_encode_packet(ctxUser1, payload, recipients))
             __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);
-            wickr_ctx_encode_destroy(&encodePkt);
+            wickr_encoder_result_destroy(&encodePkt);
         }
     }
     END_IT

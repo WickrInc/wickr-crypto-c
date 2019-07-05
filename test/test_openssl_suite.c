@@ -12,7 +12,7 @@ DESCRIBE(openssl_crypto_random, "openssl_suite: openssl_crypto_random")
 #else
     IT( "returns NULL when len > INT_MAX" )
     {
-		wickr_buffer_t *ret = openssl_crypto_random(INT_MAX+1);
+		wickr_buffer_t *ret = openssl_crypto_random((size_t)INT_MAX+1);
 
         SHOULD_BE_TRUE( ret == NULL )
     }

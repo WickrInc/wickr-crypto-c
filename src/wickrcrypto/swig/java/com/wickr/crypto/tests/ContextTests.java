@@ -174,17 +174,17 @@ public class ContextTests
 		nodes.setNode(0, receiverNode);
 
 		//Encode the message for a set of node receivers
-		ContextEncodeResult encodeResult = ctx.encodePacket(payload, nodes);
+		EncoderResult encodeResult = ctx.encodePacket(payload, nodes);
 		assertNotNull(encodeResult);
 
 		//Use the receiver context created above to parse a packet for non decoding purposes
-		ContextParseResult parsed = receiverCtx.parsePacketNoDecode(encodeResult.getEncodedPacket(), ctx.getIdChain());
+		ContextParseResult parsed = receiverCtx.parsePacketNoDecode(encodeResult.getPacket().serialize(), ctx.getIdChain());
 		assertNotNull(parsed);
 		assertEquals(parsed.getParseResult().getErr(), DecodeError.E_SUCCESS);
 		assertEquals(parsed.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
 
 		//Use the receiver context created above to parse a packet for decoding purposes
-		parsed = receiverCtx.parsePacket(encodeResult.getEncodedPacket(), ctx.getIdChain());
+		parsed = receiverCtx.parsePacket(encodeResult.getPacket().serialize(), ctx.getIdChain());
 		assertNotNull(parsed);
 		assertEquals(parsed.getParseResult().getErr(), DecodeError.E_SUCCESS);
 		assertEquals(parsed.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
