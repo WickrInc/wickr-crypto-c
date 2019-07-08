@@ -162,13 +162,13 @@ describe ("Context Tests", function() {
         expect(encodeResult).to.be.a("object")
 
         //Use the receiver context created above to parse a packet for non decoding purposes
-        var parsed = receiverCtx.parsePacketNoDecode(encodeResult.encodedPacket, ctx.idChain)
+        var parsed = receiverCtx.parsePacketNoDecode(encodeResult.packet.serialize(), ctx.idChain)
         expect(parsed).to.be.a("object")
         expect(parsed.parseResult.err).to.eql(wickrcrypto.E_SUCCESS)
         expect(parsed.parseResult.signatureStatus).to.eql(wickrcrypto.PACKET_SIGNATURE_VALID)
 
         //Use the receiver context created above to parse a packet for decoding purposes
-        parsed = receiverCtx.parsePacket(encodeResult.encodedPacket, ctx.idChain)
+        parsed = receiverCtx.parsePacket(encodeResult.packet.serialize(), ctx.idChain)
         expect(parsed).to.be.a("object")
         expect(parsed.parseResult.err).to.eql(wickrcrypto.E_SUCCESS)
         expect(parsed.parseResult.signatureStatus).to.eql(wickrcrypto.PACKET_SIGNATURE_VALID)

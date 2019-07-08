@@ -29,6 +29,7 @@
 #include "storage.h"
 #include "identity.h"
 #include "protocol.h"
+#include "encoder_result.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -481,42 +482,6 @@ wickr_ctx_packet_t *wickr_ctx_packet_create(wickr_packet_t *packet,
  */
 void wickr_ctx_packet_destroy(wickr_ctx_packet_t **packet);
 
-/**
- @ingroup wickr_ctx
- @struct wickr_ctx_encode
- @brief the result of a packet encoding operation
- @var wickr_ctx_encode::packet_key
- the packet key that was randomly chosen to encrypt the payload of the packet
- @var wickr_ctx_encode::encoded_packet
- a serialized Wickr packet that has been generated from user input
- */
-struct wickr_ctx_encode {
-    wickr_cipher_key_t *packet_key;
-    wickr_buffer_t *encoded_packet;
-};
-
-typedef struct wickr_ctx_encode wickr_ctx_encode_t;
-
-/**
- @ingroup wickr_ctx
-
- Create an encode result from components
- 
- @param packet_key see property description from 'wickr_ctx_encode'
- @param encoded_packet see property description from 'wickr_ctx_encode'
- @return a newly allocated encode packet result owning the parameters passed in
- */
-wickr_ctx_encode_t *wickr_ctx_encode_create(wickr_cipher_key_t *packet_key, wickr_buffer_t *encoded_packet);
-
-/**
- @ingroup wickr_ctx
- 
- Destroy an encode packet result
- 
- @param encode a pointer to an encode packet result to destroy. Will destroy the sub properties of '*encode' as well
- */
-void wickr_ctx_encode_destroy(wickr_ctx_encode_t **encode);
-
 /* Message Encode / Decode */
 
 /**
@@ -529,9 +494,9 @@ void wickr_ctx_encode_destroy(wickr_ctx_encode_t **encode);
  @param nodes the recipient nodes for this packet
  @return an encode result containing an encrypted Wickr packet that transfers 'payload' to 'nodes'
  */
-wickr_ctx_encode_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx,
-                                            const wickr_payload_t *payload,
-                                            const wickr_node_array_t *nodes);
+wickr_encoder_result_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx,
+                                                const wickr_payload_t *payload,
+                                                const wickr_node_array_t *nodes);
 
 /**
  @ingroup wickr_ctx

@@ -748,37 +748,7 @@ void wickr_ctx_packet_destroy(wickr_ctx_packet_t **packet)
     *packet = NULL;
 }
 
-wickr_ctx_encode_t *wickr_ctx_encode_create(wickr_cipher_key_t *packet_key, wickr_buffer_t *encoded_packet)
-{
-    if (!packet_key || !encoded_packet) {
-        return NULL;
-    }
-    
-    wickr_ctx_encode_t *new_encode = wickr_alloc_zero(sizeof(wickr_ctx_encode_t));
-    
-    if (!new_encode) {
-        return NULL;
-    }
-    
-    new_encode->packet_key = packet_key;
-    new_encode->encoded_packet = encoded_packet;
-    
-    return new_encode;
-}
-
-void wickr_ctx_encode_destroy(wickr_ctx_encode_t **encode)
-{
-    if (!encode || !*encode) {
-        return;
-    }
-    
-    wickr_cipher_key_destroy(&(*encode)->packet_key);
-    wickr_buffer_destroy(&(*encode)->encoded_packet);
-    wickr_free(*encode);
-    *encode = NULL;
-}
-
-wickr_ctx_encode_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx, const wickr_payload_t *payload, const wickr_node_array_t *nodes)
+wickr_encoder_result_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx, const wickr_payload_t *payload, const wickr_node_array_t *nodes)
 {
     if (!ctx || !payload || !nodes) {
         return NULL;
@@ -804,15 +774,11 @@ wickr_ctx_encode_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx, const wickr_
     
     wickr_ec_key_destroy(&rnd_exchange_key);
     
-    /* Serialize the packet */
-    wickr_buffer_t *serialized_packet = wickr_packet_serialize(generated_packet);
-    wickr_packet_destroy(&generated_packet);
-    
-    wickr_ctx_encode_t *ctx_encode = wickr_ctx_encode_create(rnd_payload_key, serialized_packet);
+    wickr_encoder_result_t *ctx_encode = wickr_encoder_result_create(rnd_payload_key, generated_packet);
     
     if (!ctx_encode) {
         wickr_cipher_key_destroy(&rnd_payload_key);
-        wickr_buffer_destroy(&serialized_packet);
+        wickr_packet_destroy(&generated_packet);
     }
     
     return ctx_encode;

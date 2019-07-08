@@ -3,6 +3,7 @@
 %include dev_info.i
 %include identity.i
 %include storage_keys.i
+%include message_encoder.i
 
 %{
 #include <wickrcrypto/wickr_ctx.h>
@@ -46,8 +47,6 @@
 %ignore wickr_ctx_ephemeral_keypair_gen;
 %ignore wickr_ctx_packet_create;
 %ignore wickr_ctx_packet_destroy;
-%ignore wickr_ctx_encode_create;
-%ignore wickr_ctx_encode_destroy;
 %ignore wickr_ctx_encode_packet;
 %ignore wickr_ctx_parse_packet;
 %ignore wickr_ctx_parse_packet_no_decode;
@@ -240,7 +239,7 @@
 	wickr_cipher_result_t *cipher_remote(const wickr_buffer_t *plaintext);
 	wickr_buffer_t *decipher_remote(const wickr_cipher_result_t *cipher_text);
 	wickr_ephemeral_keypair_t *ephemeral_keypair_gen(uint64_t key_id);
-	wickr_ctx_encode_t *encode_packet(const wickr_payload_t *payload, const wickr_node_array_t *nodes);
+	wickr_encoder_result_t *encode_packet(const wickr_payload_t *payload, const wickr_node_array_t *nodes);
     wickr_ctx_packet_t *parse_packet_no_decode(const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender);
     wickr_ctx_packet_t *parse_packet(const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender);
     wickr_decode_result_t *decode_packet(const wickr_ctx_packet_t *packet, wickr_ec_key_t *keypair);
