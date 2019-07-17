@@ -23,6 +23,7 @@
 #include "test_b32.h"
 #include "test_fingerprint.h"
 #include "test_ec_key.h"
+#include "test_encoder_result.h"
 #include "test_payload.h"
 
 #include "cspec_output_unit.h"
@@ -96,6 +97,7 @@ void run_messaging_protocol_tests(CSpecOutputStruct *output)
 {
     CSpec_Run(DESCRIPTION(wickr_protocol_key_exchanges), output);
     CSpec_Run(DESCRIPTION(wickr_packet_create_from_components), output);
+    CSpec_Run(DESCRIPTION(wickr_encoder_result), output);
     CSpec_Run(DESCRIPTION(wickr_payload), output);
     CSpec_Run(DESCRIPTION(protocol_support_regression_tests), output);
 }
