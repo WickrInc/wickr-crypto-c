@@ -6,7 +6,7 @@ import org.junit.runner.notification.Failure;
 
 public class WickrRunner {
   public static void main(String[] args) {
-    Result result = JUnitCore.runClasses(CryptoTests.class, DevInfoTests.class, KeyStoreTests.class, NodeTests.class, IdentityTests.class, ContextTests.class, ECDHCipherTests.class, FingerprintTests.class);
+    Result result = JUnitCore.runClasses(CryptoTests.class, DevInfoTests.class, KeyStoreTests.class, NodeTests.class, IdentityTests.class, ContextTests.class, ECDHCipherTests.class, FingerprintTests.class, PayloadTests.class);
 
     System.out.println("Completed " + 
     					result.getRunCount() + 

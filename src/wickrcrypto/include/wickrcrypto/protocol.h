@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include "node.h"
 #include "key_exchange.h"
+#include "payload.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -60,78 +61,6 @@ typedef enum {
     PACKET_SIGNATURE_VALID,
     PACKET_SIGNATURE_INVALID
 } wickr_packet_signature_status;
-
-/**
- @ingroup wickr_protocol
- @struct wickr_ephemeral_info
- @brief Message destruction control metadata
- @var wickr_ephemeral_info::ttl
- time-to-live is the amount of time from the time of sending that a message should live
- @var wickr_ephemeral_info::bor
- burn-on-read is the amount of time from decryption that a message should live
- */
-struct wickr_ephemeral_info {
-    uint64_t ttl;
-    uint64_t bor;
-};
-
-typedef struct wickr_ephemeral_info wickr_ephemeral_info_t;
-
-
-/**
- @ingroup wickr_protocol
- @struct wickr_packet_meta
- @brief control metadata found in the encrypted payload of a packet
- @var wickr_packet_meta::ephemerality_settings
- message destruction control information
- @var wickr_packet_meta::channel_tag
- a value used to help group messages together with a tag
- @var wickr_packet_meta::content_type
- a helper value optionally used to give some context to parsing the body. Currently, message body data is a serialized protocol buffer using the one-of type in all cases, and thus content_type is more of a legacy feature
- */
-struct wickr_packet_meta {
-    wickr_ephemeral_info_t ephemerality_settings;
-    wickr_buffer_t *channel_tag;
-    uint16_t content_type;
-};
-
-typedef struct wickr_packet_meta wickr_packet_meta_t;
-
-/**
- 
- @ingroup wickr_protocol
- 
- Construct packet metadata from components
-
- @param ephemerality_settings see 'wickr_packet_meta' property documentation property documentation
- @param channel_tag see 'wickr_packet_meta' property documentation property documentation
- @param content_type see 'wickr_packet_meta' property documentation property documentation
- @return a newly allocated packet metadata set owning the properties passed in
- */
-wickr_packet_meta_t *wickr_packet_meta_create(wickr_ephemeral_info_t ephemerality_settings,
-                                              wickr_buffer_t *channel_tag,
-                                              uint16_t content_type);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Copy an packet metadata set
- 
- @param source the packet metadata set to copy
- @return a newly packet metadata set holding a deep copy of the properties of 'source'
- */
-wickr_packet_meta_t *wickr_packet_meta_copy(const wickr_packet_meta_t *source);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Destroy packet metadata set
- 
- @param meta a pointer to the result to destroy. All properties of '*meta' will also be destroyed
- */
-void wickr_packet_meta_destroy(wickr_packet_meta_t **meta);
 
 /**
  
@@ -243,89 +172,6 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
                                                const wickr_key_exchange_t *exchange,
                                                const wickr_buffer_t *psk,
                                                uint8_t version);
-
-
-/**
- @ingroup wickr_protocol
- @struct wickr_payload
- @brief The encrypted body content of a Wickr packet
- @var wickr_payload::meta
- protected metadata for the body
- @var wickr_payload::body
- the body content of the message as provided by the sender
- */
-struct wickr_payload {
-    wickr_packet_meta_t *meta;
-    wickr_buffer_t *body;
-};
-
-typedef struct wickr_payload wickr_payload_t;
-
-/**
- @ingroup wickr_protocol
- 
- Create a payload from components
-
- @param meta see 'wickr_payload' property documentation property documentation
- @param body see 'wickr_payload' property documentation property documentation
- @return a newly allocated payload owning the properties passed in
- */
-wickr_payload_t *wickr_payload_create(wickr_packet_meta_t *meta, wickr_buffer_t *body);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Copy a payload
- 
- @param source the payload to copy
- @return a newly allocated payload holding a deep copy of the properties of 'source'
- */
-wickr_payload_t *wickr_payload_copy(const wickr_payload_t *source);
-
-/**
- 
- @ingroup wickr_protocol
- 
- Destroy a payload
- 
- @param payload a pointer to the payload to destroy. All properties of '*payload' will also be destroyed
- */
-void wickr_payload_destroy(wickr_payload_t **payload);
-
-/**
- @ingroup wickr_protocol
- 
- Serialize-Then-Encrypt a payload
- 
- Payloads are serialized using protocol buffers (message.pb-c.h)
- NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
-
-
- @param payload the payload to encrypt
- @param engine a crypto engine capable of encryption using payload_key
- @param payload_key the key to use for encryption
- @return an encrypted payload
- */
-wickr_cipher_result_t *wickr_payload_encrypt(const wickr_payload_t *payload,
-                                             const wickr_crypto_engine_t *engine,
-                                             const wickr_cipher_key_t *payload_key);
-
-/**
- @ingroup wickr_protocol
- 
- Decrypt-Then-Deserialize
- 
- NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
-
- @param engine a crypto engine capable of decryption using payload_key
- @param cipher_result an encrypted payload
- @param payload_key the key to use for decrypting 'cipher_result'
- @return a payload or NULL if an incorrect key is provided
- */
-wickr_payload_t *wickr_payload_create_from_cipher(const wickr_crypto_engine_t *engine,
-                                                  const wickr_cipher_result_t *cipher_result,
-                                                  const wickr_cipher_key_t *payload_key);
 
 /**
  @ingroup wickr_protocol

@@ -107,5 +107,7 @@
 %include node.i
 %include key_exchange.i
 %include ecdh_cipher.i
+%include payload.i
+%include packet_meta.i
 %include wickr_ctx.i
 #endif

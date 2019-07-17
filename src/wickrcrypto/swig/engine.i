@@ -14,10 +14,10 @@
 
 %immutable;
 
-struct wickr_crypto_engine{
-  
-  %extend {
+%include "wickrcrypto/crypto_engine.h"
 
+%extend struct wickr_crypto_engine {
+  
     %newobject random_bytes;
     %newobject random_key;
     %newobject cipher;
@@ -109,9 +109,4 @@ struct wickr_crypto_engine{
       return wickr_crypto_engine_kdf_decipher(&engine, input_buffer, passphrase);
     }
 
-
-  } 
-
 };
-
-%include "wickrcrypto/crypto_engine.h"
