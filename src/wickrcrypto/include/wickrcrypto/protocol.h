@@ -244,40 +244,6 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
                                                const wickr_buffer_t *psk,
                                                uint8_t version);
 
-/**
- @ingroup wickr_protocol
- 
- Serialize-Then-Encrypt a packet key exchange set
- 
- The packet key exchange set is serialized using protocol buffers (message.pb-c.h)
- 
- NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
-
-
- @param exchange_set the key_exchange_set to encrypt
- @param engine a crypto engine capable of encryption using header_key
- @param header_key the key to encrypt the key exchange set with
- @return an encrypted key exchange set
- */
-wickr_cipher_result_t *wickr_key_exchange_set_encrypt(const wickr_key_exchange_set_t *exchange_set,
-                                                      const wickr_crypto_engine_t *engine,
-                                                      const wickr_cipher_key_t *header_key);
-
-/**
- @ingroup wickr_protocol
- 
- Decrypt-Then-Deserialize a packet key exchange set
- 
- NOTE: This is a low level function that should not be called directly from this API if it can be avoided. Please use the 'wickr_ctx' API instead since it is a higher level and safer set of functions
-
- @param engine a crypto engine capable of decryption using header_key
- @param cipher_result an encrypted key exchange set
- @param header_key the key to use for decryption
- @return a decrypted key exchange set or NULL if the decryption key is incorrect
- */
-wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_cipher(const wickr_crypto_engine_t *engine,
-                                                                    const wickr_cipher_result_t *cipher_result,
-                                                                    const wickr_cipher_key_t *header_key);
 
 /**
  @ingroup wickr_protocol

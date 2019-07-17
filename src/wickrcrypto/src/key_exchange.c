@@ -422,3 +422,43 @@ wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_buffer(const wickr_
     
     return exchange_set;
 }
+
+wickr_cipher_result_t *wickr_key_exchange_set_encrypt(const wickr_key_exchange_set_t *exchange_set,
+                                                      const wickr_crypto_engine_t *engine,
+                                                      const wickr_cipher_key_t *header_key)
+{
+    if (!exchange_set || !engine || !header_key) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *serialized_exchange = wickr_key_exchange_set_serialize(exchange_set);
+    
+    if (!serialized_exchange) {
+        return NULL;
+    }
+    
+    wickr_cipher_result_t *cipher_result = engine->wickr_crypto_engine_cipher_encrypt(serialized_exchange, NULL, header_key, NULL);
+    wickr_buffer_destroy_zero(&serialized_exchange);
+    
+    return cipher_result;
+}
+
+wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_cipher(const wickr_crypto_engine_t *engine,
+                                                                    const wickr_cipher_result_t *cipher_result,
+                                                                    const wickr_cipher_key_t *header_key)
+{
+    if (!engine || !cipher_result || !header_key) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *decrypted_exchange = engine->wickr_crypto_engine_cipher_decrypt(cipher_result, NULL, header_key, true);
+    
+    if (!decrypted_exchange) {
+        return NULL;
+    }
+    
+    wickr_key_exchange_set_t *deserialized_exchange = wickr_key_exchange_set_create_from_buffer(engine, decrypted_exchange);
+    wickr_buffer_destroy(&decrypted_exchange);
+    
+    return deserialized_exchange;
+}
