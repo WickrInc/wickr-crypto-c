@@ -40,22 +40,22 @@ matrix:
       - FIPS=TRUE
       - TESTS=TRUE
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - TESTS=true
       - FIPS=FALSE
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - TESTS=true
       - FIPS=TRUE
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - IOS=true
       - FIPS=false
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - IOS=true
       - FIPS=true
@@ -96,7 +96,7 @@ matrix:
       node_js:
         - "node"
         - "lts/*" 
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - NODE=true
     - os: linux
@@ -108,7 +108,7 @@ matrix:
     - os: osx
       sudo: required
       jdk: oraclejdk8
-      osx_image: xcode9.4
+      osx_image: xcode11
       env:
       - JAVA=true
       - TESTS=true
