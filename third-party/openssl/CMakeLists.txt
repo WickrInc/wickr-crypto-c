@@ -1,6 +1,9 @@
-
 option(FIPS "Build OpenSSL in fips mode" OFF)
 option(OPENSSL_102 "Use OpenSSL 1.0.2 instead of OpenSSL 1.1.1" OFF)
+
+if (BUILD_NODE AND (FIPS OR BUILD_OPENSSL))
+    message(WARNING "Node exports all of the openssl symbols, we are forced to use their versions")
+endif ()
 
 # FIPS is only supported on OPENSSL 1.0.2
 if (FIPS)
@@ -14,13 +17,21 @@ if (OPENSSL_102 AND NOT BUILD_OPENSSL)
 endif ()
 
 if (NOT BUILD_OPENSSL)
-    include(FindOpenSSL)
 
-    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
-        if (OPENSSL_AUTO_BUILD)
-            set(BUILD_OPENSSL TRUE)
-        else ()
-            Message(FATAL_ERROR "OpenSSL was not found")
+    if (BUILD_NODE)
+        include(FindNode)
+        nodejs_init()
+        message(STATUS "Using NodeJS OpenSSL: ${NODEJS_INCLUDE_DIRS}")
+        set(OPENSSL_INCLUDE_DIR "${NODEJS_INCLUDE_DIRS}" CACHE INTERNAL "OpenSSL NodeJS Headers")
+    else ()
+        include(FindOpenSSL)
+
+        if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
+            if (OPENSSL_AUTO_BUILD)
+                set(BUILD_OPENSSL TRUE)
+            else ()
+                Message(FATAL_ERROR "OpenSSL was not found")
+            endif ()
         endif ()
     endif ()
 endif ()
@@ -31,7 +42,13 @@ else ()
     add_subdirectory(1.1.1)
 endif ()
 
+execute_process (
+    COMMAND bash -c "cat ${OPENSSL_INCLUDE_DIR}/openssl/opensslv.h | grep \"OPENSSL_VERSION_TEXT\""
+    OUTPUT_VARIABLE OPENSSL_VERSION
+)
+
 Message(STATUS "Using OpenSSL: ${OPENSSL_ROOT_DIR}")
+Message(STATUS "OpenSSL version: ${OPENSSL_VERSION}")
 Message(STATUS "OpenSSL include: ${OPENSSL_INCLUDE_DIR}")
 Message(STATUS "OpenSSL libraries: ${OPENSSL_LIBRARIES}")
 Message(STATUS "OpenSSL libcrypto: ${OPENSSL_CRYPTO_LIBRARY}")
