@@ -9,6 +9,6 @@ install_manifest.txt
 CTestTestfile.cmake
 .DS_Store
 build*/
-node/
+/node/
 node_modules/
 pod_deploy/

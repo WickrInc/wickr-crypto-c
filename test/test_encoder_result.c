@@ -2,7 +2,7 @@
 #include "test_encoder_result.h"
 #include "encoder_result.h"
 
-DESCRIBE(encoder_result, "wickr_encoder_result")
+DESCRIBE(wickr_encoder_result, "wickr_encoder_result")
 {
     wickr_crypto_engine_t test_engine = wickr_crypto_engine_get_default();
     
@@ -17,10 +17,18 @@ DESCRIBE(encoder_result, "wickr_encoder_result")
     wickr_packet_t *test_packet = wickr_packet_create(CURRENT_PACKET_VERSION, test_content, test_signature);
     
     /* Test Encoder Result */
-    wickr_encoder_result_t *test_encoder_result = wickr_encoder_result_create(test_packet_key, test_packet);
+    wickr_encoder_result_t *test_encoder_result;
     
     IT("can be created from it's components")
     {
+        /* Negative cases */
+        SHOULD_BE_NULL(wickr_encoder_result_create(NULL, NULL));
+        SHOULD_BE_NULL(wickr_encoder_result_create(NULL, test_packet));
+        SHOULD_BE_NULL(wickr_encoder_result_create(test_packet_key, NULL));
+        
+        /* Positive case */
+        test_encoder_result = wickr_encoder_result_create(test_packet_key, test_packet);
+        
         SHOULD_EQUAL(test_encoder_result->packet, test_packet);
         SHOULD_EQUAL(test_encoder_result->packet_key, test_packet_key);
     }
