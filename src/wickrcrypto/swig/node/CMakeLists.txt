@@ -19,9 +19,7 @@ if (APPLE AND NOT IOS)
         TARGET wickrcryptoswig 
         POST_BUILD 
         COMMAND install_name_tool -id "@rpath/wickrcrypto.node" $<TARGET_FILE:wickrcryptoswig>
-        COMMAND install_name_tool -change "${OPENSSL_CRYPTO_SHARED}" "@rpath/libcrypto.1.1.dylib" $<TARGET_FILE:wickrcryptoswig>
         COMMAND install_name_tool -add_rpath "@loader_path" $<TARGET_FILE:wickrcryptoswig>
-        COMMAND install_name_tool -id "@rpath/libcrypto.1.1.dylib" ${OPENSSL_CRYPTO_SHARED}
     )
 endif ()
 
