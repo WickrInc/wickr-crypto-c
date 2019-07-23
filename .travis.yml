@@ -4,6 +4,9 @@ env:
   global:
     - secure: "IQxHT3BNaaNeKhqx08zsVW2we5oh3bjlKIVsIaYkN5CSM4ErVEFV5lncXloHXN5RtNxpZ0I3Mo11MuwF5LH+/4K9j37a4pQgU6R66Ok7OyanWYcPPfQLwXfQIO1/SD/NKgSGp6ob1C2wxLno040BHUOEf92wrNUxBJe6wwGBE6kuo5IuE+73lySI2rwacEu5Op0B2X1/SgpDF9Y5e31kZw6jh65jDh/slMJnzl5/R7X/VC7eDY9JfM18/4JMnuVY0Larzo5Zu5bCABXBhywMaEaUCFWnWP4PYu4ato697zBGOToppR2EH15lu8pD3HxPp0IR3SfsPjIdKt+nXkWFvJdZMS533GK1FZV6AaZxNFV+7nly6jnGndDdA9/y8oNs6tc0AKaKbAp378n1bNMY26cUfs+lZmzv24PYuob8q/kO6X2r1BTavZ5ScRGrKibtwZ/WLpVOuo/2hZxDdHc2UatlgTXL3f38ptD5HdPiLfMKfXmVaJVP2PMYudfwCoDXkbtNrQYWL86FwjC0BA7/kjZivNeMrt4uWP8RLpjTvXRtjUgqQRWZaok99eamQ0z9Yf+ehoSTTO3Aevv0qyD19Dopd/qEJnt+K/zBhQFbX61/MA46rE9orn2HJMOlabTaQTmZxE9cdobWwwbZWaTIhvfgQJHeOmZF6zdtuASvJ+M="
     - secure: "UNweCnb3OYt0KsLkACJeqMvUkD7Afb0+bgW6GnZT27R9OgYruMvthRWUTZ3m8AkXlME5+LYbTatXUyDCxpysyoZfLzZLekgw9mU1GUsXAWRqK2QSOcMzpfg6aNYnhEJdTz8+5ansByaapuzvvYuwMDKF92Sbwar5j1y3HvwSIyZAKI+hIC5wwH5EVGiseomAHuNGZ7SXBfHKH03LxnePAjssGxLkC5eMm2W0PbLBT2EghWGEKqEUrNCSEPCxsxMFiOxHXVfL4OrgdQLNHmCOnQrWIXlx+Bm5PqEFQx5O/G9l7OqzudOyjRB1k+geuJ4mzmxzA1dAFWe2jtVQnmEHnX7Q2BhY0RngMsohkQtkvclPG4Nl2JvBpEo9bg+E6fnkG87PMklz40eKktdKwm0xXf+twYDEUs/S7bbzgOXr4bvk/yMqjn0VJN34s/wVZpVkr/osf0S6+OZKx0SixLWw1t39nqK68RXxgk4GYyCcV9EKa1DqYIABX3QSADWKWuq+bOg3kOhhUZaAZateiaKCKTEMVxpE+RO+O9FlH79I4v4g85JYFtopAz9FfWBLhh14bLPrY5aAmyi/jP7ccED0p7c3ela+6NgTUJSNRXBj90BbJUsoUAMjsxTRap9Tq3V51ooxE9VErOSiQX8HzHicGhRB0t7rqXVgOw+beJCn4rE="
+     
+services:
+  - docker
 
 matrix:
   include:
@@ -91,6 +94,11 @@ matrix:
         - "lts/*" 
       env:
       - NODE=true
+    - os: linux
+      dist: trusty
+      if: tag IS present
+      env:
+      - NODE_DISTRO=true
     - os: osx
       sudo: required
       node_js:
@@ -137,9 +145,11 @@ script:
             npm install --build-from-source
             npm test
             export PATH=`pwd`/node_modules/.bin/:$PATH
-            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp --target_platform='ubuntu_trusty' package publish; fi
+            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
        elif [[ ! -z "${JAVA}" ]]; then
             cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_JAVA=true ../
+       elif [[ ! -z "${NODE_DISTRO}" ]]; then
+            cd .. && ./build_node_dist.sh
        else
             cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DFIPS=${FIPS} -DBUILD_TESTS=true ../
        fi
@@ -160,5 +170,5 @@ script:
            cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release -DFIPS=${FIPS} -DBUILD_TESTS=true ../
        fi
    fi
- - if [[ -z ${NODE} ]]; then make; fi
+ - if [[ -z ${NODE} && -z ${NODE_DISTRO} ]]; then make; fi
  - if [[ ! -z ${TESTS} ]]; then env CTEST_OUTPUT_ON_FAILURE=1 make test; fi
