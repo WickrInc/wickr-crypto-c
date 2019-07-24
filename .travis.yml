@@ -16,7 +16,6 @@ matrix:
       compiler: clang
       env:
       - OPENSSL="1.0.2"
-      - TESTS=true
       - FIPS=FALSE
     - os: linux
       dist: trusty
@@ -24,7 +23,6 @@ matrix:
       compiler: clang
       env:
       - OPENSSL="1.1.0"
-      - TESTS=true
       - FIPS=FALSE
     - os: linux
       dist: trusty
@@ -32,7 +30,6 @@ matrix:
       compiler: clang
       env:
       - OPENSSL="BUILD"
-      - TESTS=true
       - FIPS=FALSE
     - os: linux
       dist: trusty
@@ -41,16 +38,13 @@ matrix:
       env:
       - OPENSSL="BUILD"
       - FIPS=TRUE
-      - TESTS=TRUE
     - os: osx
       osx_image: xcode11
       env:
-      - TESTS=true
       - FIPS=FALSE
     - os: osx
       osx_image: xcode11
       env:
-      - TESTS=true
       - FIPS=TRUE
     - os: osx
       osx_image: xcode11
@@ -66,26 +60,7 @@ matrix:
       dist: trusty
       sudo: required
       env:
-      - FIPS=FALSE
-      - ANDROID="armeabi-v7a"
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
-      - FIPS=FALSE
-      - ANDROID="arm64-v8a"
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
-      - FIPS=FALSE
-      - ANDROID="x86"
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
-      - FIPS=FALSE
-      - ANDROID="x86_64"
+      - ANDROID=true
     - os: linux
       dist: trusty
       sudo: required
@@ -112,14 +87,14 @@ matrix:
       jdk: oraclejdk8
       env:
       - JAVA=true
-      - TESTS=true
+      - FIPS=false
     - os: osx
       sudo: required
       jdk: oraclejdk8
       osx_image: xcode11
       env:
       - JAVA=true
-      - TESTS=true
+      - FIPS=false
   exclude:
     - compiler: clang
 
@@ -129,46 +104,25 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo apt-get install openssl -y; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
-  - if [[ ! -z "${ANDROID}" ]]; then wget -O $HOME/ndk.zip https://dl.google.com/android/repository/android-ndk-r19c-linux-x86_64.zip; unzip $HOME/ndk.zip -d $HOME/ndk >/dev/null; fi
-  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/swig/swig.git; cd swig; git checkout -t origin/rel-4.0.0; ./autogen.sh; ./configure; make && sudo make install; cd ../; fi
+  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/swig/swig.git; cd swig; git checkout -t origin/rel-4.0.0; ./autogen.sh; ./configure; make -j2 && sudo make install; cd ../; fi
+  - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
+  - if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake"; fi
 
 script:
- - mkdir build;
- - cd build;
- - |
-   if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-       if [[ ! -z "${ANDROID}" ]]; then
-            export ANDROID_NDK_HOME=$HOME/ndk/android-ndk-r19c
-            cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_OPENSSL=true -DANDROID_NATIVE_API_LEVEL=21  -DANDROID_ABI=${ANDROID} ../
-       elif [[ ! -z "${NODE}" ]]; then
-            cd ..
-            npm install --build-from-source
-            npm test
-            export PATH=`pwd`/node_modules/.bin/:$PATH
-            if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
-       elif [[ ! -z "${JAVA}" ]]; then
-            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_JAVA=true ../
-       elif [[ ! -z "${NODE_DISTRO}" ]]; then
-            cd .. && ./build_node_dist.sh
-       else
-            cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DFIPS=${FIPS} -DBUILD_TESTS=true ../
-       fi
-   fi 
- - |
-   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-       if [[ ! -z "${IOS}" ]]; then 
-           cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake -DFIPS=${FIPS} -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release ../
-       elif [[ ! -z "${NODE}" ]]; then
-           cd ..
-           npm install --build-from-source
-           npm test
-           export PATH=`pwd`/node_modules/.bin/:$PATH
-           if [ ! -z "$TRAVIS_TAG" ]; then node-pre-gyp package publish; fi
-       elif [[ ! -z "${JAVA}" ]]; then
-           cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DBUILD_TESTS=true -DBUILD_OPENSSL=true -DBUILD_JAVA=true ../
-       else
-           cmake -DBUILD_OPENSSL=true -DCMAKE_BUILD_TYPE=Release -DFIPS=${FIPS} -DBUILD_TESTS=true ../
-       fi
-   fi
- - if [[ -z ${NODE} && -z ${NODE_DISTRO} ]]; then make; fi
- - if [[ ! -z ${TESTS} ]]; then env CTEST_OUTPUT_ON_FAILURE=1 make test; fi
+  - |
+      if [[ ! -z "${ANDROID}" ]]; then
+        ./build_android_docker.sh
+      elif [[ ! -z "${NODE}" ]]; then
+        npm install --build-from-source
+        npm test
+      elif [[ ! -z "${NODE_DISTRO}" ]]; then
+        cd .. && ./build_node_dist.sh
+      else
+        mkdir build && cd build
+        cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DFIPS=${FIPS} -DBUILD_TESTS=true ../
+        make 
+        if [[ -z "${IOS}" ]]; then make test; fi
+      fi
+
+
+
