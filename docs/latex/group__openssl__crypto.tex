@@ -1,5 +1,5 @@
 \hypertarget{group__openssl__crypto}{}\section{Open\+S\+SL Crypto Engine}
-\label{group__openssl__crypto}\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
+\label{group__openssl__crypto}\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,9 +46,9 @@ bool \mbox{\hyperlink{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{group__openssl__crypto_ga75eaf118b28fb76e75579d0a74517b18}\label{group__openssl__crypto_ga75eaf118b28fb76e75579d0a74517b18}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+aes256\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+decrypt}}
-\index{openssl\+\_\+aes256\+\_\+decrypt@{openssl\+\_\+aes256\+\_\+decrypt}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+decrypt()}{openssl\_aes256\_decrypt()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_aes256\_decrypt@{openssl\_aes256\_decrypt}}
+\index{openssl\_aes256\_decrypt@{openssl\_aes256\_decrypt}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_aes256\_decrypt()}{openssl\_aes256\_decrypt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+aes256\+\_\+decrypt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{cipher\+\_\+result,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{aad,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key,  }\item[{bool}]{only\+\_\+auth\+\_\+ciphers }\end{DoxyParamCaption})}
 
 Decrypt a cipher\+\_\+result using A\+E\+S256 Currently supports A\+E\+S256-\/\+G\+CM and A\+E\+S256-\/\+C\+TR cipher modes
@@ -68,9 +68,9 @@ Decrypt a cipher\+\_\+result using A\+E\+S256 Currently supports A\+E\+S256-\/\+
 a buffer containing decrypted bytes. If the A\+ES mode is authenticated, N\+U\+LL will be returned if key is incorrect. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gaf51493d43d3572265abba27e2b3fbc54}\label{group__openssl__crypto_gaf51493d43d3572265abba27e2b3fbc54}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+aes256\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+encrypt}}
-\index{openssl\+\_\+aes256\+\_\+encrypt@{openssl\+\_\+aes256\+\_\+encrypt}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+aes256\+\_\+encrypt()}{openssl\_aes256\_encrypt()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_aes256\_encrypt@{openssl\_aes256\_encrypt}}
+\index{openssl\_aes256\_encrypt@{openssl\_aes256\_encrypt}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_aes256\_encrypt()}{openssl\_aes256\_encrypt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ openssl\+\_\+aes256\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{plaintext,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{aad,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{iv }\end{DoxyParamCaption})}
 
 Encrypt a buffer using A\+E\+S256 Currently supports A\+E\+S256-\/\+G\+CM and A\+E\+S256-\/\+C\+TR cipher modes
@@ -92,9 +92,9 @@ N\+O\+TE\+: IV is randomly chosen using \textquotesingle{}openssl\+\_\+crypto\+\
 a cipher result containing encrypted bytes, or N\+U\+LL if the cipher mode fails or is not supported 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga9177055e488f0163d3eb946799df5a67}\label{group__openssl__crypto_ga9177055e488f0163d3eb946799df5a67}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+cipher\+\_\+key\+\_\+random@{openssl\+\_\+cipher\+\_\+key\+\_\+random}}
-\index{openssl\+\_\+cipher\+\_\+key\+\_\+random@{openssl\+\_\+cipher\+\_\+key\+\_\+random}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+cipher\+\_\+key\+\_\+random()}{openssl\_cipher\_key\_random()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_cipher\_key\_random@{openssl\_cipher\_key\_random}}
+\index{openssl\_cipher\_key\_random@{openssl\_cipher\_key\_random}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_cipher\_key\_random()}{openssl\_cipher\_key\_random()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}}$\ast$ openssl\+\_\+cipher\+\_\+key\+\_\+random (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher }\end{DoxyParamCaption})}
 
 Generate a secure random cipher key for a particular cipher Currently supports A\+E\+S256-\/\+G\+CM and A\+E\+S256-\/\+C\+TR cipher modes
@@ -108,9 +108,9 @@ Generate a secure random cipher key for a particular cipher Currently supports A
 a cipher key containing key material generated by \textquotesingle{}openssl\+\_\+crypto\+\_\+random\textquotesingle{} or N\+U\+LL if random byte generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gadfe740d19f9f2096b818553e90dae0d7}\label{group__openssl__crypto_gadfe740d19f9f2096b818553e90dae0d7}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+crypto\+\_\+random@{openssl\+\_\+crypto\+\_\+random}}
-\index{openssl\+\_\+crypto\+\_\+random@{openssl\+\_\+crypto\+\_\+random}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+crypto\+\_\+random()}{openssl\_crypto\_random()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_crypto\_random@{openssl\_crypto\_random}}
+\index{openssl\_crypto\_random@{openssl\_crypto\_random}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_crypto\_random()}{openssl\_crypto\_random()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+crypto\+\_\+random (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 Generate secure random bytes using the rand\+\_\+bytes function from Open\+S\+SL
@@ -124,9 +124,9 @@ Generate secure random bytes using the rand\+\_\+bytes function from Open\+S\+SL
 a buffer containing \textquotesingle{}len\textquotesingle{} secure random bytes or N\+U\+LL if random byte generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gaf1faa509e06c188acfbdf43e2197c61a}\label{group__openssl__crypto_gaf1faa509e06c188acfbdf43e2197c61a}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+decrypt\+\_\+file@{openssl\+\_\+decrypt\+\_\+file}}
-\index{openssl\+\_\+decrypt\+\_\+file@{openssl\+\_\+decrypt\+\_\+file}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+decrypt\+\_\+file()}{openssl\_decrypt\_file()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_decrypt\_file@{openssl\_decrypt\_file}}
+\index{openssl\_decrypt\_file@{openssl\_decrypt\_file}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_decrypt\_file()}{openssl\_decrypt\_file()}}
 {\footnotesize\ttfamily bool openssl\+\_\+decrypt\+\_\+file (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in\+\_\+file,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key,  }\item[{F\+I\+LE $\ast$}]{out\+\_\+file,  }\item[{bool}]{only\+\_\+auth\+\_\+ciphers }\end{DoxyParamCaption})}
 
 Decrypt a file with A\+E\+S256
@@ -148,9 +148,9 @@ Note\+: Unauthenticated modes will always succeed and the contents of \textquote
 true if the decryption operation succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gab2cc137ada900eba89796857603cd8cd}\label{group__openssl__crypto_gab2cc137ada900eba89796857603cd8cd}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+key\+\_\+import@{openssl\+\_\+ec\+\_\+key\+\_\+import}}
-\index{openssl\+\_\+ec\+\_\+key\+\_\+import@{openssl\+\_\+ec\+\_\+key\+\_\+import}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+key\+\_\+import()}{openssl\_ec\_key\_import()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_ec\_key\_import@{openssl\_ec\_key\_import}}
+\index{openssl\_ec\_key\_import@{openssl\_ec\_key\_import}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_ec\_key\_import()}{openssl\_ec\_key\_import()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$ openssl\+\_\+ec\+\_\+key\+\_\+import (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{bool}]{is\+\_\+private }\end{DoxyParamCaption})}
 
 Import an Elliptic Curve key from a buffer
@@ -166,9 +166,9 @@ Import an Elliptic Curve key from a buffer
 an Elliptic Curve key pair parsed from buffer or N\+U\+LL if buffer does not contain a valid key, or is\+\_\+private is incorrectly set 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga75a01a740d558bfcc0f10920266cd9d5}\label{group__openssl__crypto_ga75a01a740d558bfcc0f10920266cd9d5}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+rand\+\_\+key@{openssl\+\_\+ec\+\_\+rand\+\_\+key}}
-\index{openssl\+\_\+ec\+\_\+rand\+\_\+key@{openssl\+\_\+ec\+\_\+rand\+\_\+key}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+rand\+\_\+key()}{openssl\_ec\_rand\_key()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_ec\_rand\_key@{openssl\_ec\_rand\_key}}
+\index{openssl\_ec\_rand\_key@{openssl\_ec\_rand\_key}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_ec\_rand\_key()}{openssl\_ec\_rand\_key()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}}$\ast$ openssl\+\_\+ec\+\_\+rand\+\_\+key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ec__curve}{wickr\+\_\+ec\+\_\+curve\+\_\+t}}}]{curve }\end{DoxyParamCaption})}
 
 Generate a random Elliptic Curve keypair Supported curve is currently limited to N\+I\+ST P521
@@ -182,9 +182,9 @@ Generate a random Elliptic Curve keypair Supported curve is currently limited to
 a random Elliptic Curve key pair or N\+U\+LL if the random generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gab32cef5c789ee1992afae98a81b65823}\label{group__openssl__crypto_gab32cef5c789ee1992afae98a81b65823}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+sign@{openssl\+\_\+ec\+\_\+sign}}
-\index{openssl\+\_\+ec\+\_\+sign@{openssl\+\_\+ec\+\_\+sign}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+sign()}{openssl\_ec\_sign()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_ec\_sign@{openssl\_ec\_sign}}
+\index{openssl\_ec\_sign@{openssl\_ec\_sign}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_ec\_sign()}{openssl\_ec\_sign()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}}$\ast$ openssl\+\_\+ec\+\_\+sign (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{ec\+\_\+signing\+\_\+key,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data\+\_\+to\+\_\+sign,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{digest\+\_\+mode }\end{DoxyParamCaption})}
 
 Sign data using an Elliptic Curve key Data is hashed before signing. This function will calculate E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign))
@@ -202,9 +202,9 @@ Sign data using an Elliptic Curve key Data is hashed before signing. This functi
 an ecdsa result containing the output of E\+C\+D\+S\+A(\+S\+H\+A2(data\+\_\+to\+\_\+sign)) or N\+U\+LL if the \textquotesingle{}ec\+\_\+signing\+\_\+key\textquotesingle{} is not a private key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga1e2b3f17c67e97360b616d0d673767f7}\label{group__openssl__crypto_ga1e2b3f17c67e97360b616d0d673767f7}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+ec\+\_\+verify@{openssl\+\_\+ec\+\_\+verify}}
-\index{openssl\+\_\+ec\+\_\+verify@{openssl\+\_\+ec\+\_\+verify}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+ec\+\_\+verify()}{openssl\_ec\_verify()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_ec\_verify@{openssl\_ec\_verify}}
+\index{openssl\_ec\_verify@{openssl\_ec\_verify}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_ec\_verify()}{openssl\_ec\_verify()}}
 {\footnotesize\ttfamily bool openssl\+\_\+ec\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$}]{signature,  }\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{ec\+\_\+public\+\_\+key,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data\+\_\+to\+\_\+verify }\end{DoxyParamCaption})}
 
 Verify E\+C\+D\+SA signatures
@@ -222,9 +222,9 @@ Verify E\+C\+D\+SA signatures
 true if \textquotesingle{}signature\textquotesingle{} can be verified by \textquotesingle{}ec\+\_\+public\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga04773a29991559a4004c23cc4e8badd7}\label{group__openssl__crypto_ga04773a29991559a4004c23cc4e8badd7}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+enable\+\_\+fips\+\_\+mode@{openssl\+\_\+enable\+\_\+fips\+\_\+mode}}
-\index{openssl\+\_\+enable\+\_\+fips\+\_\+mode@{openssl\+\_\+enable\+\_\+fips\+\_\+mode}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+enable\+\_\+fips\+\_\+mode()}{openssl\_enable\_fips\_mode()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_enable\_fips\_mode@{openssl\_enable\_fips\_mode}}
+\index{openssl\_enable\_fips\_mode@{openssl\_enable\_fips\_mode}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_enable\_fips\_mode()}{openssl\_enable\_fips\_mode()}}
 {\footnotesize\ttfamily bool openssl\+\_\+enable\+\_\+fips\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 Enable F\+I\+PS mode
@@ -233,9 +233,9 @@ Enable F\+I\+PS mode
 true if openssl fips enable is allowed 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}\label{group__openssl__crypto_ga178fa1f33ad2767c27411c3ebcdd3ca0}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}}
-\index{openssl\+\_\+encrypt\+\_\+file@{openssl\+\_\+encrypt\+\_\+file}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+encrypt\+\_\+file()}{openssl\_encrypt\_file()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_encrypt\_file@{openssl\_encrypt\_file}}
+\index{openssl\_encrypt\_file@{openssl\_encrypt\_file}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_encrypt\_file()}{openssl\_encrypt\_file()}}
 {\footnotesize\ttfamily bool openssl\+\_\+encrypt\+\_\+file (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in\+\_\+file,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{key,  }\item[{F\+I\+LE $\ast$}]{out\+\_\+file }\end{DoxyParamCaption})}
 
 Encrypt a file with A\+E\+S256
@@ -253,9 +253,9 @@ Encrypt a file with A\+E\+S256
 true if encryption succeeds, and \textquotesingle{}out\+\_\+file\textquotesingle{} can be written 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gac18a3e234621caaabf695715fb22d950}\label{group__openssl__crypto_gac18a3e234621caaabf695715fb22d950}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+gen\+\_\+shared\+\_\+secret@{openssl\+\_\+gen\+\_\+shared\+\_\+secret}}
-\index{openssl\+\_\+gen\+\_\+shared\+\_\+secret@{openssl\+\_\+gen\+\_\+shared\+\_\+secret}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+gen\+\_\+shared\+\_\+secret()}{openssl\_gen\_shared\_secret()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_gen\_shared\_secret@{openssl\_gen\_shared\_secret}}
+\index{openssl\_gen\_shared\_secret@{openssl\_gen\_shared\_secret}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_gen\_shared\_secret()}{openssl\_gen\_shared\_secret()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+gen\+\_\+shared\+\_\+secret (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{local,  }\item[{const \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{peer }\end{DoxyParamCaption})}
 
 Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters
@@ -271,9 +271,9 @@ Generate a shared secret given Elliptic Curve Diffie-\/\+Hellman parameters
 a buffer containing the shared secret computed with \textquotesingle{}local\textquotesingle{} private key and \textquotesingle{}peer\textquotesingle{} public key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga788a03002d8c6048401cf0bbc2d48c7a}\label{group__openssl__crypto_ga788a03002d8c6048401cf0bbc2d48c7a}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+hkdf@{openssl\+\_\+hkdf}}
-\index{openssl\+\_\+hkdf@{openssl\+\_\+hkdf}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+hkdf()}{openssl\_hkdf()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_hkdf@{openssl\_hkdf}}
+\index{openssl\_hkdf@{openssl\_hkdf}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_hkdf()}{openssl\_hkdf()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+hkdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{input\+\_\+key\+\_\+material,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{salt,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{info,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{hash\+\_\+mode }\end{DoxyParamCaption})}
 
 Derive a key with H\+M\+AC Key Derivation Function
@@ -293,9 +293,9 @@ Derive a key with H\+M\+AC Key Derivation Function
 a buffer containing the calculated H\+K\+DF value 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gaeb4574976214a17eb79bbc3d76f573a6}\label{group__openssl__crypto_gaeb4574976214a17eb79bbc3d76f573a6}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+hmac\+\_\+create@{openssl\+\_\+hmac\+\_\+create}}
-\index{openssl\+\_\+hmac\+\_\+create@{openssl\+\_\+hmac\+\_\+create}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+hmac\+\_\+create()}{openssl\_hmac\_create()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_hmac\_create@{openssl\_hmac\_create}}
+\index{openssl\_hmac\_create@{openssl\_hmac\_create}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_hmac\_create()}{openssl\_hmac\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+hmac\+\_\+create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{hmac\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
 
 Generate an H\+M\+AC
@@ -313,9 +313,9 @@ Generate an H\+M\+AC
 a buffer containing the H\+M\+AC of \textquotesingle{}data\textquotesingle{} with \textquotesingle{}hmac\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gafbde176ef6f2b99ff9dab58ad69a9a74}\label{group__openssl__crypto_gafbde176ef6f2b99ff9dab58ad69a9a74}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+hmac\+\_\+verify@{openssl\+\_\+hmac\+\_\+verify}}
-\index{openssl\+\_\+hmac\+\_\+verify@{openssl\+\_\+hmac\+\_\+verify}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+hmac\+\_\+verify()}{openssl\_hmac\_verify()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_hmac\_verify@{openssl\_hmac\_verify}}
+\index{openssl\_hmac\_verify@{openssl\_hmac\_verify}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_hmac\_verify()}{openssl\_hmac\_verify()}}
 {\footnotesize\ttfamily bool openssl\+\_\+hmac\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{hmac\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{mode,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{expected }\end{DoxyParamCaption})}
 
 Verify an H\+M\+AC against an expected result
@@ -335,9 +335,9 @@ Verify an H\+M\+AC against an expected result
 true if \textquotesingle{}expected\textquotesingle{} is equal to the H\+M\+AC of \textquotesingle{}data\textquotesingle{} and \textquotesingle{}hmac\+\_\+key\textquotesingle{} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}\label{group__openssl__crypto_gaed92eb2b892df254af6099cd472b027a}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+is\+\_\+fips\+\_\+supported@{openssl\+\_\+is\+\_\+fips\+\_\+supported}}
-\index{openssl\+\_\+is\+\_\+fips\+\_\+supported@{openssl\+\_\+is\+\_\+fips\+\_\+supported}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+is\+\_\+fips\+\_\+supported()}{openssl\_is\_fips\_supported()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_is\_fips\_supported@{openssl\_is\_fips\_supported}}
+\index{openssl\_is\_fips\_supported@{openssl\_is\_fips\_supported}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_is\_fips\_supported()}{openssl\_is\_fips\_supported()}}
 {\footnotesize\ttfamily bool openssl\+\_\+is\+\_\+fips\+\_\+supported (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Determine if F\+I\+PS mode is available
@@ -346,9 +346,9 @@ Determine if F\+I\+PS mode is available
 true if openssl fips mode is available 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga19991a9b00d0c383c64935fa2acecda7}\label{group__openssl__crypto_ga19991a9b00d0c383c64935fa2acecda7}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+sha2@{openssl\+\_\+sha2}}
-\index{openssl\+\_\+sha2@{openssl\+\_\+sha2}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+sha2()}{openssl\_sha2()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_sha2@{openssl\_sha2}}
+\index{openssl\_sha2@{openssl\_sha2}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_sha2()}{openssl\_sha2()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+sha2 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{salt,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
 
 Calculate a S\+H\+A2 hash of a buffer using an optional salt value Supported modes of S\+H\+A2 are S\+H\+A256, S\+H\+A384 and S\+H\+A512
@@ -366,9 +366,9 @@ Calculate a S\+H\+A2 hash of a buffer using an optional salt value Supported mod
 a buffer containing the derived hash or N\+U\+LL if the hashing operation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__openssl__crypto_ga12da75115315fbf7394f4791a2eb815c}\label{group__openssl__crypto_ga12da75115315fbf7394f4791a2eb815c}} 
-\index{Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}!openssl\+\_\+sha2\+\_\+file@{openssl\+\_\+sha2\+\_\+file}}
-\index{openssl\+\_\+sha2\+\_\+file@{openssl\+\_\+sha2\+\_\+file}!Open\+S\+S\+L Crypto Engine@{Open\+S\+S\+L Crypto Engine}}
-\subsubsection{\texorpdfstring{openssl\+\_\+sha2\+\_\+file()}{openssl\_sha2\_file()}}
+\index{OpenSSL Crypto Engine@{OpenSSL Crypto Engine}!openssl\_sha2\_file@{openssl\_sha2\_file}}
+\index{openssl\_sha2\_file@{openssl\_sha2\_file}!OpenSSL Crypto Engine@{OpenSSL Crypto Engine}}
+\subsubsection{\texorpdfstring{openssl\_sha2\_file()}{openssl\_sha2\_file()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ openssl\+\_\+sha2\+\_\+file (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in\+\_\+file,  }\item[{\mbox{\hyperlink{structwickr__digest}{wickr\+\_\+digest\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
 
 Calculate the S\+H\+A2 hash of a file
