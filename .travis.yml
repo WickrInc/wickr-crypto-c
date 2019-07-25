@@ -116,7 +116,7 @@ script:
         npm install --build-from-source
         npm test
       elif [[ ! -z "${NODE_DISTRO}" ]]; then
-        cd .. && ./build_node_dist.sh
+        ./build_node_dist.sh
       else
         mkdir build && cd build
         cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DFIPS=${FIPS} -DBUILD_TESTS=true ../
