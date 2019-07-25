@@ -23,12 +23,12 @@ def fileName = "${projectName}-${gradle.versionNumber}.aar"
 
 android {
 
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 28
     }
 
     buildTypes {
