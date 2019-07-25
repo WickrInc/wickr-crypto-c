@@ -1,5 +1,5 @@
 \hypertarget{structwickr__parse__result}{}\section{wickr\+\_\+parse\+\_\+result Struct Reference}
-\label{structwickr__parse__result}\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
+\label{structwickr__parse__result}\index{wickr\_parse\_result@{wickr\_parse\_result}}
 
 
 result from parsing an inbound packet  
@@ -29,33 +29,33 @@ result from parsing an inbound packet
 
 \subsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__parse__result_a584d3b94e032f09188ee4006c067c180}\label{structwickr__parse__result_a584d3b94e032f09188ee4006c067c180}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!enc\+\_\+payload@{enc\+\_\+payload}}
-\index{enc\+\_\+payload@{enc\+\_\+payload}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
-\subsubsection{\texorpdfstring{enc\+\_\+payload}{enc\_payload}}
+\index{wickr\_parse\_result@{wickr\_parse\_result}!enc\_payload@{enc\_payload}}
+\index{enc\_payload@{enc\_payload}!wickr\_parse\_result@{wickr\_parse\_result}}
+\subsubsection{\texorpdfstring{enc\_payload}{enc\_payload}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::enc\+\_\+payload}
 
 the encrypted payload of the message, to decrypt the payload you must call \textquotesingle{}wickr\+\_\+decode\+\_\+result\+\_\+from\+\_\+parse\+\_\+result\textquotesingle{} with the private key matching the \textquotesingle{}ephemeral\+\_\+key\+\_\+id\textquotesingle{} from \textquotesingle{}key\+\_\+exchange\textquotesingle{} \mbox{\Hypertarget{structwickr__parse__result_a69a3ee332921b4fdbc0e07dbfa74a8ed}\label{structwickr__parse__result_a69a3ee332921b4fdbc0e07dbfa74a8ed}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!err@{err}}
-\index{err@{err}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
+\index{wickr\_parse\_result@{wickr\_parse\_result}!err@{err}}
+\index{err@{err}!wickr\_parse\_result@{wickr\_parse\_result}}
 \subsubsection{\texorpdfstring{err}{err}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::err}
 
 status of the parse operation \mbox{\Hypertarget{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}\label{structwickr__parse__result_ab33e5d00121c229280bbee814ca7ef5a}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!key\+\_\+exchange@{key\+\_\+exchange}}
-\index{key\+\_\+exchange@{key\+\_\+exchange}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
-\subsubsection{\texorpdfstring{key\+\_\+exchange}{key\_exchange}}
+\index{wickr\_parse\_result@{wickr\_parse\_result}!key\_exchange@{key\_exchange}}
+\index{key\_exchange@{key\_exchange}!wickr\_parse\_result@{wickr\_parse\_result}}
+\subsubsection{\texorpdfstring{key\_exchange}{key\_exchange}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::key\+\_\+exchange}
 
 if requested, a key exchange belonging to your node will be copied to this property and a failed search will lead to a decode error. If not requested key\+\_\+exchange will be N\+U\+LL \mbox{\Hypertarget{structwickr__parse__result_aa35f9328b675b02426fd190ffcd45402}\label{structwickr__parse__result_aa35f9328b675b02426fd190ffcd45402}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!key\+\_\+exchange\+\_\+set@{key\+\_\+exchange\+\_\+set}}
-\index{key\+\_\+exchange\+\_\+set@{key\+\_\+exchange\+\_\+set}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
-\subsubsection{\texorpdfstring{key\+\_\+exchange\+\_\+set}{key\_exchange\_set}}
+\index{wickr\_parse\_result@{wickr\_parse\_result}!key\_exchange\_set@{key\_exchange\_set}}
+\index{key\_exchange\_set@{key\_exchange\_set}!wickr\_parse\_result@{wickr\_parse\_result}}
+\subsubsection{\texorpdfstring{key\_exchange\_set}{key\_exchange\_set}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::key\+\_\+exchange\+\_\+set}
 
 parsed key exchange set for the message after decrypting it with the header key \mbox{\Hypertarget{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}\label{structwickr__parse__result_a989166b5471898853f03b9e9c58f69c0}} 
-\index{wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}!signature\+\_\+status@{signature\+\_\+status}}
-\index{signature\+\_\+status@{signature\+\_\+status}!wickr\+\_\+parse\+\_\+result@{wickr\+\_\+parse\+\_\+result}}
-\subsubsection{\texorpdfstring{signature\+\_\+status}{signature\_status}}
+\index{wickr\_parse\_result@{wickr\_parse\_result}!signature\_status@{signature\_status}}
+\index{signature\_status@{signature\_status}!wickr\_parse\_result@{wickr\_parse\_result}}
+\subsubsection{\texorpdfstring{signature\_status}{signature\_status}}
 {\footnotesize\ttfamily wickr\+\_\+parse\+\_\+result\+::signature\+\_\+status}
 
 status of the message signature 
