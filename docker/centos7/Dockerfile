@@ -8,7 +8,7 @@ ENV NODE_VERSION 10.16.0
 
 RUN yum -y update
 RUN yum -y install epel-release
-RUN yum -y install cmake3 bison gcc gcc-c++ make git autoconf automake
+RUN yum -y install cmake3 bison gcc gcc-c++ make git autoconf automake pcre-devel
 RUN git clone https://github.com/swig/swig.git && cd swig && git checkout rel-4.0.0 && ./autogen.sh && ./configure && make && make install
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 RUN mkdir -p $NVM_DIR && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash

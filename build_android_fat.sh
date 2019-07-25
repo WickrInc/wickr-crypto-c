@@ -1,3 +1,4 @@
+#!/bin/bash
 
 mkdir -p build_android/output_fat && cd build_android
 
