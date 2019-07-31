@@ -32,6 +32,8 @@ bool wickr_node_rotate_keypair(wickr_node_t *node, wickr_ephemeral_keypair_t *ne
     
     wickr_ephemeral_keypair_destroy(&node->ephemeral_keypair);
     
+    node->status = NODE_STATUS_UNKNOWN;
+    
     if (copy) {
         wickr_ephemeral_keypair_t *copy_keypair = wickr_ephemeral_keypair_copy(new_keypair);
         if (!copy_keypair) {
@@ -48,22 +50,19 @@ bool wickr_node_rotate_keypair(wickr_node_t *node, wickr_ephemeral_keypair_t *ne
 
 bool wickr_node_verify_signature_chain(wickr_node_t *node, const wickr_crypto_engine_t *engine)
 {
-    
-    /* If the current id_chain status is unknown, we have never tried to do a validation and must do it now before continuing */
-    if (node->id_chain->status == IDENTITY_CHAIN_STATUS_UNKNOWN) {
-        bool is_valid = wickr_identity_chain_validate(node->id_chain, engine);
-        node->id_chain->status = is_valid ? IDENTITY_CHAIN_STATUS_VALID : IDENTITY_CHAIN_STATUS_INVALID;
-    }
-    
     /* If the id_chain status is invalid, then return false without continuing */
-    if (node->id_chain->status == IDENTITY_CHAIN_STATUS_INVALID) {
+    if (!wickr_identity_chain_validate(node->id_chain, engine)) {
+        node->status = NODE_STATUS_INVALID;
         return false;
     }
     
     /* If the key pair ownership can't be verified by the node signature key in the id_chain, return false */
     if (!wickr_ephemeral_keypair_verify_owner(node->ephemeral_keypair, engine, node->id_chain->node)) {
+        node->status = NODE_STATUS_INVALID;
         return false;
     }
+    
+    node->status = NODE_STATUS_VALID;
     
     return true;
 }
@@ -102,6 +101,8 @@ wickr_node_t *wickr_node_copy(const wickr_node_t *source)
         wickr_identity_chain_destroy(&id_chain_copy);
         wickr_ephemeral_keypair_destroy(&keypair_copy);
     }
+    
+    node_copy->status = source->status;
     
     return node_copy;
 }
