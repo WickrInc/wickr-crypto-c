@@ -260,13 +260,17 @@ wickr_identity_chain_t *wickr_identity_chain_copy(const wickr_identity_chain_t *
     return copy;
 }
 
-bool wickr_identity_chain_validate(const wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine)
+bool wickr_identity_chain_validate(wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine)
 {
     if (!chain || !engine) {
         return false;
     }
     
-    return engine->wickr_crypto_engine_ec_verify(chain->node->signature, chain->root->sig_key, chain->node->sig_key->pub_data);
+    bool is_valid = engine->wickr_crypto_engine_ec_verify(chain->node->signature, chain->root->sig_key, chain->node->sig_key->pub_data);
+    
+    chain->status = is_valid ? IDENTITY_CHAIN_STATUS_VALID : IDENTITY_CHAIN_STATUS_INVALID;
+    
+    return is_valid;
 }
 
 wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain)
