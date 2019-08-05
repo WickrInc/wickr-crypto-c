@@ -100,3 +100,67 @@ wickr_node_t *wickr_node_create_from_proto(const Wickr__Proto__Node *proto, cons
     
     return node;
 }
+
+wickr_buffer_t *wickr_node_make_status_cache(const wickr_node_t *node,
+                                             const wickr_crypto_engine_t *engine)
+{
+    if (!node || !engine) {
+        return NULL;
+    }
+    
+    if (!node->ephemeral_keypair ||
+        !node->id_chain ||
+        !node->ephemeral_keypair->ec_key ||
+        !node->ephemeral_keypair->signature ||
+        !node->id_chain->_status_cache) {
+        return NULL;
+    }
+    
+    uint8_t status_int = (uint8_t)node->status;
+    wickr_buffer_t status_buffer =  { .length = sizeof(uint8_t), .bytes = &status_int };
+    
+    wickr_buffer_t *buffers[] = {
+        node->ephemeral_keypair->ec_key->pub_data,
+        node->ephemeral_keypair->signature->sig_data,
+        &status_buffer
+    };
+    
+    wickr_buffer_t *concat_buffer = wickr_buffer_concat_multi(buffers, BUFFER_ARRAY_LEN(buffers));
+    
+    if (!concat_buffer) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *cache_buffer = engine->wickr_crypto_engine_digest(concat_buffer, NULL, DIGEST_SHA_512);
+    wickr_buffer_destroy(&concat_buffer);
+    
+    return cache_buffer;
+}
+
+bool wickr_node_has_valid_cache(const wickr_node_t *node,
+                                const wickr_crypto_engine_t *engine)
+{
+    if (!node || !engine || !node->_status_cache) {
+        return false;
+    }
+    
+    /* If the underlying identity chain isn't valid, we need to return false to ensure it is recalculated */
+    if (!wickr_identity_chain_has_valid_cache(node->id_chain, engine)) {
+        return false;
+    }
+    
+    wickr_buffer_t *current_cache_value = wickr_node_make_status_cache(node, engine);
+    
+    /* If the cache value has changed, it is no longer valid */
+    bool has_valid_cache = wickr_buffer_is_equal(current_cache_value, node->_status_cache, NULL);
+    wickr_buffer_destroy(&current_cache_value);
+    
+    return has_valid_cache;
+}
+
+void wickr_node_update_status_cache(wickr_node_t *node, const wickr_crypto_engine_t *engine)
+{
+    wickr_buffer_destroy(&node->_status_cache);
+    node->_status_cache = wickr_node_make_status_cache(node, engine);
+}
+

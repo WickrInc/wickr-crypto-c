@@ -87,6 +87,7 @@ struct wickr_node {
     wickr_identity_chain_t *id_chain;
     wickr_ephemeral_keypair_t *ephemeral_keypair;
     wickr_node_status status;
+    wickr_buffer_t *_status_cache;
 };
 
 typedef struct wickr_node wickr_node_t;

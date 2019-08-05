@@ -43,4 +43,11 @@ Wickr__Proto__IdentityChain *wickr_identity_chain_to_proto(const wickr_identity_
 
 Wickr__Proto__IdentityChain *wickr_identity_chain_to_private_proto(const wickr_identity_chain_t *chain);
 
+wickr_buffer_t *wickr_identity_chain_make_status_cache(const wickr_identity_chain_t *chain,
+                                                       const wickr_crypto_engine_t *engine);
+
+bool wickr_identity_chain_has_valid_cache(const wickr_identity_chain_t *chain,
+                                          const wickr_crypto_engine_t *engine);
+
+void wickr_identity_chain_update_status_cache(wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine);
 #endif /* identity_priv_h */

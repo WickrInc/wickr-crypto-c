@@ -111,6 +111,7 @@ struct wickr_identity_chain {
     wickr_identity_chain_status status;
     wickr_identity_t *root;
     wickr_identity_t *node;
+    wickr_buffer_t *_status_cache;
 };
 
 typedef struct wickr_identity_chain wickr_identity_chain_t;

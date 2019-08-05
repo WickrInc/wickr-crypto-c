@@ -1,6 +1,7 @@
 
 #include "node.h"
 #include "private/node_priv.h"
+#include "private/identity_priv.h"
 #include "memory.h"
 
 #define NODE_ARRAY_TYPE_ID 1
@@ -50,21 +51,29 @@ bool wickr_node_rotate_keypair(wickr_node_t *node, wickr_ephemeral_keypair_t *ne
 
 bool wickr_node_verify_signature_chain(wickr_node_t *node, const wickr_crypto_engine_t *engine)
 {
+    if (!node || !engine) {
+        return false;
+    }
+    
+    /* Check to see if we need to recalculate the status of the node */
+    if (wickr_node_has_valid_cache(node, engine)) {
+        return node->status == NODE_STATUS_VALID;
+    }
+    
     /* If the id_chain status is invalid, then return false without continuing */
     if (!wickr_identity_chain_validate(node->id_chain, engine)) {
         node->status = NODE_STATUS_INVALID;
+        wickr_node_update_status_cache(node, engine);
         return false;
     }
     
     /* If the key pair ownership can't be verified by the node signature key in the id_chain, return false */
-    if (!wickr_ephemeral_keypair_verify_owner(node->ephemeral_keypair, engine, node->id_chain->node)) {
-        node->status = NODE_STATUS_INVALID;
-        return false;
-    }
+    bool has_valid_ephemeral_key = wickr_ephemeral_keypair_verify_owner(node->ephemeral_keypair, engine, node->id_chain->node);
     
-    node->status = NODE_STATUS_VALID;
+    node->status = has_valid_ephemeral_key ? NODE_STATUS_VALID : NODE_STATUS_INVALID;
+    wickr_node_update_status_cache(node, engine);
     
-    return true;
+    return node->status == NODE_STATUS_VALID && node->id_chain->status == IDENTITY_CHAIN_STATUS_VALID;
 }
 
 wickr_node_t *wickr_node_copy(const wickr_node_t *source)
@@ -94,14 +103,26 @@ wickr_node_t *wickr_node_copy(const wickr_node_t *source)
         return NULL;
     }
     
+    wickr_buffer_t *status_copy = wickr_buffer_copy(source->_status_cache);
+    
+    if (source->_status_cache && !status_copy) {
+        wickr_buffer_destroy(&dev_id_copy);
+        wickr_identity_chain_destroy(&id_chain_copy);
+        wickr_ephemeral_keypair_destroy(&keypair_copy);
+        return NULL;
+    }
+    
     wickr_node_t *node_copy = wickr_node_create(dev_id_copy, id_chain_copy, keypair_copy);
     
     if (!node_copy) {
         wickr_buffer_destroy(&dev_id_copy);
         wickr_identity_chain_destroy(&id_chain_copy);
         wickr_ephemeral_keypair_destroy(&keypair_copy);
+        wickr_buffer_destroy(&status_copy);
+        return NULL;
     }
     
+    node_copy->_status_cache = status_copy;
     node_copy->status = source->status;
     
     return node_copy;
@@ -116,6 +137,7 @@ void wickr_node_destroy(wickr_node_t **node)
     wickr_buffer_destroy(&(*node)->dev_id);
     wickr_identity_chain_destroy(&(*node)->id_chain);
     wickr_ephemeral_keypair_destroy(&(*node)->ephemeral_keypair);
+    wickr_buffer_destroy(&(*node)->_status_cache);
     wickr_free(*node);
     *node = NULL;
 }
