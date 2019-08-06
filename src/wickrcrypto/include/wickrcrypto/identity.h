@@ -111,6 +111,7 @@ struct wickr_identity_chain {
     wickr_identity_chain_status status;
     wickr_identity_t *root;
     wickr_identity_t *node;
+    wickr_buffer_t *_status_cache;
 };
 
 typedef struct wickr_identity_chain wickr_identity_chain_t;
@@ -287,7 +288,7 @@ wickr_identity_chain_t *wickr_identity_chain_copy(const wickr_identity_chain_t *
  @param engine a crypto engine that supports verifying signatures
  @return true if the 'signature' of the 'node' property of 'chain' can be properly verified with the public 'sig_key' from the 'root' property of 'chain'
  */
-bool wickr_identity_chain_validate(const wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine);
+bool wickr_identity_chain_validate(wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine);
 
 /**
  

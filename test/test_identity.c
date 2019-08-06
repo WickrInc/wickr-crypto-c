@@ -221,10 +221,30 @@ DESCRIBE(identity_chain, "identity chain tests")
     }
     END_IT
     
+    IT("should retest validity with each call")
+    {
+        /* Invalid -> Valid case */
+        test_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
+        SHOULD_BE_TRUE(wickr_identity_chain_validate(test_chain, &engine));
+        SHOULD_EQUAL(test_chain->status, IDENTITY_CHAIN_STATUS_VALID);
+        
+        /* Valid -> Invalid case */
+        
+        wickr_identity_chain_t *test_chain_copy = wickr_identity_chain_copy(test_chain);
+        wickr_ec_key_destroy(&test_chain_copy->root->sig_key);
+        test_chain_copy->root->sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
+        
+        SHOULD_BE_FALSE(wickr_identity_chain_validate(test_chain_copy, &engine));
+        SHOULD_EQUAL(test_chain_copy->status, IDENTITY_CHAIN_STATUS_INVALID);
+        
+        wickr_identity_chain_destroy(&test_chain_copy);
+    }
+    END_IT;
+    
     IT("can be validated")
     {
         SHOULD_BE_TRUE(wickr_identity_chain_validate(test_chain, &engine));
-        SHOULD_EQUAL(test_chain->status, IDENTITY_CHAIN_STATUS_UNKNOWN);
+        SHOULD_EQUAL(test_chain->status, IDENTITY_CHAIN_STATUS_VALID);
         
         wickr_buffer_t *identifier = engine.wickr_crypto_engine_crypto_random(IDENTIFIER_LEN);
         wickr_ec_key_t *sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
@@ -237,7 +257,7 @@ DESCRIBE(identity_chain, "identity chain tests")
         test_chain->node = bad_node;
         
         SHOULD_BE_FALSE(wickr_identity_chain_validate(test_chain, &engine));
-        SHOULD_EQUAL(test_chain->status, IDENTITY_CHAIN_STATUS_UNKNOWN);
+        SHOULD_EQUAL(test_chain->status, IDENTITY_CHAIN_STATUS_INVALID);
     }
     END_IT
     

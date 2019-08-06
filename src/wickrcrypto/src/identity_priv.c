@@ -236,3 +236,62 @@ wickr_identity_chain_t *wickr_identity_chain_create_from_proto(const Wickr__Prot
     
     return chain;
 }
+
+wickr_buffer_t *wickr_identity_chain_make_status_cache(const wickr_identity_chain_t *chain,
+                                                       const wickr_crypto_engine_t *engine)
+{
+    if (!chain || !engine) {
+        return NULL;
+    }
+    
+    if (!chain->root ||
+        !chain->node ||
+        !chain->root->sig_key ||
+        !chain->node->signature ||
+        !chain->node->sig_key) {
+        return NULL;
+    }
+    
+    uint8_t status_int = (uint8_t)chain->status;
+    wickr_buffer_t status_buffer =  { .length = sizeof(uint8_t), .bytes = &status_int };
+    
+    wickr_buffer_t *buffers[] = {
+        chain->root->sig_key->pub_data,
+        chain->node->signature->sig_data,
+        chain->node->sig_key->pub_data,
+        &status_buffer
+    };
+    
+    wickr_buffer_t *concat_buffer = wickr_buffer_concat_multi(buffers, BUFFER_ARRAY_LEN(buffers));
+    
+    if (!concat_buffer) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *cache_buffer = engine->wickr_crypto_engine_digest(concat_buffer, NULL, DIGEST_SHA_512);
+    wickr_buffer_destroy(&concat_buffer);
+    
+    return cache_buffer;
+}
+
+bool wickr_identity_chain_has_valid_cache(const wickr_identity_chain_t *chain,
+                                          const wickr_crypto_engine_t *engine)
+{
+    if (!chain || !engine || !chain->_status_cache) {
+        return false;
+    }
+    
+    wickr_buffer_t *current_cache_value = wickr_identity_chain_make_status_cache(chain, engine);
+    
+    /* If the cache value has changed, it is no longer valid */
+    bool has_valid_cache = wickr_buffer_is_equal(current_cache_value, chain->_status_cache, NULL);
+    wickr_buffer_destroy(&current_cache_value);
+    
+    return has_valid_cache;
+}
+
+void wickr_identity_chain_update_status_cache(wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine)
+{
+    wickr_buffer_destroy(&chain->_status_cache);
+    chain->_status_cache = wickr_identity_chain_make_status_cache(chain, engine);
+}

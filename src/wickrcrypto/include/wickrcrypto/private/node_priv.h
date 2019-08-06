@@ -31,4 +31,11 @@ Wickr__Proto__Node *wickr_node_to_proto(const wickr_node_t *node);
 
 wickr_node_t *wickr_node_create_from_proto(const Wickr__Proto__Node *proto, const wickr_crypto_engine_t *engine);
 
+wickr_buffer_t *wickr_node_make_status_cache(const wickr_node_t *node,
+                                             const wickr_crypto_engine_t *engine);
+
+bool wickr_node_has_valid_cache(const wickr_node_t *node,
+                                const wickr_crypto_engine_t *engine);
+
+void wickr_node_update_status_cache(wickr_node_t *node, const wickr_crypto_engine_t *engine);
 #endif /* node_priv_h */

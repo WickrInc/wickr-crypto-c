@@ -247,26 +247,46 @@ wickr_identity_chain_t *wickr_identity_chain_copy(const wickr_identity_chain_t *
         return NULL;
     }
     
-    wickr_identity_chain_t *copy = wickr_identity_chain_create(root_copy, node_copy);
+    wickr_buffer_t *cache_copy = wickr_buffer_copy(source->_status_cache);
     
-    if (!copy) {
+    if (source->_status_cache && !cache_copy) {
         wickr_identity_destroy(&root_copy);
         wickr_identity_destroy(&node_copy);
         return NULL;
     }
     
+    wickr_identity_chain_t *copy = wickr_identity_chain_create(root_copy, node_copy);
+    
+    if (!copy) {
+        wickr_identity_destroy(&root_copy);
+        wickr_identity_destroy(&node_copy);
+        wickr_buffer_destroy(&cache_copy);
+        return NULL;
+    }
+    
+    copy->_status_cache = cache_copy;
     copy->status = source->status;
     
     return copy;
 }
 
-bool wickr_identity_chain_validate(const wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine)
+bool wickr_identity_chain_validate(wickr_identity_chain_t *chain, const wickr_crypto_engine_t *engine)
 {
     if (!chain || !engine) {
         return false;
     }
     
-    return engine->wickr_crypto_engine_ec_verify(chain->node->signature, chain->root->sig_key, chain->node->sig_key->pub_data);
+    /* Check to see if we need to recalculate the status of the chain */
+    if (wickr_identity_chain_has_valid_cache(chain, engine)) {
+        return chain->status == IDENTITY_CHAIN_STATUS_VALID;
+    }
+    
+    bool is_valid = engine->wickr_crypto_engine_ec_verify(chain->node->signature, chain->root->sig_key, chain->node->sig_key->pub_data);
+    
+    chain->status = is_valid ? IDENTITY_CHAIN_STATUS_VALID : IDENTITY_CHAIN_STATUS_INVALID;
+    wickr_identity_chain_update_status_cache(chain, engine);
+    
+    return is_valid;
 }
 
 wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain)
@@ -322,6 +342,8 @@ void wickr_identity_chain_destroy(wickr_identity_chain_t **chain)
     
     wickr_identity_destroy(&(*chain)->node);
     wickr_identity_destroy(&(*chain)->root);
+    wickr_buffer_destroy(&(*chain)->_status_cache);
+    
     wickr_free(*chain);
     *chain = NULL;
 }

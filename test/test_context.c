@@ -467,11 +467,13 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     IT ("should fail to create a packet using a failed identity status")
     {
         wickr_node_t *first_recipient = wickr_node_array_fetch_item(recipients, 0);
-        first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
+        wickr_ec_key_t *correct_key = first_recipient->id_chain->node->sig_key;
+        first_recipient->id_chain->node->sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
         
         wickr_encoder_result_t *bad_packet = wickr_ctx_encode_packet(ctxUser1, payload, recipients);
         SHOULD_BE_NULL(bad_packet);
-        first_recipient->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
+        wickr_ec_key_destroy(&first_recipient->id_chain->node->sig_key);
+        first_recipient->id_chain->node->sig_key = correct_key;
     }
     END_IT
     

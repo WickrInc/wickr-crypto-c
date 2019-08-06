@@ -50,6 +50,7 @@ DESCRIBE(node_tests, "node.c")
         SHOULD_NOT_BE_NULL(copy_node->id_chain);
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(copy_node->dev_id, node->dev_id, NULL));
+        SHOULD_EQUAL(copy_node->status, node->status);
         
         SHOULD_NOT_EQUAL(copy_node->dev_id, test_dev_id);
         SHOULD_NOT_EQUAL(copy_node->ephemeral_keypair, test_keypair);
@@ -62,18 +63,34 @@ DESCRIBE(node_tests, "node.c")
     
     IT("should be able to validate it's signing chain")
     {
+        SHOULD_EQUAL(node->status, NODE_STATUS_UNKNOWN);
+        SHOULD_EQUAL(node->id_chain->status, IDENTITY_CHAIN_STATUS_UNKNOWN);
         SHOULD_BE_TRUE(wickr_node_verify_signature_chain(node, &engine));
+        SHOULD_EQUAL(node->status, NODE_STATUS_VALID);
+        SHOULD_EQUAL(node->id_chain->status, IDENTITY_CHAIN_STATUS_VALID);
     }
     END_IT
     
-    node->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
-    
-    IT("should fail validation if it's current status is failed")
+    IT("should retest validation with each call")
     {
+        /* Invalid -> Valid case */
+        node->status = NODE_STATUS_INVALID;
+        node->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
+        
+        SHOULD_BE_TRUE(wickr_node_verify_signature_chain(node, &engine));
+        SHOULD_EQUAL(node->status, NODE_STATUS_VALID);
+        SHOULD_EQUAL(node->id_chain->status, IDENTITY_CHAIN_STATUS_VALID);
+        
+        /* Valid -> Invalid case */
+        
         wickr_node_t *copy_node = wickr_node_copy(node);
-        copy_node->id_chain->status = IDENTITY_CHAIN_STATUS_INVALID;
+        wickr_ec_key_destroy(&copy_node->id_chain->root->sig_key);
+        copy_node->id_chain->root->sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
         
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        SHOULD_EQUAL(IDENTITY_CHAIN_STATUS_INVALID, copy_node->id_chain->status);
+        SHOULD_EQUAL(NODE_STATUS_INVALID, copy_node->status);
+        
         wickr_node_destroy(&copy_node);
     }
     END_IT
@@ -83,11 +100,39 @@ DESCRIBE(node_tests, "node.c")
         wickr_node_t *copy_node = wickr_node_copy(node);
         wickr_ephemeral_keypair_destroy(&copy_node->ephemeral_keypair);
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        SHOULD_EQUAL(IDENTITY_CHAIN_STATUS_VALID, copy_node->id_chain->status);
+        SHOULD_EQUAL(NODE_STATUS_INVALID, copy_node->status);
         wickr_node_destroy(&copy_node);
     }
     END_IT
     
-    node->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
+    IT("should fail validation if it's identity chain root is invalid")
+    {
+        wickr_node_t *copy_node = wickr_node_copy(node);
+        wickr_ec_key_destroy(&copy_node->id_chain->root->sig_key);
+        copy_node->id_chain->root->sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
+        
+        SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        SHOULD_EQUAL(IDENTITY_CHAIN_STATUS_INVALID, copy_node->id_chain->status);
+        SHOULD_EQUAL(NODE_STATUS_INVALID, copy_node->status);
+        
+        wickr_node_destroy(&copy_node);
+    }
+    END_IT
+    
+    IT("should fail validation if it's identity chain node is invalid")
+    {
+        wickr_node_t *copy_node = wickr_node_copy(node);
+        wickr_ec_key_destroy(&copy_node->id_chain->node->sig_key);
+        copy_node->id_chain->node->sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
+        
+        SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        SHOULD_EQUAL(IDENTITY_CHAIN_STATUS_INVALID, copy_node->id_chain->status);
+        SHOULD_EQUAL(NODE_STATUS_INVALID, copy_node->status);
+        
+        wickr_node_destroy(&copy_node);
+    }
+    END_IT
     
     IT("should fail validation if it's identity->node signature is incorrect")
     {
@@ -101,11 +146,12 @@ DESCRIBE(node_tests, "node.c")
         
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine))
         
+        SHOULD_EQUAL(IDENTITY_CHAIN_STATUS_INVALID, copy_node->id_chain->status);
+        SHOULD_EQUAL(NODE_STATUS_INVALID, copy_node->status);
+        
         wickr_node_destroy(&copy_node);
     }
     END_IT
-    
-    node->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
     
     IT("should fail validation if it's ephemeral keypair signature is incorrect")
     {
@@ -117,19 +163,15 @@ DESCRIBE(node_tests, "node.c")
         copy_node->ephemeral_keypair->signature = wickr_identity_sign(copy_node->id_chain->node, &engine, random_data);
         wickr_buffer_destroy(&random_data);
         
-        SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine))
-        
-        /* Check that this should fail, EVEN if someone explicitly manipulates the identity chain status to be "valid" */
-        copy_node->id_chain->status = IDENTITY_CHAIN_STATUS_VALID;
-        
         SHOULD_BE_FALSE(wickr_node_verify_signature_chain(copy_node, &engine));
+        SHOULD_EQUAL(copy_node->id_chain->status, IDENTITY_CHAIN_STATUS_VALID);
+        SHOULD_EQUAL(copy_node->status, NODE_STATUS_INVALID);
         
         wickr_node_destroy(&copy_node);
 
     }
     END_IT
     
-    node->id_chain->status = IDENTITY_CHAIN_STATUS_UNKNOWN;
     
     IT("should allow you to rotate the key pair it holds")
     {
