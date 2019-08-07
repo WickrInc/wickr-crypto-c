@@ -24,8 +24,10 @@ done
 
 cd output_fat/android
 chmod +x gradlew
-./gradlew assembleRelease
+./gradlew assembleRelease || exit $?
 
 if [ "$1" == "--push" ]; then
-    ./gradlew artifactoryPublish
+    ./gradlew artifactoryPublish || exit $?
 fi
+
+exit $?

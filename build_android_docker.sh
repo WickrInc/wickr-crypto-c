@@ -1,13 +1,7 @@
 #!/bin/bash
 
 DISTRO=android
-
-BUILD_COMMAND="./build_android_fat.sh"
-
-if [ ${#*} > 0 ]; then
-    BUILD_COMMAND="${BUILD_COMMAND} $*"
-fi 
-
+BUILD_COMMAND="./build_android_fat.sh $*"
 echo $BUILD_COMMAND
 
 docker build -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
