@@ -13,7 +13,7 @@ var searchData=
   ['signature_5fstatus',['signature_status',['../structwickr__parse__result.html#a989166b5471898853f03b9e9c58f69c0',1,'wickr_parse_result']]],
   ['size',['size',['../structwickr__digest.html#ac887a219296e67a1b6582ec88fdd9ad2',1,'wickr_digest']]],
   ['srv_5fcomm_5fid',['srv_comm_id',['../structwickr__dev__info.html#af5f2ff06ae74fcec85106f6ffd77c008',1,'wickr_dev_info']]],
-  ['status',['status',['../structwickr__identity__chain.html#acee365b411eb4a7e7c68c115d60e166e',1,'wickr_identity_chain']]],
+  ['status',['status',['../structwickr__identity__chain.html#acee365b411eb4a7e7c68c115d60e166e',1,'wickr_identity_chain::status()'],['../structwickr__node.html#a659b113832d19162c4d5722777d03c94',1,'wickr_node::status()']]],
   ['storage_5fkeys',['storage_keys',['../structwickr__ctx.html#ab6d3ad69a6a16c0f582186b9d8461b66',1,'wickr_ctx']]],
   ['system_5fsalt',['system_salt',['../structwickr__dev__info.html#a084d0cd9e73d9f74f62c9e9abb85436f',1,'wickr_dev_info']]]
 ];
