@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Wickr_node</div>  </div>
@@ -74,6 +75,14 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__node.html">wickr_node</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a message destination at a point in time.  <a href="structwickr__node.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gafa0bd3307613292fcd88e38443345e8f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__node.html#gafa0bd3307613292fcd88e38443345e8f">wickr_node_status</a> { <b>NODE_STATUS_UNKNOWN</b>, 
+<b>NODE_STATUS_VALID</b>, 
+<b>NODE_STATUS_INVALID</b>
+ }</td></tr>
+<tr class="separator:gafa0bd3307613292fcd88e38443345e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -103,6 +112,23 @@ Functions</h2></td></tr>
 <tr class="separator:gab3f40f122baca50bcc62af54eaa08fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gafa0bd3307613292fcd88e38443345e8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafa0bd3307613292fcd88e38443345e8f">&#9670;&nbsp;</a></span>wickr_node_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__wickr__node.html#gafa0bd3307613292fcd88e38443345e8f">wickr_node_status</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Node status</p>
+<p>UNKNOWN - Signature validation has never been attempted on the node VALID - Signature validation has been attempted and has passed on node INVALID - Signature validation has been attempted and has failed on node </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gab577103b1752357b8575b064e22a4970"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab577103b1752357b8575b064e22a4970">&#9670;&nbsp;</a></span>wickr_node_array_copy()</h2>

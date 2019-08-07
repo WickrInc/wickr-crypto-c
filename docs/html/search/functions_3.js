@@ -110,7 +110,7 @@ var searchData=
   ['wickr_5fidentity_5fchain_5fcopy',['wickr_identity_chain_copy',['../group__wickr__identity.html#gac9d708d340abcd0b54d87434b71d2d9e',1,'identity.h']]],
   ['wickr_5fidentity_5fchain_5fcreate',['wickr_identity_chain_create',['../group__wickr__identity.html#ga79551385194ba6b044b676ce5c7400e6',1,'identity.h']]],
   ['wickr_5fidentity_5fchain_5fdestroy',['wickr_identity_chain_destroy',['../group__wickr__identity.html#gadbddf6d49fddb2df103486970b3d564b',1,'identity.h']]],
-  ['wickr_5fidentity_5fchain_5fvalidate',['wickr_identity_chain_validate',['../group__wickr__identity.html#ga12f5b33c4947b6a2ca3df3bdaacafa10',1,'identity.h']]],
+  ['wickr_5fidentity_5fchain_5fvalidate',['wickr_identity_chain_validate',['../group__wickr__identity.html#ga3a4b103f6b03f82149a90f1b81c63456',1,'identity.h']]],
   ['wickr_5fidentity_5fcopy',['wickr_identity_copy',['../group__wickr__identity.html#ga14d1fb3ddd1dbd7797eb9b628eef99fe',1,'identity.h']]],
   ['wickr_5fidentity_5fcreate',['wickr_identity_create',['../group__wickr__identity.html#ga75bfef275a250a32784231e8c042913b',1,'identity.h']]],
   ['wickr_5fidentity_5fcreate_5ffrom_5fbuffer',['wickr_identity_create_from_buffer',['../group__wickr__identity.html#ga378e5b6ddabfe2c6ae7dbd5bdc43278e',1,'identity.h']]],

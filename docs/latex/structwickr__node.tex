@@ -17,6 +17,11 @@ Represents a message destination at a point in time.
 \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a3a5100ed26ae534e2070623713aacfde}{id\+\_\+chain}}
 \item 
 \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a628b61eed5cb17b831ff687143393b93}{ephemeral\+\_\+keypair}}
+\item 
+\mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}} \mbox{\hyperlink{structwickr__node_a659b113832d19162c4d5722777d03c94}{status}}
+\item 
+\mbox{\Hypertarget{structwickr__node_a67160712c8b027d6ab67401c42bbd8cb}\label{structwickr__node_a67160712c8b027d6ab67401c42bbd8cb}} 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ {\bfseries \+\_\+status\+\_\+cache}
 \end{DoxyCompactItemize}
 
 
@@ -44,7 +49,13 @@ the key pair that is currently associated with message key exchange generation f
 \subsubsection{\texorpdfstring{id\_chain}{id\_chain}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::id\+\_\+chain}
 
-the current identity chain of the node, representing its root-\/$>$node relationship hirearchy 
+the current identity chain of the node, representing its root-\/$>$node relationship hirearchy \mbox{\Hypertarget{structwickr__node_a659b113832d19162c4d5722777d03c94}\label{structwickr__node_a659b113832d19162c4d5722777d03c94}} 
+\index{wickr\_node@{wickr\_node}!status@{status}}
+\index{status@{status}!wickr\_node@{wickr\_node}}
+\subsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily wickr\+\_\+node\+::status}
+
+the current validation status of the node, see \textquotesingle{}wickr\+\_\+node\+\_\+status\textquotesingle{} for more info 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
