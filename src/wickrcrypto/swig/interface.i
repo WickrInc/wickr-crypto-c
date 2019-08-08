@@ -34,6 +34,7 @@
 %rename(ParseResult) wickr_parse_result;
 %rename(EphemeralKeypair) wickr_ephemeral_keypair;
 %rename(Node) wickr_node;
+%rename(NodeStatus) wickr_node_status;
 %rename(WickrArray) wickr_array;
 %rename(RootKeys) wickr_root_keys;
 %rename(StorageKeys) wickr_storage_keys;

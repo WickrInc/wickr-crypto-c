@@ -64,6 +64,7 @@ set(JAVA_SOURCES
     ${CMAKE_SWIG_OUTDIR}/KeyExchange.java 
     ${CMAKE_SWIG_OUTDIR}/KeyExchangeSet.java
     ${CMAKE_SWIG_OUTDIR}/Node.java
+    ${CMAKE_SWIG_OUTDIR}/NodeStatus.java
     ${CMAKE_SWIG_OUTDIR}/Packet.java
     ${CMAKE_SWIG_OUTDIR}/PacketMeta.java
     ${CMAKE_SWIG_OUTDIR}/PacketSignatureStatus.java
