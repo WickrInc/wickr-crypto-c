@@ -89,9 +89,15 @@ case $_ANDROID_ARCH in
     arch-arm)     
       ANDROID_TOOLS="arm-linux-androideabi-gcc arm-linux-androideabi-ranlib arm-linux-androideabi-ld"
       ;;
+    arch-arm64)
+      ANDROID_TOOLS="aarch64-linux-android-gcc aarch64-linux-android-ranlib aarch64-linux-android-ld"
+      ;;
     arch-x86)     
       ANDROID_TOOLS="i686-linux-android-gcc i686-linux-android-ranlib i686-linux-android-ld"
-      ;;      
+      ;;  
+    arch-x86_64)     
+      ANDROID_TOOLS="x86_64-linux-android-gcc x86_64-linux-android-ranlib x86_64-linux-android-ld"
+      ;;     
     *)
       echo "ERROR ERROR ERROR"
       ;;
@@ -143,6 +149,14 @@ if [ "$_ANDROID_ARCH" == "arch-x86" ]; then
     export SYSTEM=android
     export ARCH=x86
     export CROSS_COMPILE="i686-linux-android-"
+fi
+
+if [ "$_ANDROID_ARCH" == "arch-arm64" ]; then
+    export MACHINE=aarch64
+    export RELEASE=2.6.37
+    export SYSTEM=android
+    export ARCH=arm64
+    export CROSS_COMPILE="aarch64-linux-android-"
 fi
 
 if [ ! -z ${FIPS} ]; then
