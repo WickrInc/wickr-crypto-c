@@ -37,7 +37,6 @@ add_test(crypto_test crypto_test)
 if (OPENSSL_CRYPTO_SHARED AND UNIX)
     get_filename_component(OPENSSL_CRYPTO_SHARED_DIRECTORY ${OPENSSL_CRYPTO_SHARED} DIRECTORY)
     set_tests_properties(crypto_test PROPERTIES ENVIRONMENT "LD_LIBRARY_PATH=${OPENSSL_CRYPTO_SHARED_DIRECTORY};$ENV{LD_LIBRARY_PATH}" )
-    message("UPDATE TEST ENV")
 endif ()
 
 

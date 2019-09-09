@@ -61,6 +61,12 @@ matrix:
       sudo: required
       env:
       - ANDROID=true
+    - os: linux 
+      dist: trusty
+      sudo: required
+      env:
+      - ANDROID=true
+      - FIPS=true
     - os: linux
       dist: trusty
       sudo: required

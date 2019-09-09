@@ -21,7 +21,7 @@ install:
 
   # install NASM
   - cd \
-  - appveyor DownloadFile "http://www.nasm.us/pub/nasm/releasebuilds/2.12.01/win32/nasm-2.12.01-win32.zip" -FileName "c:\nasm.zip"
+  - appveyor DownloadFile "https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip" -FileName "c:\nasm.zip"
   - 7z x "nasm.zip" > nul
   - move nasm-* NASM
   - set PATH=%PATH%;c:\NASM;

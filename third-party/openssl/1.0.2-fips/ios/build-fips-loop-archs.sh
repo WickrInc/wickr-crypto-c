@@ -102,6 +102,7 @@ do
 
   # Run make
   make
+  make build_algvs
   make install
   make clean
 
