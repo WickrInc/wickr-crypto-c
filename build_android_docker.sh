@@ -1,7 +1,13 @@
 #!/bin/bash
 
-DISTRO=android
-BUILD_COMMAND="./build_android_fat.sh $*"
+if [ -z ${FIPS} ]; then
+    DISTRO=android
+    BUILD_COMMAND="./build_android_fat.sh $*"
+else
+    DISTRO=android-fips
+    BUILD_COMMAND="FIPS=true ./build_android_fat.sh $*"
+fi
+
 echo $BUILD_COMMAND
 
 docker build -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
