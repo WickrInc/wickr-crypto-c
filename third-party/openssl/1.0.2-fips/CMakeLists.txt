@@ -93,7 +93,7 @@ macro(build_openssl)
         set(FIPS_OPTIONS fips --with-fipsdir=${FIPS_PATH} --with-fipslibdir=${FIPS_PATH}/lib/)
     endif ()
 
-    set(OSSL_OPTIONS ${FIPS_OPTIONS} shared no-ssl2 no-ssl3 no-comp enable-ec_nistp_64_gcc_128 --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+    set(OSSL_OPTIONS ${FIPS_OPTIONS} shared no-ssl2 no-ssl3 no-comp enable-ec_nistp_64_gcc_128 --openssldir=/usr/local/wickr/ssl --prefix=${CMAKE_CURRENT_BINARY_DIR})
 
     if (APPLE)
         if (IOS)
@@ -116,9 +116,9 @@ macro(build_openssl)
         endif ()
 
         if (${ANDROID_ABI} STREQUAL "arm64-v8a")
-            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 enable-ec_nistp_64_gcc_128 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 enable-ec_nistp_64_gcc_128 no-ssl3 no-comp --openssldir=/usr/local/wickr/ssl --prefix=${CMAKE_CURRENT_BINARY_DIR})
         else ()
-            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 no-ssl3 no-comp --openssldir=/usr/local/wickr/ssl --prefix=${CMAKE_CURRENT_BINARY_DIR})
         endif ()
         
         set(OSSL_CONFIGURE ${ANDROID_ENV} ./config ${ANDROID_OSSL_OPTIONS})
@@ -130,7 +130,7 @@ macro(build_openssl)
             set(FIPS_OPTIONS fips --with-fipsdir=${OSSL_FIPS_DIR})
         endif ()
 
-        set(OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+        set(OSSL_OPTIONS ${FIPS_OPTIONS} no-ssl2 no-ssl3 no-comp --prefix=${CMAKE_CURRENT_BINARY_DIR} --openssldir=%CommonProgramFiles%\\SSL)
 
         if(CMAKE_SIZEOF_VOID_P EQUAL 8)
             set(OSSL_CONFIGURE perl Configure VC-WIN64A ${OSSL_OPTIONS})
