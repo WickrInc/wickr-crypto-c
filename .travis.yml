@@ -15,13 +15,6 @@ matrix:
       sudo: required
       compiler: clang
       env:
-      - OPENSSL="1.0.2"
-      - FIPS=FALSE
-    - os: linux
-      dist: trusty
-      sudo: required
-      compiler: clang
-      env:
       - OPENSSL="1.1.0"
       - FIPS=FALSE
     - os: linux
