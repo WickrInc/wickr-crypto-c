@@ -21,7 +21,7 @@
 
 ARCHS=$1
 
-export FIPS_SIG=${FIPSDIR}/openssl_fips-prefix/src/openssl_fips/iOS/incore_macho
+export FIPS_SIG=${FIPSDIR}/iOS/incore_macho
 
 DEVELOPER=$(xcode-select -print-path)
 if [ ! -d "${DEVELOPER}" ]; then
@@ -77,7 +77,7 @@ do
 
   case "${ARCH}" in
     *armv7*)
-      if [ -z "${APPLIED_PATCH}" ]; then
+      if [ -z ${APPLIED_PATCH} ]; then
           patch -p3 < "${SOURCEDIR}/armv7-frame-pointer-xcode9.patch" Configure
           APPLIED_PATCH=true
       fi
@@ -151,6 +151,9 @@ do
 done
 
 rm -rf ${TARGETDIR}/include/openssl
+
+echo "COPYING ${INCLUDE_DIR} to ${TARGETDIR}"
+mkdir -p ${TARGETDIR}/include/openssl
 cp -R ${INCLUDE_DIR} ${TARGETDIR}/include/openssl
 
 mkdir -p ${TARGETDIR}/lib

@@ -14,6 +14,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DCMAKE_INSTALL_PREFIX=../output_device ../
 make
 make install
+
 cd ..
 mkdir build_sim
 cd build_sim
@@ -38,5 +39,5 @@ lipo -create output_device/lib/libbcrypt.a output_sim/lib/libbcrypt.a -output ou
 
 if [ ${FIPS} == true ]; then
     mkdir -p output_fat/bin
-    cp build_device/third-party/openssl/1.0.2-fips/openssl_fips-prefix/src/openssl_fips/iOS/incore_macho output_fat/bin/incore_macho
+    cp build_device/third-party/openssl/1.0.2-fips/fips_output/iOS/incore_macho output_fat/bin/incore_macho
 fi
