@@ -13,12 +13,14 @@ fi
 export HOSTCC=/usr/bin/cc
 chmod +x Configure && ./Configure darwin64-x86_64-cc --prefix=${TARGETDIR}
 make
+make build_tests && make build_algvs
 cd iOS
 make incore_macho
 cd ..
+mkdir -p ${TARGETDIR}
+cp -R iOS ${TARGETDIR}/iOS
 make install
 make clean
-
 
 for ARCH in ${ARCHS}
 do
@@ -91,6 +93,8 @@ do
   # Add --prefix option
   LOCAL_CONFIG_OPTIONS="--prefix=${TARGETDIR}/${ARCH} ${LOCAL_CONFIG_OPTIONS}"
 
+  echo "INSTALLING TO PREFIX: ${TARGETDIR}/${ARCH}"
+
   # Determine configure target
   if [ "${ARCH}" == "x86_64" ]; then
     LOCAL_CONFIG_OPTIONS="darwin64-x86_64-cc no-asm ${LOCAL_CONFIG_OPTIONS}"
@@ -102,7 +106,6 @@ do
 
   # Run make
   make
-  make build_algvs
   make install
   make clean
 
