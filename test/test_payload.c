@@ -102,6 +102,7 @@ DESCRIBE(wickr_payload, "wickr_payload")
         SHOULD_BE_NULL(wickr_payload_create_from_cipher(&engine, ciphered, incorrect_key));
         
         /* Cleanup */
+        wickr_cipher_result_destroy(&ciphered);
         wickr_cipher_key_destroy(&key);
         wickr_cipher_key_destroy(&incorrect_key);
         wickr_payload_destroy(&restored);
