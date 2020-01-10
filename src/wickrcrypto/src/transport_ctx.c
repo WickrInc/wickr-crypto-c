@@ -673,6 +673,226 @@ static wickr_transport_packet_t *__wickr_transport_ctx_encode_pkt(const wickr_tr
     return pkt;
 }
 
+static wickr_buffer_t *__wickr_transport_ctx_process_rx_packet(wickr_transport_ctx_t *ctx,
+                                                               const wickr_buffer_t *buffer,
+                                                               const wickr_transport_packet_t *packet)
+{
+    bool valid_mac = wickr_transport_packet_verify(packet, buffer, &ctx->engine, ctx->remote_identity->id_chain->node);
+    
+    /* The mac is not required in the condition that we are past the handshake, the body type of the packet is ciphertext,
+       and the cipher of the rx stream is authenticated. In this scenario we rely on the cipher level authentication instead of an explicit mac
+     */
+    if (!valid_mac) {
+        if (ctx->status == TRANSPORT_STATUS_ACTIVE && packet->body_type == TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT &&
+            ctx->rx_stream->key->cipher_key->cipher.is_authenticated) {
+            valid_mac = true;
+        }
+    }
+    
+    if (!valid_mac) {
+        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        return NULL;
+    }
+    
+    /* Make sure the sequence number is always moving forward */
+    if (ctx->rx_stream && packet->seq_num <= ctx->rx_stream->last_seq) {
+        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        return NULL;
+    }
+    
+    wickr_transport_packet_t *volley_packet = NULL;
+    wickr_buffer_t *return_buffer = NULL;
+    
+    switch (ctx->status) {
+        case TRANSPORT_STATUS_NONE:
+            volley_packet = __wickr_transport_ctx_handshake_seed_respond(ctx, packet);
+            
+            if (!volley_packet) {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            }
+            else {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_TX_INIT);
+            }
+            
+            break;
+        case TRANSPORT_STATUS_TX_INIT:
+            if (!__wickr_transport_ctx_handshake_finish(ctx, packet)) {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            }
+            else {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ACTIVE);
+            }
+            break;
+        case TRANSPORT_STATUS_SEEDED:
+            volley_packet = __wickr_transport_ctx_handshake_process_return(ctx, packet);
+            
+            if (!volley_packet) {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            }
+            else {
+                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ACTIVE);
+            }
+            break;
+        case TRANSPORT_STATUS_ACTIVE:
+            
+            if (packet->body_type == TRANSPORT_PAYLOAD_TYPE_HANDSHAKE) {
+                volley_packet = __wickr_transport_ctx_handshake_seed_respond(ctx, packet);
+                
+                if (!volley_packet) {
+                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+                }
+                else {
+                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_TX_INIT);
+                }
+            }
+            else {
+                
+                /* Don't allow processing a non-header packet if the context is in WRITE_ONLY mode.
+                 Currently this is a silent failure */
+                if (ctx->data_flow == TRANSPORT_DATA_FLOW_WRITE_ONLY) {
+                    break;
+                }
+                
+                return_buffer = __wickr_transport_ctx_decode_pkt(ctx, packet);
+                
+                if (!return_buffer) {
+                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+                }
+            }
+            
+            break;
+        default:
+            break;
+    }
+    
+    /* Make sure to adjust the rx_stream seq num to compensate for any control messages received */
+    if (ctx->rx_stream && ctx->rx_stream->last_seq != packet->seq_num) {
+        ctx->rx_stream->last_seq = packet->seq_num;
+    }
+        
+    if (volley_packet) {
+        wickr_buffer_t *packet_buffer = wickr_transport_packet_serialize(volley_packet);
+        wickr_transport_packet_destroy(&volley_packet);
+        
+        if (!packet_buffer) {
+            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            return NULL;
+        }
+        ctx->callbacks.tx(ctx, packet_buffer, TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, ctx->user);
+    }
+    
+    if (!return_buffer) {
+        return NULL;
+    }
+    
+    ctx->callbacks.rx(ctx, return_buffer, ctx->user);
+    
+    return return_buffer;
+}
+
+static void __wickr_transport_validate_identity_complete(const wickr_transport_ctx_t *ctx, bool is_valid)
+{
+    /* Remove const for internal work */
+    wickr_transport_ctx_t *_ctx = (wickr_transport_ctx_t *)ctx;
+    
+    wickr_node_t *remote_node = wickr_node_copy(_ctx->pending_handshake->remote_node);
+    
+    if (!is_valid || !remote_node) {
+        wickr_node_destroy(&remote_node);
+        wickr_transport_pending_handshake_destroy(&(_ctx)->pending_handshake);
+        __wickr_transport_ctx_update_status(_ctx, TRANSPORT_STATUS_ERROR);
+        return;
+    }
+    
+    _ctx->remote_identity = remote_node;
+    
+    __wickr_transport_ctx_process_rx_packet(_ctx, _ctx->pending_handshake->buffer, _ctx->pending_handshake->packet);
+    wickr_transport_pending_handshake_destroy(&(_ctx->pending_handshake));
+}
+
+#define INVALID_REMOTE_IDENTITY __wickr_transport_validate_identity_complete(ctx, false);
+
+static void __wickr_transport_handshake_set_remote_identity(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer, const wickr_transport_packet_t *pkt)
+{
+    if (!ctx || !pkt || ctx->remote_identity) {
+        return INVALID_REMOTE_IDENTITY;
+    }
+    
+    Wickr__Proto__Handshake__PayloadCase expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET;
+    
+    switch (ctx->status) {
+        case TRANSPORT_STATUS_TX_INIT:
+        case TRANSPORT_STATUS_ERROR:
+        case TRANSPORT_STATUS_ACTIVE:
+            return INVALID_REMOTE_IDENTITY;
+        case TRANSPORT_STATUS_SEEDED:
+            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE;
+            break;
+        case TRANSPORT_STATUS_NONE:
+            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED;
+            break;
+    }
+    
+    Wickr__Proto__Handshake *handshake_data = wickr_transport_packet_to_proto_handshake(pkt, expected_case);
+    
+    if (!handshake_data) {
+        return INVALID_REMOTE_IDENTITY;
+    }
+    
+    Wickr__Proto__Node *node = NULL;
+    
+    switch (expected_case) {
+        case WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE:
+        {
+            if (!handshake_data->response || !handshake_data->response->response_key) {
+                return INVALID_REMOTE_IDENTITY;
+            }
+            node = handshake_data->response->response_key->node_info;
+        }
+            break;
+        case WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED:
+        {
+            if (!handshake_data->seed) {
+                return INVALID_REMOTE_IDENTITY;
+            }
+            node = handshake_data->seed->node_info;
+        }
+            break;
+        default:
+            return INVALID_REMOTE_IDENTITY;
+    }
+    
+    wickr_node_t *remote_node = wickr_node_create_from_proto(node, &ctx->engine);
+    wickr__proto__handshake__free_unpacked(handshake_data, NULL);
+    
+    if (!remote_node) {
+        return INVALID_REMOTE_IDENTITY;
+    }
+    
+    if (!wickr_identity_chain_validate(remote_node->id_chain, &ctx->engine)) {
+        wickr_node_destroy(&remote_node);
+        return INVALID_REMOTE_IDENTITY;
+    }
+    
+    wickr_buffer_t *buffer_copy = wickr_buffer_copy(buffer);
+    wickr_transport_packet_t *packet_copy = wickr_transport_packet_copy(pkt);
+    
+    ctx->pending_handshake = wickr_transport_pending_handshake_create(buffer_copy,
+                                                                      packet_copy,
+                                                                      remote_node);
+    
+    if (!ctx->pending_handshake) {
+        wickr_buffer_destroy(&buffer_copy);
+        wickr_transport_packet_destroy(&packet_copy);
+        wickr_node_destroy(&remote_node);
+        return INVALID_REMOTE_IDENTITY;
+    }
+    
+    ctx->callbacks.on_identity_verify(ctx, remote_node->id_chain,
+                                      __wickr_transport_validate_identity_complete,
+                                      ctx->user);
+}
+
 void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
 {
     if (!ctx || ctx->status == TRANSPORT_STATUS_ERROR) {
@@ -759,78 +979,6 @@ wickr_buffer_t *wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx
     return out_buffer;
 }
 
-static bool __wickr_transport_handshake_set_remote_identity(wickr_transport_ctx_t *ctx, wickr_transport_packet_t *pkt)
-{
-    if (!ctx || !pkt || ctx->remote_identity) {
-        return false;
-    }
-    
-    Wickr__Proto__Handshake__PayloadCase expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD__NOT_SET;
-    
-    switch (ctx->status) {
-        case TRANSPORT_STATUS_TX_INIT:
-        case TRANSPORT_STATUS_ERROR:
-        case TRANSPORT_STATUS_ACTIVE:
-            return false;
-        case TRANSPORT_STATUS_SEEDED:
-            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE;
-            break;
-        case TRANSPORT_STATUS_NONE:
-            expected_case = WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED;
-            break;
-    }
-    
-    Wickr__Proto__Handshake *handshake_data = wickr_transport_packet_to_proto_handshake(pkt, expected_case);
-    
-    if (!handshake_data) {
-        return false;
-    }
-    
-    Wickr__Proto__Node *node = NULL;
-    
-    switch (expected_case) {
-        case WICKR__PROTO__HANDSHAKE__PAYLOAD_RESPONSE:
-        {
-            if (!handshake_data->response || !handshake_data->response->response_key) {
-                return false;
-            }
-            node = handshake_data->response->response_key->node_info;
-        }
-            break;
-        case WICKR__PROTO__HANDSHAKE__PAYLOAD_SEED:
-        {
-            if (!handshake_data->seed) {
-                return false;
-            }
-            node = handshake_data->seed->node_info;
-        }
-            break;
-        default:
-            return false;
-    }
-    
-    wickr_node_t *remote_node = wickr_node_create_from_proto(node, &ctx->engine);
-    wickr__proto__handshake__free_unpacked(handshake_data, NULL);
-    
-    if (!remote_node) {
-        return false;
-    }
-    
-    if (!wickr_identity_chain_validate(remote_node->id_chain, &ctx->engine)) {
-        wickr_node_destroy(&remote_node);
-        return false;
-    }
-    
-    if (!ctx->callbacks.on_identity_verify(ctx, remote_node->id_chain, ctx->user)) {
-        wickr_node_destroy(&remote_node);
-        return false;
-    }
-    
-    ctx->remote_identity = remote_node;
-    
-    return true;
-}
-
 wickr_buffer_t *wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
 {
     if (!ctx || !buffer || ctx->status == TRANSPORT_STATUS_ERROR) {
@@ -846,128 +994,15 @@ wickr_buffer_t *wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx
     }
     
     if (!ctx->remote_identity) {
-        if (!__wickr_transport_handshake_set_remote_identity(ctx, packet)) {
-            wickr_transport_packet_destroy(&packet);
-            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            return NULL;
-        }
-    }
-    
-    bool valid_mac = wickr_transport_packet_verify(packet, buffer, &ctx->engine, ctx->remote_identity->id_chain->node);
-    
-    /* The mac is not required in the condition that we are passed the handshake, the body type of the packet is ciphertext,
-       and the cipher of the rx stream is authenticated. In this scenario we rely on the cipher level authentication instead of an explicit mac
-     */
-    if (!valid_mac) {
-        if (ctx->status == TRANSPORT_STATUS_ACTIVE && packet->body_type == TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT &&
-            ctx->rx_stream->key->cipher_key->cipher.is_authenticated) {
-            valid_mac = true;
-        }
-    }
-    
-    if (!valid_mac) {
+        __wickr_transport_handshake_set_remote_identity(ctx, buffer, packet);
         wickr_transport_packet_destroy(&packet);
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
         return NULL;
-    }
-    
-    /* Make sure the sequence number is always moving forward */
-    if (ctx->rx_stream && packet->seq_num <= ctx->rx_stream->last_seq) {
+    } else {
+        wickr_buffer_t *return_packet = __wickr_transport_ctx_process_rx_packet(ctx, buffer, packet);
         wickr_transport_packet_destroy(&packet);
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-        return NULL;
-    }
-    
-    wickr_transport_packet_t *volley_packet = NULL;
-    wickr_buffer_t *return_buffer = NULL;
-    
-    switch (ctx->status) {
-        case TRANSPORT_STATUS_NONE:
-            volley_packet = __wickr_transport_ctx_handshake_seed_respond(ctx, packet);
-            
-            if (!volley_packet) {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            }
-            else {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_TX_INIT);
-            }
-            
-            break;
-        case TRANSPORT_STATUS_TX_INIT:
-            if (!__wickr_transport_ctx_handshake_finish(ctx, packet)) {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            }
-            else {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ACTIVE);
-            }
-            break;
-        case TRANSPORT_STATUS_SEEDED:
-            volley_packet = __wickr_transport_ctx_handshake_process_return(ctx, packet);
-            
-            if (!volley_packet) {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            }
-            else {
-                __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ACTIVE);
-            }
-            break;
-        case TRANSPORT_STATUS_ACTIVE:
-            
-            if (packet->body_type == TRANSPORT_PAYLOAD_TYPE_HANDSHAKE) {
-                volley_packet = __wickr_transport_ctx_handshake_seed_respond(ctx, packet);
-                
-                if (!volley_packet) {
-                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-                }
-                else {
-                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_TX_INIT);
-                }
-            }
-            else {
-                
-                /* Don't allow processing a non-header packet if the context is in WRITE_ONLY mode.
-                 Currently this is a silent failure */
-                if (ctx->data_flow == TRANSPORT_DATA_FLOW_WRITE_ONLY) {
-                    break;
-                }
-                
-                return_buffer = __wickr_transport_ctx_decode_pkt(ctx, packet);
-                
-                if (!return_buffer) {
-                    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-                }
-            }
-            
-            break;
-        default:
-            break;
-    }
-    
-    /* Make sure to adjust the rx_stream seq num to compensate for any control messages received */
-    if (ctx->rx_stream && ctx->rx_stream->last_seq != packet->seq_num) {
-        ctx->rx_stream->last_seq = packet->seq_num;
-    }
-    
-    wickr_transport_packet_destroy(&packet);
-    
-    if (volley_packet) {
-        wickr_buffer_t *packet_buffer = wickr_transport_packet_serialize(volley_packet);
-        wickr_transport_packet_destroy(&volley_packet);
         
-        if (!packet_buffer) {
-            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
-            return NULL;
-        }
-        ctx->callbacks.tx(ctx, packet_buffer, TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, ctx->user);
+        return return_packet;
     }
-    
-    if (!return_buffer) {
-        return NULL;
-    }
-    
-    ctx->callbacks.rx(ctx, return_buffer, ctx->user);
-    
-    return return_buffer;
 }
 
 wickr_transport_status wickr_transport_ctx_get_status(const wickr_transport_ctx_t *ctx)

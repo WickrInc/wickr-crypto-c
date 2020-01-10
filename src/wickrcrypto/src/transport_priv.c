@@ -319,3 +319,39 @@ Wickr__Proto__Handshake *wickr_transport_packet_to_proto_handshake(const wickr_t
     
     return handshake_data;
 }
+
+wickr_transport_pending_handshake_t *wickr_transport_pending_handshake_create(wickr_buffer_t *buffer,
+                                                                              wickr_transport_packet_t *packet,
+                                                                              wickr_node_t *remote_node)
+{
+    if (!buffer || !packet || !remote_node) {
+        return NULL;
+    }
+    
+    wickr_transport_pending_handshake_t *pending_handshake =
+        wickr_alloc_zero(sizeof(wickr_transport_pending_handshake_t));
+    
+    if (!pending_handshake) {
+        return NULL;
+    }
+    
+    pending_handshake->buffer = buffer;
+    pending_handshake->packet = packet;
+    pending_handshake->remote_node = remote_node;
+    
+    return pending_handshake;
+}
+
+void wickr_transport_pending_handshake_destroy(wickr_transport_pending_handshake_t **pending)
+{
+    if (!pending || !*pending) {
+        return;
+    }
+    
+    wickr_buffer_destroy(&(*pending)->buffer);
+    wickr_transport_packet_destroy(&(*pending)->packet);
+    wickr_node_destroy(&(*pending)->remote_node);
+    
+    wickr_free(*pending);
+    *pending = NULL;
+}

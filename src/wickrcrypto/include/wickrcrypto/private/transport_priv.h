@@ -26,7 +26,30 @@
 #include "stream_ctx.h"
 #include "stream.pb-c.h"
 
+#define CURRENT_HANDSHAKE_VERSION 1
+#define TRANSPORT_PKT_HEADER_SIZE (sizeof(uint64_t) + sizeof(uint8_t))
+
+typedef enum { WICKR_HANDSHAKE_PHASE_INIT, WICKR_HANDSHAKE_PHASE_RESPONSE, WICKR_HANDSHAKE_PHASE_FINALIZE } wickr_handshake_phase;
+
 typedef enum { TRANSPORT_MAC_TYPE_NONE, TRANSPORT_MAC_TYPE_AUTH_CIPHER, TRANSPORT_MAC_TYPE_EC_P521 } wickr_transport_mac_type;
+
+typedef struct wickr_transport_packet wickr_transport_packet_t;
+
+struct wickr_transport_packet {
+    uint64_t seq_num;
+    wickr_transport_payload_type body_type;
+    wickr_buffer_t *body;
+    wickr_transport_mac_type mac_type;
+    wickr_buffer_t *mac;
+};
+
+struct wickr_transport_pending_handshake {
+    wickr_buffer_t *buffer;
+    wickr_transport_packet_t *packet;
+    wickr_node_t *remote_node;
+};
+
+typedef struct wickr_transport_pending_handshake wickr_transport_pending_handshake_t;
 
 struct wickr_transport_ctx {
     wickr_crypto_engine_t engine;
@@ -39,23 +62,8 @@ struct wickr_transport_ctx {
     wickr_transport_callbacks_t callbacks;
     void *user;
     wickr_transport_data_flow data_flow;
+    wickr_transport_pending_handshake_t *pending_handshake;
 };
-
-#define CURRENT_HANDSHAKE_VERSION 1
-#define TRANSPORT_PKT_HEADER_SIZE (sizeof(uint64_t) + sizeof(uint8_t))
-
-
-typedef enum { WICKR_HANDSHAKE_PHASE_INIT, WICKR_HANDSHAKE_PHASE_RESPONSE, WICKR_HANDSHAKE_PHASE_FINALIZE } wickr_handshake_phase;
-
-struct wickr_transport_packet {
-    uint64_t seq_num;
-    wickr_transport_payload_type body_type;
-    wickr_buffer_t *body;
-    wickr_transport_mac_type mac_type;
-    wickr_buffer_t *mac;
-};
-
-typedef struct wickr_transport_packet wickr_transport_packet_t;
 
 wickr_transport_packet_t *wickr_transport_packet_create(uint64_t seq_num,
                                                         wickr_transport_payload_type body_type,
@@ -85,5 +93,11 @@ wickr_transport_packet_t *wickr_transport_packet_create_proto_handshake(const wi
 
 Wickr__Proto__Handshake *wickr_transport_packet_to_proto_handshake(const wickr_transport_packet_t *packet,
                                                                    Wickr__Proto__Handshake__PayloadCase expected_payload);
+
+wickr_transport_pending_handshake_t *wickr_transport_pending_handshake_create(wickr_buffer_t *buffer,
+                                                                              wickr_transport_packet_t *packet,
+                                                                              wickr_node_t *remote_node);
+
+void wickr_transport_pending_handshake_destroy(wickr_transport_pending_handshake_t **pending);
 
 #endif /* transport_priv_h */
