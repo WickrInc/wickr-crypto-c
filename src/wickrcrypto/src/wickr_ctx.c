@@ -208,7 +208,7 @@ wickr_ctx_gen_result_t *wickr_ctx_gen_with_root_keys(const wickr_crypto_engine_t
         return NULL;
     }
     
-    wickr_identity_t *new_node_identity = wickr_node_identity_gen(&engine, root_identity);
+    wickr_identity_t *new_node_identity = wickr_node_identity_gen(&engine, root_identity, NULL);
     
     if (!new_node_identity) {
         wickr_identity_destroy(&root_identity);

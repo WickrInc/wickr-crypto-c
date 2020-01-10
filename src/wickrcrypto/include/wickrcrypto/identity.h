@@ -39,9 +39,14 @@ extern "C" {
  */
 
 /** @ingroup wickr_identity
- Identifiers should be 32 bytes on the Wickr system, this requirement could drop or change in the future 
+ By default identifiers are 32 bytes on the Wickr system, however this library will allow for any identifier with length less than MAX_IDENTIFIER_LEN
  */
 #define IDENTIFIER_LEN 32
+
+/** @ingroup wickr_identity
+ Maximum length for an identifier
+*/
+#define MAX_IDENTIFIER_LEN 128
 
 
 /* Define ROOT and NODE identity types */
@@ -151,9 +156,10 @@ wickr_ecdsa_result_t *wickr_identity_sign(const wickr_identity_t *identity, cons
 
  @param engine a crypto engine supporting random Elliptic Curve Key generation
  @param root_identity a root identity that supports generating signatures with a private signing key
+ @param identifier to use for new node identity, if NULL a random identifier of `IDENTIFIER_LEN` bytes will be used
  @return a newly allocated node identity signing by root identity 'root_identity'. The 'identifier' property of the node is generated at random to be 'IDENTIFIER_LEN' in length (currently 32 bytes). NULL if root_identity is not a root, or it does not contain a private signing key
  */
-wickr_identity_t *wickr_node_identity_gen(const wickr_crypto_engine_t *engine, const wickr_identity_t *root_identity);
+wickr_identity_t *wickr_node_identity_gen(const wickr_crypto_engine_t *engine, const wickr_identity_t *root_identity, const wickr_buffer_t *identifier);
 
 /**
  

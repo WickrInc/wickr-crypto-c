@@ -24,7 +24,7 @@ public class NodeTests
 		Identity testIdentity = Identity.fromValues(IdentityType.IDENTITY_TYPE_ROOT, identifier, sigKey, null);
 		assertNotNull(testIdentity);
 
-		Identity testNodeIdentity = testIdentity.genNode();
+		Identity testNodeIdentity = testIdentity.genNode(null);
 		assertNotNull(testNodeIdentity);
 
 		this.testIdentityChain = IdentityChain.fromIdentities(testIdentity, testNodeIdentity);

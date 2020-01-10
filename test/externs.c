@@ -91,7 +91,7 @@ createIdentityChain(char *userName)
     
     wickr_identity_t *rootIdentity = wickr_identity_create(IDENTITY_TYPE_ROOT, userDigest, key, NULL);
     
-    wickr_identity_t *nodeIdentity = wickr_node_identity_gen(&engine, rootIdentity);
+    wickr_identity_t *nodeIdentity = wickr_node_identity_gen(&engine, rootIdentity, NULL);
     
     return wickr_identity_chain_create(rootIdentity, nodeIdentity);
 }

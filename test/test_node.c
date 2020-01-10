@@ -16,7 +16,7 @@ DESCRIBE(node_tests, "node.c")
     wickr_ec_key_t *test_root_sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
     
     wickr_identity_t *root_id = wickr_identity_create(IDENTITY_TYPE_ROOT, test_root_id, test_root_sig_key, NULL);
-    wickr_identity_t *node_id = wickr_node_identity_gen(&engine, root_id);
+    wickr_identity_t *node_id = wickr_node_identity_gen(&engine, root_id, NULL);
     
     wickr_identity_chain_t *test_id_chain = wickr_identity_chain_create(root_id, node_id);
     
