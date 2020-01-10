@@ -64,8 +64,11 @@
 %rename (KDFID) wickr_kdf_id;
 
 %rename (ECDHCipherContext) wickr_ecdh_cipher_ctx;
-
 %rename (EncoderResult) wickr_encoder_result;
+
+%rename (TransportCtx) wickr_transport_ctx;
+%rename (TransportStatus) wickr_transport_status;
+%rename (TransportPayloadType) wickr_transport_payload_type;
 
 %rename("%(lowercamelcase)s", %$isfunction) "";
 %rename("%(lowercamelcase)s", %$ismember) "";
@@ -111,4 +114,5 @@
 %include payload.i
 %include packet_meta.i
 %include wickr_ctx.i
+%include transport.i
 #endif
