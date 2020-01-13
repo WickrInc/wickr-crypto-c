@@ -24,7 +24,7 @@ public class IdentityTests
 
     public Identity generateTestNode() {
 
-    	Identity testNode = testIdentity.genNode();
+    	Identity testNode = testIdentity.genNode(null);
 
 		assertNotNull(testNode);
 		assertEquals(testNode.getType(), IdentityType.IDENTITY_TYPE_NODE);

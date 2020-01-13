@@ -5,7 +5,7 @@
 
 wickr_identity_t *wickr_identity_create(wickr_identity_type type, wickr_buffer_t *identifier, wickr_ec_key_t *sig_key, wickr_ecdsa_result_t *signature)
 {
-    if (!identifier || identifier->length != IDENTIFIER_LEN || !sig_key) {
+    if (!identifier || identifier->length >= MAX_IDENTIFIER_LEN || !sig_key) {
         return NULL;
     }
     
@@ -32,7 +32,7 @@ wickr_ecdsa_result_t *wickr_identity_sign(const wickr_identity_t *identity, cons
     return engine->wickr_crypto_engine_ec_sign(identity->sig_key, data, DIGEST_SHA_512);
 }
 
-wickr_identity_t *wickr_node_identity_gen(const wickr_crypto_engine_t *engine, const wickr_identity_t *root_identity)
+wickr_identity_t *wickr_node_identity_gen(const wickr_crypto_engine_t *engine, const wickr_identity_t *root_identity, const wickr_buffer_t *identifier)
 {
     if (!engine || !root_identity || root_identity->type != IDENTITY_TYPE_ROOT) {
         return NULL;
@@ -51,20 +51,20 @@ wickr_identity_t *wickr_node_identity_gen(const wickr_crypto_engine_t *engine, c
         return NULL;
     }
     
-    wickr_buffer_t *rand_id = engine->wickr_crypto_engine_crypto_random(IDENTIFIER_LEN);
+    wickr_buffer_t *node_identifier = identifier ? wickr_buffer_copy(identifier) : engine->wickr_crypto_engine_crypto_random(IDENTIFIER_LEN);
     
-    if (!rand_id) {
+    if (!node_identifier) {
         wickr_ec_key_destroy(&node_sig_key);
         wickr_ecdsa_result_destroy(&node_sig);
         return NULL;
     }
     
-    wickr_identity_t *node_identity = wickr_identity_create(IDENTITY_TYPE_NODE, rand_id, node_sig_key, node_sig);
+    wickr_identity_t *node_identity = wickr_identity_create(IDENTITY_TYPE_NODE, node_identifier, node_sig_key, node_sig);
     
     if (!node_identity) {
         wickr_ec_key_destroy(&node_sig_key);
         wickr_ecdsa_result_destroy(&node_sig);
-        wickr_buffer_destroy(&rand_id);
+        wickr_buffer_destroy(&node_identifier);
     }
     
     return node_identity;

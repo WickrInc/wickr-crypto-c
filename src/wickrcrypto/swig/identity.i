@@ -67,9 +67,9 @@
  	return wickr_identity_sign($self, &engine, data);
  }
 
- wickr_identity_t *gen_node() {
+ wickr_identity_t *gen_node(const wickr_buffer_t *identifier) {
  	wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
- 	return wickr_node_identity_gen(&engine, $self);
+ 	return wickr_node_identity_gen(&engine, $self, identifier);
  }
 
  static wickr_identity_t *from_values(wickr_identity_type type, wickr_buffer_t *identifier, wickr_ec_key_t *sig_key, wickr_ecdsa_result_t *signature) {

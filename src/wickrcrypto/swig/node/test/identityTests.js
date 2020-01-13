@@ -5,7 +5,7 @@ var wickrcrypto = require('../../../../../node/lib/wickrcrypto')
 
 function generateTestNode(identity) {
 
-    var testNode = identity.genNode()
+    var testNode = identity.genNode(null)
 
     expect(testNode).to.be.a("object")
 

@@ -85,17 +85,21 @@ void wickr_test_transport_status_alice(const wickr_transport_ctx_t *ctx, wickr_t
     SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
-bool wickr_test_transport_verify_remote_alice(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user)
+void wickr_test_transport_verify_remote_alice(const wickr_transport_ctx_t *ctx,
+                                              wickr_identity_chain_t *identity,
+                                              wickr_transport_validate_identity_callback callback,
+                                              void *user)
 {
     wickr_identity_chain_destroy(&verified_identity_alice);
     
     wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
     if (wickr_identity_chain_validate(identity, &engine)) {
         verified_identity_alice = wickr_identity_chain_copy(identity);
-        return true;
+        callback(ctx, true);
+        return;
     }
     
-    return false;
+    callback(ctx, false);
 }
 
 /* Test callbacks for Bob */
@@ -142,22 +146,29 @@ void wickr_test_transport_status_bob(const wickr_transport_ctx_t *ctx, wickr_tra
     SHOULD_EQUAL(wickr_transport_ctx_get_user_ctx(ctx), user);
 }
 
-bool wickr_test_transport_verify_remote_bob(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user)
+void wickr_test_transport_verify_remote_bob(const wickr_transport_ctx_t *ctx,
+                                            wickr_identity_chain_t *identity,
+                                            wickr_transport_validate_identity_callback callback,
+                                            void *user)
 {
     wickr_identity_chain_destroy(&verified_identity_bob);
     
     wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
     if (wickr_identity_chain_validate(identity, &engine)) {
         verified_identity_bob = wickr_identity_chain_copy(identity);
-        return true;
+        callback(ctx, true);
+        return;
     }
     
-    return false;
+    callback(ctx, false);
 }
 
-bool wickr_test_transport_verify_remote_failure(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *users)
+void wickr_test_transport_verify_remote_failure(const wickr_transport_ctx_t *ctx,
+                                                wickr_identity_chain_t *identity,
+                                                wickr_transport_validate_identity_callback callback,
+                                                void *users)
 {
-    return false;
+    callback(ctx, false);
 }
 
 wickr_buffer_t *wickr_test_transport_bob_psk(const wickr_transport_ctx_t *ctx, void *user)
@@ -400,7 +411,15 @@ DESCRIBE(wickr_transport_ctx, "wickr_transport_ctx")
         const wickr_transport_callbacks_t *callbacks = wickr_transport_ctx_get_callbacks(alice_transport);
         SHOULD_EQUAL(callbacks, &alice_transport->callbacks);
         
-        wickr_transport_callbacks_t another_callbacks = {1,2,3,4,5,6};
+        wickr_transport_callbacks_t another_callbacks = {
+            (wickr_transport_tx_func) 1,
+            (wickr_transport_rx_func) 2,
+            (wickr_transport_state_change_func) 3,
+            (wickr_transport_validate_identity_func) 4,
+            (wickr_transport_psk_func) 5,
+            (wickr_transport_tx_stream_func) 6
+        };
+        
         wickr_transport_ctx_set_callbacks(alice_transport, &another_callbacks);
         SHOULD_EQUAL((wickr_transport_tx_func)1, alice_transport->callbacks.tx);
         SHOULD_EQUAL((wickr_transport_rx_func)2, alice_transport->callbacks.rx);

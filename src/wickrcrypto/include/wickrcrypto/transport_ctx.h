@@ -71,7 +71,8 @@ typedef enum {
 typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, wickr_transport_payload_type pkt_type, void *user);
 typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
 typedef void (*wickr_transport_state_change_func)(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user);
-typedef bool (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, void *user);
+typedef void (*wickr_transport_validate_identity_callback)(const wickr_transport_ctx_t *ctx, bool is_valid);
+typedef void (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, wickr_transport_validate_identity_callback on_complete, void *user);
 typedef wickr_buffer_t *(*wickr_transport_psk_func) (const wickr_transport_ctx_t *ctx, void *user);
 typedef wickr_stream_ctx_t *(*wickr_transport_tx_stream_func) (const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *tx_stream, void *user);
 /**

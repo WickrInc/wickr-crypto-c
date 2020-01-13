@@ -40,15 +40,29 @@ DESCRIBE(identity, "identity tests")
     }
     END_IT
     
-    IT("can generate a node identity as a root identity")
+    IT("can generate a node identity from a root identity")
     {
-        wickr_identity_t *node_id = wickr_node_identity_gen(&engine, test_identity);
+        wickr_identity_t *node_id = wickr_node_identity_gen(&engine, test_identity, NULL);
         SHOULD_NOT_BE_NULL(node_id);
         SHOULD_EQUAL(node_id->type, IDENTITY_TYPE_NODE);
         SHOULD_NOT_BE_NULL(node_id->signature);
         SHOULD_BE_FALSE(wickr_buffer_is_equal(node_id->identifier, test_identity->identifier, NULL));
         SHOULD_BE_FALSE(wickr_buffer_is_equal(node_id->sig_key->pub_data, test_identity->sig_key->pub_data, NULL));
         wickr_identity_destroy(&node_id);
+    }
+    END_IT
+    
+    IT("can generate a node identity from a root identity and supply an identifier")
+    {
+        wickr_buffer_t *node_identifier = engine.wickr_crypto_engine_crypto_random(32);
+        wickr_identity_t *node_id = wickr_node_identity_gen(&engine, test_identity, node_identifier);
+        SHOULD_NOT_BE_NULL(node_id);
+        SHOULD_EQUAL(node_id->type, IDENTITY_TYPE_NODE);
+        SHOULD_NOT_BE_NULL(node_id->signature);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(node_id->identifier, node_identifier, NULL));
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(node_id->sig_key->pub_data, test_identity->sig_key->pub_data, NULL));
+        wickr_identity_destroy(&node_id);
+        wickr_buffer_destroy(&node_identifier);
     }
     END_IT
     
@@ -164,7 +178,7 @@ DESCRIBE(identity_chain, "identity chain tests")
         wickr_ec_key_t *sig_key = engine.wickr_crypto_engine_ec_rand_key(EC_CURVE_NIST_P521);
 
         wickr_identity_t *test_root = wickr_identity_create(IDENTITY_TYPE_ROOT, identifier, sig_key, NULL);
-        wickr_identity_t *test_node = wickr_node_identity_gen(&engine, test_root);
+        wickr_identity_t *test_node = wickr_node_identity_gen(&engine, test_root, NULL);
         
         SHOULD_BE_NULL(wickr_identity_chain_create(NULL, NULL));
         SHOULD_BE_NULL(wickr_identity_chain_create(test_root, NULL));
