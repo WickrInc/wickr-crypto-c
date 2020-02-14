@@ -76,24 +76,28 @@ static void *__wickr_array_pointer_to_index(const wickr_array_t *array, uint32_t
 
 bool wickr_array_set_item(wickr_array_t *array, uint32_t index, void *item, bool copy)
 {
-    if (!item) {
-        return false;
-    }
-    
     if (!__wickr_array_index_in_bounds(array, index)) {
         return false;
     }
     
-    void *item_to_write = copy ? array->item_copy_func(item) : item;
+    void *item_to_write = NULL;
     
-    if (!item_to_write) {
-        return false;
+    if (item) {
+        item_to_write = copy ? array->item_copy_func(item) : item;
+        
+        if (!item_to_write) {
+            return false;
+        }
+    }
+    
+    void *one_item = __wickr_array_pointer_to_index(array, index);
+    
+    if (one_item && copy) {
+        array->item_destroy_func(&one_item);
     }
     
 	uintptr_t ptr_to_write = (uintptr_t)item_to_write;
-    
     return wickr_buffer_modify_section(array->item_store, (uint8_t *)&ptr_to_write, index * sizeof(uintptr_t), sizeof(uintptr_t));
-    
 }
 
 void *wickr_array_fetch_item(const wickr_array_t *array, uint32_t index, bool copy)
@@ -123,11 +127,6 @@ wickr_array_t *wickr_array_copy(const wickr_array_t *array, bool deep_copy)
     for (unsigned int i = 0; i < array->size; i++) {
         void *one_item = __wickr_array_pointer_to_index(array, i);
         
-        if (!one_item) {
-            wickr_array_destroy(&copy_array, deep_copy);
-            return NULL;
-        }
-        
         if (!wickr_array_set_item(copy_array, i, one_item, deep_copy)) {
             wickr_array_destroy(&copy_array, deep_copy);
             return NULL;
@@ -146,7 +145,10 @@ void wickr_array_destroy(wickr_array_t **array, bool destroy_items)
     if (destroy_items) {
         for (unsigned int i = 0; i < (*array)->size; i++) {
             void *one_item = __wickr_array_pointer_to_index(*array, i);
-            (*array)->item_destroy_func(&one_item);
+            if (one_item) {
+                (*array)->item_destroy_func(&one_item);
+            }
+           
         }
     }
     
