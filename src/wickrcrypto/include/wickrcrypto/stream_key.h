@@ -28,7 +28,7 @@
 extern "C" {
 #endif
 
-#define PACKET_PER_EVO_MIN 64
+#define PACKET_PER_EVO_MIN 1
 #define PACKET_PER_EVO_DEFAULT 512
 #define PACKET_PER_EVO_MAX 32768
 
