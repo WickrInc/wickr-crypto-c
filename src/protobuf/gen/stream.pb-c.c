@@ -7,73 +7,151 @@
 #endif
 
 #include "stream.pb-c.h"
-void   wickr__proto__handshake__seed__init
-                     (Wickr__Proto__Handshake__Seed         *message)
+void   wickr__proto__handshake_v1__seed__init
+                     (Wickr__Proto__HandshakeV1__Seed         *message)
 {
-  static const Wickr__Proto__Handshake__Seed init_value = WICKR__PROTO__HANDSHAKE__SEED__INIT;
+  static const Wickr__Proto__HandshakeV1__Seed init_value = WICKR__PROTO__HANDSHAKE_V1__SEED__INIT;
   *message = init_value;
 }
-void   wickr__proto__handshake__key_exchange__init
-                     (Wickr__Proto__Handshake__KeyExchange         *message)
+void   wickr__proto__handshake_v1__response__init
+                     (Wickr__Proto__HandshakeV1__Response         *message)
 {
-  static const Wickr__Proto__Handshake__KeyExchange init_value = WICKR__PROTO__HANDSHAKE__KEY_EXCHANGE__INIT;
+  static const Wickr__Proto__HandshakeV1__Response init_value = WICKR__PROTO__HANDSHAKE_V1__RESPONSE__INIT;
   *message = init_value;
 }
-void   wickr__proto__handshake__response__init
-                     (Wickr__Proto__Handshake__Response         *message)
+void   wickr__proto__handshake_v1__init
+                     (Wickr__Proto__HandshakeV1         *message)
 {
-  static const Wickr__Proto__Handshake__Response init_value = WICKR__PROTO__HANDSHAKE__RESPONSE__INIT;
+  static const Wickr__Proto__HandshakeV1 init_value = WICKR__PROTO__HANDSHAKE_V1__INIT;
   *message = init_value;
 }
-void   wickr__proto__handshake__finish__init
-                     (Wickr__Proto__Handshake__Finish         *message)
+size_t wickr__proto__handshake_v1__get_packed_size
+                     (const Wickr__Proto__HandshakeV1 *message)
 {
-  static const Wickr__Proto__Handshake__Finish init_value = WICKR__PROTO__HANDSHAKE__FINISH__INIT;
-  *message = init_value;
-}
-void   wickr__proto__handshake__init
-                     (Wickr__Proto__Handshake         *message)
-{
-  static const Wickr__Proto__Handshake init_value = WICKR__PROTO__HANDSHAKE__INIT;
-  *message = init_value;
-}
-size_t wickr__proto__handshake__get_packed_size
-                     (const Wickr__Proto__Handshake *message)
-{
-  assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
+  assert(message->base.descriptor == &wickr__proto__handshake_v1__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t wickr__proto__handshake__pack
-                     (const Wickr__Proto__Handshake *message,
+size_t wickr__proto__handshake_v1__pack
+                     (const Wickr__Proto__HandshakeV1 *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
+  assert(message->base.descriptor == &wickr__proto__handshake_v1__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t wickr__proto__handshake__pack_to_buffer
-                     (const Wickr__Proto__Handshake *message,
+size_t wickr__proto__handshake_v1__pack_to_buffer
+                     (const Wickr__Proto__HandshakeV1 *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
+  assert(message->base.descriptor == &wickr__proto__handshake_v1__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-Wickr__Proto__Handshake *
-       wickr__proto__handshake__unpack
+Wickr__Proto__HandshakeV1 *
+       wickr__proto__handshake_v1__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (Wickr__Proto__Handshake *)
-     protobuf_c_message_unpack (&wickr__proto__handshake__descriptor,
+  return (Wickr__Proto__HandshakeV1 *)
+     protobuf_c_message_unpack (&wickr__proto__handshake_v1__descriptor,
                                 allocator, len, data);
 }
-void   wickr__proto__handshake__free_unpacked
-                     (Wickr__Proto__Handshake *message,
+void   wickr__proto__handshake_v1__free_unpacked
+                     (Wickr__Proto__HandshakeV1 *message,
                       ProtobufCAllocator *allocator)
 {
   if(!message)
     return;
-  assert(message->base.descriptor == &wickr__proto__handshake__descriptor);
+  assert(message->base.descriptor == &wickr__proto__handshake_v1__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   wickr__proto__handshake_v1_response_data__init
+                     (Wickr__Proto__HandshakeV1ResponseData         *message)
+{
+  static const Wickr__Proto__HandshakeV1ResponseData init_value = WICKR__PROTO__HANDSHAKE_V1_RESPONSE_DATA__INIT;
+  *message = init_value;
+}
+size_t wickr__proto__handshake_v1_response_data__get_packed_size
+                     (const Wickr__Proto__HandshakeV1ResponseData *message)
+{
+  assert(message->base.descriptor == &wickr__proto__handshake_v1_response_data__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t wickr__proto__handshake_v1_response_data__pack
+                     (const Wickr__Proto__HandshakeV1ResponseData *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &wickr__proto__handshake_v1_response_data__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t wickr__proto__handshake_v1_response_data__pack_to_buffer
+                     (const Wickr__Proto__HandshakeV1ResponseData *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &wickr__proto__handshake_v1_response_data__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Wickr__Proto__HandshakeV1ResponseData *
+       wickr__proto__handshake_v1_response_data__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Wickr__Proto__HandshakeV1ResponseData *)
+     protobuf_c_message_unpack (&wickr__proto__handshake_v1_response_data__descriptor,
+                                allocator, len, data);
+}
+void   wickr__proto__handshake_v1_response_data__free_unpacked
+                     (Wickr__Proto__HandshakeV1ResponseData *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &wickr__proto__handshake_v1_response_data__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   wickr__proto__transport_root_key__init
+                     (Wickr__Proto__TransportRootKey         *message)
+{
+  static const Wickr__Proto__TransportRootKey init_value = WICKR__PROTO__TRANSPORT_ROOT_KEY__INIT;
+  *message = init_value;
+}
+size_t wickr__proto__transport_root_key__get_packed_size
+                     (const Wickr__Proto__TransportRootKey *message)
+{
+  assert(message->base.descriptor == &wickr__proto__transport_root_key__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t wickr__proto__transport_root_key__pack
+                     (const Wickr__Proto__TransportRootKey *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &wickr__proto__transport_root_key__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t wickr__proto__transport_root_key__pack_to_buffer
+                     (const Wickr__Proto__TransportRootKey *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &wickr__proto__transport_root_key__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Wickr__Proto__TransportRootKey *
+       wickr__proto__transport_root_key__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Wickr__Proto__TransportRootKey *)
+     protobuf_c_message_unpack (&wickr__proto__transport_root_key__descriptor,
+                                allocator, len, data);
+}
+void   wickr__proto__transport_root_key__free_unpacked
+                     (Wickr__Proto__TransportRootKey *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &wickr__proto__transport_root_key__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   wickr__proto__stream_key__init
@@ -121,206 +199,144 @@ void   wickr__proto__stream_key__free_unpacked
   assert(message->base.descriptor == &wickr__proto__stream_key__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor wickr__proto__handshake__seed__field_descriptors[1] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__seed__field_descriptors[3] =
 {
   {
-    "node_info",
+    "id_chain",
     2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Seed, node_info),
-    &wickr__proto__node__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned wickr__proto__handshake__seed__field_indices_by_name[] = {
-  0,   /* field[0] = node_info */
-};
-static const ProtobufCIntRange wickr__proto__handshake__seed__number_ranges[1 + 1] =
-{
-  { 2, 0 },
-  { 0, 1 }
-};
-const ProtobufCMessageDescriptor wickr__proto__handshake__seed__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.Handshake.Seed",
-  "Seed",
-  "Wickr__Proto__Handshake__Seed",
-  "wickr.proto",
-  sizeof(Wickr__Proto__Handshake__Seed),
-  1,
-  wickr__proto__handshake__seed__field_descriptors,
-  wickr__proto__handshake__seed__field_indices_by_name,
-  1,  wickr__proto__handshake__seed__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__handshake__seed__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor wickr__proto__handshake__key_exchange__field_descriptors[2] =
-{
-  {
-    "sender_pub",
-    1,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Wickr__Proto__Handshake__KeyExchange, has_sender_pub),
-    offsetof(Wickr__Proto__Handshake__KeyExchange, sender_pub),
-    NULL,
+    offsetof(Wickr__Proto__HandshakeV1__Seed, id_chain),
+    &wickr__proto__identity_chain__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "exchange_data",
-    2,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Wickr__Proto__Handshake__KeyExchange, has_exchange_data),
-    offsetof(Wickr__Proto__Handshake__KeyExchange, exchange_data),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned wickr__proto__handshake__key_exchange__field_indices_by_name[] = {
-  1,   /* field[1] = exchange_data */
-  0,   /* field[0] = sender_pub */
-};
-static const ProtobufCIntRange wickr__proto__handshake__key_exchange__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 2 }
-};
-const ProtobufCMessageDescriptor wickr__proto__handshake__key_exchange__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.Handshake.KeyExchange",
-  "KeyExchange",
-  "Wickr__Proto__Handshake__KeyExchange",
-  "wickr.proto",
-  sizeof(Wickr__Proto__Handshake__KeyExchange),
-  2,
-  wickr__proto__handshake__key_exchange__field_descriptors,
-  wickr__proto__handshake__key_exchange__field_indices_by_name,
-  1,  wickr__proto__handshake__key_exchange__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__handshake__key_exchange__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor wickr__proto__handshake__response__field_descriptors[2] =
-{
-  {
-    "key_exchange",
-    2,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Response, key_exchange),
-    &wickr__proto__handshake__key_exchange__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "response_key",
+    "ephemeral_pubkey",
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Response, response_key),
-    &wickr__proto__handshake__seed__descriptor,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__HandshakeV1__Seed, has_ephemeral_pubkey),
+    offsetof(Wickr__Proto__HandshakeV1__Seed, ephemeral_pubkey),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "identity_required",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BOOL,
+    offsetof(Wickr__Proto__HandshakeV1__Seed, has_identity_required),
+    offsetof(Wickr__Proto__HandshakeV1__Seed, identity_required),
+    NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned wickr__proto__handshake__response__field_indices_by_name[] = {
-  0,   /* field[0] = key_exchange */
-  1,   /* field[1] = response_key */
+static const unsigned wickr__proto__handshake_v1__seed__field_indices_by_name[] = {
+  1,   /* field[1] = ephemeral_pubkey */
+  0,   /* field[0] = id_chain */
+  2,   /* field[2] = identity_required */
 };
-static const ProtobufCIntRange wickr__proto__handshake__response__number_ranges[1 + 1] =
+static const ProtobufCIntRange wickr__proto__handshake_v1__seed__number_ranges[1 + 1] =
 {
   { 2, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
-const ProtobufCMessageDescriptor wickr__proto__handshake__response__descriptor =
+const ProtobufCMessageDescriptor wickr__proto__handshake_v1__seed__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.Handshake.Response",
-  "Response",
-  "Wickr__Proto__Handshake__Response",
+  "wickr.proto.HandshakeV1.Seed",
+  "Seed",
+  "Wickr__Proto__HandshakeV1__Seed",
   "wickr.proto",
-  sizeof(Wickr__Proto__Handshake__Response),
-  2,
-  wickr__proto__handshake__response__field_descriptors,
-  wickr__proto__handshake__response__field_indices_by_name,
-  1,  wickr__proto__handshake__response__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__handshake__response__init,
+  sizeof(Wickr__Proto__HandshakeV1__Seed),
+  3,
+  wickr__proto__handshake_v1__seed__field_descriptors,
+  wickr__proto__handshake_v1__seed__field_indices_by_name,
+  1,  wickr__proto__handshake_v1__seed__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__handshake_v1__seed__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__handshake__finish__field_descriptors[1] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__response__field_descriptors[3] =
 {
   {
-    "key_exchange",
+    "ephemeral_pubkey",
     2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__HandshakeV1__Response, has_ephemeral_pubkey),
+    offsetof(Wickr__Proto__HandshakeV1__Response, ephemeral_pubkey),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "encrypted_response_data",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__HandshakeV1__Response, has_encrypted_response_data),
+    offsetof(Wickr__Proto__HandshakeV1__Response, encrypted_response_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "id_chain",
+    4,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake__Finish, key_exchange),
-    &wickr__proto__handshake__key_exchange__descriptor,
+    offsetof(Wickr__Proto__HandshakeV1__Response, id_chain),
+    &wickr__proto__identity_chain__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned wickr__proto__handshake__finish__field_indices_by_name[] = {
-  0,   /* field[0] = key_exchange */
+static const unsigned wickr__proto__handshake_v1__response__field_indices_by_name[] = {
+  1,   /* field[1] = encrypted_response_data */
+  0,   /* field[0] = ephemeral_pubkey */
+  2,   /* field[2] = id_chain */
 };
-static const ProtobufCIntRange wickr__proto__handshake__finish__number_ranges[1 + 1] =
+static const ProtobufCIntRange wickr__proto__handshake_v1__response__number_ranges[1 + 1] =
 {
   { 2, 0 },
-  { 0, 1 }
+  { 0, 3 }
 };
-const ProtobufCMessageDescriptor wickr__proto__handshake__finish__descriptor =
+const ProtobufCMessageDescriptor wickr__proto__handshake_v1__response__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.Handshake.Finish",
-  "Finish",
-  "Wickr__Proto__Handshake__Finish",
+  "wickr.proto.HandshakeV1.Response",
+  "Response",
+  "Wickr__Proto__HandshakeV1__Response",
   "wickr.proto",
-  sizeof(Wickr__Proto__Handshake__Finish),
-  1,
-  wickr__proto__handshake__finish__field_descriptors,
-  wickr__proto__handshake__finish__field_indices_by_name,
-  1,  wickr__proto__handshake__finish__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__handshake__finish__init,
+  sizeof(Wickr__Proto__HandshakeV1__Response),
+  3,
+  wickr__proto__handshake_v1__response__field_descriptors,
+  wickr__proto__handshake_v1__response__field_indices_by_name,
+  1,  wickr__proto__handshake_v1__response__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__handshake_v1__response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__handshake__field_descriptors[4] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__field_descriptors[2] =
 {
-  {
-    "version",
-    1,
-    PROTOBUF_C_LABEL_REQUIRED,
-    PROTOBUF_C_TYPE_UINT32,
-    0,   /* quantifier_offset */
-    offsetof(Wickr__Proto__Handshake, version),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
   {
     "seed",
     2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Wickr__Proto__Handshake, payload_case),
-    offsetof(Wickr__Proto__Handshake, seed),
-    &wickr__proto__handshake__seed__descriptor,
+    offsetof(Wickr__Proto__HandshakeV1, payload_case),
+    offsetof(Wickr__Proto__HandshakeV1, seed),
+    &wickr__proto__handshake_v1__seed__descriptor,
     NULL,
     0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -330,50 +346,151 @@ static const ProtobufCFieldDescriptor wickr__proto__handshake__field_descriptors
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Wickr__Proto__Handshake, payload_case),
-    offsetof(Wickr__Proto__Handshake, response),
-    &wickr__proto__handshake__response__descriptor,
+    offsetof(Wickr__Proto__HandshakeV1, payload_case),
+    offsetof(Wickr__Proto__HandshakeV1, response),
+    &wickr__proto__handshake_v1__response__descriptor,
     NULL,
     0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned wickr__proto__handshake_v1__field_indices_by_name[] = {
+  1,   /* field[1] = response */
+  0,   /* field[0] = seed */
+};
+static const ProtobufCIntRange wickr__proto__handshake_v1__number_ranges[1 + 1] =
+{
+  { 2, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor wickr__proto__handshake_v1__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "wickr.proto.HandshakeV1",
+  "HandshakeV1",
+  "Wickr__Proto__HandshakeV1",
+  "wickr.proto",
+  sizeof(Wickr__Proto__HandshakeV1),
+  2,
+  wickr__proto__handshake_v1__field_descriptors,
+  wickr__proto__handshake_v1__field_indices_by_name,
+  1,  wickr__proto__handshake_v1__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__handshake_v1__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor wickr__proto__handshake_v1_response_data__field_descriptors[1] =
+{
+  {
+    "root_key",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Wickr__Proto__HandshakeV1ResponseData, root_key),
+    &wickr__proto__transport_root_key__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned wickr__proto__handshake_v1_response_data__field_indices_by_name[] = {
+  0,   /* field[0] = root_key */
+};
+static const ProtobufCIntRange wickr__proto__handshake_v1_response_data__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor wickr__proto__handshake_v1_response_data__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "wickr.proto.HandshakeV1ResponseData",
+  "HandshakeV1ResponseData",
+  "Wickr__Proto__HandshakeV1ResponseData",
+  "wickr.proto",
+  sizeof(Wickr__Proto__HandshakeV1ResponseData),
+  1,
+  wickr__proto__handshake_v1_response_data__field_descriptors,
+  wickr__proto__handshake_v1_response_data__field_indices_by_name,
+  1,  wickr__proto__handshake_v1_response_data__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__handshake_v1_response_data__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor wickr__proto__transport_root_key__field_descriptors[4] =
+{
+  {
+    "secret",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__TransportRootKey, has_secret),
+    offsetof(Wickr__Proto__TransportRootKey, secret),
+    NULL,
+    NULL,
+    0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "finish",
+    "cipher_id",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Wickr__Proto__TransportRootKey, has_cipher_id),
+    offsetof(Wickr__Proto__TransportRootKey, cipher_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "packets_per_evo_send",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Wickr__Proto__TransportRootKey, has_packets_per_evo_send),
+    offsetof(Wickr__Proto__TransportRootKey, packets_per_evo_send),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "packets_per_evo_recv",
     4,
     PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Wickr__Proto__Handshake, payload_case),
-    offsetof(Wickr__Proto__Handshake, finish),
-    &wickr__proto__handshake__finish__descriptor,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Wickr__Proto__TransportRootKey, has_packets_per_evo_recv),
+    offsetof(Wickr__Proto__TransportRootKey, packets_per_evo_recv),
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    NULL,
+    0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned wickr__proto__handshake__field_indices_by_name[] = {
-  3,   /* field[3] = finish */
-  2,   /* field[2] = response */
-  1,   /* field[1] = seed */
-  0,   /* field[0] = version */
+static const unsigned wickr__proto__transport_root_key__field_indices_by_name[] = {
+  1,   /* field[1] = cipher_id */
+  3,   /* field[3] = packets_per_evo_recv */
+  2,   /* field[2] = packets_per_evo_send */
+  0,   /* field[0] = secret */
 };
-static const ProtobufCIntRange wickr__proto__handshake__number_ranges[1 + 1] =
+static const ProtobufCIntRange wickr__proto__transport_root_key__number_ranges[1 + 1] =
 {
   { 1, 0 },
   { 0, 4 }
 };
-const ProtobufCMessageDescriptor wickr__proto__handshake__descriptor =
+const ProtobufCMessageDescriptor wickr__proto__transport_root_key__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "wickr.proto.Handshake",
-  "Handshake",
-  "Wickr__Proto__Handshake",
+  "wickr.proto.TransportRootKey",
+  "TransportRootKey",
+  "Wickr__Proto__TransportRootKey",
   "wickr.proto",
-  sizeof(Wickr__Proto__Handshake),
+  sizeof(Wickr__Proto__TransportRootKey),
   4,
-  wickr__proto__handshake__field_descriptors,
-  wickr__proto__handshake__field_indices_by_name,
-  1,  wickr__proto__handshake__number_ranges,
-  (ProtobufCMessageInit) wickr__proto__handshake__init,
+  wickr__proto__transport_root_key__field_descriptors,
+  wickr__proto__transport_root_key__field_indices_by_name,
+  1,  wickr__proto__transport_root_key__number_ranges,
+  (ProtobufCMessageInit) wickr__proto__transport_root_key__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor wickr__proto__stream_key__field_descriptors[4] =

@@ -50,31 +50,18 @@ typedef struct wickr_transport_ctx wickr_transport_ctx_t;
 
 typedef enum {
     TRANSPORT_STATUS_NONE, /* Transport has not been initialized */
-    TRANSPORT_STATUS_SEEDED, /* Transport has generated and sent a seed handshake packet */
-    TRANSPORT_STATUS_TX_INIT, /* Transport has processed an incoming seed handshake packet and responded */
+    TRANSPORT_STATUS_INITIAL_HANDSHAKE, /* Transport has generated and sent a seed handshake packet */
     TRANSPORT_STATUS_ACTIVE, /* Transport has both rx and tx streams initialized and is able to send encrypted packets */
     TRANSPORT_STATUS_ERROR /* Transport has encountered an error, and communication is no longer possible */
 } wickr_transport_status;
 
-typedef enum {
-    TRANSPORT_DATA_FLOW_BIDIRECTIONAL, /* Data flow can happen in both directions */
-    TRANSPORT_DATA_FLOW_READ_ONLY, /* Non handshake packets can only flow in the rx direction */
-    TRANSPORT_DATA_FLOW_WRITE_ONLY /* Non handshake packets can only flow in the tx direction */
-} wickr_transport_data_flow;
-
-typedef enum {
-    TRANSPORT_PAYLOAD_TYPE_HANDSHAKE, /* Payload is a handshake control packet */
-    TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT /* Payload contains encrypted application data */
-} wickr_transport_payload_type;
-
 /* Function callback to handle sending / receiving / errors via an actual transport, eg socket */
-typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, wickr_transport_payload_type pkt_type, void *user);
-typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user);
-typedef void (*wickr_transport_state_change_func)(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user);
+typedef void (*wickr_transport_tx_func)(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data);
+typedef void (*wickr_transport_rx_func)(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data);
+typedef void (*wickr_transport_state_change_func)(const wickr_transport_ctx_t *ctx, wickr_transport_status status);
 typedef void (*wickr_transport_validate_identity_callback)(const wickr_transport_ctx_t *ctx, bool is_valid);
-typedef void (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, wickr_transport_validate_identity_callback on_complete, void *user);
-typedef wickr_buffer_t *(*wickr_transport_psk_func) (const wickr_transport_ctx_t *ctx, void *user);
-typedef wickr_stream_ctx_t *(*wickr_transport_tx_stream_func) (const wickr_transport_ctx_t *ctx, wickr_stream_ctx_t *tx_stream, void *user);
+typedef void (*wickr_transport_validate_identity_func)(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity, wickr_transport_validate_identity_callback on_complete);
+
 /**
  @ingroup wickr_transport_ctx
 
@@ -101,8 +88,6 @@ struct wickr_transport_callbacks {
     wickr_transport_rx_func rx;
     wickr_transport_state_change_func on_state;
     wickr_transport_validate_identity_func on_identity_verify;
-    wickr_transport_psk_func on_psk_required;
-    wickr_transport_tx_stream_func on_tx_stream_gen;
 };
 
 typedef struct wickr_transport_callbacks wickr_transport_callbacks_t;
@@ -126,8 +111,8 @@ typedef struct wickr_transport_callbacks wickr_transport_callbacks_t;
  @return a newly allocated transport context owning the properties passed in
  */
 wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t engine,
-                                                  wickr_node_t *local_identity,
-                                                  wickr_node_t *remote_identity,
+                                                  wickr_identity_chain_t *local_identity,
+                                                  wickr_identity_chain_t *remote_identity,
                                                   uint32_t evo_count,
                                                   wickr_transport_callbacks_t callbacks,
                                                   void *user);
@@ -185,9 +170,8 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx);
  
  @param ctx the context to process the buffer with
  @param buffer the buffer to be encrypted and sent over the transport
- @return the decoded tx buffer or NULL if decryption fails. As with all other incoming packets, it will also trigger a rx callback
  */
-wickr_buffer_t *wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
+void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
 
 /**
  
@@ -197,9 +181,8 @@ wickr_buffer_t *wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx
  
  @param ctx the context to process the buffer with
  @param buffer the buffer to be processed by by 'ctx'
- @return the decoded tx buffer or NULL if decryption fails. As with all other incoming packets, it will also trigger a rx callback
  */
-wickr_buffer_t *wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
+void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer);
 
 
 /* GETTERS AND SETTERS */
@@ -218,22 +201,12 @@ wickr_transport_status wickr_transport_ctx_get_status(const wickr_transport_ctx_
 /**
  @ingroup wickr_transport_ctx
  
- Get the user data associated with the current rx stream's stream key
-
- @param ctx the transport context to get the rx stream user data of
- @return the current rx stream key's user data field, or NULL if no data is available
- */
-const wickr_buffer_t *wickr_transport_ctx_get_rxstream_user_data(const wickr_transport_ctx_t *ctx);
-
-/**
- @ingroup wickr_transport_ctx
- 
  Get the local node information
 
  @param ctx the transport context to get the local node information of
  @return local node information or NULL if no information is available due to the state of the transport context
  */
-const wickr_node_t *wickr_transport_ctx_get_local_node_ptr(const wickr_transport_ctx_t *ctx);
+const wickr_identity_chain_t *wickr_transport_ctx_get_local_identity_ptr(const wickr_transport_ctx_t *ctx);
 
 /**
  @ingroup wickr_transport_ctx
@@ -243,7 +216,7 @@ const wickr_node_t *wickr_transport_ctx_get_local_node_ptr(const wickr_transport
  @param ctx the transport context to get the remote node information of
  @return remote node information or NULL if no information is available due to the state of the transport context
  */
-const wickr_node_t *wickr_transport_ctx_get_remote_node_ptr(const wickr_transport_ctx_t *ctx);
+const wickr_identity_chain_t *wickr_transport_ctx_get_remote_identity_ptr(const wickr_transport_ctx_t *ctx);
 
 /**
  @ingroup wickr_transport_ctx
@@ -264,69 +237,6 @@ const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx);
  @param user the pointer for the transport context to hold and be passed back in callbacks
  */
 void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Get the current user PSK, see 'wickr_transport_ctx_set_user_psk' for more information
- 
- @param ctx the transport context to get the psk data from
- @return the current psk data for 'ctx'
- */
-const wickr_buffer_t *wickr_transport_ctx_get_user_psk(const wickr_transport_ctx_t *ctx);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Get the current data flow mode
- 
- @param ctx the transport context to get the data flow mode of
- @return the current data flow mode for 'ctx', see 'wickr_transport_data_flow' for more info
- */
-wickr_transport_data_flow wickr_transport_ctx_get_data_flow_mode(const wickr_transport_ctx_t *ctx);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Set the the data flow mode. This change will be applied immediatly
- 
- If the mode is READ_ONLY, attempting to write a packet will silently fail
- If the mode iw WRITE_ONLY, any incoming packets will be silently dropped
- 
- @param ctx the transport context to set the data flow mode of
- @param flow_mode the flow mode you would like to enact
- */
-void wickr_transport_ctx_set_data_flow_mode(wickr_transport_ctx_t *ctx , wickr_transport_data_flow flow_mode);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Get a pointer to the current set of callbacks for a transport
- 
- @param ctx the transport context to get the callbacks of
- @return a pointer to the current set of callbacks the transport is using
- */
-const wickr_transport_callbacks_t *wickr_transport_ctx_get_callbacks(const wickr_transport_ctx_t *ctx);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Update the callbacks of a transport after it's creation
- 
- @param ctx the transport context to set the callbacks of
- @param callbacks the callbacks that transport should use after calling this function
- */
-void wickr_transport_ctx_set_callbacks(wickr_transport_ctx_t *ctx, const wickr_transport_callbacks_t *callbacks);
-
-/**
- @ingroup wickr_transport_ctx
- 
- Force the tx stream to perform a tx stream key evolution immediately
- 
- @param ctx the transport context evolove the tx stream key of
- @return true if the key evolution was successful
- */
-bool wickr_transport_ctx_force_tx_key_evo(wickr_transport_ctx_t *ctx);
     
 #ifdef __cplusplus
 }

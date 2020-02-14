@@ -3,12 +3,12 @@
 var expect = require('expect.js')
 var wickrcrypto = require('../../../../../node/lib/wickrcrypto')
 
-var generateRandomNode = require('./nodeTests').generateRandomNode
+var generateIdentityChain = require('./identityTests').generateTestIdentityChain
 
 describe ("Transport Tests", function() {
 
-    var testLocalNode
-    var testRemoteNode
+    var testLocalIdentity
+    var testRemoteIdentity
     var testAliceTransport
     var testBobTransport
     
@@ -16,31 +16,27 @@ describe ("Transport Tests", function() {
     var aliceRxEvent
     var aliceStateChangedEvent
     var aliceIdentityEvent
-    var aliceLastDecoded
 
     var bobTxEvent
     var bobRxEvent
     var bobStateChangedEvent
     var bobIdentityEvent
-    var bobLastDecoded
 
     const resetEvents = function() {
         aliceTxEvent = []
         aliceRxEvent = []
         aliceStateChangedEvent = []
         aliceIdentityEvent = []
-        aliceLastDecoded = null
 
         bobTxEvent = []
         bobRxEvent = []
         bobStateChangedEvent = []
         bobIdentityEvent = []
-        bobLastDecoded = null
     }
 
-    const txAliceCallback = function(data, type) {
-        aliceTxEvent.push({data: data, type: type})
-        bobLastDecoded = testBobTransport.processRxBuffer(data)
+    const txAliceCallback = function(data) {
+        aliceTxEvent.push(data)
+        testBobTransport.processRxBuffer(data)
     }
 
     const rxAliceCallback = function(data) {
@@ -64,8 +60,8 @@ describe ("Transport Tests", function() {
     }
 
     const txBobCallback = function(data, type) {
-        bobTxEvent.push({data: data, type: type})
-        aliceLastDecoded = testAliceTransport.processRxBuffer(data)
+        bobTxEvent.push(data)
+        testAliceTransport.processRxBuffer(data)
     }
 
     const rxBobCallback = function(data) {
@@ -92,11 +88,11 @@ describe ("Transport Tests", function() {
 
         resetEvents()
 
-        testLocalNode = generateRandomNode(Buffer.from("alice"))
-        testRemoteNode = generateRandomNode(Buffer.from("bob"))
+        testLocalIdentity = generateIdentityChain("alice")
+        testRemoteIdentity = generateIdentityChain("bob")
 
-        testAliceTransport = wickrcrypto.TransportCtx.createTransport(testLocalNode.node, testRemoteNode.node, aliceCallbacks)
-        testBobTransport = wickrcrypto.TransportCtx.createTransport(testRemoteNode.node, null, bobCallbacks);
+        testAliceTransport = wickrcrypto.TransportCtx.createTransport(testLocalIdentity, testRemoteIdentity, 0 /* use default evo count */, aliceCallbacks)
+        testBobTransport = wickrcrypto.TransportCtx.createTransport(testRemoteIdentity, null, 0 /* use default evo count */, bobCallbacks);
     })
 
     describe("establishing a transport", function() {
@@ -112,26 +108,22 @@ describe ("Transport Tests", function() {
         it("should be able to be started", function() {
             testAliceTransport.start()
             
-            expect(aliceTxEvent.length).to.eql(2)
-            expect(aliceTxEvent[0].data.length).to.eql(791)
-            expect(aliceTxEvent[0].type).to.eql(0)
-            expect(aliceTxEvent[1].data.length).to.eql(400)
-            expect(aliceTxEvent[1].type).to.eql(0)
+            expect(aliceTxEvent.length).to.eql(1)
+            expect(aliceTxEvent[0].length).to.eql(773)
     
             expect(aliceRxEvent.length).to.eql(0)
             expect(aliceIdentityEvent.length).to.eql(0)
-            expect(aliceStateChangedEvent).to.eql([1,3])
+            expect(aliceStateChangedEvent).to.eql([1,2])
     
             expect(bobTxEvent.length).to.eql(1)
-            expect(bobTxEvent[0].data.length).to.eql(1035)
-            expect(bobTxEvent[0].type).to.eql(0)
+            expect(bobTxEvent[0].length).to.eql(368)
     
             expect(bobRxEvent.length).to.eql(0)
     
             expect(bobIdentityEvent.length).to.eql(1)
-            expect(bobIdentityEvent[0].root.identifier).to.eql(testLocalNode.testIdentityChain.root.identifier)
+            expect(bobIdentityEvent[0].root.identifier).to.eql(testLocalIdentity.root.identifier)
     
-            expect(bobStateChangedEvent).to.eql([2,3])
+            expect(bobStateChangedEvent).to.eql([2])
         })
     })
 
@@ -150,8 +142,8 @@ describe ("Transport Tests", function() {
             /* Verify that no state changes or unwanted callbacks have fired */
             expect(aliceStateChangedEvent.length).to.eql(0)
             expect(bobStateChangedEvent.length).to.eql(0)
-            expect(testAliceTransport.getStatus()).to.eql(3)
-            expect(testBobTransport.getStatus()).to.eql(3)
+            expect(testAliceTransport.getStatus()).to.eql(2)
+            expect(testBobTransport.getStatus()).to.eql(2)
             expect(aliceRxEvent.length).to.eql(0)
             expect(aliceIdentityEvent.length).to.eql(0)
             expect(bobIdentityEvent.length).to.eql(0)
@@ -159,12 +151,10 @@ describe ("Transport Tests", function() {
 
             /* The transport should have produced an encrypted packet to transfer to bob, and bob should have received it */
             expect(aliceTxEvent.length).to.eql(1)
-            expect(aliceTxEvent[0].data.length).to.eql(50)
-            expect(aliceTxEvent[0].type).to.eql(1)
+            expect(aliceTxEvent[0].length).to.eql(50)
 
             expect(bobRxEvent.length).to.eql(1)
             expect(bobRxEvent[0]).to.eql(testData)
-            expect(bobLastDecoded).to.eql(testData)
 
         })
 
@@ -176,8 +166,8 @@ describe ("Transport Tests", function() {
             /* Verify that no state changes or unwanted callbacks have fired */
             expect(aliceStateChangedEvent.length).to.eql(0)
             expect(bobStateChangedEvent.length).to.eql(0)
-            expect(testAliceTransport.getStatus()).to.eql(3)
-            expect(testBobTransport.getStatus()).to.eql(3)
+            expect(testAliceTransport.getStatus()).to.eql(2)
+            expect(testBobTransport.getStatus()).to.eql(2)
             expect(bobRxEvent.length).to.eql(0)
             expect(aliceIdentityEvent.length).to.eql(0)
             expect(bobIdentityEvent.length).to.eql(0)
@@ -185,12 +175,10 @@ describe ("Transport Tests", function() {
 
             /* The transport should have produced an encrypted packet to transfer to alice, and alice should have received it */
             expect(bobTxEvent.length).to.eql(1)
-            expect(bobTxEvent[0].data.length).to.eql(50)
-            expect(bobTxEvent[0].type).to.eql(1)
+            expect(bobTxEvent[0].length).to.eql(50)
 
             expect(aliceRxEvent.length).to.eql(1)
             expect(aliceRxEvent[0]).to.eql(testData)
-            expect(aliceLastDecoded).to.eql(testData)
 
         })
     })
@@ -211,11 +199,11 @@ describe ("Transport Tests", function() {
                 identityVerify: identityVerifyBobRequestedFail
             }
 
-            testBobTransport = wickrcrypto.TransportCtx.createTransport(testRemoteNode.node, null, bobCallbacks);
+            testBobTransport = wickrcrypto.TransportCtx.createTransport(testRemoteIdentity, null, 0, bobCallbacks);
             testAliceTransport.start()
 
-            expect(bobStateChangedEvent).eql([4])
-            expect(testBobTransport.getStatus()).to.eql(4)
+            expect(bobStateChangedEvent).eql([3])
+            expect(testBobTransport.getStatus()).to.eql(3)
 
         })
     
@@ -228,8 +216,8 @@ describe ("Transport Tests", function() {
             expect(processingResponse).to.be.null
 
             expect(bobRxEvent.length).to.eql(0)
-            expect(testBobTransport.getStatus()).to.eql(4)
-            expect(bobStateChangedEvent).to.eql([4])
+            expect(testBobTransport.getStatus()).to.eql(3)
+            expect(bobStateChangedEvent).to.eql([3])
 
         })
     })
