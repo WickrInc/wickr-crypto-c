@@ -1,9 +1,3 @@
-//
-//  test_transport_root_key.h
-//  crypto_test
-//
-//  Created by Tom Leavy on 2/13/20.
-//
 
 #ifndef test_transport_root_key_h
 #define test_transport_root_key_h

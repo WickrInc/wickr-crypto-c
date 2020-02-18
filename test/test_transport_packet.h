@@ -1,9 +1,3 @@
-//
-//  test_transport_packet.h
-//  crypto_test
-//
-//  Created by Thomas Leavy on 1/29/20.
-//
 
 #ifndef test_transport_packet_h
 #define test_transport_packet_h

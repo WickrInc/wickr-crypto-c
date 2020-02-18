@@ -1,9 +1,3 @@
-//
-//  test_transport_packet.c
-//  crypto_test
-//
-//  Created by Thomas Leavy on 1/29/20.
-//
 
 #include "test_transport_packet.h"
 #include "transport_packet.h"

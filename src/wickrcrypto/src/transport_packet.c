@@ -1,9 +1,3 @@
-//
-//  transport_packet.c
-//  wickrcrypto
-//
-//  Created by Tom Leavy on 1/28/20.
-//
 
 #include "transport_packet.h"
 #include "memory.h"

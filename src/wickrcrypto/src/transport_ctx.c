@@ -1,10 +1,3 @@
-//
-//  stream.c
-//  Crypto
-//
-//  Created by Tom Leavy on 4/11/17.
-//
-//
 
 #include "transport_ctx.h"
 #include "memory.h"

@@ -1,9 +1,3 @@
-//
-//  transport_handshake.c
-//  wickrcrypto
-//
-//  Created by Tom Leavy on 1/14/20.
-//
 
 #include "transport_handshake.h"
 #include "memory.h"

@@ -1,9 +1,3 @@
-//
-//  test_handshake.c
-//  crypto_test
-//
-//  Created by Tom Leavy on 2/3/20.
-//
 
 #include "test_transport_handshake.h"
 #include "transport_handshake.h"

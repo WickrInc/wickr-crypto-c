@@ -1,9 +1,3 @@
-//
-//  handshake_proto.c
-//  wickrcrypto
-//
-//  Created by Tom Leavy on 1/15/20.
-//
 
 #include "private/transport_handshake_priv.h"
 #include "private/identity_priv.h"

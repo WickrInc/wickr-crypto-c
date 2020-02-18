@@ -1,9 +1,3 @@
-//
-//  transport_root_key.c
-//  wickrcrypto
-//
-//  Created by Thomas Leavy on 1/24/20.
-//
 
 #include "transport_root_key.h"
 #include "memory.h"

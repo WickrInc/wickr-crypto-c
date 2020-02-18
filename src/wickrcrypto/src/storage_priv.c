@@ -1,9 +1,3 @@
-//
-//  storage_priv.c
-//  wickrcrypto
-//
-//  Created by Tom Leavy on 5/22/18.
-//
 
 #include "private/storage_priv.h"
 #include "private/cipher_priv.h"

@@ -1,9 +1,3 @@
-//
-//  transport_root_key_priv.c
-//  wickrcrypto
-//
-//  Created by Tom Leavy on 2/3/20.
-//
 
 #include "private/transport_root_key_priv.h"
 #include "private/stream_key_priv.h"

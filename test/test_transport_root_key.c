@@ -1,9 +1,3 @@
-//
-//  test_transport_root_key.c
-//  crypto_test
-//
-//  Created by Tom Leavy on 2/13/20.
-//
 
 #include "test_transport_root_key.h"
 #include "test_stream_cipher.h"
