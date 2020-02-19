@@ -26,6 +26,10 @@
 #include "stream_key.h"
 #include "transport_packet.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  @addtogroup wickr_transport_handshake
  */
@@ -267,5 +271,8 @@ const void *wickr_transport_handshake_get_user_data(const wickr_transport_handsh
 */
 void wickr_transport_set_user_data(wickr_transport_handshake_t *handshake, void *user);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* transport_handshake_h */

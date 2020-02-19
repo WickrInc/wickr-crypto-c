@@ -766,10 +766,17 @@ wickr_transport_handshake_res_t *wickr_transport_handshake_finalize(wickr_transp
     wickr_buffer_t sender_info = { .bytes = (uint8_t *)"sender", .length = 6 };
     wickr_buffer_t receiver_info = { .bytes = (uint8_t *)"receiver", .length = 8};
     
-    wickr_stream_key_t *sender_key = wickr_transport_root_key_to_stream_key(&handshake->engine, handshake->root_key,
-                                                                            transcript_hash, &sender_info, STREAM_DIRECTION_ENCODE);
-    wickr_stream_key_t *receiver_key = wickr_transport_root_key_to_stream_key(&handshake->engine, handshake->root_key,
-                                                                              transcript_hash, &receiver_info, STREAM_DIRECTION_DECODE);
+    wickr_stream_key_t *sender_key = wickr_transport_root_key_to_stream_key(handshake->root_key,
+                                                                            &handshake->engine,
+                                                                            transcript_hash,
+                                                                            &sender_info,
+                                                                            STREAM_DIRECTION_ENCODE);
+    
+    wickr_stream_key_t *receiver_key = wickr_transport_root_key_to_stream_key(handshake->root_key,
+                                                                              &handshake->engine,
+                                                                              transcript_hash,
+                                                                              &receiver_info,
+                                                                              STREAM_DIRECTION_DECODE);
     
     wickr_buffer_destroy(&transcript_hash);
     

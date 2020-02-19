@@ -84,8 +84,8 @@ void wickr_transport_root_key_destroy(wickr_transport_root_key_t **root_key)
     *root_key = NULL;
 }
 
-wickr_stream_key_t *wickr_transport_root_key_to_stream_key(const wickr_crypto_engine_t *engine,
-                                                           const wickr_transport_root_key_t *root_key,
+wickr_stream_key_t *wickr_transport_root_key_to_stream_key(const wickr_transport_root_key_t *root_key,
+                                                           const wickr_crypto_engine_t *engine,
                                                            const wickr_buffer_t *salt,
                                                            const wickr_buffer_t *stream_id,
                                                            wickr_stream_direction direction)

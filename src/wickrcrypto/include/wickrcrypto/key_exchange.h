@@ -81,7 +81,7 @@ wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *exchange_id,
  Copy a key exchange
  
  @param source the key exchange to copy
- @return a newly allocated node holding a deep copy of the properties of 'source'
+ @return a newly allocated key exchange holding a deep copy of the properties of 'source'
  */
 wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source);
 

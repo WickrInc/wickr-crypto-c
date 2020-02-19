@@ -44,5 +44,8 @@
 #include "wickr_ctx.h"
 #include "stream_ctx.h"
 #include "transport_ctx.h"
+#include "transport_handshake.h"
+#include "transport_packet.h"
+#include "transport_root_key.h"
 
 #endif /* wickr_crypto_c_h */

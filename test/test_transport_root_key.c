@@ -126,12 +126,17 @@ DESCRIBE(wickr_transport_root_key, "Wickr Transport Root Key")
         wickr_buffer_t *stream_id_alice = wickr_buffer_create((uint8_t *)"alice", 5);
         wickr_buffer_t *stream_id_bob = wickr_buffer_create((uint8_t *)"bob", 3);
         
-        wickr_stream_key_t *stream_key_alice = wickr_transport_root_key_to_stream_key(&test_engine, test_root_key,
-                                                                                salt_alice, stream_id_alice,
-                                                                                STREAM_DIRECTION_ENCODE);
+        wickr_stream_key_t *stream_key_alice = wickr_transport_root_key_to_stream_key(test_root_key,
+                                                                                      &test_engine,
+                                                                                      salt_alice,
+                                                                                      stream_id_alice,
+                                                                                      STREAM_DIRECTION_ENCODE);
         
-        wickr_stream_key_t *stream_key_bob = wickr_transport_root_key_to_stream_key(&test_engine, test_root_key,
-                                                                                    salt_bob, stream_id_bob, STREAM_DIRECTION_DECODE);
+        wickr_stream_key_t *stream_key_bob = wickr_transport_root_key_to_stream_key(test_root_key,
+                                                                                    &test_engine,
+                                                                                    salt_bob,
+                                                                                    stream_id_bob,
+                                                                                    STREAM_DIRECTION_DECODE);
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(stream_key_alice->cipher_key->key_data, expected_stream_key_alice_data, NULL));
         SHOULD_BE_TRUE(wickr_buffer_is_equal(stream_key_alice->evolution_key, expected_stream_key_alice_evo, NULL));
