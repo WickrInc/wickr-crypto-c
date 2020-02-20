@@ -163,14 +163,8 @@ void WickrTransportIdentityValidationCallback(const wickr_transport_ctx_t *ctx,
     Local<FunctionTemplate> onCompleteTemplate = FunctionTemplate::New(isolate, WickrTransportIdentityValidationResponse, context);
     Local<Function> onComplete = onCompleteTemplate->GetFunction(isolate->GetCurrentContext()).ToLocalChecked();
 
-    wickr_identity_chain_t *identity_copy = wickr_identity_chain_copy(identity);
-
-    if (!identity_copy) {
-        return callback(ctx, false);
-    }
-
     Local<Value> argv[] = {
-        SWIG_NewPointerObj(SWIG_as_voidptr(identity_copy), SWIGTYPE_p_wickr_identity_chain, SWIG_POINTER_OWN |  0),
+        SWIG_NewPointerObj(SWIG_as_voidptr(identity), SWIGTYPE_p_wickr_identity_chain, SWIG_POINTER_OWN |  0),
         onComplete
     };
 
