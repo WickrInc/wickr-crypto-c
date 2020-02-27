@@ -1,4 +1,8 @@
 language: c
+os: linux
+dist: bionic
+node_js:
+  - "10"
 
 env:
   global:
@@ -8,100 +12,76 @@ env:
 services:
   - docker
 
-matrix:
+jobs:
   include:
-    - os: linux
-      dist: trusty
-      sudo: required
-      compiler: clang
-      env:
+  - os: linux
+    dist: bionic
+    env:
       - OPENSSL="1.1.0"
       - FIPS=FALSE
-    - os: linux
-      dist: trusty
-      sudo: required
-      compiler: clang
-      env:
+  - os: linux
+    dist: bionic
+    env:
       - OPENSSL="BUILD"
       - FIPS=FALSE
-    - os: linux
-      dist: trusty
-      sudo: required
-      compiler: clang
-      env:
+  - os: linux
+    dist: bionic
+    env:
       - OPENSSL="BUILD"
       - FIPS=TRUE
-    - os: osx
-      osx_image: xcode11
-      env:
+  - os: osx
+    osx_image: xcode11
+    env:
       - FIPS=FALSE
-    - os: osx
-      osx_image: xcode11
-      env:
+  - os: osx
+    osx_image: xcode11
+    env:
       - FIPS=TRUE
-    - os: osx
-      osx_image: xcode11
-      env:
+  - os: osx
+    osx_image: xcode11
+    env:
       - IOS=true
       - FIPS=false
-    - os: osx
-      osx_image: xcode11
-      env:
+  - os: osx
+    osx_image: xcode11
+    env:
       - IOS=true
       - FIPS=true
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
+  - os: linux 
+    dist: bionic
+    env:
       - ANDROID=true
-    - os: linux 
-      dist: trusty
-      sudo: required
-      env:
+  - os: linux 
+    dist: bionic
+    env:
       - ANDROID=true
       - FIPS=true
-    - os: linux
-      dist: trusty
-      sudo: required
-      node_js:
-        - "node"
-        - "lts/*" 
-      env:
+  - os: linux
+    dist: bionic
+    env:
       - NODE=true
-    - os: linux
-      dist: trusty
-      if: tag IS present
-      env:
+  - os: linux
+    dist: bionic
+    if: tag IS present
+    env:
       - NODE_DISTRO=true
-    - os: osx
-      sudo: required
-      node_js:
-        - "node"
-        - "lts/*" 
-      osx_image: xcode11
-      env:
+  - os: osx
+    osx_image: xcode11
+    env:
       - NODE=true
-    - os: linux
-      sudo: required
-      jdk: oraclejdk8
-      env:
+  - os: linux
+    jdk: oraclejdk8
+    env:
       - JAVA=true
       - FIPS=false
-    - os: osx
-      sudo: required
-      jdk: oraclejdk8
-      osx_image: xcode11
-      env:
+  - os: osx
+    jdk: oraclejdk8
+    osx_image: xcode11
+    env:
       - JAVA=true
       - FIPS=false
-  exclude:
-    - compiler: clang
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo add-apt-repository ppa:0k53d-karl-f830m/openssl -y; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.0.2" ]]; then sudo apt-get install openssl -y; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "1.1.0" ]]; then git clone https://github.com/openssl/openssl.git; cd openssl; git checkout tags/OpenSSL_1_1_0e; ./config shared no-threads; make; sudo make install; sudo rm /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/libcrypto.a; cd ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
   - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/swig/swig.git; cd swig; git checkout -t origin/rel-4.0.0; ./autogen.sh; ./configure; make -j2 && sudo make install; cd ../; fi
   - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
