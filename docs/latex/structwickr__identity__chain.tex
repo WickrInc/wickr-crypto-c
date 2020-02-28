@@ -1,4 +1,4 @@
-\hypertarget{structwickr__identity__chain}{}\section{wickr\+\_\+identity\+\_\+chain Struct Reference}
+\hypertarget{structwickr__identity__chain}{}\doxysection{wickr\+\_\+identity\+\_\+chain Struct Reference}
 \label{structwickr__identity__chain}\index{wickr\_identity\_chain@{wickr\_identity\_chain}}
 
 
@@ -9,7 +9,7 @@ Represents a root -\/$>$ node relationship as well as it\textquotesingle{}s sign
 
 {\ttfamily \#include $<$identity.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}} \mbox{\hyperlink{structwickr__identity__chain_acee365b411eb4a7e7c68c115d60e166e}{status}}
@@ -18,33 +18,38 @@ Represents a root -\/$>$ node relationship as well as it\textquotesingle{}s sign
 \item 
 \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__identity__chain_a4343dae5f1c82057289c26e5c7bb1226}{node}}
 \item 
-\mbox{\Hypertarget{structwickr__identity__chain_a231dbd6f386be77d7bf011ddfe1a168d}\label{structwickr__identity__chain_a231dbd6f386be77d7bf011ddfe1a168d}} 
-\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ {\bfseries \+\_\+status\+\_\+cache}
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__identity__chain_a9a6a1c83ddcc31f80c571405ac088356}{\+\_\+status\+\_\+cache}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Represents a root -\/$>$ node relationship as well as it\textquotesingle{}s signature status. 
 
 Wickr Crypto Identity Chain 
 
-\subsection{Field Documentation}
-\mbox{\Hypertarget{structwickr__identity__chain_a4343dae5f1c82057289c26e5c7bb1226}\label{structwickr__identity__chain_a4343dae5f1c82057289c26e5c7bb1226}} 
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__identity__chain_a9a6a1c83ddcc31f80c571405ac088356}\label{structwickr__identity__chain_a9a6a1c83ddcc31f80c571405ac088356}} 
+\index{wickr\_identity\_chain@{wickr\_identity\_chain}!\_status\_cache@{\_status\_cache}}
+\index{\_status\_cache@{\_status\_cache}!wickr\_identity\_chain@{wickr\_identity\_chain}}
+\doxysubsubsection{\texorpdfstring{\_status\_cache}{\_status\_cache}}
+{\footnotesize\ttfamily wickr\+\_\+identity\+\_\+chain\+::\+\_\+status\+\_\+cache}
+
+private cache of status information used for performance optimizations \mbox{\Hypertarget{structwickr__identity__chain_a4343dae5f1c82057289c26e5c7bb1226}\label{structwickr__identity__chain_a4343dae5f1c82057289c26e5c7bb1226}} 
 \index{wickr\_identity\_chain@{wickr\_identity\_chain}!node@{node}}
 \index{node@{node}!wickr\_identity\_chain@{wickr\_identity\_chain}}
-\subsubsection{\texorpdfstring{node}{node}}
+\doxysubsubsection{\texorpdfstring{node}{node}}
 {\footnotesize\ttfamily wickr\+\_\+identity\+\_\+chain\+::node}
 
 an identity of type \textquotesingle{}I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+O\+DE\textquotesingle{} \mbox{\Hypertarget{structwickr__identity__chain_a0982b1510591138e2e7d0546741bc6e0}\label{structwickr__identity__chain_a0982b1510591138e2e7d0546741bc6e0}} 
 \index{wickr\_identity\_chain@{wickr\_identity\_chain}!root@{root}}
 \index{root@{root}!wickr\_identity\_chain@{wickr\_identity\_chain}}
-\subsubsection{\texorpdfstring{root}{root}}
+\doxysubsubsection{\texorpdfstring{root}{root}}
 {\footnotesize\ttfamily wickr\+\_\+identity\+\_\+chain\+::root}
 
 an identity of type \textquotesingle{}I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+O\+OT\textquotesingle{} \mbox{\Hypertarget{structwickr__identity__chain_acee365b411eb4a7e7c68c115d60e166e}\label{structwickr__identity__chain_acee365b411eb4a7e7c68c115d60e166e}} 
 \index{wickr\_identity\_chain@{wickr\_identity\_chain}!status@{status}}
 \index{status@{status}!wickr\_identity\_chain@{wickr\_identity\_chain}}
-\subsubsection{\texorpdfstring{status}{status}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
 {\footnotesize\ttfamily wickr\+\_\+identity\+\_\+chain\+::status}
 
 current status of the signature validity of the chain. It is determined by validating the signature of the node, by using the public \textquotesingle{}sig\+\_\+key\textquotesingle{} property of the root 

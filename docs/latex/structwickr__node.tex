@@ -1,4 +1,4 @@
-\hypertarget{structwickr__node}{}\section{wickr\+\_\+node Struct Reference}
+\hypertarget{structwickr__node}{}\doxysection{wickr\+\_\+node Struct Reference}
 \label{structwickr__node}\index{wickr\_node@{wickr\_node}}
 
 
@@ -9,7 +9,7 @@ Represents a message destination at a point in time.
 
 {\ttfamily \#include $<$node.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}{dev\+\_\+id}}
@@ -20,39 +20,44 @@ Represents a message destination at a point in time.
 \item 
 \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}} \mbox{\hyperlink{structwickr__node_a659b113832d19162c4d5722777d03c94}{status}}
 \item 
-\mbox{\Hypertarget{structwickr__node_a67160712c8b027d6ab67401c42bbd8cb}\label{structwickr__node_a67160712c8b027d6ab67401c42bbd8cb}} 
-\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ {\bfseries \+\_\+status\+\_\+cache}
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__node_a569042d1b4bb4f92e9719eea09a342c5}{\+\_\+status\+\_\+cache}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Represents a message destination at a point in time. 
 
 A particular root identity may be associated with many different node identities, each of which are bound to their root identity (see \textquotesingle{}\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain}}\textquotesingle{} documentation). The node identity is also associated with a device identifier (see \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{} in \textquotesingle{}\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}}\textquotesingle{}) representing the environment the node is executing in. On each send to a particular node, the ephemeral\+\_\+keypair can be rotated by replacing it with another ephemeral\+\_\+keypair in the node\textquotesingle{}s pool. The chain of signatures in this node must be verifiable, as it will be checked for validity during message composition via a call to \textquotesingle{}wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain\textquotesingle{} 
 
-\subsection{Field Documentation}
-\mbox{\Hypertarget{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}\label{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}} 
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__node_a569042d1b4bb4f92e9719eea09a342c5}\label{structwickr__node_a569042d1b4bb4f92e9719eea09a342c5}} 
+\index{wickr\_node@{wickr\_node}!\_status\_cache@{\_status\_cache}}
+\index{\_status\_cache@{\_status\_cache}!wickr\_node@{wickr\_node}}
+\doxysubsubsection{\texorpdfstring{\_status\_cache}{\_status\_cache}}
+{\footnotesize\ttfamily wickr\+\_\+node\+::\+\_\+status\+\_\+cache}
+
+private cache of status information used for performance optimizations \mbox{\Hypertarget{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}\label{structwickr__node_a564e42fc1d4b63353d74e5fbf0bead82}} 
 \index{wickr\_node@{wickr\_node}!dev\_id@{dev\_id}}
 \index{dev\_id@{dev\_id}!wickr\_node@{wickr\_node}}
-\subsubsection{\texorpdfstring{dev\_id}{dev\_id}}
+\doxysubsubsection{\texorpdfstring{dev\_id}{dev\_id}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::dev\+\_\+id}
 
 msg\+\_\+proto\+\_\+id of the \textquotesingle{}\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}}\textquotesingle{} struct in the executing environment of the node \mbox{\Hypertarget{structwickr__node_a628b61eed5cb17b831ff687143393b93}\label{structwickr__node_a628b61eed5cb17b831ff687143393b93}} 
 \index{wickr\_node@{wickr\_node}!ephemeral\_keypair@{ephemeral\_keypair}}
 \index{ephemeral\_keypair@{ephemeral\_keypair}!wickr\_node@{wickr\_node}}
-\subsubsection{\texorpdfstring{ephemeral\_keypair}{ephemeral\_keypair}}
+\doxysubsubsection{\texorpdfstring{ephemeral\_keypair}{ephemeral\_keypair}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::ephemeral\+\_\+keypair}
 
 the key pair that is currently associated with message key exchange generation for this node \mbox{\Hypertarget{structwickr__node_a3a5100ed26ae534e2070623713aacfde}\label{structwickr__node_a3a5100ed26ae534e2070623713aacfde}} 
 \index{wickr\_node@{wickr\_node}!id\_chain@{id\_chain}}
 \index{id\_chain@{id\_chain}!wickr\_node@{wickr\_node}}
-\subsubsection{\texorpdfstring{id\_chain}{id\_chain}}
+\doxysubsubsection{\texorpdfstring{id\_chain}{id\_chain}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::id\+\_\+chain}
 
 the current identity chain of the node, representing its root-\/$>$node relationship hirearchy \mbox{\Hypertarget{structwickr__node_a659b113832d19162c4d5722777d03c94}\label{structwickr__node_a659b113832d19162c4d5722777d03c94}} 
 \index{wickr\_node@{wickr\_node}!status@{status}}
 \index{status@{status}!wickr\_node@{wickr\_node}}
-\subsubsection{\texorpdfstring{status}{status}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
 {\footnotesize\ttfamily wickr\+\_\+node\+::status}
 
 the current validation status of the node, see \textquotesingle{}wickr\+\_\+node\+\_\+status\textquotesingle{} for more info 

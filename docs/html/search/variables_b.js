@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['node',['node',['../structwickr__identity__chain.html#a4343dae5f1c82057289c26e5c7bb1226',1,'wickr_identity_chain']]],
-  ['node_5fsignature_5froot',['node_signature_root',['../structwickr__root__keys.html#af3a0ca7b48b356e118dea24c26cdd9f5',1,'wickr_root_keys']]],
-  ['node_5fstorage_5froot',['node_storage_root',['../structwickr__root__keys.html#ada908a5fa4aaf7c8b9a4b496c99e595a',1,'wickr_root_keys']]]
+  ['last_5fseq_853',['last_seq',['../structwickr__stream__ctx.html#abf2c6ab54e1663e6a47e310fd68b3b3f',1,'wickr_stream_ctx']]],
+  ['length_854',['length',['../structwickr__buffer.html#a8472d93dd98cfe6f98740a42ae16c86b',1,'wickr_buffer']]],
+  ['local_855',['local',['../structwickr__storage__keys.html#a544b35d7a75bd6076f6c34537e49ef6b',1,'wickr_storage_keys']]],
+  ['local_5fkey_856',['local_key',['../structwickr__ecdh__cipher__ctx.html#ad9389a9efc31ac0516d9aebeb1ac6301',1,'wickr_ecdh_cipher_ctx']]]
 ];

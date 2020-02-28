@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__stream__iv}{}\section{Wickr\+\_\+stream\+\_\+iv}
+\hypertarget{group__wickr__stream__iv}{}\doxysection{Wickr\+\_\+stream\+\_\+iv}
 \label{group__wickr__stream__iv}\index{Wickr\_stream\_iv@{Wickr\_stream\_iv}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv}}
 \begin{DoxyCompactList}\small\item\em A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__stream__iv_gaaad5726a228b7866b0cb392c131f95be}{wickr\+\_\+stream\+\_\+iv\+\_\+create}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher)
@@ -18,14 +18,14 @@ void \mbox{\hyperlink{group__wickr__stream__iv_gad6ac87d891822a866a0d7cad48f79e2
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__stream__iv_gaec8a5b5d70a86997c8158d047c7eed34}\label{group__wickr__stream__iv_gaec8a5b5d70a86997c8158d047c7eed34}} 
 \index{Wickr\_stream\_iv@{Wickr\_stream\_iv}!wickr\_stream\_iv\_copy@{wickr\_stream\_iv\_copy}}
 \index{wickr\_stream\_iv\_copy@{wickr\_stream\_iv\_copy}!Wickr\_stream\_iv@{Wickr\_stream\_iv}}
-\subsubsection{\texorpdfstring{wickr\_stream\_iv\_copy()}{wickr\_stream\_iv\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_iv\_copy()}{wickr\_stream\_iv\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+iv\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}} $\ast$}]{iv }\end{DoxyParamCaption})}
 
 Copy a stream iv generator
@@ -41,7 +41,7 @@ a newly allocated stream iv generator set holding a deep copy of the properties 
 \mbox{\Hypertarget{group__wickr__stream__iv_gaaad5726a228b7866b0cb392c131f95be}\label{group__wickr__stream__iv_gaaad5726a228b7866b0cb392c131f95be}} 
 \index{Wickr\_stream\_iv@{Wickr\_stream\_iv}!wickr\_stream\_iv\_create@{wickr\_stream\_iv\_create}}
 \index{wickr\_stream\_iv\_create@{wickr\_stream\_iv\_create}!Wickr\_stream\_iv@{Wickr\_stream\_iv}}
-\subsubsection{\texorpdfstring{wickr\_stream\_iv\_create()}{wickr\_stream\_iv\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_iv\_create()}{wickr\_stream\_iv\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+iv\+\_\+create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher }\end{DoxyParamCaption})}
 
 Create a stream iv generator using an engine and cipher
@@ -59,7 +59,7 @@ a newly allocated stream iv generator
 \mbox{\Hypertarget{group__wickr__stream__iv_gad6ac87d891822a866a0d7cad48f79e27}\label{group__wickr__stream__iv_gad6ac87d891822a866a0d7cad48f79e27}} 
 \index{Wickr\_stream\_iv@{Wickr\_stream\_iv}!wickr\_stream\_iv\_destroy@{wickr\_stream\_iv\_destroy}}
 \index{wickr\_stream\_iv\_destroy@{wickr\_stream\_iv\_destroy}!Wickr\_stream\_iv@{Wickr\_stream\_iv}}
-\subsubsection{\texorpdfstring{wickr\_stream\_iv\_destroy()}{wickr\_stream\_iv\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_iv\_destroy()}{wickr\_stream\_iv\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+stream\+\_\+iv\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}} $\ast$$\ast$}]{iv }\end{DoxyParamCaption})}
 
 Destroy a stream iv generator
@@ -72,7 +72,7 @@ Destroy a stream iv generator
 \mbox{\Hypertarget{group__wickr__stream__iv_gaddcfdc9904ec0ffd32ce8f988aefc484}\label{group__wickr__stream__iv_gaddcfdc9904ec0ffd32ce8f988aefc484}} 
 \index{Wickr\_stream\_iv@{Wickr\_stream\_iv}!wickr\_stream\_iv\_generate@{wickr\_stream\_iv\_generate}}
 \index{wickr\_stream\_iv\_generate@{wickr\_stream\_iv\_generate}!Wickr\_stream\_iv@{Wickr\_stream\_iv}}
-\subsubsection{\texorpdfstring{wickr\_stream\_iv\_generate()}{wickr\_stream\_iv\_generate()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_iv\_generate()}{wickr\_stream\_iv\_generate()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+iv\+\_\+generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv\+\_\+t}} $\ast$}]{iv }\end{DoxyParamCaption})}
 
 Generate a new unique IV. gen\+\_\+count will be increamented after calling this method, so subsequent calls will output unique values

@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['ttl',['ttl',['../structwickr__ephemeral__info.html#ac7936b5b7b83dd24ab6b68e8dd2dd6ba',1,'wickr_ephemeral_info']]],
-  ['tx',['tx',['../structwickr__transport__callbacks.html#a06c4b21b847c00e92373cf1402e1cb9d',1,'wickr_transport_callbacks']]],
-  ['type',['type',['../structwickr__digest.html#ae82f086c339d1e384518dfc4359d4522',1,'wickr_digest::type()'],['../structwickr__fingerprint.html#a13e5decc89e701d0b22b9a83a0205758',1,'wickr_fingerprint::type()'],['../structwickr__identity.html#a685dae977849c05c84ee4a0b10c9396d',1,'wickr_identity::type()']]]
+  ['recovery_5fkey_881',['recovery_key',['../structwickr__ctx__gen__result.html#a32feaf76def6c13abe0240c6ae669999',1,'wickr_ctx_gen_result']]],
+  ['ref_5fcount_882',['ref_count',['../structwickr__stream__ctx.html#aa0e74b2c117666501373a5947d92e8c4',1,'wickr_stream_ctx']]],
+  ['remote_883',['remote',['../structwickr__storage__keys.html#a44b6a0b14bcc877cb6799265b060cb28',1,'wickr_storage_keys']]],
+  ['remote_5fstorage_5froot_884',['remote_storage_root',['../structwickr__root__keys.html#a9bf1ff10b669493393e2bf918f5d4090',1,'wickr_root_keys']]],
+  ['root_885',['root',['../structwickr__identity__chain.html#a0982b1510591138e2e7d0546741bc6e0',1,'wickr_identity_chain']]],
+  ['root_5fkeys_886',['root_keys',['../structwickr__ctx__gen__result.html#a42600241a65a968de4f84120d9031320',1,'wickr_ctx_gen_result']]],
+  ['rx_887',['rx',['../structwickr__transport__callbacks.html#a5d523402980ac09fdf52aa4824f8e9f7',1,'wickr_transport_callbacks']]]
 ];

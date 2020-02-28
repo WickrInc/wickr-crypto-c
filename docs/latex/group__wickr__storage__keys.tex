@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__storage__keys}{}\section{Wickr\+\_\+storage\+\_\+keys}
+\hypertarget{group__wickr__storage__keys}{}\doxysection{Wickr\+\_\+storage\+\_\+keys}
 \label{group__wickr__storage__keys}\index{Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys}}
 \begin{DoxyCompactList}\small\item\em Key\textquotesingle{}s used for the client to encrypt data meant for itself, and not for other clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__storage__keys_gad03ddd5ea10633ca35097e5f4707d5cb}{wickr\+\_\+storage\+\_\+keys\+\_\+create}} (\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$local, \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$remote)
@@ -20,14 +20,14 @@ void \mbox{\hyperlink{group__wickr__storage__keys_ga2c1494802577d025d70bf553c43d
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__storage__keys_gad6839a21bca1c28775d51deb6b7c3835}\label{group__wickr__storage__keys_gad6839a21bca1c28775d51deb6b7c3835}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_copy@{wickr\_storage\_keys\_copy}}
 \index{wickr\_storage\_keys\_copy@{wickr\_storage\_keys\_copy}!Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsubsection{\texorpdfstring{wickr\_storage\_keys\_copy()}{wickr\_storage\_keys\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_storage\_keys\_copy()}{wickr\_storage\_keys\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}}$\ast$ wickr\+\_\+storage\+\_\+keys\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy a storage key set
@@ -43,7 +43,7 @@ a newly allocated storage key set holding a deep copy of the properties of \text
 \mbox{\Hypertarget{group__wickr__storage__keys_gad03ddd5ea10633ca35097e5f4707d5cb}\label{group__wickr__storage__keys_gad03ddd5ea10633ca35097e5f4707d5cb}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_create@{wickr\_storage\_keys\_create}}
 \index{wickr\_storage\_keys\_create@{wickr\_storage\_keys\_create}!Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsubsection{\texorpdfstring{wickr\_storage\_keys\_create()}{wickr\_storage\_keys\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_storage\_keys\_create()}{wickr\_storage\_keys\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}}$\ast$ wickr\+\_\+storage\+\_\+keys\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{local,  }\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{remote }\end{DoxyParamCaption})}
 
 Create a storage key set from components
@@ -61,7 +61,7 @@ a newly allocated storage key set. Takes ownership of the passed inputs
 \mbox{\Hypertarget{group__wickr__storage__keys_gae5631d93182e635fb7f48269eb3f1723}\label{group__wickr__storage__keys_gae5631d93182e635fb7f48269eb3f1723}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_create\_from\_buffer@{wickr\_storage\_keys\_create\_from\_buffer}}
 \index{wickr\_storage\_keys\_create\_from\_buffer@{wickr\_storage\_keys\_create\_from\_buffer}!Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsubsection{\texorpdfstring{wickr\_storage\_keys\_create\_from\_buffer()}{wickr\_storage\_keys\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_storage\_keys\_create\_from\_buffer()}{wickr\_storage\_keys\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}}$\ast$ wickr\+\_\+storage\+\_\+keys\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Create a storage key set from a previously serialized storage key set
@@ -77,7 +77,7 @@ a newly allocated storage key set or N\+U\+LL if parsing fails
 \mbox{\Hypertarget{group__wickr__storage__keys_ga2c1494802577d025d70bf553c43da344}\label{group__wickr__storage__keys_ga2c1494802577d025d70bf553c43da344}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_destroy@{wickr\_storage\_keys\_destroy}}
 \index{wickr\_storage\_keys\_destroy@{wickr\_storage\_keys\_destroy}!Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsubsection{\texorpdfstring{wickr\_storage\_keys\_destroy()}{wickr\_storage\_keys\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_storage\_keys\_destroy()}{wickr\_storage\_keys\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+storage\+\_\+keys\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$$\ast$}]{keys }\end{DoxyParamCaption})}
 
 Destroy a storage key set
@@ -90,7 +90,7 @@ Destroy a storage key set
 \mbox{\Hypertarget{group__wickr__storage__keys_ga10a0d6e13442682b2fecff2ed753c2f6}\label{group__wickr__storage__keys_ga10a0d6e13442682b2fecff2ed753c2f6}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_serialize@{wickr\_storage\_keys\_serialize}}
 \index{wickr\_storage\_keys\_serialize@{wickr\_storage\_keys\_serialize}!Wickr\_storage\_keys@{Wickr\_storage\_keys}}
-\subsubsection{\texorpdfstring{wickr\_storage\_keys\_serialize()}{wickr\_storage\_keys\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_storage\_keys\_serialize()}{wickr\_storage\_keys\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+storage\+\_\+keys\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$}]{keys }\end{DoxyParamCaption})}
 
 Serialize a storage key set to a buffer

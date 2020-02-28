@@ -61,6 +61,8 @@ typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
  numerical identifier for a curve. Used in serialization to help identify a curve that was used elsewhere. Must be less than 16 since it is serialized into buffers using a 4 bit space
  @var wickr_ec_curve::signature_size
  the length of a serialized ecdsa signature using this curve, padded as needed
+ @var wickr_ec_curve::max_pub_size
+ the maximum amount of bytes that a public key of this curve can utilize
  */
 struct wickr_ec_curve {
     wickr_ec_curve_id identifier;

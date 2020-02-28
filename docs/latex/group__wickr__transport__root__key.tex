@@ -1,0 +1,123 @@
+\hypertarget{group__wickr__transport__root__key}{}\doxysection{Wickr\+\_\+transport\+\_\+root\+\_\+key}
+\label{group__wickr__transport__root__key}\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key}}
+\begin{DoxyCompactList}\small\item\em A root key for the \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}} that is used to communicate the master secret for the transport communication. The root key can be converted to a set of stream keys based on direction for use in a transport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__root__key_ga624908e01de67d698a98053a192baaca}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+create\+\_\+random}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher, uint32\+\_\+t packets\+\_\+per\+\_\+evo\+\_\+send, uint32\+\_\+t packets\+\_\+per\+\_\+evo\+\_\+recv)
+\item 
+\mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__root__key_ga77fae1b5bad70d9409becc1c3f0423ed}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+create}} (\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$secret, \mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} cipher, uint32\+\_\+t packets\+\_\+per\+\_\+evo\+\_\+send, uint32\+\_\+t packets\+\_\+per\+\_\+evo\+\_\+recv)
+\item 
+\mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__root__key_gaddc239f47dd969cc5ae4da0c27c9be27}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+copy}} (const \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$root\+\_\+key)
+\item 
+void \mbox{\hyperlink{group__wickr__transport__root__key_gaec5116b47eebfffe8e5ae0303ac981ea}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+destroy}} (\mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$$\ast$root\+\_\+key)
+\item 
+\mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__root__key_ga20d104ca1eb905d4f95a78a018a33286}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+to\+\_\+stream\+\_\+key}} (const \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$root\+\_\+key, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$salt, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$stream\+\_\+id, wickr\+\_\+stream\+\_\+direction direction)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__transport__root__key_gaddc239f47dd969cc5ae4da0c27c9be27}\label{group__wickr__transport__root__key_gaddc239f47dd969cc5ae4da0c27c9be27}} 
+\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_copy@{wickr\_transport\_root\_key\_copy}}
+\index{wickr\_transport\_root\_key\_copy@{wickr\_transport\_root\_key\_copy}!Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_root\_key\_copy()}{wickr\_transport\_root\_key\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$}]{root\+\_\+key }\end{DoxyParamCaption})}
+
+Copy a transport root key
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+\_\+key} & the transport root key to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport root key holding a deep copy of the properties of {\ttfamily root\+\_\+key} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__root__key_ga77fae1b5bad70d9409becc1c3f0423ed}\label{group__wickr__transport__root__key_ga77fae1b5bad70d9409becc1c3f0423ed}} 
+\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_create@{wickr\_transport\_root\_key\_create}}
+\index{wickr\_transport\_root\_key\_create@{wickr\_transport\_root\_key\_create}!Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_root\_key\_create()}{wickr\_transport\_root\_key\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{secret,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evo\+\_\+send,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evo\+\_\+recv }\end{DoxyParamCaption})}
+
+Create a root key using a random secret of length cipher.\+key\+\_\+key
+
+
+\begin{DoxyParams}{Parameters}
+{\em secret} & a secret of length {\ttfamily cipher.\+key\+\_\+len} \\
+\hline
+{\em cipher} & the cipher to use for generating stream keys \\
+\hline
+{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the E\+N\+C\+O\+DE direction \\
+\hline
+{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the D\+E\+C\+O\+DE direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport root key taking ownership of {\ttfamily secret} or N\+U\+LL if allocation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__root__key_ga624908e01de67d698a98053a192baaca}\label{group__wickr__transport__root__key_ga624908e01de67d698a98053a192baaca}} 
+\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_create\_random@{wickr\_transport\_root\_key\_create\_random}}
+\index{wickr\_transport\_root\_key\_create\_random@{wickr\_transport\_root\_key\_create\_random}!Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_root\_key\_create\_random()}{wickr\_transport\_root\_key\_create\_random()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+create\+\_\+random (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evo\+\_\+send,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evo\+\_\+recv }\end{DoxyParamCaption})}
+
+Create a root key using a random secret of length cipher.\+key\+\_\+key
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & a pointer to a crypto engine that can generate random bytes \\
+\hline
+{\em cipher} & the cipher to use for generating stream keys \\
+\hline
+{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the E\+N\+C\+O\+DE direction \\
+\hline
+{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the D\+E\+C\+O\+DE direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport root key or N\+U\+LL if random generation fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__root__key_gaec5116b47eebfffe8e5ae0303ac981ea}\label{group__wickr__transport__root__key_gaec5116b47eebfffe8e5ae0303ac981ea}} 
+\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_destroy@{wickr\_transport\_root\_key\_destroy}}
+\index{wickr\_transport\_root\_key\_destroy@{wickr\_transport\_root\_key\_destroy}!Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_root\_key\_destroy()}{wickr\_transport\_root\_key\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$$\ast$}]{root\+\_\+key }\end{DoxyParamCaption})}
+
+Destroy a transport root key
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+\_\+key} & a pointer to the transport root key to destroy. All properties of {\ttfamily $\ast$root\+\_\+key} will also be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__root__key_ga20d104ca1eb905d4f95a78a018a33286}\label{group__wickr__transport__root__key_ga20d104ca1eb905d4f95a78a018a33286}} 
+\index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_to\_stream\_key@{wickr\_transport\_root\_key\_to\_stream\_key}}
+\index{wickr\_transport\_root\_key\_to\_stream\_key@{wickr\_transport\_root\_key\_to\_stream\_key}!Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_root\_key\_to\_stream\_key()}{wickr\_transport\_root\_key\_to\_stream\_key()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+to\+\_\+stream\+\_\+key (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__root__key}{wickr\+\_\+transport\+\_\+root\+\_\+key\+\_\+t}} $\ast$}]{root\+\_\+key,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{salt,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{stream\+\_\+id,  }\item[{wickr\+\_\+stream\+\_\+direction}]{direction }\end{DoxyParamCaption})}
+
+Convert a transport root key into a stream key
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+\_\+key} & the transport root key to convert into a stream key \\
+\hline
+{\em engine} & a pointer to a crypto engine that supports H\+K\+DF functionality \\
+\hline
+{\em salt} & the salt to use for the H\+K\+DF function \\
+\hline
+{\em stream\+\_\+id} & a stream id that will differentiate the stream between the E\+N\+C\+O\+DE and D\+E\+C\+O\+DE directions \\
+\hline
+{\em direction} & the direction to set on the resulting stream key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated stream key or N\+U\+LL if stream key generation fails 
+\end{DoxyReturn}

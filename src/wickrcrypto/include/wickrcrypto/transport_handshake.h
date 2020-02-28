@@ -42,6 +42,8 @@ typedef struct wickr_transport_handshake_res_t wickr_transport_handshake_res_t;
  
  @enum wickr_transport_handshake_status
  
+ Current status of a transport handshake
+ 
  @var wickr_transport_handshake_status::TRANSPORT_HANDSHAKE_STATUS_UNKNOWN
  Handshake has been created, but has not been started or received any packets
  @var wickr_transport_handshake_status::TRANSPORT_HANDSHAKE_STATUS_IN_PROGRESS

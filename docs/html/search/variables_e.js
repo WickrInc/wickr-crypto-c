@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['recovery_5fkey',['recovery_key',['../structwickr__ctx__gen__result.html#a32feaf76def6c13abe0240c6ae669999',1,'wickr_ctx_gen_result']]],
-  ['ref_5fcount',['ref_count',['../structwickr__stream__ctx.html#aa0e74b2c117666501373a5947d92e8c4',1,'wickr_stream_ctx']]],
-  ['remote',['remote',['../structwickr__storage__keys.html#a44b6a0b14bcc877cb6799265b060cb28',1,'wickr_storage_keys']]],
-  ['remote_5fstorage_5froot',['remote_storage_root',['../structwickr__root__keys.html#a9bf1ff10b669493393e2bf918f5d4090',1,'wickr_root_keys']]],
-  ['root',['root',['../structwickr__identity__chain.html#a0982b1510591138e2e7d0546741bc6e0',1,'wickr_identity_chain']]],
-  ['root_5fkeys',['root_keys',['../structwickr__ctx__gen__result.html#a42600241a65a968de4f84120d9031320',1,'wickr_ctx_gen_result']]],
-  ['rx',['rx',['../structwickr__transport__callbacks.html#a5d523402980ac09fdf52aa4824f8e9f7',1,'wickr_transport_callbacks']]]
+  ['on_5fidentity_5fverify_866',['on_identity_verify',['../structwickr__transport__callbacks.html#ab1afc16797b1bb30dde87936a97f682e',1,'wickr_transport_callbacks']]],
+  ['on_5fstate_867',['on_state',['../structwickr__transport__callbacks.html#afef0716506b88885c57fda652500b3da',1,'wickr_transport_callbacks']]],
+  ['output_5fsize_868',['output_size',['../structwickr__kdf__algo.html#a75e5396b3c53817c6799dbf3107e36d6',1,'wickr_kdf_algo']]]
 ];

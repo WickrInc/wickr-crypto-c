@@ -1,4 +1,4 @@
-\hypertarget{structwickr__ec__curve}{}\section{wickr\+\_\+ec\+\_\+curve Struct Reference}
+\hypertarget{structwickr__ec__curve}{}\doxysection{wickr\+\_\+ec\+\_\+curve Struct Reference}
 \label{structwickr__ec__curve}\index{wickr\_ec\_curve@{wickr\_ec\_curve}}
 
 
@@ -9,32 +9,37 @@ Metadata about curve types to help with key generation, and signatures.
 
 {\ttfamily \#include $<$eckey.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 wickr\+\_\+ec\+\_\+curve\+\_\+id \mbox{\hyperlink{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}{identifier}}
 \item 
 uint8\+\_\+t \mbox{\hyperlink{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}{signature\+\_\+size}}
 \item 
-\mbox{\Hypertarget{structwickr__ec__curve_a9fb5d49d880efa9497699f315303092c}\label{structwickr__ec__curve_a9fb5d49d880efa9497699f315303092c}} 
-uint8\+\_\+t {\bfseries max\+\_\+pub\+\_\+size}
+uint8\+\_\+t \mbox{\hyperlink{structwickr__ec__curve_a2a569da5aebb2ebcc3060b65cf9454f3}{max\+\_\+pub\+\_\+size}}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Metadata about curve types to help with key generation, and signatures. 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}\label{structwickr__ec__curve_a6a3db9bd65c2b95edec61e0b48760bf4}} 
 \index{wickr\_ec\_curve@{wickr\_ec\_curve}!identifier@{identifier}}
 \index{identifier@{identifier}!wickr\_ec\_curve@{wickr\_ec\_curve}}
-\subsubsection{\texorpdfstring{identifier}{identifier}}
+\doxysubsubsection{\texorpdfstring{identifier}{identifier}}
 {\footnotesize\ttfamily wickr\+\_\+ec\+\_\+curve\+::identifier}
 
-numerical identifier for a curve. Used in serialization to help identify a curve that was used elsewhere. Must be less than 16 since it is serialized into buffers using a 4 bit space \mbox{\Hypertarget{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}\label{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}} 
+numerical identifier for a curve. Used in serialization to help identify a curve that was used elsewhere. Must be less than 16 since it is serialized into buffers using a 4 bit space \mbox{\Hypertarget{structwickr__ec__curve_a2a569da5aebb2ebcc3060b65cf9454f3}\label{structwickr__ec__curve_a2a569da5aebb2ebcc3060b65cf9454f3}} 
+\index{wickr\_ec\_curve@{wickr\_ec\_curve}!max\_pub\_size@{max\_pub\_size}}
+\index{max\_pub\_size@{max\_pub\_size}!wickr\_ec\_curve@{wickr\_ec\_curve}}
+\doxysubsubsection{\texorpdfstring{max\_pub\_size}{max\_pub\_size}}
+{\footnotesize\ttfamily wickr\+\_\+ec\+\_\+curve\+::max\+\_\+pub\+\_\+size}
+
+the maximum amount of bytes that a public key of this curve can utilize \mbox{\Hypertarget{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}\label{structwickr__ec__curve_ab77300e816beace29e40cf8e643a5070}} 
 \index{wickr\_ec\_curve@{wickr\_ec\_curve}!signature\_size@{signature\_size}}
 \index{signature\_size@{signature\_size}!wickr\_ec\_curve@{wickr\_ec\_curve}}
-\subsubsection{\texorpdfstring{signature\_size}{signature\_size}}
+\doxysubsubsection{\texorpdfstring{signature\_size}{signature\_size}}
 {\footnotesize\ttfamily wickr\+\_\+ec\+\_\+curve\+::signature\+\_\+size}
 
 the length of a serialized ecdsa signature using this curve, padded as needed 

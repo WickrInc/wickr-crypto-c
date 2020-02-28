@@ -1,0 +1,94 @@
+\hypertarget{group__wickr__transport__packet__meta}{}\doxysection{Wickr\+\_\+transport\+\_\+packet\+\_\+meta}
+\label{group__wickr__transport__packet__meta}\index{Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwickr__transport__handshake__meta}{wickr\+\_\+transport\+\_\+handshake\+\_\+meta}}
+\begin{DoxyCompactList}\small\item\em Metadata specifically for handshake packets within a transport. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structwickr__transport__data__meta}{wickr\+\_\+transport\+\_\+data\+\_\+meta}}
+\begin{DoxyCompactList}\small\item\em Metadata specifically for user data packets within a transport. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta}}
+\begin{DoxyCompactList}\small\item\em Packet metadata included with all transport packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__wickr__transport__packet__meta_ga50d8967e183f5d460748e94ce0a7d9f5}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+handshake}} (\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta\+\_\+out, uint8\+\_\+t protocol\+\_\+version, wickr\+\_\+transport\+\_\+packet\+\_\+mac\+\_\+type mac\+\_\+type)
+\item 
+void \mbox{\hyperlink{group__wickr__transport__packet__meta_ga476107940ca615b253abed88cf8d39f5}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+data}} (\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta\+\_\+out, uint64\+\_\+t sequence\+\_\+number, wickr\+\_\+transport\+\_\+packet\+\_\+mac\+\_\+type mac\+\_\+type)
+\item 
+int \mbox{\hyperlink{group__wickr__transport__packet__meta_ga4fb31fe9266028b4f7d6e35f8987322d}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+buffer}} (\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta\+\_\+out, const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__packet__meta_ga1308fd68a65a8515cacfa8732b38009d}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__transport__packet__meta_ga4fb31fe9266028b4f7d6e35f8987322d}\label{group__wickr__transport__packet__meta_ga4fb31fe9266028b4f7d6e35f8987322d}} 
+\index{Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}!wickr\_transport\_packet\_meta\_initialize\_buffer@{wickr\_transport\_packet\_meta\_initialize\_buffer}}
+\index{wickr\_transport\_packet\_meta\_initialize\_buffer@{wickr\_transport\_packet\_meta\_initialize\_buffer}!Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_meta\_initialize\_buffer()}{wickr\_transport\_packet\_meta\_initialize\_buffer()}}
+{\footnotesize\ttfamily int wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{meta\+\_\+out,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Initialize packet metadata with a serialized packet meta buffer
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta\+\_\+out} & a pointer to initialize for the handshake metadata \\
+\hline
+{\em buffer} & a buffer containing a serialized packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes from buffer that had to be read to initialize {\ttfamily meta\+\_\+out} or a negative int to indicate failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__packet__meta_ga476107940ca615b253abed88cf8d39f5}\label{group__wickr__transport__packet__meta_ga476107940ca615b253abed88cf8d39f5}} 
+\index{Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}!wickr\_transport\_packet\_meta\_initialize\_data@{wickr\_transport\_packet\_meta\_initialize\_data}}
+\index{wickr\_transport\_packet\_meta\_initialize\_data@{wickr\_transport\_packet\_meta\_initialize\_data}!Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_meta\_initialize\_data()}{wickr\_transport\_packet\_meta\_initialize\_data()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{meta\+\_\+out,  }\item[{uint64\+\_\+t}]{sequence\+\_\+number,  }\item[{wickr\+\_\+transport\+\_\+packet\+\_\+mac\+\_\+type}]{mac\+\_\+type }\end{DoxyParamCaption})}
+
+Initialize packet metadata for a data packet
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta\+\_\+out} & a pointer to initialize for the handshake metadata \\
+\hline
+{\em sequence\+\_\+number} & the sequence number of this packet within the current stream of data \\
+\hline
+{\em mac\+\_\+type} & the type of mac or signature to be used to authenticate the body data of the packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__packet__meta_ga50d8967e183f5d460748e94ce0a7d9f5}\label{group__wickr__transport__packet__meta_ga50d8967e183f5d460748e94ce0a7d9f5}} 
+\index{Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}!wickr\_transport\_packet\_meta\_initialize\_handshake@{wickr\_transport\_packet\_meta\_initialize\_handshake}}
+\index{wickr\_transport\_packet\_meta\_initialize\_handshake@{wickr\_transport\_packet\_meta\_initialize\_handshake}!Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_meta\_initialize\_handshake()}{wickr\_transport\_packet\_meta\_initialize\_handshake()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+initialize\+\_\+handshake (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{meta\+\_\+out,  }\item[{uint8\+\_\+t}]{protocol\+\_\+version,  }\item[{wickr\+\_\+transport\+\_\+packet\+\_\+mac\+\_\+type}]{mac\+\_\+type }\end{DoxyParamCaption})}
+
+Initialize packet metadata for a handshake packet
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta\+\_\+out} & a pointer to initialize for the handshake metadata \\
+\hline
+{\em protocol\+\_\+version} & the protocol version the handshake will be using (default 1) \\
+\hline
+{\em mac\+\_\+type} & the type of mac or signature to be used to authenticate the body data of the packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__packet__meta_ga1308fd68a65a8515cacfa8732b38009d}\label{group__wickr__transport__packet__meta_ga1308fd68a65a8515cacfa8732b38009d}} 
+\index{Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}!wickr\_transport\_packet\_meta\_serialize@{wickr\_transport\_packet\_meta\_serialize}}
+\index{wickr\_transport\_packet\_meta\_serialize@{wickr\_transport\_packet\_meta\_serialize}!Wickr\_transport\_packet\_meta@{Wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_meta\_serialize()}{wickr\_transport\_packet\_meta\_serialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{meta }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & the metadata to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a serialized representation of {\ttfamily meta} or N\+U\+LL if there was a failure during serialization 
+\end{DoxyReturn}

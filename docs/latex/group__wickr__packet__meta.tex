@@ -1,13 +1,13 @@
-\hypertarget{group__wickr__packet__meta}{}\section{wickr\+\_\+packet\+\_\+meta}
+\hypertarget{group__wickr__packet__meta}{}\doxysection{wickr\+\_\+packet\+\_\+meta}
 \label{group__wickr__packet__meta}\index{wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+info}}
 \begin{DoxyCompactList}\small\item\em Message destruction control metadata. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta}}
 \begin{DoxyCompactList}\small\item\em control metadata found in the encrypted payload of a packet \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__packet__meta_ga146144d74da12c1fff766462fe7fa661}{wickr\+\_\+packet\+\_\+meta\+\_\+create}} (\mbox{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+info\+\_\+t}} ephemerality\+\_\+settings, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$channel\+\_\+tag, uint16\+\_\+t content\+\_\+type)
@@ -18,14 +18,14 @@ void \mbox{\hyperlink{group__wickr__packet__meta_gad165ad670da761478cf5f8f91223c
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__packet__meta_ga1bb5a0f2a49069679b174b3e6521fe9b}\label{group__wickr__packet__meta_ga1bb5a0f2a49069679b174b3e6521fe9b}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!wickr\_packet\_meta\_copy@{wickr\_packet\_meta\_copy}}
 \index{wickr\_packet\_meta\_copy@{wickr\_packet\_meta\_copy}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{wickr\_packet\_meta\_copy()}{wickr\_packet\_meta\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_packet\_meta\_copy()}{wickr\_packet\_meta\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+meta\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an packet metadata set
@@ -41,7 +41,7 @@ a newly packet metadata set holding a deep copy of the properties of \textquotes
 \mbox{\Hypertarget{group__wickr__packet__meta_ga146144d74da12c1fff766462fe7fa661}\label{group__wickr__packet__meta_ga146144d74da12c1fff766462fe7fa661}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!wickr\_packet\_meta\_create@{wickr\_packet\_meta\_create}}
 \index{wickr\_packet\_meta\_create@{wickr\_packet\_meta\_create}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{wickr\_packet\_meta\_create()}{wickr\_packet\_meta\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_packet\_meta\_create()}{wickr\_packet\_meta\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}}$\ast$ wickr\+\_\+packet\+\_\+meta\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+info\+\_\+t}}}]{ephemerality\+\_\+settings,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{channel\+\_\+tag,  }\item[{uint16\+\_\+t}]{content\+\_\+type }\end{DoxyParamCaption})}
 
 Construct packet metadata from components
@@ -61,7 +61,7 @@ a newly allocated packet metadata set owning the properties passed in
 \mbox{\Hypertarget{group__wickr__packet__meta_gad165ad670da761478cf5f8f91223c1d3}\label{group__wickr__packet__meta_gad165ad670da761478cf5f8f91223c1d3}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!wickr\_packet\_meta\_destroy@{wickr\_packet\_meta\_destroy}}
 \index{wickr\_packet\_meta\_destroy@{wickr\_packet\_meta\_destroy}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{wickr\_packet\_meta\_destroy()}{wickr\_packet\_meta\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_packet\_meta\_destroy()}{wickr\_packet\_meta\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+packet\+\_\+meta\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$$\ast$}]{meta }\end{DoxyParamCaption})}
 
 Destroy packet metadata set

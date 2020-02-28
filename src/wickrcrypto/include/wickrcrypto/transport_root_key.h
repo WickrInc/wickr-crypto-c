@@ -44,19 +44,19 @@ extern "C" {
  data that represents the master secret which is cipher.key_len in size
  @var wickr_transport_root_key::cipher
  the cipher that the root key creator has chosen to use when converting the secret into a set of stream keys
- @var wickr_transport_packet::packets_per_evo_send
+ @var wickr_transport_root_key::packets_per_evo_send
  the value to set for `packets_per_evolution` when creating a stream key in the ENCODE direction
- @var wickr_transport_packet::packets_per_evo_recv
+ @var wickr_transport_root_key::packets_per_evo_recv
  the value to set for `packets_per_evolution` when creating a stream key in the DECODE direction
 */
-struct wickr_transport_root_key_t {
+struct wickr_transport_root_key {
     wickr_buffer_t *secret;
     wickr_cipher_t cipher;
     uint32_t packets_per_evo_send;
     uint32_t packets_per_evo_recv;
 };
 
-typedef struct wickr_transport_root_key_t wickr_transport_root_key_t;
+typedef struct wickr_transport_root_key wickr_transport_root_key_t;
 
 /**
  @ingroup wickr_transport_root_key
@@ -79,7 +79,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_create_random(const wickr_c
 
  Create a root key using a random secret of length cipher.key_key
 
- @param engine a pointer to a crypto engine that can generate random bytes
+ @param secret a secret of length `cipher.key_len`
  @param cipher the cipher to use for generating stream keys
  @param packets_per_evo_send the value to set for `packets_per_evolution` when creating a stream key in the ENCODE direction
  @param packets_per_evo_recv the value to set for `packets_per_evolution` when creating a stream key in the DECODE direction

@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__stream}{}\section{wickr\+\_\+stream}
+\hypertarget{group__wickr__stream}{}\doxysection{wickr\+\_\+stream}
 \label{group__wickr__stream}\index{wickr\_stream@{wickr\_stream}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx}}
 \begin{DoxyCompactList}\small\item\em A context that is used for encrypting or decrypting a sequenced stream of data packets The stream context manages the state of stream operations including key evolution management based on the sequence number of the being encrypted / decrypted. The stream context is assigned a direction, and can only be used for encoding OR decoding of packets, and not both. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__stream_ga0b5c513a3e0958dc7fd4f8455206e32e}{wickr\+\_\+stream\+\_\+ctx\+\_\+create}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$stream\+\_\+key, wickr\+\_\+stream\+\_\+direction direction)
@@ -22,14 +22,14 @@ bool \mbox{\hyperlink{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}{w
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__stream_ga707b685e35eb437c33f5ec32c6760005}\label{group__wickr__stream_ga707b685e35eb437c33f5ec32c6760005}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_copy@{wickr\_stream\_ctx\_copy}}
 \index{wickr\_stream\_ctx\_copy@{wickr\_stream\_ctx\_copy}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_copy()}{wickr\_stream\_ctx\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_copy()}{wickr\_stream\_ctx\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+ctx\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Copy a stream context
@@ -45,7 +45,7 @@ a newly allocated stream context holding a deep copy of properties from \textquo
 \mbox{\Hypertarget{group__wickr__stream_ga0b5c513a3e0958dc7fd4f8455206e32e}\label{group__wickr__stream_ga0b5c513a3e0958dc7fd4f8455206e32e}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_create@{wickr\_stream\_ctx\_create}}
 \index{wickr\_stream\_ctx\_create@{wickr\_stream\_ctx\_create}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_create()}{wickr\_stream\_ctx\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_create()}{wickr\_stream\_ctx\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+ctx\+\_\+create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$}]{stream\+\_\+key,  }\item[{wickr\+\_\+stream\+\_\+direction}]{direction }\end{DoxyParamCaption})}
 
 Create a stream context
@@ -65,7 +65,7 @@ a newly allocated stream context owning the properties passed in
 \mbox{\Hypertarget{group__wickr__stream_gaa1eb323694f2c1652b51127b0b89138c}\label{group__wickr__stream_gaa1eb323694f2c1652b51127b0b89138c}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_decode@{wickr\_stream\_ctx\_decode}}
 \index{wickr\_stream\_ctx\_decode@{wickr\_stream\_ctx\_decode}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_decode()}{wickr\_stream\_ctx\_decode()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_decode()}{wickr\_stream\_ctx\_decode()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+ctx\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{data,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{aad,  }\item[{uint64\+\_\+t}]{seq\+\_\+num }\end{DoxyParamCaption})}
 
 Encode a packet
@@ -87,7 +87,7 @@ a buffer representing \textquotesingle{}data\textquotesingle{} decrypted with \t
 \mbox{\Hypertarget{group__wickr__stream_ga05260bfce1f50352cad32e0354c28a1d}\label{group__wickr__stream_ga05260bfce1f50352cad32e0354c28a1d}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_destroy@{wickr\_stream\_ctx\_destroy}}
 \index{wickr\_stream\_ctx\_destroy@{wickr\_stream\_ctx\_destroy}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_destroy()}{wickr\_stream\_ctx\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_destroy()}{wickr\_stream\_ctx\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+stream\+\_\+ctx\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Destroy a stream context
@@ -100,7 +100,7 @@ Destroy a stream context
 \mbox{\Hypertarget{group__wickr__stream_ga621a3ec801ab996b4fab1fe905c450bd}\label{group__wickr__stream_ga621a3ec801ab996b4fab1fe905c450bd}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_encode@{wickr\_stream\_ctx\_encode}}
 \index{wickr\_stream\_ctx\_encode@{wickr\_stream\_ctx\_encode}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_encode()}{wickr\_stream\_ctx\_encode()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_encode()}{wickr\_stream\_ctx\_encode()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+ctx\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{aad,  }\item[{uint64\+\_\+t}]{seq\+\_\+num }\end{DoxyParamCaption})}
 
 Encode a packet
@@ -122,7 +122,7 @@ a cipher result representing \textquotesingle{}data\textquotesingle{} encrypted 
 \mbox{\Hypertarget{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}\label{group__wickr__stream_ga98121b9f8cdab6596cbd3bb0d99be6e3}} 
 \index{wickr\_stream@{wickr\_stream}!wickr\_stream\_ctx\_ref\_up@{wickr\_stream\_ctx\_ref\_up}}
 \index{wickr\_stream\_ctx\_ref\_up@{wickr\_stream\_ctx\_ref\_up}!wickr\_stream@{wickr\_stream}}
-\subsubsection{\texorpdfstring{wickr\_stream\_ctx\_ref\_up()}{wickr\_stream\_ctx\_ref\_up()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_ctx\_ref\_up()}{wickr\_stream\_ctx\_ref\_up()}}
 {\footnotesize\ttfamily bool wickr\+\_\+stream\+\_\+ctx\+\_\+ref\+\_\+up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__ctx}{wickr\+\_\+stream\+\_\+ctx\+\_\+t}} $\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Increment the reference count of a stream

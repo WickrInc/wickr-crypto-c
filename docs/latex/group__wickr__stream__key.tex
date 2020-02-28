@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__stream__key}{}\section{wickr\+\_\+stream\+\_\+key}
+\hypertarget{group__wickr__stream__key}{}\doxysection{wickr\+\_\+stream\+\_\+key}
 \label{group__wickr__stream__key}\index{wickr\_stream\_key@{wickr\_stream\_key}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key}}
 \begin{DoxyCompactList}\small\item\em A data structure representing the stream encoding / decoding key material A stream key holds information about the key material used for cipher operations as well as it\textquotesingle{}s next evolution key and the number of packets this key should be used to encode or decode before evolution takes place. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__stream__key_ga54449667a25d9e64cd04dae58dd76418}{wickr\+\_\+stream\+\_\+key\+\_\+create}} (\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$cipher\+\_\+key, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$evolution\+\_\+key, uint32\+\_\+t packets\+\_\+per\+\_\+evolution)
@@ -24,14 +24,14 @@ void \mbox{\hyperlink{group__wickr__stream__key_ga3bb3dec760c5b7f3a1bd2d0bb13bcc
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__stream__key_ga0201dd73adf773834d7dbb4bbc307fae}\label{group__wickr__stream__key_ga0201dd73adf773834d7dbb4bbc307fae}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_copy@{wickr\_stream\_key\_copy}}
 \index{wickr\_stream\_key\_copy@{wickr\_stream\_key\_copy}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_copy()}{wickr\_stream\_key\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_copy()}{wickr\_stream\_key\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$}]{stream\+\_\+key }\end{DoxyParamCaption})}
 
 Copy a stream key
@@ -47,7 +47,7 @@ a newly allocated stream key holding a deep copy of properties from \textquotesi
 \mbox{\Hypertarget{group__wickr__stream__key_ga54449667a25d9e64cd04dae58dd76418}\label{group__wickr__stream__key_ga54449667a25d9e64cd04dae58dd76418}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_create@{wickr\_stream\_key\_create}}
 \index{wickr\_stream\_key\_create@{wickr\_stream\_key\_create}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_create()}{wickr\_stream\_key\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_create()}{wickr\_stream\_key\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{cipher\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{evolution\+\_\+key,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evolution }\end{DoxyParamCaption})}
 
 Create a stream key from components
@@ -67,7 +67,7 @@ a newly allocated stream key owning the properties passed in
 \mbox{\Hypertarget{group__wickr__stream__key_gadf1565329fed927531e1a14334ed23e4}\label{group__wickr__stream__key_gadf1565329fed927531e1a14334ed23e4}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_create\_from\_buffer@{wickr\_stream\_key\_create\_from\_buffer}}
 \index{wickr\_stream\_key\_create\_from\_buffer@{wickr\_stream\_key\_create\_from\_buffer}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_create\_from\_buffer()}{wickr\_stream\_key\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_create\_from\_buffer()}{wickr\_stream\_key\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Create a stream key from a serialized buffer
@@ -83,7 +83,7 @@ a newly allocated stream key represented by \textquotesingle{}buffer\textquotesi
 \mbox{\Hypertarget{group__wickr__stream__key_ga9e95dd486dbe2f3db647c65042601b34}\label{group__wickr__stream__key_ga9e95dd486dbe2f3db647c65042601b34}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_create\_rand@{wickr\_stream\_key\_create\_rand}}
 \index{wickr\_stream\_key\_create\_rand@{wickr\_stream\_key\_create\_rand}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_create\_rand()}{wickr\_stream\_key\_create\_rand()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_create\_rand()}{wickr\_stream\_key\_create\_rand()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+create\+\_\+rand (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{cipher,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evolution }\end{DoxyParamCaption})}
 
 Generate a random stream key
@@ -103,7 +103,7 @@ a newly allocated stream key
 \mbox{\Hypertarget{group__wickr__stream__key_gaff8e766f3519e9e73157938bd1d3e024}\label{group__wickr__stream__key_gaff8e766f3519e9e73157938bd1d3e024}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_create\_user\_data@{wickr\_stream\_key\_create\_user\_data}}
 \index{wickr\_stream\_key\_create\_user\_data@{wickr\_stream\_key\_create\_user\_data}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_create\_user\_data()}{wickr\_stream\_key\_create\_user\_data()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_create\_user\_data()}{wickr\_stream\_key\_create\_user\_data()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+create\+\_\+user\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{cipher\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{evolution\+\_\+key,  }\item[{uint32\+\_\+t}]{packets\+\_\+per\+\_\+evolution,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
 
 Create a stream key from components with user data
@@ -125,7 +125,7 @@ a newly allocated stream key owning the properties passed in
 \mbox{\Hypertarget{group__wickr__stream__key_ga3bb3dec760c5b7f3a1bd2d0bb13bcc79}\label{group__wickr__stream__key_ga3bb3dec760c5b7f3a1bd2d0bb13bcc79}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_destroy@{wickr\_stream\_key\_destroy}}
 \index{wickr\_stream\_key\_destroy@{wickr\_stream\_key\_destroy}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_destroy()}{wickr\_stream\_key\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_destroy()}{wickr\_stream\_key\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+stream\+\_\+key\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$$\ast$}]{stream\+\_\+key }\end{DoxyParamCaption})}
 
 Destroy a stream key
@@ -138,7 +138,7 @@ Destroy a stream key
 \mbox{\Hypertarget{group__wickr__stream__key_gae1540c98a88e2f62e96fb2ee209e2290}\label{group__wickr__stream__key_gae1540c98a88e2f62e96fb2ee209e2290}} 
 \index{wickr\_stream\_key@{wickr\_stream\_key}!wickr\_stream\_key\_serialize@{wickr\_stream\_key\_serialize}}
 \index{wickr\_stream\_key\_serialize@{wickr\_stream\_key\_serialize}!wickr\_stream\_key@{wickr\_stream\_key}}
-\subsubsection{\texorpdfstring{wickr\_stream\_key\_serialize()}{wickr\_stream\_key\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_stream\_key\_serialize()}{wickr\_stream\_key\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+stream\+\_\+key\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__stream__key}{wickr\+\_\+stream\+\_\+key\+\_\+t}} $\ast$}]{key }\end{DoxyParamCaption})}
 
 Serialize a stream key

@@ -1,4 +1,4 @@
-\hypertarget{structwickr__ctx}{}\section{wickr\+\_\+ctx Struct Reference}
+\hypertarget{structwickr__ctx}{}\doxysection{wickr\+\_\+ctx Struct Reference}
 \label{structwickr__ctx}\index{wickr\_ctx@{wickr\_ctx}}
 
 
@@ -9,7 +9,7 @@ Wickr encryption context for high level management of sending / receiving packet
 
 {\ttfamily \#include $<$wickr\+\_\+ctx.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} \mbox{\hyperlink{structwickr__ctx_a244c238ad74f2dbcddc280822d1fb93f}{engine}}
@@ -26,44 +26,44 @@ uint8\+\_\+t \mbox{\hyperlink{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Wickr encryption context for high level management of sending / receiving packets using the Wickr protocol. 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__ctx_a043ea3b027c4d27909f77bb195550b11}\label{structwickr__ctx_a043ea3b027c4d27909f77bb195550b11}} 
 \index{wickr\_ctx@{wickr\_ctx}!dev\_info@{dev\_info}}
 \index{dev\_info@{dev\_info}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{dev\_info}{dev\_info}}
+\doxysubsubsection{\texorpdfstring{dev\_info}{dev\_info}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::dev\+\_\+info}
 
 set of device identifiers to use for messaging and server communication, storage keys and message key exchanges are bound to the dev\+\_\+info identifiers \mbox{\Hypertarget{structwickr__ctx_a244c238ad74f2dbcddc280822d1fb93f}\label{structwickr__ctx_a244c238ad74f2dbcddc280822d1fb93f}} 
 \index{wickr\_ctx@{wickr\_ctx}!engine@{engine}}
 \index{engine@{engine}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{engine}{engine}}
+\doxysubsubsection{\texorpdfstring{engine}{engine}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::engine}
 
 crypto engine to use by default for all cryptographic operations required by the Wickr protocol \mbox{\Hypertarget{structwickr__ctx_a044a292ab5cbba50fd3ec2f5bf7a00ef}\label{structwickr__ctx_a044a292ab5cbba50fd3ec2f5bf7a00ef}} 
 \index{wickr\_ctx@{wickr\_ctx}!id\_chain@{id\_chain}}
 \index{id\_chain@{id\_chain}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{id\_chain}{id\_chain}}
+\doxysubsubsection{\texorpdfstring{id\_chain}{id\_chain}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::id\+\_\+chain}
 
 the identity chain for this context, it contains the node and root level signature chains \mbox{\Hypertarget{structwickr__ctx_a86da8359c914b1fec0d60e1c64fcf048}\label{structwickr__ctx_a86da8359c914b1fec0d60e1c64fcf048}} 
 \index{wickr\_ctx@{wickr\_ctx}!packet\_header\_key@{packet\_header\_key}}
 \index{packet\_header\_key@{packet\_header\_key}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{packet\_header\_key}{packet\_header\_key}}
+\doxysubsubsection{\texorpdfstring{packet\_header\_key}{packet\_header\_key}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::packet\+\_\+header\+\_\+key}
 
 the active header key to use on all outbound packets \mbox{\Hypertarget{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75}\label{structwickr__ctx_ad43117fbe3f70681f0ab982b06c6cd75}} 
 \index{wickr\_ctx@{wickr\_ctx}!pkt\_enc\_version@{pkt\_enc\_version}}
 \index{pkt\_enc\_version@{pkt\_enc\_version}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{pkt\_enc\_version}{pkt\_enc\_version}}
+\doxysubsubsection{\texorpdfstring{pkt\_enc\_version}{pkt\_enc\_version}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::pkt\+\_\+enc\+\_\+version}
 
 the packet version to use for encoding, this is useful for supporting older clients \mbox{\Hypertarget{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}\label{structwickr__ctx_ab6d3ad69a6a16c0f582186b9d8461b66}} 
 \index{wickr\_ctx@{wickr\_ctx}!storage\_keys@{storage\_keys}}
 \index{storage\_keys@{storage\_keys}!wickr\_ctx@{wickr\_ctx}}
-\subsubsection{\texorpdfstring{storage\_keys}{storage\_keys}}
+\doxysubsubsection{\texorpdfstring{storage\_keys}{storage\_keys}}
 {\footnotesize\ttfamily wickr\+\_\+ctx\+::storage\+\_\+keys}
 
 active remote and local storage keys for this context 

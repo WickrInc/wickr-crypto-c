@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['data',['data',['../structwickr__fingerprint.html#a56e7c92e7c9ab8a8c0d6f6f7960eef74',1,'wickr_fingerprint']]],
-  ['data_20conversion_20utilities',['Data Conversion Utilities',['../group__data__conversion__utilities.html',1,'']]],
-  ['decrypted_5fpayload',['decrypted_payload',['../structwickr__decode__result.html#a0c6e2140859e7d8ad113f1e7ebd95ad4',1,'wickr_decode_result']]],
-  ['default_5fcipher',['default_cipher',['../structwickr__crypto__engine.html#a307f7d46b55b1e0a93ce9d9489ba8fc5',1,'wickr_crypto_engine']]],
-  ['default_5fcurve',['default_curve',['../structwickr__crypto__engine.html#a2145e35235dc5c5c944f33ea3d2963bd',1,'wickr_crypto_engine']]],
-  ['dev_5fid',['dev_id',['../structwickr__node.html#a564e42fc1d4b63353d74e5fbf0bead82',1,'wickr_node']]],
-  ['dev_5finfo',['dev_info',['../structwickr__ctx.html#a043ea3b027c4d27909f77bb195550b11',1,'wickr_ctx']]],
-  ['dev_5fsalt',['dev_salt',['../structwickr__dev__info.html#a78032877515c2b4cf67c48e4eb6fb0f7',1,'wickr_dev_info']]],
-  ['digest_5fid',['digest_id',['../structwickr__digest.html#aa63245abbb5350e3b4f0ef25d50bce77',1,'wickr_digest']]],
-  ['digest_5fmode',['digest_mode',['../structwickr__ecdsa__result.html#a33c820900693a016ac43702e76b54cff',1,'wickr_ecdsa_result']]],
-  ['direction',['direction',['../structwickr__stream__ctx.html#a34c622c3ca61348321261ee7a9c3ff91',1,'wickr_stream_ctx']]]
+  ['channel_5ftag_14',['channel_tag',['../structwickr__packet__meta.html#ab160a2ecfc6146ddf2ce40fe301c8ce9',1,'wickr_packet_meta']]],
+  ['cipher_15',['cipher',['../structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9',1,'wickr_cipher_result::cipher()'],['../structwickr__cipher__key.html#a6506e1a07f7bc2c5ceeb0ca5ce81385b',1,'wickr_cipher_key::cipher()'],['../structwickr__ecdh__cipher__ctx.html#a15e7d01b0e07501b572c11bde1c2e56e',1,'wickr_ecdh_cipher_ctx::cipher()'],['../structwickr__stream__iv.html#a86379d83e28b96d4852ac047482713d1',1,'wickr_stream_iv::cipher()'],['../structwickr__transport__root__key.html#a6ac613a6d9584f09fa80b3f272ed71b8',1,'wickr_transport_root_key::cipher()']]],
+  ['cipher_5fid_16',['cipher_id',['../structwickr__cipher.html#a2ce240f5bd396df05ddd4f30ba944b36',1,'wickr_cipher']]],
+  ['cipher_5fkey_17',['cipher_key',['../structwickr__stream__key.html#a3d957a51193dda882cb89ced2ceeb91e',1,'wickr_stream_key']]],
+  ['cipher_5ftext_18',['cipher_text',['../structwickr__cipher__result.html#a29fe7c04025f39cc574ac41f846d167a',1,'wickr_cipher_result']]],
+  ['content_19',['content',['../structwickr__packet.html#a4d17d017c9d0fbb6e748a7ed935e5512',1,'wickr_packet']]],
+  ['content_5ftype_20',['content_type',['../structwickr__packet__meta.html#ada659f7c31d257c76edab5db52973f6e',1,'wickr_packet_meta']]],
+  ['cost_21',['cost',['../structwickr__kdf__algo.html#a3591ba4f7b6b916381ad28327a67d08c',1,'wickr_kdf_algo']]],
+  ['ctx_22',['ctx',['../structwickr__ctx__gen__result.html#acf7a49dc829a76f122e2eb88e1ddf5aa',1,'wickr_ctx_gen_result']]],
+  ['current_5fpacket_5fversion_23',['CURRENT_PACKET_VERSION',['../group__wickr__protocol.html#ga89ff9f93c5494db53d3ff27353989862',1,'protocol.h']]],
+  ['curve_24',['curve',['../structwickr__ecdsa__result.html#a76bcae0ea46e0f99bfd8fb70aac165bb',1,'wickr_ecdsa_result::curve()'],['../structwickr__ec__key.html#a0fbe90131941d685f618ef6816e8c471',1,'wickr_ec_key::curve()']]]
 ];

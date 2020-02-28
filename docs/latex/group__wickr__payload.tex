@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__payload}{}\section{wickr\+\_\+payload}
+\hypertarget{group__wickr__payload}{}\doxysection{wickr\+\_\+payload}
 \label{group__wickr__payload}\index{wickr\_payload@{wickr\_payload}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload}}
 \begin{DoxyCompactList}\small\item\em The encrypted body content of a Wickr packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__payload_gad7d51d39a8477d87557536ff42399186}{wickr\+\_\+payload\+\_\+create}} (\mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$meta, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$body)
@@ -24,14 +24,14 @@ void \mbox{\hyperlink{group__wickr__payload_ga821c48aa748408e47ba2149e1628a487}{
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__payload_ga96e1b0eabf307d112985946cbe2f6969}\label{group__wickr__payload_ga96e1b0eabf307d112985946cbe2f6969}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_copy@{wickr\_payload\_copy}}
 \index{wickr\_payload\_copy@{wickr\_payload\_copy}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_copy()}{wickr\_payload\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_copy()}{wickr\_payload\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy a payload
@@ -47,7 +47,7 @@ a newly allocated payload holding a deep copy of the properties of \textquotesin
 \mbox{\Hypertarget{group__wickr__payload_gad7d51d39a8477d87557536ff42399186}\label{group__wickr__payload_gad7d51d39a8477d87557536ff42399186}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_create@{wickr\_payload\_create}}
 \index{wickr\_payload\_create@{wickr\_payload\_create}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_create()}{wickr\_payload\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_create()}{wickr\_payload\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__packet__meta}{wickr\+\_\+packet\+\_\+meta\+\_\+t}} $\ast$}]{meta,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{body }\end{DoxyParamCaption})}
 
 Create a payload from components
@@ -65,7 +65,7 @@ a newly allocated payload owning the properties passed in
 \mbox{\Hypertarget{group__wickr__payload_ga0965051bd564c60fa3f890185e271a2d}\label{group__wickr__payload_ga0965051bd564c60fa3f890185e271a2d}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_create\_from\_buffer@{wickr\_payload\_create\_from\_buffer}}
 \index{wickr\_payload\_create\_from\_buffer@{wickr\_payload\_create\_from\_buffer}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_create\_from\_buffer()}{wickr\_payload\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_create\_from\_buffer()}{wickr\_payload\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Deserialize a buffer into a payload
@@ -81,7 +81,7 @@ a payload with data contained in \textquotesingle{}buffer\textquotesingle{}, or 
 \mbox{\Hypertarget{group__wickr__payload_gaeeebf95ba580b92254a91009245028ee}\label{group__wickr__payload_gaeeebf95ba580b92254a91009245028ee}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_create\_from\_cipher@{wickr\_payload\_create\_from\_cipher}}
 \index{wickr\_payload\_create\_from\_cipher@{wickr\_payload\_create\_from\_cipher}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_create\_from\_cipher()}{wickr\_payload\_create\_from\_cipher()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_create\_from\_cipher()}{wickr\_payload\_create\_from\_cipher()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+create\+\_\+from\+\_\+cipher (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{cipher\+\_\+result,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{payload\+\_\+key }\end{DoxyParamCaption})}
 
 Decrypt-\/\+Then-\/\+Deserialize
@@ -101,7 +101,7 @@ a payload or N\+U\+LL if an incorrect key is provided
 \mbox{\Hypertarget{group__wickr__payload_ga821c48aa748408e47ba2149e1628a487}\label{group__wickr__payload_ga821c48aa748408e47ba2149e1628a487}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_destroy@{wickr\_payload\_destroy}}
 \index{wickr\_payload\_destroy@{wickr\_payload\_destroy}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_destroy()}{wickr\_payload\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_destroy()}{wickr\_payload\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+payload\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$$\ast$}]{payload }\end{DoxyParamCaption})}
 
 Destroy a payload
@@ -114,7 +114,7 @@ Destroy a payload
 \mbox{\Hypertarget{group__wickr__payload_ga7e4fd2ad4de22c2f7d6160400d2e15e7}\label{group__wickr__payload_ga7e4fd2ad4de22c2f7d6160400d2e15e7}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_encrypt@{wickr\_payload\_encrypt}}
 \index{wickr\_payload\_encrypt@{wickr\_payload\_encrypt}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_encrypt()}{wickr\_payload\_encrypt()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_encrypt()}{wickr\_payload\_encrypt()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+encrypt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$}]{payload,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{payload\+\_\+key }\end{DoxyParamCaption})}
 
 Serialize-\/\+Then-\/\+Encrypt a payload
@@ -136,7 +136,7 @@ an encrypted payload
 \mbox{\Hypertarget{group__wickr__payload_ga047613f464b15c627602399cd0c70c48}\label{group__wickr__payload_ga047613f464b15c627602399cd0c70c48}} 
 \index{wickr\_payload@{wickr\_payload}!wickr\_payload\_serialize@{wickr\_payload\_serialize}}
 \index{wickr\_payload\_serialize@{wickr\_payload\_serialize}!wickr\_payload@{wickr\_payload}}
-\subsubsection{\texorpdfstring{wickr\_payload\_serialize()}{wickr\_payload\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_payload\_serialize()}{wickr\_payload\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+payload\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$}]{payload }\end{DoxyParamCaption})}
 
 Serialize a payload to a buffer

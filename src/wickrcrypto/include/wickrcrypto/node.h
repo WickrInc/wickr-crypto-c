@@ -81,6 +81,8 @@ typedef enum {
  the key pair that is currently associated with message key exchange generation for this node
  @var wickr_node::status
  the current validation status of the node, see 'wickr_node_status' for more info
+ @var wickr_node::_status_cache
+ private cache of status information used for performance optimizations
  */
 struct wickr_node {
     wickr_buffer_t *dev_id;
