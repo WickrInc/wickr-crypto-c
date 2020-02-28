@@ -1,36 +1,40 @@
 syntax = "proto2";
-import "node.proto";
+import "identity.proto";
 
 package wickr.proto;
 
-message Handshake {
+message HandshakeV1 {
 
-    required uint32 version = 1;
+    reserved 1;
 
     message Seed {
         reserved 1;
-        optional Node node_info = 2;
+        optional IdentityChain id_chain = 2;
+        optional bytes ephemeral_pubkey = 3;
+        optional bool identity_required = 4;
     }
     
-    message KeyExchange {
-        optional bytes sender_pub = 1;
-        optional bytes exchange_data = 2;
-    }
-
     message Response {
-        optional KeyExchange key_exchange = 2;
-        optional Seed response_key = 3;
-    }
-
-    message Finish {
-        optional KeyExchange key_exchange = 2;
+        optional bytes ephemeral_pubkey = 2;
+        optional bytes encrypted_response_data = 3;
+        optional IdentityChain id_chain = 4;
     }
 
     oneof payload {
         Seed seed = 2;
         Response response = 3;
-        Finish finish = 4;
     }
+}
+
+message HandshakeV1ResponseData {
+    optional TransportRootKey root_key = 1;
+}
+
+message TransportRootKey {
+    optional bytes secret = 1;
+    optional uint32 cipher_id = 2;
+    optional uint32 packets_per_evo_send = 3;
+    optional uint32 packets_per_evo_recv = 4;
 }
 
 message StreamKey {

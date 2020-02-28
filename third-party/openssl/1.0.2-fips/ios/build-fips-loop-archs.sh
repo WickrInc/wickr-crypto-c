@@ -13,7 +13,9 @@ fi
 export HOSTCC=/usr/bin/cc
 chmod +x Configure && ./Configure darwin64-x86_64-cc --prefix=${TARGETDIR}
 make
-make build_tests && make build_algvs
+if [ "${BUILD_FIPS_TESTS}" == "true" ]; then
+  make build_tests && make build_algvs
+fi
 cd iOS
 make incore_macho
 cd ..

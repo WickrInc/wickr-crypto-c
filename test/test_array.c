@@ -119,13 +119,6 @@ DESCRIBE(an_array_of_items, "an array of items")
         SHOULD_EQUAL(count, 2);
     }
     END_IT
-    
-    IT("should return an error if you try and set null for an item")
-    {
-        bool allowed = wickr_array_set_item(test_array, 0, NULL, true);
-        SHOULD_BE_FALSE(allowed);
-    }
-    END_IT
 
     IT("allows you to make a copy of an object that you insert")
     {
@@ -143,6 +136,14 @@ DESCRIBE(an_array_of_items, "an array of items")
         
         destroy_foo(&test_foo_1);
 
+    }
+    END_IT
+    
+    IT("should allow you to set null for an item to erase it")
+    {
+        bool allowed = wickr_array_set_item(test_array, 0, NULL, true);
+        SHOULD_BE_TRUE(allowed);
+        SHOULD_BE_NULL(wickr_array_fetch_item(test_array, 0, false));
     }
     END_IT
     

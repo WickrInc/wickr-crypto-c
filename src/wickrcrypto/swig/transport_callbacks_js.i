@@ -12,7 +12,7 @@ using v8::Value;
 using v8::FunctionTemplate;
 using v8::Maybe;
 
-Local<Function> WickrTransportGetCallback(Isolate *isolate, void *callbackObjectPtr, const char *name)
+Local<Function> WickrTransportGetCallback(Isolate *isolate, const void *callbackObjectPtr, const char *name)
 {
     Local<Object> jsCallbacks = Local<Object>::New(isolate, *(Persistent<Object> *)callbackObjectPtr);
     Local<v8::String> callbackProperty = v8::String::NewFromUtf8(isolate, name, v8::NewStringType::kNormal).ToLocalChecked();
@@ -45,27 +45,10 @@ void WickrTransportExecuteCallbackVoid(Isolate *isolate,Local<Function>& callbac
     }
 }
 
-void WickrTransportTxCallback(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, wickr_transport_payload_type pkt_type, void *user)
+void WickrTransportTxCallback(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data)
 {
     Isolate *isolate = Isolate::GetCurrent();
-    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, user, "onTx");
-
-    if (callbackFunction.IsEmpty()) {
-        return;
-    }
-
-    Local<Value> argv[] = {
-        node::Buffer::Copy(isolate, (const char *)data->bytes, data->length).ToLocalChecked(),
-        Number::New(isolate, (double)pkt_type)
-    };
-
-    WickrTransportExecuteCallbackVoid(isolate, callbackFunction, 2, argv);
-}
-
-void WickrTransportRxCallback(const wickr_transport_ctx_t *ctx, const wickr_buffer_t *data, void *user) 
-{
-    Isolate *isolate = Isolate::GetCurrent();
-    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, user, "onRx");
+    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, wickr_transport_ctx_get_user_ctx(ctx), "onTx");
 
     if (callbackFunction.IsEmpty()) {
         return;
@@ -74,14 +57,34 @@ void WickrTransportRxCallback(const wickr_transport_ctx_t *ctx, const wickr_buff
     Local<Value> argv[] = {
         node::Buffer::Copy(isolate, (const char *)data->bytes, data->length).ToLocalChecked(),
     };
+
+    wickr_buffer_destroy(&data);
 
     WickrTransportExecuteCallbackVoid(isolate, callbackFunction, 1, argv);
 }
 
-void WickrTransportStateChangedCallback(const wickr_transport_ctx_t *ctx, wickr_transport_status status, void *user)
+void WickrTransportRxCallback(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data) 
 {
     Isolate *isolate = Isolate::GetCurrent();
-    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, user, "onStateChanged");
+    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, wickr_transport_ctx_get_user_ctx(ctx), "onRx");
+
+    if (callbackFunction.IsEmpty()) {
+        return;
+    }
+
+    Local<Value> argv[] = {
+        node::Buffer::Copy(isolate, (const char *)data->bytes, data->length).ToLocalChecked(),
+    };
+
+    wickr_buffer_destroy(&data);
+
+    WickrTransportExecuteCallbackVoid(isolate, callbackFunction, 1, argv);
+}
+
+void WickrTransportStateChangedCallback(const wickr_transport_ctx_t *ctx, wickr_transport_status status)
+{
+    Isolate *isolate = Isolate::GetCurrent();
+    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, wickr_transport_ctx_get_user_ctx(ctx), "onStateChanged");
 
     if (callbackFunction.IsEmpty()) {
         return;
@@ -122,7 +125,7 @@ void WickrTransportIdentityValidationResponse(const v8::FunctionCallbackInfo<Val
     }
 
     void *callbackVoid = 0;
-    convertResult = SWIG_ConvertFunctionPtr(transportCallback.ToLocalChecked(), &callbackVoid, SWIGTYPE_p_f_p_q_const__wickr_transport_ctx_p_q_const__wickr_buffer_t_enum_wickr_transport_payload_type_p_void__void);
+    convertResult = SWIG_ConvertFunctionPtr(transportCallback.ToLocalChecked(), &callbackVoid, SWIGTYPE_p_f_p_q_const__wickr_transport_ctx_p_wickr_identity_chain_p_f_p_q_const__wickr_transport_ctx_bool__void__void);
 
     if (!SWIG_IsOK(convertResult)) {
         SWIG_V8_Raise("Identity Validation Invalid Callback Function");
@@ -139,10 +142,10 @@ void WickrTransportIdentityValidationResponse(const v8::FunctionCallbackInfo<Val
 }
 
 void WickrTransportIdentityValidationCallback(const wickr_transport_ctx_t *ctx,
-    wickr_identity_chain_t *identity, wickr_transport_validate_identity_callback callback,  void *user)
+    wickr_identity_chain_t *identity, wickr_transport_validate_identity_callback callback)
 {
     Isolate *isolate = Isolate::GetCurrent();
-    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, user, "identityVerify");
+    Local<Function> callbackFunction = WickrTransportGetCallback(isolate, wickr_transport_ctx_get_user_ctx(ctx), "identityVerify");
 
 
     if (callbackFunction.IsEmpty()) {
@@ -151,7 +154,7 @@ void WickrTransportIdentityValidationCallback(const wickr_transport_ctx_t *ctx,
 
     Local<Object> context = Object::New(isolate);
     Maybe<bool> didSetTransport = context->Set(isolate->GetCurrentContext(), 0, SWIG_NewPointerObj(SWIG_as_voidptr(ctx), SWIGTYPE_p_wickr_transport_ctx, 0 |  0 ));
-    Maybe<bool> didSetCallback = context->Set(isolate->GetCurrentContext(), 1,SWIG_NewFunctionPtrObj((void *)(callback), SWIGTYPE_p_f_p_q_const__wickr_transport_ctx_p_q_const__wickr_buffer_t_enum_wickr_transport_payload_type_p_void__void));
+    Maybe<bool> didSetCallback = context->Set(isolate->GetCurrentContext(), 1,SWIG_NewFunctionPtrObj((void *)(callback), SWIGTYPE_p_f_p_q_const__wickr_transport_ctx_p_wickr_identity_chain_p_f_p_q_const__wickr_transport_ctx_bool__void__void));
 
     if (didSetTransport.IsNothing() || didSetCallback.IsNothing()) {
         SWIG_V8_Raise("Identity Validation Failed to Set Callback");
@@ -160,14 +163,8 @@ void WickrTransportIdentityValidationCallback(const wickr_transport_ctx_t *ctx,
     Local<FunctionTemplate> onCompleteTemplate = FunctionTemplate::New(isolate, WickrTransportIdentityValidationResponse, context);
     Local<Function> onComplete = onCompleteTemplate->GetFunction(isolate->GetCurrentContext()).ToLocalChecked();
 
-    wickr_identity_chain_t *identity_copy = wickr_identity_chain_copy(identity);
-
-    if (!identity_copy) {
-        return callback(ctx, false);
-    }
-
     Local<Value> argv[] = {
-        SWIG_NewPointerObj(SWIG_as_voidptr(identity_copy), SWIGTYPE_p_wickr_identity_chain, SWIG_POINTER_OWN |  0),
+        SWIG_NewPointerObj(SWIG_as_voidptr(identity), SWIGTYPE_p_wickr_identity_chain, SWIG_POINTER_OWN |  0),
         onComplete
     };
 
@@ -184,8 +181,6 @@ $1 = {
     .rx = &WickrTransportRxCallback,
     .on_state = &WickrTransportStateChangedCallback,
     .on_identity_verify = &WickrTransportIdentityValidationCallback,
-    .on_psk_required = 0 /* PSK currently not supported */,
-    .on_tx_stream_gen = 0 /* Custom stream creation currently not supported */
 };
 
 $2 = new Persistent<Object>(Isolate::GetCurrent(), $input->ToObject());

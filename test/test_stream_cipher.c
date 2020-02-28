@@ -3,7 +3,7 @@
 #include "stream_ctx.h"
 #include "test_util.h"
 
-static bool __wickr_stream_key_is_equal(wickr_stream_key_t *k1, wickr_stream_key_t *k2)
+bool wickr_stream_key_is_equal(const wickr_stream_key_t *k1, const wickr_stream_key_t *k2)
 {
     if (!k1 || !k2) {
         return false;
@@ -99,7 +99,7 @@ DESCRIBE(wickr_stream_key, "stream cipher key")
     {
         wickr_stream_key_t *copy_key = wickr_stream_key_copy(stream_key);
         SHOULD_NOT_BE_NULL(copy_key);
-        SHOULD_BE_TRUE(__wickr_stream_key_is_equal(copy_key, stream_key));
+        SHOULD_BE_TRUE(wickr_stream_key_is_equal(copy_key, stream_key));
         wickr_stream_key_destroy(&copy_key);
     }
     END_IT
@@ -136,7 +136,7 @@ DESCRIBE(wickr_stream_key, "stream cipher key")
         wickr_stream_key_t *restored = wickr_stream_key_create_from_buffer(serialized);
         SHOULD_NOT_BE_NULL(restored);
         
-        SHOULD_BE_TRUE(__wickr_stream_key_is_equal(stream_key, restored));
+        SHOULD_BE_TRUE(wickr_stream_key_is_equal(stream_key, restored));
         
         wickr_buffer_destroy(&serialized);
         wickr_stream_key_destroy(&restored);
@@ -152,7 +152,7 @@ DESCRIBE(wickr_stream_key, "stream cipher key")
         restored = wickr_stream_key_create_from_buffer(serialized);
         SHOULD_NOT_BE_NULL(restored);
         
-        SHOULD_BE_TRUE(__wickr_stream_key_is_equal(stream_key, restored));
+        SHOULD_BE_TRUE(wickr_stream_key_is_equal(stream_key, restored));
         
         wickr_buffer_destroy(&serialized);
         wickr_stream_key_destroy(&restored);
@@ -189,7 +189,9 @@ static void __test_encode_decode_evolution(wickr_stream_ctx_t *enc, wickr_stream
         SHOULD_BE_TRUE(wickr_buffer_is_equal(enc->key->evolution_key, old_encode_key->evolution_key, NULL));
     }
     
-    SHOULD_BE_NULL(wickr_stream_ctx_decode(dec, encode, NULL, 1));
+    if (test_packet_num != 1) {
+        SHOULD_BE_NULL(wickr_stream_ctx_decode(dec, encode, NULL, 1));
+    }
     
     wickr_buffer_t *decode = wickr_stream_ctx_decode(dec, encode, NULL, test_packet_num);
     SHOULD_NOT_BE_NULL(decode);
@@ -215,7 +217,7 @@ static void __test_encode_decode_evolution(wickr_stream_ctx_t *enc, wickr_stream
 
 DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
 {
-    uint32_t test_evolution = PACKET_PER_EVO_MIN;
+    uint32_t test_evolution = 16;
     
     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
     wickr_stream_key_t *test_key = wickr_stream_key_create_rand(engine, CIPHER_AES256_GCM, test_evolution);
@@ -345,6 +347,20 @@ DESCRIBE(wickr_stream_cipher, "an stream of ciphered content")
         
         wickr_stream_ctx_destroy(&enc_copy);
         wickr_stream_ctx_destroy(&dec_copy);
+    }
+    END_IT
+    
+    IT("should work with the minimum evolution count")
+    {
+        wickr_stream_key_t *test_key_min = wickr_stream_key_create_rand(engine, CIPHER_AES256_GCM, PACKET_PER_EVO_MIN);
+        wickr_stream_ctx_t *min_enc = wickr_stream_ctx_create(engine, test_key_min, STREAM_DIRECTION_ENCODE);
+        wickr_stream_ctx_t *min_dec = wickr_stream_ctx_create(engine, wickr_stream_key_copy(test_key_min), STREAM_DIRECTION_DECODE);
+        __test_encode_decode_evolution(min_enc, min_dec, PACKET_PER_EVO_MIN, true);
+        __test_encode_decode_evolution(min_enc, min_dec, 1 + PACKET_PER_EVO_MIN, true);
+        __test_encode_decode_evolution(min_enc, min_dec, (1 + PACKET_PER_EVO_MIN) * 2, true);
+        
+        wickr_stream_ctx_destroy(&min_enc);
+        wickr_stream_ctx_destroy(&min_dec);
     }
     END_IT
     

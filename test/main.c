@@ -12,7 +12,7 @@
 #include "test_node.h"
 #include "test_buffer.h"
 #include "test_stream_cipher.h"
-#include "test_transport.h"
+#include "test_transport_ctx.h"
 #include "test_identity.h"
 #include "test_ephemeral_keypair.h"
 #include "test_packet_meta.h"
@@ -25,6 +25,9 @@
 #include "test_ec_key.h"
 #include "test_encoder_result.h"
 #include "test_payload.h"
+#include "test_transport_packet.h"
+#include "test_transport_handshake.h"
+#include "test_transport_root_key.h"
 
 #include "cspec_output_unit.h"
 
@@ -90,6 +93,11 @@ void run_ecdh_cipher_tests(CSpecOutputStruct *output)
 
 void run_transport_tests(CSpecOutputStruct *output)
 {
+    CSpec_Run(DESCRIPTION(wickr_transport_root_key), output);
+    CSpec_Run(DESCRIPTION(wickr_transport_packet_meta), output);
+    CSpec_Run(DESCRIPTION(wickr_transport_packet), output);
+    CSpec_Run(DESCRIPTION(wickr_transport_handshake), output);
+    CSpec_Run(DESCRIPTION(wickr_transport_handshake_res), output);
     CSpec_Run(DESCRIPTION(wickr_transport_ctx), output);
 }
 

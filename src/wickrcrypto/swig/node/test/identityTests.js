@@ -15,6 +15,13 @@ function generateTestNode(identity) {
     return testNode
 }
 
+function generateTestIdentityChain(name) {
+    const sigKey = wickrcrypto.CryptoEngine.randEcKey(wickrcrypto.ECCurve.p521())
+    const root = wickrcrypto.Identity.fromValues(wickrcrypto.IDENTITY_TYPE_ROOT, Buffer.from(name), sigKey, null)
+    const node = root.genNode(null)
+    return wickrcrypto.IdentityChain.fromIdentities(root, node)
+}
+
 describe ("Identity Tests", function() {
 
     var identifier 
@@ -89,3 +96,5 @@ describe ("Identity Tests", function() {
     })
 
 })
+
+module.exports.generateTestIdentityChain = generateTestIdentityChain

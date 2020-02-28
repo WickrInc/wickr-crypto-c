@@ -31,7 +31,11 @@ macro(build_fips_module)
     set(FIPS_URL "https://www.openssl.org/source/openssl-fips-${FIPS_VERSION}.tar.gz")
     set(FIPS_PATH ${CMAKE_CURRENT_BINARY_DIR}/fips_output)
     set(FIPS_CONFIGURE ./config --prefix=${FIPS_PATH})
-    set(FIPS_BUILD make && make build_tests && make build_algvs)
+    if (FIPS_BUILD_TEST)
+        set(FIPS_BUILD make && make build_tests && make build_algvs)
+    else ()
+        set(FIPS_BUILD make)
+    endif ()
     set(FIPS_INSTALL make install)
 
     if (APPLE)
@@ -59,9 +63,14 @@ macro(build_fips_module)
             set(FIPS_ARCH set PROCESSOR_ARCHITECTURE=x86)
         endif ()
 
-        set(FIPS_BUILD_TEST cd openssl_fips-prefix\\src\\openssl_fips && nmake -f ms\\ntdll.mak test)
+        if (BUILD_FIPS_TESTS)
+            set(FIPS_BUILD_TEST cd openssl_fips-prefix\\src\\openssl_fips && nmake -f ms\\ntdll.mak test)
+        else ()
+            set(FIPS_BUILD_TEST echo "Skipping FIPS test generation")
+        endif ()
 
         set(FIPS_BUILD ${FIPS_ARCH} && ms\\do_fips.bat && ${FIPS_BUILD_TEST})
+
         set(FIPS_INSTALL echo "no install step")
     endif ()
 
