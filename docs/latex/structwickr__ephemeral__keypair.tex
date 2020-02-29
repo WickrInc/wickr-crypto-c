@@ -1,4 +1,4 @@
-\hypertarget{structwickr__ephemeral__keypair}{}\section{wickr\+\_\+ephemeral\+\_\+keypair Struct Reference}
+\hypertarget{structwickr__ephemeral__keypair}{}\doxysection{wickr\+\_\+ephemeral\+\_\+keypair Struct Reference}
 \label{structwickr__ephemeral__keypair}\index{wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}}
 
 
@@ -9,7 +9,7 @@ Represents a key pair used for message key exchanges within the Wickr Messaging 
 
 {\ttfamily \#include $<$ephemeral\+\_\+keypair.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 uint64\+\_\+t \mbox{\hyperlink{structwickr__ephemeral__keypair_a9220b37a7db764818406bcc84e3ba86b}{identifier}}
@@ -20,28 +20,28 @@ uint64\+\_\+t \mbox{\hyperlink{structwickr__ephemeral__keypair_a9220b37a7db76481
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Represents a key pair used for message key exchanges within the Wickr Messaging Protocol. 
 
 Ephemeral kaypairs are identifiable by an integer value, and are signed by the node that generated the key. The additional properties outside of the key material itself provide clarity for both a message sender and receiver. For the sender, the signature can provide authenticity of the public key material if the key pair is retrived from a public place such as a server. The identifier can be passed as metadata by the sender so that the receiver has knowledge of which private key from their active pool to use decode the message. The goal of ephemeral keypairs is to provide an as constant as possible rotation / destruction cycle 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__ephemeral__keypair_ad730ed9ba92e05d0a271edc838e548fe}\label{structwickr__ephemeral__keypair_ad730ed9ba92e05d0a271edc838e548fe}} 
 \index{wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}!ec\_key@{ec\_key}}
 \index{ec\_key@{ec\_key}!wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{ec\_key}{ec\_key}}
+\doxysubsubsection{\texorpdfstring{ec\_key}{ec\_key}}
 {\footnotesize\ttfamily wickr\+\_\+ephemeral\+\_\+keypair\+::ec\+\_\+key}
 
 underlying Elliptic curve key pair to use \mbox{\Hypertarget{structwickr__ephemeral__keypair_a9220b37a7db764818406bcc84e3ba86b}\label{structwickr__ephemeral__keypair_a9220b37a7db764818406bcc84e3ba86b}} 
 \index{wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}!identifier@{identifier}}
 \index{identifier@{identifier}!wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{identifier}{identifier}}
+\doxysubsubsection{\texorpdfstring{identifier}{identifier}}
 {\footnotesize\ttfamily wickr\+\_\+ephemeral\+\_\+keypair\+::identifier}
 
 identifier to associate with this key pair so it can be cataloged and later recalled when used \mbox{\Hypertarget{structwickr__ephemeral__keypair_aea420be2397d798a560fa973be86228c}\label{structwickr__ephemeral__keypair_aea420be2397d798a560fa973be86228c}} 
 \index{wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}!signature@{signature}}
 \index{signature@{signature}!wickr\_ephemeral\_keypair@{wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{signature}{signature}}
+\doxysubsubsection{\texorpdfstring{signature}{signature}}
 {\footnotesize\ttfamily wickr\+\_\+ephemeral\+\_\+keypair\+::signature}
 
 a signature of the \textquotesingle{}ec\+\_\+key\textquotesingle{} public component 

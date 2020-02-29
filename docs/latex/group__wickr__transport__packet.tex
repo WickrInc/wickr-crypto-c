@@ -1,0 +1,144 @@
+\hypertarget{group__wickr__transport__packet}{}\doxysection{Wickr\+\_\+transport\+\_\+packet}
+\label{group__wickr__transport__packet}\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet}}
+\begin{DoxyCompactList}\small\item\em A packet used within the \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}} to package up data and related metadata + authentication in one serializable structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__packet_ga2ea62d26e54e442ac64c15c640602279}{wickr\+\_\+transport\+\_\+packet\+\_\+create}} (\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}} meta, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$body)
+\item 
+\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__packet_ga135f90264155cc4d92786109a65641de}{wickr\+\_\+transport\+\_\+packet\+\_\+copy}} (const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$pkt)
+\item 
+void \mbox{\hyperlink{group__wickr__transport__packet_gacd57699aa6611b8f48796223acfda76b}{wickr\+\_\+transport\+\_\+packet\+\_\+destroy}} (\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$$\ast$pkt)
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__packet_ga2cdc0c5adcdd2e3454eae39b2f4dc33c}{wickr\+\_\+transport\+\_\+packet\+\_\+serialize}} (const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$pkt)
+\item 
+\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__packet_ga78e92c4d47878225358b73efb0c8b100}{wickr\+\_\+transport\+\_\+packet\+\_\+create\+\_\+from\+\_\+buffer}} (const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$buffer)
+\item 
+bool \mbox{\hyperlink{group__wickr__transport__packet_gac22f9025a5d71cd8de066f271b375cac}{wickr\+\_\+transport\+\_\+packet\+\_\+sign}} (\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$pkt, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$identity\+\_\+chain)
+\item 
+bool \mbox{\hyperlink{group__wickr__transport__packet_ga0b293c4f9dca7342b9acb8e0331c578f}{wickr\+\_\+transport\+\_\+packet\+\_\+verify}} (const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$packet, const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$engine, \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$identity\+\_\+chain)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__wickr__transport__packet_ga135f90264155cc4d92786109a65641de}\label{group__wickr__transport__packet_ga135f90264155cc4d92786109a65641de}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_copy@{wickr\_transport\_packet\_copy}}
+\index{wickr\_transport\_packet\_copy@{wickr\_transport\_packet\_copy}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_copy()}{wickr\_transport\_packet\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+packet\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$}]{pkt }\end{DoxyParamCaption})}
+
+Make a deep copy of a transport packet
+
+
+\begin{DoxyParams}{Parameters}
+{\em pkt} & the transport packet to make a copy of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport packet holding a deep copy of the properties of \textquotesingle{}pkt\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__packet_ga2ea62d26e54e442ac64c15c640602279}\label{group__wickr__transport__packet_ga2ea62d26e54e442ac64c15c640602279}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_create@{wickr\_transport\_packet\_create}}
+\index{wickr\_transport\_packet\_create@{wickr\_transport\_packet\_create}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_create()}{wickr\_transport\_packet\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+packet\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet__meta}{wickr\+\_\+transport\+\_\+packet\+\_\+meta\+\_\+t}}}]{meta,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{body }\end{DoxyParamCaption})}
+
+Create a transport packet
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & metadata describing {\ttfamily body} \\
+\hline
+{\em body} & the main contents of the packet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__packet_ga78e92c4d47878225358b73efb0c8b100}\label{group__wickr__transport__packet_ga78e92c4d47878225358b73efb0c8b100}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_create\_from\_buffer@{wickr\_transport\_packet\_create\_from\_buffer}}
+\index{wickr\_transport\_packet\_create\_from\_buffer@{wickr\_transport\_packet\_create\_from\_buffer}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_create\_from\_buffer()}{wickr\_transport\_packet\_create\_from\_buffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+packet\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Create a transport packet from a serialized transport packet
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & a buffer that was created by a call to {\ttfamily wickr\+\_\+transport\+\_\+packet\+\_\+serialize} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly allocated transport packet from the data contained in {\ttfamily buffer} or N\+U\+LL if the buffer is corrupt or does not represent a transport packet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__packet_gacd57699aa6611b8f48796223acfda76b}\label{group__wickr__transport__packet_gacd57699aa6611b8f48796223acfda76b}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_destroy@{wickr\_transport\_packet\_destroy}}
+\index{wickr\_transport\_packet\_destroy@{wickr\_transport\_packet\_destroy}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_destroy()}{wickr\_transport\_packet\_destroy()}}
+{\footnotesize\ttfamily void wickr\+\_\+transport\+\_\+packet\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$$\ast$}]{pkt }\end{DoxyParamCaption})}
+
+Destroy a transport packet 
+\begin{DoxyParams}{Parameters}
+{\em pkt} & a pointer to the transport packet to destroy. All properties of {\ttfamily $\ast$pkt} will also be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__packet_ga2cdc0c5adcdd2e3454eae39b2f4dc33c}\label{group__wickr__transport__packet_ga2cdc0c5adcdd2e3454eae39b2f4dc33c}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_serialize@{wickr\_transport\_packet\_serialize}}
+\index{wickr\_transport\_packet\_serialize@{wickr\_transport\_packet\_serialize}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_serialize()}{wickr\_transport\_packet\_serialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+packet\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$}]{pkt }\end{DoxyParamCaption})}
+
+Serialize a transport packet down to a buffer for transfer
+
+
+\begin{DoxyParams}{Parameters}
+{\em pkt} & the packet to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the byte representation of {\ttfamily pkt} or N\+U\+LL if serialization fails 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__packet_gac22f9025a5d71cd8de066f271b375cac}\label{group__wickr__transport__packet_gac22f9025a5d71cd8de066f271b375cac}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_sign@{wickr\_transport\_packet\_sign}}
+\index{wickr\_transport\_packet\_sign@{wickr\_transport\_packet\_sign}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_sign()}{wickr\_transport\_packet\_sign()}}
+{\footnotesize\ttfamily bool wickr\+\_\+transport\+\_\+packet\+\_\+sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$}]{pkt,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{identity\+\_\+chain }\end{DoxyParamCaption})}
+
+Sign a transport packet to authenticate it using an identity chain. Upon successful signing, the mac type of {\ttfamily pkt} will be set based on the type of key used for the signature
+
+
+\begin{DoxyParams}{Parameters}
+{\em pkt} & the packet to sign \\
+\hline
+{\em engine} & a pointer to a crypto engine that support digital signatures \\
+\hline
+{\em identity\+\_\+chain} & an identity chain that at minimum contains the private key for a node identity in order to sign the packet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if signing is successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__wickr__transport__packet_ga0b293c4f9dca7342b9acb8e0331c578f}\label{group__wickr__transport__packet_ga0b293c4f9dca7342b9acb8e0331c578f}} 
+\index{Wickr\_transport\_packet@{Wickr\_transport\_packet}!wickr\_transport\_packet\_verify@{wickr\_transport\_packet\_verify}}
+\index{wickr\_transport\_packet\_verify@{wickr\_transport\_packet\_verify}!Wickr\_transport\_packet@{Wickr\_transport\_packet}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_packet\_verify()}{wickr\_transport\_packet\_verify()}}
+{\footnotesize\ttfamily bool wickr\+\_\+transport\+\_\+packet\+\_\+verify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}} $\ast$}]{packet,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{identity\+\_\+chain }\end{DoxyParamCaption})}
+
+Verify a packet that was signed by a call to {\ttfamily wickr\+\_\+transport\+\_\+packet\+\_\+sign}
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & the packet to verify \\
+\hline
+{\em engine} & a pointer to a crypto engine that supports verifying digital signatures \\
+\hline
+{\em identity\+\_\+chain} & the public identity chain that is believed to have signed {\ttfamily packet} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\ttfamily packet} was signed by {\ttfamily identity\+\_\+chain} 
+\end{DoxyReturn}

@@ -31,7 +31,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_create(wickr_buffer_t *secr
                                                             uint32_t packets_per_evo_send,
                                                             uint32_t packets_per_evo_recv)
 {
-    if (!secret) {
+    if (!secret || secret->length != cipher.key_len) {
         return NULL;
     }
     

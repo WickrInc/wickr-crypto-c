@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+ * Copyright © 2012-2020 Wickr Inc.  All rights reserved.
  *
  * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
  * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -339,6 +339,7 @@ wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
  Serialize and encrypt a context with a passphrase
  
  @param ctx the context to serialize and encrypt
+ @param passphrase the password to use for locking the exported data, can be a string or bytes
  @return bytes representing an scrypt encrypted context
  */
 wickr_buffer_t *wickr_ctx_export(const wickr_ctx_t *ctx, const wickr_buffer_t *passphrase);
@@ -351,7 +352,7 @@ wickr_buffer_t *wickr_ctx_export(const wickr_ctx_t *ctx, const wickr_buffer_t *p
  @param engine the crypto engine to use for decryption and the resulting context
  @param dev_info the device information the context should be bound to
  @param exported the result of the call to 'wickr_ctx_export'
- @param passphase the passphrase used to export the context
+ @param passphrase the passphrase used to export the context
 */
 wickr_ctx_t *wickr_ctx_import(const wickr_crypto_engine_t engine,
                               wickr_dev_info_t *dev_info,

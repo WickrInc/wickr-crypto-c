@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['packet',['packet',['../structwickr__encoder__result.html#a0b82542fc5bae37ab2a8924605927b4a',1,'wickr_encoder_result::packet()'],['../structwickr__ctx__packet.html#a0cdbc84b6fcc6115b8ddf21b235cc645',1,'wickr_ctx_packet::packet()']]],
-  ['packet_5fheader_5fkey',['packet_header_key',['../structwickr__ctx.html#a86da8359c914b1fec0d60e1c64fcf048',1,'wickr_ctx']]],
-  ['packet_5fkey',['packet_key',['../structwickr__encoder__result.html#a5a712f2087fb15d2dd5a870a656afbb5',1,'wickr_encoder_result']]],
-  ['packets_5fper_5fevolution',['packets_per_evolution',['../structwickr__stream__key.html#a78777e4c64048b6dae38f8772744194e',1,'wickr_stream_key']]],
-  ['parse_5fresult',['parse_result',['../structwickr__ctx__packet.html#a7bc4643a99b787536ee8b7505412ecce',1,'wickr_ctx_packet']]],
-  ['payload_5fkey',['payload_key',['../structwickr__decode__result.html#aed31d598b49bf696f286d673246d8b31',1,'wickr_decode_result']]],
-  ['pkt_5fenc_5fversion',['pkt_enc_version',['../structwickr__ctx.html#ad43117fbe3f70681f0ab982b06c6cd75',1,'wickr_ctx']]],
-  ['pri_5fdata',['pri_data',['../structwickr__ec__key.html#a67c23110b722401c6ba8b883b3aa74fc',1,'wickr_ec_key']]],
-  ['pub_5fdata',['pub_data',['../structwickr__ec__key.html#af972d3c8b571df0ef009ebf079705e82',1,'wickr_ec_key']]]
+  ['network_5fbuffer_862',['network_buffer',['../structwickr__transport__packet.html#a51f050009c04ee30d80fcce13dab4f1f',1,'wickr_transport_packet']]],
+  ['node_863',['node',['../structwickr__identity__chain.html#a4343dae5f1c82057289c26e5c7bb1226',1,'wickr_identity_chain']]],
+  ['node_5fsignature_5froot_864',['node_signature_root',['../structwickr__root__keys.html#af3a0ca7b48b356e118dea24c26cdd9f5',1,'wickr_root_keys']]],
+  ['node_5fstorage_5froot_865',['node_storage_root',['../structwickr__root__keys.html#ada908a5fa4aaf7c8b9a4b496c99e595a',1,'wickr_root_keys']]]
 ];

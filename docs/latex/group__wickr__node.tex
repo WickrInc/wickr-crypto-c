@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__node}{}\section{Wickr\+\_\+node}
+\hypertarget{group__wickr__node}{}\doxysection{Wickr\+\_\+node}
 \label{group__wickr__node}\index{Wickr\_node@{Wickr\_node}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node}}
 \begin{DoxyCompactList}\small\item\em Represents a message destination at a point in time. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Enumerations}
+\doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}} \{ {\bfseries N\+O\+D\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
@@ -13,7 +13,7 @@ enum \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wic
 {\bfseries N\+O\+D\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+ID}
  \}
 \end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__node_ga293b1210648e2db5449be23fe0f3e644}{wickr\+\_\+node\+\_\+create}} (\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$dev\+\_\+id, \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$id\+\_\+chain, \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$ephemeral\+\_\+keypair)
@@ -42,25 +42,25 @@ void \mbox{\hyperlink{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}{wic
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Enumeration Type Documentation}
+\doxysubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}\label{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_status@{wickr\_node\_status}}
 \index{wickr\_node\_status@{wickr\_node\_status}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_status}{wickr\_node\_status}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_status}{wickr\_node\_status}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}}}
 
 Node status
 
 U\+N\+K\+N\+O\+WN -\/ Signature validation has never been attempted on the node V\+A\+L\+ID -\/ Signature validation has been attempted and has passed on node I\+N\+V\+A\+L\+ID -\/ Signature validation has been attempted and has failed on node 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__node_gab577103b1752357b8575b064e22a4970}\label{group__wickr__node_gab577103b1752357b8575b064e22a4970}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_copy@{wickr\_node\_array\_copy}}
 \index{wickr\_node\_array\_copy@{wickr\_node\_array\_copy}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_array\_copy()}{wickr\_node\_array\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_array\_copy()}{wickr\_node\_array\_copy()}}
 {\footnotesize\ttfamily wickr\+\_\+node\+\_\+array\+\_\+t$\ast$ wickr\+\_\+node\+\_\+array\+\_\+copy (\begin{DoxyParamCaption}\item[{const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$}]{array }\end{DoxyParamCaption})}
 
 Make a deep copy of a node array
@@ -76,7 +76,7 @@ a newly allocated wickr\+\_\+node\+\_\+array that contains a copy of each elemen
 \mbox{\Hypertarget{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}\label{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_destroy@{wickr\_node\_array\_destroy}}
 \index{wickr\_node\_array\_destroy@{wickr\_node\_array\_destroy}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_array\_destroy()}{wickr\_node\_array\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_array\_destroy()}{wickr\_node\_array\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+node\+\_\+array\+\_\+destroy (\begin{DoxyParamCaption}\item[{wickr\+\_\+node\+\_\+array\+\_\+t $\ast$$\ast$}]{array }\end{DoxyParamCaption})}
 
 Destroy a node array
@@ -91,7 +91,7 @@ N\+O\+TE\+: Nodes in the array are not destroyed, only the container array
 \mbox{\Hypertarget{group__wickr__node_ga878a3015abc8563d512c0e5acf10df60}\label{group__wickr__node_ga878a3015abc8563d512c0e5acf10df60}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_fetch\_item@{wickr\_node\_array\_fetch\_item}}
 \index{wickr\_node\_array\_fetch\_item@{wickr\_node\_array\_fetch\_item}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_array\_fetch\_item()}{wickr\_node\_array\_fetch\_item()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_array\_fetch\_item()}{wickr\_node\_array\_fetch\_item()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+array\+\_\+fetch\+\_\+item (\begin{DoxyParamCaption}\item[{const wickr\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index }\end{DoxyParamCaption})}
 
 Fetch an item in the node array
@@ -111,7 +111,7 @@ the node at \textquotesingle{}index\textquotesingle{}. N\+U\+LL if the index is 
 \mbox{\Hypertarget{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}\label{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_new@{wickr\_node\_array\_new}}
 \index{wickr\_node\_array\_new@{wickr\_node\_array\_new}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_array\_new()}{wickr\_node\_array\_new()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_array\_new()}{wickr\_node\_array\_new()}}
 {\footnotesize\ttfamily wickr\+\_\+node\+\_\+array\+\_\+t$\ast$ wickr\+\_\+node\+\_\+array\+\_\+new (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{node\+\_\+count }\end{DoxyParamCaption})}
 
 Create an array of nodes
@@ -127,7 +127,7 @@ a newly allocated array with enough space to hold \textquotesingle{}node\+\_\+co
 \mbox{\Hypertarget{group__wickr__node_gae511a75489982fc2e90271be63d9d753}\label{group__wickr__node_gae511a75489982fc2e90271be63d9d753}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_set\_item@{wickr\_node\_array\_set\_item}}
 \index{wickr\_node\_array\_set\_item@{wickr\_node\_array\_set\_item}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_array\_set\_item()}{wickr\_node\_array\_set\_item()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_array\_set\_item()}{wickr\_node\_array\_set\_item()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+array\+\_\+set\+\_\+item (\begin{DoxyParamCaption}\item[{wickr\+\_\+array\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{index,  }\item[{\mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{node }\end{DoxyParamCaption})}
 
 Set an item in the node array
@@ -149,7 +149,7 @@ true if the insert succeeds, false if the index is out of range
 \mbox{\Hypertarget{group__wickr__node_ga393c4fb42022fdc6f4336a62dbc7af91}\label{group__wickr__node_ga393c4fb42022fdc6f4336a62dbc7af91}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_copy@{wickr\_node\_copy}}
 \index{wickr\_node\_copy@{wickr\_node\_copy}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_copy()}{wickr\_node\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_copy()}{wickr\_node\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an node
@@ -165,7 +165,7 @@ a newly allocated node holding a deep copy of the properties of \textquotesingle
 \mbox{\Hypertarget{group__wickr__node_ga293b1210648e2db5449be23fe0f3e644}\label{group__wickr__node_ga293b1210648e2db5449be23fe0f3e644}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_create@{wickr\_node\_create}}
 \index{wickr\_node\_create@{wickr\_node\_create}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_create()}{wickr\_node\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_create()}{wickr\_node\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{dev\+\_\+id,  }\item[{\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{id\+\_\+chain,  }\item[{\mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{ephemeral\+\_\+keypair }\end{DoxyParamCaption})}
 
 Create a node from components
@@ -185,7 +185,7 @@ a newly allocated node. Takes ownership of the passed inputs
 \mbox{\Hypertarget{group__wickr__node_ga3906f6da9fbd61172d2d65466773aa83}\label{group__wickr__node_ga3906f6da9fbd61172d2d65466773aa83}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_create\_from\_buffer@{wickr\_node\_create\_from\_buffer}}
 \index{wickr\_node\_create\_from\_buffer@{wickr\_node\_create\_from\_buffer}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_create\_from\_buffer()}{wickr\_node\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_create\_from\_buffer()}{wickr\_node\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine }\end{DoxyParamCaption})}
 
 Create a node from a buffer that was created with \textquotesingle{}wickr\+\_\+node\+\_\+serialize\textquotesingle{}
@@ -203,7 +203,7 @@ deserialized node or null if the deserialization fails
 \mbox{\Hypertarget{group__wickr__node_ga6acf07885403d9df6baad36a8d797f73}\label{group__wickr__node_ga6acf07885403d9df6baad36a8d797f73}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_destroy@{wickr\_node\_destroy}}
 \index{wickr\_node\_destroy@{wickr\_node\_destroy}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_destroy()}{wickr\_node\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_destroy()}{wickr\_node\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+node\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$$\ast$}]{node }\end{DoxyParamCaption})}
 
 Destroy a node
@@ -216,7 +216,7 @@ Destroy a node
 \mbox{\Hypertarget{group__wickr__node_ga2ed650b947df7316cf0f915805ac5aa4}\label{group__wickr__node_ga2ed650b947df7316cf0f915805ac5aa4}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_rotate\_keypair@{wickr\_node\_rotate\_keypair}}
 \index{wickr\_node\_rotate\_keypair@{wickr\_node\_rotate\_keypair}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_rotate\_keypair()}{wickr\_node\_rotate\_keypair()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_rotate\_keypair()}{wickr\_node\_rotate\_keypair()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+rotate\+\_\+keypair (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{node,  }\item[{\mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{new\+\_\+keypair,  }\item[{bool}]{copy }\end{DoxyParamCaption})}
 
 Rotate in a new ephemeral key pair for message sending
@@ -238,7 +238,7 @@ true if the rotation succeeds, false if the copy fails
 \mbox{\Hypertarget{group__wickr__node_ga6012a4fe980b1a616369cbc4b0a95f74}\label{group__wickr__node_ga6012a4fe980b1a616369cbc4b0a95f74}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_serialize@{wickr\_node\_serialize}}
 \index{wickr\_node\_serialize@{wickr\_node\_serialize}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_serialize()}{wickr\_node\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_serialize()}{wickr\_node\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+node\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{node }\end{DoxyParamCaption})}
 
 Serialize a node to bytes
@@ -254,7 +254,7 @@ a buffer containing a serialized representation of \textquotesingle{}node\textqu
 \mbox{\Hypertarget{group__wickr__node_gac9e2d96e9109590124b2fd05a8826c1d}\label{group__wickr__node_gac9e2d96e9109590124b2fd05a8826c1d}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_verify\_signature\_chain@{wickr\_node\_verify\_signature\_chain}}
 \index{wickr\_node\_verify\_signature\_chain@{wickr\_node\_verify\_signature\_chain}!Wickr\_node@{Wickr\_node}}
-\subsubsection{\texorpdfstring{wickr\_node\_verify\_signature\_chain()}{wickr\_node\_verify\_signature\_chain()}}
+\doxysubsubsection{\texorpdfstring{wickr\_node\_verify\_signature\_chain()}{wickr\_node\_verify\_signature\_chain()}}
 {\footnotesize\ttfamily bool wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{node,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine }\end{DoxyParamCaption})}
 
 Verify the integrity of the signature chain for a node

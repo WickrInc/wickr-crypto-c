@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+ * Copyright © 2012-2020 Wickr Inc.  All rights reserved.
  *
  * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
  * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -110,7 +110,8 @@ typedef struct wickr_identity wickr_identity_t;
  an identity of type 'IDENTITY_TYPE_ROOT'
  @var wickr_identity_chain::node
  an identity of type 'IDENTITY_TYPE_NODE'
- 
+ @var wickr_identity_chain::_status_cache
+ private cache of status information used for performance optimizations
  */
 struct wickr_identity_chain {
     wickr_identity_chain_status status;

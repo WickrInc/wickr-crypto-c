@@ -1,6 +1,6 @@
-\hypertarget{group__wickr__ctx}{}\section{Wickr\+\_\+ctx}
+\hypertarget{group__wickr__ctx}{}\doxysection{Wickr\+\_\+ctx}
 \label{group__wickr__ctx}\index{Wickr\_ctx@{Wickr\_ctx}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}
@@ -9,7 +9,7 @@ struct \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+
 \begin{DoxyCompactList}\small\item\em the output of a context generation \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__ctx__packet}{wickr\+\_\+ctx\+\_\+packet}}
 \begin{DoxyCompactList}\small\item\em a parsed inbound wickr packet that has yet to be decoded by this context \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ctx_gaa8904ab3687a22f8d291f5976d05a0e5}{wickr\+\_\+ctx\+\_\+gen\+\_\+new}} (const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} engine, \mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$dev\+\_\+info, \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$identifier)
@@ -68,14 +68,14 @@ void \mbox{\hyperlink{group__wickr__ctx_gad7063bcfca4878d290e598ed6bc22e3c}{wick
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__ctx_gaeff6704dded2d44f689eca5ad25843f8}\label{group__wickr__ctx_gaeff6704dded2d44f689eca5ad25843f8}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_cipher\_local@{wickr\_ctx\_cipher\_local}}
 \index{wickr\_ctx\_cipher\_local@{wickr\_ctx\_cipher\_local}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_cipher\_local()}{wickr\_ctx\_cipher\_local()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_cipher\_local()}{wickr\_ctx\_cipher\_local()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+cipher\+\_\+local (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{plaintext }\end{DoxyParamCaption})}
 
 Encrypts data using the local storage key
@@ -93,7 +93,7 @@ Encrypts data using the local storage key
 \mbox{\Hypertarget{group__wickr__ctx_ga0b985fb2cd05fb482b5ed175dfd650a0}\label{group__wickr__ctx_ga0b985fb2cd05fb482b5ed175dfd650a0}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_cipher\_remote@{wickr\_ctx\_cipher\_remote}}
 \index{wickr\_ctx\_cipher\_remote@{wickr\_ctx\_cipher\_remote}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_cipher\_remote()}{wickr\_ctx\_cipher\_remote()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_cipher\_remote()}{wickr\_ctx\_cipher\_remote()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+cipher\+\_\+remote (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{plaintext }\end{DoxyParamCaption})}
 
 Encrypts data using the remote storage key
@@ -111,7 +111,7 @@ Encrypts data using the remote storage key
 \mbox{\Hypertarget{group__wickr__ctx_gaaa74a32619fb3b382fbeeeddc425a910}\label{group__wickr__ctx_gaaa74a32619fb3b382fbeeeddc425a910}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_copy@{wickr\_ctx\_copy}}
 \index{wickr\_ctx\_copy@{wickr\_ctx\_copy}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_copy()}{wickr\_ctx\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_copy()}{wickr\_ctx\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Copy a context
@@ -127,7 +127,7 @@ a newly allocated context holding a deep copy of the properties of \textquotesin
 \mbox{\Hypertarget{group__wickr__ctx_ga085975d71519bf5729a7cf264a5f7876}\label{group__wickr__ctx_ga085975d71519bf5729a7cf264a5f7876}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_create@{wickr\_ctx\_create}}
 \index{wickr\_ctx\_create@{wickr\_ctx\_create}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_create()}{wickr\_ctx\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_create()}{wickr\_ctx\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{id\+\_\+chain,  }\item[{\mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}} $\ast$}]{storage\+\_\+keys }\end{DoxyParamCaption})}
 
 Create a context from components
@@ -149,7 +149,7 @@ a newly allocated context owning the passed in parameters
 \mbox{\Hypertarget{group__wickr__ctx_gaf80d28fc692d102996cdaf05cfdc4c7c}\label{group__wickr__ctx_gaf80d28fc692d102996cdaf05cfdc4c7c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_create\_from\_buffer@{wickr\_ctx\_create\_from\_buffer}}
 \index{wickr\_ctx\_create\_from\_buffer@{wickr\_ctx\_create\_from\_buffer}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_create\_from\_buffer()}{wickr\_ctx\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_create\_from\_buffer()}{wickr\_ctx\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer }\end{DoxyParamCaption})}
 
 Recreate a context from a serizlied representation
@@ -169,7 +169,7 @@ a context restored from \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL i
 \mbox{\Hypertarget{group__wickr__ctx_gacc1038d3690ba4860b74f13239c65600}\label{group__wickr__ctx_gacc1038d3690ba4860b74f13239c65600}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_decipher\_remote@{wickr\_ctx\_decipher\_remote}}
 \index{wickr\_ctx\_decipher\_remote@{wickr\_ctx\_decipher\_remote}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_decipher\_remote()}{wickr\_ctx\_decipher\_remote()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_decipher\_remote()}{wickr\_ctx\_decipher\_remote()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+decipher\+\_\+remote (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__cipher__result}{wickr\+\_\+cipher\+\_\+result\+\_\+t}} $\ast$}]{cipher\+\_\+text }\end{DoxyParamCaption})}
 
 Decrypts data using the local storage key
@@ -187,7 +187,7 @@ Decrypts data using the local storage key
 \mbox{\Hypertarget{group__wickr__ctx_gaadfdef183c86992efc33b0d730c90327}\label{group__wickr__ctx_gaadfdef183c86992efc33b0d730c90327}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_destroy@{wickr\_ctx\_destroy}}
 \index{wickr\_ctx\_destroy@{wickr\_ctx\_destroy}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_destroy()}{wickr\_ctx\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_destroy()}{wickr\_ctx\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+ctx\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Destroy a context
@@ -200,7 +200,7 @@ Destroy a context
 \mbox{\Hypertarget{group__wickr__ctx_ga3498fb1a966dd49c1f3b806a388533ea}\label{group__wickr__ctx_ga3498fb1a966dd49c1f3b806a388533ea}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_encode\_packet@{wickr\_ctx\_encode\_packet}}
 \index{wickr\_ctx\_encode\_packet@{wickr\_ctx\_encode\_packet}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_encode\_packet()}{wickr\_ctx\_encode\_packet()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_encode\_packet()}{wickr\_ctx\_encode\_packet()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__encoder__result}{wickr\+\_\+encoder\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+encode\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__payload}{wickr\+\_\+payload\+\_\+t}} $\ast$}]{payload,  }\item[{const wickr\+\_\+node\+\_\+array\+\_\+t $\ast$}]{nodes }\end{DoxyParamCaption})}
 
 Encode a Wickr packet to a set of nodes
@@ -220,7 +220,7 @@ an encode result containing an encrypted Wickr packet that transfers \textquotes
 \mbox{\Hypertarget{group__wickr__ctx_ga45b2531085c430942122dcbf45736e10}\label{group__wickr__ctx_ga45b2531085c430942122dcbf45736e10}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_ephemeral\_keypair\_gen@{wickr\_ctx\_ephemeral\_keypair\_gen}}
 \index{wickr\_ctx\_ephemeral\_keypair\_gen@{wickr\_ctx\_ephemeral\_keypair\_gen}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_ephemeral\_keypair\_gen()}{wickr\_ctx\_ephemeral\_keypair\_gen()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_ephemeral\_keypair\_gen()}{wickr\_ctx\_ephemeral\_keypair\_gen()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+ephemeral\+\_\+keypair\+\_\+gen (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{uint64\+\_\+t}]{key\+\_\+id }\end{DoxyParamCaption})}
 
 Generate ephemeral message keypairs
@@ -240,7 +240,7 @@ an ephemeral key pair containing the private and public components, signed by th
 \mbox{\Hypertarget{group__wickr__ctx_ga56c41d96d28a8a25336147248361dcb6}\label{group__wickr__ctx_ga56c41d96d28a8a25336147248361dcb6}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_export@{wickr\_ctx\_export}}
 \index{wickr\_ctx\_export@{wickr\_ctx\_export}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_export()}{wickr\_ctx\_export()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_export()}{wickr\_ctx\_export()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+export (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Serialize and encrypt a context with a passphrase
@@ -249,6 +249,8 @@ Serialize and encrypt a context with a passphrase
 \begin{DoxyParams}{Parameters}
 {\em ctx} & the context to serialize and encrypt \\
 \hline
+{\em passphrase} & the password to use for locking the exported data, can be a string or bytes \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 bytes representing an scrypt encrypted context 
@@ -256,7 +258,7 @@ bytes representing an scrypt encrypted context
 \mbox{\Hypertarget{group__wickr__ctx_ga67e64bed3fc0a8ee550c0fc24d44c787}\label{group__wickr__ctx_ga67e64bed3fc0a8ee550c0fc24d44c787}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_export\_storage\_keys@{wickr\_ctx\_export\_storage\_keys}}
 \index{wickr\_ctx\_export\_storage\_keys@{wickr\_ctx\_export\_storage\_keys}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_export\_storage\_keys()}{wickr\_ctx\_export\_storage\_keys()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_export\_storage\_keys()}{wickr\_ctx\_export\_storage\_keys()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Exports storage keys for a context using a K\+DF + C\+I\+P\+H\+ER function
@@ -278,7 +280,7 @@ a buffer containing exported storage keys
 \mbox{\Hypertarget{group__wickr__ctx_ga2dadd40adc0217dd337ee6cf745cbc12}\label{group__wickr__ctx_ga2dadd40adc0217dd337ee6cf745cbc12}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_export\_recovery\_key\_passphrase@{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase}}
 \index{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase@{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+export\+\_\+recovery\+\_\+key\+\_\+passphrase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$}]{result,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Exports the recovery key using a K\+DF + C\+I\+P\+H\+ER function
@@ -300,7 +302,7 @@ a buffer that was created by first taking K\+DF(random\+Salt $\vert$$\vert$ pass
 \mbox{\Hypertarget{group__wickr__ctx_ga0bde95494141673604b9e4e1f7954e2c}\label{group__wickr__ctx_ga0bde95494141673604b9e4e1f7954e2c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_import\_recovery@{wickr\_ctx\_gen\_import\_recovery}}
 \index{wickr\_ctx\_gen\_import\_recovery@{wickr\_ctx\_gen\_import\_recovery}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_import\_recovery()}{wickr\_ctx\_gen\_import\_recovery()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_import\_recovery()}{wickr\_ctx\_gen\_import\_recovery()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__root__keys}{wickr\+\_\+root\+\_\+keys\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+import\+\_\+recovery (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{recovery\+\_\+data,  }\item[{const \mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{recovery\+\_\+key }\end{DoxyParamCaption})}
 
 
@@ -318,7 +320,7 @@ root keys created from decoding \textquotesingle{}recovery\textquotesingle{} wit
 \mbox{\Hypertarget{group__wickr__ctx_gaa8904ab3687a22f8d291f5976d05a0e5}\label{group__wickr__ctx_gaa8904ab3687a22f8d291f5976d05a0e5}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_new@{wickr\_ctx\_gen\_new}}
 \index{wickr\_ctx\_gen\_new@{wickr\_ctx\_gen\_new}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_new()}{wickr\_ctx\_gen\_new()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_new()}{wickr\_ctx\_gen\_new()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+new (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
 
 Makes a new root and random node identity + context with random keys
@@ -340,7 +342,7 @@ a generation result containing a root identity represented by \textquotesingle{}
 \mbox{\Hypertarget{group__wickr__ctx_ga458f74fb060fb98da491d733e51fc3ef}\label{group__wickr__ctx_ga458f74fb060fb98da491d733e51fc3ef}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_new\_with\_sig\_key@{wickr\_ctx\_gen\_new\_with\_sig\_key}}
 \index{wickr\_ctx\_gen\_new\_with\_sig\_key@{wickr\_ctx\_gen\_new\_with\_sig\_key}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_new\_with\_sig\_key()}{wickr\_ctx\_gen\_new\_with\_sig\_key()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_new\_with\_sig\_key()}{wickr\_ctx\_gen\_new\_with\_sig\_key()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+new\+\_\+with\+\_\+sig\+\_\+key (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{sig\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
 
 Makes a new root and random node identity + context with random keys except for a provided root signing key
@@ -364,7 +366,7 @@ a generation result containing a root identity represented by \textquotesingle{}
 \mbox{\Hypertarget{group__wickr__ctx_gae095a8cb40d209090212136f8580dc77}\label{group__wickr__ctx_gae095a8cb40d209090212136f8580dc77}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_result\_copy@{wickr\_ctx\_gen\_result\_copy}}
 \index{wickr\_ctx\_gen\_result\_copy@{wickr\_ctx\_gen\_result\_copy}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_copy()}{wickr\_ctx\_gen\_result\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_copy()}{wickr\_ctx\_gen\_result\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy a context generation result
@@ -380,7 +382,7 @@ a newly allocated context generation result holding a deep copy of the propertie
 \mbox{\Hypertarget{group__wickr__ctx_ga865854408d22e4697eebe5bc129cc6b1}\label{group__wickr__ctx_ga865854408d22e4697eebe5bc129cc6b1}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_result\_destroy@{wickr\_ctx\_gen\_result\_destroy}}
 \index{wickr\_ctx\_gen\_result\_destroy@{wickr\_ctx\_gen\_result\_destroy}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_destroy()}{wickr\_ctx\_gen\_result\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_destroy()}{wickr\_ctx\_gen\_result\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$$\ast$}]{result }\end{DoxyParamCaption})}
 
 Destroy a context generation result
@@ -393,7 +395,7 @@ Destroy a context generation result
 \mbox{\Hypertarget{group__wickr__ctx_gaa32727731391f1e3fbde26094924b533}\label{group__wickr__ctx_gaa32727731391f1e3fbde26094924b533}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_result\_make\_recovery@{wickr\_ctx\_gen\_result\_make\_recovery}}
 \index{wickr\_ctx\_gen\_result\_make\_recovery@{wickr\_ctx\_gen\_result\_make\_recovery}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_make\_recovery()}{wickr\_ctx\_gen\_result\_make\_recovery()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_result\_make\_recovery()}{wickr\_ctx\_gen\_result\_make\_recovery()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+make\+\_\+recovery (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$}]{result }\end{DoxyParamCaption})}
 
 Serializes root keys and ciphers them with the recovery key
@@ -409,7 +411,7 @@ a buffer with a serialized cipher\+\_\+result generated by encrypting \textquote
 \mbox{\Hypertarget{group__wickr__ctx_gaab0b2731d76d6ea91afd1b147c53a29a}\label{group__wickr__ctx_gaab0b2731d76d6ea91afd1b147c53a29a}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_with\_passphrase@{wickr\_ctx\_gen\_with\_passphrase}}
 \index{wickr\_ctx\_gen\_with\_passphrase@{wickr\_ctx\_gen\_with\_passphrase}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_passphrase()}{wickr\_ctx\_gen\_with\_passphrase()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_passphrase()}{wickr\_ctx\_gen\_with\_passphrase()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+with\+\_\+passphrase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{exported\+\_\+recovery\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{recovery\+\_\+data,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
 
 Makes a new context using an existing root identity\textquotesingle{}s exported recovery key and a passphrase
@@ -437,7 +439,7 @@ a generation result containing an existing root identity represented by \textquo
 \mbox{\Hypertarget{group__wickr__ctx_ga2e9c63af0e76f1977844ea2dc895e90a}\label{group__wickr__ctx_ga2e9c63af0e76f1977844ea2dc895e90a}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_with\_recovery@{wickr\_ctx\_gen\_with\_recovery}}
 \index{wickr\_ctx\_gen\_with\_recovery@{wickr\_ctx\_gen\_with\_recovery}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_recovery()}{wickr\_ctx\_gen\_with\_recovery()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_recovery()}{wickr\_ctx\_gen\_with\_recovery()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+with\+\_\+recovery (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{recovery\+\_\+data,  }\item[{\mbox{\hyperlink{structwickr__cipher__key}{wickr\+\_\+cipher\+\_\+key\+\_\+t}} $\ast$}]{recovery\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
 
 Makes a new context using an existing exported root keys and a provided recovery key
@@ -463,7 +465,7 @@ a generation result containing an existing root identity represented by \textquo
 \mbox{\Hypertarget{group__wickr__ctx_ga286a513a606b6643f796539413357c34}\label{group__wickr__ctx_ga286a513a606b6643f796539413357c34}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_with\_root\_keys@{wickr\_ctx\_gen\_with\_root\_keys}}
 \index{wickr\_ctx\_gen\_with\_root\_keys@{wickr\_ctx\_gen\_with\_root\_keys}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_root\_keys()}{wickr\_ctx\_gen\_with\_root\_keys()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_with\_root\_keys()}{wickr\_ctx\_gen\_with\_root\_keys()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+with\+\_\+root\+\_\+keys (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{\mbox{\hyperlink{structwickr__root__keys}{wickr\+\_\+root\+\_\+keys\+\_\+t}} $\ast$}]{root\+\_\+keys,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{identifier }\end{DoxyParamCaption})}
 
 Makes a new context using an existing root keys set
@@ -489,7 +491,7 @@ a generation result containing an existing root identity represented by \textquo
 \mbox{\Hypertarget{group__wickr__ctx_ga361e58c9f810505a7085cd91c1165391}\label{group__wickr__ctx_ga361e58c9f810505a7085cd91c1165391}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_import@{wickr\_ctx\_import}}
 \index{wickr\_ctx\_import@{wickr\_ctx\_import}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_import()}{wickr\_ctx\_import()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_import()}{wickr\_ctx\_import()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+import (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}} $\ast$}]{dev\+\_\+info,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{exported,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Import a ctx exported by \textquotesingle{}wickr\+\_\+ctx\+\_\+export\textquotesingle{}
@@ -502,13 +504,13 @@ Import a ctx exported by \textquotesingle{}wickr\+\_\+ctx\+\_\+export\textquotes
 \hline
 {\em exported} & the result of the call to \textquotesingle{}wickr\+\_\+ctx\+\_\+export\textquotesingle{} \\
 \hline
-{\em passphase} & the passphrase used to export the context \\
+{\em passphrase} & the passphrase used to export the context \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{group__wickr__ctx_gae344e5202193c4b92ee2686529285fe5}\label{group__wickr__ctx_gae344e5202193c4b92ee2686529285fe5}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_import\_storage\_keys@{wickr\_ctx\_import\_storage\_keys}}
 \index{wickr\_ctx\_import\_storage\_keys@{wickr\_ctx\_import\_storage\_keys}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_import\_storage\_keys()}{wickr\_ctx\_import\_storage\_keys()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_import\_storage\_keys()}{wickr\_ctx\_import\_storage\_keys()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__storage__keys}{wickr\+\_\+storage\+\_\+keys\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+import\+\_\+storage\+\_\+keys (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}}}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{exported,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
 Import storage keys exported with \textquotesingle{}wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys\textquotesingle{}
@@ -528,7 +530,7 @@ decoded storage keys or N\+U\+LL if the passphrase is invalid
 \mbox{\Hypertarget{group__wickr__ctx_ga8ac1e1c9a0b9802d7f259278a09df56c}\label{group__wickr__ctx_ga8ac1e1c9a0b9802d7f259278a09df56c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_packet\_create@{wickr\_ctx\_packet\_create}}
 \index{wickr\_ctx\_packet\_create@{wickr\_ctx\_packet\_create}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_packet\_create()}{wickr\_ctx\_packet\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_packet\_create()}{wickr\_ctx\_packet\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__packet}{wickr\+\_\+ctx\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+packet\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__packet}{wickr\+\_\+packet\+\_\+t}} $\ast$}]{packet,  }\item[{\mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{sender,  }\item[{\mbox{\hyperlink{structwickr__parse__result}{wickr\+\_\+parse\+\_\+result\+\_\+t}} $\ast$}]{parse\+\_\+result }\end{DoxyParamCaption})}
 
 Create a context packet parse result from components
@@ -548,7 +550,7 @@ a newly allocated context packet parse result owning the parameters passed in
 \mbox{\Hypertarget{group__wickr__ctx_gad7063bcfca4878d290e598ed6bc22e3c}\label{group__wickr__ctx_gad7063bcfca4878d290e598ed6bc22e3c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_packet\_destroy@{wickr\_ctx\_packet\_destroy}}
 \index{wickr\_ctx\_packet\_destroy@{wickr\_ctx\_packet\_destroy}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_packet\_destroy()}{wickr\_ctx\_packet\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_packet\_destroy()}{wickr\_ctx\_packet\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+ctx\+\_\+packet\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ctx__packet}{wickr\+\_\+ctx\+\_\+packet\+\_\+t}} $\ast$$\ast$}]{packet }\end{DoxyParamCaption})}
 
 Destroy a packet parse result
@@ -561,7 +563,7 @@ Destroy a packet parse result
 \mbox{\Hypertarget{group__wickr__ctx_ga5032fb65627a509fd9486ea9696e643d}\label{group__wickr__ctx_ga5032fb65627a509fd9486ea9696e643d}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_parse\_packet@{wickr\_ctx\_parse\_packet}}
 \index{wickr\_ctx\_parse\_packet@{wickr\_ctx\_parse\_packet}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_parse\_packet()}{wickr\_ctx\_parse\_packet()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_parse\_packet()}{wickr\_ctx\_parse\_packet()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ctx__packet}{wickr\+\_\+ctx\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+parse\+\_\+packet (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{packet\+\_\+buffer,  }\item[{const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{sender }\end{DoxyParamCaption})}
 
 Parse a Wickr packet into components, fail if the current node\textquotesingle{}s key exchange is not found
@@ -581,7 +583,7 @@ a parse result holding the parsed information from \textquotesingle{}packet\+\_\
 \mbox{\Hypertarget{group__wickr__ctx_gafe05cea0e43f65663a2b084efeedcde8}\label{group__wickr__ctx_gafe05cea0e43f65663a2b084efeedcde8}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_serialize@{wickr\_ctx\_serialize}}
 \index{wickr\_ctx\_serialize@{wickr\_ctx\_serialize}!Wickr\_ctx@{Wickr\_ctx}}
-\subsubsection{\texorpdfstring{wickr\_ctx\_serialize()}{wickr\_ctx\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ctx\_serialize()}{wickr\_ctx\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx }\end{DoxyParamCaption})}
 
 Serialize a context

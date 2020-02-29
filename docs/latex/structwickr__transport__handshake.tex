@@ -1,0 +1,21 @@
+\hypertarget{structwickr__transport__handshake}{}\doxysection{wickr\+\_\+transport\+\_\+handshake Struct Reference}
+\label{structwickr__transport__handshake}\index{wickr\_transport\_handshake@{wickr\_transport\_handshake}}
+
+
+Transport handshake to manage the state of a handshake within the context of a wickr transport context.  
+
+
+
+
+{\ttfamily \#include $<$transport\+\_\+handshake.\+h$>$}
+
+
+
+\doxysubsection{Detailed Description}
+Transport handshake to manage the state of a handshake within the context of a wickr transport context. 
+
+The transport handshake manages a 2-\/way handshake that is used to establish a set of stream keys for use within a transport context. In an exchange between Alice and Bob, the first packet sent by Alice contains an ephemeral public key along with identity information and is signed by Alice\textquotesingle{}s identity chain. After receiving and validating the packet from Alice, Bob uses the ephemeral public key to encrypt a randomly chosen root key for the handshake and sends the resulting ciphertext back to Alice along with his own identity chain data (if requested). Once both sides are aware of the chosen root key, they may both finalize the handshake to derive their respective rx / tx keys for data transmission. This struct is only used within the {\ttfamily \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}}} and is not used for the Wickr Messaging Protocol itself. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/wickrcrypto/include/wickrcrypto/transport\+\_\+handshake.\+h\end{DoxyCompactItemize}

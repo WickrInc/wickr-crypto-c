@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+ * Copyright © 2012-2020 Wickr Inc.  All rights reserved.
  *
  * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
  * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -78,6 +78,7 @@ typedef void (*wickr_transport_validate_identity_func)(const wickr_transport_ctx
  @var wickr_transport_callbacks::on_state
  Called whenever the state of the transport context is updated
  @var wickr_transport_callbacks::on_identity_verify
+ a callback that will get fired when the owner of the transport needs to decide upon the validity of an inbound identity
  */
 struct wickr_transport_callbacks {
     wickr_transport_tx_func tx;

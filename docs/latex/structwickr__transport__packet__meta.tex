@@ -1,0 +1,55 @@
+\hypertarget{structwickr__transport__packet__meta}{}\doxysection{wickr\+\_\+transport\+\_\+packet\+\_\+meta Struct Reference}
+\label{structwickr__transport__packet__meta}\index{wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}}
+
+
+Packet metadata included with all transport packets.  
+
+
+
+
+{\ttfamily \#include $<$transport\+\_\+packet.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{structwickr__transport__handshake__meta}{wickr\_transport\_handshake\_meta\_t}} {\bfseries handshake}\\
+\>\mbox{\hyperlink{structwickr__transport__data__meta}{wickr\_transport\_data\_meta\_t}} {\bfseries data}\\
+\} \mbox{\hyperlink{structwickr__transport__packet__meta_af9050faba08933c53ebfa3a286780199}{body\_meta}}\\
+
+\end{tabbing}\item 
+wickr\+\_\+transport\+\_\+packet\+\_\+payload\+\_\+type \mbox{\hyperlink{structwickr__transport__packet__meta_afd8701af400d52dd1ee3bf7fb78aa644}{body\+\_\+type}}
+\item 
+wickr\+\_\+transport\+\_\+packet\+\_\+mac\+\_\+type \mbox{\hyperlink{structwickr__transport__packet__meta_ad98a0d8354c2d48ef5ee122631f61c32}{mac\+\_\+type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Packet metadata included with all transport packets. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__transport__packet__meta_af9050faba08933c53ebfa3a286780199}\label{structwickr__transport__packet__meta_af9050faba08933c53ebfa3a286780199}} 
+\index{wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}!body\_meta@{body\_meta}}
+\index{body\_meta@{body\_meta}!wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{body\_meta}{body\_meta}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+packet\+\_\+meta\+::body\+\_\+meta}
+
+union that can either hold data unique to a handshake or user data packet \mbox{\Hypertarget{structwickr__transport__packet__meta_afd8701af400d52dd1ee3bf7fb78aa644}\label{structwickr__transport__packet__meta_afd8701af400d52dd1ee3bf7fb78aa644}} 
+\index{wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}!body\_type@{body\_type}}
+\index{body\_type@{body\_type}!wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{body\_type}{body\_type}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+packet\+\_\+meta\+::body\+\_\+type}
+
+a field that indicates if this packet\textquotesingle{}s body contains handshake or user data information \mbox{\Hypertarget{structwickr__transport__packet__meta_ad98a0d8354c2d48ef5ee122631f61c32}\label{structwickr__transport__packet__meta_ad98a0d8354c2d48ef5ee122631f61c32}} 
+\index{wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}!mac\_type@{mac\_type}}
+\index{mac\_type@{mac\_type}!wickr\_transport\_packet\_meta@{wickr\_transport\_packet\_meta}}
+\doxysubsubsection{\texorpdfstring{mac\_type}{mac\_type}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+packet\+\_\+meta\+::mac\+\_\+type}
+
+the type of data authentication the packet has 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/wickrcrypto/include/wickrcrypto/transport\+\_\+packet.\+h\end{DoxyCompactItemize}

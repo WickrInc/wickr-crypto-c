@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hash',['hash',['../structwickr__kdf__result.html#a9b637f293f3243897f9e472b6ad06c21',1,'wickr_kdf_result']]]
+  ['flags_836',['flags',['../structwickr__transport__handshake__meta.html#aed4e5c7d2e6f24be902d6d77f533efc1',1,'wickr_transport_handshake_meta']]]
 ];

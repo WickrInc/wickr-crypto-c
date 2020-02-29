@@ -3,14 +3,14 @@
 
 % Packages used by this style file
 \RequirePackage{alltt}
-\RequirePackage{array}
+%%\RequirePackage{array} %% moved to refman.tex due to workaround for LaTex 2019 version and unmaintained tabu package
 \RequirePackage{calc}
 \RequirePackage{float}
-\RequirePackage{ifthen}
+%%\RequirePackage{ifthen} %% moved to refman.tex due to workaround for LaTex 2019 version and unmaintained tabu package
 \RequirePackage{verbatim}
 \RequirePackage[table]{xcolor}
-\RequirePackage{longtable}
-\RequirePackage{tabu}
+\RequirePackage{longtable_doxygen}
+\RequirePackage{tabu_doxygen}
 \RequirePackage{fancyvrb}
 \RequirePackage{tabularx}
 \RequirePackage{multirow}
@@ -35,6 +35,16 @@
   \endgroup%
 }
 
+\newcommand{\DoxyHorRuler}[1]{%
+  \setlength{\parskip}{0ex plus 0ex minus 0ex}%
+  \ifthenelse{#1=0}%
+  {%
+    \hrule%
+  }%
+  {%
+    \hrulefilll%
+  }%
+}
 \newcommand{\DoxyLabelFont}{}
 \newcommand{\entrylabel}[1]{%
   {%
@@ -49,7 +59,7 @@
   \ensurespace{4\baselineskip}%
   \begin{list}{}{%
     \settowidth{\labelwidth}{20pt}%
-    \setlength{\parsep}{0pt}%
+    %\setlength{\parsep}{0pt}%
     \setlength{\itemsep}{0pt}%
     \setlength{\leftmargin}{\labelwidth+\labelsep}%
     \renewcommand{\makelabel}{\entrylabel}%
@@ -84,7 +94,7 @@
   \end{alltt}%
   \normalsize%
 }
-% Necessary for redefining not defined charcaters, i.e. "Replacement Character" in tex output.
+% Necessary for redefining not defined characters, i.e. "Replacement Character" in tex output.
 \newlength{\CodeWidthChar}
 \newlength{\CodeHeightChar}
 \settowidth{\CodeWidthChar}{?}
@@ -302,16 +312,9 @@
 
 % Used by @par and @paragraph
 \newenvironment{DoxyParagraph}[1]{%
-  \begin{list}{}{%
-    \settowidth{\labelwidth}{40pt}%
-    \setlength{\leftmargin}{\labelwidth}%
-    \setlength{\parsep}{0pt}%
-    \setlength{\itemsep}{-4pt}%
-    \renewcommand{\makelabel}{\entrylabel}%
-  }%
-  \item[#1]%
+  \begin{DoxyDesc}{#1}%
 }{%
-  \end{list}%
+  \end{DoxyDesc}%
 }
 
 % Used by parameter lists
@@ -541,6 +544,30 @@
 % Version of hypertarget with correct landing location
 \newcommand{\Hypertarget}[1]{\Hy@raisedlink{\hypertarget{#1}{}}}
 
+% possibility to have sections etc. be within the margins
+% unfortunately had to copy part of book.cls and add \raggedright
+\makeatletter
+\newcommand\doxysection{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\raggedright\normalfont\Large\bfseries}}
+\newcommand\doxysubsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\raggedright\normalfont\large\bfseries}}
+\newcommand\doxysubsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\raggedright\normalfont\normalsize\bfseries}}
+\newcommand\doxyparagraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\raggedright\normalfont\normalsize\bfseries}}
+\newcommand\doxysubparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\raggedright\normalfont\normalsize\bfseries}}
+\makeatother
 % Define caption that is also suitable in a table
 \makeatletter
 \def\doxyfigcaption{%

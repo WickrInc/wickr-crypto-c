@@ -1,5 +1,5 @@
 /*
-* Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+* Copyright © 2012-2020 Wickr Inc.  All rights reserved.
 *
 * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
 * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -41,6 +41,8 @@ typedef struct wickr_transport_handshake_res_t wickr_transport_handshake_res_t;
  @ingroup wickr_transport_handshake
  
  @enum wickr_transport_handshake_status
+ 
+ Current status of a transport handshake
  
  @var wickr_transport_handshake_status::TRANSPORT_HANDSHAKE_STATUS_UNKNOWN
  Handshake has been created, but has not been started or received any packets

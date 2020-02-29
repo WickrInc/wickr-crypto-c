@@ -1,4 +1,4 @@
-\hypertarget{structwickr__key__exchange__set}{}\section{wickr\+\_\+key\+\_\+exchange\+\_\+set Struct Reference}
+\hypertarget{structwickr__key__exchange__set}{}\doxysection{wickr\+\_\+key\+\_\+exchange\+\_\+set Struct Reference}
 \label{structwickr__key__exchange__set}\index{wickr\_key\_exchange\_set@{wickr\_key\_exchange\_set}}
 
 
@@ -9,7 +9,7 @@ A collection of key exchanges for a set of recipients. The data protected inside
 
 {\ttfamily \#include $<$key\+\_\+exchange.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__key__exchange__set_ac0b304b3014b3c7bfe181526c2f3fc37}{sender\+\_\+pub}}
@@ -18,20 +18,20 @@ wickr\+\_\+exchange\+\_\+array\+\_\+t $\ast$ \mbox{\hyperlink{structwickr__key__
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 A collection of key exchanges for a set of recipients. The data protected inside \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{} for each recipient is derived by each recipient node using their individualized key exchange. See Wickr white paper \textquotesingle{}Prepare Packet Header\textquotesingle{} section for more information. 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__key__exchange__set_a7e848df6178f2e384e56bfd1f9b6d3b4}\label{structwickr__key__exchange__set_a7e848df6178f2e384e56bfd1f9b6d3b4}} 
 \index{wickr\_key\_exchange\_set@{wickr\_key\_exchange\_set}!exchanges@{exchanges}}
 \index{exchanges@{exchanges}!wickr\_key\_exchange\_set@{wickr\_key\_exchange\_set}}
-\subsubsection{\texorpdfstring{exchanges}{exchanges}}
+\doxysubsubsection{\texorpdfstring{exchanges}{exchanges}}
 {\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+\_\+set\+::exchanges}
 
 an array of key exchanges, one for each recipient that will be receiving this message \mbox{\Hypertarget{structwickr__key__exchange__set_ac0b304b3014b3c7bfe181526c2f3fc37}\label{structwickr__key__exchange__set_ac0b304b3014b3c7bfe181526c2f3fc37}} 
 \index{wickr\_key\_exchange\_set@{wickr\_key\_exchange\_set}!sender\_pub@{sender\_pub}}
 \index{sender\_pub@{sender\_pub}!wickr\_key\_exchange\_set@{wickr\_key\_exchange\_set}}
-\subsubsection{\texorpdfstring{sender\_pub}{sender\_pub}}
+\doxysubsubsection{\texorpdfstring{sender\_pub}{sender\_pub}}
 {\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+\_\+set\+::sender\+\_\+pub}
 
 the public EC key that the sender used to derive the key exchanges contained within \textquotesingle{}exchanges\textquotesingle{} 

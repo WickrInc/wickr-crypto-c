@@ -1,5 +1,5 @@
 /*
-* Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+* Copyright © 2012-2020 Wickr Inc.  All rights reserved.
 *
 * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
 * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -48,6 +48,19 @@ typedef enum {
 @addtogroup wickr_transport_packet_meta
 */
 
+/**
+ @ingroup wickr_transport_packet_meta
+ 
+ @struct wickr_transport_handshake_meta
+ 
+ @brief Metadata specifically for handshake packets within a transport
+ 
+ @var wickr_transport_handshake_meta::protocol_version
+ the current version of this handshake, currently always 1. Will be used in the future to enable additional functionality
+ @var wickr_transport_handshake_meta::flags
+ future use buffer to add additional fields to the handshake metadata if needed
+ */
+
 struct wickr_transport_handshake_meta {
     uint8_t protocol_version;
     uint64_t flags; /* Future use */
@@ -55,12 +68,38 @@ struct wickr_transport_handshake_meta {
 
 typedef struct wickr_transport_handshake_meta wickr_transport_handshake_meta_t;
 
+/**
+@ingroup wickr_transport_packet_meta
+
+@struct wickr_transport_data_meta
+
+@brief Metadata specifically for user data packets within a transport
+
+@var wickr_transport_data_meta::sequence_number
+the sequence number within the transport that is associated with this packet
+
+*/
 struct wickr_transport_data_meta {
     uint64_t sequence_number;
 };
 
 typedef struct wickr_transport_data_meta wickr_transport_data_meta_t;
 
+/**
+@ingroup wickr_transport_packet_meta
+
+@struct wickr_transport_packet_meta
+
+@brief Packet metadata included with all transport packets
+
+@var wickr_transport_packet_meta::body_meta
+union that can either hold data unique to a handshake or user data packet
+@var wickr_transport_packet_meta::body_type
+a field that indicates if this packet's body contains handshake or user data information
+@var wickr_transport_packet_meta::mac_type
+the type of data authentication the packet has
+
+*/
 struct wickr_transport_packet_meta {
     union {
         wickr_transport_handshake_meta_t handshake;

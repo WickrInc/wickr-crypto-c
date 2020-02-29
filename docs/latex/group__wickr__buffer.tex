@@ -1,16 +1,16 @@
-\hypertarget{group__wickr__buffer}{}\section{wickr\+\_\+buffer\+\_\+t}
+\hypertarget{group__wickr__buffer}{}\doxysection{wickr\+\_\+buffer\+\_\+t}
 \label{group__wickr__buffer}\index{wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer}}
 \begin{DoxyCompactList}\small\item\em Represents an array of bytes and the length of the allocation associated with those bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Macros}
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{group__wickr__buffer_ga0cf6db371b58617c9311f2a357d98164}{B\+U\+F\+F\+E\+R\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+L\+EN}}(x)~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))
 \begin{DoxyCompactList}\small\item\em Determine the number of elements in an array of buffers (wickr\+\_\+buffer\+\_\+t $\ast$$\ast$). \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__buffer_ga305edd191e38eb040710b631c1e4f05f}{wickr\+\_\+buffer\+\_\+create\+\_\+empty}} (size\+\_\+t len)
@@ -37,14 +37,14 @@ void \mbox{\hyperlink{group__wickr__buffer_gaf0ff6486debbfd676b7675f6f899fc40}{w
 \begin{DoxyCompactList}\small\item\em Zero-\/then-\/deallocate a buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Macro Definition Documentation}
+\doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{group__wickr__buffer_ga0cf6db371b58617c9311f2a357d98164}\label{group__wickr__buffer_ga0cf6db371b58617c9311f2a357d98164}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!BUFFER\_ARRAY\_LEN@{BUFFER\_ARRAY\_LEN}}
 \index{BUFFER\_ARRAY\_LEN@{BUFFER\_ARRAY\_LEN}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{BUFFER\_ARRAY\_LEN}{BUFFER\_ARRAY\_LEN}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_ARRAY\_LEN}{BUFFER\_ARRAY\_LEN}}
 {\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+L\+EN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))}
 
 
@@ -65,11 +65,11 @@ The number of elements in the array pointed to by x
 \end{DoxyReturn}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__buffer_gad7721c1033a1fc378a0a11613f3cfb26}\label{group__wickr__buffer_gad7721c1033a1fc378a0a11613f3cfb26}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_concat@{wickr\_buffer\_concat}}
 \index{wickr\_buffer\_concat@{wickr\_buffer\_concat}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_concat()}{wickr\_buffer\_concat()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_concat()}{wickr\_buffer\_concat()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+concat (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer1,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer2 }\end{DoxyParamCaption})}
 
 
@@ -89,7 +89,7 @@ a newly allocated buffer containing copied bytes from \textquotesingle{}buffer1\
 \mbox{\Hypertarget{group__wickr__buffer_ga3aa7ea751a65310184d6c0ea9627dca8}\label{group__wickr__buffer_ga3aa7ea751a65310184d6c0ea9627dca8}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_concat\_multi@{wickr\_buffer\_concat\_multi}}
 \index{wickr\_buffer\_concat\_multi@{wickr\_buffer\_concat\_multi}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_concat\_multi()}{wickr\_buffer\_concat\_multi()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_concat\_multi()}{wickr\_buffer\_concat\_multi()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+concat\+\_\+multi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$$\ast$}]{buffers,  }\item[{uint8\+\_\+t}]{n\+\_\+buffers }\end{DoxyParamCaption})}
 
 
@@ -109,7 +109,7 @@ a newly allocated buffer containing copied bytes from each buffer in \textquotes
 \mbox{\Hypertarget{group__wickr__buffer_gada179dda91e748d7bdf6028d3d4c4bcd}\label{group__wickr__buffer_gada179dda91e748d7bdf6028d3d4c4bcd}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_copy@{wickr\_buffer\_copy}}
 \index{wickr\_buffer\_copy@{wickr\_buffer\_copy}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_copy()}{wickr\_buffer\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_copy()}{wickr\_buffer\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 
@@ -127,7 +127,7 @@ a newly allocated buffer containing a copy of the bytes held in source. The new 
 \mbox{\Hypertarget{group__wickr__buffer_gaceb6345c35ac2f6330ea0a685ce3fc53}\label{group__wickr__buffer_gaceb6345c35ac2f6330ea0a685ce3fc53}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_copy\_section@{wickr\_buffer\_copy\_section}}
 \index{wickr\_buffer\_copy\_section@{wickr\_buffer\_copy\_section}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_copy\_section()}{wickr\_buffer\_copy\_section()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_copy\_section()}{wickr\_buffer\_copy\_section()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+copy\+\_\+section (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{source,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 
@@ -149,7 +149,7 @@ a newly allocated buffer containing the bytes within the range of start to start
 \mbox{\Hypertarget{group__wickr__buffer_gacc3ad1220af28781bf678cab20e2f1c8}\label{group__wickr__buffer_gacc3ad1220af28781bf678cab20e2f1c8}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_create@{wickr\_buffer\_create}}
 \index{wickr\_buffer\_create@{wickr\_buffer\_create}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_create()}{wickr\_buffer\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_create()}{wickr\_buffer\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+create (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{bytes,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 
@@ -169,7 +169,7 @@ a newly allocated buffer holding len bytes copied from bytes.
 \mbox{\Hypertarget{group__wickr__buffer_ga305edd191e38eb040710b631c1e4f05f}\label{group__wickr__buffer_ga305edd191e38eb040710b631c1e4f05f}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_create\_empty@{wickr\_buffer\_create\_empty}}
 \index{wickr\_buffer\_create\_empty@{wickr\_buffer\_create\_empty}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_create\_empty()}{wickr\_buffer\_create\_empty()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_create\_empty()}{wickr\_buffer\_create\_empty()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+create\+\_\+empty (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 
@@ -189,7 +189,7 @@ a newly allocated buffer holding len bytes, or N\+U\+LL if allocation fails or l
 \mbox{\Hypertarget{group__wickr__buffer_gaba0ae148a2f75e50eb3d36a4bef509d2}\label{group__wickr__buffer_gaba0ae148a2f75e50eb3d36a4bef509d2}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_create\_empty\_zero@{wickr\_buffer\_create\_empty\_zero}}
 \index{wickr\_buffer\_create\_empty\_zero@{wickr\_buffer\_create\_empty\_zero}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_create\_empty\_zero()}{wickr\_buffer\_create\_empty\_zero()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_create\_empty\_zero()}{wickr\_buffer\_create\_empty\_zero()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+buffer\+\_\+create\+\_\+empty\+\_\+zero (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 
@@ -209,7 +209,7 @@ a newly allocated buffer holding len bytes, or N\+U\+LL if allocation fails or l
 \mbox{\Hypertarget{group__wickr__buffer_ga7ec1198db0739f3034ddd3969c64257f}\label{group__wickr__buffer_ga7ec1198db0739f3034ddd3969c64257f}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_destroy@{wickr\_buffer\_destroy}}
 \index{wickr\_buffer\_destroy@{wickr\_buffer\_destroy}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_destroy()}{wickr\_buffer\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_destroy()}{wickr\_buffer\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+buffer\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$$\ast$}]{buffer }\end{DoxyParamCaption})}
 
 
@@ -226,7 +226,7 @@ N\+O\+TE\+: This function does not modify the contents of buffer and simply call
 \mbox{\Hypertarget{group__wickr__buffer_gaf0ff6486debbfd676b7675f6f899fc40}\label{group__wickr__buffer_gaf0ff6486debbfd676b7675f6f899fc40}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_destroy\_zero@{wickr\_buffer\_destroy\_zero}}
 \index{wickr\_buffer\_destroy\_zero@{wickr\_buffer\_destroy\_zero}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_destroy\_zero()}{wickr\_buffer\_destroy\_zero()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_destroy\_zero()}{wickr\_buffer\_destroy\_zero()}}
 {\footnotesize\ttfamily void wickr\+\_\+buffer\+\_\+destroy\+\_\+zero (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$$\ast$}]{buffer }\end{DoxyParamCaption})}
 
 
@@ -241,7 +241,7 @@ Zero-\/then-\/deallocate a buffer.
 \mbox{\Hypertarget{group__wickr__buffer_ga51ec58848ab0b07d164c6f7d73200c24}\label{group__wickr__buffer_ga51ec58848ab0b07d164c6f7d73200c24}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_is\_equal@{wickr\_buffer\_is\_equal}}
 \index{wickr\_buffer\_is\_equal@{wickr\_buffer\_is\_equal}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_is\_equal()}{wickr\_buffer\_is\_equal()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_is\_equal()}{wickr\_buffer\_is\_equal()}}
 {\footnotesize\ttfamily bool wickr\+\_\+buffer\+\_\+is\+\_\+equal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{b1,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{b2,  }\item[{wickr\+\_\+buffer\+\_\+compare\+\_\+func}]{compare\+\_\+func }\end{DoxyParamCaption})}
 
 
@@ -263,7 +263,7 @@ true if the buffers are equal in length and in content
 \mbox{\Hypertarget{group__wickr__buffer_ga67f817bf762e4ee401b31685197620be}\label{group__wickr__buffer_ga67f817bf762e4ee401b31685197620be}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_modify\_section@{wickr\_buffer\_modify\_section}}
 \index{wickr\_buffer\_modify\_section@{wickr\_buffer\_modify\_section}!wickr\_buffer\_t@{wickr\_buffer\_t}}
-\subsubsection{\texorpdfstring{wickr\_buffer\_modify\_section()}{wickr\_buffer\_modify\_section()}}
+\doxysubsubsection{\texorpdfstring{wickr\_buffer\_modify\_section()}{wickr\_buffer\_modify\_section()}}
 {\footnotesize\ttfamily bool wickr\+\_\+buffer\+\_\+modify\+\_\+section (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{const uint8\+\_\+t $\ast$}]{bytes,  }\item[{size\+\_\+t}]{start,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 

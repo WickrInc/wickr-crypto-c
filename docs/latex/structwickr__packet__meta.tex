@@ -1,4 +1,4 @@
-\hypertarget{structwickr__packet__meta}{}\section{wickr\+\_\+packet\+\_\+meta Struct Reference}
+\hypertarget{structwickr__packet__meta}{}\doxysection{wickr\+\_\+packet\+\_\+meta Struct Reference}
 \label{structwickr__packet__meta}\index{wickr\_packet\_meta@{wickr\_packet\_meta}}
 
 
@@ -9,7 +9,7 @@ control metadata found in the encrypted payload of a packet
 
 {\ttfamily \#include $<$packet\+\_\+meta.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__ephemeral__info}{wickr\+\_\+ephemeral\+\_\+info\+\_\+t}} \mbox{\hyperlink{structwickr__packet__meta_a0ef43c179038ba036fc9db17976b8b1e}{ephemerality\+\_\+settings}}
@@ -20,26 +20,26 @@ uint16\+\_\+t \mbox{\hyperlink{structwickr__packet__meta_ada659f7c31d257c76edab5
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 control metadata found in the encrypted payload of a packet 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__packet__meta_ab160a2ecfc6146ddf2ce40fe301c8ce9}\label{structwickr__packet__meta_ab160a2ecfc6146ddf2ce40fe301c8ce9}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!channel\_tag@{channel\_tag}}
 \index{channel\_tag@{channel\_tag}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{channel\_tag}{channel\_tag}}
+\doxysubsubsection{\texorpdfstring{channel\_tag}{channel\_tag}}
 {\footnotesize\ttfamily wickr\+\_\+packet\+\_\+meta\+::channel\+\_\+tag}
 
 a value used to help group messages together with a tag \mbox{\Hypertarget{structwickr__packet__meta_ada659f7c31d257c76edab5db52973f6e}\label{structwickr__packet__meta_ada659f7c31d257c76edab5db52973f6e}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!content\_type@{content\_type}}
 \index{content\_type@{content\_type}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{content\_type}{content\_type}}
+\doxysubsubsection{\texorpdfstring{content\_type}{content\_type}}
 {\footnotesize\ttfamily wickr\+\_\+packet\+\_\+meta\+::content\+\_\+type}
 
 a helper value optionally used to give some context to parsing the body. Currently, message body data is a serialized protocol buffer using the one-\/of type in all cases, and thus content\+\_\+type is more of a legacy feature \mbox{\Hypertarget{structwickr__packet__meta_a0ef43c179038ba036fc9db17976b8b1e}\label{structwickr__packet__meta_a0ef43c179038ba036fc9db17976b8b1e}} 
 \index{wickr\_packet\_meta@{wickr\_packet\_meta}!ephemerality\_settings@{ephemerality\_settings}}
 \index{ephemerality\_settings@{ephemerality\_settings}!wickr\_packet\_meta@{wickr\_packet\_meta}}
-\subsubsection{\texorpdfstring{ephemerality\_settings}{ephemerality\_settings}}
+\doxysubsubsection{\texorpdfstring{ephemerality\_settings}{ephemerality\_settings}}
 {\footnotesize\ttfamily wickr\+\_\+packet\+\_\+meta\+::ephemerality\+\_\+settings}
 
 message destruction control information 

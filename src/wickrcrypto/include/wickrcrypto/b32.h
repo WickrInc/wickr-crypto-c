@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2018 Wickr Inc.  All rights reserved.
+ * Copyright © 2012-2020 Wickr Inc.  All rights reserved.
  *
  * This code is being released for EDUCATIONAL, ACADEMIC, AND CODE REVIEW PURPOSES
  * ONLY.  COMMERCIAL USE OF THE CODE IS EXPRESSLY PROHIBITED.  For additional details,
@@ -50,7 +50,7 @@ wickr_buffer_t *base32_encode(const wickr_buffer_t *buffer);
  
  Decode base32 data to a binary representation
  
- @param a buffer containing a base32 string
+ @param buffer a buffer containing a base32 string
  @return decoded binary data representation of 'buffer' or NULL if 'buffer' contains invalid base32 data
  */
 wickr_buffer_t *base32_decode(const wickr_buffer_t *buffer);

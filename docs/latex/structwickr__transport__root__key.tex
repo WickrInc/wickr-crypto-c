@@ -1,0 +1,57 @@
+\hypertarget{structwickr__transport__root__key}{}\doxysection{wickr\+\_\+transport\+\_\+root\+\_\+key Struct Reference}
+\label{structwickr__transport__root__key}\index{wickr\_transport\_root\_key@{wickr\_transport\_root\_key}}
+
+
+A root key for the \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}} that is used to communicate the master secret for the transport communication. The root key can be converted to a set of stream keys based on direction for use in a transport.  
+
+
+
+
+{\ttfamily \#include $<$transport\+\_\+root\+\_\+key.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__transport__root__key_a97fdf0119427b28b6b8a6ed1b7cda715}{secret}}
+\item 
+\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}} \mbox{\hyperlink{structwickr__transport__root__key_a6ac613a6d9584f09fa80b3f272ed71b8}{cipher}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structwickr__transport__root__key_ae4902dd054bbcab4ae85f69da38e4270}{packets\+\_\+per\+\_\+evo\+\_\+send}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structwickr__transport__root__key_a9adbc6a20d440b77b8cc7b2a186a87c2}{packets\+\_\+per\+\_\+evo\+\_\+recv}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A root key for the \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx}} that is used to communicate the master secret for the transport communication. The root key can be converted to a set of stream keys based on direction for use in a transport. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structwickr__transport__root__key_a6ac613a6d9584f09fa80b3f272ed71b8}\label{structwickr__transport__root__key_a6ac613a6d9584f09fa80b3f272ed71b8}} 
+\index{wickr\_transport\_root\_key@{wickr\_transport\_root\_key}!cipher@{cipher}}
+\index{cipher@{cipher}!wickr\_transport\_root\_key@{wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{cipher}{cipher}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+root\+\_\+key\+::cipher}
+
+the cipher that the root key creator has chosen to use when converting the secret into a set of stream keys \mbox{\Hypertarget{structwickr__transport__root__key_a9adbc6a20d440b77b8cc7b2a186a87c2}\label{structwickr__transport__root__key_a9adbc6a20d440b77b8cc7b2a186a87c2}} 
+\index{wickr\_transport\_root\_key@{wickr\_transport\_root\_key}!packets\_per\_evo\_recv@{packets\_per\_evo\_recv}}
+\index{packets\_per\_evo\_recv@{packets\_per\_evo\_recv}!wickr\_transport\_root\_key@{wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{packets\_per\_evo\_recv}{packets\_per\_evo\_recv}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+root\+\_\+key\+::packets\+\_\+per\+\_\+evo\+\_\+recv}
+
+the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the D\+E\+C\+O\+DE direction \mbox{\Hypertarget{structwickr__transport__root__key_ae4902dd054bbcab4ae85f69da38e4270}\label{structwickr__transport__root__key_ae4902dd054bbcab4ae85f69da38e4270}} 
+\index{wickr\_transport\_root\_key@{wickr\_transport\_root\_key}!packets\_per\_evo\_send@{packets\_per\_evo\_send}}
+\index{packets\_per\_evo\_send@{packets\_per\_evo\_send}!wickr\_transport\_root\_key@{wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{packets\_per\_evo\_send}{packets\_per\_evo\_send}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+root\+\_\+key\+::packets\+\_\+per\+\_\+evo\+\_\+send}
+
+the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the E\+N\+C\+O\+DE direction \mbox{\Hypertarget{structwickr__transport__root__key_a97fdf0119427b28b6b8a6ed1b7cda715}\label{structwickr__transport__root__key_a97fdf0119427b28b6b8a6ed1b7cda715}} 
+\index{wickr\_transport\_root\_key@{wickr\_transport\_root\_key}!secret@{secret}}
+\index{secret@{secret}!wickr\_transport\_root\_key@{wickr\_transport\_root\_key}}
+\doxysubsubsection{\texorpdfstring{secret}{secret}}
+{\footnotesize\ttfamily wickr\+\_\+transport\+\_\+root\+\_\+key\+::secret}
+
+data that represents the master secret which is cipher.\+key\+\_\+len in size 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/wickrcrypto/include/wickrcrypto/transport\+\_\+root\+\_\+key.\+h\end{DoxyCompactItemize}

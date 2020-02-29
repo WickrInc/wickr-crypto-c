@@ -1,5 +1,5 @@
 /*
- * Copyright © 2012-2016 Wickr Inc. All rights reserved.
+ * Copyright © 2012-2020 Wickr Inc. All rights reserved.
  *
  * //Wickr License Header Start
  *

@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['channel_5ftag',['channel_tag',['../structwickr__packet__meta.html#ab160a2ecfc6146ddf2ce40fe301c8ce9',1,'wickr_packet_meta']]],
-  ['cipher',['cipher',['../structwickr__cipher__result.html#a80f15a012dbe1342d0aaa6f3e7072aa9',1,'wickr_cipher_result::cipher()'],['../structwickr__cipher__key.html#a6506e1a07f7bc2c5ceeb0ca5ce81385b',1,'wickr_cipher_key::cipher()'],['../structwickr__ecdh__cipher__ctx.html#a15e7d01b0e07501b572c11bde1c2e56e',1,'wickr_ecdh_cipher_ctx::cipher()'],['../structwickr__stream__iv.html#a86379d83e28b96d4852ac047482713d1',1,'wickr_stream_iv::cipher()']]],
-  ['cipher_5fid',['cipher_id',['../structwickr__cipher.html#a2ce240f5bd396df05ddd4f30ba944b36',1,'wickr_cipher']]],
-  ['cipher_5fkey',['cipher_key',['../structwickr__stream__key.html#a3d957a51193dda882cb89ced2ceeb91e',1,'wickr_stream_key']]],
-  ['cipher_5ftext',['cipher_text',['../structwickr__cipher__result.html#a29fe7c04025f39cc574ac41f846d167a',1,'wickr_cipher_result']]],
-  ['content',['content',['../structwickr__packet.html#a4d17d017c9d0fbb6e748a7ed935e5512',1,'wickr_packet']]],
-  ['content_5ftype',['content_type',['../structwickr__packet__meta.html#ada659f7c31d257c76edab5db52973f6e',1,'wickr_packet_meta']]],
-  ['cost',['cost',['../structwickr__kdf__algo.html#a3591ba4f7b6b916381ad28327a67d08c',1,'wickr_kdf_algo']]],
-  ['ctx',['ctx',['../structwickr__ctx__gen__result.html#acf7a49dc829a76f122e2eb88e1ddf5aa',1,'wickr_ctx_gen_result']]],
-  ['current_5fpacket_5fversion',['CURRENT_PACKET_VERSION',['../group__wickr__protocol.html#ga89ff9f93c5494db53d3ff27353989862',1,'protocol.h']]],
-  ['curve',['curve',['../structwickr__ecdsa__result.html#a76bcae0ea46e0f99bfd8fb70aac165bb',1,'wickr_ecdsa_result::curve()'],['../structwickr__ec__key.html#a0fbe90131941d685f618ef6816e8c471',1,'wickr_ec_key::curve()']]]
+  ['base32_5',['base32',['../group__base32.html',1,'']]],
+  ['base32_5fdecode_6',['base32_decode',['../group__base32.html#ga2ef9e4c1b2b030599d1e3199254af7c3',1,'b32.h']]],
+  ['base32_5fencode_7',['base32_encode',['../group__base32.html#ga343c12edab05fb3b98a18474e20487c6',1,'b32.h']]],
+  ['body_8',['body',['../structwickr__payload.html#a6ef1b92ffd07c37b86202b4cc88a0522',1,'wickr_payload::body()'],['../structwickr__transport__packet.html#af78b86ede518568a40b0c7e6d055b7f2',1,'wickr_transport_packet::body()']]],
+  ['body_5fmeta_9',['body_meta',['../structwickr__transport__packet__meta.html#af9050faba08933c53ebfa3a286780199',1,'wickr_transport_packet_meta']]],
+  ['body_5ftype_10',['body_type',['../structwickr__transport__packet__meta.html#afd8701af400d52dd1ee3bf7fb78aa644',1,'wickr_transport_packet_meta']]],
+  ['bor_11',['bor',['../structwickr__ephemeral__info.html#a0bfb5badb8bdcfac1ace1ef2026c86ac',1,'wickr_ephemeral_info']]],
+  ['buffer_5farray_5flen_12',['BUFFER_ARRAY_LEN',['../group__wickr__buffer.html#ga0cf6db371b58617c9311f2a357d98164',1,'buffer.h']]],
+  ['bytes_13',['bytes',['../structwickr__buffer.html#a892763a6b3cbe227c4015f948acbc2bf',1,'wickr_buffer']]]
 ];

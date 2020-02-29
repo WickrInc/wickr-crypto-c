@@ -1,4 +1,4 @@
-\hypertarget{structwickr__key__exchange}{}\section{wickr\+\_\+key\+\_\+exchange Struct Reference}
+\hypertarget{structwickr__key__exchange}{}\doxysection{wickr\+\_\+key\+\_\+exchange Struct Reference}
 \label{structwickr__key__exchange}\index{wickr\_key\_exchange@{wickr\_key\_exchange}}
 
 
@@ -9,7 +9,7 @@ Public key exchange protected data. After a shared secret is generated using a p
 
 {\ttfamily \#include $<$key\+\_\+exchange.\+h$>$}
 
-\subsection*{Data Fields}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$ \mbox{\hyperlink{structwickr__key__exchange_a744e71ef6676c78643646adf1693a4e5}{exchange\+\_\+id}}
@@ -20,26 +20,26 @@ uint64\+\_\+t \mbox{\hyperlink{structwickr__key__exchange_abc0c1dbc866c150ffc275
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Public key exchange protected data. After a shared secret is generated using a public key with identifier \textquotesingle{}key\+\_\+id\textquotesingle{}, and run through a K\+DF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{}. 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__key__exchange_ab8399c32f60a1efef3d92f6844db4b54}\label{structwickr__key__exchange_ab8399c32f60a1efef3d92f6844db4b54}} 
 \index{wickr\_key\_exchange@{wickr\_key\_exchange}!exchange\_ciphertext@{exchange\_ciphertext}}
 \index{exchange\_ciphertext@{exchange\_ciphertext}!wickr\_key\_exchange@{wickr\_key\_exchange}}
-\subsubsection{\texorpdfstring{exchange\_ciphertext}{exchange\_ciphertext}}
+\doxysubsubsection{\texorpdfstring{exchange\_ciphertext}{exchange\_ciphertext}}
 {\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::exchange\+\_\+ciphertext}
 
 ciphered shared secret + K\+DF protected data \mbox{\Hypertarget{structwickr__key__exchange_a744e71ef6676c78643646adf1693a4e5}\label{structwickr__key__exchange_a744e71ef6676c78643646adf1693a4e5}} 
 \index{wickr\_key\_exchange@{wickr\_key\_exchange}!exchange\_id@{exchange\_id}}
 \index{exchange\_id@{exchange\_id}!wickr\_key\_exchange@{wickr\_key\_exchange}}
-\subsubsection{\texorpdfstring{exchange\_id}{exchange\_id}}
+\doxysubsubsection{\texorpdfstring{exchange\_id}{exchange\_id}}
 {\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::exchange\+\_\+id}
 
 a unique identifier to be assoiciated with the exchange to aid a recipient in finding a particular exchange within an exchange set \mbox{\Hypertarget{structwickr__key__exchange_abc0c1dbc866c150ffc275546b7e91e2d}\label{structwickr__key__exchange_abc0c1dbc866c150ffc275546b7e91e2d}} 
 \index{wickr\_key\_exchange@{wickr\_key\_exchange}!key\_id@{key\_id}}
 \index{key\_id@{key\_id}!wickr\_key\_exchange@{wickr\_key\_exchange}}
-\subsubsection{\texorpdfstring{key\_id}{key\_id}}
+\doxysubsubsection{\texorpdfstring{key\_id}{key\_id}}
 {\footnotesize\ttfamily wickr\+\_\+key\+\_\+exchange\+::key\+\_\+id}
 
 the identifier of the recipient\textquotesingle{}s public key was used to compute the key protecting \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{}. This aids a recipient in finding the particular private key they need to use to unlock \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{} upon receipt 

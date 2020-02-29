@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['ttl',['ttl',['../structwickr__ephemeral__info.html#ac7936b5b7b83dd24ab6b68e8dd2dd6ba',1,'wickr_ephemeral_info']]],
-  ['tx',['tx',['../structwickr__transport__callbacks.html#a06c4b21b847c00e92373cf1402e1cb9d',1,'wickr_transport_callbacks']]],
-  ['type',['type',['../structwickr__digest.html#ae82f086c339d1e384518dfc4359d4522',1,'wickr_digest::type()'],['../structwickr__fingerprint.html#a13e5decc89e701d0b22b9a83a0205758',1,'wickr_fingerprint::type()'],['../structwickr__identity.html#a685dae977849c05c84ee4a0b10c9396d',1,'wickr_identity::type()']]]
+  ['salt_130',['salt',['../structwickr__kdf__meta.html#a315c54ee4578a01266a4e7352a52d459',1,'wickr_kdf_meta']]],
+  ['salt_5fsize_131',['salt_size',['../structwickr__kdf__algo.html#a9a6ccf9787e16898d1724292dab6593e',1,'wickr_kdf_algo']]],
+  ['scrypt_5f2_5f17_5fcost_132',['SCRYPT_2_17_COST',['../group__wickr__kdf.html#ga5e8df13eb2cd5cc1e09f377675ddc50f',1,'kdf.h']]],
+  ['secret_133',['secret',['../structwickr__transport__root__key.html#a97fdf0119427b28b6b8a6ed1b7cda715',1,'wickr_transport_root_key']]],
+  ['seed_134',['seed',['../structwickr__stream__iv.html#a221017bc41b4cc36bf31f13a0c299db1',1,'wickr_stream_iv']]],
+  ['sender_135',['sender',['../structwickr__ctx__packet.html#ac57d2b0f48fc3dad5b72d408e30b7b8b',1,'wickr_ctx_packet']]],
+  ['sender_5fpub_136',['sender_pub',['../structwickr__key__exchange__set.html#ac0b304b3014b3c7bfe181526c2f3fc37',1,'wickr_key_exchange_set']]],
+  ['sequence_5fnumber_137',['sequence_number',['../structwickr__transport__data__meta.html#a6c3871195384add6ee5559a95ac2491f',1,'wickr_transport_data_meta']]],
+  ['sig_5fdata_138',['sig_data',['../structwickr__ecdsa__result.html#ada32a17d9f713f84142fc6a338ebcc48',1,'wickr_ecdsa_result']]],
+  ['sig_5fkey_139',['sig_key',['../structwickr__identity.html#a788a08ac03576cb76d9b2eaf81a7af3e',1,'wickr_identity']]],
+  ['signature_140',['signature',['../structwickr__ephemeral__keypair.html#aea420be2397d798a560fa973be86228c',1,'wickr_ephemeral_keypair::signature()'],['../structwickr__identity.html#afb6bd9f5f9707be10fb273ce8d0b5928',1,'wickr_identity::signature()'],['../structwickr__packet.html#a8b5e9a4eed6f133ffedd1aa9178b5567',1,'wickr_packet::signature()']]],
+  ['signature_5fsize_141',['signature_size',['../structwickr__ec__curve.html#ab77300e816beace29e40cf8e643a5070',1,'wickr_ec_curve']]],
+  ['signature_5fstatus_142',['signature_status',['../structwickr__parse__result.html#a989166b5471898853f03b9e9c58f69c0',1,'wickr_parse_result']]],
+  ['size_143',['size',['../structwickr__digest.html#ac887a219296e67a1b6582ec88fdd9ad2',1,'wickr_digest']]],
+  ['srv_5fcomm_5fid_144',['srv_comm_id',['../structwickr__dev__info.html#af5f2ff06ae74fcec85106f6ffd77c008',1,'wickr_dev_info']]],
+  ['status_145',['status',['../structwickr__identity__chain.html#acee365b411eb4a7e7c68c115d60e166e',1,'wickr_identity_chain::status()'],['../structwickr__node.html#a659b113832d19162c4d5722777d03c94',1,'wickr_node::status()']]],
+  ['storage_5fkeys_146',['storage_keys',['../structwickr__ctx.html#ab6d3ad69a6a16c0f582186b9d8461b66',1,'wickr_ctx']]],
+  ['system_5fsalt_147',['system_salt',['../structwickr__dev__info.html#a084d0cd9e73d9f74f62c9e9abb85436f',1,'wickr_dev_info']]]
 ];

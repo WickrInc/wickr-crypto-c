@@ -1,11 +1,11 @@
-\hypertarget{group__wickr__ephemeral__keypair}{}\section{Wickr\+\_\+ephemeral\+\_\+keypair}
+\hypertarget{group__wickr__ephemeral__keypair}{}\doxysection{Wickr\+\_\+ephemeral\+\_\+keypair}
 \label{group__wickr__ephemeral__keypair}\index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsection*{Data Structures}
+\doxysubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair}}
 \begin{DoxyCompactList}\small\item\em Represents a key pair used for message key exchanges within the Wickr Messaging Protocol. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__ephemeral__keypair_gab956214203938b4b02b8f30666eaec3b}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+create}} (uint64\+\_\+t identifier, \mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$ec\+\_\+key, \mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$signature)
@@ -26,14 +26,14 @@ void \mbox{\hyperlink{group__wickr__ephemeral__keypair_gab77107c0b1a0d145c606817
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_gacf14f050221091093b9a2948bd569662}\label{group__wickr__ephemeral__keypair_gacf14f050221091093b9a2948bd569662}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_copy@{wickr\_ephemeral\_keypair\_copy}}
 \index{wickr\_ephemeral\_keypair\_copy@{wickr\_ephemeral\_keypair\_copy}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_copy()}{wickr\_ephemeral\_keypair\_copy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_copy()}{wickr\_ephemeral\_keypair\_copy()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}}$\ast$ wickr\+\_\+ephemeral\+\_\+keypair\+\_\+copy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{source }\end{DoxyParamCaption})}
 
 Copy an ephemeral keypair
@@ -49,7 +49,7 @@ a newly allocated ephemeral key pair holding a deep copy of the properties of \t
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_gab956214203938b4b02b8f30666eaec3b}\label{group__wickr__ephemeral__keypair_gab956214203938b4b02b8f30666eaec3b}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_create@{wickr\_ephemeral\_keypair\_create}}
 \index{wickr\_ephemeral\_keypair\_create@{wickr\_ephemeral\_keypair\_create}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_create()}{wickr\_ephemeral\_keypair\_create()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_create()}{wickr\_ephemeral\_keypair\_create()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}}$\ast$ wickr\+\_\+ephemeral\+\_\+keypair\+\_\+create (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{identifier,  }\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{ec\+\_\+key,  }\item[{\mbox{\hyperlink{structwickr__ecdsa__result}{wickr\+\_\+ecdsa\+\_\+result\+\_\+t}} $\ast$}]{signature }\end{DoxyParamCaption})}
 
 Create an Ephemeral Keypair from components
@@ -69,7 +69,7 @@ a newly allocated Ephemeral Keypair, owning the properties that were passed in
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_ga7ecd3769c68ba5bfbc95a225c1021ed0}\label{group__wickr__ephemeral__keypair_ga7ecd3769c68ba5bfbc95a225c1021ed0}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_create\_from\_buffer@{wickr\_ephemeral\_keypair\_create\_from\_buffer}}
 \index{wickr\_ephemeral\_keypair\_create\_from\_buffer@{wickr\_ephemeral\_keypair\_create\_from\_buffer}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_create\_from\_buffer()}{wickr\_ephemeral\_keypair\_create\_from\_buffer()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_create\_from\_buffer()}{wickr\_ephemeral\_keypair\_create\_from\_buffer()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}}$\ast$ wickr\+\_\+ephemeral\+\_\+keypair\+\_\+create\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{buffer,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine }\end{DoxyParamCaption})}
 
 Create an ephemeral keypair from a buffer that was created with \textquotesingle{}wickr\+\_\+ephemeral\+\_\+keypair\+\_\+serialize\textquotesingle{}
@@ -87,7 +87,7 @@ deserialized ephemeral keypair or null if the deserialization fails
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_gab77107c0b1a0d145c606817eeecec63d}\label{group__wickr__ephemeral__keypair_gab77107c0b1a0d145c606817eeecec63d}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_destroy@{wickr\_ephemeral\_keypair\_destroy}}
 \index{wickr\_ephemeral\_keypair\_destroy@{wickr\_ephemeral\_keypair\_destroy}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_destroy()}{wickr\_ephemeral\_keypair\_destroy()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_destroy()}{wickr\_ephemeral\_keypair\_destroy()}}
 {\footnotesize\ttfamily void wickr\+\_\+ephemeral\+\_\+keypair\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$$\ast$}]{keypair }\end{DoxyParamCaption})}
 
 Destroy an ephemeral keypair
@@ -100,7 +100,7 @@ Destroy an ephemeral keypair
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_ga6c0935c579e3d4bdbfeada7cb60c2a1b}\label{group__wickr__ephemeral__keypair_ga6c0935c579e3d4bdbfeada7cb60c2a1b}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_generate\_identity@{wickr\_ephemeral\_keypair\_generate\_identity}}
 \index{wickr\_ephemeral\_keypair\_generate\_identity@{wickr\_ephemeral\_keypair\_generate\_identity}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_generate\_identity()}{wickr\_ephemeral\_keypair\_generate\_identity()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_generate\_identity()}{wickr\_ephemeral\_keypair\_generate\_identity()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}}$\ast$ wickr\+\_\+ephemeral\+\_\+keypair\+\_\+generate\+\_\+identity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{uint64\+\_\+t}]{identifier,  }\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{identity }\end{DoxyParamCaption})}
 
 Generate a new ephemeral key pair given an owner identity.
@@ -122,7 +122,7 @@ a newly generated random Elliptic Curve key pair with identifier \textquotesingl
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_ga2e2f8db184aa2972ef5423e9c03988e8}\label{group__wickr__ephemeral__keypair_ga2e2f8db184aa2972ef5423e9c03988e8}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_make\_public@{wickr\_ephemeral\_keypair\_make\_public}}
 \index{wickr\_ephemeral\_keypair\_make\_public@{wickr\_ephemeral\_keypair\_make\_public}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_make\_public()}{wickr\_ephemeral\_keypair\_make\_public()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_make\_public()}{wickr\_ephemeral\_keypair\_make\_public()}}
 {\footnotesize\ttfamily void wickr\+\_\+ephemeral\+\_\+keypair\+\_\+make\+\_\+public (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{keypair }\end{DoxyParamCaption})}
 
 Destroy the private components of the keypair
@@ -135,7 +135,7 @@ Destroy the private components of the keypair
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_ga1c994a08f270cc84088263d48a4b3636}\label{group__wickr__ephemeral__keypair_ga1c994a08f270cc84088263d48a4b3636}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_serialize@{wickr\_ephemeral\_keypair\_serialize}}
 \index{wickr\_ephemeral\_keypair\_serialize@{wickr\_ephemeral\_keypair\_serialize}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_serialize()}{wickr\_ephemeral\_keypair\_serialize()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_serialize()}{wickr\_ephemeral\_keypair\_serialize()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ephemeral\+\_\+keypair\+\_\+serialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{keypair }\end{DoxyParamCaption})}
 
 Serialize an ephemeral keypair to bytes
@@ -151,7 +151,7 @@ a buffer containing a serialized representation of \textquotesingle{}keypair\tex
 \mbox{\Hypertarget{group__wickr__ephemeral__keypair_gadc17110d4c7fa65a9456fae516bf2e5d}\label{group__wickr__ephemeral__keypair_gadc17110d4c7fa65a9456fae516bf2e5d}} 
 \index{Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}!wickr\_ephemeral\_keypair\_verify\_owner@{wickr\_ephemeral\_keypair\_verify\_owner}}
 \index{wickr\_ephemeral\_keypair\_verify\_owner@{wickr\_ephemeral\_keypair\_verify\_owner}!Wickr\_ephemeral\_keypair@{Wickr\_ephemeral\_keypair}}
-\subsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_verify\_owner()}{wickr\_ephemeral\_keypair\_verify\_owner()}}
+\doxysubsubsection{\texorpdfstring{wickr\_ephemeral\_keypair\_verify\_owner()}{wickr\_ephemeral\_keypair\_verify\_owner()}}
 {\footnotesize\ttfamily bool wickr\+\_\+ephemeral\+\_\+keypair\+\_\+verify\+\_\+owner (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ephemeral__keypair}{wickr\+\_\+ephemeral\+\_\+keypair\+\_\+t}} $\ast$}]{keypair,  }\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__identity}{wickr\+\_\+identity\+\_\+t}} $\ast$}]{owner }\end{DoxyParamCaption})}
 
 Verify the owner of an ephemeral key pair is a particular identity
