@@ -94,8 +94,8 @@ macro(build_openssl)
         set(MAKE_OPS "-j${N}")
     endif ()
 
-    set(OSSL_VERSION "1.0.2s")
-    set(OSSL_HASH "cabd5c9492825ce5bd23f3c3aeed6a97f8142f606d893df216411f07d1abab96")
+    set(OSSL_VERSION "1.0.2u")
+    set(OSSL_HASH "ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16")
     set(OSSL_URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz")
 
     if (FIPS)
