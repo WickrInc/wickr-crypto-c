@@ -62,6 +62,11 @@ static Wickr__Proto__Identity *__wickr_identity_build_proto(const wickr_identity
         proto->is_private = false;
     }
     
+    if (!sig_key_data) {
+        wickr_identity_proto_free(proto);
+        return NULL;
+    }
+    
     proto->sig_key.data = sig_key_data->bytes;
     proto->sig_key.len = sig_key_data->length;
     

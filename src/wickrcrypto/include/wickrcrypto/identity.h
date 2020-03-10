@@ -254,6 +254,18 @@ wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *ide
  
  @ingroup wickr_identity_chain
  
+ Serialize an identity chain, and include private key components
+ 
+ @param identity_chain the identity chain to serialize
+ @return a buffer containing a serialized representation of 'identity_chain' including private keys,
+ or NULL if private keys are not found
+ */
+wickr_buffer_t *wickr_identity_chain_serialize_private(const wickr_identity_chain_t *identity_chain);
+
+/**
+ 
+ @ingroup wickr_identity_chain
+ 
  Create an identity chain from a buffer that was created with 'wickr_identity_chain_serialize'
  
  @param buffer the buffer that contains a serialized representation of an identity chain

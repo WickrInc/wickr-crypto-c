@@ -289,13 +289,19 @@ bool wickr_identity_chain_validate(wickr_identity_chain_t *chain, const wickr_cr
     return is_valid;
 }
 
-wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain)
+static wickr_buffer_t *__wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain, bool include_private)
 {
     if (!identity_chain) {
         return NULL;
     }
     
-    Wickr__Proto__IdentityChain *proto_identity = wickr_identity_chain_to_proto(identity_chain);
+    Wickr__Proto__IdentityChain *proto_identity = NULL;
+    
+    if (include_private) {
+        proto_identity = wickr_identity_chain_to_private_proto(identity_chain);
+    } else {
+        proto_identity = wickr_identity_chain_to_proto(identity_chain);
+    }
     
     if (!proto_identity) {
         return NULL;
@@ -314,6 +320,16 @@ wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *ide
     wickr_identity_chain_proto_free(proto_identity);
     
     return packed_buffer;
+}
+
+wickr_buffer_t *wickr_identity_chain_serialize(const wickr_identity_chain_t *identity_chain)
+{
+    return __wickr_identity_chain_serialize(identity_chain, false);
+}
+
+wickr_buffer_t *wickr_identity_chain_serialize_private(const wickr_identity_chain_t *identity_chain)
+{
+    return __wickr_identity_chain_serialize(identity_chain, true);
 }
 
 wickr_identity_chain_t *wickr_identity_chain_create_from_buffer(const wickr_buffer_t *buffer, const wickr_crypto_engine_t *engine)
