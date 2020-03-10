@@ -4,8 +4,6 @@ environment:
   matrix:
     - fips: TRUE
       arch: Win32
-    - fips: TRUE
-      arch: x64
     - fips: FALSE
       arch: Win32
     - fips: FALSE
