@@ -235,6 +235,31 @@ DESCRIBE(identity_chain, "identity chain tests")
     }
     END_IT
     
+    IT("can be serialized and include private data")
+    {
+        wickr_buffer_t *serialized = wickr_identity_chain_serialize_private(test_chain);
+        SHOULD_NOT_BE_NULL(serialized);
+        
+        wickr_identity_chain_t *deserialized = wickr_identity_chain_create_from_buffer(serialized, &engine);
+        SHOULD_NOT_BE_NULL(deserialized);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->root->identifier, test_chain->root->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->root->sig_key->pub_data, test_chain->root->sig_key->pub_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->root->sig_key->pri_data, test_chain->root->sig_key->pri_data, NULL));
+        SHOULD_EQUAL(deserialized->root->type, test_chain->root->type);
+        
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->identifier, test_chain->node->identifier, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->sig_key->pub_data, test_chain->node->sig_key->pub_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->signature->sig_data, test_chain->node->signature->sig_data, NULL));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(deserialized->node->sig_key->pri_data, test_chain->node->sig_key->pri_data, NULL));
+        
+        SHOULD_EQUAL(deserialized->node->type, test_chain->node->type);
+        
+        wickr_buffer_destroy(&serialized);
+        wickr_identity_chain_destroy(&deserialized);
+    }
+    END_IT
+    
     IT("should retest validity with each call")
     {
         /* Invalid -> Valid case */
