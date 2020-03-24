@@ -204,7 +204,8 @@ describe ("Transport Tests", function() {
 
             expect(bobStateChangedEvent).eql([3])
             expect(testBobTransport.getStatus()).to.eql(3)
-
+            expect(testBobTransport.getLastError()).to.eql(4)
+            
         })
     
         it("should set it's status to error upon error conditions", function() {
@@ -218,6 +219,7 @@ describe ("Transport Tests", function() {
             expect(bobRxEvent.length).to.eql(0)
             expect(testBobTransport.getStatus()).to.eql(3)
             expect(bobStateChangedEvent).to.eql([3])
+            expect(testBobTransport.getLastError()).to.eql(12)
 
         })
     })

@@ -25,6 +25,7 @@
 #include "crypto_engine.h"
 #include "node.h"
 #include "stream_ctx.h"
+#include "transport_error.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -229,6 +230,17 @@ const void *wickr_transport_ctx_get_user_ctx(const wickr_transport_ctx_t *ctx);
  @param user the pointer for the transport context to hold and be passed back in callbacks
  */
 void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user);
+
+/**
+ @ingroup wickr_transport_ctx
+ 
+ Get the most recent error from the context,set whenever the status of the context changes to
+ `TRANSPORT_STATUS_ERROR`
+ 
+ @param ctx the transport context to get the most recent error of
+ @return the most recent error inside the transport context
+ */
+wickr_transport_error wickr_transport_ctx_get_last_error(const wickr_transport_ctx_t *ctx);
     
 #ifdef __cplusplus
 }

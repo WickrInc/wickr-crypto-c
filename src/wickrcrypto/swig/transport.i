@@ -26,6 +26,7 @@
 %ignore wickr_transport_ctx_get_remote_identity_ptr;
 %ignore wickr_transport_ctx_get_user_ctx;
 %ignore wickr_transport_ctx_set_user_ctx;
+%ignore wickr_transport_ctx_get_last_error;
 
 %nodefaultctor wickr_transport_ctx;
 %nodefaultdtor wickr_transport_ctx;
@@ -33,6 +34,7 @@
 struct wickr_transport_ctx { };
 
 %include "wickrcrypto/transport_ctx.h"
+%include "wickrcrypto/transport_error.h"
 
 %extend struct wickr_transport_ctx {
 
@@ -67,6 +69,7 @@ struct wickr_transport_ctx { };
   void process_tx_buffer(const wickr_buffer_t *buffer);
   void process_rx_buffer(const wickr_buffer_t *buffer);
   wickr_transport_status get_status();
+  wickr_transport_error get_last_error();
 
 };
 
