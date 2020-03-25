@@ -5,6 +5,7 @@
 #include "stream_ctx.h"
 #include "transport_handshake.h"
 #include "transport_packet.h"
+#include "transport_error.h"
 #include "private/transport_priv.h"
 #include "private/node_priv.h"
 #include "private/identity_priv.h"
@@ -18,6 +19,14 @@ static void __wickr_transport_ctx_update_status(wickr_transport_ctx_t *ctx, wick
     
     ctx->status = status;
     ctx->callbacks.on_state(ctx, status);
+}
+
+static void __wickr_transport_ctx_set_error(wickr_transport_ctx_t *ctx, wickr_transport_error err)
+{
+    if (ctx) {
+        ctx->err = err;
+    }
+    __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
 }
 
 wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t engine,
@@ -48,6 +57,7 @@ wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t en
     ctx->callbacks = callbacks;
     ctx->evo_count = evo_count == 0 ? PACKET_PER_EVO_DEFAULT : evo_count;
     ctx->user = user;
+    ctx->err = TRANSPORT_ERROR_NONE;
     
     return ctx;
 }
@@ -249,7 +259,7 @@ static void __wickr_transport_validate_identity_complete(const wickr_transport_c
     }
     
     if (wickr_transport_handshake_get_status(_ctx->pending_handshake) == TRANSPORT_HANDSHAKE_STATUS_FAILED) {
-        __wickr_transport_ctx_update_status(_ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(_ctx, TRANSPORT_ERROR_HANDSHAKE_FAILED);
         return;
     }
     
@@ -258,7 +268,7 @@ static void __wickr_transport_validate_identity_complete(const wickr_transport_c
         wickr_transport_packet_destroy(&volley_packet);
         
         if (!volley_buffer) {
-            __wickr_transport_ctx_update_status(_ctx, TRANSPORT_STATUS_ERROR);
+            __wickr_transport_ctx_set_error(_ctx, TRANSPORT_ERROR_HANDSHAKE_VOLLEY_FAILED);
             return;
         }
         
@@ -298,14 +308,14 @@ static wickr_transport_handshake_t *__wickr_transport_ctx_create_handshake(const
 void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
 {
     if (!ctx || ctx->status != TRANSPORT_STATUS_NONE) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_BAD_START_STATUS);
         return;
     }
     
     ctx->pending_handshake = __wickr_transport_ctx_create_handshake(ctx);
     
     if (!ctx->pending_handshake) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_CREATE_HANDSHAKE_FAILED);
         return;
     }
     
@@ -314,7 +324,7 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
     if (!handshake_start_packet ||
         wickr_transport_handshake_get_status(ctx->pending_handshake) == TRANSPORT_HANDSHAKE_STATUS_FAILED) {
         wickr_transport_handshake_destroy(&ctx->pending_handshake);
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_START_HANDSHAKE_FAILED);
         return;
     }
     
@@ -323,7 +333,7 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
     
     if (!serialized_packet) {
         wickr_transport_handshake_destroy(&ctx->pending_handshake);
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PACKET_SERIALIZATION_FAILED);
         return;
     }
     
@@ -334,14 +344,14 @@ void wickr_transport_ctx_start(wickr_transport_ctx_t *ctx)
 void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
 {
     if (!ctx || !buffer || ctx->status != TRANSPORT_STATUS_ACTIVE) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_BAD_TX_STATE);
         return;
     }
     
     wickr_transport_packet_t *tx_packet = __wickr_transport_ctx_encode_pkt(ctx, buffer);
     
     if (!tx_packet) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PACKET_ENCODE_FAILED);
         return;
     }
     
@@ -349,7 +359,7 @@ void wickr_transport_ctx_process_tx_buffer(wickr_transport_ctx_t *ctx, const wic
     wickr_transport_packet_destroy(&tx_packet);
     
     if (!out_buffer) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+       __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PACKET_SERIALIZATION_FAILED);
         return;
     }
     
@@ -365,7 +375,7 @@ static void __wickr_transport_ctx_process_handshake_packet(wickr_transport_ctx_t
         wickr_transport_handshake_t *handshake = __wickr_transport_ctx_create_handshake(ctx);
         
         if (!handshake) {
-            __wickr_transport_ctx_update_status(ctx, TRANSPORT_HANDSHAKE_STATUS_FAILED);
+            __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_CREATE_HANDSHAKE_FAILED);
             return;
         }
         
@@ -380,7 +390,7 @@ static void __wickr_transport_ctx_process_handshake_packet(wickr_transport_ctx_t
     }
     
     if (wickr_transport_handshake_get_status(ctx->pending_handshake) == TRANSPORT_HANDSHAKE_STATUS_FAILED) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PROCESS_HANDSHAKE_FAILED);
         return;
     }
     
@@ -389,7 +399,7 @@ static void __wickr_transport_ctx_process_handshake_packet(wickr_transport_ctx_t
         wickr_transport_packet_destroy(&volley_packet);
         
         if (!volley_buffer) {
-            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PACKET_SERIALIZATION_FAILED);
             return;
         }
         
@@ -406,14 +416,18 @@ static bool __wickr_transport_ctx_can_process_handshake(const wickr_transport_ct
 void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wickr_buffer_t *buffer)
 {
     if (!ctx || !buffer || ctx->status == TRANSPORT_STATUS_ERROR) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        if (!buffer) {
+            __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_INVALID_RXDATA);
+        } else {
+            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        }
         return;
     }
     
     wickr_transport_packet_t *packet = wickr_transport_packet_create_from_buffer(buffer);
     
     if (!packet) {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_INVALID_RXDATA);
         return;
     }
     
@@ -425,10 +439,10 @@ void wickr_transport_ctx_process_rx_buffer(wickr_transport_ctx_t *ctx, const wic
         return_buffer = __wickr_transport_ctx_decode_pkt(ctx, packet);
         
         if (!return_buffer) {
-            __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+            __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_PACKET_DECODE_FAILED);
         }
     } else {
-        __wickr_transport_ctx_update_status(ctx, TRANSPORT_STATUS_ERROR);
+        __wickr_transport_ctx_set_error(ctx, TRANSPORT_ERROR_BAD_RX_STATE);
     }
     
     wickr_transport_packet_destroy(&packet);
@@ -467,4 +481,9 @@ void wickr_transport_ctx_set_user_ctx(wickr_transport_ctx_t *ctx, void *user)
     }
     
     ctx->user = user;
+}
+
+wickr_transport_error wickr_transport_ctx_get_last_error(const wickr_transport_ctx_t *ctx)
+{
+    return ctx ? ctx->err : TRANSPORT_ERROR_NONE;
 }

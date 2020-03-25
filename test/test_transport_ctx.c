@@ -11,6 +11,7 @@
 wickr_buffer_t *alice_last_tx = NULL;
 wickr_buffer_t *alice_last_rx = NULL;
 wickr_transport_status alice_last_status = TRANSPORT_HANDSHAKE_STATUS_UNKNOWN;
+wickr_transport_error alice_last_error = TRANSPORT_ERROR_NONE;
 wickr_identity_chain_t *alice_last_identity = NULL;
 
 void wickr_transport_alice_tx_func(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data)
@@ -26,6 +27,10 @@ void wickr_transport_alice_rx_func(const wickr_transport_ctx_t *ctx, wickr_buffe
 void wickr_transport_alice_state_change_func(const wickr_transport_ctx_t *ctx, wickr_transport_status status)
 {
     alice_last_status = status;
+    
+    if (status == TRANSPORT_STATUS_ERROR) {
+        alice_last_error = wickr_transport_ctx_get_last_error(ctx);
+    }
 }
 
 void wickr_transport_alice_validate_identity_func(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity,
@@ -47,6 +52,7 @@ void wickr_transport_alice_validate_identity_fail_func(const wickr_transport_ctx
 wickr_buffer_t *bob_last_tx = NULL;
 wickr_buffer_t *bob_last_rx = NULL;
 wickr_transport_status bob_last_status = TRANSPORT_STATUS_NONE;
+wickr_transport_error bob_last_error = TRANSPORT_ERROR_NONE;
 wickr_identity_chain_t *bob_last_identity = NULL;
 
 void wickr_transport_bob_tx_func(const wickr_transport_ctx_t *ctx, wickr_buffer_t *data)
@@ -62,6 +68,10 @@ void wickr_transport_bob_rx_func(const wickr_transport_ctx_t *ctx, wickr_buffer_
 void wickr_transport_bob_state_change_func(const wickr_transport_ctx_t *ctx, wickr_transport_status status)
 {
     bob_last_status = status;
+    
+    if (status == TRANSPORT_STATUS_ERROR) {
+        bob_last_error = wickr_transport_ctx_get_last_error(ctx);
+    }
 }
 
 void wickr_transport_bob_validate_identity_func(const wickr_transport_ctx_t *ctx, wickr_identity_chain_t *identity,
@@ -83,12 +93,14 @@ void reset_callback_data() {
     wickr_buffer_destroy(&alice_last_rx);
     wickr_buffer_destroy(&alice_last_tx);
     alice_last_status = TRANSPORT_STATUS_NONE;
+    alice_last_error = TRANSPORT_ERROR_NONE;
     wickr_identity_chain_destroy(&alice_last_identity);
     
     /* Bob */
     wickr_buffer_destroy(&bob_last_rx);
     wickr_buffer_destroy(&bob_last_tx);
     bob_last_status = TRANSPORT_STATUS_NONE;
+    bob_last_error = TRANSPORT_ERROR_NONE;
     wickr_identity_chain_destroy(&bob_last_identity);
 }
 
@@ -128,6 +140,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         SHOULD_EQUAL(wickr_transport_ctx_get_local_identity_ptr(test_transport_remote), local_identity);
         SHOULD_EQUAL(wickr_transport_ctx_get_remote_identity_ptr(test_transport_remote), remote_identity);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_remote), TRANSPORT_STATUS_NONE);
+        SHOULD_EQUAL(wickr_transport_ctx_get_last_error(test_transport_remote), TRANSPORT_ERROR_NONE);
         
         /* Verify private values */
         SHOULD_EQUAL(memcmp(&test_transport_remote->engine, &test_engine, sizeof(wickr_crypto_engine_t)), 0);
@@ -177,6 +190,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         SHOULD_EQUAL(wickr_transport_ctx_get_local_identity_ptr(test_transport_no_remote), local_identity);
         SHOULD_EQUAL(wickr_transport_ctx_get_remote_identity_ptr(test_transport_no_remote), NULL);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_no_remote), TRANSPORT_STATUS_NONE);
+        SHOULD_EQUAL(wickr_transport_ctx_get_last_error(test_transport_no_remote), TRANSPORT_ERROR_NONE);
         
         /* Verify private values */
         SHOULD_EQUAL(memcmp(&test_transport_no_remote->engine, &test_engine, sizeof(wickr_crypto_engine_t)), 0);
@@ -241,6 +255,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         wickr_transport_ctx_start(test_transport_alice);
         
         SHOULD_EQUAL(alice_last_status, TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(alice_last_error, TRANSPORT_ERROR_BAD_START_STATUS);
         
         wickr_transport_ctx_destroy(&test_transport_alice);
     }
@@ -269,6 +284,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         /* Inject packet into the transport */
         wickr_transport_ctx_process_rx_buffer(test_transport_alice, packet_buffer);
         SHOULD_EQUAL(alice_last_status, TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(alice_last_error, TRANSPORT_ERROR_BAD_RX_STATE);
         SHOULD_BE_NULL(alice_last_rx);
         
         /* Cleanup */
@@ -406,6 +422,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_bob), TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(bob_last_status, TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(bob_last_error, TRANSPORT_ERROR_PROCESS_HANDSHAKE_FAILED);
         
         /* Cleanup */
         wickr_transport_ctx_destroy(&test_transport_alice);
@@ -483,6 +500,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         /* Verity the failed callback has terminated bob's transport */
         SHOULD_EQUAL(bob_last_status, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_bob), TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(bob_last_error, TRANSPORT_ERROR_HANDSHAKE_FAILED);
         SHOULD_BE_NULL(bob_last_tx);
         
         /* Cleanup */
@@ -519,6 +537,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         /* Verity the failed callback has terminated alice's transport */
         SHOULD_EQUAL(alice_last_status, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_alice), TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(alice_last_error, TRANSPORT_ERROR_HANDSHAKE_FAILED);
         
         /* Cleanup */
         wickr_transport_ctx_destroy(&test_transport_alice);
@@ -541,6 +560,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         
         SHOULD_EQUAL(alice_last_status, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_alice), TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(alice_last_error, TRANSPORT_ERROR_BAD_TX_STATE);
         
         /* Cleanup */
         wickr_transport_ctx_destroy(&test_transport_alice);
@@ -564,6 +584,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         
         SHOULD_EQUAL(alice_last_status, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_alice), TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(alice_last_error, TRANSPORT_ERROR_BAD_TX_STATE);
         
         /* Cleanup */
         wickr_transport_ctx_destroy(&test_transport_alice);
@@ -608,6 +629,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         
         SHOULD_EQUAL(bob_last_status, TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_bob), bob_last_status);
+        SHOULD_EQUAL(bob_last_error, TRANSPORT_ERROR_PACKET_DECODE_FAILED);
         
         /* Cleanup */
         wickr_transport_ctx_destroy(&test_transport_alice);
@@ -754,6 +776,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         SHOULD_BE_NULL(bob_last_rx);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_bob), TRANSPORT_STATUS_ERROR);
         SHOULD_EQUAL(bob_last_status, TRANSPORT_STATUS_ERROR);
+        SHOULD_EQUAL(bob_last_error, TRANSPORT_ERROR_PACKET_DECODE_FAILED);
     }
     END_IT
     

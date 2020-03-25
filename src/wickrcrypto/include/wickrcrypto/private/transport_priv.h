@@ -24,6 +24,7 @@
 
 #include "transport_ctx.h"
 #include "transport_handshake.h"
+#include "transport_error.h"
 
 struct wickr_transport_ctx {
     wickr_crypto_engine_t engine;
@@ -36,6 +37,7 @@ struct wickr_transport_ctx {
     wickr_transport_callbacks_t callbacks;
     void *user;
     wickr_transport_handshake_t *pending_handshake;
+    wickr_transport_error err;
 };
 
 #endif /* transport_priv_h */

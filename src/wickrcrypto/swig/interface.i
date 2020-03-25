@@ -68,6 +68,7 @@
 
 %rename (TransportCtx) wickr_transport_ctx;
 %rename (TransportStatus) wickr_transport_status;
+%rename (TransportError) wickr_transport_error;
 %rename (TransportPayloadType) wickr_transport_payload_type;
 
 %rename("%(lowercamelcase)s", %$isfunction) "";
