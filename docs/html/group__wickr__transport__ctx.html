@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Wickr_transport_ctx</div>  </div>
@@ -77,6 +78,29 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwickr__transport__callbacks.html">wickr_transport_callbacks</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">callbacks to notify the user of events within the transport  <a href="structwickr__transport__callbacks.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gaf657713b03e0de48b75bcab0a4706bfe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gaf657713b03e0de48b75bcab0a4706bfe">wickr_transport_error</a> { <br />
+&#160;&#160;<b>TRANSPORT_ERROR_NONE</b>, 
+<b>TRANSPORT_ERROR_HANDSHAKE_FAILED</b>, 
+<b>TRANSPORT_ERROR_CREATE_HANDSHAKE_FAILED</b>, 
+<b>TRANSPORT_ERROR_START_HANDSHAKE_FAILED</b>, 
+<br />
+&#160;&#160;<b>TRANSPORT_ERROR_PROCESS_HANDSHAKE_FAILED</b>, 
+<b>TRANSPORT_ERROR_HANDSHAKE_VOLLEY_FAILED</b>, 
+<b>TRANSPORT_ERROR_BAD_START_STATUS</b>, 
+<b>TRANSPORT_ERROR_BAD_RX_STATE</b>, 
+<br />
+&#160;&#160;<b>TRANSPORT_ERROR_BAD_TX_STATE</b>, 
+<b>TRANSPORT_ERROR_PACKET_ENCODE_FAILED</b>, 
+<b>TRANSPORT_ERROR_PACKET_DECODE_FAILED</b>, 
+<b>TRANSPORT_ERROR_PACKET_SERIALIZATION_FAILED</b>, 
+<br />
+&#160;&#160;<b>TRANSPORT_ERROR_INVALID_RXDATA</b>
+<br />
+ }</td></tr>
+<tr class="separator:gaf657713b03e0de48b75bcab0a4706bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -102,8 +126,26 @@ Functions</h2></td></tr>
 <tr class="separator:gaea14ff3de739f7bf4f85516fdefd1ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#gac1865750950d6ff5ba3850c5f03ab3c9">wickr_transport_ctx_set_user_ctx</a> (<a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx, void *user)</td></tr>
 <tr class="separator:gac1865750950d6ff5ba3850c5f03ab3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a2a071752ce5c8c2a27f318c0655c58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__wickr__transport__ctx.html#gaf657713b03e0de48b75bcab0a4706bfe">wickr_transport_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__wickr__transport__ctx.html#ga0a2a071752ce5c8c2a27f318c0655c58">wickr_transport_ctx_get_last_error</a> (const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *ctx)</td></tr>
+<tr class="separator:ga0a2a071752ce5c8c2a27f318c0655c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gaf657713b03e0de48b75bcab0a4706bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf657713b03e0de48b75bcab0a4706bfe">&#9670;&nbsp;</a></span>wickr_transport_error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__wickr__transport__ctx.html#gaf657713b03e0de48b75bcab0a4706bfe">wickr_transport_error</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wickr Transport Context Errors </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaa49b2cf44bcb02d656598a17e5ae1c52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa49b2cf44bcb02d656598a17e5ae1c52">&#9670;&nbsp;</a></span>wickr_transport_ctx_copy()</h2>
@@ -218,6 +260,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga0a2a071752ce5c8c2a27f318c0655c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0a2a071752ce5c8c2a27f318c0655c58">&#9670;&nbsp;</a></span>wickr_transport_ctx_get_last_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__wickr__transport__ctx.html#gaf657713b03e0de48b75bcab0a4706bfe">wickr_transport_error</a> wickr_transport_ctx_get_last_error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structwickr__transport__ctx.html">wickr_transport_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the most recent error from the context,set whenever the status of the context changes to <code>TRANSPORT_STATUS_ERROR</code></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>the transport context to get the most recent error of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the most recent error inside the transport context </dd></dl>
 
 </div>
 </div>

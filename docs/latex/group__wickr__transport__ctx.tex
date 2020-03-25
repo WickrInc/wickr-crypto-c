@@ -7,6 +7,28 @@ struct \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+c
 \begin{DoxyCompactList}\small\item\em Transport context to manage the state machine of a point to point connection using fundamentals of the Wickr protocol as building blocks. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structwickr__transport__callbacks}{wickr\+\_\+transport\+\_\+callbacks}}
 \begin{DoxyCompactList}\small\item\em callbacks to notify the user of events within the transport \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}{wickr\+\_\+transport\+\_\+error}} \{ \newline
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+N\+O\+NE}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+\newline
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+P\+R\+O\+C\+E\+S\+S\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+V\+O\+L\+L\+E\+Y\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+D\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+T\+A\+T\+US}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+D\+\_\+\+R\+X\+\_\+\+S\+T\+A\+TE}, 
+\newline
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+B\+A\+D\+\_\+\+T\+X\+\_\+\+S\+T\+A\+TE}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+E\+N\+C\+O\+D\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+D\+E\+C\+O\+D\+E\+\_\+\+F\+A\+I\+L\+ED}, 
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}, 
+\newline
+{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+X\+D\+A\+TA}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,11 +53,22 @@ const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+ch
 const void $\ast$ \mbox{\hyperlink{group__wickr__transport__ctx_gaea14ff3de739f7bf4f85516fdefd1ea9}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+user\+\_\+ctx}} (const \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}} $\ast$ctx)
 \item 
 void \mbox{\hyperlink{group__wickr__transport__ctx_gac1865750950d6ff5ba3850c5f03ab3c9}{wickr\+\_\+transport\+\_\+ctx\+\_\+set\+\_\+user\+\_\+ctx}} (\mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}} $\ast$ctx, void $\ast$user)
+\item 
+\mbox{\hyperlink{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}{wickr\+\_\+transport\+\_\+error}} \mbox{\hyperlink{group__wickr__transport__ctx_ga0a2a071752ce5c8c2a27f318c0655c58}{wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+last\+\_\+error}} (const \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}} $\ast$ctx)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}\label{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}} 
+\index{Wickr\_transport\_ctx@{Wickr\_transport\_ctx}!wickr\_transport\_error@{wickr\_transport\_error}}
+\index{wickr\_transport\_error@{wickr\_transport\_error}!Wickr\_transport\_ctx@{Wickr\_transport\_ctx}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_error}{wickr\_transport\_error}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}{wickr\+\_\+transport\+\_\+error}}}
+
+Wickr Transport Context Errors 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gaa49b2cf44bcb02d656598a17e5ae1c52}\label{group__wickr__transport__ctx_gaa49b2cf44bcb02d656598a17e5ae1c52}} 
@@ -93,6 +126,22 @@ Destroy a transport context
 {\em ctx} & a pointer to the transport context to destroy. All properties of \textquotesingle{}$\ast$ctx\textquotesingle{} will also be destroyed \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__wickr__transport__ctx_ga0a2a071752ce5c8c2a27f318c0655c58}\label{group__wickr__transport__ctx_ga0a2a071752ce5c8c2a27f318c0655c58}} 
+\index{Wickr\_transport\_ctx@{Wickr\_transport\_ctx}!wickr\_transport\_ctx\_get\_last\_error@{wickr\_transport\_ctx\_get\_last\_error}}
+\index{wickr\_transport\_ctx\_get\_last\_error@{wickr\_transport\_ctx\_get\_last\_error}!Wickr\_transport\_ctx@{Wickr\_transport\_ctx}}
+\doxysubsubsection{\texorpdfstring{wickr\_transport\_ctx\_get\_last\_error()}{wickr\_transport\_ctx\_get\_last\_error()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__wickr__transport__ctx_gaf657713b03e0de48b75bcab0a4706bfe}{wickr\+\_\+transport\+\_\+error}} wickr\+\_\+transport\+\_\+ctx\+\_\+get\+\_\+last\+\_\+error (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__transport__ctx}{wickr\+\_\+transport\+\_\+ctx\+\_\+t}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Get the most recent error from the context,set whenever the status of the context changes to {\ttfamily T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & the transport context to get the most recent error of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the most recent error inside the transport context 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__ctx_gab34681a2ef000180aef01bdd4505c2bd}\label{group__wickr__transport__ctx_gab34681a2ef000180aef01bdd4505c2bd}} 
 \index{Wickr\_transport\_ctx@{Wickr\_transport\_ctx}!wickr\_transport\_ctx\_get\_local\_identity\_ptr@{wickr\_transport\_ctx\_get\_local\_identity\_ptr}}
 \index{wickr\_transport\_ctx\_get\_local\_identity\_ptr@{wickr\_transport\_ctx\_get\_local\_identity\_ptr}!Wickr\_transport\_ctx@{Wickr\_transport\_ctx}}
