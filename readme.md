@@ -18,7 +18,7 @@ Please keep the issue tracker of this repo limited to code level bugs found in t
 
 Any questions regarding the protocol itself (i.e: crypto design ideas, suggestions,  high-level conceptual critique) can be be directed at github@wickr.com. 
 
-For all other security issues, please contact Wickr’s bug bounty program [here](https://wickr.com/about-us/blog/2014/01/15/calling-all-hackers-wickr-s-bug-bounty-begins).
+For all other security issues, please contact Wickr’s bug bounty program [here](https://wickr.com/security/bug-bounty/).
 
 ## Goals
 Starting with this crypto lib, Wickr is opening its source code to its customers, partners, and the larger community—here is why:
