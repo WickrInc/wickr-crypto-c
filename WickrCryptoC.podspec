@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoC"
-  s.version      = "1.13.1"
+  s.version      = "1.13.2"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
