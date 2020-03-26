@@ -138,7 +138,12 @@ void WickrTransportIdentityValidationResponse(const v8::FunctionCallbackInfo<Val
         SWIG_V8_Raise("Identity Validation Callback Missing Argument 0 (boolean)");
     }
 
+#if (V8_MAJOR_VERSION-0) < 7
     callback(transport_context, args[0]->BooleanValue());
+#else
+    callback(transport_context, args[0]->BooleanValue(v8::Isolate::GetCurrent()));
+#endif
+
 }
 
 void WickrTransportIdentityValidationCallback(const wickr_transport_ctx_t *ctx,
@@ -183,6 +188,6 @@ $1 = {
     .on_identity_verify = &WickrTransportIdentityValidationCallback,
 };
 
-$2 = new Persistent<Object>(Isolate::GetCurrent(), $input->ToObject());
+$2 = new Persistent<Object>(Isolate::GetCurrent(), $input->ToObject(v8::Isolate::GetCurrent()));
 
 %}

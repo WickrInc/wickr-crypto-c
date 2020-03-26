@@ -20,7 +20,7 @@
       $1 = NULL;
     }
     else {
-      v8::Local<v8::Object> bufferObj = $input->ToObject();
+      v8::Local<v8::Object> bufferObj = $input->ToObject(v8::Isolate::GetCurrent());
       temp$argnum.length = node::Buffer::Length(bufferObj);
       temp$argnum.bytes = (uint8_t *)node::Buffer::Data(bufferObj);
       $1 = &temp$argnum;
@@ -47,7 +47,7 @@
       $1 = NULL;
     }
     else {
-      v8::Local<v8::Object> bufferObj = $input->ToObject();
+      v8::Local<v8::Object> bufferObj = $input->ToObject(Isolate::GetCurrent());
       $1 = wickr_buffer_create((const uint8_t *)node::Buffer::Data(bufferObj), node::Buffer::Length(bufferObj));
     }
   }

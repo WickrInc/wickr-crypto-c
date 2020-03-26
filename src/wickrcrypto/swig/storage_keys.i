@@ -13,7 +13,7 @@
 }
 #elif defined(SWIGJAVASCRIPT)
 %typemap(ret) SWIGTYPE *local, SWIGTYPE *remote {
-  if (jsresult->IsObject() && jsresult->ToObject()->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("parent"), info.Holder()).IsNothing()) {
+  if (jsresult->IsObject() && jsresult->ToObject(v8::Isolate::GetCurrent())->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("parent"), info.Holder()).IsNothing()) {
     SWIG_exception_fail(SWIG_ERROR, "Could not set parent object for getter");
   }
 }

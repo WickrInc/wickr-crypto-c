@@ -69,6 +69,12 @@ jobs:
     osx_image: xcode11
     env:
       - NODE=true
+      - NODE_VER=10
+  - os: osx
+    osx_image: xcode11
+    env:
+      - NODE=true
+      - NODE_VER=12
   - os: linux
     jdk: oraclejdk8
     env:
@@ -83,10 +89,10 @@ jobs:
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
-  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/swig/swig.git; cd swig; git checkout -t origin/rel-4.0.0; ./autogen.sh; ./configure; make -j2 && sudo make install; cd ../; fi
+  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/tomleavy/swig.git; cd swig; git checkout -t origin/pr/new-node-fixes; ./autogen.sh; ./configure; make -j2 && sudo make install; cd ../; fi
   - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
   - if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install 10; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install ${NODE_VER}; fi
 
 script:
   - |
@@ -104,6 +110,3 @@ script:
         make 
         if [[ -z "${IOS}" ]]; then make test; fi
       fi
-
-
-
