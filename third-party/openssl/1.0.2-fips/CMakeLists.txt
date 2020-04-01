@@ -96,7 +96,7 @@ macro(build_openssl)
 
     set(OSSL_VERSION "1.0.2u")
     set(OSSL_HASH "ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16")
-    set(OSSL_URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz")
+    set(OSSL_URL "https://www.openssl.org/source/old/1.0.2/openssl-${OSSL_VERSION}.tar.gz")
 
     if (FIPS)
         set(FIPS_OPTIONS fips --with-fipsdir=${FIPS_PATH} --with-fipslibdir=${FIPS_PATH}/lib/)
