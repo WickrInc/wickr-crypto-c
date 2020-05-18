@@ -1,6 +1,6 @@
-for DISTRO in ubuntu_bionic centos7 alpine
+for DISTRO in debian ubuntu_bionic centos7 alpine
 do
-    docker build -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
+    docker build --quiet -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
     docker run \
         -e node_pre_gyp_accessKeyId=${node_pre_gyp_accessKeyId} \
         -e node_pre_gyp_secretAccessKey=${node_pre_gyp_secretAccessKey} \

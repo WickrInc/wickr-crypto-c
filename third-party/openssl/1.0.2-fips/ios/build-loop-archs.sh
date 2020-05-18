@@ -153,8 +153,8 @@ done
 rm -rf ${TARGETDIR}/include/openssl
 
 echo "COPYING ${INCLUDE_DIR} to ${TARGETDIR}"
-mkdir -p ${TARGETDIR}/include/openssl
-cp -R ${INCLUDE_DIR} ${TARGETDIR}/include/openssl
+mkdir -p ${TARGETDIR}/include
+cp -R ${INCLUDE_DIR} ${TARGETDIR}/include
 
 mkdir -p ${TARGETDIR}/lib
 lipo -create ${LIBCRYPTO_IOS[@]} -output "${TARGETDIR}/lib/libcrypto.a"
