@@ -107,6 +107,10 @@ do
     LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} -miphoneos-version-min=${IOS_MIN_SDK_VERSION}"
   fi
 
+  if [[ "${PLATFORM}" == iPhoneSimulator ]]; then
+    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} no-engine no-apps"
+  fi
+
   # Add --openssldir option
   LOCAL_CONFIG_OPTIONS="--openssldir=${TARGETDIR}/${ARCH} --with-fipsdir=${FIPSDIR}/${ARCH} ${LOCAL_CONFIG_OPTIONS}"
 
@@ -118,6 +122,7 @@ do
   fi
 
   # Run Configure
+  export COMMAND_MODE=unix2003
   ./Configure ${LOCAL_CONFIG_OPTIONS}
 
   # Only required for Darwin64 builds (-isysroot is automatically added by iphoneos-cross target)
@@ -129,11 +134,13 @@ do
   # Run make depend if relevant
   if [[ ! -z "${CONFIG_OPTIONS}" ]]; then
     echo "  Make depend...\c"
+    export COMMAND_MODE=unix2003
     make depend
   fi
 
   # Run make
   BUILD_THREADS=$(sysctl hw.ncpu | awk '{print $2}')
+  export COMMAND_MODE=unix2003
   make -j ${BUILD_THREADS}
 
   # Run make install
