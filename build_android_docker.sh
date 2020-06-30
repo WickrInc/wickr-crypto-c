@@ -15,7 +15,7 @@ docker run \
     -e ARTIFACTORY_URL=${ARTIFACTORY_URL} \
     -e ARTIFACTORY_USER=${ARTIFACTORY_USER} \
     -e ARTIFACTORY_PASS=${ARTIFACTORY_PASS} \
-    --name crypto-${DISTRO}-instance -it crypto-${DISTRO} \
+    --name crypto-${DISTRO}-instance crypto-${DISTRO} \
     /bin/sh -c "${BUILD_COMMAND}"
 
 exit $?
