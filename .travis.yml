@@ -2,111 +2,104 @@ language: c
 os: linux
 dist: bionic
 node_js:
-  - "10"
-
+- '10'
 env:
   global:
-    - secure: "IQxHT3BNaaNeKhqx08zsVW2we5oh3bjlKIVsIaYkN5CSM4ErVEFV5lncXloHXN5RtNxpZ0I3Mo11MuwF5LH+/4K9j37a4pQgU6R66Ok7OyanWYcPPfQLwXfQIO1/SD/NKgSGp6ob1C2wxLno040BHUOEf92wrNUxBJe6wwGBE6kuo5IuE+73lySI2rwacEu5Op0B2X1/SgpDF9Y5e31kZw6jh65jDh/slMJnzl5/R7X/VC7eDY9JfM18/4JMnuVY0Larzo5Zu5bCABXBhywMaEaUCFWnWP4PYu4ato697zBGOToppR2EH15lu8pD3HxPp0IR3SfsPjIdKt+nXkWFvJdZMS533GK1FZV6AaZxNFV+7nly6jnGndDdA9/y8oNs6tc0AKaKbAp378n1bNMY26cUfs+lZmzv24PYuob8q/kO6X2r1BTavZ5ScRGrKibtwZ/WLpVOuo/2hZxDdHc2UatlgTXL3f38ptD5HdPiLfMKfXmVaJVP2PMYudfwCoDXkbtNrQYWL86FwjC0BA7/kjZivNeMrt4uWP8RLpjTvXRtjUgqQRWZaok99eamQ0z9Yf+ehoSTTO3Aevv0qyD19Dopd/qEJnt+K/zBhQFbX61/MA46rE9orn2HJMOlabTaQTmZxE9cdobWwwbZWaTIhvfgQJHeOmZF6zdtuASvJ+M="
-    - secure: "UNweCnb3OYt0KsLkACJeqMvUkD7Afb0+bgW6GnZT27R9OgYruMvthRWUTZ3m8AkXlME5+LYbTatXUyDCxpysyoZfLzZLekgw9mU1GUsXAWRqK2QSOcMzpfg6aNYnhEJdTz8+5ansByaapuzvvYuwMDKF92Sbwar5j1y3HvwSIyZAKI+hIC5wwH5EVGiseomAHuNGZ7SXBfHKH03LxnePAjssGxLkC5eMm2W0PbLBT2EghWGEKqEUrNCSEPCxsxMFiOxHXVfL4OrgdQLNHmCOnQrWIXlx+Bm5PqEFQx5O/G9l7OqzudOyjRB1k+geuJ4mzmxzA1dAFWe2jtVQnmEHnX7Q2BhY0RngMsohkQtkvclPG4Nl2JvBpEo9bg+E6fnkG87PMklz40eKktdKwm0xXf+twYDEUs/S7bbzgOXr4bvk/yMqjn0VJN34s/wVZpVkr/osf0S6+OZKx0SixLWw1t39nqK68RXxgk4GYyCcV9EKa1DqYIABX3QSADWKWuq+bOg3kOhhUZaAZateiaKCKTEMVxpE+RO+O9FlH79I4v4g85JYFtopAz9FfWBLhh14bLPrY5aAmyi/jP7ccED0p7c3ela+6NgTUJSNRXBj90BbJUsoUAMjsxTRap9Tq3V51ooxE9VErOSiQX8HzHicGhRB0t7rqXVgOw+beJCn4rE="
-     
+  - secure: IQxHT3BNaaNeKhqx08zsVW2we5oh3bjlKIVsIaYkN5CSM4ErVEFV5lncXloHXN5RtNxpZ0I3Mo11MuwF5LH+/4K9j37a4pQgU6R66Ok7OyanWYcPPfQLwXfQIO1/SD/NKgSGp6ob1C2wxLno040BHUOEf92wrNUxBJe6wwGBE6kuo5IuE+73lySI2rwacEu5Op0B2X1/SgpDF9Y5e31kZw6jh65jDh/slMJnzl5/R7X/VC7eDY9JfM18/4JMnuVY0Larzo5Zu5bCABXBhywMaEaUCFWnWP4PYu4ato697zBGOToppR2EH15lu8pD3HxPp0IR3SfsPjIdKt+nXkWFvJdZMS533GK1FZV6AaZxNFV+7nly6jnGndDdA9/y8oNs6tc0AKaKbAp378n1bNMY26cUfs+lZmzv24PYuob8q/kO6X2r1BTavZ5ScRGrKibtwZ/WLpVOuo/2hZxDdHc2UatlgTXL3f38ptD5HdPiLfMKfXmVaJVP2PMYudfwCoDXkbtNrQYWL86FwjC0BA7/kjZivNeMrt4uWP8RLpjTvXRtjUgqQRWZaok99eamQ0z9Yf+ehoSTTO3Aevv0qyD19Dopd/qEJnt+K/zBhQFbX61/MA46rE9orn2HJMOlabTaQTmZxE9cdobWwwbZWaTIhvfgQJHeOmZF6zdtuASvJ+M=
+  - secure: UNweCnb3OYt0KsLkACJeqMvUkD7Afb0+bgW6GnZT27R9OgYruMvthRWUTZ3m8AkXlME5+LYbTatXUyDCxpysyoZfLzZLekgw9mU1GUsXAWRqK2QSOcMzpfg6aNYnhEJdTz8+5ansByaapuzvvYuwMDKF92Sbwar5j1y3HvwSIyZAKI+hIC5wwH5EVGiseomAHuNGZ7SXBfHKH03LxnePAjssGxLkC5eMm2W0PbLBT2EghWGEKqEUrNCSEPCxsxMFiOxHXVfL4OrgdQLNHmCOnQrWIXlx+Bm5PqEFQx5O/G9l7OqzudOyjRB1k+geuJ4mzmxzA1dAFWe2jtVQnmEHnX7Q2BhY0RngMsohkQtkvclPG4Nl2JvBpEo9bg+E6fnkG87PMklz40eKktdKwm0xXf+twYDEUs/S7bbzgOXr4bvk/yMqjn0VJN34s/wVZpVkr/osf0S6+OZKx0SixLWw1t39nqK68RXxgk4GYyCcV9EKa1DqYIABX3QSADWKWuq+bOg3kOhhUZaAZateiaKCKTEMVxpE+RO+O9FlH79I4v4g85JYFtopAz9FfWBLhh14bLPrY5aAmyi/jP7ccED0p7c3ela+6NgTUJSNRXBj90BbJUsoUAMjsxTRap9Tq3V51ooxE9VErOSiQX8HzHicGhRB0t7rqXVgOw+beJCn4rE=
+  - secure: bD5tmezAPfKMnmt6WLcVvzZNBOfFB5vTGZYTIOtJx8doWI72gwhvNnEzmwm3QogBJBLOH5hwKIO16SpSf+75QR7FCYOJI/nFoDGFPoFY5MFdlHkq7wp6yL501oPXTIGN1OZagTtjHuV2OEppUKAfOqn6XsPfIc3+JOkyC3BBcvfgI2IQXPT4OGmwM1pIoXwuKYVd6ZYMtc4Xeb747J0EeXPLDF3nqp8rfm7p7kY+KktVQI91nwygZb7YcXLnSezqgyXbtz9HfmtV66Z3ex/3vjF//Y/jUT/v2QupJD6L6g96zwgaBqs0dxITBbg44yjWYZ9T3C58df+DcyQKYB6nKINEeshjMYXMXbgyRgFRTKiQ3k/oPTGsWwdBsiCxP7SkCXsWHh8qkqY+lQvs2WPE0tYbAw+f4UibM/I5W78F1ihKU7MTtoOwfbWlzwAlne/GpPYijltYNxxGzujVJW1n+3s06LqDzYyj9N1BEbpSqLnXi8CYICld1oY2zHBxitJEP+D3QRro+c4nA8LC/y4sUfwI0JZGGuHnPwSbT2oLr6THF6mLIKUK4U5FBPI5dJmBhwBK5BZD7lQFU5v7JBBZDFnsriQCEOyd4HYXEdu0Rno2LjUCSUKzSFF8YKdjOwXbNgkzQfBCf2xhzi08DKQ/SQeHP2o1JvR0CajG7jmQxwU=
+  - secure: pK5H5m/Eoa5g/pHpSCh+B2H435tuYVeyRHFYm3MMGBeYfhv4ZQ1Z5/F0HmOxQ/jiDoYafawlRWTmYnbQnU2rKbtcBejC49IaYnQEY+a7QhcF6HJ3BJ0jzYE2sHu+R/A7jUdrd5p4Ewdmm6e1OiiJdSIlUfA+gDiSH50B3lNT3gJeBwSF+UTmav6/be1+BcNWt+TuRBPfD+fik/wdda3AJZniOrdbFMb9RnjGrlLVpimfnvr9AsdJUPBGvHTRmfD5yjbh3xWUcrs3O9DGlM7ughMDnJRo6NnCLBz1hKvveLCAChjbbOybcTUK/7VXal9CP5+woXw3yR91L23bern/ta4KNRG4qa2vL8yR1Hne29rSNNv25RoedqtVZWZy7nmCewZe7F3oBq4ky6CJSd+jGeGxdDOmgseHfSNGQdmtQP7n30kaUQwBAa3/3dVkiItwD+9qCzQ+LnOKaA4czEkyAyrMGtfla4gSdjH7kLaFHR0lYWdrz+S1r5UL99DJBGqH/a9LoAoPnoXIvAru74bbJSulQR2VFnDwgI/7aYVvMurdwwl6Ti5ALewNA5LCsLabT+wTxDEh3I+YQt8uQ89vr68Z+Ve3JOEBKtrSwcShchEM/uArPTd7LgjniWd8+hL6Rft0AyoCn5MF/bPtdSlyO+RSOms26DOkujOfni0qQaU=
 services:
-  - docker
-
+- docker
 jobs:
   include:
   - os: linux
     dist: bionic
     env:
-      - OPENSSL="1.1.0"
-      - FIPS=FALSE
+    - OPENSSL="1.1.0"
+    - FIPS=FALSE
   - os: linux
     dist: bionic
     env:
-      - OPENSSL="BUILD"
-      - FIPS=FALSE
+    - OPENSSL="BUILD"
+    - FIPS=FALSE
   - os: linux
     dist: bionic
     env:
-      - OPENSSL="BUILD"
-      - FIPS=TRUE
+    - OPENSSL="BUILD"
+    - FIPS=TRUE
   - os: osx
     osx_image: xcode11
     env:
-      - FIPS=FALSE
+    - FIPS=FALSE
   - os: osx
     osx_image: xcode11
     env:
-      - FIPS=TRUE
+    - FIPS=TRUE
   - os: osx
     osx_image: xcode11
     env:
-      - IOS=true
-      - FIPS=false
+    - IOS=true
+    - FIPS=false
   - os: osx
     osx_image: xcode11
     env:
-      - IOS=true
-      - FIPS=true
-  - os: linux 
-    dist: bionic
-    env:
-      - ANDROID=true
-  - os: linux 
-    dist: bionic
-    env:
-      - ANDROID=true
-      - FIPS=true
+    - IOS=true
+    - FIPS=true
   - os: linux
     dist: bionic
     env:
-      - NODE=true
+    - ANDROID=true
+  - os: linux
+    dist: bionic
+    env:
+    - ANDROID=true
+    - FIPS=true
+  - os: linux
+    dist: bionic
+    env:
+    - NODE=true
   - os: linux
     dist: bionic
     if: tag IS present
     env:
-      - NODE_DISTRO=true
+    - NODE_DISTRO=true
   - os: osx
     osx_image: xcode11
     env:
-      - NODE=true
-      - NODE_VER=10
+    - NODE=true
+    - NODE_VER=10
   - os: osx
     osx_image: xcode11
     env:
-      - NODE=true
-      - NODE_VER=12
+    - NODE=true
+    - NODE_VER=12
   - os: linux
     jdk: oraclejdk8
     env:
-      - JAVA=true
-      - FIPS=false
+    - JAVA=true
+    - FIPS=false
   - os: osx
     jdk: oraclejdk8
     osx_image: xcode11
     env:
-      - JAVA=true
-      - FIPS=false
-
+    - JAVA=true
+    - FIPS=false
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true"; fi
-  - if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/tomleavy/swig.git; cd swig; git checkout -t origin/pr/new-node-fixes; ./autogen.sh; ./configure; make -j2 && sudo make install; cd ../; fi
-  - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
-  - if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install ${NODE_VER}; fi
-
+- if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true";
+  fi
+- if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/tomleavy/swig.git;
+  cd swig; git checkout -t origin/pr/new-node-fixes; ./autogen.sh; ./configure; make
+  -j2 && sudo make install; cd ../; fi
+- if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
+- if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake";
+  fi
+- if [[ "${FIPS}" == "TRUE" ]]; then export LOCAL_OPTIONS="${LOCAL_OPTIONS} -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS}"; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install ${NODE_VER};
+  fi
 script:
-  - |
-      if [[ ! -z "${ANDROID}" ]]; then
-        ./build_android_docker.sh
-      elif [[ ! -z "${NODE}" ]]; then
-
-        npm install --build-from-source
-        npm test
-      elif [[ ! -z "${NODE_DISTRO}" ]]; then
-        ./build_node_dist.sh
-      else
-        mkdir build && cd build
-        cmake ${LOCAL_OPTIONS} -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DFIPS=${FIPS} -DBUILD_TESTS=true ../
-        make 
-        if [[ -z "${IOS}" ]]; then make test; fi
-      fi
+- "if [[ ! -z \"${ANDROID}\" ]]; then\n  ./build_android_docker.sh\nelif [[ ! -z \"${NODE}\"
+  ]]; then\n\n  npm install --build-from-source\n  npm test\nelif [[ ! -z \"${NODE_DISTRO}\"
+  ]]; then\n  ./build_node_dist.sh\nelse\n  mkdir build && cd build\n  cmake ${LOCAL_OPTIONS}
+  -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DFIPS=${FIPS}
+  -DBUILD_TESTS=true ../\n  make \n  if [[ -z \"${IOS}\" ]]; then make test; fi\nfi\n"

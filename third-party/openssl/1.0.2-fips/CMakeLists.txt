@@ -94,9 +94,9 @@ macro(build_openssl)
         set(MAKE_OPS "-j${N}")
     endif ()
 
-    set(OSSL_VERSION "1.0.2u")
-    set(OSSL_HASH "ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16")
-    set(OSSL_URL "https://www.openssl.org/source/old/1.0.2/openssl-${OSSL_VERSION}.tar.gz")
+    set(OSSL_VERSION "1.0.2v")
+    set(OSSL_HASH "17d1d6bf7956d1c263f908d10fe209a22b03fe6ea19367462baaee8923281a4f")
+    set(OSSL_URL "https://github.openssl.org/openssl/wickr/archive/OpenSSL_1_0_2v.tar.gz")
 
     if (FIPS)
         set(FIPS_OPTIONS fips --with-fipsdir=${FIPS_PATH} --with-fipslibdir=${FIPS_PATH}/lib/)
@@ -165,6 +165,8 @@ macro(build_openssl)
         CONFIGURE_COMMAND ${OSSL_CONFIGURE}
         BUILD_COMMAND ${OSSL_BUILD}
         INSTALL_COMMAND ${OSSL_INSTALL}
+        HTTP_USERNAME ${OSSL_SUPPORT_UNAME}
+        HTTP_PASSWORD ${OSSL_SUPPORT_PASS}
         BUILD_IN_SOURCE 1)
 
     # Add FIPS dependency
