@@ -180,13 +180,18 @@ macro(build_openssl)
     if(APPLE)
         if (IOS)
             set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" CACHE INTERNAL "")
+            set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.a" CACHE INTERNAL "")
         else ()
             set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.dylib" CACHE INTERNAL "")
+            set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.dylib" CACHE INTERNAL "")
             set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.1.0.0.dylib" CACHE INTERNAL "")
+            set(OPENSSL_SSL_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.1.0.0.dylib" CACHE INTERNAL "")
         endif ()
     elseif(WIN32)
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libeay32.lib" CACHE INTERNAL "")
         set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/bin/libeay32.dll" CACHE INTERNAL "")
+        set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl32.lib" CACHE INTERNAL "")
+        set(OPENSSL_SSL_SHARED "${CMAKE_CURRENT_BINARY_DIR}/bin/libssl32.dll" CACHE INTERNAL "")
     elseif(ANDROID)
 
         if (FIPS)
@@ -195,6 +200,7 @@ macro(build_openssl)
         endif ()
 
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" CACHE INTERNAL "")
+        set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.a" CACHE INTERNAL "")
 
         add_custom_command(
             TARGET openssl
@@ -205,6 +211,8 @@ macro(build_openssl)
     elseif(UNIX)
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so" CACHE INTERNAL "")
         set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so.1.0.0" CACHE INTERNAL "")
+        set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.so" CACHE INTERNAL "")
+        set(OPENSSL_SSL_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.so.1.0.0" CACHE INTERNAL "")
     endif()
 
 
