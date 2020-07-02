@@ -153,6 +153,7 @@ do
   fi
 
   LIBCRYPTO_IOS+=("${TARGETDIR}/${ARCH}/lib/libcrypto.a")
+  LIBSSL_IOS+=("${TARGETDIR}/${ARCH}/lib/libssl.a")
 
   make distclean
 done
@@ -165,4 +166,4 @@ cp -R ${INCLUDE_DIR} ${TARGETDIR}/include
 
 mkdir -p ${TARGETDIR}/lib
 lipo -create ${LIBCRYPTO_IOS[@]} -output "${TARGETDIR}/lib/libcrypto.a"
-
+lipo -create ${LIBSSL_IOS[@]} -output "${TARGETDIR}/lib/libssl.a"
