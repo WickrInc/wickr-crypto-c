@@ -94,12 +94,11 @@ before_install:
 - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
 - if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake";
   fi
-- if [[ "${FIPS}" == "TRUE" ]]; then export LOCAL_OPTIONS="${LOCAL_OPTIONS} -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS}"; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install ${NODE_VER};
   fi
 script:
-- "if [[ ! -z \"${ANDROID}\" ]]; then\n  ./build_android_docker.sh\nelif [[ ! -z \"${NODE}\"
+- "export OSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME}; export OSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS}; if [[ ! -z \"${ANDROID}\" ]]; then\n  ./build_android_docker.sh\nelif [[ ! -z \"${NODE}\"
   ]]; then\n\n  npm install --build-from-source\n  npm test\nelif [[ ! -z \"${NODE_DISTRO}\"
   ]]; then\n  ./build_node_dist.sh\nelse\n  mkdir build && cd build\n  cmake ${LOCAL_OPTIONS}
-  -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DFIPS=${FIPS}
+  -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS} -DFIPS=${FIPS}
   -DBUILD_TESTS=true ../\n  make \n  if [[ -z \"${IOS}\" ]]; then make test; fi\nfi\n"
