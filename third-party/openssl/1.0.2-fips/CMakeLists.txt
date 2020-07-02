@@ -200,7 +200,9 @@ macro(build_openssl)
         endif ()
 
         set(OPENSSL_CRYPTO_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a" CACHE INTERNAL "")
+        set(OPENSSL_CRYPTO_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.so.1.0.0" CACHE INTERNAL "")
         set(OPENSSL_SSL_LIBRARY "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.a" CACHE INTERNAL "")
+        set(OPENSSL_SSL_SHARED "${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.so.1.0.0" CACHE INTERNAL "")
 
         add_custom_command(
             TARGET openssl
