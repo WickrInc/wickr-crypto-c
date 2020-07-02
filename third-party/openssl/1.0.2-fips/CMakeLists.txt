@@ -125,9 +125,9 @@ macro(build_openssl)
         endif ()
 
         if (${ANDROID_ABI} STREQUAL "arm64-v8a")
-            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-dynamic-engine no-ssl2 enable-ec_nistp_64_gcc_128 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} shared no-dynamic-engine no-ssl2 enable-ec_nistp_64_gcc_128 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
         else ()
-            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} no-dynamic-engine no-ssl2 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
+            set(ANDROID_OSSL_OPTIONS ${FIPS_OPTIONS} shared no-dynamic-engine no-ssl2 no-ssl3 no-comp --openssldir=${CMAKE_CURRENT_BINARY_DIR})
         endif ()
         
         set(OSSL_CONFIGURE ${ANDROID_ENV} ./config ${ANDROID_OSSL_OPTIONS})
