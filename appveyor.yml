@@ -30,7 +30,7 @@ build_script:
   - rm -rf build
   - mkdir build
   - cd build
-  - cmake -DBUILD_OPENSSL=true -DFIPS=%fips% -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true -G "Visual Studio 15 2017" -A %arch% ..
+  - cmake -DBUILD_OPENSSL=true -DOSSL_SUPPORT_UNAME=%OSSL_SUPPORT_UNAME% -DOSSL_SUPPORT_PASS=%OSSL_SUPPORT_PASS% -DFIPS=%fips% -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=true -G "Visual Studio 15 2017" -A %arch% ..
   - msbuild WickrCryptoC.sln /p:Configuration=Release
   - cd test\Release
   - crypto_test.exe --ci
