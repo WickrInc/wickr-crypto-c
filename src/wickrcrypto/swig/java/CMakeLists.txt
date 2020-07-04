@@ -22,11 +22,7 @@ if (FIPS)
     set(CMAKE_C_COMPILER ${OPENSSL_FIPSLD_COMPILER} CACHE LOCAL "" FORCE)
 endif ()
 
-if (NOT ANDROID)
-    setup_swig_library("java" "" "" "")
-else ()
-    setup_swig_library("java" "" "-Wl,--allow-multiple-definition -Wl,--whole-archive  ${OPENSSL_CRYPTO_LIBRARY}" "-Wl,--no-whole-archive")
-endif ()
+setup_swig_library("java" "")
 
 # Build JAR File
 
