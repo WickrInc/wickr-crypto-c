@@ -4,7 +4,7 @@ include(FindPHP)
 include_directories(${PHP_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../include)
 
 # Configure the swig target for php7
-setup_swig_library("php7" "" "" "")
+setup_swig_library("php7" "")
 set_target_properties(wickrcryptoswig PROPERTIES OUTPUT_NAME wickrcrypto)
 target_link_libraries(wickrcryptoswig ${PHP_LINKER_FLAGS})
 
