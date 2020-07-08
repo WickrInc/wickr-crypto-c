@@ -75,7 +75,7 @@ macro(build_openssl)
             set(OSSL_INSTALL nmake install_sw)
         else ()
             set(OSSL_BUILD ${MSYS2_BASH_EXE} -lc "cd ${MSYS_SOURCE_DIR} && ${CMAKE_CURRENT_SOURCE_DIR}/mingw64/setenv-mingw64.sh make ${MAKE_OPS}")
-            set(OSSL_INSTALL  ${MSYS2_BASH_EXE} -lc "cd ${MSYS_SOURCE_DIR} && ${CMAKE_CURRENT_SOURCE_DIR}/mingw64/setenv-mingw64.sh make install_sw && mv ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.dll.a ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.lib")
+            set(OSSL_INSTALL  ${MSYS2_BASH_EXE} -lc "cd ${MSYS_SOURCE_DIR} && ${CMAKE_CURRENT_SOURCE_DIR}/mingw64/setenv-mingw64.sh make install_sw && mv ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.dll.a ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.lib && mv ${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.dll.a ${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.lib")
         endif ()
 
     elseif (UNIX)
