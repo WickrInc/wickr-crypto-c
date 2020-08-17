@@ -15,3 +15,7 @@ DEFINE_DESCRIPTION(openssl_digest_sha512);
 DEFINE_DESCRIPTION(openssl_hmac);
 DEFINE_DESCRIPTION(openssl_ecdh);
 DEFINE_DESCRIPTION(openssl_hkdf);
+
+#ifdef FIPS
+DEFINE_DESCRIPTION(openssl_fips);
+#endif

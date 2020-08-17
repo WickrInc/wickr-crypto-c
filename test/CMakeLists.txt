@@ -4,6 +4,12 @@ file(GLOB CSpecSources cspec/src/*.c)
 
 add_library(cspec ${CSpecSources})
 
+# Enable FIPS if needed
+if (${FIPS})
+    message(STATUS "Enabling FIPS")
+    add_definitions(-DFIPS)
+endif ()
+
 target_include_directories(cspec PUBLIC cspec/inc)
 
 add_executable(crypto_test ${TestSources} ${TestHeaders})
