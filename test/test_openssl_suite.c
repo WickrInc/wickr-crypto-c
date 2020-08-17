@@ -6,6 +6,16 @@
 #include <string.h>
 #include "externs.h"
 
+#ifdef FIPS
+#ifndef _WIN32
+#include <pthread.h>
+#else
+#include <windows.h>
+#endif
+#include "private/openssl_threads.h"
+
+#endif
+
 DESCRIBE(openssl_crypto_random, "openssl_suite: openssl_crypto_random")
 {
 #if defined(_WIN32) || defined(__ANDROID__)
@@ -765,3 +775,67 @@ DESCRIBE(openssl_hkdf, "openssl_suite: openssl_hkdf")
     END_IT
 }
 END_DESCRIBE
+
+#ifdef FIPS // Only necessary to test with OpenSSL 1.0.2 since later versions have internal locking by default
+#ifndef _WIN32
+void *rand_thread(void *vargp)
+#else
+DWORD WINAPI rand_thread(LPVOID lpParam)
+#endif
+{
+    wickr_array_t *arr = wickr_array_new(100,
+                                         0,
+                                         (wickr_array_copy_func)wickr_buffer_copy,
+                                         (wickr_array_destroy_func)wickr_buffer_destroy);
+    
+    for (size_t i = 0; i < 100; i++) {
+        wickr_array_set_item(arr, i, openssl_crypto_random(1024), false);
+    }
+    
+    wickr_array_destroy(&arr, true);
+}
+
+DESCRIBE(openssl_fips, "OpenSSL FIPS")
+{
+    IT("should be able to enter fips mode")
+    {
+        bool res = openssl_enable_fips_mode();
+        SHOULD_BE_TRUE(res);
+    }
+    END_IT
+    
+#ifndef _WIN32
+    IT("should use proper locking behavior")
+    {
+        pthread_t thread_ctx[100];
+
+        openssl_thread_initialize_if_necessary();
+
+        for (int i = 0; i < 100; i++) {
+            pthread_create(&(thread_ctx[i]), NULL, rand_thread, NULL);
+        }
+
+        for (int i = 0; i < 100; i++) {
+            pthread_join(thread_ctx[i], NULL);
+        }
+    }
+    END_IT
+#else
+    IT("should use proper locking behavior")
+    {
+        DWORD   dwThreadIdArray[100];
+        HANDLE  hThreadArray[100];
+
+        openssl_thread_initialize_if_necessary();
+
+        for (int i = 0; i < 100; i++) {
+            hThreadArray[i] = CreateThread(NULL, 0, rand_thread, NULL, 0, &dwThreadIdArray[i]);
+        }
+
+        WaitForMultipleObjects(100, hThreadArray, TRUE, INFINITE);
+    }
+    END_IT
+#endif
+}
+END_DESCRIBE
+#endif

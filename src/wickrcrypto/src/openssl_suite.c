@@ -19,6 +19,8 @@
 #ifdef FIPS
 
 #include <openssl/crypto.h>
+#include <private/openssl_threads.h>
+
 #ifdef _WIN32
 #include <openssl/applink.c>
 #endif
@@ -26,6 +28,8 @@
 
 bool openssl_enable_fips_mode() 
 {
+    openssl_thread_initialize_if_necessary();
+    
     if (FIPS_mode()) {
         return true;
     }
