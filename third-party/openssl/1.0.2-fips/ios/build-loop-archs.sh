@@ -121,6 +121,8 @@ do
     LOCAL_CONFIG_OPTIONS="fips iphoneos-cross ${LOCAL_CONFIG_OPTIONS}"
   fi
 
+  echo "Running configure with options ${LOCAL_CONFIG_OPTIONS}"
+
   # Run Configure
   export COMMAND_MODE=unix2003
   ./Configure ${LOCAL_CONFIG_OPTIONS}
