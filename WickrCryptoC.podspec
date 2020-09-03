@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "10.0"
+  s.platform     = :ios, "11.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "8.0"
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/WickrInc/wickr-crypto-c.git", :tag => "#{s.version}".gsub(/.fips/, '') }
+  s.source       = { :git => "https://github.com/WickrInc/wickr-crypto-c.git", :tag => "#{s.version}" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -119,7 +119,6 @@ Pod::Spec.new do |s|
 
   # s.library   = "iconv"
   s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap"
-  s.script_phase = { :name => 'Openssl Fips Incore', :script => 'if [ ! -f ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho ]; then exit 0; fi; ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho --debug -dylib "$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH"' } 
 
   s.prepare_command = <<-CMD
         ./build-ios-fat.sh

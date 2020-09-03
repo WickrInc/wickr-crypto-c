@@ -104,6 +104,8 @@ do
     LOCAL_CONFIG_OPTIONS="iphoneos-cross ${LOCAL_CONFIG_OPTIONS}"
   fi
 
+  echo "Running configure with options ${LOCAL_CONFIG_OPTIONS}"
+
   chmod +x Configure && ./Configure ${LOCAL_CONFIG_OPTIONS}
 
   # Run make
