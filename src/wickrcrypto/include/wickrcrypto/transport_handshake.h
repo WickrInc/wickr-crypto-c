@@ -231,7 +231,7 @@ wickr_transport_handshake_res_t *wickr_transport_handshake_finalize(wickr_transp
  @param handshake the handshake to get the status of
  @return the current status of the handshake
  */
-const wickr_transport_handshake_status wickr_transport_handshake_get_status(const wickr_transport_handshake_t *handshake);
+wickr_transport_handshake_status wickr_transport_handshake_get_status(const wickr_transport_handshake_t *handshake);
 
 /**
  @ingroup wickr_transport_handshake
