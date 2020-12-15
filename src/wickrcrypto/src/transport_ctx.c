@@ -40,7 +40,7 @@ wickr_transport_ctx_t *wickr_transport_ctx_create(const wickr_crypto_engine_t en
         return NULL;
     }
     
-    if (evo_count != 0 && (evo_count > PACKET_PER_EVO_MAX || evo_count < PACKET_PER_EVO_MIN)) {
+    if (evo_count != 0 && evo_count > PACKET_PER_EVO_MAX) {
         return NULL;
     }
     
