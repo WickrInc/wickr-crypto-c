@@ -6,7 +6,6 @@
 
 #include <string.h>
 
-#define MAX_META_ID UINT8_MAX
 #define PACKET_META_SIZE 2
 
 static wickr_buffer_t *__wickr_key_exchange_get_kdf_info(const wickr_identity_chain_t *sender,
@@ -386,8 +385,7 @@ wickr_buffer_t *wickr_packet_serialize(const wickr_packet_t *packet)
         return NULL;
     }
     
-    if (packet->version > MAX_META_ID ||
-        (int)packet->signature->curve.identifier > MAX_META_ID) {
+    if ((int)packet->signature->curve.identifier > UINT8_MAX) {
         return NULL;
     }
     

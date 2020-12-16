@@ -800,7 +800,7 @@ wickr_transport_handshake_res_t *wickr_transport_handshake_finalize(wickr_transp
     return result;
 }
 
-const wickr_transport_handshake_status wickr_transport_handshake_get_status(const wickr_transport_handshake_t *handshake)
+wickr_transport_handshake_status wickr_transport_handshake_get_status(const wickr_transport_handshake_t *handshake)
 {
     return handshake ? handshake->status : TRANSPORT_HANDSHAKE_STATUS_UNKNOWN;
 }

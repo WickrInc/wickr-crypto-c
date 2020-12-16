@@ -171,20 +171,12 @@ wickr_buffer_t *wickr_crypto_engine_kdf_decipher(const wickr_crypto_engine_t *en
 
 wickr_digest_t wickr_digest_matching_cipher(wickr_cipher_t cipher)
 {
-    switch (cipher.cipher_id) {
-        case CIPHER_ID_AES256_CTR:
-            return DIGEST_SHA_256;
-        case CIPHER_ID_AES256_GCM:
-            return DIGEST_SHA_256;
-    }
+    return DIGEST_SHA_256;
 }
 
 wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve)
 {
-    switch (curve.identifier) {
-        case EC_CURVE_ID_NIST_P521:
-            return DIGEST_SHA_512;
-    }
+    return DIGEST_SHA_512;
 }
 
 /* Use unauthenticated cipher for msg key unwrapping since the output is an authenticated cipher key. 
@@ -192,12 +184,6 @@ wickr_digest_t wickr_digest_matching_curve(wickr_ec_curve_t curve)
 
 wickr_cipher_t wickr_exchange_cipher_matching_cipher(wickr_cipher_t cipher)
 {
-    switch (cipher.cipher_id) {
-        case CIPHER_ID_AES256_CTR:
-            return CIPHER_AES256_CTR;
-            break;
-        case CIPHER_ID_AES256_GCM:
-            return CIPHER_AES256_CTR;
-    }
+    return CIPHER_AES256_CTR;
 }
 
