@@ -18,6 +18,7 @@ message HandshakeV1 {
         optional bytes ephemeral_pubkey = 2;
         optional bytes encrypted_response_data = 3;
         optional IdentityChain id_chain = 4;
+        optional bytes kem_ctx = 5;
     }
 
     oneof payload {

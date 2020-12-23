@@ -3,7 +3,17 @@ set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third-party")
 file(GLOB ProtobufSources ../protobuf/gen/*.c ../protobuf/gen/*.h)
 file(GLOB Sources src/*.c include/wickrcrypto/*.h include/wickrcrypto/private/*.h) 
 
-include_directories("include/wickrcrypto" "../protobuf/gen" "${THIRD_PARTY}/protobuf-c" "${THIRD_PARTY}/crypt_blowfish" "${THIRD_PARTY}/libscrypt" "${OPENSSL_INCLUDE_DIR}")
+include_directories(
+    "include/wickrcrypto"
+    "../protobuf/gen"
+    "${THIRD_PARTY}/protobuf-c"
+    "${THIRD_PARTY}/crypt_blowfish"
+    "${THIRD_PARTY}/libscrypt"
+    "${OPENSSL_INCLUDE_DIR}")
+    
+if (ENABLE_PQ)
+    include_directories("${KYBER_INCLUDES}")
+endif ()
 
 # Enable FIPS if needed
 if (${FIPS})
@@ -17,11 +27,19 @@ add_library(wickrcrypto ${Sources} ${ProtobufSources})
 
 add_dependencies(wickrcrypto bcrypt scrypt protobuf-c)
 
+if (ENABLE_PQ)
+    add_dependencies(wickrcrypto kyber)
+endif ()
+
 if (BUILD_OPENSSL)
     add_dependencies(wickrcrypto openssl)
 endif (BUILD_OPENSSL)
 
 target_link_libraries(wickrcrypto bcrypt scrypt protobuf-c ${OPENSSL_CRYPTO_LIBRARY})
+
+if (ENABLE_PQ)
+    target_link_libraries(wickrcrypto kyber)
+endif ()
 
 if (${FIPS})
     target_link_libraries(wickrcrypto Threads::Threads)

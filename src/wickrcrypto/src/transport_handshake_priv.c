@@ -108,10 +108,10 @@ void wickr_proto_handshake_response_data_free(Wickr__Proto__HandshakeV1ResponseD
 }
 
 Wickr__Proto__HandshakeV1__Response *wickr_proto_handshake_response_create(const wickr_buffer_t *ephemeral_pubkey,
-                                                                           const wickr_buffer_t *encrypted_response_data,
+                                                                           const wickr_ecdh_cipher_result_t *cipher_result,
                                                                            const wickr_identity_chain_t *identity_chain)
 {
-    if (!ephemeral_pubkey || !encrypted_response_data) {
+    if (!ephemeral_pubkey || !cipher_result) {
         return NULL;
     }
     
@@ -132,17 +132,32 @@ Wickr__Proto__HandshakeV1__Response *wickr_proto_handshake_response_create(const
     }
     
     if (!wickr_buffer_to_protobytes(&response->ephemeral_pubkey, ephemeral_pubkey)) {
-        wickr_free(response);
+        wickr_proto_handshake_response_free(response);
         return NULL;
     }
     
-    if (!wickr_buffer_to_protobytes(&response->encrypted_response_data, encrypted_response_data)) {
-        wickr_free(response);
+    if (cipher_result->kem_ctx && !wickr_buffer_to_protobytes(&response->kem_ctx, cipher_result->kem_ctx)) {
+        wickr_proto_handshake_response_free(response);
         return NULL;
     }
     
     response->has_ephemeral_pubkey = true;
     response->has_encrypted_response_data = true;
+    
+    wickr_buffer_t *cipher_result_buffer = wickr_cipher_result_serialize(cipher_result->cipher_result);
+    
+    if (!cipher_result_buffer) {
+        wickr_proto_handshake_response_free(response);
+        return NULL;
+    }
+    
+    if (!wickr_buffer_to_protobytes(&response->encrypted_response_data, cipher_result_buffer)) {
+        wickr_proto_handshake_response_free(response);
+        wickr_buffer_destroy(&cipher_result_buffer);
+        return NULL;
+    }
+    
+    wickr_buffer_destroy(&cipher_result_buffer);
     
     return response;
 }

@@ -3,6 +3,7 @@
 #include "memory.h"
 #include "openssl_suite.h"
 #include "openssl_file_suite.h"
+#include "pq_engine_ext.h"
 #include <stdio.h>
 
 const wickr_crypto_engine_t wickr_crypto_engine_get_default()
@@ -27,11 +28,11 @@ const wickr_crypto_engine_t wickr_crypto_engine_get_default()
         openssl_aes256_file_decrypt,
         openssl_sha2,
         openssl_sha2_file,
-        openssl_ec_rand_key,
-        openssl_ec_key_import,
+        wickr_pq_engine_ext_ec_rand_key,
+        wickr_pq_engine_ext_ec_key_import,
         openssl_ec_sign,
         openssl_ec_verify,
-        openssl_gen_shared_secret,
+        wickr_pq_engine_ext_gen_shared_secret,
         openssl_hmac_create,
         openssl_hmac_verify,
         wickr_perform_kdf,

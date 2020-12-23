@@ -612,12 +612,13 @@ void test_ecdh(wickr_ec_key_t *local_test_key, wickr_ec_key_t *peer_test_key, wi
     SHOULD_NOT_BE_NULL(peer_test_key);
     wickr_buffer_destroy(&peer_test_key->pri_data);
     
-    wickr_buffer_t *output = openssl_gen_shared_secret(local_test_key, peer_test_key);
+    wickr_shared_secret_t *output = openssl_gen_shared_secret(local_test_key, peer_test_key, NULL);
     SHOULD_NOT_BE_NULL(output);
     
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_shared_secret, output, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(expected_shared_secret, output->secret, NULL));
+    SHOULD_BE_NULL(output->ctx);
     
-    wickr_buffer_destroy(&output);
+    wickr_shared_secret_destroy(&output);
 }
 
 DESCRIBE(openssl_ecdh, "openssl_suite: openssl_ecdh_gen_key")

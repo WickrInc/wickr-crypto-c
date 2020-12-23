@@ -43,7 +43,8 @@ extern "C" {
  */
 #define P521_PUB_KEY_MAX_SIZE 134
 
-typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
+
+typedef enum { EC_CURVE_ID_NIST_P521, EC_CURVE_ID_P521_KYBER1024_HYBRID } wickr_ec_curve_id;
 
 /**
  @addtogroup wickr_ec_curve wickr_ec_curve_t

@@ -25,6 +25,7 @@
 #include "buffer.h"
 #include "eckey.h"
 #include "crypto_engine.h"
+#include "ecdh_cipher_ctx.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,7 +54,7 @@ extern "C" {
 struct wickr_key_exchange {
     wickr_buffer_t *exchange_id;
     uint64_t key_id;
-    wickr_cipher_result_t *exchange_ciphertext;
+    wickr_ecdh_cipher_result_t *exchange_ciphertext;
 };
 
 typedef struct wickr_key_exchange wickr_key_exchange_t;
@@ -71,7 +72,7 @@ typedef struct wickr_key_exchange wickr_key_exchange_t;
  */
 wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *exchange_id,
                                                 uint64_t key_id,
-                                                wickr_cipher_result_t *exchange_ciphertext);
+                                                wickr_ecdh_cipher_result_t *exchange_ciphertext);
     
 
 /**

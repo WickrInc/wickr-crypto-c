@@ -41,6 +41,8 @@ add_subdirectory(third-party)
 
 option(DEPS_ONLY "only build dependencies" OFF)
 
+option(ENABLE_PQ "enable post quantum algorithms (kyber) OFF")
+
 if(BUILD_TESTS)
     enable_testing()
 endif()

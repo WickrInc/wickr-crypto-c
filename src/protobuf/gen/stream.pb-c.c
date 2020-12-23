@@ -263,7 +263,7 @@ const ProtobufCMessageDescriptor wickr__proto__handshake_v1__seed__descriptor =
   (ProtobufCMessageInit) wickr__proto__handshake_v1__seed__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__response__field_descriptors[3] =
+static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__response__field_descriptors[4] =
 {
   {
     "ephemeral_pubkey",
@@ -301,16 +301,29 @@ static const ProtobufCFieldDescriptor wickr__proto__handshake_v1__response__fiel
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "kem_ctx",
+    5,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__HandshakeV1__Response, has_kem_ctx),
+    offsetof(Wickr__Proto__HandshakeV1__Response, kem_ctx),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned wickr__proto__handshake_v1__response__field_indices_by_name[] = {
   1,   /* field[1] = encrypted_response_data */
   0,   /* field[0] = ephemeral_pubkey */
   2,   /* field[2] = id_chain */
+  3,   /* field[3] = kem_ctx */
 };
 static const ProtobufCIntRange wickr__proto__handshake_v1__response__number_ranges[1 + 1] =
 {
   { 2, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor wickr__proto__handshake_v1__response__descriptor =
 {
@@ -320,7 +333,7 @@ const ProtobufCMessageDescriptor wickr__proto__handshake_v1__response__descripto
   "Wickr__Proto__HandshakeV1__Response",
   "wickr.proto",
   sizeof(Wickr__Proto__HandshakeV1__Response),
-  3,
+  4,
   wickr__proto__handshake_v1__response__field_descriptors,
   wickr__proto__handshake_v1__response__field_indices_by_name,
   1,  wickr__proto__handshake_v1__response__number_ranges,

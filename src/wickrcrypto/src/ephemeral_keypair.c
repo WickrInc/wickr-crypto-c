@@ -22,9 +22,9 @@ wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create(uint64_t identifier, w
     return new_keypair;
 }
 
-wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_generate_identity(const wickr_crypto_engine_t *engine, uint64_t identifier, const wickr_identity_t *identity)
+wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_generate_identity(const wickr_crypto_engine_t *engine, uint64_t identifier, const wickr_identity_t *identity, const wickr_ec_curve_t curve)
 {
-    wickr_ec_key_t *rnd_key = engine->wickr_crypto_engine_ec_rand_key(engine->default_curve);
+    wickr_ec_key_t *rnd_key = engine->wickr_crypto_engine_ec_rand_key(curve);
     
     if (!rnd_key) {
         return NULL;

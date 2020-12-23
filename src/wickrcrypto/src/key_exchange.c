@@ -9,7 +9,7 @@
 
 wickr_key_exchange_t *wickr_key_exchange_create(wickr_buffer_t *exchange_id,
                                                 uint64_t key_id,
-                                                wickr_cipher_result_t *exchange_ciphertext)
+                                                wickr_ecdh_cipher_result_t *exchange_ciphertext)
 {
     if (!exchange_id || !exchange_ciphertext) {
         return NULL;
@@ -29,7 +29,7 @@ wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source
         return NULL;
     }
     
-    wickr_cipher_result_t *exchange_ciphertext_copy = wickr_cipher_result_copy(source->exchange_ciphertext);
+    wickr_ecdh_cipher_result_t *exchange_ciphertext_copy = wickr_ecdh_cipher_result_copy(source->exchange_ciphertext);
     
     if (!exchange_ciphertext_copy) {
         return NULL;
@@ -38,14 +38,14 @@ wickr_key_exchange_t *wickr_key_exchange_copy(const wickr_key_exchange_t *source
     wickr_buffer_t *exchange_id_copy = wickr_buffer_copy(source->exchange_id);
     
     if (!exchange_id_copy) {
-        wickr_cipher_result_destroy(&exchange_ciphertext_copy);
+        wickr_ecdh_cipher_result_destroy(&exchange_ciphertext_copy);
         return NULL;
     }
     
     wickr_key_exchange_t *copy = wickr_key_exchange_create(exchange_id_copy, source->key_id, exchange_ciphertext_copy);
     
     if (!copy) {
-        wickr_cipher_result_destroy(&exchange_ciphertext_copy);
+        wickr_ecdh_cipher_result_destroy(&exchange_ciphertext_copy);
         wickr_buffer_destroy(&exchange_id_copy);
     }
     
@@ -58,7 +58,7 @@ void wickr_key_exchange_destroy(wickr_key_exchange_t **exchange)
         return;
     }
     
-    wickr_cipher_result_destroy(&(*exchange)->exchange_ciphertext);
+    wickr_ecdh_cipher_result_destroy(&(*exchange)->exchange_ciphertext);
     wickr_buffer_destroy(&(*exchange)->exchange_id);
     wickr_free(*exchange);
     *exchange = NULL;
@@ -71,6 +71,9 @@ static void __wickr_key_exchange_proto_free(Wickr__Proto__KeyExchangeSet__Exchan
     }
     
     wickr_free(exchange->exchange_data.data);
+    if (exchange->has_kem_ctx) {
+        wickr_free(exchange->kem_ctx.data);
+    }
     wickr_free(exchange);
 }
 
@@ -89,7 +92,7 @@ static Wickr__Proto__KeyExchangeSet__Exchange *__wickr_key_exchange_to_proto(con
     wickr__proto__key_exchange_set__exchange__init(proto_exchange);
     proto_exchange->key_id = exchange->key_id;
     
-    wickr_buffer_t *exchange_data = wickr_cipher_result_serialize(exchange->exchange_ciphertext);
+    wickr_buffer_t *exchange_data = wickr_cipher_result_serialize(exchange->exchange_ciphertext->cipher_result);
     
     if (!exchange_data) {
         wickr_free(proto_exchange);
@@ -103,6 +106,15 @@ static Wickr__Proto__KeyExchangeSet__Exchange *__wickr_key_exchange_to_proto(con
     }
     
     wickr_buffer_destroy(&exchange_data);
+    
+    if (exchange->exchange_ciphertext->kem_ctx) {
+        proto_exchange->has_kem_ctx = true;
+        if (!wickr_buffer_to_protobytes(&proto_exchange->kem_ctx, exchange->exchange_ciphertext->kem_ctx)) {
+            wickr_free(proto_exchange->exchange_data.data);
+            wickr_free(proto_exchange);
+            return NULL;
+        }
+    }
     
     proto_exchange->identifier.data = exchange->exchange_id->bytes;
     proto_exchange->identifier.len = exchange->exchange_id->length;
@@ -124,6 +136,15 @@ static wickr_key_exchange_t *__wickr_key_exchange_create_with_proto(const Wickr_
         return NULL;
     }
     
+    wickr_buffer_t *kem_ctx_bytes = exchange_proto->has_kem_ctx ? wickr_buffer_from_protobytes(exchange_proto->kem_ctx) : NULL;
+    wickr_ecdh_cipher_result_t *ecdh_cipher_result = wickr_ecdh_cipher_result_create(cipher_result, kem_ctx_bytes);
+    
+    if (!ecdh_cipher_result) {
+        wickr_cipher_result_destroy(&cipher_result);
+        wickr_buffer_destroy(&kem_ctx_bytes);
+        return NULL;
+    }
+    
     wickr_buffer_t *identifier_bytes = wickr_buffer_from_protobytes(exchange_proto->identifier);
     
     if (!identifier_bytes) {
@@ -131,11 +152,11 @@ static wickr_key_exchange_t *__wickr_key_exchange_create_with_proto(const Wickr_
         return NULL;
     }
     
-    
-    wickr_key_exchange_t *exchange = wickr_key_exchange_create(identifier_bytes, exchange_proto->key_id, cipher_result);
+    wickr_key_exchange_t *exchange = wickr_key_exchange_create(identifier_bytes, exchange_proto->key_id, ecdh_cipher_result);
     
     if (!exchange) {
         wickr_buffer_destroy(&identifier_bytes);
+        wickr_buffer_destroy(&kem_ctx_bytes);
         wickr_cipher_result_destroy(&cipher_result);
         return NULL;
     }

@@ -77,6 +77,7 @@ struct wickr_ctx {
     wickr_storage_keys_t *storage_keys;
     wickr_cipher_key_t *packet_header_key;
     uint8_t pkt_enc_version;
+    bool enable_pq_keypairs;
 };
 
 typedef struct wickr_ctx wickr_ctx_t;
@@ -439,6 +440,15 @@ wickr_buffer_t *wickr_ctx_decipher_remote(const wickr_ctx_t *ctx, const wickr_ci
  @return an ephemeral key pair containing the private and public components, signed by the ctx node signing identity
  */
 wickr_ephemeral_keypair_t *wickr_ctx_ephemeral_keypair_gen(const wickr_ctx_t *ctx, uint64_t key_id);
+
+/**
+ @ingroup wickr_ctx
+ Enable the use of post quantum / ec hybrid ephemeral keypairs for messaging
+ 
+ @param ctx the context to use for ephemeral key pair generation
+ @param enabled set to true to use post quantum / ec hybrid ephemeral keypairs
+ */
+void wickr_ctx_use_pq_ephemeral_keypairs(wickr_ctx_t *ctx, bool enabled);
 
 /**
  @ingroup wickr_ctx

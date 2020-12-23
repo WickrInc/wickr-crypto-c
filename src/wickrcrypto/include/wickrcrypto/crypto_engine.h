@@ -28,6 +28,7 @@
 #include "eckey.h"
 #include "ecdsa.h"
 #include "kdf.h"
+#include "shared_secret.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -35,6 +36,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef wickr_ec_key_t *(*wickr_ec_key_import_func)(const wickr_buffer_t *buffer, bool is_private);
 
 /** @addtogroup wickr_crypto_engine */
 
@@ -227,7 +230,7 @@ struct wickr_crypto_engine {
      @param peer the remote elliptic curve public key
      @return a buffer containing the shared secret computed with 'local' private key and 'peer' public key
      */
-    wickr_buffer_t *(*wickr_crypto_engine_gen_shared_secret)(const wickr_ec_key_t *local, const wickr_ec_key_t *peer);
+    wickr_shared_secret_t *(*wickr_crypto_engine_gen_shared_secret)(const wickr_ec_key_t *local, const wickr_ec_key_t *peer, const wickr_buffer_t *ctx);
     
     /**
      @ingroup wickr_crypto_engine

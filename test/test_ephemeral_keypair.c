@@ -27,7 +27,7 @@ DESCRIBE(ephemeral_keypair, "ephemeral keypair")
 
     IT("should be able to be generated using an identity for signing")
     {
-        id_keypair = wickr_ephemeral_keypair_generate_identity(&engine, test_id, test_chain->node);
+        id_keypair = wickr_ephemeral_keypair_generate_identity(&engine, test_id, test_chain->node, engine.default_curve);
         SHOULD_NOT_BE_NULL(id_keypair);
         SHOULD_NOT_BE_NULL(id_keypair->ec_key);
         SHOULD_EQUAL(id_keypair->identifier, test_id);

@@ -25,6 +25,7 @@
 #include "stream.pb-c.h"
 #include "private/transport_priv.h"
 #include "transport_root_key.h"
+#include "ecdh_cipher_ctx.h"
 
 struct wickr_transport_handshake_t {
     wickr_crypto_engine_t engine;
@@ -47,7 +48,7 @@ Wickr__Proto__HandshakeV1__Seed *wickr_proto_handshake_seed_create(const wickr_i
                                                                    bool needs_remote_identity);
 void wickr_proto_handshake_seed_free(Wickr__Proto__HandshakeV1__Seed *seed);
 Wickr__Proto__HandshakeV1__Response *wickr_proto_handshake_response_create(const wickr_buffer_t *ephemeral_pubkey,
-                                                                           const wickr_buffer_t *encrypted_response_data,
+                                                                           const wickr_ecdh_cipher_result_t *cipher_result,
                                                                            const wickr_identity_chain_t *identity_chain);
 void wickr_proto_handshake_response_free(Wickr__Proto__HandshakeV1__Response *response);
 Wickr__Proto__HandshakeV1 *wickr_proto_handshake_create_with_seed(Wickr__Proto__HandshakeV1__Seed *seed);

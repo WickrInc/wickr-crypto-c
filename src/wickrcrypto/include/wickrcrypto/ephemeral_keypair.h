@@ -102,9 +102,10 @@ wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_copy(const wickr_ephemeral_ke
  @param engine crypto engine supporting random Elliptic Curve generation, and ECDSA signatures
  @param identifier the identifier to assign to the generated output keypair
  @param identity the identity to sign the generated output key pair with
+ @param curve the type of curve to use when generating the random key pair
  @return a newly generated random Elliptic Curve key pair with identifier 'identifier' and a signature using the 'sig_key' property of the identity provided as the signing key
  */
-wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_generate_identity(const wickr_crypto_engine_t *engine, uint64_t identifier, const wickr_identity_t *identity);
+wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_generate_identity(const wickr_crypto_engine_t *engine, uint64_t identifier, const wickr_identity_t *identity, wickr_ec_curve_t curve);
 
 /**
  

@@ -27,6 +27,17 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+struct wickr_ecdh_cipher_result {
+    wickr_cipher_result_t *cipher_result;
+    wickr_buffer_t *kem_ctx;
+};
+
+typedef struct wickr_ecdh_cipher_result wickr_ecdh_cipher_result_t;
+
+wickr_ecdh_cipher_result_t *wickr_ecdh_cipher_result_create(wickr_cipher_result_t *cipher_result, wickr_buffer_t *kem_ctx);
+wickr_ecdh_cipher_result_t *wickr_ecdh_cipher_result_copy(const wickr_ecdh_cipher_result_t *result);
+void wickr_ecdh_cipher_result_destroy(wickr_ecdh_cipher_result_t **result);
     
 /**
  
@@ -108,10 +119,10 @@ void wickr_ecdh_cipher_ctx_destroy(wickr_ecdh_cipher_ctx_t **ctx);
  @param kdf_params the kdf parameters to use for the KDF portion of the operation
  @return ciphertext created from the ecdh-kdf-cipher workflow
  */
-wickr_cipher_result_t *wickr_ecdh_cipher_ctx_cipher(const wickr_ecdh_cipher_ctx_t *ctx,
-                                                    const wickr_buffer_t *plaintext,
-                                                    const wickr_ec_key_t *remote_pub,
-                                                    const wickr_kdf_meta_t *kdf_params);
+wickr_ecdh_cipher_result_t *wickr_ecdh_cipher_ctx_cipher(const wickr_ecdh_cipher_ctx_t *ctx,
+                                                         const wickr_buffer_t *plaintext,
+                                                         const wickr_ec_key_t *remote_pub,
+                                                         const wickr_kdf_meta_t *kdf_params);
 
 /**
  Decipher data using the ECDH cipher context
@@ -125,7 +136,7 @@ wickr_cipher_result_t *wickr_ecdh_cipher_ctx_cipher(const wickr_ecdh_cipher_ctx_
  @return plaintext decoded by the ecdh-kdf-decipher workflow
  */
 wickr_buffer_t *wickr_ecdh_cipher_ctx_decipher(const wickr_ecdh_cipher_ctx_t *ctx,
-                                               const wickr_cipher_result_t *ciphertext,
+                                               const wickr_ecdh_cipher_result_t *ciphertext,
                                                const wickr_ec_key_t *remote_pub,
                                                const wickr_kdf_meta_t *kdf_params);
     

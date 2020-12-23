@@ -76,7 +76,7 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
 
     SHOULD_NOT_BE_NULL(expected_key);
     
-    wickr_cipher_result_t *test_cipher_result = NULL;
+    wickr_ecdh_cipher_result_t *test_cipher_result = NULL;
     
     IT("can be used to cipher data")
     {
@@ -87,12 +87,12 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
 
         test_cipher_result = wickr_ecdh_cipher_ctx_cipher(test_ctx, test_plaintext, dB, test_kdf_meta);
         SHOULD_NOT_BE_NULL(test_cipher_result);
-        SHOULD_BE_FALSE(wickr_buffer_is_equal(test_plaintext, test_cipher_result->cipher_text, NULL));
+        SHOULD_BE_FALSE(wickr_buffer_is_equal(test_plaintext, test_cipher_result->cipher_result->cipher_text, NULL));
         
         /* The bytes that are output should be decodable with the expected key bytes
            the expected key bytes were pre-computed to be the shared secret of dA pub + dA pri + dB pub
            passed through HKDF with SHA256 with salt of hex bytes f00d and info bytes bar */
-        wickr_buffer_t *test_decode = test_engine.wickr_crypto_engine_cipher_decrypt(test_cipher_result, NULL, expected_key, NULL);
+        wickr_buffer_t *test_decode = test_engine.wickr_crypto_engine_cipher_decrypt(test_cipher_result->cipher_result, NULL, expected_key, NULL);
         SHOULD_BE_TRUE(wickr_buffer_is_equal(test_decode, test_plaintext, NULL));
         
         wickr_buffer_destroy(&test_decode);
@@ -106,18 +106,18 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
 			hex_char_to_buffer("bar"));
 		SHOULD_NOT_BE_NULL(test_kdf_meta_large);
 
-		wickr_cipher_result_t *large_cipher_result = wickr_ecdh_cipher_ctx_cipher(test_ctx, test_plaintext, dB, test_kdf_meta_large);
+		wickr_ecdh_cipher_result_t *large_cipher_result = wickr_ecdh_cipher_ctx_cipher(test_ctx, test_plaintext, dB, test_kdf_meta_large);
 		SHOULD_NOT_BE_NULL(large_cipher_result);
 
 		/* The bytes that are output should be decodable with the expected key bytes
 		the expected key bytes were pre-computed to be the shared secret of dA pub + dA pri + dB pub
 		passed through HKDF with SHA512 with salt of hex bytes f00d and info bytes bar truncated to 32 bytes */
-		wickr_buffer_t *test_decode = test_engine.wickr_crypto_engine_cipher_decrypt(large_cipher_result, NULL, expected_large_key, NULL);
+		wickr_buffer_t *test_decode = test_engine.wickr_crypto_engine_cipher_decrypt(large_cipher_result->cipher_result, NULL, expected_large_key, NULL);
 		SHOULD_BE_TRUE(wickr_buffer_is_equal(test_decode, test_plaintext, NULL));
 
 		wickr_buffer_destroy(&test_decode);
 		wickr_kdf_meta_destroy(&test_kdf_meta_large);
-		wickr_cipher_result_destroy(&large_cipher_result);
+		wickr_ecdh_cipher_result_destroy(&large_cipher_result);
 	}
 	END_IT
     
@@ -141,9 +141,9 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
     
     IT("should fail to decipher if the cipher mode is manipulated in transit")
     {
-        test_cipher_result->cipher = CIPHER_AES256_CTR;
+        test_cipher_result->cipher_result->cipher = CIPHER_AES256_CTR;
         SHOULD_BE_NULL(wickr_ecdh_cipher_ctx_decipher(test_ctx, test_cipher_result, dB, test_kdf_meta));
-        test_cipher_result->cipher = CIPHER_AES256_GCM;
+        test_cipher_result->cipher_result->cipher = CIPHER_AES256_GCM;
     }
     END_IT
     
@@ -153,7 +153,7 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
         SHOULD_NOT_BE_NULL(incorrect_kdf);
         
         incorrect_kdf->algo = KDF_HKDF_SHA512;
-        incorrect_kdf->algo.output_size = test_cipher_result->cipher.key_len;
+        incorrect_kdf->algo.output_size = test_cipher_result->cipher_result->cipher.key_len;
         
         SHOULD_BE_NULL(wickr_ecdh_cipher_ctx_decipher(test_ctx, test_cipher_result, dB, incorrect_kdf));
         
@@ -189,7 +189,7 @@ DESCRIBE(wickr_ecdh_cipher, "ecdh cipher context")
     END_IT
     
     wickr_ec_key_destroy(&dB);
-    wickr_cipher_result_destroy(&test_cipher_result);
+    wickr_ecdh_cipher_result_destroy(&test_cipher_result);
     wickr_kdf_meta_destroy(&test_kdf_meta);
     wickr_buffer_destroy(&test_plaintext);
     wickr_cipher_key_destroy(&expected_key);
@@ -240,8 +240,8 @@ DESCRIBE(wickr_ecdh_cipher_e2e_test, "ecdh cipher end to end test")
         SHOULD_NOT_BE_NULL(alice_ctx);
         SHOULD_NOT_BE_NULL(bob_ctx);
         
-        wickr_cipher_result_t *ciphered = wickr_ecdh_cipher_ctx_cipher(alice_ctx, test_plaintext,
-                                                                       bob_key_public, test_kdf_meta);
+        wickr_ecdh_cipher_result_t *ciphered = wickr_ecdh_cipher_ctx_cipher(alice_ctx, test_plaintext,
+                                                                            bob_key_public, test_kdf_meta);
         
         SHOULD_NOT_BE_NULL(ciphered);
         
@@ -255,7 +255,7 @@ DESCRIBE(wickr_ecdh_cipher_e2e_test, "ecdh cipher end to end test")
         
         SHOULD_BE_TRUE(wickr_buffer_is_equal(deciphered, test_plaintext, NULL));
         
-        wickr_cipher_result_destroy(&ciphered);
+        wickr_ecdh_cipher_result_destroy(&ciphered);
         wickr_ec_key_destroy(&incorrect_key);
         wickr_buffer_destroy(&deciphered);
         wickr_ecdh_cipher_ctx_destroy(&alice_ctx);

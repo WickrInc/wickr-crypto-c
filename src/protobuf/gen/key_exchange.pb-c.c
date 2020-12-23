@@ -58,7 +58,7 @@ void   wickr__proto__key_exchange_set__free_unpacked
   assert(message->base.descriptor == &wickr__proto__key_exchange_set__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor wickr__proto__key_exchange_set__exchange__field_descriptors[3] =
+static const ProtobufCFieldDescriptor wickr__proto__key_exchange_set__exchange__field_descriptors[4] =
 {
   {
     "identifier",
@@ -96,16 +96,29 @@ static const ProtobufCFieldDescriptor wickr__proto__key_exchange_set__exchange__
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "kem_ctx",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(Wickr__Proto__KeyExchangeSet__Exchange, has_kem_ctx),
+    offsetof(Wickr__Proto__KeyExchangeSet__Exchange, kem_ctx),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned wickr__proto__key_exchange_set__exchange__field_indices_by_name[] = {
   2,   /* field[2] = exchange_data */
   0,   /* field[0] = identifier */
+  3,   /* field[3] = kem_ctx */
   1,   /* field[1] = key_id */
 };
 static const ProtobufCIntRange wickr__proto__key_exchange_set__exchange__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor wickr__proto__key_exchange_set__exchange__descriptor =
 {
@@ -115,7 +128,7 @@ const ProtobufCMessageDescriptor wickr__proto__key_exchange_set__exchange__descr
   "Wickr__Proto__KeyExchangeSet__Exchange",
   "wickr.proto",
   sizeof(Wickr__Proto__KeyExchangeSet__Exchange),
-  3,
+  4,
   wickr__proto__key_exchange_set__exchange__field_descriptors,
   wickr__proto__key_exchange_set__exchange__field_indices_by_name,
   1,  wickr__proto__key_exchange_set__exchange__number_ranges,

@@ -6,6 +6,7 @@ message key_exchange_set {
         required bytes identifier = 1;
         required uint64 key_id = 2;
         required bytes exchange_data = 3;
+        optional bytes kem_ctx = 4;
     }
 
     required bytes sender_pub = 1;

@@ -29,6 +29,7 @@
 #include "crypto_engine.h"
 #include "ecdsa.h"
 #include "eckey.h"
+#include "shared_secret.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -167,9 +168,9 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature,
 
  @param local the local elliptic curve private key
  @param peer the remote elliptic curve public key
- @return a buffer containing the shared secret computed with 'local' private key and 'peer' public key
+ @return a shared secret object containing the ECDH shared secret computed with 'local' private key and 'peer' public key
  */
-wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer);
+wickr_shared_secret_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer, const wickr_buffer_t *ctx);
 
 
 /**

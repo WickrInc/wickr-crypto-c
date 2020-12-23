@@ -3,6 +3,7 @@
 #include "memory.h"
 #include "private/identity_priv.h"
 #include "private/storage_priv.h"
+#include "pq_engine_ext.h"
 
 static wickr_ctx_gen_result_t *__wickr_ctx_gen_result_create(wickr_ctx_t *ctx, wickr_cipher_key_t *recovery_key, wickr_root_keys_t *root_keys)
 {
@@ -405,6 +406,7 @@ wickr_ctx_t *wickr_ctx_create(const wickr_crypto_engine_t engine, wickr_dev_info
     new_ctx->storage_keys = storage_keys;
     new_ctx->packet_header_key = packet_header_key;
     new_ctx->engine = engine;
+    new_ctx->enable_pq_keypairs = false;
     new_ctx->pkt_enc_version = DEFAULT_PKT_ENC_VERSION;
     
     if (!new_ctx->packet_header_key) {
@@ -711,7 +713,9 @@ wickr_ephemeral_keypair_t *wickr_ctx_ephemeral_keypair_gen(const wickr_ctx_t *ct
         return NULL;
     }
     
-    return wickr_ephemeral_keypair_generate_identity(&ctx->engine, key_id, ctx->id_chain->node);
+    wickr_ec_curve_t curve = ctx->enable_pq_keypairs ? EC_CURVE_P521_KYBER_HYBRID : ctx->engine.default_curve;
+    
+    return wickr_ephemeral_keypair_generate_identity(&ctx->engine, key_id, ctx->id_chain->node, curve);
 }
 
 /* Message Encode / Decode */
@@ -843,4 +847,12 @@ wickr_decode_result_t *wickr_ctx_decode_packet(const wickr_ctx_t *ctx, const wic
     }
     
     return wickr_decode_result_from_parse_result(packet->packet, &ctx->engine, packet->parse_result, ctx->dev_info->msg_proto_id, keypair, ctx->id_chain, packet->sender);
+}
+
+void wickr_ctx_use_pq_ephemeral_keypairs(wickr_ctx_t *ctx, bool enabled)
+{
+    if (!ctx) {
+        return;
+    }
+    ctx->enable_pq_keypairs = enabled;
 }

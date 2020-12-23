@@ -5,9 +5,12 @@
 static void test_exchange_equality(wickr_key_exchange_t *ex_a, wickr_key_exchange_t *ex_b)
 {
     SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_id, ex_b->exchange_id, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->cipher_text, ex_b->exchange_ciphertext->cipher_text, NULL));
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->iv, ex_b->exchange_ciphertext->iv, NULL));
-    SHOULD_EQUAL(ex_a->exchange_ciphertext->cipher.cipher_id, ex_a->exchange_ciphertext->cipher.cipher_id);
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->cipher_result->cipher_text, ex_b->exchange_ciphertext->cipher_result->cipher_text, NULL));
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->cipher_result->iv, ex_b->exchange_ciphertext->cipher_result->iv, NULL));
+    SHOULD_EQUAL(ex_a->exchange_ciphertext->cipher_result->cipher.cipher_id, ex_a->exchange_ciphertext->cipher_result->cipher.cipher_id);
+    if (ex_a->exchange_ciphertext->kem_ctx || ex_b->exchange_ciphertext->kem_ctx) {
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(ex_a->exchange_ciphertext->kem_ctx, ex_b->exchange_ciphertext->kem_ctx, NULL));
+    }
     SHOULD_EQUAL(ex_a->key_id, ex_b->key_id);
 }
 
@@ -27,7 +30,7 @@ static void test_exchange_set_equality(wickr_key_exchange_set_t *exs_a, wickr_ke
     }
 }
 
-static wickr_key_exchange_t *generate_random_exchange()
+static wickr_key_exchange_t *generate_random_exchange(bool has_kdf_ctx)
 {
     const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
     wickr_buffer_t *test_identifier = engine.wickr_crypto_engine_crypto_random(32);
@@ -37,9 +40,11 @@ static wickr_key_exchange_t *generate_random_exchange()
                                                                            engine.wickr_crypto_engine_crypto_random(32),
                                                                            engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.auth_tag_len));
     
+    wickr_ecdh_cipher_result_t *cipher_result = wickr_ecdh_cipher_result_create(test_exchange_data, has_kdf_ctx ? engine.wickr_crypto_engine_crypto_random(32) : NULL);
+    
     uint64_t test_key_id = rand() % (UINT64_MAX - 1) + 1;
     
-    return wickr_key_exchange_create(test_identifier, test_key_id, test_exchange_data);
+    return wickr_key_exchange_create(test_identifier, test_key_id, cipher_result);
 }
 
 DESCRIBE(key_exchange, "key exchange")
@@ -53,19 +58,21 @@ DESCRIBE(key_exchange, "key exchange")
                                                                            engine.wickr_crypto_engine_crypto_random(CIPHER_AES256_GCM.auth_tag_len));
     uint64_t test_key_id = 10000;
     
+    wickr_ecdh_cipher_result_t *cipher_result = wickr_ecdh_cipher_result_create(test_exchange_data, engine.wickr_crypto_engine_crypto_random(32));
+    
     wickr_key_exchange_t *test_exchange = NULL;
     
     IT("can be created from it's components")
     {
         SHOULD_BE_NULL(wickr_key_exchange_create(NULL, test_key_id, NULL));
-        SHOULD_BE_NULL(wickr_key_exchange_create(NULL, test_key_id, test_exchange_data));
+        SHOULD_BE_NULL(wickr_key_exchange_create(NULL, test_key_id, cipher_result));
         SHOULD_BE_NULL(wickr_key_exchange_create(test_identifier, test_key_id, NULL));
         
-        test_exchange = wickr_key_exchange_create(test_identifier, test_key_id, test_exchange_data);
+        test_exchange = wickr_key_exchange_create(test_identifier, test_key_id, cipher_result);
         SHOULD_NOT_BE_NULL(test_exchange);
         
         SHOULD_EQUAL(test_identifier, test_exchange->exchange_id);
-        SHOULD_EQUAL(test_exchange_data, test_exchange->exchange_ciphertext);
+        SHOULD_EQUAL(cipher_result, test_exchange->exchange_ciphertext);
         SHOULD_EQUAL(test_key_id, test_exchange->key_id);
     }
     END_IT
@@ -100,7 +107,7 @@ DESCRIBE(key_exchange_set, "key exchange set")
     SHOULD_NOT_BE_NULL(test_exchange_array);
     
     for (uint32_t i = 0; i < num_exchanges; i++) {
-        bool res = wickr_exchange_array_set_item(test_exchange_array, i, generate_random_exchange());
+        bool res = wickr_exchange_array_set_item(test_exchange_array, i, generate_random_exchange(i % 2 == 0));
         SHOULD_BE_TRUE(res);
     }
     

@@ -20,7 +20,7 @@ DESCRIBE(node_tests, "node.c")
     
     wickr_identity_chain_t *test_id_chain = wickr_identity_chain_create(root_id, node_id);
     
-    wickr_ephemeral_keypair_t *test_keypair = wickr_ephemeral_keypair_generate_identity(&engine, 1, node_id);
+    wickr_ephemeral_keypair_t *test_keypair = wickr_ephemeral_keypair_generate_identity(&engine, 1, node_id, engine.default_curve);
     
     IT("should fail generation unless all fields are provided")
     {
@@ -175,7 +175,7 @@ DESCRIBE(node_tests, "node.c")
     
     IT("should allow you to rotate the key pair it holds")
     {
-        wickr_ephemeral_keypair_t *another_keypair = wickr_ephemeral_keypair_generate_identity(&engine, 2, node_id);
+        wickr_ephemeral_keypair_t *another_keypair = wickr_ephemeral_keypair_generate_identity(&engine, 2, node_id, engine.default_curve);
         
         SHOULD_BE_TRUE(wickr_node_rotate_keypair(node, another_keypair, false));
         

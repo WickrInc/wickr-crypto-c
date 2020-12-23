@@ -10,3 +10,6 @@
 [submodule "test/cspec"]
 	path = test/cspec
 	url = https://github.com/arnaudbrejeon/cspec
+[submodule "third-party/kyber/kyber"]
+	path = third-party/kyber/kyber
+	url = https://github.com/pq-crystals/kyber.git

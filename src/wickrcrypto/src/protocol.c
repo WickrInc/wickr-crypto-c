@@ -113,7 +113,7 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
         return NULL;
     }
     
-    wickr_cipher_result_t *cipher_result = wickr_ecdh_cipher_ctx_cipher(ecdh_ctx, data_to_wrap, receiver->ephemeral_keypair->ec_key, kdf_params);
+    wickr_ecdh_cipher_result_t *cipher_result = wickr_ecdh_cipher_ctx_cipher(ecdh_ctx, data_to_wrap, receiver->ephemeral_keypair->ec_key, kdf_params);
     wickr_kdf_meta_destroy(&kdf_params);
     wickr_ecdh_cipher_ctx_destroy(&ecdh_ctx);
     
@@ -124,14 +124,14 @@ wickr_key_exchange_t *wickr_key_exchange_create_with_data(const wickr_crypto_eng
     wickr_buffer_t *node_id_copy = wickr_buffer_copy(receiver->id_chain->node->identifier);
     
     if (!node_id_copy) {
-        wickr_cipher_result_destroy(&cipher_result);
+        wickr_ecdh_cipher_result_destroy(&cipher_result);
         return NULL;
     }
     
     wickr_key_exchange_t *exchange = wickr_key_exchange_create(node_id_copy, receiver->ephemeral_keypair->identifier, cipher_result);
     
     if (!exchange) {
-        wickr_cipher_result_destroy(&cipher_result);
+        wickr_ecdh_cipher_result_destroy(&cipher_result);
         wickr_buffer_destroy(&node_id_copy);
     }
     
@@ -209,7 +209,7 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
     }
     
     wickr_ecdh_cipher_ctx_t *ecdh_ctx = wickr_ecdh_cipher_ctx_create_key(*engine, copy_local_key,
-                                                                         exchange->exchange_ciphertext->cipher);
+                                                                         exchange->exchange_ciphertext->cipher_result->cipher);
     
     if (!ecdh_ctx) {
         wickr_ec_key_destroy(&copy_local_key);
@@ -218,7 +218,7 @@ wickr_buffer_t *wickr_key_exchange_derive_data(const wickr_crypto_engine_t *engi
     
     wickr_kdf_meta_t *kdf_params = __wickr_key_exchange_get_kdf_meta(sender,
                                                                      receiver,
-                                                                     exchange->exchange_ciphertext->cipher,
+                                                                     exchange->exchange_ciphertext->cipher_result->cipher,
                                                                      psk,
                                                                      version);
     

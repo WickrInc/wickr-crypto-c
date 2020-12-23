@@ -11,7 +11,7 @@ bool wickr_transport_packet_meta_is_equal(wickr_transport_packet_meta_t a, wickr
     
     switch (a.body_type) {
         case TRANSPORT_PAYLOAD_TYPE_HANDSHAKE:
-            return a.body_meta.handshake.flags == a.body_meta.handshake.flags ||
+            return a.body_meta.handshake.flags == b.body_meta.handshake.flags ||
                 a.body_meta.handshake.protocol_version == b.body_meta.handshake.protocol_version;
         case TRANSPORT_PAYLOAD_TYPE_CIPHERTEXT:
             return a.body_meta.data.sequence_number == b.body_meta.data.sequence_number;

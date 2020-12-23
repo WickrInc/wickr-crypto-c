@@ -952,7 +952,7 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature, const wickr_ec_key
     return result == 1 ? true : false;
 }
 
-wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer)
+wickr_shared_secret_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer, const wickr_buffer_t *ctx)
 {
     if (!local || !peer) {
         return NULL;
@@ -978,37 +978,37 @@ wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wic
     }
     
     /* Allocate a new PKEY_CTX */
-    EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new(local_key, NULL);
+    EVP_PKEY_CTX *pkey_ctx = EVP_PKEY_CTX_new(local_key, NULL);
     
-    if (!ctx) {
+    if (!pkey_ctx) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
         return NULL;
     }
     
     /* Initialize the PKEY_CTX to perform the ECDH derivation */
-    if (1 != EVP_PKEY_derive_init(ctx)) {
+    if (1 != EVP_PKEY_derive_init(pkey_ctx)) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
+        EVP_PKEY_CTX_free(pkey_ctx);
         return NULL;
     }
     
     /* Set the peer key */
-    if (1 != EVP_PKEY_derive_set_peer(ctx, peer_key)) {
+    if (1 != EVP_PKEY_derive_set_peer(pkey_ctx, peer_key)) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
+        EVP_PKEY_CTX_free(pkey_ctx);
         return NULL;
     }
     
     size_t shared_secret_len = 0;
     
     /* Determine the length of the shared secret so we can allocate a buffer for it */
-    if (1 != EVP_PKEY_derive(ctx, NULL, &shared_secret_len)) {
+    if (1 != EVP_PKEY_derive(pkey_ctx, NULL, &shared_secret_len)) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
+        EVP_PKEY_CTX_free(pkey_ctx);
         return NULL;
     }
     
@@ -1017,24 +1017,30 @@ wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wic
     if (!shared_secret_buffer) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
+        EVP_PKEY_CTX_free(pkey_ctx);
         return NULL;
     }
     
     /* Derive the ECDH shared secret */
-    if (1 != EVP_PKEY_derive(ctx, shared_secret_buffer->bytes, &shared_secret_buffer->length)) {
+    if (1 != EVP_PKEY_derive(pkey_ctx, shared_secret_buffer->bytes, &shared_secret_buffer->length)) {
         EVP_PKEY_free(local_key);
         EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
+        EVP_PKEY_CTX_free(pkey_ctx);
         wickr_buffer_destroy_zero(&shared_secret_buffer);
         return NULL;
     }
     
     EVP_PKEY_free(local_key);
     EVP_PKEY_free(peer_key);
-    EVP_PKEY_CTX_free(ctx);
+    EVP_PKEY_CTX_free(pkey_ctx);
     
-    return shared_secret_buffer;
+    wickr_shared_secret_t *shared_secret = wickr_shared_secret_create(shared_secret_buffer, NULL);
+    
+    if (!shared_secret) {
+        wickr_buffer_destroy_zero(&shared_secret_buffer);
+    }
+    
+    return shared_secret;
 }
 
 wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)
