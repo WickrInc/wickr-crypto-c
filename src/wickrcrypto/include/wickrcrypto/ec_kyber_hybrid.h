@@ -36,9 +36,6 @@ wickr_ec_key_t *wickr_ec_key_hybrid_create_with_components(wickr_ec_key_t *ec_ke
 
 wickr_ec_key_t *wickr_ec_key_hybrid_get_ec_keypair(const wickr_ec_key_t *hbrd_key, wickr_ec_key_import_func import_func);
 
-wickr_kyber_pub_key_t *wickr_ec_key_hybrid_buffer_get_kyber_pub(const wickr_buffer_t *key_buffer);
-
-wickr_kyber_secret_key_t *wickr_ec_key_hybrid_buffer_get_kyber_pri(const wickr_buffer_t *key_buffer);
 
 wickr_kyber_pub_key_t *wickr_ec_key_hybrid_get_kyber_pub(const wickr_ec_key_t *hbrd_key);
 

@@ -28,6 +28,7 @@
 #include "test_transport_packet.h"
 #include "test_transport_handshake.h"
 #include "test_transport_root_key.h"
+#include "test_ec_kyber_hybrid.h"
 #include "openssl_suite.h"
 
 #ifdef FIPS
@@ -84,6 +85,11 @@ void run_crypto_engine_tests(CSpecOutputStruct *output)
 #ifdef FIPS
     CSpec_Run(DESCRIPTION(openssl_fips), output);
 #endif
+}
+
+void run_pq_hybrid_tests(CSpecOutputStruct *output)
+{
+    CSpec_Run(DESCRIPTION(wickr_ec_key_hybrid), output);
 }
 
 void run_stream_tests(CSpecOutputStruct *output)
@@ -146,11 +152,12 @@ int main(int argc, char *argv[])
     run_primitive_tests(output);
     run_crypto_engine_tests(output);
     run_ecdh_cipher_tests(output);
-    run_stream_tests(output);
-    run_transport_tests(output);
-    run_messaging_protocol_tests(output);
-    run_context_api_tests(output);
-    run_kdf_tests(output);
+    run_pq_hybrid_tests(output);
+//    run_stream_tests(output);
+//    run_transport_tests(output);
+//    run_messaging_protocol_tests(output);
+//    run_context_api_tests(output);
+//    run_kdf_tests(output);
     
 #ifdef FIPS
     openssl_thread_cleanup();

@@ -4,6 +4,17 @@
 #include "crypto_engine.h"
 #include "string.h"
 
+bool ec_key_is_equal(const wickr_ec_key_t *key_a, const wickr_ec_key_t *key_b)
+{
+    if (!key_a || !key_b) {
+        return false;
+    }
+    
+    return wickr_buffer_is_equal(key_a->pub_data, key_b->pub_data, NULL) &&
+    wickr_buffer_is_equal(key_a->pri_data, key_b->pri_data, NULL) &&
+    memcmp(&key_a->curve, &key_b->curve, sizeof(wickr_ec_curve_t)) == 0;
+}
+
 DESCRIBE(wickr_ec_key, "ec key data structure")
 {
     /* Not using real key data since these tests are meant only to test the ec_key data structure */
@@ -34,9 +45,11 @@ DESCRIBE(wickr_ec_key, "ec key data structure")
         wickr_ec_key_t *key_copy = wickr_ec_key_copy(test_key);
         SHOULD_NOT_BE_NULL(key_copy);
         
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_key->pub_data, key_copy->pub_data, NULL));
-        SHOULD_BE_TRUE(wickr_buffer_is_equal(test_key->pri_data, key_copy->pri_data, NULL));
-        SHOULD_BE_TRUE(memcmp(&test_key->curve, &key_copy->curve, sizeof(wickr_ec_curve_t)) == 0);
+        /* Verify it was a deep copy */
+        SHOULD_NOT_EQUAL(key_copy->pri_data, test_key->pri_data);
+        SHOULD_NOT_EQUAL(key_copy->pub_data, test_key->pub_data);
+        
+        SHOULD_BE_TRUE(ec_key_is_equal(key_copy, test_key));
         
         wickr_ec_key_destroy(&key_copy);
     }
