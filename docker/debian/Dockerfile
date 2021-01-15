@@ -1,10 +1,10 @@
-FROM node:10-stretch-slim
+FROM node:15-stretch-slim
 
 ADD . /usr/share/wickr-crypto-c
 WORKDIR /usr/share/wickr-crypto-c
 
 RUN apt-get update && apt-get -qq -y install curl git build-essential autoconf automake bison libpcre3-dev > /dev/null
-RUN git clone https://github.com/swig/swig.git && cd swig && git checkout rel-4.0.1 && ./autogen.sh && ./configure && make -j$(nproc --all) && make install
+RUN git clone https://github.com/yegorich/swig.git && cd swig && git checkout 0ea6a3bdbf3184d230bf17d2c17704dbc2ec7aac && ./autogen.sh && ./configure && make && make install
 
 # CMake Upgrade 
 

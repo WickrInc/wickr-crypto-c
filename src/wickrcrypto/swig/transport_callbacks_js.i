@@ -188,6 +188,6 @@ $1 = {
     .on_identity_verify = &WickrTransportIdentityValidationCallback,
 };
 
-$2 = new Persistent<Object>(Isolate::GetCurrent(), $input->ToObject(v8::Isolate::GetCurrent()));
+$2 = new Persistent<Object>(Isolate::GetCurrent(), SWIGV8_TO_OBJECT($input));
 
 %}

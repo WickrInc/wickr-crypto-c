@@ -1,4 +1,4 @@
-for DISTRO in debian ubuntu_bionic centos7 alpine
+for DISTRO in centos8 debian alpine ubuntu_bionic ubuntu_focal
 do
     docker build --quiet -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
     echo "Building distribution package for ${DISTRO}"
