@@ -18,7 +18,7 @@
 }
 #elif defined(SWIGJAVASCRIPT)
 %typemap(ret) SWIGTYPE *dev_info, SWIGTYPE *id_chain, SWIGTYPE *storage_keys, SWIGTYPE *packet_header_key, SWIGTYPE *recovery_key, SWIGTYPE *ctx, SWIGTYPE *root_keys, SWIGTYPE *recovery_key, SWIGTYPE *packet, SWIGTYPE *sender, SWIGTYPE *parse_result, SWIGTYPE *packet_key, SWIGTYPE *encoded_packet, SWIGTYPE *signature, SWIGTYPE *header, SWIGTYPE *key_exchange, SWIGTYPE *enc_payload, SWIGTYPE *payload_key, SWIGTYPE *decrypted_payload {
-    if (jsresult->IsObject() && jsresult->ToObject(v8::Isolate::GetCurrent())->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("parent"), info.Holder()).IsNothing()) {
+    if (jsresult->IsObject() && SWIGV8_TO_OBJECT(jsresult)->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("parent"), info.Holder()).IsNothing()) {
         SWIG_exception_fail(SWIG_ERROR, "Could not set parent object for getter");
     }
 }

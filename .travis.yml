@@ -88,8 +88,8 @@ jobs:
 before_install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" && "$OPENSSL" == "BUILD" ]]; then export LOCAL_OPTIONS="-DBUILD_OPENSSL=true";
   fi
-- if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/tomleavy/swig.git;
-  cd swig; git checkout -t origin/pr/new-node-fixes; ./autogen.sh; ./configure; make
+- if [[ "${NODE}" == "true" || "${JAVA}" == "true" ]]; then git clone https://github.com/yegorich/swig.git;
+  cd swig; git checkout 0ea6a3bdbf3184d230bf17d2c17704dbc2ec7aac; ./autogen.sh; ./configure; make
   -j2 && sudo make install; cd ../; fi
 - if [[ "${JAVA}" == "true" ]]; then export LOCAL_OPTIONS="-DBUILLD_JAVA=true"; fi
 - if [[ "${IOS}" == "true" ]]; then export LOCAL_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake";
