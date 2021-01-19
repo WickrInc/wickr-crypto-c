@@ -1,11 +1,8 @@
 {
     "name": "wickrcrypto",
     "dependencies": {
-        "node-pre-gyp": "^0.12.0"
+        "node-pre-gyp": "^0.17.0"
     },
-    "bundledDependencies": [
-        "node-pre-gyp"
-    ],
     "devDependencies": {
         "aws-sdk": "^2.644.0",
         "expect.js": "0.3.1",
@@ -15,7 +12,7 @@
     "version": "1.13.10",
     "main": "node/lib/wickrcrypto.node",
     "scripts": {
-        "install": "node-pre-gyp install 2> /dev/null || ./node_install.sh",
+        "install": "node-pre-gyp install --fallback-to-build",
         "test": "./node_modules/.bin/mocha src/wickrcrypto/swig/node/test"
     },
     "binary": {
