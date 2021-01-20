@@ -23,10 +23,7 @@
     "engines": {
         "node": ">=8"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/WickrInc/wickr-crypto-c.git"
-    },
+    "repository": "github:WickrInc/wickr-crypto-c",
     "author": "Tom Leavy",
     "contributors": [
         "Tom Leavy <tom@wickr.com>"
