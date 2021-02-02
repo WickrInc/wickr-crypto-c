@@ -61,6 +61,10 @@ jobs:
     - NODE=true
   - os: linux
     dist: bionic
+    env:
+    - PHP=true
+  - os: linux
+    dist: bionic
     if: tag IS present
     env:
     - NODE_DISTRO=true
@@ -97,7 +101,8 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" && "$NODE" == "true" ]]; then nvm install ${NODE_VER};
   fi
 script:
-- "export OSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME}; export OSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS}; if [[ ! -z \"${ANDROID}\" ]]; then\n  ./build_android_docker.sh\nelif [[ ! -z \"${NODE}\"
+- "export OSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME}; export OSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS}; if [[ ! -z \"${ANDROID}\" ]]; then\n  ./build_android_docker.sh\nelif [[ ! -z \"${PHP}\"
+  ]]; then\n ./build_php_docker.sh\nelif [[ ! -z \"${NODE}\"
   ]]; then\n\n  npm install --build-from-source\n  npm test\nelif [[ ! -z \"${NODE_DISTRO}\"
   ]]; then\n  ./build_node_dist.sh\nelse\n  mkdir build && cd build\n  cmake ${LOCAL_OPTIONS}
   -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=true -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS} -DFIPS=${FIPS}
