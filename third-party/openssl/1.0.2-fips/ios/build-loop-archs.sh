@@ -43,14 +43,8 @@ do
   fi
 
   # Determine platform, override arch for tvOS builds
-  if [[ "${ARCH}" == "i386" || "${ARCH}" == "x86_64" ]]; then
+  if [[ "${IS_SIMULATOR}" == true ]]; then
     PLATFORM="iPhoneSimulator"
-  elif [ "${ARCH}" == "tv_x86_64" ]; then
-    ARCH="x86_64"
-    PLATFORM="AppleTVSimulator"
-  elif [ "${ARCH}" == "tv_arm64" ]; then
-    ARCH="arm64"
-    PLATFORM="AppleTVOS"
   else
     PLATFORM="iPhoneOS"
   fi

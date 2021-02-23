@@ -8,8 +8,9 @@ cd build_device
 cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
-    -DIOS_PLATFORM=OS \
+    -DIOS_PLATFORM=OS64 \
     -DFIPS=${FIPS} \
+    -DIOS_DEPLOYMENT_TARGET=11.0 \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
     -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
     -DDEPS_ONLY=true \
@@ -18,18 +19,26 @@ make
 make install
 
 cd ..
+
+if [ "$(uname -m)" == "x86_64" ]; then
+    SIM_ARCH=SIMULATOR64
+else
+    SIM_ARCH=SIMULATORARM64
+fi
+
 mkdir build_sim
 cd build_sim
 cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DBUILD_OPENSSL=true \
     -DCMAKE_BUILD_TYPE=Release \
-    -DIOS_PLATFORM=SIMULATOR \
+    -DIOS_PLATFORM=${SIM_ARCH} \
+    -DIOS_DEPLOYMENT_TARGET=11.0 \
     -DFIPS=${FIPS} \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
     -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_sim ../
-make
+make 
 make install
 cd ..
 mkdir -p output_fat/lib

@@ -39,21 +39,23 @@ do
 
   # Determine platform
 
-  if [[ "${ARCH}" == "i386" ]]; then
+  if [[ "${IS_SIMULATOR}" == true ]]; then
     PLATFORM="iPhoneSimulator"
+  else
+    PLATFORM="iPhoneOS"
+  fi
+
+  if [[ "${ARCH}" == "i386" ]]; then
     TARGET="iphoneos-cross"
     ARCH_FLAG="-arch i386"
   elif [[ "${ARCH}" == "x86_64" ]]; then
-    PLATFORM="iPhoneSimulator"
     TARGET="iphoneos-cross"
     ARCH_FLAG="-arch x86_64"
   elif [[ "${ARCH}" == armv7 ]]; then
     TARGET="ios-cross"
-    PLATFORM="iPhoneOS"
     ARCH_FLAG=""
   else
     TARGET="ios64-cross"
-    PLATFORM="iPhoneOS"
     ARCH_FLAG=""
   fi
 
