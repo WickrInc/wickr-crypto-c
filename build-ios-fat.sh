@@ -45,10 +45,10 @@ mkdir -p output_fat/lib
 mkdir -p output_fat/include
 cp -R output_device/include output_fat
 rm -rf output_fat/include/wickrcrypto
-lipo -create output_device/lib/libprotobuf-c.a output_sim/lib/libprotobuf-c.a -output output_fat/lib/libprotobuf-c.a
-lipo -create output_device/lib/libcrypto.a output_sim/lib/libcrypto.a -output output_fat/lib/libcrypto.a 
-lipo -create output_device/lib/libscrypt.a output_sim/lib/libscrypt.a -output output_fat/lib/libscrypt.a
-lipo -create output_device/lib/libbcrypt.a output_sim/lib/libbcrypt.a -output output_fat/lib/libbcrypt.a
+xcodebuild -create-xcframework -library output_device/lib/libprotobuf-c.a -library output_sim/lib/libprotobuf-c.a -output output_fat/lib/libprotobuf-c.xcframework
+xcodebuild -create-xcframework -library output_device/lib/libcrypto.a -library output_sim/lib/libcrypto.a -output output_fat/lib/libcrypto.xcframework
+xcodebuild -create-xcframework -library output_device/lib/libscrypt.a -library output_sim/lib/libscrypt.a -output output_fat/lib/libscrypt.xcframework
+xcodebuild -create-xcframework -library output_device/lib/libbcrypt.a -library output_sim/lib/libbcrypt.a -output output_fat/lib/libbcrypt.xcframework
 
 if [ ${FIPS} == true ]; then
     mkdir -p output_fat/bin
