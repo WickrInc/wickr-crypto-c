@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoCFips"
-  s.version      = "1.13.10"
+  s.version      = "1.13.11"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src/**/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.a", "output_fat/lib/libscrypt.a", "output_fat/lib/libprotobuf-c.a", "build_device/third-party/openssl/1.0.2-fips/fips_output/lib/fips_premain.c"
+  s.source_files  = "src/**/*.{h,c}", "output_fat/include/**/*.h", "output_fat/lib/libbcrypt.xcframework", "output_fat/lib/libscrypt.xcframework", "output_fat/lib/libprotobuf-c.xcframework", "build_device/third-party/openssl/1.0.2-fips/fips_output/lib/fips_premain.c"
   s.preserve_paths = "src/**/*.{h,c}", "output_fat/**/*", "build_device/**/*"
   s.private_header_files = "src/protobuf/gen/*.h", "src/wickrcrypto/include/wickrcrypto/private/*.h", "src/wickrcrypto/include/wickrcrypto/openssl_*suite.h", "output_fat/include/**/*.h"
   
@@ -132,6 +132,8 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   s.module_name = 'WickrCryptoC'
-  s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DFIPS', 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoCFips/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoCFips/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoCFips/output_fat/include' }
+  s.vendored_frameworks = 'output_fat/lib/libbcrypt.xcframework', 'output_fat/lib/libscrypt.xcframework', 'output_fat/lib/libprotobuf-c.xcframework', 'output_fat/lib/libcrypto.xcframework'
+  s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DFIPS', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoCFips/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoCFips/output_fat/include' }
+
   s.script_phase = { :name => 'Openssl Fips Incore', :script => 'if [ ! -f ${PODS_ROOT}/WickrCryptoCFips/output_fat/bin/incore_macho ]; then exit 0; fi; ${PODS_ROOT}/WickrCryptoCFips/output_fat/bin/incore_macho --debug -dylib "$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH"' }    
 end
