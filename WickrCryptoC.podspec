@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoC"
-  s.version      = "1.13.10"
+  s.version      = "1.13.11"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
@@ -120,6 +120,7 @@ Pod::Spec.new do |s|
   # s.library   = "iconv"
   s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap"
   s.script_phase = { :name => 'Openssl Fips Incore', :script => 'if [ ! -f ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho ]; then exit 0; fi; ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho --debug -dylib "$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH"' } 
+  s.vendored_frameworks = 'output_fat/lib/libbcrypt.xcframework', 'output_fat/lib/libscrypt.xcframework', 'output_fat/lib/libprotobuf-c.xcframework', 'output_fat/lib/libcrypto.xcframework'
 
   s.prepare_command = <<-CMD
         ./build-ios-fat.sh
@@ -132,6 +133,6 @@ Pod::Spec.new do |s|
 
   # s.requires_arc = true
 
-  s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DNO_FIPS', 'OTHER_LDFLAGS' => '$(inherited) -L${PODS_ROOT}/WickrCryptoC/output_fat/lib -lcrypto -lbcrypt -lscrypt -lprotobuf-c', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
+  s.pod_target_xcconfig = { 'OTHER_CFLAGS' => '-DNO_FIPS', 'HEADER_SEARCH_PATHS' => '$(inherited) ${PODS_ROOT}/WickrCryptoC/src/wickrcrypto/include/wickrcrypto ${PODS_ROOT}/WickrCryptoC/output_fat/include' }
     
 end
