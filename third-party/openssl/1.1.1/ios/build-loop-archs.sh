@@ -54,6 +54,9 @@ do
   elif [[ "${ARCH}" == armv7 ]]; then
     TARGET="ios-cross"
     ARCH_FLAG=""
+  elif [[ "${ARCH}" == arm64 && "${IS_SIMULATOR}" == true ]]; then
+    TARGET="ios-sim-cross-arm64"
+    ARCH_FLAG=""
   else
     TARGET="ios64-cross"
     ARCH_FLAG=""
@@ -64,6 +67,8 @@ do
   export CROSS_SDK="${PLATFORM}${SDKVERSION}.sdk"
   export CC=clang
   export PATH="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:$PATH"
+
+  export OPENSSL_LOCAL_CONFIG_DIR=${SOURCEDIR}/conf
 
   # Prepare TARGETDIR
   echo "Building to target directory: ${TARGETDIR}"
