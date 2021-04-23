@@ -143,6 +143,39 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
+     Encrypt an open file
+     
+     @param fin read data to be encrypted from this FILE pointer
+     @param key the key to use for decryption
+     @param fout write encrypted data to this FILE pointer
+     @param only_auth_ciphers if true, only authenticated ciphers may be used for decryption
+     @return true if the decryption operation succeeds
+     
+     */
+    bool (*wickr_crypto_engine_encrypt_ofile)(FILE *fin,
+                                             const wickr_cipher_key_t *key,
+                                             FILE *fout);
+    
+    /**
+     @ingroup wickr_crypto_engine
+     
+     Decrypt an open file
+     
+     @param fin read encrypted data from this FILE pointer
+     @param key the key to use for decryption
+     @param fout write decrypted data to this FILE pointer
+     @param only_auth_ciphers if true, only authenticated ciphers may be used for decryption
+     @return true if the decryption operation succeeds
+     
+     */
+    bool (*wickr_crypto_engine_decrypt_ofile)(FILE *fin,
+                                             const wickr_cipher_key_t *key,
+                                             FILE *fout,
+                                             bool only_auth_ciphers);
+
+    /**
+     @ingroup wickr_crypto_engine
+     
      Calculate a hash of a buffer using an optional salt value
      
      @param buffer the buffer to hash
