@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoC"
-  s.version      = "1.13.12"
+  s.version      = "1.14.0"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "10.0"
+  s.platform     = :ios, "11.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "8.0"
@@ -120,6 +120,7 @@ Pod::Spec.new do |s|
   # s.library   = "iconv"
   s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap"
   s.script_phase = { :name => 'Openssl Fips Incore', :script => 'if [ ! -f ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho ]; then exit 0; fi; ${PODS_ROOT}/WickrCryptoC/output_fat/bin/incore_macho --debug -dylib "$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH"' } 
+
   s.vendored_frameworks = 'output_fat/lib/libbcrypt.xcframework', 'output_fat/lib/libscrypt.xcframework', 'output_fat/lib/libprotobuf-c.xcframework', 'output_fat/lib/libcrypto.xcframework'
 
   s.prepare_command = <<-CMD
