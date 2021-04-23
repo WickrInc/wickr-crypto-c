@@ -72,7 +72,7 @@ Create a storage key set from a previously serialized storage key set
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated storage key set or N\+U\+LL if parsing fails 
+a newly allocated storage key set or NULL if parsing fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__storage__keys_ga2c1494802577d025d70bf553c43da344}\label{group__wickr__storage__keys_ga2c1494802577d025d70bf553c43da344}} 
 \index{Wickr\_storage\_keys@{Wickr\_storage\_keys}!wickr\_storage\_keys\_destroy@{wickr\_storage\_keys\_destroy}}
@@ -101,5 +101,5 @@ Serialize a storage key set to a buffer
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a buffer containing the properties of storage keys in the following format\+: $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+ID (L\+O\+C\+AL) $\vert$ K\+E\+Y\+\_\+\+D\+A\+TA (L\+O\+C\+AL) $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+ID (R\+E\+M\+O\+TE) $\vert$ K\+E\+Y\+\_\+\+D\+A\+TA (R\+E\+M\+O\+TE) $\vert$ 
+a buffer containing the properties of storage keys in the following format\+: $\vert$ CIPHER\+\_\+\+ID (LOCAL) $\vert$ KEY\+\_\+\+DATA (LOCAL) $\vert$ CIPHER\+\_\+\+ID (REMOTE) $\vert$ KEY\+\_\+\+DATA (REMOTE) $\vert$ 
 \end{DoxyReturn}

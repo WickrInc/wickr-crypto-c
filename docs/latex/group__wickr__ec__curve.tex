@@ -38,7 +38,7 @@ Find an EC key by numerical identifier
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the requested curve information, or N\+U\+LL if no matching information can be found 
+the requested curve information, or NULL if no matching information can be found 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ec__curve_gaf12eff11d78b2ce9ff32710406d58d4f}\label{group__wickr__ec__curve_gaf12eff11d78b2ce9ff32710406d58d4f}} 
 \index{wickr\_ec\_curve\_t@{wickr\_ec\_curve\_t}!wickr\_ec\_key\_copy@{wickr\_ec\_key\_copy}}
@@ -64,7 +64,7 @@ a newly allocated EC key holding a deep copy of the properties of \textquotesing
 
 Create an Elliptic Curve Keypair from components
 
-N\+O\+TE\+: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-\/generated components. A crypto engine is required to generate random keypairs
+NOTE\+: This function does not have the capability to generate key pair information, it simply constructs the data structure using pre-\/generated components. A crypto engine is required to generate random keypairs
 
 
 \begin{DoxyParams}{Parameters}
@@ -72,7 +72,7 @@ N\+O\+TE\+: This function does not have the capability to generate key pair info
 \hline
 {\em pub\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation \\
 \hline
-{\em pri\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation. May be N\+U\+LL to represent a public key \\
+{\em pri\+\_\+data} & see \textquotesingle{}\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key}}\textquotesingle{} property documentation. May be NULL to represent a public key \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

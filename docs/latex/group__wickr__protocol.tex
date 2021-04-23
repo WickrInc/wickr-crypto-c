@@ -12,9 +12,9 @@ struct \mbox{\hyperlink{structwickr__decode__result}{wickr\+\_\+decode\+\_\+resu
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}{O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}~2
+\#define \mbox{\hyperlink{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}{OLDEST\+\_\+\+PACKET\+\_\+\+VERSION}}~2
 \item 
-\#define \mbox{\hyperlink{group__wickr__protocol_ga89ff9f93c5494db53d3ff27353989862}{C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}~4
+\#define \mbox{\hyperlink{group__wickr__protocol_ga89ff9f93c5494db53d3ff27353989862}{CURRENT\+\_\+\+PACKET\+\_\+\+VERSION}}~4
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -65,13 +65,13 @@ void \mbox{\hyperlink{group__wickr__protocol_ga94154ab44a6c2e9b97a115e37416efe1}
 \index{Wickr Protocol@{Wickr Protocol}!CURRENT\_PACKET\_VERSION@{CURRENT\_PACKET\_VERSION}}
 \index{CURRENT\_PACKET\_VERSION@{CURRENT\_PACKET\_VERSION}!Wickr Protocol@{Wickr Protocol}}
 \doxysubsubsection{\texorpdfstring{CURRENT\_PACKET\_VERSION}{CURRENT\_PACKET\_VERSION}}
-{\footnotesize\ttfamily \#define C\+U\+R\+R\+E\+N\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON~4}
+{\footnotesize\ttfamily \#define CURRENT\+\_\+\+PACKET\+\_\+\+VERSION~4}
 
 The most recent version of the protocol is version 4 \mbox{\Hypertarget{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}\label{group__wickr__protocol_gad269883d0b8b26c4fa52da595ef5ddf7}} 
 \index{Wickr Protocol@{Wickr Protocol}!OLDEST\_PACKET\_VERSION@{OLDEST\_PACKET\_VERSION}}
 \index{OLDEST\_PACKET\_VERSION@{OLDEST\_PACKET\_VERSION}!Wickr Protocol@{Wickr Protocol}}
 \doxysubsubsection{\texorpdfstring{OLDEST\_PACKET\_VERSION}{OLDEST\_PACKET\_VERSION}}
-{\footnotesize\ttfamily \#define O\+L\+D\+E\+S\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+V\+E\+R\+S\+I\+ON~2}
+{\footnotesize\ttfamily \#define OLDEST\+\_\+\+PACKET\+\_\+\+VERSION~2}
 
 The oldest packet version supported is version 2 
 
@@ -106,7 +106,7 @@ Create a negative decode result
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated decode result with error \textquotesingle{}decode\+\_\+error\textquotesingle{} and N\+U\+LL for other properties 
+a newly allocated decode result with error \textquotesingle{}decode\+\_\+error\textquotesingle{} and NULL for other properties 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga633aaf4cb6159be0110401f06dae458c}\label{group__wickr__protocol_ga633aaf4cb6159be0110401f06dae458c}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\_decode\_result\_create\_success@{wickr\_decode\_result\_create\_success}}
@@ -149,7 +149,7 @@ Decode a parsed packet payload using a fetched ephemeral decode\+\_\+key
 
 For more information see Wickr white paper (Receiving a Message 6-\/9)
 
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+NOTE\+: This is a low level function that should not be called directly from this API if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} API instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
@@ -177,27 +177,27 @@ a decode result containing decrypted packet information if decode succeeded
 \doxysubsubsection{\texorpdfstring{wickr\_key\_exchange\_create\_with\_data()}{wickr\_key\_exchange\_create\_with\_data()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange\+\_\+t}}$\ast$ wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{engine,  }\item[{const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$}]{sender,  }\item[{const \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node\+\_\+t}} $\ast$}]{receiver,  }\item[{\mbox{\hyperlink{structwickr__ec__key}{wickr\+\_\+ec\+\_\+key\+\_\+t}} $\ast$}]{packet\+\_\+exchange\+\_\+key,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{data\+\_\+to\+\_\+wrap,  }\item[{\mbox{\hyperlink{structwickr__cipher}{wickr\+\_\+cipher\+\_\+t}}}]{exchange\+\_\+cipher,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{psk,  }\item[{uint8\+\_\+t}]{version }\end{DoxyParamCaption})}
 
-Compute a key exchange given sender/receiver information and bytes to protect (Sender Encoding) This method at a high level creates a shared secret between a sender and receiver (E\+C\+DH), runs the shared secret through a kdf (H\+K\+DF) and then uses the resulting secret as a cipher key to encrypt bytes of data. \textquotesingle{}wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+packet\+\_\+key\textquotesingle{} also exists as a version of this function to specifically wrap cipher\+\_\+keys instead of raw data
+Compute a key exchange given sender/receiver information and bytes to protect (Sender Encoding) This method at a high level creates a shared secret between a sender and receiver (ECDH), runs the shared secret through a kdf (HKDF) and then uses the resulting secret as a cipher key to encrypt bytes of data. \textquotesingle{}wickr\+\_\+key\+\_\+exchange\+\_\+create\+\_\+with\+\_\+packet\+\_\+key\textquotesingle{} also exists as a version of this function to specifically wrap cipher\+\_\+keys instead of raw data
 
 See Wickr white paper \textquotesingle{}Prepare Key Exchange Data\textquotesingle{} for more information
 
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+NOTE\+: This is a low level function that should not be called directly from this API if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} API instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine supporting E\+C\+DH key exchanges \\
+{\em engine} & a crypto engine supporting ECDH key exchanges \\
 \hline
 {\em sender} & the identity chain of the sender \\
 \hline
 {\em receiver} & the node this key exchange is destined for \\
 \hline
-{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
+{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
 \hline
 {\em data\+\_\+to\+\_\+wrap} & This is the data we are protecting by the output of the key exchange \\
 \hline
 {\em exchange\+\_\+cipher} & the cipher that the exchange should use protect \textquotesingle{}data\+\_\+to\+\_\+wrap\textquotesingle{} with \\
 \hline
-{\em psk} & optional pre-\/shared key data to put into the \textquotesingle{}salt\textquotesingle{} field of H\+K\+DF \\
+{\em psk} & optional pre-\/shared key data to put into the \textquotesingle{}salt\textquotesingle{} field of HKDF \\
 \hline
 {\em version} & the version of the packet being generated \\
 \hline
@@ -215,21 +215,21 @@ Compute a key exchange given sender/receiver information and a packet key to pro
 
 See Wickr white paper \textquotesingle{}Prepare Key Exchange Data\textquotesingle{} for more information
 
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+NOTE\+: This is a low level function that should not be called directly from this API if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} API instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine supporting E\+C\+DH key exchanges \\
+{\em engine} & a crypto engine supporting ECDH key exchanges \\
 \hline
 {\em sender} & the identity chain of the sender \\
 \hline
 {\em receiver} & the node this key exchange is destined for \\
 \hline
-{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the E\+C\+DH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
+{\em packet\+\_\+exchange\+\_\+key} & an EC key to use for the sender side of the ECDH function, the private component of this key is no longer needed after this function is called. The public component of it will get forwarded in the message key exchange set to the receiver \\
 \hline
 {\em packet\+\_\+key} & the cipher key to use for encrypting the payload of the message that is being created. This is the data we are protecting \\
 \hline
-{\em psk} & optional pre-\/shared key data to put into the \textquotesingle{}salt\textquotesingle{} field of H\+K\+DF \\
+{\em psk} & optional pre-\/shared key data to put into the \textquotesingle{}salt\textquotesingle{} field of HKDF \\
 \hline
 {\em version} & the version of the packet being generated \\
 \hline
@@ -287,7 +287,7 @@ Parse a packet from a buffer generated by \textquotesingle{}wickr\+\_\+packet\+\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated packet using parsed data from \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing fails 
+a newly allocated packet using parsed data from \textquotesingle{}buffer\textquotesingle{} or NULL if parsing fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_gaf34d8082df52a7ade2fea54eea65d342}\label{group__wickr__protocol_gaf34d8082df52a7ade2fea54eea65d342}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\_packet\_create\_from\_components@{wickr\_packet\_create\_from\_components}}
@@ -299,11 +299,11 @@ Generate a packet given components
 
 For more information see Wickr white paper (Sending a Message)
 
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+NOTE\+: This is a low level function that should not be called directly from this API if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} API instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine capable of E\+C\+DH and signing operations using exchange\+\_\+key, and cipher operations using payload\+\_\+key \\
+{\em engine} & a crypto engine capable of ECDH and signing operations using exchange\+\_\+key, and cipher operations using payload\+\_\+key \\
 \hline
 {\em header\+\_\+key} & the key to encrypt the key exchange set of the message with \\
 \hline
@@ -350,7 +350,7 @@ Serialize a packet to a buffer
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a buffer representing the packet in the following format\+: $\vert$ V\+E\+R\+S\+I\+ON (4B\+I\+TS) S\+I\+G\+N\+A\+T\+U\+R\+E\+\_\+\+C\+U\+R\+V\+E\+\_\+\+ID (4B\+I\+TS) $\vert$ C\+O\+N\+T\+E\+NT $\vert$ S\+I\+G\+N\+A\+T\+U\+RE OF C\+O\+N\+T\+E\+NT $\vert$ 
+a buffer representing the packet in the following format\+: $\vert$ VERSION (4BITS) SIGNATURE\+\_\+\+CURVE\+\_\+\+ID (4BITS) $\vert$ CONTENT $\vert$ SIGNATURE OF CONTENT $\vert$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga1671066ddc19b38ed05d4460d5a96706}\label{group__wickr__protocol_ga1671066ddc19b38ed05d4460d5a96706}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\_parse\_result\_copy@{wickr\_parse\_result\_copy}}
@@ -384,7 +384,7 @@ Create a negative parse result due to a failure
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a parse result containing the provided status information and N\+U\+LL properties 
+a parse result containing the provided status information and NULL properties 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__protocol_ga7bd98225a92620e1aa5940cf59fdbedf}\label{group__wickr__protocol_ga7bd98225a92620e1aa5940cf59fdbedf}} 
 \index{Wickr Protocol@{Wickr Protocol}!wickr\_parse\_result\_create\_success@{wickr\_parse\_result\_create\_success}}
@@ -398,7 +398,7 @@ Create a positive parse result
 \begin{DoxyParams}{Parameters}
 {\em key\+\_\+exchange\+\_\+set} & the parsed public key exchange set for all recipients \\
 \hline
-{\em key\+\_\+exchange} & discovered key exchange for a particular requested node, or N\+U\+LL if no node was specified \\
+{\em key\+\_\+exchange} & discovered key exchange for a particular requested node, or NULL if no node was specified \\
 \hline
 {\em enc\+\_\+payload} & the encrypted payload parsed from the message \\
 \hline
@@ -429,7 +429,7 @@ Parse a received packet and validate it\textquotesingle{}s signature
 
 For more information see Wickr white paper (Receiving a Message 1-\/5)
 
-N\+O\+TE\+: This is a low level function that should not be called directly from this A\+PI if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} A\+PI instead since it is a higher level and safer set of functions
+NOTE\+: This is a low level function that should not be called directly from this API if it can be avoided. Please use the \textquotesingle{}\mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx}}\textquotesingle{} API instead since it is a higher level and safer set of functions
 
 
 \begin{DoxyParams}{Parameters}
@@ -437,7 +437,7 @@ N\+O\+TE\+: This is a low level function that should not be called directly from
 \hline
 {\em packet} & the packet to parse \\
 \hline
-{\em receiver\+\_\+node\+\_\+id} & node\+\_\+id of the recipient. If set, parsing will fail if a node\+\_\+id labeled key exchange is not found in the key exchange list. If not set, the resulting parse result will contain N\+U\+LL for the key exchange and simply return all other properties \\
+{\em receiver\+\_\+node\+\_\+id} & node\+\_\+id of the recipient. If set, parsing will fail if a node\+\_\+id labeled key exchange is not found in the key exchange list. If not set, the resulting parse result will contain NULL for the key exchange and simply return all other properties \\
 \hline
 {\em header\+\_\+keygen\+\_\+func} & a function that can generate a header key for this packet \\
 \hline

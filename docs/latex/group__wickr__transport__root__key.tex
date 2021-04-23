@@ -54,13 +54,13 @@ Create a root key using a random secret of length cipher.\+key\+\_\+key
 \hline
 {\em cipher} & the cipher to use for generating stream keys \\
 \hline
-{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the E\+N\+C\+O\+DE direction \\
+{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the ENCODE direction \\
 \hline
-{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the D\+E\+C\+O\+DE direction \\
+{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the DECODE direction \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated transport root key taking ownership of {\ttfamily secret} or N\+U\+LL if allocation fails 
+a newly allocated transport root key taking ownership of {\ttfamily secret} or NULL if allocation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__root__key_ga624908e01de67d698a98053a192baaca}\label{group__wickr__transport__root__key_ga624908e01de67d698a98053a192baaca}} 
 \index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_create\_random@{wickr\_transport\_root\_key\_create\_random}}
@@ -76,13 +76,13 @@ Create a root key using a random secret of length cipher.\+key\+\_\+key
 \hline
 {\em cipher} & the cipher to use for generating stream keys \\
 \hline
-{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the E\+N\+C\+O\+DE direction \\
+{\em packets\+\_\+per\+\_\+evo\+\_\+send} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the ENCODE direction \\
 \hline
-{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the D\+E\+C\+O\+DE direction \\
+{\em packets\+\_\+per\+\_\+evo\+\_\+recv} & the value to set for {\ttfamily packets\+\_\+per\+\_\+evolution} when creating a stream key in the DECODE direction \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated transport root key or N\+U\+LL if random generation fails 
+a newly allocated transport root key or NULL if random generation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__root__key_gaec5116b47eebfffe8e5ae0303ac981ea}\label{group__wickr__transport__root__key_gaec5116b47eebfffe8e5ae0303ac981ea}} 
 \index{Wickr\_transport\_root\_key@{Wickr\_transport\_root\_key}!wickr\_transport\_root\_key\_destroy@{wickr\_transport\_root\_key\_destroy}}
@@ -109,15 +109,15 @@ Convert a transport root key into a stream key
 \begin{DoxyParams}{Parameters}
 {\em root\+\_\+key} & the transport root key to convert into a stream key \\
 \hline
-{\em engine} & a pointer to a crypto engine that supports H\+K\+DF functionality \\
+{\em engine} & a pointer to a crypto engine that supports HKDF functionality \\
 \hline
-{\em salt} & the salt to use for the H\+K\+DF function \\
+{\em salt} & the salt to use for the HKDF function \\
 \hline
-{\em stream\+\_\+id} & a stream id that will differentiate the stream between the E\+N\+C\+O\+DE and D\+E\+C\+O\+DE directions \\
+{\em stream\+\_\+id} & a stream id that will differentiate the stream between the ENCODE and DECODE directions \\
 \hline
 {\em direction} & the direction to set on the resulting stream key \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated stream key or N\+U\+LL if stream key generation fails 
+a newly allocated stream key or NULL if stream key generation fails 
 \end{DoxyReturn}

@@ -8,9 +8,9 @@ struct \mbox{\hyperlink{structwickr__node}{wickr\+\_\+node}}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}} \{ {\bfseries N\+O\+D\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
-{\bfseries N\+O\+D\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+V\+A\+L\+ID}, 
-{\bfseries N\+O\+D\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+ID}
+enum \mbox{\hyperlink{group__wickr__node_gafa0bd3307613292fcd88e38443345e8f}{wickr\+\_\+node\+\_\+status}} \{ {\bfseries NODE\+\_\+\+STATUS\+\_\+\+UNKNOWN}
+, {\bfseries NODE\+\_\+\+STATUS\+\_\+\+VALID}
+, {\bfseries NODE\+\_\+\+STATUS\+\_\+\+INVALID}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -54,7 +54,7 @@ void \mbox{\hyperlink{group__wickr__node_gab3f40f122baca50bcc62af54eaa08fe9}{wic
 
 Node status
 
-U\+N\+K\+N\+O\+WN -\/ Signature validation has never been attempted on the node V\+A\+L\+ID -\/ Signature validation has been attempted and has passed on node I\+N\+V\+A\+L\+ID -\/ Signature validation has been attempted and has failed on node 
+UNKNOWN -\/ Signature validation has never been attempted on the node VALID -\/ Signature validation has been attempted and has passed on node INVALID -\/ Signature validation has been attempted and has failed on node 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__node_gab577103b1752357b8575b064e22a4970}\label{group__wickr__node_gab577103b1752357b8575b064e22a4970}} 
@@ -81,7 +81,7 @@ a newly allocated wickr\+\_\+node\+\_\+array that contains a copy of each elemen
 
 Destroy a node array
 
-N\+O\+TE\+: Nodes in the array are not destroyed, only the container array
+NOTE\+: Nodes in the array are not destroyed, only the container array
 
 
 \begin{DoxyParams}{Parameters}
@@ -96,7 +96,7 @@ N\+O\+TE\+: Nodes in the array are not destroyed, only the container array
 
 Fetch an item in the node array
 
-N\+O\+TE\+: a fetched node is not copied out of the array, it is still owned by the array
+NOTE\+: a fetched node is not copied out of the array, it is still owned by the array
 
 
 \begin{DoxyParams}{Parameters}
@@ -106,7 +106,7 @@ N\+O\+TE\+: a fetched node is not copied out of the array, it is still owned by 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the node at \textquotesingle{}index\textquotesingle{}. N\+U\+LL if the index is out of bounds 
+the node at \textquotesingle{}index\textquotesingle{}. NULL if the index is out of bounds 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}\label{group__wickr__node_ga504ebe707aa003032c4ac8044d73ee92}} 
 \index{Wickr\_node@{Wickr\_node}!wickr\_node\_array\_new@{wickr\_node\_array\_new}}
@@ -132,7 +132,7 @@ a newly allocated array with enough space to hold \textquotesingle{}node\+\_\+co
 
 Set an item in the node array
 
-N\+O\+TE\+: \textquotesingle{}node\textquotesingle{} is not copied into the array, ownership is simply transferred to the array
+NOTE\+: \textquotesingle{}node\textquotesingle{} is not copied into the array, ownership is simply transferred to the array
 
 
 \begin{DoxyParams}{Parameters}
@@ -221,7 +221,7 @@ Destroy a node
 
 Rotate in a new ephemeral key pair for message sending
 
-N\+O\+TE\+: This function D\+O\+ES N\+OT ensure that new\+\_\+keypair is signed properly. To do that, you must call \textquotesingle{}wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain\textquotesingle{} after rotation
+NOTE\+: This function DOES NOT ensure that new\+\_\+keypair is signed properly. To do that, you must call \textquotesingle{}wickr\+\_\+node\+\_\+verify\+\_\+signature\+\_\+chain\textquotesingle{} after rotation
 
 
 \begin{DoxyParams}{Parameters}

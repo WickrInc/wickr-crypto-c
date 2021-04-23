@@ -9,13 +9,13 @@ struct \mbox{\hyperlink{structwickr__transport__handshake}{wickr\+\_\+transport\
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{group__wickr__transport__handshake_ga69c0c97ef105c50b400cd8925b11e7c2}{wickr\+\_\+transport\+\_\+handshake\+\_\+status}} \{ \newline
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+\_\+\+P\+R\+O\+G\+R\+E\+SS}, 
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+E\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+I\+F\+I\+C\+A\+T\+I\+ON}, 
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+E\+N\+D\+I\+N\+G\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+A\+T\+I\+ON}, 
-\newline
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+O\+M\+P\+L\+E\+TE}, 
-{\bfseries T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+I\+L\+ED}
+{\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+UNKNOWN}
+, {\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+IN\+\_\+\+PROGRESS}
+, {\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+PENDING\+\_\+\+VERIFICATION}
+, {\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+PENDING\+\_\+\+FINALIZATION}
+, \newline
+{\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+COMPLETE}
+, {\bfseries TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+FAILED}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -45,7 +45,7 @@ void \mbox{\hyperlink{group__wickr__transport__handshake_gaa4e021db1f48c5f85688d
 \item 
 wickr\+\_\+transport\+\_\+handshake\+\_\+res\+\_\+t $\ast$ \mbox{\hyperlink{group__wickr__transport__handshake_ga81f1340c651c6830950c3cc54e688936}{wickr\+\_\+transport\+\_\+handshake\+\_\+finalize}} (wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$handshake)
 \item 
-const \mbox{\hyperlink{group__wickr__transport__handshake_ga69c0c97ef105c50b400cd8925b11e7c2}{wickr\+\_\+transport\+\_\+handshake\+\_\+status}} \mbox{\hyperlink{group__wickr__transport__handshake_ga02ff61a47b74956362f9ab8d388bfb90}{wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status}} (const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$handshake)
+\mbox{\hyperlink{group__wickr__transport__handshake_ga69c0c97ef105c50b400cd8925b11e7c2}{wickr\+\_\+transport\+\_\+handshake\+\_\+status}} \mbox{\hyperlink{group__wickr__transport__handshake_gaf8685050199b3251860644a5db72305d}{wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status}} (const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$handshake)
 \item 
 const \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+chain\+\_\+t}} $\ast$ \mbox{\hyperlink{group__wickr__transport__handshake_ga545f0a7811108d8a4d3240982d33d0d3}{wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+local\+\_\+identity}} (const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$handshake)
 \item 
@@ -110,7 +110,7 @@ Create a new transport handshake. Will retain ownership of all pointer inputs wi
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated transport handshake or N\+U\+LL if non-\/optional values are improperly set 
+a newly allocated transport handshake or NULL if non-\/optional values are improperly set 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__handshake_gaa4e021db1f48c5f85688d75ff6e570c9}\label{group__wickr__transport__handshake_gaa4e021db1f48c5f85688d75ff6e570c9}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_handshake\_destroy@{wickr\_transport\_handshake\_destroy}}
@@ -129,7 +129,7 @@ Destroy a transport handshake
 \doxysubsubsection{\texorpdfstring{wickr\_transport\_handshake\_finalize()}{wickr\_transport\_handshake\_finalize()}}
 {\footnotesize\ttfamily wickr\+\_\+transport\+\_\+handshake\+\_\+res\+\_\+t$\ast$ wickr\+\_\+transport\+\_\+handshake\+\_\+finalize (\begin{DoxyParamCaption}\item[{wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$}]{handshake }\end{DoxyParamCaption})}
 
-Finalize a handshake to complete it (can only be called when the handshake is in the T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+E\+N\+D\+I\+N\+G\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+A\+T\+I\+ON state) A handshake can only be finalized once, at which point it\textquotesingle{}s status will change to T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+O\+M\+P\+L\+E\+TE and no other operations are valid
+Finalize a handshake to complete it (can only be called when the handshake is in the TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+PENDING\+\_\+\+FINALIZATION state) A handshake can only be finalized once, at which point it\textquotesingle{}s status will change to TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+COMPLETE and no other operations are valid
 
 
 \begin{DoxyParams}{Parameters}
@@ -137,7 +137,7 @@ Finalize a handshake to complete it (can only be called when the handshake is in
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the result of the handshake on success, or N\+U\+LL on failure 
+the result of the handshake on success, or NULL on failure 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__handshake_ga545f0a7811108d8a4d3240982d33d0d3}\label{group__wickr__transport__handshake_ga545f0a7811108d8a4d3240982d33d0d3}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_handshake\_get\_local\_identity@{wickr\_transport\_handshake\_get\_local\_identity}}
@@ -171,11 +171,11 @@ Get the remote identity chain of a handshake
 \begin{DoxyReturn}{Returns}
 the current status of the handshake 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__wickr__transport__handshake_ga02ff61a47b74956362f9ab8d388bfb90}\label{group__wickr__transport__handshake_ga02ff61a47b74956362f9ab8d388bfb90}} 
+\mbox{\Hypertarget{group__wickr__transport__handshake_gaf8685050199b3251860644a5db72305d}\label{group__wickr__transport__handshake_gaf8685050199b3251860644a5db72305d}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_handshake\_get\_status@{wickr\_transport\_handshake\_get\_status}}
 \index{wickr\_transport\_handshake\_get\_status@{wickr\_transport\_handshake\_get\_status}!Wickr\_transport\_handshake@{Wickr\_transport\_handshake}}
 \doxysubsubsection{\texorpdfstring{wickr\_transport\_handshake\_get\_status()}{wickr\_transport\_handshake\_get\_status()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{group__wickr__transport__handshake_ga69c0c97ef105c50b400cd8925b11e7c2}{wickr\+\_\+transport\+\_\+handshake\+\_\+status}} wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$}]{handshake }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__wickr__transport__handshake_ga69c0c97ef105c50b400cd8925b11e7c2}{wickr\+\_\+transport\+\_\+handshake\+\_\+status}} wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$}]{handshake }\end{DoxyParamCaption})}
 
 Get the current status of a handshake
 
@@ -219,7 +219,7 @@ Process an inbound transport packet for a handshake. This function cause the han
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a return packet to send back to the sender of {\ttfamily packet}. N\+U\+LL on error {\bfseries{or}} no further packet response required. Call wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status to differentiate 
+a return packet to send back to the sender of {\ttfamily packet}. NULL on error {\bfseries{or}} no further packet response required. Call wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status to differentiate 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__handshake_ga3525ddcaac05027058407555a2b2c6c0}\label{group__wickr__transport__handshake_ga3525ddcaac05027058407555a2b2c6c0}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_handshake\_res\_copy@{wickr\_transport\_handshake\_res\_copy}}
@@ -304,7 +304,7 @@ a reference to the handshake result\textquotesingle{}s remote key
 \doxysubsubsection{\texorpdfstring{wickr\_transport\_handshake\_start()}{wickr\_transport\_handshake\_start()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+handshake\+\_\+start (\begin{DoxyParamCaption}\item[{wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$}]{handshake }\end{DoxyParamCaption})}
 
-Start the handshake process. Calling this function will change the status of the handshake to {\ttfamily T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+\_\+\+P\+R\+O\+G\+R\+E\+SS}. This function can {\bfseries{only}} be called if the handshake is currently in the T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN state (saw no other activity)
+Start the handshake process. Calling this function will change the status of the handshake to {\ttfamily TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+IN\+\_\+\+PROGRESS}. This function can {\bfseries{only}} be called if the handshake is currently in the TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+UNKNOWN state (saw no other activity)
 
 
 \begin{DoxyParams}{Parameters}
@@ -312,7 +312,7 @@ Start the handshake process. Calling this function will change the status of the
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the transport packet to relay back to transport\+\_\+ctx to send to the remote party. Returns N\+U\+LL on failure, along with setting the transport status to T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+I\+L\+ED 
+the transport packet to relay back to transport\+\_\+ctx to send to the remote party. Returns NULL on failure, along with setting the transport status to TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+FAILED 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__handshake_gad4ead74cc839bdb4ca49c4251b11f7c0}\label{group__wickr__transport__handshake_gad4ead74cc839bdb4ca49c4251b11f7c0}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_handshake\_verify\_identity@{wickr\_transport\_handshake\_verify\_identity}}
@@ -320,7 +320,7 @@ the transport packet to relay back to transport\+\_\+ctx to send to the remote p
 \doxysubsubsection{\texorpdfstring{wickr\_transport\_handshake\_verify\_identity()}{wickr\_transport\_handshake\_verify\_identity()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__transport__packet}{wickr\+\_\+transport\+\_\+packet\+\_\+t}}$\ast$ wickr\+\_\+transport\+\_\+handshake\+\_\+verify\+\_\+identity (\begin{DoxyParamCaption}\item[{const wickr\+\_\+transport\+\_\+handshake\+\_\+t $\ast$}]{handshake,  }\item[{bool}]{is\+\_\+valid }\end{DoxyParamCaption})}
 
-Tell the handshake if a remote identity is valid or not to move on from the T\+R\+A\+N\+S\+P\+O\+R\+T\+\_\+\+H\+A\+N\+D\+S\+H\+A\+K\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+E\+N\+D\+I\+N\+G\+\_\+\+V\+E\+R\+I\+F\+I\+C\+A\+T\+I\+ON state
+Tell the handshake if a remote identity is valid or not to move on from the TRANSPORT\+\_\+\+HANDSHAKE\+\_\+\+STATUS\+\_\+\+PENDING\+\_\+\+VERIFICATION state
 
 
 \begin{DoxyParams}{Parameters}
@@ -330,7 +330,7 @@ Tell the handshake if a remote identity is valid or not to move on from the T\+R
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a return packet to send back to the remote side (if needed). N\+U\+LL on {\ttfamily is\+\_\+valid} being false, no further communication required or other error Call wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status to differentiate 
+a return packet to send back to the remote side (if needed). NULL on {\ttfamily is\+\_\+valid} being false, no further communication required or other error Call wickr\+\_\+transport\+\_\+handshake\+\_\+get\+\_\+status to differentiate 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__transport__handshake_ga9206de75d5bc18fa1ce436a048305307}\label{group__wickr__transport__handshake_ga9206de75d5bc18fa1ce436a048305307}} 
 \index{Wickr\_transport\_handshake@{Wickr\_transport\_handshake}!wickr\_transport\_set\_user\_data@{wickr\_transport\_set\_user\_data}}
