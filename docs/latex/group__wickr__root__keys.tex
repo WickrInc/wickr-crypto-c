@@ -82,7 +82,7 @@ Create a root key set from the serialized output of \textquotesingle{}wickr\+\_\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a root key set parsed out of buffer, or N\+U\+LL if parsing fails 
+a root key set parsed out of buffer, or NULL if parsing fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__root__keys_gacabc33b7c56cbc84a5085d0a4330694f}\label{group__wickr__root__keys_gacabc33b7c56cbc84a5085d0a4330694f}} 
 \index{Wickr\_root\_keys@{Wickr\_root\_keys}!wickr\_root\_keys\_destroy@{wickr\_root\_keys\_destroy}}
@@ -141,7 +141,7 @@ a random set of root keys
 
 Convert a root key set into a storage key set for a local device
 
-Currently the local storage key is created by taking S\+H\+A256(keys-\/$>$node\+\_\+storage\+\_\+root $\vert$$\vert$ dev\+\_\+info-\/$>$system\+\_\+salt)
+Currently the local storage key is created by taking SHA256(keys-\/$>$node\+\_\+storage\+\_\+root $\vert$$\vert$ dev\+\_\+info-\/$>$system\+\_\+salt)
 
 
 \begin{DoxyParams}{Parameters}

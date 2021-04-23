@@ -4,7 +4,7 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__key__exchange}{wickr\+\_\+key\+\_\+exchange}}
-\begin{DoxyCompactList}\small\item\em Public key exchange protected data. After a shared secret is generated using a public key with identifier \textquotesingle{}key\+\_\+id\textquotesingle{}, and run through a K\+DF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Public key exchange protected data. After a shared secret is generated using a public key with identifier \textquotesingle{}key\+\_\+id\textquotesingle{}, and run through a KDF, it is used to encrypt data to be protected by the exchange and the ciphertext is stored in \textquotesingle{}exchange\+\_\+ciphertext\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,7 +63,7 @@ a newly allocated key exchange array that contains deep copies of the items from
 
 Fetch a key exchange from an exchange array
 
-N\+O\+TE\+: Calling this function does not make a copy of the exchange being returned, the array still owns it
+NOTE\+: Calling this function does not make a copy of the exchange being returned, the array still owns it
 
 
 \begin{DoxyParams}{Parameters}
@@ -99,7 +99,7 @@ a newly allocated wickr\+\_\+array for key exchange objects
 
 Set an item in a key exchange array
 
-N\+O\+TE\+: Calling this function does not make a copy of \textquotesingle{}exchange\textquotesingle{}, the array simply takes ownership of it
+NOTE\+: Calling this function does not make a copy of \textquotesingle{}exchange\textquotesingle{}, the array simply takes ownership of it
 
 
 \begin{DoxyParams}{Parameters}

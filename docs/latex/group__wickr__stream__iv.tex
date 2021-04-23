@@ -4,7 +4,7 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structwickr__stream__iv}{wickr\+\_\+stream\+\_\+iv}}
-\begin{DoxyCompactList}\small\item\em A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A deterministic random IV generator using a 64 byte secure random seed and HMAC-\/\+SHA512. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -83,5 +83,5 @@ Generate a new unique IV. gen\+\_\+count will be increamented after calling this
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an IV of length \textquotesingle{}cipher\textquotesingle{}-\/$>$iv\+\_\+len generated using H\+M\+A\+C(gen\+\_\+count, seed) 
+an IV of length \textquotesingle{}cipher\textquotesingle{}-\/$>$iv\+\_\+len generated using HMAC(gen\+\_\+count, seed) 
 \end{DoxyReturn}

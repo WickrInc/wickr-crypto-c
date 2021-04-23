@@ -72,7 +72,7 @@ Generate a new randomized device info set from a system identifier. This functio
 
 
 \begin{DoxyParams}{Parameters}
-{\em crypto} & a crypto engine that supports a P\+R\+NG, S\+H\+A512, and S\+H\+A256 functions \\
+{\em crypto} & a crypto engine that supports a PRNG, SHA512, and SHA256 functions \\
 \hline
 {\em system\+\_\+id} & a buffer representing data optimally unique to your system. It is used as the basis of generating the \textquotesingle{}system\+\_\+salt\textquotesingle{} property. See property declaration of \textquotesingle{}system\+\_\+salt\textquotesingle{} in \textquotesingle{}\mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info}}\textquotesingle{} \\
 \hline
@@ -86,11 +86,11 @@ the output of \textquotesingle{}wickr\+\_\+dev\+\_\+info\+\_\+derive\textquotesi
 \doxysubsubsection{\texorpdfstring{wickr\_dev\_info\_derive()}{wickr\_dev\_info\_derive()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__dev__info}{wickr\+\_\+dev\+\_\+info\+\_\+t}}$\ast$ wickr\+\_\+dev\+\_\+info\+\_\+derive (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__crypto__engine}{wickr\+\_\+crypto\+\_\+engine\+\_\+t}} $\ast$}]{crypto,  }\item[{\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{dev\+\_\+salt,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{system\+\_\+id }\end{DoxyParamCaption})}
 
-Derive a set of salt values and identifiers. Creates \textquotesingle{}system\+\_\+salt\textquotesingle{} by taking a S\+H\+A256 hash of the system\+\_\+id. Creates \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{} properties by taking a S\+H\+A512 of of \textquotesingle{}system\+\_\+id\textquotesingle{} using \textquotesingle{}dev\+\_\+salt\textquotesingle{} as a salt, and then splits by using the first 32 bytes as \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and the last 32 bytes as \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{}
+Derive a set of salt values and identifiers. Creates \textquotesingle{}system\+\_\+salt\textquotesingle{} by taking a SHA256 hash of the system\+\_\+id. Creates \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{} properties by taking a SHA512 of of \textquotesingle{}system\+\_\+id\textquotesingle{} using \textquotesingle{}dev\+\_\+salt\textquotesingle{} as a salt, and then splits by using the first 32 bytes as \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and the last 32 bytes as \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{}
 
 
 \begin{DoxyParams}{Parameters}
-{\em crypto} & a crypto engine that supports a P\+R\+NG, S\+H\+A512, and S\+H\+A256 functions \\
+{\em crypto} & a crypto engine that supports a PRNG, SHA512, and SHA256 functions \\
 \hline
 {\em dev\+\_\+salt} & a randomly generated device salt to be used as input for generating identifiers \\
 \hline
@@ -98,7 +98,7 @@ Derive a set of salt values and identifiers. Creates \textquotesingle{}system\+\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated device info set owning the reference to dev\+\_\+salt, and with newly generated values for \textquotesingle{}system\+\_\+salt\textquotesingle{}, \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{}. N\+U\+LL if derivation fails 
+a newly allocated device info set owning the reference to dev\+\_\+salt, and with newly generated values for \textquotesingle{}system\+\_\+salt\textquotesingle{}, \textquotesingle{}msg\+\_\+proto\+\_\+id\textquotesingle{}, and \textquotesingle{}srv\+\_\+comm\+\_\+id\textquotesingle{}. NULL if derivation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__dev__info_ga09ee324a0e0e6a0451aa53031eecb324}\label{group__wickr__dev__info_ga09ee324a0e0e6a0451aa53031eecb324}} 
 \index{Wickr\_dev\_info@{Wickr\_dev\_info}!wickr\_dev\_info\_destroy@{wickr\_dev\_info\_destroy}}

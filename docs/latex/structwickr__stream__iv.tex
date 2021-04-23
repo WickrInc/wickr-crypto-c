@@ -2,7 +2,7 @@
 \label{structwickr__stream__iv}\index{wickr\_stream\_iv@{wickr\_stream\_iv}}
 
 
-A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512.  
+A deterministic random IV generator using a 64 byte secure random seed and HMAC-\/\+SHA512.  
 
 
 
@@ -23,9 +23,9 @@ uint64\+\_\+t \mbox{\hyperlink{structwickr__stream__iv_ae7d500c34333c546ee044fe8
 
 
 \doxysubsection{Detailed Description}
-A deterministic random IV generator using a 64 byte secure random seed and H\+M\+A\+C-\/\+S\+H\+A512. 
+A deterministic random IV generator using a 64 byte secure random seed and HMAC-\/\+SHA512. 
 
-On each call to generate, the IV generator will be called with H\+M\+A\+C(gen\+\_\+count, seed) The gen count value is incremented by one each time the generate method is called 
+On each call to generate, the IV generator will be called with HMAC(gen\+\_\+count, seed) The gen count value is incremented by one each time the generate method is called 
 
 \doxysubsection{Field Documentation}
 \mbox{\Hypertarget{structwickr__stream__iv_a86379d83e28b96d4852ac047482713d1}\label{structwickr__stream__iv_a86379d83e28b96d4852ac047482713d1}} 
@@ -40,13 +40,13 @@ the cipher that this engine is generating IV\textquotesingle{}s for, this will d
 \doxysubsubsection{\texorpdfstring{engine}{engine}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::engine}
 
-crypto engine engine used to supply secure random bytes and H\+M\+AC functions \mbox{\Hypertarget{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}\label{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}} 
+crypto engine engine used to supply secure random bytes and HMAC functions \mbox{\Hypertarget{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}\label{structwickr__stream__iv_ae7d500c34333c546ee044fe875e10dfc}} 
 \index{wickr\_stream\_iv@{wickr\_stream\_iv}!gen\_count@{gen\_count}}
 \index{gen\_count@{gen\_count}!wickr\_stream\_iv@{wickr\_stream\_iv}}
 \doxysubsubsection{\texorpdfstring{gen\_count}{gen\_count}}
 {\footnotesize\ttfamily wickr\+\_\+stream\+\_\+iv\+::gen\+\_\+count}
 
-an internal count value used as the H\+M\+AC value to deterministically generate unique I\+Vs \mbox{\Hypertarget{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}\label{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}} 
+an internal count value used as the HMAC value to deterministically generate unique IVs \mbox{\Hypertarget{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}\label{structwickr__stream__iv_a221017bc41b4cc36bf31f13a0c299db1}} 
 \index{wickr\_stream\_iv@{wickr\_stream\_iv}!seed@{seed}}
 \index{seed@{seed}!wickr\_stream\_iv@{wickr\_stream\_iv}}
 \doxysubsubsection{\texorpdfstring{seed}{seed}}

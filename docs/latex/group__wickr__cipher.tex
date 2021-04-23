@@ -56,7 +56,7 @@ Find a supported cipher by identifier. When cipher results are serialized they c
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a cipher with identifier \textquotesingle{}cipher\+\_\+id\textquotesingle{}. N\+U\+LL if cipher is not found 
+a cipher with identifier \textquotesingle{}cipher\+\_\+id\textquotesingle{}. NULL if cipher is not found 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__cipher_gaa473bc83f82d6353aa6f4cb4e36bf4f0}\label{group__wickr__cipher_gaa473bc83f82d6353aa6f4cb4e36bf4f0}} 
 \index{wickr\_cipher\_t@{wickr\_cipher\_t}!wickr\_cipher\_key\_copy@{wickr\_cipher\_key\_copy}}
@@ -119,7 +119,7 @@ Create a cipher key from serialized bytes
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-cipher key parsed from \textquotesingle{}buffer\textquotesingle{}. This function makes a copy of all bytes as it is parsing, so the resulting cipher key owns its properties. Returns N\+U\+LL on parsing failure 
+cipher key parsed from \textquotesingle{}buffer\textquotesingle{}. This function makes a copy of all bytes as it is parsing, so the resulting cipher key owns its properties. Returns NULL on parsing failure 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__cipher_ga8716aebf03497c379d5ff81fe32cde32}\label{group__wickr__cipher_ga8716aebf03497c379d5ff81fe32cde32}} 
 \index{wickr\_cipher\_t@{wickr\_cipher\_t}!wickr\_cipher\_key\_serialize@{wickr\_cipher\_key\_serialize}}
@@ -135,7 +135,7 @@ Serialize a cipher key
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer containing properties of \textquotesingle{}key\textquotesingle{} in the following format\+: $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+ID $\vert$ K\+E\+Y\+\_\+\+D\+A\+TA $\vert$ 
+a newly allocated buffer containing properties of \textquotesingle{}key\textquotesingle{} in the following format\+: $\vert$ CIPHER\+\_\+\+ID $\vert$ KEY\+\_\+\+DATA $\vert$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__cipher_gace82050fcc8b7932df9a9e8109a2fc1d}\label{group__wickr__cipher_gace82050fcc8b7932df9a9e8109a2fc1d}} 
 \index{wickr\_cipher\_t@{wickr\_cipher\_t}!wickr\_cipher\_result\_copy@{wickr\_cipher\_result\_copy}}
@@ -169,11 +169,11 @@ Construct a cipher result from individual components.
 \hline
 {\em cipher\+\_\+text} & the output bytes of a cipher function using \textquotesingle{}cipher\textquotesingle{} and \textquotesingle{}iv\textquotesingle{} \\
 \hline
-{\em auth\+\_\+tag} & the authentication tag associated with \textquotesingle{}cipher\+\_\+text\textquotesingle{}. If \textquotesingle{}cipher\textquotesingle{} is authenticated this property is required, otherwise it should be N\+U\+LL \\
+{\em auth\+\_\+tag} & the authentication tag associated with \textquotesingle{}cipher\+\_\+text\textquotesingle{}. If \textquotesingle{}cipher\textquotesingle{} is authenticated this property is required, otherwise it should be NULL \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A newly allocated cipher result that takes ownership of the passed inputs, or N\+U\+LL if allocation fails 
+A newly allocated cipher result that takes ownership of the passed inputs, or NULL if allocation fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__cipher_gad5d22ca53abc4397d88040f0f8003021}\label{group__wickr__cipher_gad5d22ca53abc4397d88040f0f8003021}} 
 \index{wickr\_cipher\_t@{wickr\_cipher\_t}!wickr\_cipher\_result\_destroy@{wickr\_cipher\_result\_destroy}}
@@ -202,7 +202,7 @@ Create a cipher result from a serialized cipher result buffer
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-cipher result parsed from \textquotesingle{}buffer\textquotesingle{}. This function makes a copy of all bytes as it is parsing, so the resulting cipher result owns its properties. Returns N\+U\+LL on parsing failure 
+cipher result parsed from \textquotesingle{}buffer\textquotesingle{}. This function makes a copy of all bytes as it is parsing, so the resulting cipher result owns its properties. Returns NULL on parsing failure 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__cipher_ga3f1b679c199987148952816b6fc4c009}\label{group__wickr__cipher_ga3f1b679c199987148952816b6fc4c009}} 
 \index{wickr\_cipher\_t@{wickr\_cipher\_t}!wickr\_cipher\_result\_is\_valid@{wickr\_cipher\_result\_is\_valid}}
@@ -234,5 +234,5 @@ Serialize a cipher result
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a buffer containing bytes representing the cipher result in the following format\+: $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+ID $\vert$ IV $\vert$ A\+U\+T\+H\+\_\+\+T\+AG (IF R\+E\+Q\+U\+I\+R\+ED) $\vert$ C\+I\+P\+H\+E\+R\+\_\+\+T\+E\+XT $\vert$ 
+a buffer containing bytes representing the cipher result in the following format\+: $\vert$ CIPHER\+\_\+\+ID $\vert$ IV $\vert$ AUTH\+\_\+\+TAG (IF REQUIRED) $\vert$ CIPHER\+\_\+\+TEXT $\vert$ 
 \end{DoxyReturn}

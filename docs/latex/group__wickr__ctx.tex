@@ -164,7 +164,7 @@ Recreate a context from a serizlied representation
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a context restored from \textquotesingle{}buffer\textquotesingle{} or N\+U\+LL if parsing fails 
+a context restored from \textquotesingle{}buffer\textquotesingle{} or NULL if parsing fails 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_gacc1038d3690ba4860b74f13239c65600}\label{group__wickr__ctx_gacc1038d3690ba4860b74f13239c65600}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_decipher\_remote@{wickr\_ctx\_decipher\_remote}}
@@ -225,7 +225,7 @@ an encode result containing an encrypted Wickr packet that transfers \textquotes
 
 Generate ephemeral message keypairs
 
-N\+O\+TE\+: the result of this function should be kept in a local cache to allow for decoding a message that was created with it\textquotesingle{}s public components. The public buffer of the contained EC key, along with the key\+\_\+id, and the key signature should be published to a pool for consumption and use by a sender looking to addresss a message to this context
+NOTE\+: the result of this function should be kept in a local cache to allow for decoding a message that was created with it\textquotesingle{}s public components. The public buffer of the contained EC key, along with the key\+\_\+id, and the key signature should be published to a pool for consumption and use by a sender looking to addresss a message to this context
 
 
 \begin{DoxyParams}{Parameters}
@@ -261,17 +261,17 @@ bytes representing an scrypt encrypted context
 \doxysubsubsection{\texorpdfstring{wickr\_ctx\_export\_storage\_keys()}{wickr\_ctx\_export\_storage\_keys()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx}{wickr\+\_\+ctx\+\_\+t}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
-Exports storage keys for a context using a K\+DF + C\+I\+P\+H\+ER function
+Exports storage keys for a context using a KDF + CIPHER function
 
-For more information on the K\+DF + C\+I\+P\+H\+ER functionality, review documentation for \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{}
+For more information on the KDF + CIPHER functionality, review documentation for \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{}
 
-Defaults are currently using K\+D\+F\+\_\+\+S\+C\+R\+Y\+P\+T\+\_\+2\+\_\+17 for a K\+DF and C\+I\+P\+H\+E\+R\+\_\+\+A\+E\+S256\+\_\+\+G\+CM for a cipher
+Defaults are currently using KDF\+\_\+\+SCRYPT\+\_\+2\+\_\+17 for a KDF and CIPHER\+\_\+\+AES256\+\_\+\+GCM for a cipher
 
 
 \begin{DoxyParams}{Parameters}
 {\em ctx} & the context to export storage keys from \\
 \hline
-{\em passphrase} & the passphrase to use as input to a K\+DF that will generated a key to protect storage keys \\
+{\em passphrase} & the passphrase to use as input to a KDF that will generated a key to protect storage keys \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -283,21 +283,21 @@ a buffer containing exported storage keys
 \doxysubsubsection{\texorpdfstring{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}{wickr\_ctx\_gen\_export\_recovery\_key\_passphrase()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}}$\ast$ wickr\+\_\+ctx\+\_\+gen\+\_\+export\+\_\+recovery\+\_\+key\+\_\+passphrase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result\+\_\+t}} $\ast$}]{result,  }\item[{const \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$}]{passphrase }\end{DoxyParamCaption})}
 
-Exports the recovery key using a K\+DF + C\+I\+P\+H\+ER function
+Exports the recovery key using a KDF + CIPHER function
 
-For more information on the K\+DF + C\+I\+P\+H\+ER functionality, review documentation for \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{}
+For more information on the KDF + CIPHER functionality, review documentation for \textquotesingle{}wickr\+\_\+crypto\+\_\+engine\+\_\+kdf\+\_\+cipher\textquotesingle{}
 
-Defaults are currently using K\+D\+F\+\_\+\+S\+C\+R\+Y\+P\+T\+\_\+2\+\_\+17 for a K\+DF and C\+I\+P\+H\+E\+R\+\_\+\+A\+E\+S256\+\_\+\+G\+CM for a cipher
+Defaults are currently using KDF\+\_\+\+SCRYPT\+\_\+2\+\_\+17 for a KDF and CIPHER\+\_\+\+AES256\+\_\+\+GCM for a cipher
 
 
 \begin{DoxyParams}{Parameters}
 {\em result} & a context generation result to export the recovery key from \\
 \hline
-{\em passphrase} & the passphrase to use as input to the K\+DF function \\
+{\em passphrase} & the passphrase to use as input to the KDF function \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a buffer that was created by first taking K\+DF(random\+Salt $\vert$$\vert$ passphrase) and then using that output as a key that encrypted 
+a buffer that was created by first taking KDF(random\+Salt $\vert$$\vert$ passphrase) and then using that output as a key that encrypted 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_ga0bde95494141673604b9e4e1f7954e2c}\label{group__wickr__ctx_ga0bde95494141673604b9e4e1f7954e2c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_import\_recovery@{wickr\_ctx\_gen\_import\_recovery}}
@@ -315,7 +315,7 @@ a buffer that was created by first taking K\+DF(random\+Salt $\vert$$\vert$ pass
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-root keys created from decoding \textquotesingle{}recovery\textquotesingle{} with \textquotesingle{}recovery\+\_\+key\textquotesingle{} or N\+U\+LL if the decryption operation failed 
+root keys created from decoding \textquotesingle{}recovery\textquotesingle{} with \textquotesingle{}recovery\+\_\+key\textquotesingle{} or NULL if the decryption operation failed 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_gaa8904ab3687a22f8d291f5976d05a0e5}\label{group__wickr__ctx_gaa8904ab3687a22f8d291f5976d05a0e5}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_new@{wickr\_ctx\_gen\_new}}
@@ -325,7 +325,7 @@ root keys created from decoding \textquotesingle{}recovery\textquotesingle{} wit
 
 Makes a new root and random node identity + context with random keys
 
-N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
+NOTE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
 
 
 \begin{DoxyParams}{Parameters}
@@ -347,7 +347,7 @@ a generation result containing a root identity represented by \textquotesingle{}
 
 Makes a new root and random node identity + context with random keys except for a provided root signing key
 
-N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
+NOTE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
 
 
 \begin{DoxyParams}{Parameters}
@@ -416,7 +416,7 @@ a buffer with a serialized cipher\+\_\+result generated by encrypting \textquote
 
 Makes a new context using an existing root identity\textquotesingle{}s exported recovery key and a passphrase
 
-N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
+NOTE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
 
 
 \begin{DoxyParams}{Parameters}
@@ -424,7 +424,7 @@ N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\
 \hline
 {\em dev\+\_\+info} & the device info for which to bind this context to \\
 \hline
-{\em exported\+\_\+recovery\+\_\+key} & a previously exported random recovery key that was protected with a K\+DF using \textquotesingle{}passphrase\textquotesingle{} as the key. See \textquotesingle{}wickr\+\_\+ctx\+\_\+gen\+\_\+export\+\_\+recovery\+\_\+key\+\_\+passphrase\textquotesingle{} for more information \\
+{\em exported\+\_\+recovery\+\_\+key} & a previously exported random recovery key that was protected with a KDF using \textquotesingle{}passphrase\textquotesingle{} as the key. See \textquotesingle{}wickr\+\_\+ctx\+\_\+gen\+\_\+export\+\_\+recovery\+\_\+key\+\_\+passphrase\textquotesingle{} for more information \\
 \hline
 {\em passphrase} & the passphrase to decode exported\+\_\+recovery\+\_\+key with \\
 \hline
@@ -434,7 +434,7 @@ N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a generation result containing an existing root identity represented by \textquotesingle{}identifier\textquotesingle{} and a node identity signed by the existing root. N\+U\+LL if decoding \textquotesingle{}exported\+\_\+recovery\+\_\+key\textquotesingle{} or \textquotesingle{}recovery\textquotesingle{} fails due to an invalid passphrase 
+a generation result containing an existing root identity represented by \textquotesingle{}identifier\textquotesingle{} and a node identity signed by the existing root. NULL if decoding \textquotesingle{}exported\+\_\+recovery\+\_\+key\textquotesingle{} or \textquotesingle{}recovery\textquotesingle{} fails due to an invalid passphrase 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_ga2e9c63af0e76f1977844ea2dc895e90a}\label{group__wickr__ctx_ga2e9c63af0e76f1977844ea2dc895e90a}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_with\_recovery@{wickr\_ctx\_gen\_with\_recovery}}
@@ -444,7 +444,7 @@ a generation result containing an existing root identity represented by \textquo
 
 Makes a new context using an existing exported root keys and a provided recovery key
 
-N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
+NOTE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
 
 
 \begin{DoxyParams}{Parameters}
@@ -460,7 +460,7 @@ N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a generation result containing an existing root identity represented by \textquotesingle{}identifier\textquotesingle{} and a node identity signed by the existing root. N\+U\+LL if decoding \textquotesingle{}recovery\textquotesingle{} fails due to an incorrect key 
+a generation result containing an existing root identity represented by \textquotesingle{}identifier\textquotesingle{} and a node identity signed by the existing root. NULL if decoding \textquotesingle{}recovery\textquotesingle{} fails due to an incorrect key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_ga286a513a606b6643f796539413357c34}\label{group__wickr__ctx_ga286a513a606b6643f796539413357c34}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_gen\_with\_root\_keys@{wickr\_ctx\_gen\_with\_root\_keys}}
@@ -470,7 +470,7 @@ a generation result containing an existing root identity represented by \textquo
 
 Makes a new context using an existing root keys set
 
-N\+O\+TE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
+NOTE\+: The resulting \mbox{\hyperlink{structwickr__ctx__gen__result}{wickr\+\_\+ctx\+\_\+gen\+\_\+result}} does not gain ownership over the parameters to this function
 
 This function is used to provision a new node identity onto the system given an existing root identity
 
@@ -517,7 +517,7 @@ Import storage keys exported with \textquotesingle{}wickr\+\_\+ctx\+\_\+export\+
 
 
 \begin{DoxyParams}{Parameters}
-{\em engine} & a crypto engine supporting K\+DF based encryption \\
+{\em engine} & a crypto engine supporting KDF based encryption \\
 \hline
 {\em exported} & keys exported with \textquotesingle{}wickr\+\_\+ctx\+\_\+export\+\_\+storage\+\_\+keys\textquotesingle{} \\
 \hline
@@ -525,7 +525,7 @@ Import storage keys exported with \textquotesingle{}wickr\+\_\+ctx\+\_\+export\+
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-decoded storage keys or N\+U\+LL if the passphrase is invalid 
+decoded storage keys or NULL if the passphrase is invalid 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__ctx_ga8ac1e1c9a0b9802d7f259278a09df56c}\label{group__wickr__ctx_ga8ac1e1c9a0b9802d7f259278a09df56c}} 
 \index{Wickr\_ctx@{Wickr\_ctx}!wickr\_ctx\_packet\_create@{wickr\_ctx\_packet\_create}}

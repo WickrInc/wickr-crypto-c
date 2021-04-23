@@ -37,7 +37,7 @@ Make a copy
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a copy of the array, or N\+U\+LL if either allocating the copied array fails, or the deep\+\_\+copy flag is set, and the copy operation fails on one of the items in the source array 
+a copy of the array, or NULL if either allocating the copied array fails, or the deep\+\_\+copy flag is set, and the copy operation fails on one of the items in the source array 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__array_ga984338e0a278ef1b23aca7330f0bfcc3}\label{group__wickr__array_ga984338e0a278ef1b23aca7330f0bfcc3}} 
 \index{wickr\_array\_t@{wickr\_array\_t}!wickr\_array\_destroy@{wickr\_array\_destroy}}
@@ -72,7 +72,7 @@ Fetch an item at a specified index
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the item in the array at position \textquotesingle{}index\textquotesingle{}. N\+U\+LL is returned if the index is not within the bounds of the array, if the item at position \textquotesingle{}index\textquotesingle{} is N\+U\+LL because it was never set with \textquotesingle{}wickr\+\_\+array\+\_\+set\+\_\+item\textquotesingle{}, or because copy was true and the copy operation failed 
+the item in the array at position \textquotesingle{}index\textquotesingle{}. NULL is returned if the index is not within the bounds of the array, if the item at position \textquotesingle{}index\textquotesingle{} is NULL because it was never set with \textquotesingle{}wickr\+\_\+array\+\_\+set\+\_\+item\textquotesingle{}, or because copy was true and the copy operation failed 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__array_gafe1191ce494529dbfd5240a84bcba5a2}\label{group__wickr__array_gafe1191ce494529dbfd5240a84bcba5a2}} 
 \index{wickr\_array\_t@{wickr\_array\_t}!wickr\_array\_get\_item\_count@{wickr\_array\_get\_item\_count}}

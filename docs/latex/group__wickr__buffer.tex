@@ -8,7 +8,7 @@ struct \mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer}}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group__wickr__buffer_ga0cf6db371b58617c9311f2a357d98164}{B\+U\+F\+F\+E\+R\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+L\+EN}}(x)~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))
+\#define \mbox{\hyperlink{group__wickr__buffer_ga0cf6db371b58617c9311f2a357d98164}{BUFFER\+\_\+\+ARRAY\+\_\+\+LEN}}(x)~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))
 \begin{DoxyCompactList}\small\item\em Determine the number of elements in an array of buffers (wickr\+\_\+buffer\+\_\+t $\ast$$\ast$). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -45,15 +45,15 @@ void \mbox{\hyperlink{group__wickr__buffer_gaf0ff6486debbfd676b7675f6f899fc40}{w
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!BUFFER\_ARRAY\_LEN@{BUFFER\_ARRAY\_LEN}}
 \index{BUFFER\_ARRAY\_LEN@{BUFFER\_ARRAY\_LEN}!wickr\_buffer\_t@{wickr\_buffer\_t}}
 \doxysubsubsection{\texorpdfstring{BUFFER\_ARRAY\_LEN}{BUFFER\_ARRAY\_LEN}}
-{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+L\+EN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))}
+{\footnotesize\ttfamily \#define BUFFER\+\_\+\+ARRAY\+\_\+\+LEN(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(sizeof(x) / sizeof(\mbox{\hyperlink{structwickr__buffer}{wickr\+\_\+buffer\+\_\+t}} $\ast$))}
 
 
 
 Determine the number of elements in an array of buffers (wickr\+\_\+buffer\+\_\+t $\ast$$\ast$). 
 
-N\+O\+TE\+: This function will only work on stack allocated arrays. It is meant only to be used in cases where the length of the array of buffers is determined at compile time, on the stack.
+NOTE\+: This function will only work on stack allocated arrays. It is meant only to be used in cases where the length of the array of buffers is determined at compile time, on the stack.
 
-E\+X\+A\+M\+P\+LE\+: wickr\+\_\+buffer\+\_\+t $\ast$elements\mbox{[}\mbox{]} = \{ b1, b2 b3 \}.
+EXAMPLE\+: wickr\+\_\+buffer\+\_\+t $\ast$elements\mbox{[}\mbox{]} = \{ b1, b2 b3 \}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -84,7 +84,7 @@ Concatenate two buffers into one new buffer.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer containing copied bytes from \textquotesingle{}buffer1\textquotesingle{} followed by copied bytes from \textquotesingle{}buffer2\textquotesingle{}. N\+U\+LL if the length of \textquotesingle{}buffer1\textquotesingle{} combind with the length of \textquotesingle{}buffer2\textquotesingle{} exceeds M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE 
+a newly allocated buffer containing copied bytes from \textquotesingle{}buffer1\textquotesingle{} followed by copied bytes from \textquotesingle{}buffer2\textquotesingle{}. NULL if the length of \textquotesingle{}buffer1\textquotesingle{} combind with the length of \textquotesingle{}buffer2\textquotesingle{} exceeds MAX\+\_\+\+BUFFER\+\_\+\+SIZE 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__buffer_ga3aa7ea751a65310184d6c0ea9627dca8}\label{group__wickr__buffer_ga3aa7ea751a65310184d6c0ea9627dca8}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_concat\_multi@{wickr\_buffer\_concat\_multi}}
@@ -104,7 +104,7 @@ Concatenate n buffers.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer containing copied bytes from each buffer in \textquotesingle{}buffers\textquotesingle{}. N\+U\+LL if \textquotesingle{}buffers\textquotesingle{} contains a N\+U\+LL or the total number of bytes held by \textquotesingle{}buffers\textquotesingle{} exceeds M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE 
+a newly allocated buffer containing copied bytes from each buffer in \textquotesingle{}buffers\textquotesingle{}. NULL if \textquotesingle{}buffers\textquotesingle{} contains a NULL or the total number of bytes held by \textquotesingle{}buffers\textquotesingle{} exceeds MAX\+\_\+\+BUFFER\+\_\+\+SIZE 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__buffer_gada179dda91e748d7bdf6028d3d4c4bcd}\label{group__wickr__buffer_gada179dda91e748d7bdf6028d3d4c4bcd}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_copy@{wickr\_buffer\_copy}}
@@ -144,7 +144,7 @@ Create a buffer using a subsection of another buffer.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer containing the bytes within the range of start to start + len. N\+U\+LL if start + len exceeds the length of source, or if start is out of bounds 
+a newly allocated buffer containing the bytes within the range of start to start + len. NULL if start + len exceeds the length of source, or if start is out of bounds 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__buffer_gacc3ad1220af28781bf678cab20e2f1c8}\label{group__wickr__buffer_gacc3ad1220af28781bf678cab20e2f1c8}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_create@{wickr\_buffer\_create}}
@@ -184,7 +184,7 @@ The bytes in the output are uninitialized
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer holding len bytes, or N\+U\+LL if allocation fails or len is 0. 
+a newly allocated buffer holding len bytes, or NULL if allocation fails or len is 0. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__buffer_gaba0ae148a2f75e50eb3d36a4bef509d2}\label{group__wickr__buffer_gaba0ae148a2f75e50eb3d36a4bef509d2}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_create\_empty\_zero@{wickr\_buffer\_create\_empty\_zero}}
@@ -204,7 +204,7 @@ The bytes in the output are initialized to 0
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated buffer holding len bytes, or N\+U\+LL if allocation fails or len is 0. 
+a newly allocated buffer holding len bytes, or NULL if allocation fails or len is 0. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__buffer_ga7ec1198db0739f3034ddd3969c64257f}\label{group__wickr__buffer_ga7ec1198db0739f3034ddd3969c64257f}} 
 \index{wickr\_buffer\_t@{wickr\_buffer\_t}!wickr\_buffer\_destroy@{wickr\_buffer\_destroy}}
@@ -216,7 +216,7 @@ a newly allocated buffer holding len bytes, or N\+U\+LL if allocation fails or l
 
 Destroy a buffer. 
 
-N\+O\+TE\+: This function does not modify the contents of buffer and simply calls free to deallocate the memory held. To zero out memory before deallocation use \textquotesingle{}wickr\+\_\+buffer\+\_\+destroy\+\_\+zero\textquotesingle{}
+NOTE\+: This function does not modify the contents of buffer and simply calls free to deallocate the memory held. To zero out memory before deallocation use \textquotesingle{}wickr\+\_\+buffer\+\_\+destroy\+\_\+zero\textquotesingle{}
 
 
 \begin{DoxyParams}{Parameters}
@@ -254,7 +254,7 @@ Compare buffers for equality.
 \hline
 {\em b2} & buffer to compare to b1 \\
 \hline
-{\em compare\+\_\+func} & the function that will be used to compare the buffers. Passing N\+U\+LL will result in memcmp being used. Function takes input as const volatile to support constant time memory comparison implemented by many crypto libraries \\
+{\em compare\+\_\+func} & the function that will be used to compare the buffers. Passing NULL will result in memcmp being used. Function takes input as const volatile to support constant time memory comparison implemented by many crypto libraries \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -270,7 +270,7 @@ true if the buffers are equal in length and in content
 
 Modify a subsection of a buffer. 
 
-N\+O\+TE\+: Buffers will not grow to accomidate extra bytes. The size of a buffer is currently fixed and cannot be modified
+NOTE\+: Buffers will not grow to accomidate extra bytes. The size of a buffer is currently fixed and cannot be modified
 
 
 \begin{DoxyParams}{Parameters}

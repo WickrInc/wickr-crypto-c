@@ -10,16 +10,16 @@ struct \mbox{\hyperlink{structwickr__identity__chain}{wickr\+\_\+identity\+\_\+c
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group__wickr__identity_ga43bd60836203349a1c745d0d29bf7706}{I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN}}~32
+\#define \mbox{\hyperlink{group__wickr__identity_ga43bd60836203349a1c745d0d29bf7706}{IDENTIFIER\+\_\+\+LEN}}~32
 \item 
-\#define \mbox{\hyperlink{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}{M\+A\+X\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN}}~128
+\#define \mbox{\hyperlink{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}{MAX\+\_\+\+IDENTIFIER\+\_\+\+LEN}}~128
 \end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}} \{ {\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+WN}, 
-{\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+V\+A\+L\+ID}, 
-{\bfseries I\+D\+E\+N\+T\+I\+T\+Y\+\_\+\+C\+H\+A\+I\+N\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+V\+A\+L\+ID}
+enum \mbox{\hyperlink{group__wickr__identity_ga78aefa3835eb13ca75c0129583b5ebfa}{wickr\+\_\+identity\+\_\+chain\+\_\+status}} \{ {\bfseries IDENTITY\+\_\+\+CHAIN\+\_\+\+STATUS\+\_\+\+UNKNOWN}
+, {\bfseries IDENTITY\+\_\+\+CHAIN\+\_\+\+STATUS\+\_\+\+VALID}
+, {\bfseries IDENTITY\+\_\+\+CHAIN\+\_\+\+STATUS\+\_\+\+INVALID}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -61,13 +61,13 @@ void \mbox{\hyperlink{group__wickr__identity_gadbddf6d49fddb2df103486970b3d564b}
 \index{wickr\_identity@{wickr\_identity}!IDENTIFIER\_LEN@{IDENTIFIER\_LEN}}
 \index{IDENTIFIER\_LEN@{IDENTIFIER\_LEN}!wickr\_identity@{wickr\_identity}}
 \doxysubsubsection{\texorpdfstring{IDENTIFIER\_LEN}{IDENTIFIER\_LEN}}
-{\footnotesize\ttfamily \#define I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN~32}
+{\footnotesize\ttfamily \#define IDENTIFIER\+\_\+\+LEN~32}
 
-By default identifiers are 32 bytes on the Wickr system, however this library will allow for any identifier with length less than M\+A\+X\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN \mbox{\Hypertarget{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}\label{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}} 
+By default identifiers are 32 bytes on the Wickr system, however this library will allow for any identifier with length less than MAX\+\_\+\+IDENTIFIER\+\_\+\+LEN \mbox{\Hypertarget{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}\label{group__wickr__identity_ga1f7bf82d81a58dc7629e8ad396894674}} 
 \index{wickr\_identity@{wickr\_identity}!MAX\_IDENTIFIER\_LEN@{MAX\_IDENTIFIER\_LEN}}
 \index{MAX\_IDENTIFIER\_LEN@{MAX\_IDENTIFIER\_LEN}!wickr\_identity@{wickr\_identity}}
 \doxysubsubsection{\texorpdfstring{MAX\_IDENTIFIER\_LEN}{MAX\_IDENTIFIER\_LEN}}
-{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN~128}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+IDENTIFIER\+\_\+\+LEN~128}
 
 Maximum length for an identifier 
 
@@ -80,7 +80,7 @@ Maximum length for an identifier
 
 Identity chain status
 
-U\+N\+K\+N\+O\+WN -\/ Signature validation has never been attempted on the chain V\+A\+L\+ID -\/ Signature validation has been attempted and has passed on the chain I\+N\+V\+A\+L\+ID -\/ Signature validation has been attempted and has failed on chain 
+UNKNOWN -\/ Signature validation has never been attempted on the chain VALID -\/ Signature validation has been attempted and has passed on the chain INVALID -\/ Signature validation has been attempted and has failed on chain 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}\label{group__wickr__identity_gac9d708d340abcd0b54d87434b71d2d9e}} 
@@ -235,7 +235,7 @@ A fingerprint that is unique between identity and remote\+\_\+identity
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a bilateral fingerprint of (identity,remote\+\_\+identity) or (remote\+\_\+identity,identity) calculated using S\+H\+A512(fingerprint(identity) $\vert$$\vert$ fingerprint(remote\+\_\+identity)). 
+a bilateral fingerprint of (identity,remote\+\_\+identity) or (remote\+\_\+identity,identity) calculated using SHA512(fingerprint(identity) $\vert$$\vert$ fingerprint(remote\+\_\+identity)). 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_ga4d9053bf0a7ea47c599891dce21d426a}\label{group__wickr__identity_ga4d9053bf0a7ea47c599891dce21d426a}} 
 \index{wickr\_identity@{wickr\_identity}!wickr\_identity\_get\_fingerprint@{wickr\_identity\_get\_fingerprint}}
@@ -253,7 +253,7 @@ A unique fingerprint representing the identifier and public signing key of this 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a unique fingerprint currently calculated as S\+H\+A512(identifier $\vert$$\vert$ sig\+\_\+pub-\/$>$pub\+\_\+data) 
+a unique fingerprint currently calculated as SHA512(identifier $\vert$$\vert$ sig\+\_\+pub-\/$>$pub\+\_\+data) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}\label{group__wickr__identity_ga79ca0713d0b90873e584379f26cbd051}} 
 \index{wickr\_identity@{wickr\_identity}!wickr\_identity\_serialize@{wickr\_identity\_serialize}}
@@ -289,7 +289,7 @@ Sign provided data using an identity signing key
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an E\+C\+D\+SA result containing a signature of \textquotesingle{}data\textquotesingle{} using the \textquotesingle{}sig\+\_\+key\textquotesingle{} property of \textquotesingle{}identity\textquotesingle{}. N\+U\+LL if the provided identity does not contain a private signing key 
+an ECDSA result containing a signature of \textquotesingle{}data\textquotesingle{} using the \textquotesingle{}sig\+\_\+key\textquotesingle{} property of \textquotesingle{}identity\textquotesingle{}. NULL if the provided identity does not contain a private signing key 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__wickr__identity_gac0ddb1242254ad13af3edc7f43e770a4}\label{group__wickr__identity_gac0ddb1242254ad13af3edc7f43e770a4}} 
 \index{wickr\_identity@{wickr\_identity}!wickr\_node\_identity\_gen@{wickr\_node\_identity\_gen}}
@@ -305,9 +305,9 @@ Generate a new random node identity, given a root identity
 \hline
 {\em root\+\_\+identity} & a root identity that supports generating signatures with a private signing key \\
 \hline
-{\em identifier} & to use for new node identity, if N\+U\+LL a random identifier of {\ttfamily I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN} bytes will be used \\
+{\em identifier} & to use for new node identity, if NULL a random identifier of {\ttfamily IDENTIFIER\+\_\+\+LEN} bytes will be used \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a newly allocated node identity signing by root identity \textquotesingle{}root\+\_\+identity\textquotesingle{}. The \textquotesingle{}identifier\textquotesingle{} property of the node is generated at random to be \textquotesingle{}I\+D\+E\+N\+T\+I\+F\+I\+E\+R\+\_\+\+L\+EN\textquotesingle{} in length (currently 32 bytes). N\+U\+LL if root\+\_\+identity is not a root, or it does not contain a private signing key 
+a newly allocated node identity signing by root identity \textquotesingle{}root\+\_\+identity\textquotesingle{}. The \textquotesingle{}identifier\textquotesingle{} property of the node is generated at random to be \textquotesingle{}IDENTIFIER\+\_\+\+LEN\textquotesingle{} in length (currently 32 bytes). NULL if root\+\_\+identity is not a root, or it does not contain a private signing key 
 \end{DoxyReturn}
