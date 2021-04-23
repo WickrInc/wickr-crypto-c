@@ -25,6 +25,8 @@ const wickr_crypto_engine_t wickr_crypto_engine_get_default()
         openssl_aes256_decrypt,
         openssl_aes256_file_encrypt,
         openssl_aes256_file_decrypt,
+        openssl_encrypt_file,
+        openssl_decrypt_file,
         openssl_sha2,
         openssl_sha2_file,
         openssl_ec_rand_key,
