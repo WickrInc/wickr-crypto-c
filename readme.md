@@ -40,7 +40,7 @@ A faithful implementation of the Wickr protocol enables confidentiality of messa
 
 A struct that represents a set of cryptographic functions that the library can utilize. The goal of its design is expose security primitives in an organized and generic way. This allows for the protocol implementation to not be bound to a single dependency such as OpenSSL. It is also designed to be easy to use, and to provide a high level interface that enforces best practices. 
 
-#### [OpenSSL Crypto Suite](wickrcrypto/include/wickrcrypto/openssl_suite.h)
+#### OpenSSL Crypto Suite
 
 The current default implementation of crypto engine is based primarily off the EVP interface from OpenSSL 1.1.0
 
