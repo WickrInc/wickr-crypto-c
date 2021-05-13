@@ -154,6 +154,17 @@ describe("Wickr Crypto Engine", function() {
         expect(kdf).to.be.a("object")
     });
 
+    it("can generate and verify scrypt", function() {
+        this.timeout(10000);
+        var passphrase = Buffer.from("password")
+        var kdf = wickrcrypto.CryptoEngine.kdfFull(wickrcrypto.KDFAlgo.scrypt17(), passphrase, 64);
+        expect(kdf).to.be.a("object");
+        expect(kdf.hash.length).to.eql(64);
+
+        var kdf2 = wickrcrypto.CryptoEngine.kdfSaltFull(kdf.meta, passphrase, 64);
+        expect(kdf2).to.eql(kdf.hash);
+    })
+
     it("performs bcrypt", function(){
         this.timeout(15000);
         var passphrase = Buffer.from("password")

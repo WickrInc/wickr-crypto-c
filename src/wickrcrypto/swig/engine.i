@@ -77,12 +77,15 @@ struct wickr_crypto_engine{
       return engine.wickr_crypto_engine_gen_shared_secret(local, remote);
     }
 
+    static wickr_kdf_result_t *kdf_full(wickr_kdf_algo_t algo, const wickr_buffer_t *passphrase, size_t output_size) {
+      wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+      algo.output_size = (uint8_t)output_size;
+      return engine.wickr_crypto_kdf_gen(algo, passphrase);
+    }
+
     static wickr_buffer_t *kdf(wickr_kdf_algo_t algo, const wickr_buffer_t *passphrase) {
       wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
       wickr_kdf_result_t *result = engine.wickr_crypto_kdf_gen(algo, passphrase);
-      if (!result) {
-        return NULL;
-      }
       wickr_buffer_t *copy_out = wickr_buffer_copy(result->hash);
       wickr_kdf_result_destroy(&result);
       return copy_out;
@@ -96,6 +99,27 @@ struct wickr_crypto_engine{
       }
       wickr_buffer_t *copy_out = wickr_buffer_copy(result->hash);
       wickr_kdf_result_destroy(&result);
+      return copy_out;
+    }
+
+    static wickr_buffer_t *kdf_salt_full(const wickr_kdf_meta_t *existing_meta, const wickr_buffer_t *passphrase, size_t output_size) {
+      wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+      wickr_kdf_meta_t *meta_copy = wickr_kdf_meta_copy(existing_meta);
+
+      if (!meta_copy) {
+        return NULL;
+      }
+
+      meta_copy->algo.output_size = (uint8_t)output_size;
+      wickr_kdf_result_t *result = engine.wickr_crypto_kdf_meta(meta_copy, passphrase);
+
+      if (!result) {
+        return NULL;
+      }
+
+      wickr_buffer_t *copy_out = wickr_buffer_copy(result->hash);
+      wickr_kdf_result_destroy(&result);
+      wickr_kdf_meta_destroy(&meta_copy);
       return copy_out;
     }
 

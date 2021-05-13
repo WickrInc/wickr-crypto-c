@@ -169,6 +169,15 @@ final class EngineTests extends TestCase
         $this->assertEquals($deciphered, $testValue);
     }
 
+    public function testKdfCustomLength() {
+        $passphrase = "password";
+        $kdf = CryptoEngine::kdfFull(KDFAlgo::scrypt17(), $passphrase, 64);
+        $this->assertNotEmpty($kdf);
+        $this->assertEquals(strlen($kdf->hash), 64);
+
+        $kdf2 = CryptoEngine::kdfSaltFull($kdf->meta, $passphrase, 64);
+        $this->assertEquals($kdf->hash, $kdf2);
+    }
 }
 
 ?>

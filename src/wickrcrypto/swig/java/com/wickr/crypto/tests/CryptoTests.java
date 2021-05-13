@@ -182,6 +182,18 @@ public class CryptoTests {
 		assertArrayEquals(deciphered, testValue);
 	}
 
+	@Test
+	public void testKdfCustom() throws UnsupportedEncodingException
+	{
+		byte[] passphrase = "password".getBytes("UTF8");
+
+        KDFResult kdf = wickrcrypto.CryptoEngine.kdfFull(KDFAlgo.scrypt17(), passphrase, 64);
+        assertNotNull(kdf);
+		assertEquals(kdf.hash.length, 64);
+
+        byte[] kdf2 = wickrcrypto.CryptoEngine.kdfSaltFull(kdf.meta, passphrase, 64);
+		assertArrayEquals(kdf2, kdf.hash);
+	}
 
 	private final static char[] hexArray = "0123456789abcdef".toCharArray();
 	

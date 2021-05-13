@@ -63,7 +63,7 @@
   }
 }
 
-%extend struct wickr_kdf_meta{
+%extend struct wickr_kdf_meta {
 
  %newobject from_components;
  %newobject create_with_buffer;
@@ -82,4 +82,10 @@
  static wickr_kdf_meta_t *create_with_buffer(const wickr_buffer_t *buffer);
  static uint8_t size_with_buffer(const wickr_buffer_t *buffer);
 
+};
+
+%extend struct wickr_kdf_result {
+  ~wickr_kdf_result() {
+    wickr_kdf_result_destroy(&$self);
+  }
 };
