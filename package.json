@@ -11,7 +11,7 @@
     "version": "1.14.1",
     "main": "node/lib/wickrcrypto.node",
     "scripts": {
-        "install": "node-pre-gyp install 2> /dev/null || ./node_install.sh",
+        "install": "(node-pre-gyp install 2> /dev/null || ./node_install.sh) && ./node_post.sh",
         "test": "./node_modules/.bin/mocha src/wickrcrypto/swig/node/test"
     },
     "binary": {
