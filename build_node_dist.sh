@@ -6,7 +6,7 @@ do
         -e node_pre_gyp_accessKeyId=${node_pre_gyp_accessKeyId} \
         -e node_pre_gyp_secretAccessKey=${node_pre_gyp_secretAccessKey} \
         --name crypto-${DISTRO}-instance -it crypto-${DISTRO} \
-        /bin/sh -c "npm install --build-from-source --unsafe-perm && npm test && ./node_modules/node-pre-gyp/bin/node-pre-gyp --target_platform='${DISTRO}' package publish"
+        /bin/sh -c "npm install --build-from-source --unsafe-perm && npm test && ./node_modules/@mapbox/node-pre-gyp/bin/node-pre-gyp --target_platform='${DISTRO}' package publish"
     if [ "$?" != "0" ]
     then
         exit $?
