@@ -5,6 +5,10 @@ if [ -z ${FIPS} ]; then
     FIPS=false
 fi
 
+if [ -z ${AWS_LC} ]; then
+    AWS_LC=false
+fi
+
 mkdir -p build_android/output_fat && cd build_android
 
 # Build all the native modules
@@ -13,7 +17,7 @@ do
     mkdir build_android_${ARCH}
     cd build_android_${ARCH}
 
-    if [ "${ARCH}" = "x86" ] || [ "${ARCH}" = "x86_64" ]; then
+    if [ "${ARCH}" != "arm64-v8a" ]; then
         _FIPS=false
     else
         _FIPS=${FIPS}
@@ -24,9 +28,10 @@ do
     -DANDROID_NATIVE_API_LEVEL=21 \
     -DCMAKE_BUILD_TYPE=Release \
     -DFIPS=${_FIPS} \
-    -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
-    -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
-    -DOSSL_FIPS_URL="${OSSL_FIPS_URL}" \
+    -DAWS_LC=${AWS_LC} \
+    -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \
+    -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS} \
+    -DOSSL_FIPS_URL=${OSSL_FIPS_URL} \
     -DANDROID_ABI=${ARCH} \
     -DCMAKE_INSTALL_PREFIX=../output_fat \
     -DBUILD_JAVA=ON ../../

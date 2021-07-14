@@ -25,7 +25,18 @@ if (OPENSSL_CRYPTO_SHARED)
         TARGET crypto_test POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
                 ${OPENSSL_CRYPTO_SHARED}
-                ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/${OPENSSL_CRYPTO_SHARED_FILENAME})
+                ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/${OPENSSL_CRYPTO_SHARED_FILENAME}
+    )
+
+    if (APPLE AND NOT IOS)
+        add_custom_command(
+            TARGET crypto_test POST_BUILD 
+            COMMAND ${CMAKE_INSTALL_NAME_TOOL} 
+                -change @rpath/${OPENSSL_CRYPTO_SHARED_FILENAME} 
+                ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}/${OPENSSL_CRYPTO_SHARED_FILENAME}
+                $<TARGET_FILE:crypto_test>
+        )
+    endif()
 
 endif()
 

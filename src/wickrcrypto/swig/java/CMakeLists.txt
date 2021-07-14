@@ -19,7 +19,10 @@ set(CMAKE_SWIG_FLAGS -package ${PACKAGE_NAME} ${CMAKE_SWIG_FLAGS})
 # Configure the swig target for java
 if (FIPS)
     set(_ORIGINAL_C_COMPILER ${CMAKE_C_COMPILER})
-    set(CMAKE_C_COMPILER ${OPENSSL_FIPSLD_COMPILER} CACHE LOCAL "" FORCE)
+
+    if (OPENSSL_FIPSLD_COMPILER)
+        set(CMAKE_C_COMPILER ${OPENSSL_FIPSLD_COMPILER} CACHE LOCAL "" FORCE)
+    endif ()
 endif ()
 
 setup_swig_library("java" "")
@@ -98,6 +101,10 @@ if (ANDROID)
         file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle "rootProject.name = \"wickrcrypto-fips\"\ngradle.ext.versionNumber = \"${VERSION_STRING}\"")
     else () 
         file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle "rootProject.name = \"wickrcrypto\"\ngradle.ext.versionNumber = \"${VERSION_STRING}\"")
+    endif ()
+
+    if (OPENSSL_CRYPTO_SHARED)
+        install(FILES ${OPENSSL_CRYPTO_SHARED} DESTINATION ${ANDROID_INSTALL_PATH}/src/main/jniLibs/${CMAKE_ANDROID_ARCH_ABI})
     endif ()
 
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/settings.gradle DESTINATION ${ANDROID_INSTALL_PATH})

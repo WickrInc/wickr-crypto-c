@@ -7,7 +7,9 @@ endif ()
 
 # FIPS is only supported on OPENSSL 1.0.2
 if (FIPS)
-    set(OPENSSL_102 ON)
+    if (NOT AWS_LC)
+        set(OPENSSL_102 ON)
+    endif ()
 endif ()
 
 # When building in FIPS mode, building OpenSSL is required
@@ -38,6 +40,8 @@ endif ()
 
 if (OPENSSL_102)
     add_subdirectory(1.0.2-fips)
+elseif (AWS_LC)
+    add_subdirectory(aws-lc)
 else ()
     add_subdirectory(1.1.1)
 endif ()

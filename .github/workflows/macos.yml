@@ -7,8 +7,11 @@ jobs:
     runs-on: macos-12
     strategy:
       matrix:
+        aws_lc: [ON, OFF]
         fips: [ON, OFF]
     steps:
+      - name: Setup Ninja
+        run: brew install ninja
       - name: Setup cmake 
         uses: jwlawson/actions-setup-cmake@v1.12
       - name: Checkout
@@ -23,6 +26,7 @@ jobs:
           -DBUILD_TESTS=true \
           -DBUILD_OPENSSL=ON \
           -DFIPS=${{matrix.fips}} \
+          -DAWS_LC=${{matrix.aws_lc}} \
           -DOSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} \
           -DOSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} \
           -DOSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} \
@@ -34,4 +38,4 @@ jobs:
       - name: Test 
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build 
-        run: ctest -C ${{env.BUILD_TYPE}}
+        run: ctest --output-on-failure
