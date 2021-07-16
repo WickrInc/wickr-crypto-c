@@ -234,6 +234,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
 | CMAKE_ANDROID_NDK | The location of the root directory of an NDK installation | Android |
 | IOS_PLATFORM | Set to OS for armv7,armv7s,arm64 builds or SIMULATOR for x86,x86_64 builds | iOS |
 | IOS_DEPLOYMENT_TARGET | The minimum target for the iOS build (9.0+ Recomended) | iOS |
+| BUILD_TESTS | Tells CMake to buid tests (off by default) | All |
 
 ## Building, Installing, and Testing
 
@@ -249,7 +250,7 @@ To install the library to the configured install prefix
 make install
 ``` 
 
-To run the bundled test target (macOS, Windows, Linux)
+To run the bundled test target (macOS, Windows, Linux). Requires `-DBUILD_TESTS=ON` when configuring build.
 
 ```
 make test

@@ -565,7 +565,7 @@ wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_resul
         }
     }
     
-    /* Re-Initialize the context with proper values to prepare for encryption */
+    /* Re-Initialize the context with proper values to prepare for decryption */
     if (1 != EVP_DecryptInit_ex(ctx, NULL, NULL, key->key_data->bytes, cipher_result->iv->bytes)) {
         goto process_error;
     }
