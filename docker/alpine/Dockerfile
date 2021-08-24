@@ -1,4 +1,4 @@
-FROM node:15-alpine
+FROM node:14-alpine
 
 ADD . /usr/share/wickr-crypto-c
 WORKDIR /usr/share/wickr-crypto-c
