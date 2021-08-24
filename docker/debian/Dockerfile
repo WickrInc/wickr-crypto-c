@@ -1,4 +1,4 @@
-FROM node:15-stretch-slim
+FROM node:14-stretch-slim
 
 ADD . /usr/share/wickr-crypto-c
 WORKDIR /usr/share/wickr-crypto-c

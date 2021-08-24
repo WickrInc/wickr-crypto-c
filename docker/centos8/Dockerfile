@@ -4,7 +4,7 @@ ADD . /usr/share/wickr-crypto-c
 WORKDIR /usr/share/wickr-crypto-c
 
 RUN yum -y update && yum -y install curl
-RUN curl -sL https://rpm.nodesource.com/setup_15.x | bash - && yum -y update
+RUN curl -sL https://rpm.nodesource.com/setup_14.x | bash - && yum -y update
 RUN yum -y install epel-release
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install nodejs cmake3 bison make git autoconf automake pcre-devel
