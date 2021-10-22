@@ -94,14 +94,14 @@ macro(build_openssl)
         set(MAKE_OPS "-j${N}")
     endif ()
 
-    set(OSSL_VERSION "1.0.2y")
-    set(OSSL_HASH "bff8252a183d898c735aa538a25d4ac618117e08650bd0eb28316cdab002be9b")
+    set(OSSL_VERSION "1.0.2zb")
+    set(OSSL_HASH "0d1c1acbe63405834d10f780f833b4e97fe96a8a19ee71f0d9f6431515650922")
     
     if (NOT OSSL_FIPS_URL)
         set(OSSL_FIPS_URL "https://github.openssl.org/openssl/wickr/archive")
     endif ()
 
-    set(OSSL_URL "${OSSL_FIPS_URL}/OpenSSL_1_0_2y.tar.gz")
+    set(OSSL_URL "${OSSL_FIPS_URL}/OpenSSL_1_0_2zb.tar.gz")
 
     if (FIPS)
         set(FIPS_OPTIONS fips --with-fipsdir=${FIPS_PATH} --with-fipslibdir=${FIPS_PATH}/lib/)
