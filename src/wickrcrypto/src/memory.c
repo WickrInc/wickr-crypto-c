@@ -31,12 +31,12 @@ void wickr_free(void *buf)
     free(buf);
 }
 
-void wickr_free_zero(void *buf, size_t len)
+void wickr_zero(void *buf, size_t len)
 {
     if (!buf || len == 0) {
         return;
     }
-    
+
 #ifdef __STDC_WANT_LIB_EXT1__
     if (memset_s(buf, (rsize_t)len, 0, (rsize_t)len) != 0) {
         abort();
@@ -46,10 +46,9 @@ void wickr_free_zero(void *buf, size_t len)
 #else
     volatile unsigned char *volatile volatile_buf = (volatile unsigned char * volatile) buf;
     size_t i = 0;
-    
+
     while (i < len) {
         volatile_buf[i++] = 0;
     }
 #endif
-    wickr_free(buf);
 }

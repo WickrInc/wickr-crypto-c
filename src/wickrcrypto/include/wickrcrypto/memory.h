@@ -66,15 +66,15 @@ void *wickr_alloc_zero(size_t len);
 void wickr_free(void *buf);
 
 /**
- 
- @ingroup memory_functions
- 
- Zero-then-free memory
 
- @param buf the buffer to fill with 0s and then free
- @param len the number of bytes to fill with 0s before freeing 'buf'
+ @ingroup memory_functions
+
+ Zero memory
+
+ @param buf the buffer to fill with 0s
+ @param len the number of bytes to fill with 0s
  */
-void wickr_free_zero(void *buf, size_t len);
+void wickr_zero(void *buf, size_t len);
 
 #ifdef __cplusplus
 }

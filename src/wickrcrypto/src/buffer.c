@@ -210,8 +210,9 @@ void wickr_buffer_destroy_zero(wickr_buffer_t **buffer)
     if (!buffer || !*buffer) {
         return;
     }
-    
-    wickr_free_zero(*buffer, (*buffer)->length);
+
+    wickr_zero((*buffer)->bytes, (*buffer)->length);
+    wickr_free(*buffer);
     *buffer = NULL;
 }
 
