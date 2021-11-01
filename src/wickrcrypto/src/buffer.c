@@ -39,6 +39,12 @@ static wickr_buffer_t *__wickr_buffer_create_empty(size_t len, void *(*alloc_fun
     wickr_buffer_t *new_buffer = (wickr_buffer_t *)bytes;
 
     new_buffer->bytes = alloc_func(len);
+
+    if (!new_buffer->bytes) {
+        wickr_free(new_buffer);
+        return NULL;
+    }
+
     new_buffer->length = len;
     
     return new_buffer;
