@@ -84,6 +84,7 @@ DESCRIBE(wickr_ec_key, "ec key data structure")
     {
         test_key->pub_data->length += 1;
         SHOULD_BE_NULL(wickr_ec_key_get_pubdata_fixed_len(test_key));
+        test_key->pub_data->length -= 1;
     }
     END_IT
     

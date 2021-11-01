@@ -30,14 +30,12 @@ static wickr_buffer_t *__wickr_buffer_create_empty(size_t len, void *(*alloc_fun
         return NULL;
     }
     
-    uint8_t *bytes = alloc_func(sizeof(wickr_buffer_t));
+    wickr_buffer_t *new_buffer = wickr_alloc_zero(sizeof(wickr_buffer_t));
 
-    if (!bytes) {
+    if (!new_buffer) {
         return NULL;
     }
     
-    wickr_buffer_t *new_buffer = (wickr_buffer_t *)bytes;
-
     new_buffer->bytes = alloc_func(len);
 
     if (!new_buffer->bytes) {
