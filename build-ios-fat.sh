@@ -13,6 +13,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DIOS_DEPLOYMENT_TARGET=11.0 \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
     -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
+    -DOSSL_FIPS_URL="${OSSL_FIPS_URL}" \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_device ../
 make
@@ -36,6 +37,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-iOS.cmake \
     -DFIPS=${FIPS} \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
     -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
+    -DOSSL_FIPS_URL="${OSSL_FIPS_URL}" \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_sim ../
 make 

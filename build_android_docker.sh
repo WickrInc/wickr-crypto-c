@@ -17,6 +17,7 @@ docker run \
     -e ARTIFACTORY_PASS=${ARTIFACTORY_PASS} \
     -e OSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \
     -e OSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS} \
+    -e OSSL_FIPS_URL=${OSSL_FIPS_URL} \
     --name crypto-${DISTRO}-instance crypto-${DISTRO} \
     /bin/sh -c "${BUILD_COMMAND}"
 
