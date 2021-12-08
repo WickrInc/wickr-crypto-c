@@ -364,7 +364,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
                                                                                wickr_identity_chain_copy(bob_identity),
                                                                                wickr_identity_chain_copy(alice_identity),
                                                                                43, bob_callbacks, NULL);
-        
+
         /* Start the alice transport */
         wickr_transport_ctx_start(test_transport_alice);
         wickr_transport_ctx_process_rx_buffer(test_transport_bob, alice_last_tx);
@@ -388,6 +388,8 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         SHOULD_EQUAL(copy->user, test_transport_alice->user);
         
         wickr_transport_ctx_destroy(&copy);
+        wickr_transport_ctx_destroy(&test_transport_alice);
+        wickr_transport_ctx_destroy(&test_transport_bob);
     }
     END_IT
     
@@ -444,7 +446,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
                                                                                  alice_callbacks, NULL);
         
         wickr_transport_ctx_t *test_transport_bob = wickr_transport_ctx_create(test_engine,
-                                                                               wickr_identity_chain_copy(bob_identity),
+                                                                               bob_identity,
                                                                                NULL,
                                                                                43, bob_callbacks, NULL);
         
@@ -490,7 +492,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
                                                                                  alice_callbacks, NULL);
         
         wickr_transport_ctx_t *test_transport_bob = wickr_transport_ctx_create(test_engine,
-                                                                               wickr_identity_chain_copy(bob_identity),
+                                                                               bob_identity,
                                                                                NULL,
                                                                                43, identity_fail_callback, NULL);
         
@@ -526,7 +528,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
                                                                                  identity_fail_callback, NULL);
         
         wickr_transport_ctx_t *test_transport_bob = wickr_transport_ctx_create(test_engine,
-                                                                               wickr_identity_chain_copy(bob_identity),
+                                                                               bob_identity,
                                                                                NULL,
                                                                                43, bob_callbacks, NULL);
         
@@ -772,6 +774,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         /* Send the bad packet */
         wickr_transport_ctx_process_rx_buffer(test_transport_bob, packet_buffer);
         wickr_transport_packet_destroy(&packet);
+        wickr_buffer_destroy(&packet_buffer);
         
         SHOULD_BE_NULL(bob_last_rx);
         SHOULD_EQUAL(wickr_transport_ctx_get_status(test_transport_bob), TRANSPORT_STATUS_ERROR);

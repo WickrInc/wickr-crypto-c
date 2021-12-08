@@ -216,9 +216,7 @@ void wickr_buffer_destroy_zero(wickr_buffer_t **buffer)
     }
 
     wickr_zero((*buffer)->bytes, (*buffer)->length);
-    wickr_free((*buffer)->bytes);
-    wickr_free(*buffer);
-    *buffer = NULL;
+    wickr_buffer_destroy(buffer);
 }
 
 void wickr_buffer_destroy(wickr_buffer_t **buffer)
@@ -227,6 +225,7 @@ void wickr_buffer_destroy(wickr_buffer_t **buffer)
         return;
     }
     
+    wickr_free((*buffer)->bytes);
     wickr_free(*buffer);
     *buffer = NULL;
 }
