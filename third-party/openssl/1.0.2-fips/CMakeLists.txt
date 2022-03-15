@@ -95,7 +95,7 @@ macro(build_openssl)
     endif ()
 
     set(OSSL_VERSION "1.0.2zd")
-    set(OSSL_HASH "111bab600856953236888042d75ab3aca1b9bf7001993477a88ba1ef21e31460")
+    set(OSSL_HASH "30d63e75aa73a02cb5c557a515c29992695b239d04716a0222bf4b9c98290002")
     
     if (NOT OSSL_FIPS_URL)
         set(OSSL_FIPS_URL "https://github.openssl.org/openssl/wickr/archive")
