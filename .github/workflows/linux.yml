@@ -1,0 +1,37 @@
+name: Linux
+on: [push, pull_request]
+env:
+  BUILD_TYPE: Release 
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fips: [ON, OFF]
+        build-openssl: [ON, OFF]
+        exclude:
+          - fips: ON 
+            build-openssl: OFF
+    steps:
+      - name: Setup cmake 
+        uses: jwlawson/actions-setup-cmake@v1.12
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Configure CMake
+        run: |
+          cmake -B ${{github.workspace}}/build \
+          -DBUILD_TESTS=true \
+          -DBUILD_OPENSSL=${{matrix.build-openssl}} \
+          -DFIPS=${{matrix.fips}} \
+          -DOSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} \
+          -DOSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} \
+          -DOSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} \
+          -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+      - name: Build 
+        working-directory: ${{github.workspace}}/build
+        run: make
+      - name: Test 
+        working-directory: ${{github.workspace}}/build 
+        run: ctest -C ${{env.BUILD_TYPE}}

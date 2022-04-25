@@ -1,0 +1,18 @@
+name: Android
+on: [push, pull_request]
+env:
+  BUILD_TYPE: Release 
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fips: [ON, OFF]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Build 
+        working-directory: ${{github.workspace}}
+        run: FIPS=${{matrix.fips}} ./build_android_docker.sh

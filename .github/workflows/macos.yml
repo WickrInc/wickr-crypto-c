@@ -1,0 +1,37 @@
+name: MacOS
+on: [push, pull_request]
+env:
+  BUILD_TYPE: Release 
+jobs:
+  Build:
+    runs-on: macos-12
+    strategy:
+      matrix:
+        fips: [ON, OFF]
+    steps:
+      - name: Setup cmake 
+        uses: jwlawson/actions-setup-cmake@v1.12
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - run: cmake --version
+      - name: Configure CMake
+        shell: zsh {0}
+        run: |
+          cmake -B ${{github.workspace}}/build \
+          -DBUILD_TESTS=true \
+          -DBUILD_OPENSSL=ON \
+          -DFIPS=${{matrix.fips}} \
+          -DOSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} \
+          -DOSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} \
+          -DOSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} \
+          -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+      - name: Build 
+        shell: zsh {0}
+        working-directory: ${{github.workspace}}/build
+        run: make
+      - name: Test 
+        shell: zsh {0}
+        working-directory: ${{github.workspace}}/build 
+        run: ctest -C ${{env.BUILD_TYPE}}
