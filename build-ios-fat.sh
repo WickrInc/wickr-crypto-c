@@ -1,3 +1,5 @@
+set -e
+
 if [ -z ${FIPS} ]; then
     FIPS=false
 fi

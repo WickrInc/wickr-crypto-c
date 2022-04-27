@@ -1,0 +1,23 @@
+name: NodeJS
+on: [push, pull_request]
+env:
+  BUILD_TYPE: Release 
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Latest Swig
+        run: git clone https://github.com/swig/swig.git && cd swig && ./autogen.sh && ./configure && make -j3 && sudo make install && sudo rm -rf /usr/bin/swig*
+      - name: Setup cmake 
+        uses: jwlawson/actions-setup-cmake@v1.12
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: NPM Install
+        run: npm install
+      - name: NPM Test
+        run: npm test
