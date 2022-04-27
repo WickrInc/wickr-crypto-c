@@ -144,13 +144,16 @@ macro(build_openssl)
         set(OSSL_BUILD ${ANDROID_ENV} make depend && ${ANDROID_ENV} make)
         set(OSSL_INSTALL ${ANDROID_ENV} make install_sw)
     elseif (WIN32)
-        set(OSSL_FIPS_DIR C:\\usr\\local\\ssl\\fips-2.0)
+        cmake_path(GET CMAKE_CURRENT_SOURCE_DIR ROOT_NAME DRIVE_LETTER)
+
+        set(OSSL_FIPS_DIR ${DRIVE_LETTER}\\usr\\local\\ssl\\fips-2.0)
+
         if (FIPS)
             set(FIPS_OPTIONS fips --with-fipsdir=${OSSL_FIPS_DIR})
         endif ()
 
         set(OSSL_OPTIONS ${FIPS_OPTIONS} no-dynamic-engine no-ssl2 no-ssl3 no-comp --prefix=${CMAKE_CURRENT_BINARY_DIR})
-        set(OSSL_OPENSSLDIR "C:/Program Files/Common Files/wickr/ssl")
+        set(OSSL_OPENSSLDIR "${DRIVE_LETTER}/Program Files/Common Files/wickr/ssl")
 
         if(CMAKE_SIZEOF_VOID_P EQUAL 8)
             set(OSSL_CONFIGURE perl Configure VC-WIN64A ${OSSL_OPTIONS} --openssldir=${OSSL_OPENSSLDIR})
