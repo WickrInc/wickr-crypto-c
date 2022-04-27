@@ -18,4 +18,4 @@ jobs:
       - name: Build 
         shell: zsh {0}
         working-directory: ${{github.workspace}}
-        run: FIPS=${{matrix.fips}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build-ios-fat.sh
+        run: FIPS=${{matrix.fips}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build-ios-fat.sh
