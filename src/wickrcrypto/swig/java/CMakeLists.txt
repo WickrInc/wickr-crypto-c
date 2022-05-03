@@ -106,7 +106,7 @@ if (ANDROID)
     if (OPENSSL_CRYPTO_SHARED)
         if (AWS_LC)
             install(FILES ${OPENSSL_CRYPTO_SHARED} DESTINATION ${ANDROID_INSTALL_PATH}/src/main/jniLibs/${CMAKE_ANDROID_ARCH_ABI} RENAME libawslc.so)
-        else
+        else ()
             install(FILES ${OPENSSL_CRYPTO_SHARED} DESTINATION ${ANDROID_INSTALL_PATH}/src/main/jniLibs/${CMAKE_ANDROID_ARCH_ABI})
         endif ()
     endif ()

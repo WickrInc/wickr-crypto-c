@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WickrCryptoCFips"
-  s.version      = "1.14.4"
+  s.version      = "1.15.0"
   s.summary      = "An implementation of the wickr protocol, written in C"
 
   # This description is used to generate tags and improve search results.
@@ -123,7 +123,7 @@ Pod::Spec.new do |s|
   s.module_map = "src/wickrcrypto/wickr_crypto_c.modulemap"
 
   s.prepare_command = <<-CMD
-       FIPS=true ./build-ios-fat.sh
+       FIPS=true AWS_LC=true ./build-ios-fat.sh
   CMD
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
