@@ -1,14 +1,22 @@
 #!/bin/bash
 
 if [ -z ${FIPS} ]; then
-    DISTRO=android
-    BUILD_COMMAND="./build_android_fat.sh $*"
-else
-    DISTRO=android-fips
-    BUILD_COMMAND="FIPS=true ./build_android_fat.sh $*"
+    FIPS=false
 fi
 
-echo $BUILD_COMMAND
+if [ -z $AWS_LC ]; then 
+    AWS_LC=false
+fi 
+
+if [ $AWS_LC = false ] && [ $FIPS = true ]; then
+    DISTRO=android-fips
+else
+    DISTRO=android
+fi
+
+BUILD_COMMAND="FIPS=${FIPS} AWS_LC=${AWS_LC} ./build_android_fat.sh $*"
+
+echo "Building android using distro: $DISTRO and command $BUILD_COMMAND"
 
 docker build -t crypto-${DISTRO} -f docker/${DISTRO}/Dockerfile .
 docker run \

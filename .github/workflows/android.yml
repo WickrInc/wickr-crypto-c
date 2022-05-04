@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        fips: [ON, OFF]
+        fips: [true, false]
+        aws_lc: [true, false]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -15,4 +16,4 @@ jobs:
           submodules: true
       - name: Build 
         working-directory: ${{github.workspace}}
-        run: FIPS=${{matrix.fips}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build_android_docker.sh
+        run: FIPS=${{matrix.fips}} AWS_LC=${{matrix.aws_lc}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build_android_docker.sh

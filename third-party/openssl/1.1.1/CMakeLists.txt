@@ -8,8 +8,8 @@ macro(build_openssl)
         set(MAKE_OPS "-j${N}")
     endif ()
 
-    set(OSSL_VERSION "1.1.1n")
-    set(OSSL_HASH "40dceb51a4f6a5275bde0e6bf20ef4b91bfc32ed57c0552e2e8e15463372b17a")
+    set(OSSL_VERSION "1.1.1o")
+    set(OSSL_HASH "9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f")
     set(OSSL_URL "https://www.openssl.org/source/openssl-${OSSL_VERSION}.tar.gz")
     set(OSSL_OPTIONS no-ssl3 no-comp enable-ec_nistp_64_gcc_128 --prefix=${CMAKE_CURRENT_BINARY_DIR})
 

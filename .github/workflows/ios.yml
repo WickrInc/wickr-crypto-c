@@ -8,9 +8,12 @@ jobs:
     strategy:
       matrix:
         fips: [ON, OFF]
+        aws_lc: [ON, OFF]
     steps:
       - name: Setup cmake 
         uses: jwlawson/actions-setup-cmake@v1.12
+      - name: Setup Ninja
+        run: brew install ninja
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -18,4 +21,4 @@ jobs:
       - name: Build 
         shell: zsh {0}
         working-directory: ${{github.workspace}}
-        run: FIPS=${{matrix.fips}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build-ios-fat.sh
+        run: FIPS=${{matrix.fips}} AWS_LC=${{matrix.aws_lc}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build-ios-fat.sh

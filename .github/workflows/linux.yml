@@ -8,13 +8,15 @@ jobs:
     strategy:
       matrix:
         fips: [ON, OFF]
-        build-openssl: [ON, OFF]
+        build-openssl: [ON, OFF, ON -DAWS_LC=ON]
         exclude:
           - fips: ON 
             build-openssl: OFF
     steps:
       - name: Setup cmake 
         uses: jwlawson/actions-setup-cmake@v1.12
+      - name: Setup Ninja
+        run: sudo apt-get install ninja-build
       - name: Checkout
         uses: actions/checkout@v3
         with:

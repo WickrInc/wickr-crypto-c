@@ -7,13 +7,19 @@
 #include <openssl/sha.h>
 #include <openssl/ec.h>
 #include <openssl/hmac.h>
+#include <openssl/bn.h>
 #include <string.h>
 #include <limits.h>
 
 #if OPENSSL_VERSION_NUMBER >= 0x010100000
 #include <openssl/ossl_typ.h>
+#ifdef OPENSSL_IS_AWSLC
+#include <openssl/hkdf.h>
+#include <openssl/mem.h>
+#else
 #include <openssl/kdf.h>
-#endif
+#endif //OPENSSL_IS_AWSLC
+#endif // OPENSSL_VERSION_NUMBER >= 0x010100000
 
 /* FIPS Support */
 #ifdef FIPS
@@ -213,15 +219,6 @@ static EVP_PKEY *__openssl_evp_public_key_from_buffer(const wickr_buffer_t *buff
     }
     
     return p_key;
-}
-
-static EVP_PKEY *__openssl_evp_hmac_key_from_buffer(const wickr_buffer_t *buffer)
-{
-    if (!buffer || buffer->length > INT_MAX) {
-        return NULL;
-    }
-    
-    return EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL, buffer->bytes, (int)buffer->length);
 }
 
 static EVP_MD_CTX * __openssl_digest_ctx_create(wickr_digest_t digest_mode)
@@ -1043,7 +1040,31 @@ wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buff
         return NULL;
     }
     
-    return __openssl_digest_sign_operation(mode, data, hmac_key, __openssl_evp_hmac_key_from_buffer);
+    const EVP_MD *evp_md = __openssl_get_digest_mode(mode);
+    
+    if (!evp_md) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *hmac_out = wickr_buffer_create_empty(mode.size);
+    
+    if (!hmac_out) {
+        return NULL;
+    }
+    
+    unsigned int out_len = (unsigned int)hmac_out->length;
+    
+    if (!HMAC(evp_md, hmac_key->bytes, hmac_key->length, data->bytes, data->length, hmac_out->bytes, &out_len)) {
+        wickr_buffer_destroy(&hmac_out);
+        return NULL;
+    }
+    
+    if (out_len != hmac_out->length) {
+        wickr_buffer_destroy(&hmac_out);
+        return NULL;
+    }
+    
+    return hmac_out;
 }
 
 bool openssl_hmac_verify(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode, const wickr_buffer_t *expected)
@@ -1445,7 +1466,7 @@ unsigned char *HKDF(const EVP_MD *evp_md,
                     const unsigned char *key, size_t key_len,
                     const unsigned char *info, size_t info_len,
                     unsigned char *okm, size_t okm_len)
-{
+{   
     unsigned char prk[EVP_MAX_MD_SIZE];
     unsigned char *ret;
     size_t prk_len;
@@ -1595,8 +1616,15 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
         wickr_buffer_destroy(&out_buffer);
         return NULL;
     }
+#elif defined(OPENSSL_IS_AWSLC)
+    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
+
+    if (!HKDF(out_buffer->bytes, out_buffer->length, openssl_digest, input_key_material->bytes, input_key_material->length, salt ? salt->bytes : NULL, salt ? salt->length : 0, info ? info->bytes : NULL, info ? info->length : 0))
+    {
+        wickr_buffer_destroy(&out_buffer);
+        return NULL;
+    }
 #else
-    
     EVP_PKEY_CTX *pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, NULL);
     
     if (!pctx) {
