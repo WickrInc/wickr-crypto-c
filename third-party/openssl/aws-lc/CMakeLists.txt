@@ -13,10 +13,14 @@ elseif (ANDROID)
     set(AWS_LC_BUILD_OPTS ${AWS_LC_BUILD_OPTS} -DANDROID_ABI=${ANDROID_ABI} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE} -DANDROID_NATIVE_API_LEVEL=${ANDROID_NATIVE_API_LEVEL})
 endif ()
 
+set(AWS_LC_VERSION "v1.1.0")
+set(AWS_LC_HASH "30295e44db16f7461e69d59ad954af086995b612cde9632ccbe818ff1fb3e902")
+
+
 ExternalProject_add(
     openssl
-    GIT_REPOSITORY https://github.com/awslabs/aws-lc.git
-    GIT_TAG origin/main
+    URL https://github.com/awslabs/aws-lc/archive/refs/tags/${AWS_LC_VERSION}.tar.gz
+    URL_HASH SHA256=${AWS_LC_HASH}
     CMAKE_ARGS ${AWS_LC_BUILD_OPTS}
     CMAKE_GENERATOR Ninja
 )
