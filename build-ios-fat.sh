@@ -57,8 +57,25 @@ mkdir -p output_fat/lib
 mkdir -p output_fat/include
 cp -R output_device/include output_fat
 rm -rf output_fat/include/wickrcrypto
+
+if [ "${AWS_LC}" == true ]; then
+    mkdir output_device/lib/libcrypto.framework
+    mkdir output_sim/lib/libcrypto.framework
+    cp third-party/openssl/aws-lc/Info.plist output_device/lib/libcrypto.framework
+    cp third-party/openssl/aws-lc/Info.plist output_sim/lib/libcrypto.framework
+
+    lipo -create output_device/lib/libcrypto.dylib -output output_device/lib/libcrypto.framework/libcrypto 
+    lipo -create output_sim/lib/libcrypto.dylib -output output_sim/lib/libcrypto.framework/libcrypto
+
+    install_name_tool -id @rpath/libcrypto.framework/libcrypto output_device/lib/libcrypto.framework/libcrypto
+    install_name_tool -id @rpath/libcrypto.framework/libcrypto output_sim/lib/libcrypto.framework/libcrypto
+
+    xcodebuild -create-xcframework -framework output_device/lib/libcrypto.framework -framework output_sim/lib/libcrypto.framework -output output_fat/lib/libcrypto.xcframework
+else 
+    xcodebuild -create-xcframework -library output_device/lib/libcrypto.a -library output_sim/lib/libcrypto.a -output output_fat/lib/libcrypto.xcframework
+fi
+
 xcodebuild -create-xcframework -library output_device/lib/libprotobuf-c.a -library output_sim/lib/libprotobuf-c.a -output output_fat/lib/libprotobuf-c.xcframework
-xcodebuild -create-xcframework -library output_device/lib/libcrypto.* -library output_sim/lib/libcrypto.* -output output_fat/lib/libcrypto.xcframework
 xcodebuild -create-xcframework -library output_device/lib/libscrypt.a -library output_sim/lib/libscrypt.a -output output_fat/lib/libscrypt.xcframework
 xcodebuild -create-xcframework -library output_device/lib/libbcrypt.a -library output_sim/lib/libbcrypt.a -output output_fat/lib/libbcrypt.xcframework
 
