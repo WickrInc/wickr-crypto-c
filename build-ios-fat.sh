@@ -64,15 +64,29 @@ if [ "${AWS_LC}" == true ]; then
     cp third-party/openssl/aws-lc/Info.plist output_device/lib/libcrypto.framework
     cp third-party/openssl/aws-lc/Info.plist output_sim/lib/libcrypto.framework
 
+    mkdir output_device/lib/libssl.framework
+    mkdir output_sim/lib/libssl.framework
+    cp third-party/openssl/aws-lc/Info.plist output_device/lib/libssl.framework
+    cp third-party/openssl/aws-lc/Info.plist output_sim/lib/libssl.framework
+
+
     lipo -create output_device/lib/libcrypto.dylib -output output_device/lib/libcrypto.framework/libcrypto 
     lipo -create output_sim/lib/libcrypto.dylib -output output_sim/lib/libcrypto.framework/libcrypto
+
+    lipo -create output_device/lib/libssl.dylib -output output_device/lib/libssl.framework/libssl 
+    lipo -create output_sim/lib/libssl.dylib -output output_sim/lib/libssl.framework/libssl
 
     install_name_tool -id @rpath/libcrypto.framework/libcrypto output_device/lib/libcrypto.framework/libcrypto
     install_name_tool -id @rpath/libcrypto.framework/libcrypto output_sim/lib/libcrypto.framework/libcrypto
 
+    install_name_tool -id @rpath/libcrypto.framework/libssl output_device/lib/libssl.framework/libssl
+    install_name_tool -id @rpath/libcrypto.framework/libssl output_sim/lib/libssl.framework/libssl
+
     xcodebuild -create-xcframework -framework output_device/lib/libcrypto.framework -framework output_sim/lib/libcrypto.framework -output output_fat/lib/libcrypto.xcframework
+    xcodebuild -create-xcframework -framework output_device/lib/libssl.framework -framework output_sim/lib/libssl.framework -output output_fat/lib/libssl.xcframework
 else 
     xcodebuild -create-xcframework -library output_device/lib/libcrypto.a -library output_sim/lib/libcrypto.a -output output_fat/lib/libcrypto.xcframework
+    xcodebuild -create-xcframework -library output_device/lib/libssl.a -library output_sim/lib/libssl.a -output output_fat/lib/libssl.xcframework
 fi
 
 xcodebuild -create-xcframework -library output_device/lib/libprotobuf-c.a -library output_sim/lib/libprotobuf-c.a -output output_fat/lib/libprotobuf-c.xcframework
