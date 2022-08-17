@@ -18,7 +18,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DIOS_PLATFORM=OS64 \
     -DFIPS=${FIPS} \
     -DAWS_LC=${AWS_LC} \
-    -DIOS_DEPLOYMENT_TARGET=11.0 \
+    -DIOS_DEPLOYMENT_TARGET=13.0 \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
     -DOSSL_SUPPORT_PASS="${OSSL_SUPPORT_PASS}" \
     -DOSSL_FIPS_URL="${OSSL_FIPS_URL}" \
@@ -42,7 +42,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_BITCODE=NO \
     -DIOS_PLATFORM=${SIM_ARCH} \
-    -DIOS_DEPLOYMENT_TARGET=11.0 \
+    -DIOS_DEPLOYMENT_TARGET=13.0 \
     -DFIPS=${FIPS} \
     -DAWS_LC=${AWS_LC} \
     -DOSSL_SUPPORT_UNAME="${OSSL_SUPPORT_UNAME}" \
@@ -61,13 +61,13 @@ rm -rf output_fat/include/wickrcrypto
 if [ "${AWS_LC}" == true ]; then
     mkdir output_device/lib/libcrypto.framework
     mkdir output_sim/lib/libcrypto.framework
-    cp third-party/openssl/aws-lc/Info.plist output_device/lib/libcrypto.framework
-    cp third-party/openssl/aws-lc/Info.plist output_sim/lib/libcrypto.framework
+    cp third-party/openssl/aws-lc/CryptoInfo.plist output_device/lib/libcrypto.framework/Info.plist
+    cp third-party/openssl/aws-lc/CryptoInfo.plist output_sim/lib/libcrypto.framework/Info.plist
 
     mkdir output_device/lib/libssl.framework
     mkdir output_sim/lib/libssl.framework
-    cp third-party/openssl/aws-lc/Info.plist output_device/lib/libssl.framework
-    cp third-party/openssl/aws-lc/Info.plist output_sim/lib/libssl.framework
+    cp third-party/openssl/aws-lc/SslInfo.plist output_device/lib/libssl.framework/Info.plist
+    cp third-party/openssl/aws-lc/SslInfo.plist output_sim/lib/libssl.framework/Info.plist
 
 
     lipo -create output_device/lib/libcrypto.dylib -output output_device/lib/libcrypto.framework/libcrypto 
@@ -79,8 +79,10 @@ if [ "${AWS_LC}" == true ]; then
     install_name_tool -id @rpath/libcrypto.framework/libcrypto output_device/lib/libcrypto.framework/libcrypto
     install_name_tool -id @rpath/libcrypto.framework/libcrypto output_sim/lib/libcrypto.framework/libcrypto
 
-    install_name_tool -id @rpath/libcrypto.framework/libssl output_device/lib/libssl.framework/libssl
-    install_name_tool -id @rpath/libcrypto.framework/libssl output_sim/lib/libssl.framework/libssl
+    install_name_tool -id @rpath/libssl.framework/libssl output_device/lib/libssl.framework/libssl
+    install_name_tool -id @rpath/libssl.framework/libssl output_sim/lib/libssl.framework/libssl
+    install_name_tool -change @rpath/libcrypto.dylib @rpath/libcrypto.framework/libcrypto output_device/lib/libssl.framework/libssl
+    install_name_tool -change @rpath/libcrypto.dylib @rpath/libcrypto.framework/libcrypto output_sim/lib/libssl.framework/libssl
 
     xcodebuild -create-xcframework -framework output_device/lib/libcrypto.framework -framework output_sim/lib/libcrypto.framework -output output_fat/lib/libcrypto.xcframework
     xcodebuild -create-xcframework -framework output_device/lib/libssl.framework -framework output_sim/lib/libssl.framework -output output_fat/lib/libssl.xcframework
