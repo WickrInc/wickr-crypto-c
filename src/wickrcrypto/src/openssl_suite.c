@@ -14,11 +14,9 @@
 #if OPENSSL_VERSION_NUMBER >= 0x010100000
 #include <openssl/ossl_typ.h>
 #ifdef OPENSSL_IS_AWSLC
-#include <openssl/hkdf.h>
 #include <openssl/mem.h>
-#else
+#endif // OPENSSL_IS_AWSLC
 #include <openssl/kdf.h>
-#endif //OPENSSL_IS_AWSLC
 #endif // OPENSSL_VERSION_NUMBER >= 0x010100000
 
 /* FIPS Support */
@@ -1612,14 +1610,6 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
               input_key_material->bytes, input_key_material->length,
               info ? info->bytes: NULL, info ? info->length : 0,
               out_buffer->bytes, out_buffer->length))
-    {
-        wickr_buffer_destroy(&out_buffer);
-        return NULL;
-    }
-#elif defined(OPENSSL_IS_AWSLC)
-    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
-
-    if (!HKDF(out_buffer->bytes, out_buffer->length, openssl_digest, input_key_material->bytes, input_key_material->length, salt ? salt->bytes : NULL, salt ? salt->length : 0, info ? info->bytes : NULL, info ? info->length : 0))
     {
         wickr_buffer_destroy(&out_buffer);
         return NULL;
