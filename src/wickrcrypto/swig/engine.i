@@ -31,6 +31,8 @@ struct wickr_crypto_engine{
     %newobject kdf_salt;
     %newobject kdf_encrypt;
     %newobject kdf_decrypt; 
+    %newobject ecdsa_to_raw;
+    %newobject ecdsa_from_raw;
 
 
     static wickr_buffer_t *random_bytes(size_t len) {
@@ -133,6 +135,15 @@ struct wickr_crypto_engine{
       return wickr_crypto_engine_kdf_decipher(&engine, input_buffer, passphrase);
     }
 
+    static wickr_buffer_t *ecdsa_to_raw(const wickr_ecdsa_result_t *input) {
+      wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+      return engine.wickr_crypto_engine_ecdsa_to_raw(input);
+    }
+
+    static wickr_ecdsa_result_t *ecdsa_from_raw(const wickr_ec_curve_t curve, const wickr_digest_t digest, const wickr_buffer_t *input) {
+      wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+      return engine.wickr_crypto_engine_ecdsa_from_raw(curve, digest, input);
+    }
 
   } 
 

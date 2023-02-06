@@ -8,6 +8,7 @@
 #include <openssl/ec.h>
 #include <openssl/hmac.h>
 #include <openssl/bn.h>
+#include <openssl/ecdsa.h>
 #include <string.h>
 #include <limits.h>
 
@@ -947,6 +948,152 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature, const wickr_ec_key
     return result == 1 ? true : false;
 }
 
+#ifdef OPENSSL_IS_AWSLC
+int __openssl_ecdsa_bn_to_bin(wickr_buffer_t *out_buffer, ECDSA_SIG *sig) {
+    return BN_bn2bin_padded(out_buffer->bytes, out_buffer->length / 2, ECDSA_SIG_get0_r(sig)) &&
+        BN_bn2bin_padded(out_buffer->bytes + out_buffer->length / 2, out_buffer->length / 2, ECDSA_SIG_get0_s(sig));
+}
+#elif OPENSSL_VERSION_NUMBER >= 0x010100000
+int __openssl_ecdsa_bn_to_bin(wickr_buffer_t *out_buffer, ECDSA_SIG *sig) {
+    unsigned int out_buffer_len = (unsigned int)out_buffer->length;
+    
+    return BN_bn2binpad(ECDSA_SIG_get0_r(sig), out_buffer->bytes, out_buffer_len / 2) &&
+        BN_bn2binpad(ECDSA_SIG_get0_s(sig), out_buffer->bytes + out_buffer_len / 2, out_buffer_len / 2);
+}
+#else
+int __openssl_ecdsa_bn_to_bin(wickr_buffer_t *out_buffer, ECDSA_SIG *sig) {
+    unsigned int component_len = (unsigned int)out_buffer->length / 2;
+
+    int r_len = BN_num_bytes(sig->r);
+    int s_len = BN_num_bytes(sig->s);
+    
+    if (!BN_bn2bin(sig->r, out_buffer->bytes + component_len - r_len)) {
+        return 0;
+    }
+    
+    if (!BN_bn2bin(sig->s, out_buffer->bytes + (component_len * 2) - s_len)) {
+        return 0;
+    }
+    
+    return 1;
+}
+#endif
+
+wickr_buffer_t *openssl_ecdsa_to_raw(const wickr_ecdsa_result_t *input)
+{
+    if (!input) {
+        return NULL;
+    }
+    
+    ECDSA_SIG *sig = NULL;
+    
+    const uint8_t *result_holder = input->sig_data->bytes;
+    
+    if (!(d2i_ECDSA_SIG(&sig, &result_holder, input->sig_data->length))) {
+        return NULL;
+    }
+    
+    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(input->curve.raw_signature_size);
+    
+    if (!out_buffer) {
+        ECDSA_SIG_free(sig);
+        return NULL;
+    }
+    
+    if (!__openssl_ecdsa_bn_to_bin(out_buffer, sig)) {
+            ECDSA_SIG_free(sig);
+            wickr_buffer_destroy(&out_buffer);
+            return NULL;
+    }
+    
+    ECDSA_SIG_free(sig);
+    
+    return out_buffer;
+}
+
+wickr_ecdsa_result_t *openssl_ecdsa_from_raw(const wickr_ec_curve_t curve, const wickr_digest_t digest, const wickr_buffer_t* input)
+{
+    if (!input || input->length != curve.raw_signature_size) {
+        return NULL;
+    }
+    
+    BIGNUM *r = BN_new();
+    
+    if (!r) {
+        return NULL;
+    }
+    
+    BIGNUM *s = BN_new();
+    
+    if (!s) {
+        BN_free(r);
+        return NULL;
+    }
+
+#ifdef OPENSSL_IS_AWSLC
+    if (!BN_bin2bn(input->bytes, input->length / 2, r) ||
+        !BN_bin2bn(input->bytes + input->length / 2, input->length / 2, s)) {
+#else
+    if (!BN_bin2bn(input->bytes, (int)input->length / 2, r) ||
+        !BN_bin2bn(input->bytes + (int)input->length / 2, (int)input->length / 2, s)) {
+#endif
+        BN_free(r);
+        BN_free(s);
+        return NULL;
+    }
+    
+    ECDSA_SIG *sig = ECDSA_SIG_new();
+    
+    if (!sig) {
+        BN_free(r);
+        BN_free(s);
+        return NULL;
+    }
+    
+#ifdef OPENSSL_IS_AWSLC
+    if (!ECDSA_SIG_set0(sig, r, s)) {
+        ECDSA_SIG_free(sig);
+        return NULL;
+    }
+#elif OPENSSL_VERSION_NUMBER >= 0x010100000
+    if (!ECDSA_SIG_set0(sig, r, s)) {
+        ECDSA_SIG_free(sig);
+        return NULL;
+    }
+#else
+    BN_clear_free(sig->r);
+    BN_clear_free(sig->s);
+    sig->r = r;
+    sig->s = s;
+#endif
+    
+    size_t sig_size = i2d_ECDSA_SIG(sig, NULL);
+    
+    wickr_buffer_t *sig_data = wickr_buffer_create_empty_zero(sig_size);
+    
+    if (!sig_data) {
+        ECDSA_SIG_free(sig);
+        return NULL;
+    }
+    
+    uint8_t *bytes = sig_data->bytes;
+    
+    if (sig_size != i2d_ECDSA_SIG(sig, &bytes)) {
+        wickr_buffer_destroy(&sig_data);
+        return NULL;
+    }
+        
+    ECDSA_SIG_free(sig);
+    
+    wickr_ecdsa_result_t *res = wickr_ecdsa_result_create(curve, digest, sig_data);
+    
+    if (!res) {
+        wickr_buffer_destroy(&sig_data);
+    }
+    
+    return res;
+}
+
 wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer)
 {
     if (!local || !peer) {
@@ -1031,6 +1178,7 @@ wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wic
     
     return shared_secret_buffer;
 }
+
 
 wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)
 {

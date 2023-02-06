@@ -254,6 +254,28 @@ struct wickr_crypto_engine {
     /**
      @ingroup wickr_crypto_engine
      
+     Convert a wickr_ecdsa_result_t to a raw signature value
+     
+     @param input the result to convert to a raw signature
+     @return a buffer containing the raw signature value
+     */
+    wickr_buffer_t *(*wickr_crypto_engine_ecdsa_to_raw)(const wickr_ecdsa_result_t *input);
+
+    /**
+     @ingroup wickr_crypto_engine
+     
+     Convert a raw signature value into a wickr_ecdsa_result_t
+     
+     @param curve the curve used to produce the signature contained in `input`
+     @param digest the hash algorithm used to produce the signature contained in `input`
+     @param input a raw signature value created by `wickr_crypto_engine_ecdsa_to_raw`
+     @return a buffer containing the raw signature value
+     */
+    wickr_ecdsa_result_t *(*wickr_crypto_engine_ecdsa_from_raw)(const wickr_ec_curve_t curve, const wickr_digest_t digest, const wickr_buffer_t* input);
+    
+    /**
+     @ingroup wickr_crypto_engine
+     
      Generate a shared secret given Elliptic Curve Diffie-Hellman parameters
      
      @param local the local elliptic curve private key

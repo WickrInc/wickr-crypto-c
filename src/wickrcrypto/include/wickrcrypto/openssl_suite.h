@@ -160,6 +160,10 @@ bool openssl_ec_verify(const wickr_ecdsa_result_t *signature,
                        const wickr_ec_key_t *ec_public_key,
                        const wickr_buffer_t *data_to_verify);
 
+wickr_buffer_t *openssl_ecdsa_to_raw(const wickr_ecdsa_result_t *input);
+
+wickr_ecdsa_result_t *openssl_ecdsa_from_raw(const wickr_ec_curve_t curve, const wickr_digest_t digest, const wickr_buffer_t* input);
+
 /**
  @ingroup openssl_crypto
  
