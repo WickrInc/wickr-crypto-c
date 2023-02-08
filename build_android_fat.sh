@@ -27,7 +27,9 @@ do
     -DBUILD_OPENSSL=true \
     -DANDROID_NATIVE_API_LEVEL=21 \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-s" \
+    if [ -z ${FIPS} ]; then
+        -DCMAKE_C_FLAGS="-s" \
+    fi
     -DFIPS=${_FIPS} \
     -DAWS_LC=${AWS_LC} \
     -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \
