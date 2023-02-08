@@ -10,6 +10,8 @@ fi
 
 if [ -z ${AWS_LC} ]; then
     AWS_LC=false
+else
+    _FLAGS="-s"
 fi
 
 mkdir -p build_android/output_fat && cd build_android
