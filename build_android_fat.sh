@@ -23,11 +23,19 @@ do
         _FIPS=${FIPS}
     fi
 
+    if [ "${FIPS}" == "true" ] && [ "${AWS_LC}" == "false" ]; then
+        _FLAGS=""
+    else
+        _FLAGS="-s"
+    fi
+
+    echo "Building for arch ${ARCH}. FIPS=${_FIPS} AWS_LC=${AWS_LC} FLAGS=${_FLAGS}"
+
     cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
     -DBUILD_OPENSSL=true \
     -DANDROID_NATIVE_API_LEVEL=21 \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS="-s" \
+    -DCMAKE_C_FLAGS=${_FLAGS} \
     -DFIPS=${_FIPS} \
     -DAWS_LC=${AWS_LC} \
     -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \

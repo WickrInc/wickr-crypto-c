@@ -435,6 +435,18 @@ void test_ecdsa_serialization(wickr_ec_key_t *pri_key, wickr_buffer_t *test_data
     
     SHOULD_NOT_BE_NULL(restore_ecdsa);
     SHOULD_BE_TRUE(wickr_buffer_is_equal(restore_ecdsa->sig_data, result->sig_data, NULL));
+    
+    // Raw serialization
+    wickr_buffer_t *raw = openssl_ecdsa_to_raw(result);
+    wickr_ecdsa_result_t *from_raw = openssl_ecdsa_from_raw(result->curve, digest, raw);
+    
+    SHOULD_BE_TRUE(wickr_buffer_is_equal(from_raw->sig_data, result->sig_data, NULL));
+    SHOULD_EQUAL(pri_key->curve.identifier, from_raw->curve.identifier);
+    SHOULD_EQUAL(digest.digest_id, from_raw->digest_mode.digest_id);
+    SHOULD_EQUAL(raw->length, result->curve.raw_signature_size);
+    
+    wickr_buffer_destroy(&raw);
+    wickr_ecdsa_result_destroy(&from_raw);
     wickr_ecdsa_result_destroy(&restore_ecdsa);
     wickr_ecdsa_result_destroy(&result);
 }

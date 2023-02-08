@@ -11,7 +11,7 @@ DESCRIBE(wickr_ec_key, "ec key data structure")
     
     wickr_buffer_t *random_pub_data = test_engine.wickr_crypto_engine_crypto_random(32);
     wickr_buffer_t *random_pri_data = test_engine.wickr_crypto_engine_crypto_random(32);
-    wickr_ec_curve_t test_curve = { 32, 64, 128 };
+    wickr_ec_curve_t test_curve = { 32, 48, 64, 128 };
     
     wickr_ec_key_t *test_key = wickr_ec_key_create(test_curve, random_pub_data, random_pri_data);
     

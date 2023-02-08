@@ -43,6 +43,9 @@ extern "C" {
  */
 #define P521_PUB_KEY_MAX_SIZE 134
 
+/* 66 bytes R || 66 bytes S */
+#define P521_RAW_SIGNATURE_SIZE 132
+
 typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
 
 /**
@@ -67,12 +70,13 @@ typedef enum { EC_CURVE_ID_NIST_P521 } wickr_ec_curve_id;
 struct wickr_ec_curve {
     wickr_ec_curve_id identifier;
     uint8_t signature_size;
+    uint8_t raw_signature_size;
     uint8_t max_pub_size;
 };
 
 typedef struct wickr_ec_curve wickr_ec_curve_t;
 
-static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE, P521_PUB_KEY_MAX_SIZE };
+static const wickr_ec_curve_t EC_CURVE_NIST_P521 = { EC_CURVE_ID_NIST_P521, P521_SIGNATURE_MAX_SIZE, P521_RAW_SIGNATURE_SIZE, P521_PUB_KEY_MAX_SIZE };
 
 /**
  

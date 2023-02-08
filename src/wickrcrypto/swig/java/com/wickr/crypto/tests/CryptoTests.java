@@ -116,6 +116,35 @@ public class CryptoTests {
 		assertFalse(isValid);
 	}
 
+    @Test
+    public void testRawSignature() throws UnsupportedEncodingException {
+		// Generate a random EC Key
+		ECKey testECKey = CryptoEngine.randEcKey(ECCurve.p521());
+
+        byte[] testData = "HelloWorld".getBytes("UTF8");
+
+		// Generate a signature using a private ec key, data, and a hashing method
+		ECDSAResult testSignature = CryptoEngine.ecSign(testECKey, testData, Digest.sha512());
+
+        // Copy the raw signature data
+        byte[] rawSignatureData = CryptoEngine.ecdsaToRaw(testSignature);
+        assertNotNull(rawSignatureData);
+
+        assertFalse(rawSignatureData.length == testSignature.serialize().length);
+
+        // Import the signature data and validate the signature
+        ECDSAResult received = CryptoEngine.ecdsaFromRaw(ECCurve.p521(), Digest.sha512(), rawSignatureData);
+
+        boolean isValid = CryptoEngine.ecVerify(received, testECKey, testData);
+		assertTrue(isValid);
+
+        // Validate that checking a signature with the wrong key properly fails
+        ECKey anotherECKey = CryptoEngine.randEcKey(ECCurve.p521());
+
+		isValid = CryptoEngine.ecVerify(received, anotherECKey, testData);
+		assertFalse(isValid);
+    }
+
 	@Test
 	public void testHashing() throws UnsupportedEncodingException
 	{
@@ -187,12 +216,12 @@ public class CryptoTests {
 	{
 		byte[] passphrase = "password".getBytes("UTF8");
 
-        KDFResult kdf = wickrcrypto.CryptoEngine.kdfFull(KDFAlgo.scrypt17(), passphrase, 64);
+        KDFResult kdf = CryptoEngine.kdfFull(KDFAlgo.scrypt17(), passphrase, 64);
         assertNotNull(kdf);
-		assertEquals(kdf.hash.length, 64);
+		assertEquals(kdf.getHash().length, 64);
 
-        byte[] kdf2 = wickrcrypto.CryptoEngine.kdfSaltFull(kdf.meta, passphrase, 64);
-		assertArrayEquals(kdf2, kdf.hash);
+        byte[] kdf2 = CryptoEngine.kdfSaltFull(kdf.getMeta(), passphrase, 64);
+		assertArrayEquals(kdf2, kdf.getHash());
 	}
 
 	private final static char[] hexArray = "0123456789abcdef".toCharArray();

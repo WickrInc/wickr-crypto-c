@@ -150,8 +150,11 @@ int main(int argc, char *argv[])
     run_transport_tests(output);
     run_messaging_protocol_tests(output);
     run_context_api_tests(output);
-    run_kdf_tests(output);
-    
+
+    if (!getenv("NO_KDF")) {
+        run_kdf_tests(output);
+    }
+
 #ifdef FIPS
     openssl_thread_cleanup();
 #endif
