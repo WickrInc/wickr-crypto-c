@@ -13,7 +13,7 @@ jobs:
       - name: Setup Ninja
         run: brew install ninja
       - name: Setup cmake 
-        uses: jwlawson/actions-setup-cmake@v1.12
+        run: brew install cmake
       - name: Checkout
         uses: actions/checkout@v3
         with:

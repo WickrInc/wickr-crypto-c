@@ -11,7 +11,7 @@ jobs:
         aws_lc: [true, false]
     steps:
       - name: Setup cmake 
-        uses: jwlawson/actions-setup-cmake@v1.12
+        run: brew install cmake
       - name: Setup Ninja
         run: brew install ninja
       - name: Checkout
