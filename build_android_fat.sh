@@ -3,6 +3,9 @@ set -e
 
 if [ -z ${FIPS} ]; then
     FIPS=false
+    _FLAGS="-s"
+else
+    _FLAGS=""
 fi
 
 if [ -z ${AWS_LC} ]; then
@@ -27,9 +30,7 @@ do
     -DBUILD_OPENSSL=true \
     -DANDROID_NATIVE_API_LEVEL=21 \
     -DCMAKE_BUILD_TYPE=Release \
-    if [ -z ${FIPS} ]; then
-        -DCMAKE_C_FLAGS="-s" \
-    fi
+    -DCMAKE_C_FLAGS=${_FLAGS} \
     -DFIPS=${_FIPS} \
     -DAWS_LC=${AWS_LC} \
     -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \
