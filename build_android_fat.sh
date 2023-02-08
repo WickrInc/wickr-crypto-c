@@ -3,15 +3,10 @@ set -e
 
 if [ -z ${FIPS} ]; then
     FIPS=false
-    _FLAGS="-s"
-else
-    _FLAGS=""
 fi
 
 if [ -z ${AWS_LC} ]; then
     AWS_LC=false
-else
-    _FLAGS="-s"
 fi
 
 mkdir -p build_android/output_fat && cd build_android
@@ -27,6 +22,14 @@ do
     else
         _FIPS=${FIPS}
     fi
+
+    if [ "${FIPS}" == "true" ] && [ "${AWS_LC}" == "false" ]; then
+        _FLAGS=""
+    else
+        _FLAGS="-s"
+    fi
+
+    echo "Building for arch ${ARCH}. FIPS=${_FIPS} AWS_LC=${AWS_LC} FLAGS=${_FLAGS}"
 
     cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
     -DBUILD_OPENSSL=true \
