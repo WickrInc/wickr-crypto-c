@@ -1029,698 +1029,698 @@ wickr_ecdsa_result_t *openssl_ecdsa_from_raw(const wickr_ec_curve_t curve, const
         BN_free(r);
         return NULL;
     }
-
+    
 #ifdef OPENSSL_IS_AWSLC
     if (!BN_bin2bn(input->bytes, input->length / 2, r) ||
         !BN_bin2bn(input->bytes + input->length / 2, input->length / 2, s)) {
 #else
-    if (!BN_bin2bn(input->bytes, (int)input->length / 2, r) ||
-        !BN_bin2bn(input->bytes + (int)input->length / 2, (int)input->length / 2, s)) {
+        if (!BN_bin2bn(input->bytes, (int)input->length / 2, r) ||
+            !BN_bin2bn(input->bytes + (int)input->length / 2, (int)input->length / 2, s)) {
 #endif
-        BN_free(r);
-        BN_free(s);
-        return NULL;
-    }
-    
-    ECDSA_SIG *sig = ECDSA_SIG_new();
-    
-    if (!sig) {
-        BN_free(r);
-        BN_free(s);
-        return NULL;
-    }
-    
+            BN_free(r);
+            BN_free(s);
+            return NULL;
+        }
+        
+        ECDSA_SIG *sig = ECDSA_SIG_new();
+        
+        if (!sig) {
+            BN_free(r);
+            BN_free(s);
+            return NULL;
+        }
+        
 #ifdef OPENSSL_IS_AWSLC
-    if (!ECDSA_SIG_set0(sig, r, s)) {
-        ECDSA_SIG_free(sig);
-        return NULL;
-    }
+        if (!ECDSA_SIG_set0(sig, r, s)) {
+            ECDSA_SIG_free(sig);
+            return NULL;
+        }
 #elif OPENSSL_VERSION_NUMBER >= 0x010100000
-    if (!ECDSA_SIG_set0(sig, r, s)) {
-        ECDSA_SIG_free(sig);
-        return NULL;
-    }
+        if (!ECDSA_SIG_set0(sig, r, s)) {
+            ECDSA_SIG_free(sig);
+            return NULL;
+        }
 #else
-    BN_clear_free(sig->r);
-    BN_clear_free(sig->s);
-    sig->r = r;
-    sig->s = s;
+        BN_clear_free(sig->r);
+        BN_clear_free(sig->s);
+        sig->r = r;
+        sig->s = s;
 #endif
-    
-    size_t sig_size = i2d_ECDSA_SIG(sig, NULL);
-    
-    wickr_buffer_t *sig_data = wickr_buffer_create_empty_zero(sig_size);
-    
-    if (!sig_data) {
+        
+        size_t sig_size = i2d_ECDSA_SIG(sig, NULL);
+        
+        wickr_buffer_t *sig_data = wickr_buffer_create_empty_zero(sig_size);
+        
+        if (!sig_data) {
+            ECDSA_SIG_free(sig);
+            return NULL;
+        }
+        
+        uint8_t *bytes = sig_data->bytes;
+        
+        if (sig_size != i2d_ECDSA_SIG(sig, &bytes)) {
+            wickr_buffer_destroy(&sig_data);
+            return NULL;
+        }
+        
         ECDSA_SIG_free(sig);
-        return NULL;
-    }
-    
-    uint8_t *bytes = sig_data->bytes;
-    
-    if (sig_size != i2d_ECDSA_SIG(sig, &bytes)) {
-        wickr_buffer_destroy(&sig_data);
-        return NULL;
-    }
         
-    ECDSA_SIG_free(sig);
-    
-    wickr_ecdsa_result_t *res = wickr_ecdsa_result_create(curve, digest, sig_data);
-    
-    if (!res) {
-        wickr_buffer_destroy(&sig_data);
-    }
-    
-    return res;
-}
-
-wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer)
-{
-    if (!local || !peer) {
-        return NULL;
-    }
-    
-    if (!peer->pub_data || !local->pri_data || !local->pub_data) {
-        return NULL;
-    }
-    
-    /* Convert your local private key to EVP format */
-    EVP_PKEY *local_key = __openssl_evp_private_key_from_buffer(local->pri_data);
-    
-    if (!local_key) {
-        return NULL;
-    }
-    
-    /* Convert the peer's public key to EVP format */
-    EVP_PKEY *peer_key = __openssl_evp_public_key_from_buffer(peer->pub_data);
-    
-    if (!peer_key) {
-        EVP_PKEY_free(local_key);
-        return NULL;
-    }
-    
-    /* Allocate a new PKEY_CTX */
-    EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new(local_key, NULL);
-    
-    if (!ctx) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        return NULL;
-    }
-    
-    /* Initialize the PKEY_CTX to perform the ECDH derivation */
-    if (1 != EVP_PKEY_derive_init(ctx)) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
-        return NULL;
-    }
-    
-    /* Set the peer key */
-    if (1 != EVP_PKEY_derive_set_peer(ctx, peer_key)) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
-        return NULL;
-    }
-    
-    size_t shared_secret_len = 0;
-    
-    /* Determine the length of the shared secret so we can allocate a buffer for it */
-    if (1 != EVP_PKEY_derive(ctx, NULL, &shared_secret_len)) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
-        return NULL;
-    }
-    
-    wickr_buffer_t *shared_secret_buffer = wickr_buffer_create_empty_zero(shared_secret_len);
-    
-    if (!shared_secret_buffer) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
-        return NULL;
-    }
-    
-    /* Derive the ECDH shared secret */
-    if (1 != EVP_PKEY_derive(ctx, shared_secret_buffer->bytes, &shared_secret_buffer->length)) {
-        EVP_PKEY_free(local_key);
-        EVP_PKEY_free(peer_key);
-        EVP_PKEY_CTX_free(ctx);
-        wickr_buffer_destroy_zero(&shared_secret_buffer);
-        return NULL;
-    }
-    
-    EVP_PKEY_free(local_key);
-    EVP_PKEY_free(peer_key);
-    EVP_PKEY_CTX_free(ctx);
-    
-    return shared_secret_buffer;
-}
-
-
-wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)
-{
-    if (!data || !hmac_key) {
-        return NULL;
-    }
-    
-    const EVP_MD *evp_md = __openssl_get_digest_mode(mode);
-    
-    if (!evp_md) {
-        return NULL;
-    }
-    
-    wickr_buffer_t *hmac_out = wickr_buffer_create_empty(mode.size);
-    
-    if (!hmac_out) {
-        return NULL;
-    }
-    
-    unsigned int out_len = (unsigned int)hmac_out->length;
-    
-    if (!HMAC(evp_md, hmac_key->bytes, hmac_key->length, data->bytes, data->length, hmac_out->bytes, &out_len)) {
-        wickr_buffer_destroy(&hmac_out);
-        return NULL;
-    }
-    
-    if (out_len != hmac_out->length) {
-        wickr_buffer_destroy(&hmac_out);
-        return NULL;
-    }
-    
-    return hmac_out;
-}
-
-bool openssl_hmac_verify(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode, const wickr_buffer_t *expected)
-{
-    /* Compute the expected HMAC */
-    wickr_buffer_t *computed_hmac = openssl_hmac_create(data, hmac_key, mode);
-    
-    if (!expected || !computed_hmac) {
-        return false;
-    }
-    
-    /* Verify the computed HMAC is equal to the expected HMAC value */
-    bool result = wickr_buffer_is_equal(computed_hmac, expected, (wickr_buffer_compare_func)CRYPTO_memcmp);
-    
-    wickr_buffer_destroy_zero(&computed_hmac);
-    
-    return result;
-}
-
-
-bool
-openssl_encrypt_file(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file)
-{
-    if (!in_file || !key || !out_file) {
-        return false;
-    }
-    
-    rewind(out_file);
-
-    EVP_CIPHER_CTX *ctx = NULL;
-    unsigned char *cipherBuffer = NULL;
-    bool ret_val = false;
-    
-    wickr_buffer_t *iv_f = openssl_crypto_random(key->cipher.iv_len);
-    wickr_buffer_t *auth_tag = wickr_buffer_create_empty(key->cipher.auth_tag_len);
-    
-    wickr_cipher_result_t *cipher_result = wickr_cipher_result_create(key->cipher, iv_f, NULL, auth_tag);
-    
-    wickr_buffer_t *serialized = wickr_cipher_result_serialize(cipher_result);
-    if (!serialized)
-        goto process_error;
-    
-    size_t num_written = fwrite(serialized->bytes, 1, serialized->length, out_file);
-    if (num_written != serialized->length) {
-        goto process_error;
-    }
-    wickr_buffer_destroy(&serialized);
-    
-    const EVP_CIPHER *openssl_cipher = __openssl_get_cipher_mode(cipher_result->cipher);
-    if (!openssl_cipher) {
-        goto process_error;
-    }
-    
-    /* OpenSSL does not allow encryption of buffers greater than INT_MAX size */
-    if (key->key_data->length != cipher_result->cipher.key_len) {
-        goto process_error;
-    }
-    
-    /* Initialize an OpenSSL cipher context */
-    ctx = EVP_CIPHER_CTX_new();
-    if (!ctx)
-        goto process_error;
-    
-    /* If we are using GCM mode, allocate memory to hold the auth tag */    
-    if (cipher_result->cipher.is_authenticated) {
-        wickr_buffer_destroy(&cipher_result->auth_tag);
-        cipher_result->auth_tag = wickr_buffer_create_empty_zero(cipher_result->cipher.auth_tag_len);
-    }
-    
-    /* Verify integrity of our allocations */
-    if ((cipher_result->cipher.is_authenticated && !cipher_result->auth_tag)) {
-        goto process_error;
-    }
-    
-    /* Initialize the context with NULL to allow us to perform control operations */
-    if (1 != EVP_EncryptInit_ex(ctx, openssl_cipher, NULL, NULL, NULL)) {
-        goto process_error;
-    }
-    
-    /* Re-Initialize the context with proper values to prepare for encryption */
-    if (1 != EVP_EncryptInit_ex(ctx, NULL, NULL, key->key_data->bytes, cipher_result->iv->bytes)) {
-        goto process_error;
-    }
-    
-    // Use a 4kb block size
-    unsigned char plainBuffer[4096];
-    cipherBuffer = (unsigned char *)wickr_alloc(sizeof(plainBuffer) + EVP_CIPHER_CTX_block_size(ctx));
-    int outlength = 0;
-    
-    for (;;) {
-        size_t bytes_read = fread(plainBuffer, 1, sizeof(plainBuffer), in_file);
+        wickr_ecdsa_result_t *res = wickr_ecdsa_result_create(curve, digest, sig_data);
         
-        if (1 != EVP_EncryptUpdate(ctx, cipherBuffer, &outlength, plainBuffer, (int)bytes_read)) {
-            goto process_error;
-        }
-
-        // Write the bytes to the output file
-        size_t bytes_written = fwrite(cipherBuffer, 1, outlength, out_file);
-        if (bytes_written != outlength) {
-            goto process_error;
+        if (!res) {
+            wickr_buffer_destroy(&sig_data);
         }
         
-        if (bytes_read < sizeof(plainBuffer)) {
-            
-            if (1 != EVP_EncryptFinal_ex(ctx, plainBuffer, &outlength)) {
-                goto process_error;
-            }
-            
-            if (outlength > 0) {
-                size_t bytes_written = fwrite(cipherBuffer, 1, outlength, out_file);
-                if (bytes_written != outlength) {
-                    goto process_error;
-                }
-            }
-            break;
-        }
+        return res;
     }
     
-    /* Extract the tag from EVP if we are using AES_GCM mode */
-    if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
-        if (!cipher_result->auth_tag)
-            goto process_error;
+    wickr_buffer_t *openssl_gen_shared_secret(const wickr_ec_key_t *local, const wickr_ec_key_t *peer)
+    {
+        if (!local || !peer) {
+            return NULL;
+        }
         
-        if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_GET_TAG, cipher_result->cipher.auth_tag_len,cipher_result->auth_tag->bytes)) {
-            goto process_error;
+        if (!peer->pub_data || !local->pri_data || !local->pub_data) {
+            return NULL;
         }
+        
+        /* Convert your local private key to EVP format */
+        EVP_PKEY *local_key = __openssl_evp_private_key_from_buffer(local->pri_data);
+        
+        if (!local_key) {
+            return NULL;
+        }
+        
+        /* Convert the peer's public key to EVP format */
+        EVP_PKEY *peer_key = __openssl_evp_public_key_from_buffer(peer->pub_data);
+        
+        if (!peer_key) {
+            EVP_PKEY_free(local_key);
+            return NULL;
+        }
+        
+        /* Allocate a new PKEY_CTX */
+        EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new(local_key, NULL);
+        
+        if (!ctx) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            return NULL;
+        }
+        
+        /* Initialize the PKEY_CTX to perform the ECDH derivation */
+        if (1 != EVP_PKEY_derive_init(ctx)) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            EVP_PKEY_CTX_free(ctx);
+            return NULL;
+        }
+        
+        /* Set the peer key */
+        if (1 != EVP_PKEY_derive_set_peer(ctx, peer_key)) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            EVP_PKEY_CTX_free(ctx);
+            return NULL;
+        }
+        
+        size_t shared_secret_len = 0;
+        
+        /* Determine the length of the shared secret so we can allocate a buffer for it */
+        if (1 != EVP_PKEY_derive(ctx, NULL, &shared_secret_len)) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            EVP_PKEY_CTX_free(ctx);
+            return NULL;
+        }
+        
+        wickr_buffer_t *shared_secret_buffer = wickr_buffer_create_empty_zero(shared_secret_len);
+        
+        if (!shared_secret_buffer) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            EVP_PKEY_CTX_free(ctx);
+            return NULL;
+        }
+        
+        /* Derive the ECDH shared secret */
+        if (1 != EVP_PKEY_derive(ctx, shared_secret_buffer->bytes, &shared_secret_buffer->length)) {
+            EVP_PKEY_free(local_key);
+            EVP_PKEY_free(peer_key);
+            EVP_PKEY_CTX_free(ctx);
+            wickr_buffer_destroy_zero(&shared_secret_buffer);
+            return NULL;
+        }
+        
+        EVP_PKEY_free(local_key);
+        EVP_PKEY_free(peer_key);
+        EVP_PKEY_CTX_free(ctx);
+        
+        return shared_secret_buffer;
     }
     
-    // Complete the saving of data to the file
-    serialized = wickr_cipher_result_serialize(cipher_result);
-    if (serialized) {
-        //Seek to the position that the Tag zeros start in the file so we can fill in the tag
+    
+    wickr_buffer_t *openssl_hmac_create(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode)
+    {
+        if (!data || !hmac_key) {
+            return NULL;
+        }
+        
+        const EVP_MD *evp_md = __openssl_get_digest_mode(mode);
+        
+        if (!evp_md) {
+            return NULL;
+        }
+        
+        wickr_buffer_t *hmac_out = wickr_buffer_create_empty(mode.size);
+        
+        if (!hmac_out) {
+            return NULL;
+        }
+        
+        unsigned int out_len = (unsigned int)hmac_out->length;
+        
+        if (!HMAC(evp_md, hmac_key->bytes, hmac_key->length, data->bytes, data->length, hmac_out->bytes, &out_len)) {
+            wickr_buffer_destroy(&hmac_out);
+            return NULL;
+        }
+        
+        if (out_len != hmac_out->length) {
+            wickr_buffer_destroy(&hmac_out);
+            return NULL;
+        }
+        
+        return hmac_out;
+    }
+    
+    bool openssl_hmac_verify(const wickr_buffer_t *data, const wickr_buffer_t *hmac_key, wickr_digest_t mode, const wickr_buffer_t *expected)
+    {
+        /* Compute the expected HMAC */
+        wickr_buffer_t *computed_hmac = openssl_hmac_create(data, hmac_key, mode);
+        
+        if (!expected || !computed_hmac) {
+            return false;
+        }
+        
+        /* Verify the computed HMAC is equal to the expected HMAC value */
+        bool result = wickr_buffer_is_equal(computed_hmac, expected, (wickr_buffer_compare_func)CRYPTO_memcmp);
+        
+        wickr_buffer_destroy_zero(&computed_hmac);
+        
+        return result;
+    }
+    
+    
+    bool
+    openssl_encrypt_file(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file)
+    {
+        if (!in_file || !key || !out_file) {
+            return false;
+        }
+        
         rewind(out_file);
-        size_t bytes_written = fwrite(serialized->bytes, 1, serialized->length, out_file);
-        if (bytes_written != serialized->length) {
+        
+        EVP_CIPHER_CTX *ctx = NULL;
+        unsigned char *cipherBuffer = NULL;
+        bool ret_val = false;
+        
+        wickr_buffer_t *iv_f = openssl_crypto_random(key->cipher.iv_len);
+        wickr_buffer_t *auth_tag = wickr_buffer_create_empty(key->cipher.auth_tag_len);
+        
+        wickr_cipher_result_t *cipher_result = wickr_cipher_result_create(key->cipher, iv_f, NULL, auth_tag);
+        
+        wickr_buffer_t *serialized = wickr_cipher_result_serialize(cipher_result);
+        if (!serialized)
+            goto process_error;
+        
+        size_t num_written = fwrite(serialized->bytes, 1, serialized->length, out_file);
+        if (num_written != serialized->length) {
             goto process_error;
         }
-    }
-    
-    ret_val = true;
-    
-    // Fall through to clean up
-    
-process_error:
-    if (serialized) {
         wickr_buffer_destroy(&serialized);
-    }
-    if (cipher_result) {
-        wickr_cipher_result_destroy(&cipher_result);
-    }
-    if (ctx) {
-        EVP_CIPHER_CTX_free(ctx);
-    }
-    if (cipherBuffer) {
-        wickr_free(cipherBuffer);
-    }
-    
-    return ret_val;
-}
-
-
-bool
-openssl_decrypt_file(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file, bool only_auth_ciphers)
-{
-    if (!in_file || !key || !out_file) {
-        return false;
-    }
-    
-    uint8_t cipherMode[1] = {0};
-    bool ret_val = false;
-    EVP_CIPHER_CTX *ctx = NULL;
-    
-    //Read in the header info that tells us the legnth of the IV and TAG fields
-    size_t readLen = fread(cipherMode, 1, 1, in_file);
-    if (readLen != 1) {
-        return false;
-    }
-    
-    const wickr_cipher_t *mode = wickr_cipher_find(cipherMode[0]);
-    if (!mode) {
-        return false;
-    }
-    
-    if (only_auth_ciphers && !mode->is_authenticated) {
-        return false;
-    }
-    
-    size_t required_size = sizeof(uint8_t) + mode->iv_len + mode->auth_tag_len;
-    
-    uint8_t *cipher_bytes = wickr_alloc(required_size);
-    if (!cipher_bytes) {
-        return false;
-    }
-    cipher_bytes[0] = cipherMode[0];
-    readLen = fread(&cipher_bytes[1], 1, required_size-1, in_file);
-    
-    if (readLen != (required_size - 1)) {
-        wickr_free(cipher_bytes);
-        return false;
-    }
-    
-    wickr_buffer_t* cipher_buffer = wickr_buffer_create(cipher_bytes, required_size);
-    wickr_free(cipher_bytes);
-    
-    wickr_cipher_result_t *cipher_result = wickr_cipher_result_from_buffer(cipher_buffer);
-    
-    unsigned char *plainBuffer = NULL;
-    const EVP_CIPHER *cipher = __openssl_get_cipher_mode(cipher_result->cipher);
-    if (!cipher) {
-        goto process_error;
-    }
-    
-    /* OpenSSL does not allow decryption of buffers greater than INT_MAX in length */
-    if (key->key_data->length != cipher_result->cipher.key_len) {
-        goto process_error;
-    }
-    
-    /* In GCM mode, make sure the length of the auth tag is correct */
-    if (cipher_result->cipher.is_authenticated) {
-        if (!cipher_result->auth_tag || cipher_result->auth_tag->length != cipher_result->cipher.auth_tag_len) {
-            goto process_error;
-        }
-    }
-    
-    /* Allocate a cipher context */
-    ctx = EVP_CIPHER_CTX_new();
-    
-    /* Initialize the context with NULL to allow us to perform control operations */
-    if (1 != EVP_DecryptInit_ex(ctx, cipher, NULL, NULL, NULL)) {
-        goto process_error;
-    }
-    
-    /* In GCM mode, raise the IV length from OpenSSL default of 12 to 16 */
-    if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
-        if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_IVLEN, cipher_result->cipher.iv_len, NULL)) {
-            goto process_error;
-        }
-    }
-    
-    /* Re-Initialize the context with proper values to prepare for encryption */
-    if (1 != EVP_DecryptInit_ex(ctx, NULL, NULL, key->key_data->bytes, cipher_result->iv->bytes)) {
-        goto process_error;
-    }
-
-    /* In GCM mode, set the tag len */
-    if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
-        if (cipher_result->auth_tag->length > INT_MAX) {
-            goto process_error;
-        }
-        if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_TAG, (int)cipher_result->auth_tag->length, cipher_result->auth_tag->bytes)) {
-            goto process_error;
-        }
-    }
-    
-    
-    unsigned char cipherBuffer[4096];
-    plainBuffer = wickr_alloc(sizeof(cipherBuffer) + EVP_CIPHER_CTX_block_size(ctx));
-    int outlength = 0;
-    
-    for (;;) {
-        size_t bytesRead = fread(cipherBuffer, 1, sizeof(cipherBuffer), in_file);
-       
-        if (1 != EVP_DecryptUpdate(ctx, plainBuffer, &outlength, cipherBuffer, (int)bytesRead)) {
+        
+        const EVP_CIPHER *openssl_cipher = __openssl_get_cipher_mode(cipher_result->cipher);
+        if (!openssl_cipher) {
             goto process_error;
         }
         
-        size_t bytes_written = fwrite(plainBuffer, 1, outlength, out_file);
-        if (bytes_written != outlength) {
+        /* OpenSSL does not allow encryption of buffers greater than INT_MAX size */
+        if (key->key_data->length != cipher_result->cipher.key_len) {
             goto process_error;
         }
-
         
-        if (bytesRead < sizeof(cipherBuffer)) {
-            if (1 != EVP_DecryptFinal_ex(ctx, cipherBuffer, &outlength)) {
+        /* Initialize an OpenSSL cipher context */
+        ctx = EVP_CIPHER_CTX_new();
+        if (!ctx)
+            goto process_error;
+        
+        /* If we are using GCM mode, allocate memory to hold the auth tag */
+        if (cipher_result->cipher.is_authenticated) {
+            wickr_buffer_destroy(&cipher_result->auth_tag);
+            cipher_result->auth_tag = wickr_buffer_create_empty_zero(cipher_result->cipher.auth_tag_len);
+        }
+        
+        /* Verify integrity of our allocations */
+        if ((cipher_result->cipher.is_authenticated && !cipher_result->auth_tag)) {
+            goto process_error;
+        }
+        
+        /* Initialize the context with NULL to allow us to perform control operations */
+        if (1 != EVP_EncryptInit_ex(ctx, openssl_cipher, NULL, NULL, NULL)) {
+            goto process_error;
+        }
+        
+        /* Re-Initialize the context with proper values to prepare for encryption */
+        if (1 != EVP_EncryptInit_ex(ctx, NULL, NULL, key->key_data->bytes, cipher_result->iv->bytes)) {
+            goto process_error;
+        }
+        
+        // Use a 4kb block size
+        unsigned char plainBuffer[4096];
+        cipherBuffer = (unsigned char *)wickr_alloc(sizeof(plainBuffer) + EVP_CIPHER_CTX_block_size(ctx));
+        int outlength = 0;
+        
+        for (;;) {
+            size_t bytes_read = fread(plainBuffer, 1, sizeof(plainBuffer), in_file);
+            
+            if (1 != EVP_EncryptUpdate(ctx, cipherBuffer, &outlength, plainBuffer, (int)bytes_read)) {
                 goto process_error;
             }
-            if (outlength > 0) {
-                size_t bytes_written = fwrite(plainBuffer, 1, outlength, out_file);
-                if (bytes_written != outlength) {
+            
+            // Write the bytes to the output file
+            size_t bytes_written = fwrite(cipherBuffer, 1, outlength, out_file);
+            if (bytes_written != outlength) {
+                goto process_error;
+            }
+            
+            if (bytes_read < sizeof(plainBuffer)) {
+                
+                if (1 != EVP_EncryptFinal_ex(ctx, plainBuffer, &outlength)) {
                     goto process_error;
                 }
+                
+                if (outlength > 0) {
+                    size_t bytes_written = fwrite(cipherBuffer, 1, outlength, out_file);
+                    if (bytes_written != outlength) {
+                        goto process_error;
+                    }
+                }
+                break;
             }
-            break;
         }
-    }
-    ret_val = true;
-    
-process_error:
-    if (cipher_buffer) {
-        wickr_buffer_destroy(&cipher_buffer);
-    }
-    if (cipher_result) {
-        wickr_cipher_result_destroy(&cipher_result);
-    }
-    if (ctx) {
-        EVP_CIPHER_CTX_free(ctx);
-    }
-    if (plainBuffer) {
-        wickr_free(plainBuffer);
-    }
-    return ret_val;
-}
-
-/* Copied from OpenSSL ecdhtest.c */
-static EC_KEY *mk_eckey(int nid, const char *str)
-{
-    int ok = 0;
-    EC_KEY *k = NULL;
-    BIGNUM *priv = NULL;
-    EC_POINT *pub = NULL;
-    const EC_GROUP *grp;
-    k = EC_KEY_new_by_curve_name(nid);
-    if (!k)
-        goto err;
-    EC_KEY_set_asn1_flag(k, OPENSSL_EC_NAMED_CURVE);
-    if(!BN_hex2bn(&priv, str))
-        goto err;
-    if (!priv)
-        goto err;
-    if (!EC_KEY_set_private_key(k, priv))
-        goto err;
-    grp = EC_KEY_get0_group(k);
-    pub = EC_POINT_new(grp);
-    if (!pub)
-        goto err;
-    if (!EC_POINT_mul(grp, pub, priv, NULL, NULL, NULL))
-        goto err;
-    if (!EC_KEY_set_public_key(k, pub))
-        goto err;
-    ok = 1;
-err:
-    BN_clear_free(priv);
-    EC_POINT_free(pub);
-    if (ok)
-        return k;
-    EC_KEY_free(k);
-    return NULL;
-}
-
-wickr_ec_key_t *openssl_ec_key_import_test_key(wickr_ec_curve_t curve, const char *priv_hex)
-{
-    int nid = __openssl_get_ec_nid(curve);
-    
-    if (nid == NID_UNSUPPORTED) {
-        return NULL;
-    }
-    
-    EC_KEY *ec_key = mk_eckey(nid, priv_hex);
-    
-    if (!ec_key) {
-        return NULL;
-    }
-    
-    wickr_buffer_t *pri_data = __openssl_ec_pri_key_to_buffer(ec_key);
-    
-    if (!pri_data) {
-        EC_KEY_free(ec_key);
-        return NULL;
-    }
-    
-    wickr_buffer_t *pub_data = __openssl_ec_pub_key_to_buffer(curve, ec_key);
-    EC_KEY_free(ec_key);
-    
-    if (!pub_data) {
-        wickr_buffer_destroy(&pri_data);
-        return NULL;
-    }
-    
-    wickr_ec_key_t *converted_key = wickr_ec_key_create(curve, pub_data, pri_data);
-    
-    if (!converted_key) {
-        wickr_buffer_destroy(&pri_data);
-        wickr_buffer_destroy(&pub_data);
-    }
-    
-    return converted_key;
-}
-
-#if OPENSSL_VERSION_NUMBER < 0x010100000
-
-/* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-
-static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
-                                   const unsigned char *salt, size_t salt_len,
-                                   const unsigned char *key, size_t key_len,
-                                   unsigned char *prk, size_t *prk_len);
-
-/* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-
-static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
-                                  const unsigned char *prk, size_t prk_len,
-                                  const unsigned char *info, size_t info_len,
-                                  unsigned char *okm, size_t okm_len);
-
-/* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-
-unsigned char *HKDF(const EVP_MD *evp_md,
-                    const unsigned char *salt, size_t salt_len,
-                    const unsigned char *key, size_t key_len,
-                    const unsigned char *info, size_t info_len,
-                    unsigned char *okm, size_t okm_len)
-{   
-    unsigned char prk[EVP_MAX_MD_SIZE];
-    unsigned char *ret;
-    size_t prk_len;
-    
-    
-    /* Defend against OpenSSL 1.0.2 returning NULL if a NULL key is passed in a one shot HMAC
-    https://github.com/openssl/openssl/commit/b1413d9bd9d2222823ca1ba2d6cdf4849e635231 */
-    
-    static const unsigned char dummy_salt[1] = {'\0'};
-    
-    if (salt == NULL && salt_len == 0) {
-        salt = dummy_salt;
-    }
-    
-    if (!HKDF_Extract(evp_md, salt, salt_len, key, key_len, prk, &prk_len))
-        return NULL;
-    
-    ret = HKDF_Expand(evp_md, prk, prk_len, info, info_len, okm, okm_len);
-    OPENSSL_cleanse(prk, sizeof(prk));
-    
-    return ret;
-}
-
-/* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-
-static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
-                                   const unsigned char *salt, size_t salt_len,
-                                   const unsigned char *key, size_t key_len,
-                                   unsigned char *prk, size_t *prk_len)
-{
-    unsigned int tmp_len;
-    
-    if (!HMAC(evp_md, salt, salt_len, key, key_len, prk, &tmp_len))
-        return NULL;
-    
-    *prk_len = tmp_len;
-    return prk;
-}
-
-/* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-
-static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
-                                  const unsigned char *prk, size_t prk_len,
-                                  const unsigned char *info, size_t info_len,
-                                  unsigned char *okm, size_t okm_len)
-{
-    HMAC_CTX hmac;
-    HMAC_CTX_init(&hmac);
-    
-    unsigned int i;
-    
-    unsigned char prev[EVP_MAX_MD_SIZE];
-    
-    size_t done_len = 0, dig_len = EVP_MD_size(evp_md);
-    
-    size_t n = okm_len / dig_len;
-    if (okm_len % dig_len)
-        n++;
-    
-    if (n > 255 || okm == NULL)
-        return NULL;
-    
-    if (!HMAC_Init_ex(&hmac, prk, prk_len, evp_md, NULL))
-        goto err;
-    
-    for (i = 1; i <= n; i++) {
-        size_t copy_len;
-        const unsigned char ctr = i;
         
-        if (i > 1) {
-            if (!HMAC_Init_ex(&hmac, NULL, 0, NULL, NULL))
+        /* Extract the tag from EVP if we are using AES_GCM mode */
+        if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
+            if (!cipher_result->auth_tag)
+                goto process_error;
+            
+            if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_GET_TAG, cipher_result->cipher.auth_tag_len,cipher_result->auth_tag->bytes)) {
+                goto process_error;
+            }
+        }
+        
+        // Complete the saving of data to the file
+        serialized = wickr_cipher_result_serialize(cipher_result);
+        if (serialized) {
+            //Seek to the position that the Tag zeros start in the file so we can fill in the tag
+            rewind(out_file);
+            size_t bytes_written = fwrite(serialized->bytes, 1, serialized->length, out_file);
+            if (bytes_written != serialized->length) {
+                goto process_error;
+            }
+        }
+        
+        ret_val = true;
+        
+        // Fall through to clean up
+        
+    process_error:
+        if (serialized) {
+            wickr_buffer_destroy(&serialized);
+        }
+        if (cipher_result) {
+            wickr_cipher_result_destroy(&cipher_result);
+        }
+        if (ctx) {
+            EVP_CIPHER_CTX_free(ctx);
+        }
+        if (cipherBuffer) {
+            wickr_free(cipherBuffer);
+        }
+        
+        return ret_val;
+    }
+    
+    
+    bool
+    openssl_decrypt_file(FILE *in_file, const wickr_cipher_key_t *key, FILE *out_file, bool only_auth_ciphers)
+    {
+        if (!in_file || !key || !out_file) {
+            return false;
+        }
+        
+        uint8_t cipherMode[1] = {0};
+        bool ret_val = false;
+        EVP_CIPHER_CTX *ctx = NULL;
+        
+        //Read in the header info that tells us the legnth of the IV and TAG fields
+        size_t readLen = fread(cipherMode, 1, 1, in_file);
+        if (readLen != 1) {
+            return false;
+        }
+        
+        const wickr_cipher_t *mode = wickr_cipher_find(cipherMode[0]);
+        if (!mode) {
+            return false;
+        }
+        
+        if (only_auth_ciphers && !mode->is_authenticated) {
+            return false;
+        }
+        
+        size_t required_size = sizeof(uint8_t) + mode->iv_len + mode->auth_tag_len;
+        
+        uint8_t *cipher_bytes = wickr_alloc(required_size);
+        if (!cipher_bytes) {
+            return false;
+        }
+        cipher_bytes[0] = cipherMode[0];
+        readLen = fread(&cipher_bytes[1], 1, required_size-1, in_file);
+        
+        if (readLen != (required_size - 1)) {
+            wickr_free(cipher_bytes);
+            return false;
+        }
+        
+        wickr_buffer_t* cipher_buffer = wickr_buffer_create(cipher_bytes, required_size);
+        wickr_free(cipher_bytes);
+        
+        wickr_cipher_result_t *cipher_result = wickr_cipher_result_from_buffer(cipher_buffer);
+        
+        unsigned char *plainBuffer = NULL;
+        const EVP_CIPHER *cipher = __openssl_get_cipher_mode(cipher_result->cipher);
+        if (!cipher) {
+            goto process_error;
+        }
+        
+        /* OpenSSL does not allow decryption of buffers greater than INT_MAX in length */
+        if (key->key_data->length != cipher_result->cipher.key_len) {
+            goto process_error;
+        }
+        
+        /* In GCM mode, make sure the length of the auth tag is correct */
+        if (cipher_result->cipher.is_authenticated) {
+            if (!cipher_result->auth_tag || cipher_result->auth_tag->length != cipher_result->cipher.auth_tag_len) {
+                goto process_error;
+            }
+        }
+        
+        /* Allocate a cipher context */
+        ctx = EVP_CIPHER_CTX_new();
+        
+        /* Initialize the context with NULL to allow us to perform control operations */
+        if (1 != EVP_DecryptInit_ex(ctx, cipher, NULL, NULL, NULL)) {
+            goto process_error;
+        }
+        
+        /* In GCM mode, raise the IV length from OpenSSL default of 12 to 16 */
+        if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
+            if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_IVLEN, cipher_result->cipher.iv_len, NULL)) {
+                goto process_error;
+            }
+        }
+        
+        /* Re-Initialize the context with proper values to prepare for encryption */
+        if (1 != EVP_DecryptInit_ex(ctx, NULL, NULL, key->key_data->bytes, cipher_result->iv->bytes)) {
+            goto process_error;
+        }
+        
+        /* In GCM mode, set the tag len */
+        if (cipher_result->cipher.cipher_id == CIPHER_ID_AES256_GCM) {
+            if (cipher_result->auth_tag->length > INT_MAX) {
+                goto process_error;
+            }
+            if (1 != EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_TAG, (int)cipher_result->auth_tag->length, cipher_result->auth_tag->bytes)) {
+                goto process_error;
+            }
+        }
+        
+        
+        unsigned char cipherBuffer[4096];
+        plainBuffer = wickr_alloc(sizeof(cipherBuffer) + EVP_CIPHER_CTX_block_size(ctx));
+        int outlength = 0;
+        
+        for (;;) {
+            size_t bytesRead = fread(cipherBuffer, 1, sizeof(cipherBuffer), in_file);
+            
+            if (1 != EVP_DecryptUpdate(ctx, plainBuffer, &outlength, cipherBuffer, (int)bytesRead)) {
+                goto process_error;
+            }
+            
+            size_t bytes_written = fwrite(plainBuffer, 1, outlength, out_file);
+            if (bytes_written != outlength) {
+                goto process_error;
+            }
+            
+            
+            if (bytesRead < sizeof(cipherBuffer)) {
+                if (1 != EVP_DecryptFinal_ex(ctx, cipherBuffer, &outlength)) {
+                    goto process_error;
+                }
+                if (outlength > 0) {
+                    size_t bytes_written = fwrite(plainBuffer, 1, outlength, out_file);
+                    if (bytes_written != outlength) {
+                        goto process_error;
+                    }
+                }
+                break;
+            }
+        }
+        ret_val = true;
+        
+    process_error:
+        if (cipher_buffer) {
+            wickr_buffer_destroy(&cipher_buffer);
+        }
+        if (cipher_result) {
+            wickr_cipher_result_destroy(&cipher_result);
+        }
+        if (ctx) {
+            EVP_CIPHER_CTX_free(ctx);
+        }
+        if (plainBuffer) {
+            wickr_free(plainBuffer);
+        }
+        return ret_val;
+    }
+    
+    /* Copied from OpenSSL ecdhtest.c */
+    static EC_KEY *mk_eckey(int nid, const char *str)
+    {
+        int ok = 0;
+        EC_KEY *k = NULL;
+        BIGNUM *priv = NULL;
+        EC_POINT *pub = NULL;
+        const EC_GROUP *grp;
+        k = EC_KEY_new_by_curve_name(nid);
+        if (!k)
+            goto err;
+        EC_KEY_set_asn1_flag(k, OPENSSL_EC_NAMED_CURVE);
+        if(!BN_hex2bn(&priv, str))
+            goto err;
+        if (!priv)
+            goto err;
+        if (!EC_KEY_set_private_key(k, priv))
+            goto err;
+        grp = EC_KEY_get0_group(k);
+        pub = EC_POINT_new(grp);
+        if (!pub)
+            goto err;
+        if (!EC_POINT_mul(grp, pub, priv, NULL, NULL, NULL))
+            goto err;
+        if (!EC_KEY_set_public_key(k, pub))
+            goto err;
+        ok = 1;
+    err:
+        BN_clear_free(priv);
+        EC_POINT_free(pub);
+        if (ok)
+            return k;
+        EC_KEY_free(k);
+        return NULL;
+    }
+    
+    wickr_ec_key_t *openssl_ec_key_import_test_key(wickr_ec_curve_t curve, const char *priv_hex)
+    {
+        int nid = __openssl_get_ec_nid(curve);
+        
+        if (nid == NID_UNSUPPORTED) {
+            return NULL;
+        }
+        
+        EC_KEY *ec_key = mk_eckey(nid, priv_hex);
+        
+        if (!ec_key) {
+            return NULL;
+        }
+        
+        wickr_buffer_t *pri_data = __openssl_ec_pri_key_to_buffer(ec_key);
+        
+        if (!pri_data) {
+            EC_KEY_free(ec_key);
+            return NULL;
+        }
+        
+        wickr_buffer_t *pub_data = __openssl_ec_pub_key_to_buffer(curve, ec_key);
+        EC_KEY_free(ec_key);
+        
+        if (!pub_data) {
+            wickr_buffer_destroy(&pri_data);
+            return NULL;
+        }
+        
+        wickr_ec_key_t *converted_key = wickr_ec_key_create(curve, pub_data, pri_data);
+        
+        if (!converted_key) {
+            wickr_buffer_destroy(&pri_data);
+            wickr_buffer_destroy(&pub_data);
+        }
+        
+        return converted_key;
+    }
+    
+#if OPENSSL_VERSION_NUMBER < 0x010100000
+    
+    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
+    
+    static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
+                                       const unsigned char *salt, size_t salt_len,
+                                       const unsigned char *key, size_t key_len,
+                                       unsigned char *prk, size_t *prk_len);
+    
+    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
+    
+    static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
+                                      const unsigned char *prk, size_t prk_len,
+                                      const unsigned char *info, size_t info_len,
+                                      unsigned char *okm, size_t okm_len);
+    
+    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
+    
+    unsigned char *HKDF(const EVP_MD *evp_md,
+                        const unsigned char *salt, size_t salt_len,
+                        const unsigned char *key, size_t key_len,
+                        const unsigned char *info, size_t info_len,
+                        unsigned char *okm, size_t okm_len)
+    {
+        unsigned char prk[EVP_MAX_MD_SIZE];
+        unsigned char *ret;
+        size_t prk_len;
+        
+        
+        /* Defend against OpenSSL 1.0.2 returning NULL if a NULL key is passed in a one shot HMAC
+         https://github.com/openssl/openssl/commit/b1413d9bd9d2222823ca1ba2d6cdf4849e635231 */
+        
+        static const unsigned char dummy_salt[1] = {'\0'};
+        
+        if (salt == NULL && salt_len == 0) {
+            salt = dummy_salt;
+        }
+        
+        if (!HKDF_Extract(evp_md, salt, salt_len, key, key_len, prk, &prk_len))
+            return NULL;
+        
+        ret = HKDF_Expand(evp_md, prk, prk_len, info, info_len, okm, okm_len);
+        OPENSSL_cleanse(prk, sizeof(prk));
+        
+        return ret;
+    }
+    
+    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
+    
+    static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
+                                       const unsigned char *salt, size_t salt_len,
+                                       const unsigned char *key, size_t key_len,
+                                       unsigned char *prk, size_t *prk_len)
+    {
+        unsigned int tmp_len;
+        
+        if (!HMAC(evp_md, salt, salt_len, key, key_len, prk, &tmp_len))
+            return NULL;
+        
+        *prk_len = tmp_len;
+        return prk;
+    }
+    
+    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
+    
+    static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
+                                      const unsigned char *prk, size_t prk_len,
+                                      const unsigned char *info, size_t info_len,
+                                      unsigned char *okm, size_t okm_len)
+    {
+        HMAC_CTX hmac;
+        HMAC_CTX_init(&hmac);
+        
+        unsigned int i;
+        
+        unsigned char prev[EVP_MAX_MD_SIZE];
+        
+        size_t done_len = 0, dig_len = EVP_MD_size(evp_md);
+        
+        size_t n = okm_len / dig_len;
+        if (okm_len % dig_len)
+            n++;
+        
+        if (n > 255 || okm == NULL)
+            return NULL;
+        
+        if (!HMAC_Init_ex(&hmac, prk, prk_len, evp_md, NULL))
+            goto err;
+        
+        for (i = 1; i <= n; i++) {
+            size_t copy_len;
+            const unsigned char ctr = i;
+            
+            if (i > 1) {
+                if (!HMAC_Init_ex(&hmac, NULL, 0, NULL, NULL))
+                    goto err;
+                
+                if (!HMAC_Update(&hmac, prev, dig_len))
+                    goto err;
+            }
+            
+            if (!HMAC_Update(&hmac, info, info_len))
                 goto err;
             
-            if (!HMAC_Update(&hmac, prev, dig_len))
+            if (!HMAC_Update(&hmac, &ctr, 1))
                 goto err;
+            
+            if (!HMAC_Final(&hmac, prev, NULL))
+                goto err;
+            
+            copy_len = (done_len + dig_len > okm_len) ?
+            okm_len - done_len :
+            dig_len;
+            
+            memcpy(okm + done_len, prev, copy_len);
+            
+            done_len += copy_len;
         }
         
-        if (!HMAC_Update(&hmac, info, info_len))
-            goto err;
         
-        if (!HMAC_Update(&hmac, &ctr, 1))
-            goto err;
+        HMAC_CTX_cleanup(&hmac);
         
-        if (!HMAC_Final(&hmac, prev, NULL))
-            goto err;
+        return okm;
         
-        copy_len = (done_len + dig_len > okm_len) ?
-        okm_len - done_len :
-        dig_len;
-        
-        memcpy(okm + done_len, prev, copy_len);
-        
-        done_len += copy_len;
+    err:
+        HMAC_CTX_cleanup(&hmac);
+        return NULL;
     }
     
-    
-    HMAC_CTX_cleanup(&hmac);
-    
-    return okm;
-    
-err:
-    HMAC_CTX_cleanup(&hmac);
-    return NULL;
-}
-
 #endif
-
-wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode)
+    
+wickr_buffer_t *__openssl_hkdf_internal(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode, size_t out_len, bool expand_only)
 {
     if (!input_key_material) {
         return NULL;
@@ -1730,11 +1730,11 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
     if (info && info->length > 1024) {
         return NULL;
     }
-
+    
     if (salt && salt->length > INT_MAX) {
         return NULL;
     }
-
+    
     if (input_key_material->length > INT_MAX) {
         return NULL;
     }
@@ -1744,24 +1744,35 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
     if (!openssl_digest) {
         return NULL;
     }
-
+    
 #if OPENSSL_VERSION_NUMBER < 0x010100000
-    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
+    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(out_len);
     
     if (!out_buffer) {
         return NULL;
     }
     
-
-    if (!HKDF(openssl_digest,
-              salt ? salt->bytes : NULL, salt ? salt->length : 0,
-              input_key_material->bytes, input_key_material->length,
-              info ? info->bytes: NULL, info ? info->length : 0,
-              out_buffer->bytes, out_buffer->length))
-    {
-        wickr_buffer_destroy(&out_buffer);
-        return NULL;
+    if (expand_only) {
+        if (!HKDF_Expand(openssl_digest,
+                         input_key_material->bytes, input_key_material->length,
+                         info ? info->bytes: NULL, info ? info->length : 0,
+                         out_buffer->bytes, out_buffer->length))
+        {
+            wickr_buffer_destroy(&out_buffer);
+            return NULL;
+        }
+    } else {
+        if (!HKDF(openssl_digest,
+                  salt ? salt->bytes : NULL, salt ? salt->length : 0,
+                  input_key_material->bytes, input_key_material->length,
+                  info ? info->bytes: NULL, info ? info->length : 0,
+                  out_buffer->bytes, out_buffer->length))
+        {
+            wickr_buffer_destroy(&out_buffer);
+            return NULL;
+        }
     }
+    
 #else
     EVP_PKEY_CTX *pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, NULL);
     
@@ -1772,6 +1783,13 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
     if (1 != EVP_PKEY_derive_init(pctx)) {
         EVP_PKEY_CTX_free(pctx);
         return NULL;
+    }
+    
+    if (expand_only) {
+        if (1 != EVP_PKEY_CTX_hkdf_mode(pctx, EVP_PKEY_HKDEF_MODE_EXPAND_ONLY)) {
+            EVP_PKEY_CTX_free(pctx);
+            return NULL;
+        }
     }
     
     if (1 != EVP_PKEY_CTX_set_hkdf_md(pctx, openssl_digest)) {
@@ -1798,7 +1816,7 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
         }
     }
     
-    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(hash_mode.size);
+    wickr_buffer_t *out_buffer = wickr_buffer_create_empty_zero(out_len);
     
     if (!out_buffer) {
         EVP_PKEY_CTX_free(pctx);
@@ -1815,4 +1833,15 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wic
 #endif
     
     return out_buffer;
+    
+}
+
+wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode)
+{
+    return __openssl_hkdf_internal(input_key_material, salt, info, hash_mode, hash_mode.size, false);
+}
+
+wickr_buffer_t *openssl_hkdf_expand(const wickr_buffer_t *input_key_material, const wickr_buffer_t *info, wickr_digest_t hash_mode, size_t out_len)
+{
+    return __openssl_hkdf_internal(input_key_material, NULL, info, hash_mode, out_len, true);
 }

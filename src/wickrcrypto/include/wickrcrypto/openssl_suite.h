@@ -225,6 +225,22 @@ wickr_buffer_t *openssl_hkdf(const wickr_buffer_t *input_key_material,
 /**
  @ingroup openssl_crypto
  
+ Derive a key with HMAC Key Derivation Function
+
+ @param input_key_material the original key to extract and expand using HKDF
+ @param info contextual information to pass to HKDF, this can be NULL if no contextual information should be used
+ @param hash_mode the hash mode to use for the HKDF output, this will determine the length of the final output
+ @param out_len the number of bytes the input should be expanded to
+ @return a buffer containing the calculated HKDF value
+ */
+wickr_buffer_t *openssl_hkdf_expand(const wickr_buffer_t *input_key_material,
+                                    const wickr_buffer_t *info,
+                                    wickr_digest_t hash_mode,
+                                    size_t out_len);
+
+/**
+ @ingroup openssl_crypto
+ 
  Calculate the SHA2 hash of a file
 
  @param in_file a file to take the hash of it's contents
