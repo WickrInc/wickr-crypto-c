@@ -58,12 +58,12 @@ wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *s
 
 wickr_kdf_meta_t *wickr_kdf_meta_create_hkdf_expand(const wickr_digest_t *digest, wickr_buffer_t *info, size_t output_size)
 {
-    // Currently only SHA512 is supported
-    if (digest->digest_id != DIGEST_ID_SHA512) {
+    if (!digest || !info) {
         return NULL;
     }
-    
-    if (!info) {
+
+    // Currently only SHA512 is supported
+    if (digest->digest_id != DIGEST_ID_SHA512) {
         return NULL;
     }
     
