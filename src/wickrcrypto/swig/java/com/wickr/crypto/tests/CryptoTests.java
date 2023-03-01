@@ -224,6 +224,20 @@ public class CryptoTests {
 		assertArrayEquals(kdf2, kdf.getHash());
 	}
 
+    @Test 
+    public void testHkdfExpand() throws UnsupportedEncodingException
+    {
+        byte[] passphrase = "password".getBytes("UTF8");
+        byte[] info = "test info".getBytes("UTF8");
+
+        byte[] fullKdf = CryptoEngine.kdfSaltFull(KDFMeta.fromComponents(KDFAlgo.hkdfSha512(), null, info) , passphrase, 100);
+        byte[] expandKdf = CryptoEngine.kdfSaltFull(KDFMeta.fromComponents(KDFAlgo.hkdfSha512Expand(), null, info), passphrase, 100);
+
+        assertNotNull(expandKdf);
+		assertEquals(expandKdf.length, 100);
+        assertThat(fullKdf, not(equalTo(expandKdf)));
+    }
+
 	private final static char[] hexArray = "0123456789abcdef".toCharArray();
 	
 	public static String bytesToHex(byte[] bytes) {

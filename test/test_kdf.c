@@ -20,7 +20,10 @@ void test_kdf_algo_equality(wickr_kdf_algo_t a1, wickr_kdf_algo_t a2)
 
 void test_kdf_meta_equality(wickr_kdf_meta_t *m1, wickr_kdf_meta_t *m2)
 {
-    SHOULD_BE_TRUE(wickr_buffer_is_equal(m1->salt, m2->salt, NULL));
+    if (m1->salt && m2->salt) {
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(m1->salt, m2->salt, NULL));
+    }
+    
     test_kdf_algo_equality(m1->algo, m2->algo);
 }
 
@@ -41,6 +44,33 @@ DESCRIBE(wickr_kdf_meta, "kdf.c: wickr_kdf_meta")
         wickr_kdf_meta_t *test = wickr_kdf_meta_create(KDF_HKDF_SHA256, NULL, info_buffer);
         SHOULD_NOT_BE_NULL(test);
         wickr_kdf_meta_destroy(&test);
+    }
+    END_IT
+    
+    IT("can be created for HKDF with an expand length")
+    {
+        wickr_buffer_t *info_buffer = wickr_crypto_engine_get_default()
+            .wickr_crypto_engine_crypto_random(32);
+        
+        wickr_kdf_meta_t *test = wickr_kdf_meta_create_hkdf_expand(&DIGEST_SHA_512, info_buffer, 100);
+        SHOULD_NOT_BE_NULL(test);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(info_buffer, test->info, NULL));
+        SHOULD_EQUAL(test->algo.output_size, 100);
+        SHOULD_BE_NULL(test->salt);
+        
+        wickr_kdf_meta_destroy(&test);
+    }
+    END_IT
+    
+    IT("should fail hkdf expand for non SHA512 digests")
+    {
+        wickr_buffer_t *info_buffer = wickr_crypto_engine_get_default()
+            .wickr_crypto_engine_crypto_random(32);
+        
+        SHOULD_BE_NULL(wickr_kdf_meta_create_hkdf_expand(&DIGEST_SHA_256, info_buffer, 100));
+        SHOULD_BE_NULL(wickr_kdf_meta_create_hkdf_expand(&DIGEST_SHA_384, info_buffer, 100));
+        
+        wickr_buffer_destroy(&info_buffer);
     }
     END_IT
     
@@ -149,7 +179,10 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
 {
     char *test_bcrypt_salt = "qqM9HeaGheyCy99QtDm0kO";
     
-    kdf_test_vector_t test_vectors[8] =
+    wickr_kdf_algo_t kdf_expand_algo = KDF_HKDF_SHA512_EXPAND;
+    kdf_expand_algo.output_size = 100;
+    
+    kdf_test_vector_t test_vectors[9] =
     {
         { KDF_SCRYPT_2_17,
             "KDF_SCRIPT_2_17",
@@ -206,11 +239,19 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
             hex_char_to_buffer("1234"),
             hex_char_to_buffer("70617373776f7264"),
         hex_char_to_buffer("40dae76d651610413f4d03fdcab9ea0ea4d6213997b81be43de7fc0b642ab474a10cea8f6edabcce99ac0bc8663ddf622d2fed40d8972a00fd8e4d1c80008c86")
+        },
+        {
+            kdf_expand_algo,
+            "KDF_HKDF_SHA512_EXPAND",
+            NULL,
+            hex_char_to_buffer("736f6d655f696e666f"),
+            hex_char_to_buffer("01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101"),
+            hex_char_to_buffer("dab9281598af33b05d545fa73157e8819c0a7204f3a966d171e5de0a865e02b058ef66f0a89207ed63537e66a498a70f391ca789a0e79e41601ccdb1b0e4e994e3dc7849507ff0c6d3a3fa5800a6fd0a7297827cdf443c424a650ab3bdb3555dd7fc4469")
         }
     };
     
     
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         
         char it_statement[1024];
         sprintf( it_statement, "should calculare proper hashes given specific known metadata: %s", test_vectors[i].algo_name );
@@ -220,7 +261,6 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
             wickr_kdf_meta_t *meta = wickr_kdf_meta_create(test_vectors[i].algo, wickr_buffer_copy(test_vectors[i].salt), wickr_buffer_copy(test_vectors[i].info));
             
             SHOULD_NOT_BE_NULL(meta);
-            
             
             wickr_kdf_result_t *kdf_result = wickr_perform_kdf_meta(meta, test_vectors[i].passphrase);
 
@@ -237,7 +277,7 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
         }
         END_IT
         
-        if (test_vectors[i].algo.algo_id == KDF_HMAC_SHA2) {
+        if (test_vectors[i].algo.algo_id == KDF_HMAC_SHA2 && test_vectors[i].algo.kdf_id != KDF_ID_HKDF_SHA512_EXPAND) {
             
             sprintf( it_statement, "should get different output if salt or info is left out: %s", test_vectors[i].algo_name );
             
@@ -295,20 +335,22 @@ DESCRIBE(wickr_perform_kdf, "kdf.c: wickr_perform_kdf, wickr_perform_kdf_meta")
         
         sprintf( it_statement, "should make hashes with random salts: %s", test_vectors[i].algo_name );
         
-        IT(it_statement)
-        {
-            wickr_kdf_result_t *result_1 = wickr_perform_kdf(test_vectors[i].algo, test_vectors[i].passphrase);
-            wickr_kdf_result_t *result_2 = wickr_perform_kdf(test_vectors[i].algo, test_vectors[i].passphrase);
-            SHOULD_NOT_BE_NULL(result_1);
-            SHOULD_NOT_BE_NULL(result_2);
-			if (result_1 != NULL && result_2 != NULL) {
-				SHOULD_BE_FALSE(wickr_buffer_is_equal(result_1->hash, result_2->hash, NULL));
-				SHOULD_BE_FALSE(wickr_buffer_is_equal(result_1->meta->salt, result_2->meta->salt, NULL));
-				wickr_kdf_result_destroy(&result_1);
-				wickr_kdf_result_destroy(&result_2);
-			}
+        if (test_vectors[i].algo.kdf_id != KDF_ID_HKDF_SHA512_EXPAND) {
+            IT(it_statement)
+            {
+                wickr_kdf_result_t *result_1 = wickr_perform_kdf(test_vectors[i].algo, test_vectors[i].passphrase);
+                wickr_kdf_result_t *result_2 = wickr_perform_kdf(test_vectors[i].algo, test_vectors[i].passphrase);
+                SHOULD_NOT_BE_NULL(result_1);
+                SHOULD_NOT_BE_NULL(result_2);
+                if (result_1 != NULL && result_2 != NULL) {
+                    SHOULD_BE_FALSE(wickr_buffer_is_equal(result_1->hash, result_2->hash, NULL));
+                    SHOULD_BE_FALSE(wickr_buffer_is_equal(result_1->meta->salt, result_2->meta->salt, NULL));
+                    wickr_kdf_result_destroy(&result_1);
+                    wickr_kdf_result_destroy(&result_2);
+                }
+            }
+            END_IT
         }
-        END_IT
         
         wickr_buffer_destroy(&test_vectors[i].expected_out);
         wickr_buffer_destroy(&test_vectors[i].passphrase);

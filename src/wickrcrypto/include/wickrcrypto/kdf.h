@@ -46,7 +46,7 @@ extern "C" {
  */
 typedef enum { KDF_BCRYPT, KDF_SCRYPT, KDF_HMAC_SHA2 } wickr_kdf_algo_id;
 
-typedef enum { KDF_ID_SCRYPT_17 = 1, KDF_ID_SCRYPT_18, KDF_ID_SCRYPT_19, KDF_ID_SCRYPT_20, KDF_ID_BCRYPT_15, KDF_ID_HKDF_SHA256, KDF_ID_HKDF_SHA384, KDF_ID_HKDF_SHA512 } wickr_kdf_id;
+typedef enum { KDF_ID_SCRYPT_17 = 1, KDF_ID_SCRYPT_18, KDF_ID_SCRYPT_19, KDF_ID_SCRYPT_20, KDF_ID_BCRYPT_15, KDF_ID_HKDF_SHA256, KDF_ID_HKDF_SHA384, KDF_ID_HKDF_SHA512, KDF_ID_HKDF_SHA512_EXPAND } wickr_kdf_id;
 
 /**
  
@@ -118,6 +118,9 @@ static const wickr_kdf_algo_t KDF_HKDF_SHA256 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA
 static const wickr_kdf_algo_t KDF_HKDF_SHA384 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA384, SHA384_DIGEST_SIZE, SHA384_DIGEST_SIZE, 0 };
 static const wickr_kdf_algo_t KDF_HKDF_SHA512 = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA512, SHA512_DIGEST_SIZE, SHA512_DIGEST_SIZE, 0 };
 
+/* HKDF Expand Only Definitions */
+static const wickr_kdf_algo_t KDF_HKDF_SHA512_EXPAND = { KDF_HMAC_SHA2, KDF_ID_HKDF_SHA512_EXPAND, SHA512_DIGEST_SIZE, 0, 0 };
+
 /**
  
  @ingroup wickr_kdf
@@ -171,6 +174,19 @@ typedef struct wickr_kdf_result wickr_kdf_result_t;
  @return a newly allocated KDF Metadata set, owning the properties that were passed in
  */
 wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *salt, wickr_buffer_t *info);
+
+/**
+ 
+ @ingroup wickr_kdf
+ 
+ Create a KDF Metadata set from components
+
+ @param digest digest to use for the underlying hkdf hash function
+ @param info see 'wickr_kdf_meta' property documentation
+ @param output_size the number of bytes the HKDF input should be expanded to
+ @return a newly allocated KDF Metadata set, owning the properties that were passed in
+ */
+wickr_kdf_meta_t *wickr_kdf_meta_create_hkdf_expand(const wickr_digest_t *digest, wickr_buffer_t *info, size_t output_size);
 
 /**
  
@@ -296,6 +312,18 @@ wickr_kdf_result_t *wickr_perform_kdf_meta(const wickr_kdf_meta_t *existing_meta
  @return HKDF wickr_kdf_algo that uses 'digest'
  */
 const wickr_kdf_algo_t *wickr_hkdf_algo_for_digest(wickr_digest_t digest);
+
+/**
+ 
+ @ingroup wickr_kdf
+ 
+ Find the HKDF wickr_kdf_algo that matches a specific digest in expand only mode
+ 
+ @param digest the digest to search for
+ @param the number of bytes to set for the hkdf output length
+ @return HKDF wickr_kdf_algo that uses 'digest'
+ */
+const wickr_kdf_algo_t *wickr_hkdf_algo_for_expand(wickr_digest_t digest, size_t out_len);
 
 #ifdef __cplusplus
 }

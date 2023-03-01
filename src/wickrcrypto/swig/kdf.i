@@ -28,6 +28,8 @@
 %ignore wickr_kdf_result_destroy;
 %ignore wickr_perform_kdf;
 %ignore wickr_perform_kdf_meta;
+%ignore wickr_kdf_meta_create_hkdf_expand;
+%ignore wickr_hkdf_algo_for_expand;
 
 %nodefaultctor wickr_kdf_algo;
 %nodefaultdtor wickr_kdf_algo;
@@ -60,6 +62,9 @@
   }
   static const wickr_kdf_algo_t *hkdf_sha512() {
       return &KDF_HKDF_SHA512;
+  }
+  static const wickr_kdf_algo_t *hkdf_sha512_expand() {
+      return &KDF_HKDF_SHA512_EXPAND;
   }
 }
 

@@ -56,6 +56,23 @@ wickr_kdf_meta_t *wickr_kdf_meta_create(wickr_kdf_algo_t algo, wickr_buffer_t *s
     return meta;
 }
 
+wickr_kdf_meta_t *wickr_kdf_meta_create_hkdf_expand(const wickr_digest_t *digest, wickr_buffer_t *info, size_t output_size)
+{
+    if (!digest || !info) {
+        return NULL;
+    }
+
+    // Currently only SHA512 is supported
+    if (digest->digest_id != DIGEST_ID_SHA512) {
+        return NULL;
+    }
+    
+    wickr_kdf_algo_t algo = KDF_HKDF_SHA512_EXPAND;
+    algo.output_size = output_size;
+    
+    return wickr_kdf_meta_create(algo, NULL, info);
+}
+
 uint8_t wickr_kdf_meta_size_with_buffer(const wickr_buffer_t *buffer)
 {
     if (!buffer) {
@@ -344,6 +361,7 @@ static wickr_buffer_t *__hkdf_generate_hash(const wickr_kdf_meta_t *meta, const 
     }
     
     wickr_digest_t digest;
+    bool expand_only = false;
     
     switch (meta->algo.kdf_id) {
         case KDF_ID_HKDF_SHA256:
@@ -355,6 +373,10 @@ static wickr_buffer_t *__hkdf_generate_hash(const wickr_kdf_meta_t *meta, const 
         case KDF_ID_HKDF_SHA512:
             digest = DIGEST_SHA_512;
             break;
+        case KDF_ID_HKDF_SHA512_EXPAND:
+            digest = DIGEST_SHA_512;
+            expand_only = true;
+            break;
         default:
             return NULL;
             break;
@@ -363,7 +385,11 @@ static wickr_buffer_t *__hkdf_generate_hash(const wickr_kdf_meta_t *meta, const 
     /* Adjust the digest size, as this is what the openssl_hkdf function uses as a desired output length for HKDF */
     digest.size = meta->algo.output_size;
     
-    return openssl_hkdf(passphrase, meta->salt, meta->info, digest);
+    if (!expand_only) {
+        return openssl_hkdf(passphrase, meta->salt, meta->info, digest);
+    } else {
+        return openssl_hkdf_expand(passphrase, meta->info, digest, meta->algo.output_size);
+    }
 }
 
 static wickr_buffer_t *__kdf_algo_generate_salt(wickr_kdf_algo_t algo)
