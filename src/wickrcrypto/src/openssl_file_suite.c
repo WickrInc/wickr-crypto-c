@@ -93,10 +93,13 @@ static AESFileOperation *createFileOperation(const char *source, const char *des
     }
     
     // Open the Destination file for writing
-    tempPath = wickr_alloc(strlen(destination) + 6);
+    const size_t len = strlen(destination) + 6;
+    tempPath = wickr_alloc(len);
+
     if (!tempPath)
         goto process_error;
-    sprintf(tempPath, "%s.temp", destination);
+
+    snprintf(tempPath, len, "%s.temp", destination);
 
 #if defined(_WIN32)
     if (windowsOpenFile(&destinationHandle, tempPath, L"wb") != 0 || !destinationHandle) {
