@@ -9,7 +9,7 @@
     "mocha": "^9.2.2"
   },
   "description": "A node.js wrapper around the wickr-crypto-c library",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "main": "node/lib/wickrcrypto.node",
   "scripts": {
     "install": "(node-pre-gyp install 2> /dev/null || ./node_install.sh) && ./node_post.sh",
