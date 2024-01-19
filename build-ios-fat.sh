@@ -21,6 +21,7 @@ make install
 cd ..
 
 
+# Does not support fips
 mkdir build_sim
 cd build_sim
 cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
@@ -28,7 +29,6 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DENABLE_BITCODE=NO \
     -DIOS_PLATFORM=SIMULATOR64 \
     -DIOS_DEPLOYMENT_TARGET=13.0 \
-    -DFIPS=${FIPS} \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_sim ../
 make
@@ -36,6 +36,7 @@ make install
 cd ..
 
 
+# Does not support FIPS
 mkdir build_arm_sim
 cd build_arm_sim
 cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
@@ -43,7 +44,6 @@ cmake -DCMAKE_TOOLCHAIN_FILE=$(pwd)/../Toolchain-iOS.cmake \
     -DENABLE_BITCODE=NO \
     -DIOS_PLATFORM=SIMULATORARM64 \
     -DIOS_DEPLOYMENT_TARGET=13.0 \
-    -DFIPS=${FIPS} \
     -DDEPS_ONLY=true \
     -DCMAKE_INSTALL_PREFIX=../output_arm_sim ../
 make

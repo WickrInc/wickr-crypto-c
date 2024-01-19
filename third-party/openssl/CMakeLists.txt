@@ -1,14 +1,20 @@
 option(FIPS "Build AWS_LC in fips mode" OFF)
 
-if (BUILD_NODE AND FIPS)
-    message(WARNING "Node exports all of the openssl symbols, we are forced to use their versions")
-endif ()
+if (SYSTEM_OPENSSL)
+    include(FindOpenSSL)
 
-if (BUILD_NODE)
-    include(FindNode)
-    nodejs_init()
-    message(STATUS "Using NodeJS OpenSSL: ${NODEJS_INCLUDE_DIRS}")
-    set(OPENSSL_INCLUDE_DIR "${NODEJS_INCLUDE_DIRS}" CACHE INTERNAL "OpenSSL NodeJS Headers")
+    if (NOT OPENSSL_FOUND OR OPENSSL_INCLUDE_DIR STREQUAL "OPENSSL_INCLUDE_DIR-NOTFOUND")
+        Message(FATAL_ERROR "OpenSSL was not found")
+    endif ()
+
+    message("Using System OpenSSL")
+
+    if (FIPS)
+        message(
+            WARNING
+            "FIPS mode enabled with system openssl. This may cause instability if the system library is not FIPS capable"
+        )
+    endif ()
 else ()
     add_subdirectory(aws-lc)
 endif ()

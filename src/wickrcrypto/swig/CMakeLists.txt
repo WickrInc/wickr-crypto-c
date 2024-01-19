@@ -13,16 +13,8 @@ endmacro()
 
 # Add subdirectories for each language if desired
 
-if(BUILD_NODE)
-    add_subdirectory(node)
-endif()
-
 if(BUILD_JAVA)
     add_subdirectory(java)
-endif()
-
-if(BUILD_PHP)
-    add_subdirectory(php)
 endif()
 
 # Install the SWIG files so dependencies can utilize them
