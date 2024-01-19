@@ -6,8 +6,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 project(WickrCryptoC)
 
 set(VERSION_MAJOR 1)
-set(VERSION_MINOR 17)
-set(VERSION_PATCH 1)
+set(VERSION_MINOR 18)
+set(VERSION_PATCH 0)
 
 include(GNUInstallDirs)
 

@@ -22,19 +22,10 @@
 
 /* FIPS Support */
 #ifdef FIPS
-
 #include <openssl/crypto.h>
-#include <private/openssl_threads.h>
-
-#ifdef _WIN32
-#include <openssl/applink.c>
-#endif
-#include <assert.h>
 
 bool openssl_enable_fips_mode() 
 {
-    openssl_thread_initialize_if_necessary();
-    
     if (FIPS_mode()) {
         return true;
     }
@@ -1588,137 +1579,6 @@ wickr_ecdsa_result_t *openssl_ecdsa_from_raw(const wickr_ec_curve_t curve, const
         
         return converted_key;
     }
-    
-#if OPENSSL_VERSION_NUMBER < 0x010100000
-    
-    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-    
-    static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
-                                       const unsigned char *salt, size_t salt_len,
-                                       const unsigned char *key, size_t key_len,
-                                       unsigned char *prk, size_t *prk_len);
-    
-    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-    
-    static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
-                                      const unsigned char *prk, size_t prk_len,
-                                      const unsigned char *info, size_t info_len,
-                                      unsigned char *okm, size_t okm_len);
-    
-    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-    
-    unsigned char *HKDF(const EVP_MD *evp_md,
-                        const unsigned char *salt, size_t salt_len,
-                        const unsigned char *key, size_t key_len,
-                        const unsigned char *info, size_t info_len,
-                        unsigned char *okm, size_t okm_len)
-    {
-        unsigned char prk[EVP_MAX_MD_SIZE];
-        unsigned char *ret;
-        size_t prk_len;
-        
-        
-        /* Defend against OpenSSL 1.0.2 returning NULL if a NULL key is passed in a one shot HMAC
-         https://github.com/openssl/openssl/commit/b1413d9bd9d2222823ca1ba2d6cdf4849e635231 */
-        
-        static const unsigned char dummy_salt[1] = {'\0'};
-        
-        if (salt == NULL && salt_len == 0) {
-            salt = dummy_salt;
-        }
-        
-        if (!HKDF_Extract(evp_md, salt, salt_len, key, key_len, prk, &prk_len))
-            return NULL;
-        
-        ret = HKDF_Expand(evp_md, prk, prk_len, info, info_len, okm, okm_len);
-        OPENSSL_cleanse(prk, sizeof(prk));
-        
-        return ret;
-    }
-    
-    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-    
-    static unsigned char *HKDF_Extract(const EVP_MD *evp_md,
-                                       const unsigned char *salt, size_t salt_len,
-                                       const unsigned char *key, size_t key_len,
-                                       unsigned char *prk, size_t *prk_len)
-    {
-        unsigned int tmp_len;
-        
-        if (!HMAC(evp_md, salt, salt_len, key, key_len, prk, &tmp_len))
-            return NULL;
-        
-        *prk_len = tmp_len;
-        return prk;
-    }
-    
-    /* Backported to OpenSSL 1.0.2.x from OpenSSL 1.1.0.x */
-    
-    static unsigned char *HKDF_Expand(const EVP_MD *evp_md,
-                                      const unsigned char *prk, size_t prk_len,
-                                      const unsigned char *info, size_t info_len,
-                                      unsigned char *okm, size_t okm_len)
-    {
-        HMAC_CTX hmac;
-        HMAC_CTX_init(&hmac);
-        
-        unsigned int i;
-        
-        unsigned char prev[EVP_MAX_MD_SIZE];
-        
-        size_t done_len = 0, dig_len = EVP_MD_size(evp_md);
-        
-        size_t n = okm_len / dig_len;
-        if (okm_len % dig_len)
-            n++;
-        
-        if (n > 255 || okm == NULL)
-            return NULL;
-        
-        if (!HMAC_Init_ex(&hmac, prk, prk_len, evp_md, NULL))
-            goto err;
-        
-        for (i = 1; i <= n; i++) {
-            size_t copy_len;
-            const unsigned char ctr = i;
-            
-            if (i > 1) {
-                if (!HMAC_Init_ex(&hmac, NULL, 0, NULL, NULL))
-                    goto err;
-                
-                if (!HMAC_Update(&hmac, prev, dig_len))
-                    goto err;
-            }
-            
-            if (!HMAC_Update(&hmac, info, info_len))
-                goto err;
-            
-            if (!HMAC_Update(&hmac, &ctr, 1))
-                goto err;
-            
-            if (!HMAC_Final(&hmac, prev, NULL))
-                goto err;
-            
-            copy_len = (done_len + dig_len > okm_len) ?
-            okm_len - done_len :
-            dig_len;
-            
-            memcpy(okm + done_len, prev, copy_len);
-            
-            done_len += copy_len;
-        }
-        
-        
-        HMAC_CTX_cleanup(&hmac);
-        
-        return okm;
-        
-    err:
-        HMAC_CTX_cleanup(&hmac);
-        return NULL;
-    }
-    
-#endif
     
 wickr_buffer_t *__openssl_hkdf_internal(const wickr_buffer_t *input_key_material, const wickr_buffer_t *salt, const wickr_buffer_t *info, wickr_digest_t hash_mode, size_t out_len, bool expand_only)
 {

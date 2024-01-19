@@ -5,10 +5,6 @@ if [ -z ${FIPS} ]; then
     FIPS=false
 fi
 
-if [ -z ${AWS_LC} ]; then
-    AWS_LC=false
-fi
-
 mkdir -p build_android/output_fat && cd build_android
 
 # Build all the native modules
@@ -23,11 +19,7 @@ do
         _FIPS=${FIPS}
     fi
 
-    if [ "${FIPS}" == "true" ] && [ "${AWS_LC}" == "false" ]; then
-        _FLAGS=""
-    else
-        _FLAGS="-s"
-    fi
+    _FLAGS="-s"
 
     echo "Building for arch ${ARCH}. FIPS=${_FIPS} AWS_LC=${AWS_LC} FLAGS=${_FLAGS}"
 
@@ -37,10 +29,6 @@ do
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS=${_FLAGS} \
     -DFIPS=${_FIPS} \
-    -DAWS_LC=${AWS_LC} \
-    -DOSSL_SUPPORT_UNAME=${OSSL_SUPPORT_UNAME} \
-    -DOSSL_SUPPORT_PASS=${OSSL_SUPPORT_PASS} \
-    -DOSSL_FIPS_URL=${OSSL_FIPS_URL} \
     -DANDROID_ABI=${ARCH} \
     -DCMAKE_INSTALL_PREFIX=../output_fat \
     -DBUILD_JAVA=ON ../../

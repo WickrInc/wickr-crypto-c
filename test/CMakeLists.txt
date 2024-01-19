@@ -8,8 +8,6 @@ add_library(cspec ${CSpecSources})
 if (${FIPS})
     message(STATUS "Enabling FIPS")
     add_definitions(-DFIPS)
-    set(THREADS_PREFER_PTHREAD_FLAG ON)
-    find_package(Threads REQUIRED)
 endif ()
 
 target_include_directories(cspec PUBLIC cspec/inc)
@@ -46,10 +44,6 @@ set(THIRD_PARTY_DIR "${PROJECT_SOURCE_DIR}/third-party")
 include_directories(${CRYPTO_DIR} ${PROJECT_SOURCE_DIR}/src/protobuf/gen ${THIRD_PARTY_DIR}/protobuf-c)
 
 target_link_libraries(crypto_test cspec wickrcrypto)
-
-if (${FIPS})
-    target_link_libraries(crypto_test Threads::Threads)
-endif ()
 
 if(CMAKE_DL_LIBS)
     target_link_libraries(crypto_test ${CMAKE_DL_LIBS})

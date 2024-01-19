@@ -1,16 +1,15 @@
 name: iOS
 on: [push, pull_request]
 env:
-  BUILD_TYPE: Release 
+  BUILD_TYPE: Release
 jobs:
   Build:
     runs-on: macos-12
     strategy:
       matrix:
         fips: [true, false]
-        aws_lc: [true, false]
     steps:
-      - name: Setup cmake 
+      - name: Setup cmake
         run: brew install cmake
       - name: Setup Ninja
         run: brew install ninja
@@ -18,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Build 
+      - name: Build
         shell: zsh {0}
         working-directory: ${{github.workspace}}
-        run: FIPS=${{matrix.fips}} AWS_LC=${{matrix.aws_lc}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build-ios-fat.sh
+        run: FIPS=${{matrix.fips}} ./build-ios-fat.sh
