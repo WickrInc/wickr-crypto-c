@@ -36,3 +36,7 @@ jobs:
         shell: bash
         working-directory: ${{github.workspace}}/build
         run: ctest --output-on-failure
+      - name: Install
+        shell: bash
+        working-directory: ${{github.workspace}}/build
+        run: cmake --install .

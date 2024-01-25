@@ -34,3 +34,6 @@ jobs:
       - name: Test
         working-directory: ${{github.workspace}}/build
         run: NO_KDF="true" ctest --output-on-failure -C ${{env.BUILD_TYPE}}
+      - name: Install
+        working-directory: ${{github.workspace}}/build
+        run: sudo make install
