@@ -30,10 +30,6 @@
 #include "test_transport_root_key.h"
 #include "openssl_suite.h"
 
-#ifdef FIPS
-#include "private/openssl_threads.h"
-#endif
-
 #include "cspec_output_unit.h"
 
 static const char *ci_flag = "--ci";
@@ -81,9 +77,6 @@ void run_crypto_engine_tests(CSpecOutputStruct *output)
     CSpec_Run(DESCRIPTION(openssl_ecdh), output);
     CSpec_Run(DESCRIPTION(openssl_hmac), output);
     CSpec_Run(DESCRIPTION(openssl_hkdf), output);
-#ifdef FIPS
-    CSpec_Run(DESCRIPTION(openssl_fips), output);
-#endif
 }
 
 void run_stream_tests(CSpecOutputStruct *output)
@@ -155,9 +148,5 @@ int main(int argc, char *argv[])
         run_kdf_tests(output);
     }
 
-#ifdef FIPS
-    openssl_thread_cleanup();
-#endif
-    
     return output->failed;
 }

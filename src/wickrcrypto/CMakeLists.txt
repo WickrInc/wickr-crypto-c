@@ -9,8 +9,6 @@ include_directories("include/wickrcrypto" "../protobuf/gen" "${THIRD_PARTY}/prot
 if (${FIPS})
     message(STATUS "Enabling FIPS")
     add_definitions(-DFIPS)
-    set(THREADS_PREFER_PTHREAD_FLAG ON)
-    find_package(Threads REQUIRED)
 endif ()
 
 add_library(wickrcrypto ${Sources} ${ProtobufSources})
@@ -22,10 +20,6 @@ if (BUILD_OPENSSL)
 endif (BUILD_OPENSSL)
 
 target_link_libraries(wickrcrypto bcrypt scrypt protobuf-c ${OPENSSL_CRYPTO_LIBRARY})
-
-if (${FIPS})
-    target_link_libraries(wickrcrypto Threads::Threads)
-endif ()
 
 install(TARGETS wickrcrypto EXPORT WickrCryptoConfig
     ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -42,9 +36,8 @@ export(TARGETS wickrcrypto FILE WickrCryptoConfig.cmake)
 
 # SWIG OPTIONS
 
-option(BUILD_NODE "Build Node SWIG module" OFF)
 option(BUILD_JAVA "Build Java SWIG module" OFF)
 
-if (BUILD_NODE OR BUILD_JAVA OR BUILD_PHP)
+if (BUILD_JAVA)
     add_subdirectory(swig)
 endif ()

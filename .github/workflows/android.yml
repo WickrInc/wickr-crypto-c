@@ -1,19 +1,18 @@
 name: Android
 on: [push, pull_request]
 env:
-  BUILD_TYPE: Release 
+  BUILD_TYPE: Release
 jobs:
   Build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         fips: [true, false]
-        aws_lc: [true, false]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Build 
+      - name: Build
         working-directory: ${{github.workspace}}
-        run: FIPS=${{matrix.fips}} AWS_LC=${{matrix.aws_lc}} OSSL_SUPPORT_UNAME=${{secrets.OSSL_FIPS_SUPPORT_UNAME}} OSSL_SUPPORT_PASS=${{secrets.OSSL_FIPS_SUPPORT_PASS}} OSSL_FIPS_URL=${{secrets.OSSL_FIPS_URL}} ./build_android_docker.sh
+        run: FIPS=${{matrix.fips}} ./build_android_docker.sh
