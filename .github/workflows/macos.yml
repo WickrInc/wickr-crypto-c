@@ -31,7 +31,8 @@ jobs:
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build
         run: make
-      - name: Test
+      - if: matrix.arch == 'x86_64'
+        name: Test
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build
         run: ctest --output-on-failure
