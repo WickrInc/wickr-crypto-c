@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         fips: [ON, OFF]
+        arch: [x86_64, arm64]
     steps:
       - name: Setup Ninja
         run: brew install ninja
@@ -25,6 +26,7 @@ jobs:
           -DBUILD_TESTS=true \
           -DFIPS=${{matrix.fips}} \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+          -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}}
       - name: Build
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build
