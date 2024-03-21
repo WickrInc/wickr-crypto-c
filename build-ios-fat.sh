@@ -79,9 +79,11 @@ lipo -create output_device/lib/libssl.dylib -output output_device/lib/libssl.fra
 lipo -create output_sim/lib/libssl.dylib output_arm_sim/lib/libssl.dylib -output output_sim/lib/libssl.framework/libssl
 
 install_name_tool -id @rpath/libcrypto.framework/libcrypto output_device/lib/libcrypto.framework/libcrypto
+codesign --force -s - output_device/lib/libcrypto.framework/libcrypto
 install_name_tool -id @rpath/libcrypto.framework/libcrypto output_sim/lib/libcrypto.framework/libcrypto
 
 install_name_tool -id @rpath/libssl.framework/libssl output_device/lib/libssl.framework/libssl
+codesign --force -s - output_device/lib/libssl.framework/libssl
 install_name_tool -id @rpath/libssl.framework/libssl output_sim/lib/libssl.framework/libssl
 
 install_name_tool -change @rpath/libcrypto.dylib @rpath/libcrypto.framework/libcrypto output_device/lib/libssl.framework/libssl
