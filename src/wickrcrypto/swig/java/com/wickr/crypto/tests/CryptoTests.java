@@ -67,6 +67,48 @@ public class CryptoTests {
 
 	}
 
+    @Test 
+    public void testFileCipherDecipher() throws UnsupportedEncodingException, IOException
+    {
+        byte[] rndData = CryptoEngine.randomBytes(32);
+		CipherKey key = CipherKey.fromComponents(Cipher.aes256Gcm(), rndData);
+		assertNotNull(key);
+
+		assertArrayEquals(key.getKeyData(), rndData);
+
+		key = CryptoEngine.randomKey(Cipher.aes256Gcm());
+		assertNotNull(key);
+
+	    String testValue = "hello world";
+
+        File testFile = new File("testfile.txt");
+        testFile.createNewFile();
+
+        FileWriter writer = new FileWriter("testfile.txt");
+        writer.write(testValue);
+
+        boolean worked = CryptoEngine.cipherFile(key, "testfile.txt", "testfile.enc");
+        assertTrue(worked);
+
+        File encrypted = new File("testfile.enc");
+
+        boolean decrypt = CryptoEngine.decipherFile(key, "testfile.enc", "testfile.dec", true);
+        assertTrue(decrypt);
+
+        File decrypted = new File("testfile.dec");
+        Scanner reader = new Scanner(decrypted);
+
+        while (reader.hasNextLine()) {
+            String data = reader.nextLine();
+            assertEquals(data, testValue);
+        }
+
+        reader.close();
+        decrypted.delete();
+        testFile.delete();
+        encrypted.delete();
+    }
+
 	@Test
 	public void testSignatures() throws UnsupportedEncodingException {
 		// Generate a random EC Key

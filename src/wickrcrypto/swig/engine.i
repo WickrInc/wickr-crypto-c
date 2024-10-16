@@ -47,6 +47,15 @@ struct wickr_crypto_engine{
       wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
       return engine.wickr_crypto_engine_cipher_encrypt(plaintext,aad,key,iv);
     }
+    static bool cipherFile(const wickr_cipher_key_t *key, const char *sourceFilePath, const char *destinationFilePath) {
+        wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        return engine.wickr_crypto_engine_encrypt_file(key, sourceFilePath, destinationFilePath);
+    }
+    static bool decipherFile(const wickr_cipher_key_t *key, const char *sourceFilePath, const char *destinationFilePath, bool only_auth_ciphers) {
+        wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        return engine.wickr_crypto_engine_decrypt_file(key, sourceFilePath, destinationFilePath, only_auth_ciphers);
+    }
+
     static wickr_buffer_t *decipher(const wickr_cipher_result_t *result, const wickr_buffer_t *aad, const wickr_cipher_key_t *key, bool onlyAuth) {
       wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
       return engine.wickr_crypto_engine_cipher_decrypt(result,aad,key,onlyAuth);

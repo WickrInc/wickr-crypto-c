@@ -618,7 +618,7 @@ DESCRIBE(wickr_transport_ctx, "Wickr Transport Context")
         /* Create a handshake packet */
         wickr_transport_handshake_t *new_handshake = wickr_transport_handshake_create(test_engine,
                                                                                       wickr_identity_chain_copy(alice_identity),
-                                                                                      wickr_identity_chain_copy(bob_identity), 1, 42, NULL);
+                                                                                      wickr_identity_chain_copy(bob_identity), NULL, 42, NULL);
         
         wickr_transport_packet_t *packet = wickr_transport_handshake_start(new_handshake);
         wickr_buffer_t *serialized_packet = wickr_transport_packet_serialize(packet);
