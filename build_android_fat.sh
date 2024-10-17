@@ -21,11 +21,11 @@ do
 
     _FLAGS="-s"
 
-    echo "Building for arch ${ARCH}. FIPS=${_FIPS} AWS_LC=${AWS_LC} FLAGS=${_FLAGS}"
+    echo "Building for arch ${ARCH}. FIPS=${_FIPS} FLAGS=${_FLAGS}"
 
     cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK_HOME}/build/cmake/android.toolchain.cmake \
     -DBUILD_OPENSSL=true \
-    -DANDROID_NATIVE_API_LEVEL=21 \
+    -DANDROID_NATIVE_API_LEVEL=26 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS=${_FLAGS} \
     -DFIPS=${_FIPS} \

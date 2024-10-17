@@ -127,6 +127,10 @@ if (BUILD_TESTS)
     set(JAVA_CLASS_PATH .:${_jarFile}:${JAVA_TEST_INCLUDES})
 
     file(GLOB TestSources ${CMAKE_CURRENT_SOURCE_DIR}/${ENTRY_POINT}/tests/*.java) 
+
+    if (OPENSSL_CRYPTO_SHARED)
+        install(FILES ${OPENSSL_CRYPTO_SHARED} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    endif ()
     
     add_custom_command(
         TARGET wickrcryptojava
