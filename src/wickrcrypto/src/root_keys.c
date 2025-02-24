@@ -209,14 +209,13 @@ wickr_storage_keys_t *wickr_root_keys_localize(const wickr_root_keys_t *keys, co
         return NULL;
     }
     
-    /* Remove storage keys is the same on every device */
+    /* Remote storage key is the same on every device */
     wickr_cipher_key_t *rsr_copy = wickr_cipher_key_copy(keys->remote_storage_root);
     
     if (!rsr_copy) {
         wickr_cipher_key_destroy(&local_dev_storage_key);
         return NULL;
     }
-        
     wickr_storage_keys_t *storage_keys = wickr_storage_keys_create(local_dev_storage_key, rsr_copy);
     
     if (!storage_keys) {
