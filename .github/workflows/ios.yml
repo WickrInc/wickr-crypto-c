@@ -4,7 +4,7 @@ env:
   BUILD_TYPE: Release
 jobs:
   Build:
-    runs-on: macos-12
+    runs-on: macos-latest
     strategy:
       matrix:
         fips: [true, false]
