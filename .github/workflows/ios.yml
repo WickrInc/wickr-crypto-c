@@ -4,11 +4,14 @@ env:
   BUILD_TYPE: Release
 jobs:
   Build:
-    runs-on: macos-12
+    runs-on: macos-latest
     strategy:
       matrix:
         fips: [true, false]
     steps:
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       - name: Setup cmake
         run: brew install cmake
       - name: Setup Ninja

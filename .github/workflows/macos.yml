@@ -4,12 +4,15 @@ env:
   BUILD_TYPE: Release
 jobs:
   Build:
-    runs-on: macos-12
+    runs-on: macos-latest
     strategy:
       matrix:
         fips: [ON, OFF]
         arch: [x86_64, arm64]
     steps:
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       - name: Setup Ninja
         run: brew install ninja
       - name: Setup cmake
@@ -26,7 +29,8 @@ jobs:
           -DBUILD_TESTS=true \
           -DFIPS=${{matrix.fips}} \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
-          -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}}
+          -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}} \
+          -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/install
       - name: Build
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build
