@@ -11,6 +11,8 @@ jobs:
         arch: [x86_64, arm64]
     steps:
       - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       - name: Setup Ninja
         run: brew install ninja
       - name: Setup cmake
