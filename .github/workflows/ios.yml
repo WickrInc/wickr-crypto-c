@@ -9,6 +9,7 @@ jobs:
       matrix:
         fips: [true, false]
     steps:
+      - uses: actions/setup-go@v5
       - name: Setup cmake
         run: brew install cmake
       - name: Setup Ninja

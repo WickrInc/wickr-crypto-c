@@ -10,6 +10,7 @@ jobs:
         fips: [ON, OFF]
         arch: [x86_64, arm64]
     steps:
+      - uses: actions/setup-go@v5
       - name: Setup Ninja
         run: brew install ninja
       - name: Setup cmake
