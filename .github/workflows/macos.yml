@@ -29,7 +29,8 @@ jobs:
           -DBUILD_TESTS=true \
           -DFIPS=${{matrix.fips}} \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
-          -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}}
+          -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}} \
+          -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/install
       - name: Build
         shell: zsh {0}
         working-directory: ${{github.workspace}}/build
