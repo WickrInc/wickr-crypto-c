@@ -15,15 +15,11 @@ jobs:
           go-version: '>=1.17.0'
       - name: Setup Ninja
         run: brew install ninja
-      - name: Setup cmake
-        run: brew install cmake
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
-      - run: cmake --version
       - name: Configure CMake
-        shell: zsh {0}
         run: |
           cmake -B ${{github.workspace}}/build \
           -DBUILD_TESTS=true \
@@ -32,15 +28,12 @@ jobs:
           -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}} \
           -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/install
       - name: Build
-        shell: zsh {0}
         working-directory: ${{github.workspace}}/build
         run: make
-      - if: matrix.arch == 'x86_64'
+      - if: matrix.arch == 'arm64'
         name: Test
-        shell: zsh {0}
         working-directory: ${{github.workspace}}/build
         run: ctest --output-on-failure
       - name: Install
-        shell: zsh {0}
         working-directory: ${{github.workspace}}/build
         run: make install

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9.0)
+cmake_minimum_required(VERSION 3.24.0)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
@@ -7,7 +7,7 @@ project(WickrCryptoC)
 
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 18)
-set(VERSION_PATCH 5)
+set(VERSION_PATCH 6)
 
 include(GNUInstallDirs)
 
