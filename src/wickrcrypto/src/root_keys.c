@@ -1,7 +1,5 @@
 
 #include "root_keys.h"
-#include "buffer.h"
-#include "cipher.h"
 #include "memory.h"
 #include "storage.pb-c.h"
 #include "private/cipher_priv.h"
@@ -197,44 +195,27 @@ wickr_cipher_result_t *wickr_root_keys_export(const wickr_root_keys_t *keys, con
     return cipher_result;
 }
 
+/* dev_info is no longer used but we keep it here to avoid breaking the api */
 wickr_storage_keys_t *wickr_root_keys_localize(const wickr_root_keys_t *keys, const wickr_crypto_engine_t *engine, const wickr_dev_info_t *dev_info)
 {
-    if (!keys) {
+    if (!keys || !dev_info) {
+        return NULL;
+    }
+
+    /* Local storage keys are always random */
+    wickr_cipher_key_t *local_dev_storage_key = engine->wickr_crypto_engine_cipher_key_random(CIPHER_AES256_GCM);
+
+    if (!local_dev_storage_key) {
         return NULL;
     }
     
-    wickr_cipher_key_t *local_dev_storage_key = NULL;
-
-    if (dev_info) {
-        /* Deterministic:  Create our local storage key by taking a hash of the node_storage_root with the system_salt as the salt */
-        wickr_buffer_t *local_dev_storage_key_material = engine->wickr_crypto_engine_digest(keys->node_storage_root->key_data, dev_info->system_salt, DIGEST_SHA_256);
-
-        if (!local_dev_storage_key_material) {
-            return NULL;
-        }
-
-        local_dev_storage_key = wickr_cipher_key_create(keys->node_storage_root->cipher, local_dev_storage_key_material);
-
-        if (!local_dev_storage_key) {
-            wickr_buffer_destroy_zero(&local_dev_storage_key_material);
-            return NULL;
-        }
-    } else {
-        /* Random: Generate a random storage key if dev_info is NULL */
-        local_dev_storage_key = engine->wickr_crypto_engine_cipher_key_random(CIPHER_AES256_GCM);
-
-        if (!local_dev_storage_key) {
-            return NULL;
-        }
-    }
-    
+    /* Remote storage key is the same on every device */
     wickr_cipher_key_t *rsr_copy = wickr_cipher_key_copy(keys->remote_storage_root);
-
+    
     if (!rsr_copy) {
         wickr_cipher_key_destroy(&local_dev_storage_key);
         return NULL;
     }
-    
     wickr_storage_keys_t *storage_keys = wickr_storage_keys_create(local_dev_storage_key, rsr_copy);
     
     if (!storage_keys) {
