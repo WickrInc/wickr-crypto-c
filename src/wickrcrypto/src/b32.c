@@ -262,13 +262,23 @@ wickr_buffer_t *base32_decode(const wickr_buffer_t *buffer)
         wickr_buffer_destroy(&unmapped);
         return NULL;
     }
-    
-    wickr_buffer_t *decoded = wickr_buffer_create_empty_zero(__base32_decode_length(unmapped->length) + 1);
-    decoded->length = decoded->length - 1;
-    
-    if (!decoded) {
+
+    size_t decode_length = __base32_decode_length(unmapped->length);
+
+    if (decode_length == 0) {
+        wickr_buffer_destroy(&unmapped);
         return NULL;
     }
+    
+    wickr_buffer_t *decoded = wickr_buffer_create_empty_zero(decode_length + 1);
+
+
+    if (!decoded) {
+        wickr_buffer_destroy(&unmapped);
+        return NULL;
+    }
+
+    decoded->length = decoded->length - 1;
     
     if (!__base32_decode_base32(unmapped->bytes, unmapped->length, decoded->bytes)) {
         wickr_buffer_destroy(&decoded);

@@ -7,7 +7,7 @@ project(WickrCryptoC)
 
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 18)
-set(VERSION_PATCH 6)
+set(VERSION_PATCH 7)
 
 include(GNUInstallDirs)
 
