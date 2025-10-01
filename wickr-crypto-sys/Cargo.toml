@@ -1,0 +1,12 @@
+[package]
+name = "wickr-crypto-sys"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+links = "wickrcrypto"
+
+[build-dependencies]
+bindgen = "0.70"
+cmake = "0.1"
+
+[dependencies]
