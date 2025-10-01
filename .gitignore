@@ -14,3 +14,5 @@ node_modules/
 pod_deploy/
 compile_commands.json
 .ccls-cache
+wickr-crypto-sys/target
+wickr-crypto-sys/Cargo.lock
