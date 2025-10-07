@@ -1,4 +1,4 @@
-FROM tleavy/android-sdk-ndk:api33ndk27
+FROM tleavy/android-sdk-ndk:api33ndk28
 
 ADD . /usr/share/wickr-crypto-c
 WORKDIR /usr/share/wickr-crypto-c
