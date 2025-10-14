@@ -183,11 +183,28 @@ public class ContextTests
 		assertEquals(parsed.getParseResult().getErr(), DecodeError.E_SUCCESS);
 		assertEquals(parsed.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
 
+        // Use the stateless decode for non decoding purposes for a particular receiver
+        ContextParseResult statelessParsed = Context.statelessParse(receiverCtx.getIdChain().getNode().getIdentifier(), encodeResult.getPacket().serialize(), ctx.getIdChain());
+
+        assertEquals(statelessParsed.getParseResult().getErr(), DecodeError.E_SUCCESS);
+        assertEquals(statelessParsed.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
+
+
+        // Use the stateless decode for non decoding purposes for no particular receiver 
+        ContextParseResult statelessParsedNoReceiver = Context.statelessParse(null, encodeResult.getPacket().serialize(), ctx.getIdChain());
+
+        assertEquals(statelessParsedNoReceiver.getParseResult().getErr(), DecodeError.E_SUCCESS);
+        assertEquals(statelessParsedNoReceiver.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
+
+        assertNull(statelessParsedNoReceiver.getParseResult().getKeyExchange());
+
 		//Use the receiver context created above to parse a packet for decoding purposes
 		parsed = receiverCtx.parsePacket(encodeResult.getPacket().serialize(), ctx.getIdChain());
 		assertNotNull(parsed);
 		assertEquals(parsed.getParseResult().getErr(), DecodeError.E_SUCCESS);
 		assertEquals(parsed.getParseResult().getSignatureStatus(), PacketSignatureStatus.PACKET_SIGNATURE_VALID);
+
+        assertEquals(statelessParsed.getParseResult().getKeyExchange().getKeyId(), parsed.getParseResult().getKeyExchange().getKeyId());
 
 		//Decode the packet, and extract the original message
 		ContextDecodeResult decoded = receiverCtx.decodePacket(parsed, msgKey.getEcKey());
