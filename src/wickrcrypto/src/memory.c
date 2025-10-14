@@ -4,7 +4,8 @@
 #include <string.h>
 
 #ifdef _WIN32
-#include "Windows.h"
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #endif
 
 void *wickr_alloc(size_t len)

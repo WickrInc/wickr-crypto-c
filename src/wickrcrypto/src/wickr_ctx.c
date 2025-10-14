@@ -785,9 +785,13 @@ wickr_encoder_result_t *wickr_ctx_encode_packet(const wickr_ctx_t *ctx, const wi
     
 }
 
-static wickr_ctx_packet_t *__wickr_ctx_read_packet(const wickr_ctx_t *ctx, const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender, bool for_decode)
+static wickr_ctx_packet_t *__wickr_ctx_read_packet(const wickr_crypto_engine_t *engine,
+                                                   const wickr_buffer_t *packet_buffer,
+                                                   const wickr_buffer_t *node_search_id,
+                                                   const wickr_identity_chain_t *sender,
+                                                   bool for_decode)
 {
-    if (!ctx || !packet_buffer) {
+    if (!engine || !packet_buffer) {
         return NULL;
     }
     
@@ -797,10 +801,7 @@ static wickr_ctx_packet_t *__wickr_ctx_read_packet(const wickr_ctx_t *ctx, const
         return NULL;
     }
     
-    /* If we just want to parse the packet structure, and not search for our node, pass null for receiver_node_id */
-    wickr_buffer_t *node_search_id = for_decode ? ctx->id_chain->node->identifier : NULL;
-    
-    wickr_parse_result_t *result = wickr_parse_result_from_packet(&ctx->engine, packet, node_search_id, __wickr_ctx_gen_header_key, sender);
+    wickr_parse_result_t *result = wickr_parse_result_from_packet(engine, packet, node_search_id, __wickr_ctx_gen_header_key, sender);
     
     if (!result) {
         wickr_packet_destroy(&packet);
@@ -826,14 +827,19 @@ static wickr_ctx_packet_t *__wickr_ctx_read_packet(const wickr_ctx_t *ctx, const
     return ctx_packet;
 }
 
+wickr_ctx_packet_t *wickr_ctx_stateless_parse_packet(const wickr_crypto_engine_t *engine, const wickr_buffer_t *node_search_id, const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender)
+{
+    return __wickr_ctx_read_packet(engine, packet_buffer, node_search_id, sender, false);
+}
+
 wickr_ctx_packet_t *wickr_ctx_parse_packet(const wickr_ctx_t *ctx, const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender)
 {
-    return __wickr_ctx_read_packet(ctx, packet_buffer, sender, true);
+    return __wickr_ctx_read_packet(&ctx->engine, packet_buffer, ctx->id_chain->node->identifier, sender, true);
 }
 
 wickr_ctx_packet_t *wickr_ctx_parse_packet_no_decode(const wickr_ctx_t *ctx, const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender)
 {
-    return __wickr_ctx_read_packet(ctx, packet_buffer, sender, false);
+    return __wickr_ctx_read_packet(&ctx->engine, packet_buffer, NULL, sender, false);
 }
 
 wickr_decode_result_t *wickr_ctx_decode_packet(const wickr_ctx_t *ctx, const wickr_ctx_packet_t *packet, wickr_ec_key_t *keypair)

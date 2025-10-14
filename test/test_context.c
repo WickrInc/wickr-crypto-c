@@ -553,6 +553,54 @@ DESCRIBE(wickr_ctx_send_pkt, "wickr_ctx: test sending packet")
     }
     END_IT
 
+    IT("should parse packets for non decoding purposes without state")
+    {
+        wickr_ctx_packet_t *inPacket = NULL;
+        wickr_buffer_t *packet_buffer = wickr_packet_serialize(encodePkt->packet);
+        SHOULD_NOT_BE_NULL(encodePkt);
+
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+
+        SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_stateless_parse_packet(&engine, ctxUser2->id_chain->node->identifier, packet_buffer, ctxUser1->id_chain));
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange);
+        SHOULD_EQUAL(inPacket->parse_result->err, E_SUCCESS);
+        SHOULD_NOT_BE_NULL(inPacket->packet);
+        SHOULD_NOT_BE_NULL(inPacket->packet->content);
+        SHOULD_NOT_BE_NULL(inPacket->packet->signature);
+        SHOULD_EQUAL(inPacket->packet->version, ctxUser1->pkt_enc_version);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange_set);
+        SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
+
+        wickr_ctx_packet_destroy(&inPacket);
+        wickr_buffer_destroy(&packet_buffer);
+    }
+    END_IT
+
+    IT("should be able to parse packets for non decoding purposes without state or recipient identifier")
+    {
+        wickr_ctx_packet_t *inPacket = NULL;
+        wickr_buffer_t *packet_buffer = wickr_packet_serialize(encodePkt->packet);
+        SHOULD_NOT_BE_NULL(encodePkt);
+
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+
+        SHOULD_NOT_BE_NULL(inPacket = wickr_ctx_stateless_parse_packet(&engine, NULL, packet_buffer, ctxUser1->id_chain));
+        SHOULD_BE_NULL(inPacket->parse_result->key_exchange);
+        SHOULD_EQUAL(inPacket->parse_result->err, E_SUCCESS);
+        SHOULD_NOT_BE_NULL(inPacket->packet);
+        SHOULD_NOT_BE_NULL(inPacket->packet->content);
+        SHOULD_NOT_BE_NULL(inPacket->packet->signature);
+        SHOULD_EQUAL(inPacket->packet->version, DEFAULT_PKT_ENC_VERSION);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->enc_payload);
+        SHOULD_NOT_BE_NULL(inPacket->parse_result->key_exchange_set);
+        SHOULD_EQUAL(inPacket->parse_result->signature_status, PACKET_SIGNATURE_VALID);
+
+        wickr_ctx_packet_destroy(&inPacket);
+        wickr_buffer_destroy(&packet_buffer);
+    }
+    END_IT
+
     IT("should parse packets for decoding")
     {
         __test_packet_decode(ctxUser1, ctxUser2, nodeUser2, encodePkt, bodyData, channelTag, contentType, ephemeralData);

@@ -526,6 +526,19 @@ wickr_ctx_packet_t *wickr_ctx_parse_packet_no_decode(const wickr_ctx_t *ctx,
                                                      const wickr_identity_chain_t *sender);
 
 /**
+ Parse a packet into components without having an active context.
+
+ @param engine crypto engine to use for parsing 
+ @param node_search_id optional id to search for, can be NULL to not parse specific receiver information 
+ @param sender the sender of the 'packet_buffer'
+ @return a parse result holding the parsed information from 'packet_buffer' with a key exchange set if node_search_id is provided
+ */
+wickr_ctx_packet_t *wickr_ctx_stateless_parse_packet(const wickr_crypto_engine_t *engine,
+                                                    const wickr_buffer_t *node_search_id,
+                                                    const wickr_buffer_t *packet_buffer,
+                                                    const wickr_identity_chain_t *sender);
+
+/**
  Decode a parsed packet using the provided keypair
  
  NOTE: this will fail if the packet was parsed using wickr_ctx_parse_packet_no_decode

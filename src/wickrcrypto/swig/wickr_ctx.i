@@ -57,6 +57,7 @@
 %ignore wickr_ctx_export;
 %ignore wickr_ctx_import;
 %ignore wickr_ctx_create_from_buffer;
+%ignore wickr_ctx_stateless_parse_packet;
 %ignore wickr_key_exchange_create_with_packet_key;
 %ignore wickr_key_exchange_create_with_data;
 %ignore wickr_key_exchange_derive_packet_key;
@@ -114,6 +115,7 @@
     %newobject encode_packet;
     %newobject parse_packet_no_decode;
     %newobject parse_packet;
+    %newobject stateless_parse;
     %newobject decode_packet;
     %newobject from_buffer;
     %newobject export;
@@ -175,6 +177,12 @@
         }
 
         return ctx;
+    }
+
+    static wickr_ctx_packet_t *stateless_parse(const wickr_buffer_t *receiver_id, const wickr_buffer_t *packet_buffer, const wickr_identity_chain_t *sender)
+    {
+        const wickr_crypto_engine_t engine = wickr_crypto_engine_get_default();
+        return wickr_ctx_stateless_parse_packet(&engine, receiver_id, packet_buffer, sender);
     }
 
     wickr_buffer_t *export_passphrase(const wickr_buffer_t *passphrase) {
