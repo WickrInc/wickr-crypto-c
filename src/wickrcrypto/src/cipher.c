@@ -110,7 +110,7 @@ wickr_buffer_t *wickr_cipher_result_serialize(const wickr_cipher_result_t *resul
 
 wickr_cipher_result_t *wickr_cipher_result_from_buffer(const wickr_buffer_t *buffer)
 {
-    if (!buffer) {
+    if (!buffer || !buffer->bytes || buffer->length == 0) {
         return NULL;
     }
     
