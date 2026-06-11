@@ -10,7 +10,7 @@ jobs:
         fips: [ON, OFF]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           submodules: true
       - name: Install Dependencies
