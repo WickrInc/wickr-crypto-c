@@ -1,6 +1,7 @@
 
 #include "test_payload.h"
 #include "payload.h"
+#include "message.pb-c.h"
 
 void test_payload_equality(const wickr_payload_t *p1, const wickr_payload_t *p2)
 {
@@ -106,6 +107,36 @@ DESCRIBE(wickr_payload, "wickr_payload")
         wickr_cipher_key_destroy(&key);
         wickr_cipher_key_destroy(&incorrect_key);
         wickr_payload_destroy(&restored);
+    }
+    END_IT
+
+    IT("returns NULL from create_from_buffer with empty body")
+    {
+        /* Build a minimal protobuf payload with metadata but a NULL/empty body */
+        Wickr__Proto__Payload__Meta__Ephemerality proto_eph = WICKR__PROTO__PAYLOAD__META__EPHEMERALITY__INIT;
+        Wickr__Proto__Payload__Meta proto_meta = WICKR__PROTO__PAYLOAD__META__INIT;
+        proto_meta.ephemerality_settings = &proto_eph;
+
+        uint8_t tag_bytes[4] = {0x01, 0x02, 0x03, 0x04};
+        proto_meta.channel_tag.data = tag_bytes;
+        proto_meta.channel_tag.len = sizeof(tag_bytes);
+        proto_meta.has_channel_tag = true;
+
+        Wickr__Proto__Payload proto_payload = WICKR__PROTO__PAYLOAD__INIT;
+        proto_payload.metadata = &proto_meta;
+        proto_payload.body.data = NULL;
+        proto_payload.body.len = 0;
+
+        size_t packed_size = wickr__proto__payload__get_packed_size(&proto_payload);
+        wickr_buffer_t *buffer = wickr_buffer_create_empty(packed_size);
+        SHOULD_NOT_BE_NULL(buffer);
+        wickr__proto__payload__pack(&proto_payload, buffer->bytes);
+
+        /* Deserializing a payload with empty body should fail */
+        wickr_payload_t *result = wickr_payload_create_from_buffer(buffer);
+        SHOULD_BE_NULL(result);
+
+        wickr_buffer_destroy(&buffer);
     }
     END_IT
     

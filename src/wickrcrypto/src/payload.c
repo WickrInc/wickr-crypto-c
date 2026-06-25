@@ -134,6 +134,7 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
     
     uint32_t content_type = proto_meta->has_content_type ? proto_meta->content_type : 0;
     
+    // Takes ownership of the channel tag.
     wickr_packet_meta_t *meta = wickr_packet_meta_create(ephemerality_settings, channel_tag, content_type);
     
     if (!meta) {
@@ -146,7 +147,6 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
     wickr__proto__payload__free_unpacked(proto_payload, NULL);
     
     if (!body) {
-        wickr_buffer_destroy(&channel_tag);
         wickr_packet_meta_destroy(&meta);
         return NULL;
     }
@@ -154,7 +154,6 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
     wickr_payload_t *payload = wickr_payload_create(meta, body);
     
     if (!payload) {
-        wickr_buffer_destroy(&channel_tag);
         wickr_packet_meta_destroy(&meta);
         wickr_buffer_destroy_zero(&body);
         return NULL;
