@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Ninja
         if: matrix.build-mode == 'manual'
@@ -38,6 +38,10 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
+          config: |
+            paths-ignore:
+              - third-party
+              - build/third-party
 
       - name: Build
         if: matrix.build-mode == 'manual'
