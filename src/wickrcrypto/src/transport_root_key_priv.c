@@ -51,7 +51,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_from_proto(const Wickr__Pro
     const wickr_cipher_t *cipher = wickr_cipher_find(root_key_proto->cipher_id);
     
     if (!cipher) {
-        wickr_buffer_destroy(&secret_buffer);
+        wickr_buffer_destroy_zero(&secret_buffer);
         return NULL;
     }
     
@@ -60,7 +60,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_from_proto(const Wickr__Pro
                                                                            root_key_proto->packets_per_evo_recv);
     
     if (!root_key) {
-        wickr_buffer_destroy(&secret_buffer);
+        wickr_buffer_destroy_zero(&secret_buffer);
     }
     
     return root_key;

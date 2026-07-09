@@ -55,7 +55,7 @@ wickr_stream_key_t *wickr_stream_key_create_rand(const wickr_crypto_engine_t eng
     
     if (!stream_key) {
         wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&evo_key);
+        wickr_buffer_destroy_zero(&evo_key);
     }
     
     return stream_key;
@@ -84,7 +84,7 @@ wickr_stream_key_t *wickr_stream_key_copy(const wickr_stream_key_t *stream_key)
     
     if (stream_key->user_data && !user_data_copy) {
         wickr_cipher_key_destroy(&key_copy);
-        wickr_buffer_destroy(&evo_key_copy);
+        wickr_buffer_destroy_zero(&evo_key_copy);
         return NULL;
     }
     
@@ -95,7 +95,7 @@ wickr_stream_key_t *wickr_stream_key_copy(const wickr_stream_key_t *stream_key)
     
     if (!stream_key_copy) {
         wickr_cipher_key_destroy(&key_copy);
-        wickr_buffer_destroy(&evo_key_copy);
+        wickr_buffer_destroy_zero(&evo_key_copy);
         wickr_buffer_destroy(&user_data_copy);
     }
     

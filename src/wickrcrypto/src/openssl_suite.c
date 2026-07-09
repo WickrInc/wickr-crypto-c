@@ -163,7 +163,7 @@ static wickr_buffer_t *__openssl_ec_pri_key_to_buffer(EC_KEY *key)
     
     uint8_t *bytes = pri_key_data->bytes;
     if (!i2d_ECPrivateKey(key, &bytes)) {
-        wickr_buffer_destroy(&pri_key_data);
+        wickr_buffer_destroy_zero(&pri_key_data);
         return NULL;
     }
     
@@ -756,7 +756,7 @@ wickr_ec_key_t *openssl_ec_rand_key(wickr_ec_curve_t curve)
     
     if (!pub_key_buffer) {
         EC_KEY_free(new_key);
-        wickr_buffer_destroy(&pri_key_buffer);
+        wickr_buffer_destroy_zero(&pri_key_buffer);
         return NULL;
     }
     
@@ -765,7 +765,7 @@ wickr_ec_key_t *openssl_ec_rand_key(wickr_ec_curve_t curve)
     wickr_ec_key_t *new_ec_key = wickr_ec_key_create(curve, pub_key_buffer, pri_key_buffer);
     
     if (!new_ec_key) {
-        wickr_buffer_destroy(&pri_key_buffer);
+        wickr_buffer_destroy_zero(&pri_key_buffer);
         wickr_buffer_destroy(&pub_key_buffer);
     }
     
@@ -1566,14 +1566,14 @@ wickr_ecdsa_result_t *openssl_ecdsa_from_raw(const wickr_ec_curve_t curve, const
         EC_KEY_free(ec_key);
         
         if (!pub_data) {
-            wickr_buffer_destroy(&pri_data);
+            wickr_buffer_destroy_zero(&pri_data);
             return NULL;
         }
         
         wickr_ec_key_t *converted_key = wickr_ec_key_create(curve, pub_data, pri_data);
         
         if (!converted_key) {
-            wickr_buffer_destroy(&pri_data);
+            wickr_buffer_destroy_zero(&pri_data);
             wickr_buffer_destroy(&pub_data);
         }
         
