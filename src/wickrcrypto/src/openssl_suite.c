@@ -596,7 +596,7 @@ wickr_buffer_t *openssl_aes256_decrypt(const wickr_cipher_result_t *cipher_resul
     
 process_error:
     if (output_buffer) {
-        wickr_buffer_destroy(&output_buffer);
+        wickr_buffer_destroy_zero(&output_buffer);
     }
     if (ctx) {
         EVP_CIPHER_CTX_free(ctx);

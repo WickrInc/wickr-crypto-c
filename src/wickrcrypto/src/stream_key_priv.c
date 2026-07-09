@@ -34,11 +34,11 @@ Wickr__Proto__StreamKey *wickr_stream_key_to_proto(const wickr_stream_key_t *key
     }
     
     if (!wickr_buffer_to_protobytes(&proto->cipher_key, key_buffer)) {
-        wickr_buffer_destroy(&key_buffer);
+        wickr_buffer_destroy_zero(&key_buffer);
         return NULL;
     }
     
-    wickr_buffer_destroy(&key_buffer);
+    wickr_buffer_destroy_zero(&key_buffer);
 
     proto->evolution_key.data = key->evolution_key->bytes;
     proto->evolution_key.len = key->evolution_key->length;
@@ -70,7 +70,7 @@ wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__Strea
     }
     
     wickr_cipher_key_t *cipher_key = wickr_cipher_key_from_buffer(key_buffer);
-    wickr_buffer_destroy(&key_buffer);
+    wickr_buffer_destroy_zero(&key_buffer);
     
     if (!cipher_key) {
         return NULL;
@@ -90,7 +90,7 @@ wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__Strea
         
         if (!user_data) {
             wickr_cipher_key_destroy(&cipher_key);
-            wickr_buffer_destroy(&evo_key);
+            wickr_buffer_destroy_zero(&evo_key);
             return NULL;
         }
     }
@@ -99,7 +99,7 @@ wickr_stream_key_t *wickr_stream_key_create_from_proto(const Wickr__Proto__Strea
     
     if (!stream_key) {
         wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&evo_key);
+        wickr_buffer_destroy_zero(&evo_key);
         return NULL;
     }
     
