@@ -112,7 +112,7 @@ wickr_ctx_gen_result_t *wickr_ctx_gen_with_passphrase(const wickr_crypto_engine_
     }
     
     wickr_cipher_key_t *recovery_key = wickr_cipher_key_from_buffer(decrypted_recovery_bytes);
-    wickr_buffer_destroy(&decrypted_recovery_bytes);
+    wickr_buffer_destroy_zero(&decrypted_recovery_bytes);
 
     if (!recovery_key) {
         return NULL;
@@ -305,7 +305,7 @@ wickr_cipher_key_t *wickr_ctx_gen_import_recovery_key_passphrase(const wickr_cry
     }
     
     wickr_cipher_key_t *recovery_key = wickr_cipher_key_from_buffer(decoded_recovery);
-    wickr_buffer_destroy(&decoded_recovery);
+    wickr_buffer_destroy_zero(&decoded_recovery);
     
     return recovery_key;
 }
@@ -624,7 +624,7 @@ wickr_ctx_t *wickr_ctx_import(const wickr_crypto_engine_t engine,
     }
     
     wickr_ctx_t *ctx = wickr_ctx_create_from_buffer(engine, dev_info, decoded_ctx);
-    wickr_buffer_destroy(&decoded_ctx);
+    wickr_buffer_destroy_zero(&decoded_ctx);
     
     return ctx;
 }
@@ -661,7 +661,7 @@ wickr_storage_keys_t *wickr_ctx_import_storage_keys(const wickr_crypto_engine_t 
     }
     
     wickr_storage_keys_t *storage_keys = wickr_storage_keys_create_from_buffer(decoded_serialized_keys);
-    wickr_buffer_destroy(&decoded_serialized_keys);
+    wickr_buffer_destroy_zero(&decoded_serialized_keys);
     
     return storage_keys;
 }

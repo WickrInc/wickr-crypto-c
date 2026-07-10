@@ -3,7 +3,7 @@ include(ExternalProject)
 set(AWS_LC_BUILD_OPTS -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DFIPS=${FIPS} -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR})
 
 if(APPLE)
-    set(AWS_LC_WARNING_FLAGS "-Wno-error=cast-function-type-mismatch -Wno-error=unknown-warning-option")
+    set(AWS_LC_WARNING_FLAGS "-Wno-error=cast-function-type-mismatch -Wno-error=unknown-warning-option -Wno-error=unterminated-string-initialization")
     set(AWS_LC_BUILD_OPTS ${AWS_LC_BUILD_OPTS} -DCMAKE_C_FLAGS=${AWS_LC_WARNING_FLAGS})
 
     # Resolve sysroot explicitly — CMake doesn't auto-populate CMAKE_OSX_SYSROOT

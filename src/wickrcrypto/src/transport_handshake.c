@@ -483,7 +483,7 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
     }
     
     Wickr__Proto__HandshakeV1ResponseData *response_data = wickr_proto_handshake_response_data_from_buffer(response_buffer);
-    wickr_buffer_destroy(&response_buffer);
+    wickr_buffer_destroy_zero(&response_buffer);
     
     if (!response_data || !response_data->root_key) {
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;

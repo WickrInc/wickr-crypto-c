@@ -108,15 +108,15 @@ static wickr_stream_key_t *__wickr_stream_key_create_with_evo_buffer(wickr_strea
     wickr_buffer_t *new_evo_key = wickr_buffer_copy_section(evo_buffer, DIGEST_SHA_512.size / 2, DIGEST_SHA_512.size / 2);
     
     if (!new_evo_key) {
-        wickr_buffer_destroy(&new_crypto_key);
+        wickr_buffer_destroy_zero(&new_crypto_key);
         return NULL;
     }
     
     wickr_cipher_key_t *cipher_key = wickr_cipher_key_create(old_key->cipher_key->cipher, new_crypto_key);
     
     if (!cipher_key) {
-        wickr_buffer_destroy(&new_crypto_key);
-        wickr_buffer_destroy(&new_evo_key);
+        wickr_buffer_destroy_zero(&new_crypto_key);
+        wickr_buffer_destroy_zero(&new_evo_key);
         return NULL;
     }
     
@@ -124,7 +124,7 @@ static wickr_stream_key_t *__wickr_stream_key_create_with_evo_buffer(wickr_strea
     
     if (!new_key) {
         wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&new_evo_key);
+        wickr_buffer_destroy_zero(&new_evo_key);
         return NULL;
     }
     
@@ -167,7 +167,7 @@ static bool __wickr_stream_ctx_evolove_key_material(wickr_stream_ctx_t *encoder,
         
         wickr_stream_key_t *new_key = __wickr_stream_key_create_with_evo_buffer(curr_key, evo_buffer);
         wickr_stream_key_destroy(&curr_key);
-        wickr_buffer_destroy(&evo_buffer);
+        wickr_buffer_destroy_zero(&evo_buffer);
 
         if (!new_key) {
             return false;

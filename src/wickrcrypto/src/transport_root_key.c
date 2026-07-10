@@ -20,7 +20,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_create_random(const wickr_c
     wickr_transport_root_key_t *root_key = wickr_transport_root_key_create(secret, cipher, packets_per_evo_send, packets_per_evo_recv);
     
     if (!root_key) {
-        wickr_buffer_destroy(&secret);
+        wickr_buffer_destroy_zero(&secret);
     }
     
     return root_key;
@@ -67,7 +67,7 @@ wickr_transport_root_key_t *wickr_transport_root_key_copy(const wickr_transport_
                                                                                 root_key->packets_per_evo_recv);
     
     if (!root_key_copy) {
-        wickr_buffer_destroy(&secret_copy);
+        wickr_buffer_destroy_zero(&secret_copy);
     }
     
     return root_key_copy;
@@ -79,7 +79,7 @@ void wickr_transport_root_key_destroy(wickr_transport_root_key_t **root_key)
         return;
     }
     
-    wickr_buffer_destroy(&(*root_key)->secret);
+    wickr_buffer_destroy_zero(&(*root_key)->secret);
     wickr_free(*root_key);
     *root_key = NULL;
 }
@@ -105,7 +105,7 @@ wickr_stream_key_t *wickr_transport_root_key_to_stream_key(const wickr_transport
     wickr_cipher_key_t *cipher_key = wickr_cipher_key_create(root_key->cipher, cipher_key_data);
     
     if (!cipher_key) {
-        wickr_buffer_destroy(&cipher_key_data);
+        wickr_buffer_destroy_zero(&cipher_key_data);
         return NULL;
     }
     
@@ -122,7 +122,7 @@ wickr_stream_key_t *wickr_transport_root_key_to_stream_key(const wickr_transport
     
     if (!stream_key) {
         wickr_cipher_key_destroy(&cipher_key);
-        wickr_buffer_destroy(&evo_key);
+        wickr_buffer_destroy_zero(&evo_key);
     }
     
     return stream_key;

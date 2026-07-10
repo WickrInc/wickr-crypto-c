@@ -458,7 +458,7 @@ wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_cipher(const wickr_
     }
     
     wickr_key_exchange_set_t *deserialized_exchange = wickr_key_exchange_set_create_from_buffer(engine, decrypted_exchange);
-    wickr_buffer_destroy(&decrypted_exchange);
+    wickr_buffer_destroy_zero(&decrypted_exchange);
     
     return deserialized_exchange;
 }
