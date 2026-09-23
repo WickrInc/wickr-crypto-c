@@ -20,9 +20,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'maven-publish'
 
-def projectName = project.getName()
-def fileName = "${projectName}-${gradle.versionNumber}.aar"
-
 android {
     compileSdkVersion 33
 
@@ -46,7 +43,9 @@ publishing {
             groupId = "com.wickr.crypto"
             version = gradle.versionNumber
             artifactId project.getName()
-            artifact("build/outputs/aar/${fileName}")
+            afterEvaluate {
+                artifact bundleReleaseAar
+            }
         }
     }
 }
