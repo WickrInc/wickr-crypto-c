@@ -171,6 +171,31 @@ DESCRIBE(decodeCipherFile, "openssl_file_suite: decodeCipherFile")
     }
     END_IT
 
+    IT( "should not leave plaintext on disk when authentication fails" )
+    {
+        char *testBadDecryptedFileName = "bad_decrypted_test.data";
+        char *testBadTempFileName = "bad_decrypted_test.data.temp";
+
+        // Flip a ciphertext byte so the GCM tag check fails
+        FILE *encFile = fopen(testCipherFileName, "r+b");
+        SHOULD_NOT_BE_NULL(encFile);
+        fseek(encFile, DATA_SIZE / 2, SEEK_SET);
+        int byte = fgetc(encFile);
+        fseek(encFile, DATA_SIZE / 2, SEEK_SET);
+        fputc(byte ^ 0x01, encFile);
+        fclose(encFile);
+
+        SHOULD_BE_FALSE(openssl_aes256_file_decrypt(cipherKey, testCipherFileName, testBadDecryptedFileName, true));
+
+        struct stat st;
+        SHOULD_NOT_EQUAL(stat(testBadDecryptedFileName, &st), 0);
+        SHOULD_NOT_EQUAL(stat(testBadTempFileName, &st), 0);
+
+        remove(testBadDecryptedFileName);
+        remove(testBadTempFileName);
+    }
+    END_IT
+
     // Clean up
     wickr_buffer_destroy(&testData);
     wickr_cipher_key_destroy(&cipherKey);

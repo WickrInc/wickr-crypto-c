@@ -183,8 +183,10 @@ static bool aesFileOpMoveTempToDestination(AESFileOperation *operation) {
 
 static void freeFileOperation(AESFileOperation **operation) {
     if (*operation) {
-        aesFileOpRemoveTempFile((*operation));
+        // Close before removing: Windows can't delete a file that is still open,
+        // which would leave unauthenticated plaintext behind on a failed decrypt
         aesFileOpCloseSourceAndDestination((*operation));
+        aesFileOpRemoveTempFile((*operation));
         if ((*operation)->tempPath)
             wickr_free((*operation)->tempPath);
         wickr_free((*operation));
