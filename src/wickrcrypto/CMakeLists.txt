@@ -19,8 +19,12 @@ if (WICKR_SECURE_MEMORY)
 
     # libsodium provides the guarded, page-locked allocator for secrets
     find_package(libsodium CONFIG QUIET)
+    find_package(unofficial-sodium CONFIG QUIET)
     if (TARGET libsodium::libsodium)
         set(SODIUM_LIBRARIES libsodium::libsodium)
+    elseif (TARGET unofficial-sodium::sodium)
+        # vcpkg's package; its target adds SODIUM_STATIC for static builds
+        set(SODIUM_LIBRARIES unofficial-sodium::sodium)
     else ()
         find_path(SODIUM_INCLUDE_DIR sodium.h)
         find_library(SODIUM_LIBRARIES NAMES sodium libsodium)

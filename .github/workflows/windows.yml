@@ -8,6 +8,10 @@ jobs:
     strategy:
       matrix:
         fips: [ON, OFF]
+        secure_memory: ['OFF']
+        include:
+          - fips: ON
+            secure_memory: 'ON'
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -16,6 +20,10 @@ jobs:
       - name: Install Dependencies
         shell: bash
         run: choco install cmake ninja nasm -y
+      - if: matrix.secure_memory == 'ON'
+        name: Setup libsodium
+        shell: bash
+        run: vcpkg install libsodium:x64-windows-static-md
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
       - name: Configure CMake
@@ -25,6 +33,8 @@ jobs:
           cmake \
           -DBUILD_TESTS=true \
           -DFIPS=${{matrix.fips}} \
+          -DWICKR_SECURE_MEMORY=${{matrix.secure_memory}} \
+          -DCMAKE_PREFIX_PATH="${VCPKG_INSTALLATION_ROOT//\\//}/installed/x64-windows-static-md" \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
           -DCMAKE_GENERATOR_PLATFORM=x64 \
           ..
