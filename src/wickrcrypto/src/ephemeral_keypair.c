@@ -1,5 +1,6 @@
 
 #include "ephemeral_keypair.h"
+#include "private/memory_priv.h"
 #include "private/ephemeral_keypair_priv.h"
 #include "memory.h"
 
@@ -135,14 +136,14 @@ wickr_ephemeral_keypair_t *wickr_ephemeral_keypair_create_from_buffer(const wick
         return NULL;
     }
     
-    Wickr__Proto__EphemeralKeypair *proto_keypair = wickr__proto__ephemeral_keypair__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__EphemeralKeypair *proto_keypair = wickr__proto__ephemeral_keypair__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_keypair) {
         return NULL;
     }
     
     wickr_ephemeral_keypair_t *return_keypair = wickr_ephemeral_keypair_create_from_proto(proto_keypair, engine);
-    wickr__proto__ephemeral_keypair__free_unpacked(proto_keypair, NULL);
+    wickr__proto__ephemeral_keypair__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
     
     return return_keypair;
 }

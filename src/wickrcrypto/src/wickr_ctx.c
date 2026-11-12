@@ -1,5 +1,6 @@
 
 #include "wickr_ctx.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "private/identity_priv.h"
 #include "private/storage_priv.h"
@@ -382,6 +383,30 @@ void wickr_ctx_gen_result_destroy(wickr_ctx_gen_result_t **result)
 /* Context Functions */
 
 /* Creates a context given parameters that have either been created in memory with ctx_gen or pulled from an encrypted data store using storage_keys */
+/* The keys a context holds for its whole lifetime: signing keys, storage keys, header key */
+static void __wickr_ctx_secure_keys(wickr_ctx_t *ctx)
+{
+    if (ctx->id_chain) {
+        if (ctx->id_chain->root && ctx->id_chain->root->sig_key) {
+            wickr_buffer_make_secure(ctx->id_chain->root->sig_key->pri_data);
+        }
+        if (ctx->id_chain->node && ctx->id_chain->node->sig_key) {
+            wickr_buffer_make_secure(ctx->id_chain->node->sig_key->pri_data);
+        }
+    }
+    if (ctx->storage_keys) {
+        if (ctx->storage_keys->local) {
+            wickr_buffer_make_secure(ctx->storage_keys->local->key_data);
+        }
+        if (ctx->storage_keys->remote) {
+            wickr_buffer_make_secure(ctx->storage_keys->remote->key_data);
+        }
+    }
+    if (ctx->packet_header_key) {
+        wickr_buffer_make_secure(ctx->packet_header_key->key_data);
+    }
+}
+
 wickr_ctx_t *wickr_ctx_create(const wickr_crypto_engine_t engine, wickr_dev_info_t *dev_info, wickr_identity_chain_t *id_chain, wickr_storage_keys_t *storage_keys)
 {
     if (!dev_info || !id_chain || !storage_keys) {
@@ -411,6 +436,8 @@ wickr_ctx_t *wickr_ctx_create(const wickr_crypto_engine_t engine, wickr_dev_info
         wickr_ctx_destroy(&new_ctx);
         return NULL;
     }
+    
+    __wickr_ctx_secure_keys(new_ctx);
     
     return new_ctx;
 }
@@ -581,11 +608,11 @@ wickr_ctx_t *wickr_ctx_create_from_buffer(const wickr_crypto_engine_t engine,
         return NULL;
     }
     
-    Wickr__Proto__Ctx *ctx_proto = wickr__proto__ctx__unpack(NULL, buffer->length,
+    Wickr__Proto__Ctx *ctx_proto = wickr__proto__ctx__unpack(&wickr_protobuf_allocator, buffer->length,
                                                              buffer->bytes);
     
     wickr_ctx_t *ctx = __wickr_ctx_create_from_proto(engine, dev_info, ctx_proto);
-    wickr__proto__ctx__free_unpacked(ctx_proto, NULL);
+    wickr__proto__ctx__free_unpacked(ctx_proto, &wickr_protobuf_allocator);
     
     return ctx;
 }

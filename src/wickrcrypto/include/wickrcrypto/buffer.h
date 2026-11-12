@@ -125,6 +125,17 @@ wickr_buffer_t *wickr_buffer_create(const uint8_t *bytes, size_t len);
 wickr_buffer_t *wickr_buffer_copy(const wickr_buffer_t *source);
 
 /**
+ @ingroup wickr_buffer
+ 
+ Move a buffer's bytes into memory from wickr_alloc_secure, wiping the old copy. Ownership of the
+ buffer doesn't change. Does nothing unless built with WICKR_SECURE_MEMORY.
+ 
+ @param buffer the buffer holding secret bytes
+ @return true if the bytes are now in secure memory (or secure memory is off), false on failure
+ */
+bool wickr_buffer_make_secure(wickr_buffer_t *buffer);
+
+/**
  
  @ingroup wickr_buffer
  

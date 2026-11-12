@@ -1,5 +1,6 @@
 
 #include "key_exchange.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "key_exchange.pb-c.h"
 #include "private/buffer_priv.h"
@@ -409,7 +410,7 @@ wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_buffer(const wickr_
         return NULL;
     }
     
-    Wickr__Proto__KeyExchangeSet *proto_exchange_set = wickr__proto__key_exchange_set__unpack(NULL,
+    Wickr__Proto__KeyExchangeSet *proto_exchange_set = wickr__proto__key_exchange_set__unpack(&wickr_protobuf_allocator,
                                                                                               buffer->length,
                                                                                               buffer->bytes);
     
@@ -418,7 +419,7 @@ wickr_key_exchange_set_t *wickr_key_exchange_set_create_from_buffer(const wickr_
     }
     
     wickr_key_exchange_set_t *exchange_set = __wickr_key_exchange_set_create_with_proto(proto_exchange_set, engine);
-    wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, NULL);
+    wickr__proto__key_exchange_set__free_unpacked(proto_exchange_set, &wickr_protobuf_allocator);
     
     return exchange_set;
 }

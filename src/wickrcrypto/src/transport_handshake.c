@@ -1,5 +1,6 @@
 
 #include "transport_handshake.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "private/transport_priv.h"
 #include "private/identity_priv.h"
@@ -391,13 +392,13 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
         !handshake_data->response->has_encrypted_response_data ||
         !handshake_data->response->has_ephemeral_pubkey) {
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
     if (!handshake->remote_identity && !handshake_data->response->id_chain) {
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
@@ -408,7 +409,7 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
     
     if (!encrypted_obj) {
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
@@ -417,7 +418,7 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
     if (!local_key_copy) {
         wickr_cipher_result_destroy(&encrypted_obj);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
@@ -429,7 +430,7 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
         wickr_ec_key_destroy(&local_key_copy);
         wickr_cipher_result_destroy(&encrypted_obj);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
@@ -442,20 +443,20 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         wickr_cipher_result_destroy(&encrypted_obj);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         return;
     }
     
     if (!__wickr_transport_handshake_process_remote_identity(handshake, packet, handshake_data->response->id_chain)) {
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         wickr_cipher_result_destroy(&encrypted_obj);
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ec_key_destroy(&remote_ephemeral_key);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return;
     }
     
-    wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+    wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
     
     wickr_kdf_meta_t *kdf_meta = __wickr_transport_handshake_kdf_meta_gen(handshake, handshake->local_ephemeral_key, remote_ephemeral_key);
     
@@ -491,7 +492,7 @@ static void __wickr_transport_handshake_process_response(wickr_transport_handsha
     }
     
     handshake->root_key = wickr_transport_root_key_from_proto(response_data->root_key);
-    wickr__proto__handshake_v1_response_data__free_unpacked(response_data, NULL);
+    wickr__proto__handshake_v1_response_data__free_unpacked(response_data, &wickr_protobuf_allocator);
     
     if (!handshake->root_key) {
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
@@ -513,13 +514,13 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     
     if (!handshake_data || !handshake_data->seed || !handshake_data->seed->has_ephemeral_pubkey
         || !handshake_data->seed->has_identity_required) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
     }
     
     if (!__wickr_transport_handshake_process_remote_identity(handshake, packet, handshake_data->seed->id_chain)) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
     }
@@ -529,7 +530,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     /* Encrypt a response to the ephemeral key provided by the handshake seed */
     
     if (!key_data) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
     }
@@ -538,7 +539,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     wickr_buffer_destroy(&key_data);
     
     if (!ephemeral_key) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
     }
@@ -546,7 +547,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     wickr_ecdh_cipher_ctx_t *cipher_ctx = wickr_ecdh_cipher_ctx_create(handshake->engine, ephemeral_key->curve, handshake->engine.default_cipher);
     
     if (!cipher_ctx) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ec_key_destroy(&ephemeral_key);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
@@ -558,7 +559,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
                                                                  handshake->evo_count, handshake->evo_count);
     
     if (!handshake->root_key) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
     }
@@ -566,7 +567,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     Wickr__Proto__HandshakeV1ResponseData *response_data = wickr_proto_handshake_response_data_create(handshake->root_key);
     
     if (!response_data) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         wickr_ec_key_destroy(&ephemeral_key);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
@@ -577,7 +578,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     wickr_proto_handshake_response_data_free(response_data);
     
     if (!serialized_response_data) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         wickr_ec_key_destroy(&ephemeral_key);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
@@ -592,7 +593,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     wickr_ec_key_destroy(&ephemeral_key);
     
     if (!result) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
@@ -602,7 +603,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     wickr_cipher_result_destroy(&result);
     
     if (!response_buffer) {
-        wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+        wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
         wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
         handshake->status = TRANSPORT_HANDSHAKE_STATUS_FAILED;
         return NULL;
@@ -613,7 +614,7 @@ static wickr_transport_packet_t *__wickr_transport_handshake_process_initial(wic
     Wickr__Proto__HandshakeV1__Response *response = wickr_proto_handshake_response_create(cipher_ctx->local_key->pub_data,
                                                                                           response_buffer, response_identity);
     
-    wickr__proto__handshake_v1__free_unpacked(handshake_data, NULL);
+    wickr__proto__handshake_v1__free_unpacked(handshake_data, &wickr_protobuf_allocator);
     wickr_ecdh_cipher_ctx_destroy(&cipher_ctx);
     wickr_buffer_destroy(&response_buffer);
     

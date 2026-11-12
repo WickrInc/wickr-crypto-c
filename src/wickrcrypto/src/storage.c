@@ -1,5 +1,6 @@
 
 #include "private/storage_priv.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "storage.pb-c.h"
 #include "private/cipher_priv.h"
@@ -78,11 +79,11 @@ wickr_storage_keys_t *wickr_storage_keys_create_from_buffer(const wickr_buffer_t
         return NULL;
     }
     
-    Wickr__Proto__StorageKeys *key_proto = wickr__proto__storage_keys__unpack(NULL, buffer->length,
+    Wickr__Proto__StorageKeys *key_proto = wickr__proto__storage_keys__unpack(&wickr_protobuf_allocator, buffer->length,
                                                                               buffer->bytes);
     
     wickr_storage_keys_t *storage_keys = wickr_storage_keys_create_from_proto(key_proto);
-    wickr__proto__storage_keys__free_unpacked(key_proto, NULL);
+    wickr__proto__storage_keys__free_unpacked(key_proto, &wickr_protobuf_allocator);
     
     return storage_keys;
 }

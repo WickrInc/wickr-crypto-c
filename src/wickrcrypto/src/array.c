@@ -153,7 +153,7 @@ void wickr_array_destroy(wickr_array_t **array, bool destroy_items)
     }
     
     wickr_buffer_destroy(&(*array)->item_store);
-    free(*array);
+    wickr_free(*array);
     *array = NULL;
     
 }

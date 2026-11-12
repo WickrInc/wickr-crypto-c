@@ -1,5 +1,6 @@
 
 #include "identity.h"
+#include "private/memory_priv.h"
 #include "private/identity_priv.h"
 #include "memory.h"
 
@@ -148,14 +149,14 @@ wickr_identity_t *wickr_identity_create_from_buffer(const wickr_buffer_t *buffer
         return NULL;
     }
     
-    Wickr__Proto__Identity *proto_identity = wickr__proto__identity__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__Identity *proto_identity = wickr__proto__identity__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_identity) {
         return NULL;
     }
     
     wickr_identity_t *return_identity = wickr_identity_create_from_proto(proto_identity, engine);
-    wickr__proto__identity__free_unpacked(proto_identity, NULL);
+    wickr__proto__identity__free_unpacked(proto_identity, &wickr_protobuf_allocator);
     
     return return_identity;
 }
@@ -338,14 +339,14 @@ wickr_identity_chain_t *wickr_identity_chain_create_from_buffer(const wickr_buff
         return NULL;
     }
     
-    Wickr__Proto__IdentityChain *proto_identity = wickr__proto__identity_chain__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__IdentityChain *proto_identity = wickr__proto__identity_chain__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_identity) {
         return NULL;
     }
     
     wickr_identity_chain_t *return_chain = wickr_identity_chain_create_from_proto(proto_identity, engine);
-    wickr__proto__identity_chain__free_unpacked(proto_identity, NULL);
+    wickr__proto__identity_chain__free_unpacked(proto_identity, &wickr_protobuf_allocator);
     
     return return_chain;
 }

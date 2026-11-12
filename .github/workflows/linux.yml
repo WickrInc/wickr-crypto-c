@@ -9,14 +9,22 @@ jobs:
       matrix:
         fips: [ON, OFF]
         system_ssl: [ON, OFF]
+        secure_memory: ['OFF']
         exclude:
           - system_ssl: ON
             fips: ON
+        include:
+          - fips: OFF
+            system_ssl: ON
+            secure_memory: 'ON'
     steps:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13.1
       - name: Setup Ninja
         run: sudo apt-get install ninja-build
+      - if: matrix.secure_memory == 'ON'
+        name: Setup libsodium
+        run: sudo apt-get install libsodium-dev
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -28,6 +36,7 @@ jobs:
           -DBUILD_JAVA=true \
           -DSYSTEM_OPENSSL=${{matrix.system_ssl}} \
           -DFIPS=${{matrix.fips}} \
+          -DWICKR_SECURE_MEMORY=${{matrix.secure_memory}} \
           -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
       - name: Build

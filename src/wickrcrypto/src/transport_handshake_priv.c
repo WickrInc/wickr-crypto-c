@@ -1,5 +1,6 @@
 
 #include "private/transport_handshake_priv.h"
+#include "private/memory_priv.h"
 #include "private/identity_priv.h"
 #include "private/buffer_priv.h"
 #include "private/transport_root_key_priv.h"
@@ -94,7 +95,7 @@ Wickr__Proto__HandshakeV1ResponseData *wickr_proto_handshake_response_data_from_
         return NULL;
     }
     
-    return wickr__proto__handshake_v1_response_data__unpack(NULL, buffer->length, buffer->bytes);
+    return wickr__proto__handshake_v1_response_data__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
 }
 
 void wickr_proto_handshake_response_data_free(Wickr__Proto__HandshakeV1ResponseData *data)
@@ -243,7 +244,7 @@ Wickr__Proto__HandshakeV1 *wickr_proto_handshake_from_buffer(const wickr_buffer_
         return NULL;
     }
     
-    return wickr__proto__handshake_v1__unpack(NULL, buffer->length, buffer->bytes);
+    return wickr__proto__handshake_v1__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
 }
 
 Wickr__Proto__HandshakeV1 *wickr_proto_handshake_from_packet(const wickr_transport_packet_t *packet)

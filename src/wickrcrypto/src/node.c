@@ -1,5 +1,6 @@
 
 #include "node.h"
+#include "private/memory_priv.h"
 #include "private/node_priv.h"
 #include "private/identity_priv.h"
 #include "memory.h"
@@ -205,14 +206,14 @@ wickr_node_t *wickr_node_create_from_buffer(const wickr_buffer_t *buffer, const 
         return NULL;
     }
     
-    Wickr__Proto__Node *proto_node = wickr__proto__node__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__Node *proto_node = wickr__proto__node__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_node) {
         return NULL;
     }
     
     wickr_node_t *return_node = wickr_node_create_from_proto(proto_node, engine);
-    wickr__proto__node__free_unpacked(proto_node, NULL);
+    wickr__proto__node__free_unpacked(proto_node, &wickr_protobuf_allocator);
     
     return return_node;
 }

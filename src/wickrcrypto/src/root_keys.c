@@ -1,5 +1,6 @@
 
 #include "root_keys.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "storage.pb-c.h"
 #include "private/cipher_priv.h"
@@ -71,7 +72,7 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
         return NULL;
     }
     
-    Wickr__Proto__RootKeys *proto_keypair = wickr__proto__root_keys__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__RootKeys *proto_keypair = wickr__proto__root_keys__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_keypair) {
         return NULL;
@@ -79,7 +80,7 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
     
     if (!proto_keypair->has_node_storage_root || !proto_keypair->has_remote_storage_root ||
         proto_keypair->version > CURRENT_ROOT_KEY_VERSION) {
-        wickr__proto__root_keys__free_unpacked(proto_keypair, NULL);
+        wickr__proto__root_keys__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
         return NULL;
     }
     
@@ -90,7 +91,7 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
     wickr_cipher_key_t *node_storage_key = wickr_cipher_key_from_protobytes(proto_keypair->node_storage_root);
     
     if (!node_storage_key) {
-        wickr__proto__root_keys__free_unpacked(proto_keypair, NULL);
+        wickr__proto__root_keys__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
         return NULL;
     }
     
@@ -98,7 +99,7 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
     
     if (!node_storage_key) {
         wickr_cipher_key_destroy(&node_storage_key);
-        wickr__proto__root_keys__free_unpacked(proto_keypair, NULL);
+        wickr__proto__root_keys__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
         return NULL;
     }
     
@@ -107,12 +108,12 @@ wickr_root_keys_t *wickr_root_keys_create_from_buffer(const wickr_crypto_engine_
     if (!node_signature_root) {
         wickr_cipher_key_destroy(&remote_storage_key);
         wickr_cipher_key_destroy(&node_storage_key);
-        wickr__proto__root_keys__free_unpacked(proto_keypair, NULL);
+        wickr__proto__root_keys__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
         return NULL;
     }
     
     wickr_root_keys_t *root_keys = wickr_root_keys_create(node_signature_root, node_storage_key, remote_storage_key);
-    wickr__proto__root_keys__free_unpacked(proto_keypair, NULL);
+    wickr__proto__root_keys__free_unpacked(proto_keypair, &wickr_protobuf_allocator);
     
     if (!root_keys) {
         wickr_cipher_key_destroy(&remote_storage_key);

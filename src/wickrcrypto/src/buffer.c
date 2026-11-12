@@ -83,6 +83,24 @@ wickr_buffer_t *wickr_buffer_copy(const wickr_buffer_t *source)
     return wickr_buffer_create(source->bytes, source->length);
 }
 
+bool wickr_buffer_make_secure(wickr_buffer_t *buffer)
+{
+    if (!buffer || !buffer->bytes) {
+        return false;
+    }
+#ifdef WICKR_SECURE_MEMORY
+    uint8_t *secure_bytes = wickr_alloc_secure(buffer->length);
+    if (!secure_bytes) {
+        return false;
+    }
+    memcpy(secure_bytes, buffer->bytes, buffer->length);
+    wickr_zero(buffer->bytes, buffer->length);
+    wickr_free(buffer->bytes);
+    buffer->bytes = secure_bytes;
+#endif
+    return true;
+}
+
 wickr_buffer_t *wickr_buffer_copy_section(const wickr_buffer_t *source, size_t start, size_t len)
 {
     if (!source) {

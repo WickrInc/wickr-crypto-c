@@ -1,5 +1,6 @@
 
 #include "payload.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "message.pb-c.h"
 
@@ -112,7 +113,7 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
         return NULL;
     }
     
-    Wickr__Proto__Payload *proto_payload = wickr__proto__payload__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__Payload *proto_payload = wickr__proto__payload__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_payload) {
         return NULL;
@@ -128,7 +129,7 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
     wickr_buffer_t *channel_tag = wickr_buffer_create(proto_meta->channel_tag.data, proto_meta->channel_tag.len);
     
     if (!channel_tag) {
-        wickr__proto__payload__free_unpacked(proto_payload, NULL);
+        wickr__proto__payload__free_unpacked(proto_payload, &wickr_protobuf_allocator);
         return NULL;
     }
     
@@ -139,12 +140,12 @@ wickr_payload_t *wickr_payload_create_from_buffer(const wickr_buffer_t *buffer)
     
     if (!meta) {
         wickr_buffer_destroy(&channel_tag);
-        wickr__proto__payload__free_unpacked(proto_payload, NULL);
+        wickr__proto__payload__free_unpacked(proto_payload, &wickr_protobuf_allocator);
         return NULL;
     }
     
     wickr_buffer_t *body = wickr_buffer_create(proto_payload->body.data, proto_payload->body.len);
-    wickr__proto__payload__free_unpacked(proto_payload, NULL);
+    wickr__proto__payload__free_unpacked(proto_payload, &wickr_protobuf_allocator);
     
     if (!body) {
         wickr_packet_meta_destroy(&meta);

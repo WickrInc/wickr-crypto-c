@@ -9,6 +9,11 @@ jobs:
       matrix:
         fips: [ON, OFF]
         arch: [x86_64, arm64]
+        secure_memory: ['OFF']
+        include:
+          - fips: ON
+            arch: arm64
+            secure_memory: 'ON'
     steps:
       - uses: actions/setup-go@v6
         with:
@@ -16,6 +21,9 @@ jobs:
           cache: false
       - name: Setup Ninja
         run: brew install ninja
+      - if: matrix.secure_memory == 'ON'
+        name: Setup libsodium
+        run: brew install libsodium
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -25,6 +33,7 @@ jobs:
           cmake -B ${{github.workspace}}/build \
           -DBUILD_TESTS=true \
           -DFIPS=${{matrix.fips}} \
+          -DWICKR_SECURE_MEMORY=${{matrix.secure_memory}} \
           -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
           -DCMAKE_OSX_ARCHITECTURES=${{matrix.arch}} \
           -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/install

@@ -56,6 +56,17 @@ void *wickr_alloc(size_t len);
 void *wickr_alloc_zero(size_t len);
 
 /**
+ @ingroup memory_functions
+ Allocate memory for secrets. With WICKR_SECURE_MEMORY this is libsodium's guarded, page-locked
+ memory (guard pages, canary, mlock/VirtualLock, wiped on free); otherwise zeroed system memory.
+ Free with wickr_free like any other allocation.
+
+ @param len the number of bytes to allocate
+ @return a pointer to 'len' bytes of newly allocated memory, or NULL if the allocation fails
+ */
+void *wickr_alloc_secure(size_t len);
+
+/**
  
  @ingroup memory_functions
  

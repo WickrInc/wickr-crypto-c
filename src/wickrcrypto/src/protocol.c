@@ -1,5 +1,6 @@
 
 #include "protocol.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 #include "message.pb-c.h"
 #include "ecdh_cipher_ctx.h"
@@ -678,7 +679,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
         return wickr_parse_result_create_failure(PACKET_SIGNATURE_INVALID, ERROR_MAC_INVALID);
     }
     
-    Wickr__Proto__Packet *proto_packet = wickr__proto__packet__unpack(NULL, packet->content->length,
+    Wickr__Proto__Packet *proto_packet = wickr__proto__packet__unpack(&wickr_protobuf_allocator, packet->content->length,
                                                                       packet->content->bytes);
     
     if (!proto_packet) {
@@ -692,7 +693,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     wickr_cipher_result_t *header_cipher_result = wickr_cipher_result_from_buffer(&temp_buffer);
     
     if (!header_cipher_result) {
-        wickr__proto__packet__free_unpacked(proto_packet, NULL);
+        wickr__proto__packet__free_unpacked(proto_packet, &wickr_protobuf_allocator);
         return wickr_parse_result_create_failure(PACKET_SIGNATURE_VALID, ERROR_CORRUPT_PACKET);
     }
     
@@ -704,7 +705,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     wickr_cipher_result_destroy(&header_cipher_result);
     
     if (!header) {
-        wickr__proto__packet__free_unpacked(proto_packet, NULL);
+        wickr__proto__packet__free_unpacked(proto_packet, &wickr_protobuf_allocator);
         return wickr_parse_result_create_failure(PACKET_SIGNATURE_VALID, ERROR_CORRUPT_PACKET);
     }
     
@@ -717,7 +718,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
         
         if (!key_exchange) {
             wickr_key_exchange_set_destroy(&header);
-            wickr__proto__packet__free_unpacked(proto_packet, NULL);
+            wickr__proto__packet__free_unpacked(proto_packet, &wickr_protobuf_allocator);
             return wickr_parse_result_create_failure(PACKET_SIGNATURE_VALID, ERROR_NODE_NOT_FOUND);
         }
     }
@@ -726,7 +727,7 @@ wickr_parse_result_t *wickr_parse_result_from_packet(const wickr_crypto_engine_t
     temp_buffer.length = proto_packet->enc_payload.len;
     
     wickr_cipher_result_t *payload_result = wickr_cipher_result_from_buffer(&temp_buffer);
-    wickr__proto__packet__free_unpacked(proto_packet, NULL);
+    wickr__proto__packet__free_unpacked(proto_packet, &wickr_protobuf_allocator);
     
     if (!payload_result) {
         wickr_key_exchange_destroy(&key_exchange);

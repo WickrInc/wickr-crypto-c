@@ -7,6 +7,7 @@
 //
 
 #include "private/stream_key_priv.h"
+#include "private/memory_priv.h"
 #include "memory.h"
 
 wickr_stream_key_t *wickr_stream_key_create(wickr_cipher_key_t *cipher_key, wickr_buffer_t *evolution_key, uint32_t packets_per_evolution)
@@ -135,14 +136,14 @@ wickr_stream_key_t *wickr_stream_key_create_from_buffer(const wickr_buffer_t *bu
         return NULL;
     }
     
-    Wickr__Proto__StreamKey *proto_key = wickr__proto__stream_key__unpack(NULL, buffer->length, buffer->bytes);
+    Wickr__Proto__StreamKey *proto_key = wickr__proto__stream_key__unpack(&wickr_protobuf_allocator, buffer->length, buffer->bytes);
     
     if (!proto_key) {
         return NULL;
     }
     
     wickr_stream_key_t *stream_key = wickr_stream_key_create_from_proto(proto_key);
-    wickr__proto__stream_key__free_unpacked(proto_key, NULL);
+    wickr__proto__stream_key__free_unpacked(proto_key, &wickr_protobuf_allocator);
     
     return stream_key;
 }

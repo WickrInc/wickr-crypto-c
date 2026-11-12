@@ -195,6 +195,27 @@ DESCRIBE(wickr_buffer_tests, "buffer.c")
     }
     END_IT
     
+    IT("should keep its bytes when moved to secure memory")
+    {
+        const char *secret_str = "secret key material";
+        wickr_buffer_t *secret = wickr_buffer_create((uint8_t *)secret_str, strlen(secret_str));
+        wickr_buffer_t *expected = wickr_buffer_copy(secret);
+        
+        SHOULD_BE_FALSE(wickr_buffer_make_secure(NULL));
+        SHOULD_BE_TRUE(wickr_buffer_make_secure(secret));
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(secret, expected, NULL));
+        
+        /* Secure bytes still go through the normal buffer API and free path */
+        wickr_buffer_t *copy = wickr_buffer_copy(secret);
+        SHOULD_BE_TRUE(wickr_buffer_is_equal(copy, expected, NULL));
+        
+        wickr_buffer_destroy_zero(&secret);
+        SHOULD_BE_NULL(secret);
+        wickr_buffer_destroy(&copy);
+        wickr_buffer_destroy(&expected);
+    }
+    END_IT
+    
     wickr_buffer_destroy(&test_buffer);
     
 }
